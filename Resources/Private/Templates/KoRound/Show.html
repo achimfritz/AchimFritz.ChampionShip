@@ -1,0 +1,33 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Show ko round "{koRound.name}"</f:section>
+
+<f:section name="Content">
+	<table>
+		<tr>
+			<th>Parent round</th>
+			<td>{koRound.parentRound}</td>
+		</tr>
+	
+		<tr>
+			<th>Name</th>
+			<td>{koRound.name}</td>
+		</tr>
+	
+		<tr>
+			<th>Teams</th>
+			<td>{koRound.teams}</td>
+		</tr>
+	
+		<tr>
+			<th>General matches</th>
+			<td>{koRound.generalMatches}</td>
+		</tr>
+	
+		<tr>
+			<th>Cup</th>
+			<td>{koRound.cup}</td>
+		</tr>
+	</table>
+	<f:link.action action="index">Back</f:link.action>
+</f:section>

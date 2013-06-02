@@ -1,0 +1,12 @@
+<f:if condition="{teams}">
+	<f:then>
+		<ul>
+			<f:for each="{teams}" as="team">
+				<li>{team.name}</li>
+			</f:for>
+		</ul>
+	</f:then>
+	<f:else>
+		no teams found
+	</f:else>
+</f:if>

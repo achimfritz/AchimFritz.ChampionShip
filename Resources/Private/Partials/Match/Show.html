@@ -1,0 +1,17 @@
+<f:if condition="{match.hostParticipant.team}">
+	<f:then>
+		{match.hostParticipant.team.name}
+	</f:then>
+	<f:else>
+		no team set
+	</f:else>
+</f:if>
+-
+<f:if condition="{match.guestParticipant.team}">
+	<f:then>
+		{match.guestParticipant.team.name}
+	</f:then>
+	<f:else>
+		no team set
+	</f:else>
+</f:if>

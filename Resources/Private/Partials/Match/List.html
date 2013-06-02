@@ -1,0 +1,16 @@
+<f:if condition="{matches}">
+	<f:then>
+		<ul>
+			<f:for each="{matches}" as="match">
+				<li>
+					<f:render partial="Match/Show" arguments="{match: match}" />
+					
+					<f:link.action action="show" controller="match" arguments="{match: match}">Show</f:link.action>
+				</li>
+			</f:for>
+		</ul>
+	</f:then>
+	<f:else>
+		<p>No matches created yet.</p>
+	</f:else>
+</f:if>

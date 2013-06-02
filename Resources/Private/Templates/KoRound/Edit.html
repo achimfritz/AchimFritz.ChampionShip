@@ -1,0 +1,38 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Edit ko round "{koRound.name}"</f:section>
+
+<f:section name="Content">
+	<f:form action="update" object="{koRound}" name="koRound">
+		<ol>
+			<li>
+				<label for="parentRound">Parent round</label>
+				<f:form.textfield property="parentRound" id="parentRound" />
+			</li>
+		
+			<li>
+				<label for="name">Name</label>
+				<f:form.textfield property="name" id="name" />
+			</li>
+		
+			<li>
+				<label for="teams">Teams</label>
+				<f:form.textfield property="teams" id="teams" />
+			</li>
+		
+			<li>
+				<label for="generalMatches">General matches</label>
+				<f:form.textfield property="generalMatches" id="generalMatches" />
+			</li>
+		
+			<li>
+				<label for="cup">Cup</label>
+				<f:form.textfield property="cup" id="cup" />
+			</li>
+		
+			<li>
+				<f:form.submit value="Update"/>
+			</li>
+		</ol>
+	</f:form>
+</f:section>

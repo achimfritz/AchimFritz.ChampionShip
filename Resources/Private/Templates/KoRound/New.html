@@ -1,0 +1,40 @@
+<f:layout name="Default" />
+
+<f:section name="Title">New ko round</f:section>
+
+<f:section name="Content">
+	<p>Just fill out the following form to create a new ko round:</p>
+
+	<f:form action="create" name="newKoRound">
+		<ol>
+			<li>
+				<label for="parentRound">Parent round</label>
+				<f:form.textfield property="parentRound" id="parentRound" />
+			</li>
+		
+			<li>
+				<label for="name">Name</label>
+				<f:form.textfield property="name" id="name" />
+			</li>
+		
+			<li>
+				<label for="teams">Teams</label>
+				<f:form.textfield property="teams" id="teams" />
+			</li>
+		
+			<li>
+				<label for="generalMatches">General matches</label>
+				<f:form.textfield property="generalMatches" id="generalMatches" />
+			</li>
+		
+			<li>
+				<label for="cup">Cup</label>
+				<f:form.textfield property="cup" id="cup" />
+			</li>
+		
+			<li>
+				<f:form.submit value="Create" />
+			</li>
+		</ol>
+	</f:form>
+</f:section>

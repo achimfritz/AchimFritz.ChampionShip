@@ -1,0 +1,30 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Edit cup "{cup.name}"</f:section>
+
+<f:section name="Content">
+	<f:form action="update" object="{cup}" name="cup">
+		<ol>
+			<li>
+				<label for="name">Name</label>
+				<f:form.textfield property="name" id="name" />
+			</li>
+			<li>
+				<label for="teams">Teams</label>
+				<f:form.select multiple="1" options="{allTeams}" property="teams" id="teams" optionLabelField="name" />
+			</li>
+	
+		
+			<li>
+				<f:form.submit value="Update"/>
+			</li>
+		</ol>
+	</f:form>
+
+<ul>
+	<li>
+		<f:link.action action="show" controller="Cup" arguments="{cup: cup}">to Cup {cup.name}</f:link.action>
+	</li>
+</ul>
+
+</f:section>

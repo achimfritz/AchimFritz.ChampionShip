@@ -1,0 +1,13 @@
+  
+#-
+#  name: 'finalmatch'
+#  uriPattern: '{@package}/match/finalmatch(/{@action})'
+#  defaults:
+#    '@controller': 'Match\FinalMatch'
+    
+#-
+#  name: 'quarter final match'
+#  uriPattern: '{@package}/match/@controller(/{@action})'
+#  defaults:
+#    '@controller': 'Match\@controller'
+#  appendExceedingArguments: true

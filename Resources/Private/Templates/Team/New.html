@@ -1,0 +1,25 @@
+<f:layout name="Default" />
+
+<f:section name="Title">New team</f:section>
+
+<f:section name="Content">
+	<p>Just fill out the following form to create a new team:</p>
+
+	<f:form action="create" name="newTeam">
+		<ol>
+			<li>
+				<label for="name">Name</label>
+				<f:form.textfield property="name" id="name" />
+			</li>
+		
+			<li>
+				<label for="short">Short</label>
+				<f:form.textfield property="short" id="short" />
+			</li>
+		
+			<li>
+				<f:form.submit value="Create" />
+			</li>
+		</ol>
+	</f:form>
+</f:section>

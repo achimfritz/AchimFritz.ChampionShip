@@ -1,0 +1,30 @@
+<f:layout name="Default" />
+
+<f:section name="Title">New cup</f:section>
+
+<f:section name="Content">
+	<p>Just fill out the following form to create a new cup:</p>
+
+	<f:form action="create" name="newCup">
+		<ol>
+			<li>
+				<label for="name">Name</label>
+				<f:form.textfield property="name" id="name" />
+			</li>
+			<li>
+				<label for="teams">Teams</label>
+				<f:form.select multiple="1" options="{allTeams}" property="teams" id="teams" optionLabelField="name" />
+			</li>
+			<li>
+				<f:form.submit value="Create" />
+			</li>
+		</ol>
+	</f:form>
+	
+<ul>
+	<li>
+		<f:link.action action="index" controller="Cup" >to Cups</f:link.action>
+	</li>
+</ul>
+	
+</f:section>

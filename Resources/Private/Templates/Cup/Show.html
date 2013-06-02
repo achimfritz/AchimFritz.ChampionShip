@@ -1,0 +1,53 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Show cup "{cup.name}"</f:section>
+
+<f:section name="Content">
+	<h2>Teams</h2>
+	
+	<f:render partial="Team/List" arguments="{teams: cup.teams}" />
+	
+	<f:link.action action="edit" arguments="{cup: cup}">edit</f:link.action>
+	
+	<h2>group rounds</h2>
+	<f:if condition="{groupRounds}">
+		<f:then>
+			<ul>
+				<f:for each="{groupRounds}" as="groupRound">
+					<li>
+						{groupRound.name} {groupRound.groupName}
+						<f:link.action action="show" controller="GroupRound" arguments="{groupRound: groupRound}">show</f:link.action>
+						<f:link.action action="edit" controller="GroupRound" arguments="{groupRound: groupRound}">edit</f:link.action>
+						<f:link.action action="delete" controller="GroupRound" arguments="{groupRound: groupRound}">delete</f:link.action>
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			no group rounds found
+		</f:else>
+	</f:if>
+	<f:link.action action="new" controller="GroupRound" arguments="{cup: cup}">new</f:link.action>
+	
+	<h2>ko rounds</h2>
+	<f:if condition="{koRounds}">
+		<f:then>
+			<ul>
+				<f:for each="{koRounds}" as="koRound">
+					<li>
+						{koRound.name}
+						<f:link.action action="show" controller="KoRound" arguments="{koRound: koRound}">show</f:link.action>
+						<f:link.action action="edit" controller="KoRound" arguments="{koRound: koRound}">edit</f:link.action>
+						<f:link.action action="delete" controller="KoRound" arguments="{koRound: koRound}">delete</f:link.action>
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			no ko rounds found
+		</f:else>
+	</f:if>
+	<f:link.action action="new" controller="KoRound" arguments="{cup: cup}">new</f:link.action>
+	
+	<f:link.action action="index">Back</f:link.action>
+</f:section>
