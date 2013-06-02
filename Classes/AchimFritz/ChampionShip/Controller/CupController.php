@@ -77,9 +77,15 @@ class CupController extends ActionController {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $newCup A new cup to add
 	 * @return void
 	 */
-	public function createAction(Cup $newCup) {
-		$this->cupRepository->add($newCup);
-		$this->addFlashMessage('Created a new cup.');
+	public function createAction(Cup $newCup) {		
+		try {
+			$this->cupRepository->add($newCup);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('cup created');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot create cup');
+			$this->handleException($e);
+		}		
 		$this->redirect('index');
 	}
 
@@ -101,8 +107,14 @@ class CupController extends ActionController {
 	 * @return void
 	 */
 	public function updateAction(Cup $cup) {
-		$this->cupRepository->update($cup);
-		$this->addFlashMessage('Updated the cup.');
+		try {
+			$this->cupRepository->update($cup);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('cup updatet');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot update cup');
+			$this->handleException($e);
+		}
 		$this->redirect('index');
 	}
 
@@ -113,8 +125,14 @@ class CupController extends ActionController {
 	 * @return void
 	 */
 	public function deleteAction(Cup $cup) {
-		$this->cupRepository->remove($cup);
-		$this->addFlashMessage('Deleted a cup.');
+		try {
+			$this->cupRepository->remove($cup);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('cup deletet');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot delete cup');
+			$this->handleException($e);
+		}
 		$this->redirect('index');
 	}
 

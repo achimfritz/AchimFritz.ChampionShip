@@ -16,10 +16,10 @@ use TYPO3\Flow\Annotations as Flow;
 class GroupRoundRepository extends RoundRepository {
 	
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Service\GroupRoundCalculatorService
+	 * @var \AchimFritz\ChampionShip\Domain\Service\GroupRoundService
 	 * @Flow\Inject
 	 */
-	protected $groupRoundCalculatorService;
+	protected $groupRoundService;
 
 	/**
 	 * update
@@ -27,7 +27,7 @@ class GroupRoundRepository extends RoundRepository {
 	 * @param object $object
 	 */
 	public function update($object) {
-		$object = $this->groupRoundCalculatorService->updateGroup($object);
+		$object = $this->groupRoundService->updateGroup($object);
 		return parent::update($object);
 	}
 	
@@ -37,7 +37,7 @@ class GroupRoundRepository extends RoundRepository {
 	 * @param object $object
 	 */
 	public function add($object) {
-		$object = $this->groupRoundCalculatorService->updateGroup($object);
+		$object = $this->groupRoundService->updateGroup($object);
 		return parent::add($object);
 	}
 

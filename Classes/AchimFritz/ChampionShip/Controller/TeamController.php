@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-use \AchimFritz\ChampionShip\Domain\Model\Team;
+use AchimFritz\ChampionShip\Domain\Model\Team;
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
@@ -22,6 +22,12 @@ class TeamController extends ActionController {
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\TeamRepository
 	 */
 	protected $teamRepository;
+	
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 */
+	protected $matchRepository;
 
 	/**
 	 * Shows a list of teams
@@ -39,6 +45,7 @@ class TeamController extends ActionController {
 	 * @return void
 	 */
 	public function showAction(Team $team) {
+		$this->view->assign('matches', $this->matchRepository->findByTeam($team));
 		$this->view->assign('team', $team);
 	}
 
@@ -57,8 +64,14 @@ class TeamController extends ActionController {
 	 * @return void
 	 */
 	public function createAction(Team $newTeam) {
-		$this->teamRepository->add($newTeam);
-		$this->addFlashMessage('Created a new team.');
+		try {
+			$this->teamRepository->add($newTeam);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('team createt');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot create team');
+			$this->handleException($e);
+		}
 		$this->redirect('index');
 	}
 
@@ -87,8 +100,6 @@ class TeamController extends ActionController {
 			$this->addErrorMessage('cannot update team');
 			$this->handleException($e);
 		}
-		$this->teamRepository->update($team);
-		$this->addFlashMessage('Updated the team.');
 		$this->redirect('index');
 	}
 

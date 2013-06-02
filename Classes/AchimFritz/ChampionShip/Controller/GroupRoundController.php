@@ -51,8 +51,14 @@ class GroupRoundController extends ActionController {
 	 * @return void
 	 */
 	public function createAction(GroupRound $newGroupRound) {
-		$this->groupRoundRepository->add($newGroupRound);
-		$this->addFlashMessage('Created a new group round.');
+		try {
+			$this->groupRoundRepository->add($newGroupRound);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('round created');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot create round');
+			$this->handleException($e);
+		}
 		$this->redirect('show', 'Cup', NULL, array('cup' => $newGroupRound->getCup()));
 	}
 
@@ -73,8 +79,14 @@ class GroupRoundController extends ActionController {
 	 * @return void
 	 */
 	public function updateAction(GroupRound $groupRound) {
-		$this->groupRoundRepository->update($groupRound);
-		$this->addFlashMessage('Updated the group round.');
+		try {
+			$this->groupRoundRepository->update($groupRound);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('round updatet');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot update round');
+			$this->handleException($e);
+		}
 		$this->redirect('show', 'Cup', NULL, array('cup' => $groupRound->getCup()));
 	}
 
@@ -85,8 +97,14 @@ class GroupRoundController extends ActionController {
 	 * @return void
 	 */
 	public function deleteAction(GroupRound $groupRound) {
-		$this->groupRoundRepository->remove($groupRound);
-		$this->addFlashMessage('Deleted a group round.');
+		try {
+			$this->groupRoundRepository->remove($groupRound);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('round deletet');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot delete round');
+			$this->handleException($e);
+		}
 		$this->redirect('show', 'Cup', NULL, array('cup' => $groupRound->getCup()));
 	}
 

@@ -1,24 +1,24 @@
 <f:layout name="Default" />
 
-<f:section name="Title">New cup</f:section>
-
 <f:section name="Content">
-	<p>Just fill out the following form to create a new cup:</p>
+	<h2>new Cup</h2>
 
 	<f:form action="create" name="newCup">
-		<ol>
-			<li>
-				<label for="name">Name</label>
-				<f:form.textfield property="name" id="name" />
-			</li>
-			<li>
-				<label for="teams">Teams</label>
-				<f:form.select multiple="1" options="{allTeams}" property="teams" id="teams" optionLabelField="name" />
-			</li>
-			<li>
-				<f:form.submit value="Create" />
-			</li>
-		</ol>
+		<div class="control-group">
+			<label class="control-label" for="name">Name</label>
+			<div class="controlls"><f:form.textfield property="name" id="name" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="teams">Teams</label>
+				<div class="controlls">
+					<f:form.select multiple="1" options="{allTeams}" property="teams" id="teams" optionLabelField="name" />
+				</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit value="Create" class="btn"/>
+			</div>
+		</div>
 	</f:form>
 	
 <ul>

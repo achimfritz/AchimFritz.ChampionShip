@@ -7,6 +7,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use AchimFritz\ChampionShip\Domain\Model\Team;
 
 /**
  * A repository for Matches
@@ -15,7 +16,22 @@ use TYPO3\Flow\Annotations as Flow;
  */
 class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 
-	// add customized methods here
+	/**
+	 * findByTeam
+	 * 
+	 * @param Team $team
+	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 */
+	public function findByTeam(Team $team) {
+		$query = $this->createQuery();
+		return $query->matching(
+            $query->logicalOr(
+				$query->equals('hostParticipant.team', $team),
+				$query->equals('guestParticipant.team', $team)
+			)
+		)
+		->execute();
+	}
 
 }
 ?>

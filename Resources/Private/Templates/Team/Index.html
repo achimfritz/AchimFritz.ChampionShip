@@ -1,14 +1,13 @@
 <f:layout name="Default" />
 
-<f:section name="Title">A list of teams</f:section>
-
 <f:section name="Content">
 	<f:if condition="{teams}">
 		<f:then>
 			<ul>
 				<f:for each="{teams}" as="team">
 					<li>
-						<f:link.action action="show" arguments="{team: team}">{team.name}</f:link.action>
+						{team.name}
+						<f:link.action action="show" arguments="{team: team}">Show</f:link.action>
 						<f:link.action action="edit" arguments="{team: team}">Edit</f:link.action>
 						<f:link.action action="delete" arguments="{team: team}">Delete</f:link.action>
 					</li>
@@ -19,5 +18,8 @@
 			<p>No teams created yet.</p>
 		</f:else>
 	</f:if>
-	<p><f:link.action action="new">Create a new team</f:link.action></p>
+	
+	<ul>
+		<li><f:link.action action="new">Create a new team</f:link.action></li>
+	</ul>
 </f:section>

@@ -31,7 +31,7 @@ class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @param string $message
 	 */
 	protected function addErrorMessage($message) {
-		$this->addFlashMessage($message, 'Error', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
 	}
 	
 	/**
@@ -40,7 +40,7 @@ class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @param string $message
 	 */
 	protected function addOkMessage($message) {
-		$this->addFlashMessage($message, 'Ok', \TYPO3\Flow\Error\Message::SEVERITY_OK);
+		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
 	}
 	
 	/**

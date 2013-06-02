@@ -1,3 +1,5 @@
+<f:format.date format="d.m.Y H:i">{match.startDate}</f:format.date>
+
 <f:if condition="{match.hostParticipant.team}">
 	<f:then>
 		{match.hostParticipant.team.name}
@@ -13,5 +15,14 @@
 	</f:then>
 	<f:else>
 		no team set
+	</f:else>
+</f:if>
+
+<f:if condition="{match.result}">
+	<f:then>
+		{match.result.hostTeamGoals} : {match.result.guestTeamGoals}
+	</f:then>
+	<f:else>
+		:
 	</f:else>
 </f:if>

@@ -40,7 +40,7 @@ class Round {
 	/**
 	 * The cup
 	 * @var \AchimFritz\ChampionShip\Domain\Model\Cup
-	 * @ORM\OneToOne
+	 * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $cup;

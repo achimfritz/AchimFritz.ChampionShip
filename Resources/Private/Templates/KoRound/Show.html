@@ -1,33 +1,29 @@
 <f:layout name="Default" />
 
-<f:section name="Title">Show ko round "{koRound.name}"</f:section>
-
 <f:section name="Content">
-	<table>
-		<tr>
-			<th>Parent round</th>
-			<td>{koRound.parentRound}</td>
-		</tr>
+	<h2>{koRound.name}</h2>
 	
-		<tr>
-			<th>Name</th>
-			<td>{koRound.name}</td>
-		</tr>
+	<h3>parent</h3>
+	<f:if condition="{koRound.parentRound}">
+		<f:then>
+			<ul>
+				<li><f:link.action action="show">parent: {koRound.parentRound.name}</f:link.action></li>
+			</ul>
+		</f:then>
+		<f:else>
+			<p>no parent round found</p>
+		</f:else>		
+	</f:if>
+
+	<h3>Matches</h3>
+	<f:render partial="Match/List" arguments="{matches: koRound.generalMatches}" />
 	
-		<tr>
-			<th>Teams</th>
-			<td>{koRound.teams}</td>
-		</tr>
-	
-		<tr>
-			<th>General matches</th>
-			<td>{koRound.generalMatches}</td>
-		</tr>
-	
-		<tr>
-			<th>Cup</th>
-			<td>{koRound.cup}</td>
-		</tr>
-	</table>
-	<f:link.action action="index">Back</f:link.action>
+	<h3>Teams</h3>
+	<f:render partial="Team/List" arguments="{teams: koRound.teams}" />
+
+	<ul>
+		<li>
+			<f:link.action action="show" controller="Cup" arguments="{cup: koRound.cup}">to Cup {koRound.cup.name}</f:link.action>
+		</li>
+	</ul>
 </f:section>

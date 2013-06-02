@@ -1,29 +1,31 @@
 <f:layout name="Default" />
 
-<f:section name="Title">Edit cup "{cup.name}"</f:section>
 
 <f:section name="Content">
-	<f:form action="update" object="{cup}" name="cup">
-		<ol>
-			<li>
-				<label for="name">Name</label>
-				<f:form.textfield property="name" id="name" />
-			</li>
-			<li>
-				<label for="teams">Teams</label>
-				<f:form.select multiple="1" options="{allTeams}" property="teams" id="teams" optionLabelField="name" />
-			</li>
+
+	<h2>{cup.name}</h2>
 	
-		
-			<li>
-				<f:form.submit value="Update"/>
-			</li>
-		</ol>
+	<f:form action="update" object="{cup}" name="cup">
+		<div class="control-group">
+			<label class="control-label" for="name">Name</label>
+			<div class="controlls"><f:form.textfield property="name" id="name" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="teams">Teams</label>
+			<div class="controlls">
+				<f:form.select multiple="1" options="{allTeams}" property="teams" id="teams" optionLabelField="name" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit value="Update" class="btn"/>
+			</div>
+		</div>
 	</f:form>
 
 <ul>
 	<li>
-		<f:link.action action="show" controller="Cup" arguments="{cup: cup}">to Cup {cup.name}</f:link.action>
+		<f:link.action action="index" controller="Cup" arguments="{cup: cup}">to Cups</f:link.action>
 	</li>
 </ul>
 

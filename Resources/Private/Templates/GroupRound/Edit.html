@@ -1,20 +1,31 @@
 <f:layout name="Default" />
 
-<f:section name="Title">Edit group round "{groupRound.name}"</f:section>
-
 <f:section name="Content">
 	<f:form action="update" object="{groupRound}" name="groupRound">
-	
-				<label for="name">Name</label>
-				<f:form.textfield property="name" id="name" />
+		<div class="control-group">
+			<label class="control-label"for="name">Name</label>
+			<div class="controls"><f:form.textfield property="name" id="name" /></div>
+		</div>
 			
-			
-			<label for="teams">Teams</label>
+		<div class="control-group">
+			<label class="control-label" for="teams">Teams</label>
+			<div class="controls">
 				<f:form.select multiple="1" options="{groupRound.cup.teams}" property="teams" id="teams" optionLabelField="name" />
+			</div>
+		</div>
 			
 		
-			
-				<f:form.submit value="Update"/>
-		</ol>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit value="Update" class="btn"/>
+			</div>
+		</div>
 	</f:form>
+	
+	<ul>
+		<li>
+			<f:link.action action="show" controller="Cup" arguments="{cup: groupRound.cup}">to Cup {groupRound.cup.name}</f:link.action>
+		</li>
+	</ul>
+	
 </f:section>

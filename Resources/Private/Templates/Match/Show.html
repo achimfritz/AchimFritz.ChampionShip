@@ -1,33 +1,41 @@
 <f:layout name="Default" />
 
-<f:section name="Title">Show match </f:section>
-
 <f:section name="Content">
 
 <f:render partial="Match/Show" arguments="{match: match}" />
 
-<ul>
-<f:if condition="{match.round.isGroupRound}">
-	<li>
-	<f:link.action action="show" controller="GroupRound" arguments="{groupRound: match.round}" >
-		to groupRound: {match.round.name}
-	</f:link.action>
-	</li>
-</f:if>
 
-<f:if condition="{match.round.isKoRound}">
+<ul>
 	<li>
-	<f:link.action action="show" controller="KoRound" arguments="{koRound: match.round}" >
-		to koRound: {match.round.name}
-	</f:link.action>
+		<f:link.action action="editResult" arguments="{match: match}">edit result</f:link.action>
 	</li>
-</f:if>
+	<li>
+		<f:link.action action="changeHost" controller="Match" arguments="{match: match}">change host</f:link.action>
+	</li>
+	<li>
+		<f:link.action action="edit" controller="Match" arguments="{match: match}">edit</f:link.action>
+	</li>
+	<f:if condition="{match.round.isGroupRound}">
+		<li>
+			<f:link.action action="show" controller="GroupRound" arguments="{groupRound: match.round}" >
+				to groupRound: {match.round.name}
+			</f:link.action>
+		</li>
+	</f:if>
 	
-<li>
-<f:link.action action="show" controller="Cup" arguments="{cup: match.cup}" >
-to cup: {match.cup.name}
-</f:link.action>
-</li>
+	<f:if condition="{match.round.isKoRound}">
+		<li>
+			<f:link.action action="show" controller="KoRound" arguments="{koRound: match.round}" >
+				to koRound: {match.round.name}
+			</f:link.action>
+		</li>
+	</f:if>
+		
+	<li>
+		<f:link.action action="show" controller="Cup" arguments="{cup: match.cup}" >
+			to cup: {match.cup.name}
+		</f:link.action>
+	</li>
 
 </ul>
 </f:section>

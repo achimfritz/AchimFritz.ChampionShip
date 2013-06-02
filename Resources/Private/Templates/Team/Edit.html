@@ -1,23 +1,29 @@
 <f:layout name="Default" />
 
-<f:section name="Title">Edit team "{team.name}"</f:section>
 
 <f:section name="Content">
 	<f:form action="update" object="{team}" name="team">
-		<ol>
-			<li>
-				<label for="name">Name</label>
-				<f:form.textfield property="name" id="name" />
-			</li>
+		<div class="control-group">
+			<label class="control-label" for="name">Name</label>
+			<div class="controlls"><f:form.textfield property="name" id="name" /></div>
+		</div>
 		
-			<li>
-				<label for="short">Short</label>
-				<f:form.textfield property="short" id="short" />
-			</li>
+		<div class="control-group">
+			<label class="control-label" for="short">Short</label>
+				<div class="controlls"><f:form.textfield property="short" id="short" /></div>
+		</div>
 		
-			<li>
-				<f:form.submit value="Update"/>
-			</li>
-		</ol>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit value="Update" class="btn"/>
+			</div>
+		</div>
 	</f:form>
+	
+	<ul>
+		<li>
+			<f:link.action action="index" controller="Team">to Teams</f:link.action>
+		</li>
+	</ul>
+	
 </f:section>

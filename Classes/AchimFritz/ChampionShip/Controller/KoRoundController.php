@@ -34,11 +34,13 @@ class KoRoundController extends ActionController {
 	}
 
 	/**
-	 * Shows a form for creating a new ko round object
+	 * Shows a form for creating a new group round object
 	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup
 	 * @return void
 	 */
-	public function newAction() {
+	public function newAction(\AchimFritz\ChampionShip\Domain\Model\Cup $cup) {
+		$this->view->assign('cup', $cup);
 	}
 
 	/**
@@ -48,9 +50,15 @@ class KoRoundController extends ActionController {
 	 * @return void
 	 */
 	public function createAction(KoRound $newKoRound) {
-		$this->koRoundRepository->add($newKoRound);
-		$this->addFlashMessage('Created a new ko round.');
-		$this->redirect('index');
+		try {
+			$this->koRoundRepository->add($newKoRound);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('round created');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot create round');
+			$this->handleException($e);
+		}
+		$this->redirect('show', 'Cup', NULL, array('cup' => $newKoRound->getCup()));
 	}
 
 	/**
@@ -70,9 +78,15 @@ class KoRoundController extends ActionController {
 	 * @return void
 	 */
 	public function updateAction(KoRound $koRound) {
-		$this->koRoundRepository->update($koRound);
-		$this->addFlashMessage('Updated the ko round.');
-		$this->redirect('index');
+		try {
+			$this->koRoundRepository->update($koRound);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('round updatet');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot update round');
+			$this->handleException($e);
+		}
+		$this->redirect('show', 'Cup', NULL, array('cup' => $koRound->getCup()));
 	}
 
 	/**
@@ -82,9 +96,15 @@ class KoRoundController extends ActionController {
 	 * @return void
 	 */
 	public function deleteAction(KoRound $koRound) {
-		$this->koRoundRepository->remove($koRound);
-		$this->addFlashMessage('Deleted a ko round.');
-		$this->redirect('index');
+		try {
+			$this->koRoundRepository->remove($koRound);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('round deletet');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot delete round');
+			$this->handleException($e);
+		}
+		$this->redirect('show', 'Cup', NULL, array('cup' => $koRound->getCup()));
 	}
 
 }

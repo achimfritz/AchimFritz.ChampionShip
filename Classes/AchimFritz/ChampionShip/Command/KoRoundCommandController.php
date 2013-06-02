@@ -13,13 +13,13 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
+class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
 	 */
-	protected $groupRoundRepository;
+	protected $koRoundRepository;
 	
 	/**
 	 * @Flow\Inject
@@ -33,10 +33,10 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @return void
 	 */
 	public function updateCommand() {
-		$groupRounds = $this->groupRoundRepository->findAll();
-		foreach ($groupRounds AS $groupRound) {
-			$this->outputLine('update groupRound ' . $groupRound->getName());
-			$this->groupRoundRepository->update($groupRound);
+		$koRounds = $this->koRoundRepository->findAll();
+		foreach ($koRounds AS $koRound) {
+			$this->outputLine('update groupRound ' . $koRound->getName());
+			$this->koRoundRepository->update($koRound);
 		}
 	}
 	
@@ -46,14 +46,15 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @return void
 	 */
 	public function cleanCommand() {
-		$groupRounds = $this->groupRoundRepository->findAll();
-		foreach ($groupRounds AS $groupRound) {
-			$this->outputLine('clean groupRound ' . $groupRound->getName());
-			$matches = $groupRound->getGeneralMatches();
-			$this->outputLine('count of matches: ' . count($matches));
-			foreach ($matches AS $match) {
-				$this->matchRepository->remove($match);
-			}
+		$koRound = $this->groupRoundRepository->findAll();
+		
+		foreach ($koRounds AS $koRound) {
+			$this->outputLine('clean groupRound ' . $koRound->getName());
+			#$matches = $groupRound->getGeneralMatches();
+			#$this->outputLine('count of matches: ' . count($matches));
+			#foreach ($matches AS $match) {
+			#	$this->matchRepository->remove($match);
+			#}
 		}
 	}
 

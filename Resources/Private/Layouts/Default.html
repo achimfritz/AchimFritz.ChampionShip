@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title><f:render section="Title" /></title>
+		<title>ChampionShip</title>
 		<f:base />
 		
 		<!-- twitter bootstrap -->
@@ -14,20 +14,22 @@
 	</head>
 	<body>
 		<div class="container">
-		<h1>{title}</h1>
-		<ul>
-			<f:for each="{controllers}" as="controller">
-			<li>
-				<f:link.action controller="{controller}" action="index">{controller}</f:link.action>
-			</li>
-			
-			</f:for>
-		</ul>
-	
-		<f:flashMessages class="flashmessages" />
-
-		<h2><f:render section="Title" /></h2>
-		<f:render section="Content" />
+			<div class="row">
+				<div class="span2">
+					<ul>
+						<f:for each="{controllers}" as="controller">
+							<li>
+								<f:link.action controller="{controller}" action="index">{controller}</f:link.action>
+							</li>
+						</f:for>
+					</ul>
+				</div>
+				<div class="span10">
+					<h1>{title}</h1>
+					<f:render partial="FlashMessages" />
+					<f:render section="Content" />
+				</div>
+			</div>
 		</div>
 		
 	</body>
