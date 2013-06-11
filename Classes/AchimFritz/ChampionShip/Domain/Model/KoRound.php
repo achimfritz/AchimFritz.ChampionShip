@@ -19,15 +19,10 @@ class KoRound extends Round {
 	/**
 	 * The parent round
 	 * @var \AchimFritz\ChampionShip\Domain\Model\KoRound
-	 * @ORM\OneToOne
+	 * @ORM\ManyToOne
 	 */
 	protected $parentRound;
 	
-	/**
-	 * @var integer
-	 */
-	protected $countOfMatches;
-
 
 	/**
 	 * Get the Ko round's parent round
@@ -48,24 +43,6 @@ class KoRound extends Round {
 		$this->parentRound = $parentRound;
 	}
 	
-	/**
-	 * getCountOfMatches
-	 * 
-	 * @return integer
-	 */
-	public function getCountOfMatches() {
-		return $this->countOfMatches;
-	}
-	
-	/**
-	 * setCountOfMatches
-	 * 
-	 * @param integer
-	 * @return void
-	 */
-	public function setCountOfMatches($countOfMatches) {
-		$this->countOfMatches = $countOfMatches;
-	}
 	
 	/**
 	 * getIsKoRound

@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Repository;
+namespace AchimFritz\ChampionShip\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,14 +7,14 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * A repository for GroupRounds
+ * A Ko round
  *
- * @Flow\Scope("singleton")
+ * @Flow\Entity
  */
-class GroupRoundRepository extends RoundRepository {
-	
+class FinalRound extends KoRound {
 
 }
 ?>

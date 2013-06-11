@@ -14,7 +14,7 @@ use AchimFritz\ChampionShip\Domain\Model\GroupRound;
 
 
 /**
- * A GroupRoundCalculatorService
+ * A GroupRoundService
  *
  * @Flow\Scope("singleton")
  */

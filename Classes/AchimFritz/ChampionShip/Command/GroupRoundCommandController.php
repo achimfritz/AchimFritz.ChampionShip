@@ -26,6 +26,12 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
 	 */
 	protected $matchRepository;
+	
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Service\GroupRoundService
+	 * @Flow\Inject
+	 */
+	protected $groupRoundService;
 
 	/**
 	 * update
@@ -36,6 +42,7 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 		$groupRounds = $this->groupRoundRepository->findAll();
 		foreach ($groupRounds AS $groupRound) {
 			$this->outputLine('update groupRound ' . $groupRound->getName());
+			$this->groupRoundService->updateGroup($groupRound);
 			$this->groupRoundRepository->update($groupRound);
 		}
 	}

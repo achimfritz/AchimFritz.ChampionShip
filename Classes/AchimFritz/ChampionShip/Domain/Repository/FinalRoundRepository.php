@@ -9,12 +9,12 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
- * A repository for GroupRounds
+ * A repository for KoRounds
  *
  * @Flow\Scope("singleton")
  */
-class GroupRoundRepository extends RoundRepository {
-	
+class FinalRoundRepository extends KoRoundRepository {
+
 
 }
 ?>

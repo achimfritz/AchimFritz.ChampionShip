@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use AchimFritz\ChampionShip\Domain\Model\Match;
 
 /**
  * A Round
@@ -33,7 +34,7 @@ class Round {
 	
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Match>
-	 * @ORM\OneToMany(mappedBy="round")
+	 * @ORM\OneToMany(mappedBy="round", cascade={"all"})
 	 */
 	protected $generalMatches;
 
@@ -44,8 +45,6 @@ class Round {
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $cup;
-	
-	
 	
 	/**
 	 * __construct
@@ -63,6 +62,16 @@ class Round {
 	 */
 	public function setGeneralMatches(\Doctrine\Common\Collections\Collection $generalMatches) {
 		$this->generalMatches = $generalMatches;
+	}
+	
+	/**
+	 * addGeneralMatch
+	 * 
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Match
+	 * @return void
+	 */
+	public function addGeneralMatch(Match $generalMatch) {
+		$this->generalMatches->add($generalMatch);
 	}
 	
 	/**

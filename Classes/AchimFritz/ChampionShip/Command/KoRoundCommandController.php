@@ -17,26 +17,66 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	
 	/**
 	 * @Flow\Inject
+	 * @var TYPO3\Flow\Persistence\PersistenceManagerInterface
+	 */
+	protected $persistenceManager;
+	
+	/**
+	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
 	 */
 	protected $koRoundRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\FinalRoundRepository
 	 */
-	protected $matchRepository;
-
+	protected $finalRoundRepository;
+		
 	/**
-	 * update
+	 * @var \AchimFritz\ChampionShip\Domain\Service\KoRoundService
+	 * @Flow\Inject
+	 */
+	protected $koRoundService;
+	
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 */
+	protected $groupRoundRepository;
+	
+	/**
+	 * create
 	 *
 	 * @return void
 	 */
-	public function updateCommand() {
-		$koRounds = $this->koRoundRepository->findAll();
+	public function createCommand() {
+		try {
+			$groupRounds = $this->groupRoundRepository->findAll();
+			$koRounds = $this->koRoundService->createKoRounds($groupRounds);
+		} catch (\Exception $e) {
+			$this->outputLine('ERROR ' . $e->getMessage());
+			$this->quit();
+		}
 		foreach ($koRounds AS $koRound) {
-			$this->outputLine('update groupRound ' . $koRound->getName());
-			$this->koRoundRepository->update($koRound);
+			$this->koRoundRepository->add($koRound);
+			$this->outputLine('created koRound ' . $koRound->getName() . ' with ' . count($koRound->getGeneralMatches()) . ' matches');
+		}
+		$this->outputLine('DONE');
+	}
+	
+	/**
+	 * cleanParents
+	 * 
+	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $koRound
+	 * @return void
+	 */
+	protected function cleanParent(\AchimFritz\ChampionShip\Domain\Model\KoRound $koRound = NULL) {
+		if ($koRound !== NULL) {
+			$this->outputLine('clean delete ' . $koRound->getName());
+			$this->koRoundRepository->remove($koRound);
+			$this->persistenceManager->persistAll();
+			$this->cleanParent($koRound->getParentRound());
 		}
 	}
 	
@@ -46,15 +86,16 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @return void
 	 */
 	public function cleanCommand() {
-		$koRound = $this->groupRoundRepository->findAll();
-		
-		foreach ($koRounds AS $koRound) {
-			$this->outputLine('clean groupRound ' . $koRound->getName());
-			#$matches = $groupRound->getGeneralMatches();
-			#$this->outputLine('count of matches: ' . count($matches));
-			#foreach ($matches AS $match) {
-			#	$this->matchRepository->remove($match);
-			#}
+				
+		$finalRounds = $this->finalRoundRepository->findAll();
+		$finalRound = $finalRounds->current();
+		if ($finalRound instanceof \AchimFritz\ChampionShip\Domain\Model\FinalRound) {
+			$this->finalRoundRepository->remove($finalRound);
+			$this->persistenceManager->persistAll();
+			$this->outputLine('clean delete ' . $finalRound->getName());
+			$this->cleanParent($finalRound->getParentRound());
+		} else {
+			$this->outputLine('no final rounds found');
 		}
 	}
 
