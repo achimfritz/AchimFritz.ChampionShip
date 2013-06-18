@@ -31,17 +31,27 @@ class GroupTableRow {
 	/**
 	 * @var integer
 	 */
-	protected $goalsPlus;
+	protected $goalsPlus = 0;
 
 	/**
 	 * @var integer
 	 */
-	protected $points;
+	protected $goalsMinus = 0;
 
 	/**
 	 * @var integer
 	 */
-	protected $rank;
+	protected $points = 0;
+
+	/**
+	 * @var integer
+	 */
+	protected $rank = 0;
+
+	/**
+	 * @var integer
+	 */
+	protected $countOfMatchesPlayed = 0;
 	
 
 		#(inversedBy="groupTableRows")
@@ -148,6 +158,54 @@ class GroupTableRow {
 	public function getRank() {
 		return $this->rank;
 	}
+
+   /**
+    * getGoalsMinus 
+    * 
+    * @return integer goalsMinus
+    */
+   public function getGoalsMinus() {
+      return $this->goalsMinus;
+   }
+
+   /**
+    * setGoalsMinus
+    * 
+    * @param integer $goalsMinus
+    * @return void
+    */
+   public function setGoalsMinus($goalsMinus) {
+      $this->goalsMinus = $goalsMinus;
+   } 
+
+   /**
+    * getCountOfMatchesPlayed 
+    * 
+    * @return integer countOfMatchesPlayed
+    */
+   public function getCountOfMatchesPlayed() {
+      return $this->countOfMatchesPlayed;
+   }
+
+   /**
+    * setCountOfMatchesPlayed
+    * 
+    * @param integer $countOfMatchesPlayed
+    * @return void
+    */
+   public function setCountOfMatchesPlayed($countOfMatchesPlayed) {
+      $this->countOfMatchesPlayed = $countOfMatchesPlayed;
+   }
+
+   /**
+    * getGoalsDiff 
+    * 
+    * @return integer
+    */
+   public function getGoalsDiff() {
+      return $this->goalsPlus - $this->goalsMinus;
+   }
+
 
 
 }

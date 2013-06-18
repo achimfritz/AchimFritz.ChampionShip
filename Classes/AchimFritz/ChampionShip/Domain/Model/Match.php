@@ -62,6 +62,33 @@ class Match {
 	protected $startDate;
 	
 	/**
+	 * @var string
+	 */
+	protected $name = '';
+
+   /**
+    * getTeamHasWonThisMatch 
+    * 
+    * @param \AchimFritz\ChampionShip\Domain\Model\Team $team 
+    * @return boolean
+    */
+   public function getTeamHasWonThisMatch(\AchimFritz\ChampionShip\Domain\Model\Team $team) {
+      $result = $this->getResult();
+		$host = $this->getHostParticipant();
+		$guest = $this->getGuestParticipant();
+		if (!isset($host) OR !isset($guest) OR !isset($result)) {
+			return FALSE;
+		}
+      if ($host->getTeam() === $team AND $result->getHostTeamGoals() > $result->getGuestTeamGoals()) {
+         return TRUE;
+      }
+      if ($guest->getTeam() === $team AND $result->getHostTeamGoals() < $result->getGuestTeamGoals()) {
+         return TRUE;
+      }
+      return FALSE;
+   }
+	
+	/**
 	 * twoTeamsPlayThisMatch
 	 * 
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Team
@@ -74,7 +101,7 @@ class Match {
 		if (!isset($host) OR !isset($guest)) {
 			return FALSE;
 		}
-		return TRUE;
+		#return TRUE;
 		if (
 			($this->getHostParticipant()->getTeam() === $teamOne AND
 			$this->getGuestParticipant()->getTeam() === $teamTwo) OR 
@@ -115,7 +142,43 @@ class Match {
 			$this->getResult()->setHostTeamGoals($goalsGuestTeam);
 		}
 	}
+	
+	/**
+	 * getHostName
+	 * 
+	 * @return string
+	 */
+	public function getHostName() {
+		return $this->getHostParticipant()->getName();
+	}
+	
+	/**
+	 * getGuestName
+	 * 
+	 * @return string
+	 */
+	public function getGuestName() {
+		return $this->getGuestParticipant()->getName();
+	}
+	
+	/**
+	 * getName
+	 *
+	 * @return string name
+	 */
+	public function getName() {
+		return $this->name;
+	}
 
+	/**
+	 * setName
+	 *
+	 * @param string $name
+	 * @return void
+	 */
+	public function setName($name) {
+		$this->name = $name;
+	}
 
 	/**
 	 * Get the Match's host participant

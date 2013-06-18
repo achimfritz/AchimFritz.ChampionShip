@@ -26,6 +26,12 @@ class GroupRoundService {
 	 */
 	protected $matchRepository;
 	
+   /**
+    * @Flow\Inject
+    * @var \AchimFritz\ChampionShip\Domain\Factory\MatchFactory
+    */
+   protected $matchFactory;
+
 	/**
 	 * updateGroup
 	 * 
@@ -45,8 +51,13 @@ class GroupRoundService {
 	 * @return \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
 	 */
 	protected function updateGroupTable(GroupRound $groupRound) {
-		$teams = $groupRound->getTeams();
+      $matches = $groupRound->getGeneralMatches();
+      $groupTableCalculator = new \AchimFritz\ChampionShip\Domain\Service\GroupTableCalculator();
+      $groupTableRows = $groupTableCalculator->getGroupTableRows($matches);
 		$groupRound->clearGroupTableRows();
+      $groupRound->setGroupTableRows($groupTableRows);
+/*
+		$teams = $groupRound->getTeams();
 		$rank = 1;
 		foreach ($teams AS $team) {
 			$groupTableRow = new GroupTableRow();
@@ -58,6 +69,7 @@ class GroupRoundService {
 			$groupRound->addGroupTableRow($groupTableRow);
 			$rank++;
 		}
+*/
 		return $groupRound;
 	}
 	
@@ -87,6 +99,8 @@ class GroupRoundService {
 			}
 			if ($matchExists === FALSE) {
 					// TODO MatchFactory->createByRoundAndTeams()
+            $match = $this->matchFactory->createFromTeams($teamPair['teamOne'], $teamPair['teamTwo']);
+            /*
 				$hostParticipant = new MatchParticipant();
 				$hostParticipant->setTeam($teamPair['teamOne']);
 				$guestParticipant = new MatchParticipant();
@@ -95,8 +109,10 @@ class GroupRoundService {
 				$match->setHostParticipant($hostParticipant);
 				$match->setGuestParticipant($guestParticipant);
 				$match->setStartDate(new \DateTime());
+            */
 				$match->setCup($groupRound->getCup());
 				$match->setRound($groupRound);
+				#$groupRound->addGeneralMatch($match);
 				$this->matchRepository->add($match);
 			}
 		}

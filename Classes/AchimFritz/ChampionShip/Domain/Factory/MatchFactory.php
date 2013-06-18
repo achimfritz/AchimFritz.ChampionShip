@@ -8,8 +8,8 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\MatchParticipant;
+use AchimFritz\ChampionShip\Domain\Model\Team;
 use AchimFritz\ChampionShip\Domain\Model\Match;
-use AchimFritz\ChampionShip\Domain\Model\KoRound;
 use AchimFritz\ChampionShip\Domain\Model\GroupRound;
 
 
@@ -21,14 +21,13 @@ use AchimFritz\ChampionShip\Domain\Model\GroupRound;
 class MatchFactory {
 		
 	/**
-	 * createInKoRoundFromGroupRounds
+	 * createFromGroupRounds
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound
 	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound
 	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound
 	 * @return \AchimFritz\ChampionShip\Domain\Model\Match
 	 */
-	public function createInKoRoundFromGroupRounds(KoRound $koRound, GroupRound $first, GroupRound $second) {
+	public function createFromGroupRounds(GroupRound $first, GroupRound $second) {
 		$hostParticipant = new MatchParticipant();
 		$guestParticipant = new MatchParticipant();
 		$hostParticipant->setRankOfGroupRound(1);
@@ -39,32 +38,48 @@ class MatchFactory {
 		$match->setHostParticipant($hostParticipant);
 		$match->setGuestParticipant($guestParticipant);
 		$match->setStartDate(new \DateTime());
-		$match->setCup($first->getCup());		
-		$match->setRound($koRound);
+		$match->setCup($first->getCup());
 		return $match;
 	}
 	
 	/**
-	 * createFromGroupRounds
+	 * createFromMatches
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Match
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Match
 	 * @return \AchimFritz\ChampionShip\Domain\Model\Match
 	 */
-	public function createInKoRoundFromMatches(KoRound $koRound, Match $first, Match $second) {
+	public function createFromWinners(Match $first, Match $second) {
 		$hostParticipant = new MatchParticipant();
 		$guestParticipant = new MatchParticipant();
 		$hostParticipant->setWinnerOfMatch($first);
-		$guestParticipant->setLooserOfMatch($second);
+		$guestParticipant->setWinnerOfMatch($second);
 		$match = new Match();
 		$match->setHostParticipant($hostParticipant);
 		$match->setGuestParticipant($guestParticipant);
 		$match->setStartDate(new \DateTime());
 		$match->setCup($first->getCup());
-		$match->setRound($koRound);
 		return $match;
 	}
+
+   /**
+    * createFromTeams 
+    * 
+    * @param Team $host
+    * @param Team $guest 
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Match
+    */
+   public function createFromTeams(Team $host, Team $guest) {
+      $hostParticipant = new MatchParticipant();
+      $hostParticipant->setTeam($host);
+      $guestParticipant = new MatchParticipant();
+      $guestParticipant->setTeam($guest);
+      $match = new Match();
+      $match->setHostParticipant($hostParticipant);
+      $match->setGuestParticipant($guestParticipant);
+      $match->setStartDate(new \DateTime());
+      return $match;
+   }
 	
 	
 }

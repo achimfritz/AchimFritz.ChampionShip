@@ -30,6 +30,7 @@ class GroupRound extends Round {
 	 * @return void
 	 */
 	public function __construct() {
+      parent::__construct();
 		$this->groupTableRows = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 	

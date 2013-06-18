@@ -30,6 +30,10 @@ class Cup {
 	 * @ORM\ManyToMany
 	 */
 	protected $teams;
+
+   public function __construct() {
+      $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
+   }
 	
 	/**
 	 * Get the Team's name

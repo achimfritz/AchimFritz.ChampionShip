@@ -9,6 +9,7 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 use AchimFritz\ChampionShip\Domain\Model\Match;
+use AchimFritz\ChampionShip\Domain\Model\Team;
 
 /**
  * A Round
@@ -53,17 +54,7 @@ class Round {
 		$this->teams = new \Doctrine\Common\Collections\ArrayCollection();
 		$this->generalMatches = new \Doctrine\Common\Collections\ArrayCollection();
 	}
-	
-	/**
-	 * setGeneralMatches
-	 * 
-	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Match>
-	 * @return void
-	 */
-	public function setGeneralMatches(\Doctrine\Common\Collections\Collection $generalMatches) {
-		$this->generalMatches = $generalMatches;
-	}
-	
+		
 	/**
 	 * addGeneralMatch
 	 * 
@@ -71,6 +62,7 @@ class Round {
 	 * @return void
 	 */
 	public function addGeneralMatch(Match $generalMatch) {
+		$generalMatch->setRound($this);
 		$this->generalMatches->add($generalMatch);
 	}
 	
@@ -120,6 +112,31 @@ class Round {
 	public function setTeams(\Doctrine\Common\Collections\Collection $teams) {
 		$this->teams = $teams;
 	}
+
+   /**
+    * addTeam 
+    * 
+    * @param Team $team 
+    * @return void
+    */
+   public function addTeam(Team $team) {
+      $this->teams->add($team);
+   }
+
+   /**
+    * hasTeam 
+    * 
+    * @param Team $team 
+    * @return boolean
+    */
+   public function hasTeam(Team $team) {
+      foreach ($this->teams AS $existingTeam) {
+         if ($team === $existingTeam) {
+            return TRUE;
+         }
+      }
+      return FALSE;
+   }
 
 
 	/**

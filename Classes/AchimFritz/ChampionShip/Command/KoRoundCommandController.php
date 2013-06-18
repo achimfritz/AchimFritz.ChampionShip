@@ -14,37 +14,61 @@ use TYPO3\Flow\Annotations as Flow;
  * @Flow\Scope("singleton")
  */
 class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
-	
+
 	/**
 	 * @Flow\Inject
 	 * @var TYPO3\Flow\Persistence\PersistenceManagerInterface
 	 */
 	protected $persistenceManager;
-	
+
 	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
 	 */
 	protected $koRoundRepository;
-	
+
 	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\FinalRoundRepository
 	 */
 	protected $finalRoundRepository;
-		
+
 	/**
 	 * @var \AchimFritz\ChampionShip\Domain\Service\KoRoundService
 	 * @Flow\Inject
 	 */
 	protected $koRoundService;
-	
+
 	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
 	 */
 	protected $groupRoundRepository;
-	
+
+	/**
+	 * list
+	 *
+	 * @return void
+	 */
+	public function listCommand() {
+		$koRounds = $this->koRoundRepository->findAll();
+		if (count($koRounds)) {
+			foreach ($koRounds AS $koRound) {
+				$this->outputLine($koRound->getName());
+				$matches = $koRound->getGeneralMatches();
+				if (count($matches)) {
+					foreach ($matches as $match) {
+						$this->outputLine(' ' . $match->getName() . ' : ' . $match->getHostName() . ' - ' . $match->getGuestName());
+					}
+				} else {
+					$this->outputLine(' no matches found');
+				}
+			}
+		} else {
+			$this->outputLine('no koRounds found');
+		}
+	}
+
 	/**
 	 * create
 	 *
@@ -64,36 +88,35 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 		}
 		$this->outputLine('DONE');
 	}
-	
+
 	/**
-	 * cleanParents
-	 * 
+	 * removeParents
+	 *
 	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $koRound
 	 * @return void
 	 */
-	protected function cleanParent(\AchimFritz\ChampionShip\Domain\Model\KoRound $koRound = NULL) {
+	protected function removeParent(\AchimFritz\ChampionShip\Domain\Model\KoRound $koRound = NULL) {
 		if ($koRound !== NULL) {
-			$this->outputLine('clean delete ' . $koRound->getName());
+			$this->outputLine('removed ' . $koRound->getName());
 			$this->koRoundRepository->remove($koRound);
 			$this->persistenceManager->persistAll();
-			$this->cleanParent($koRound->getParentRound());
+			$this->removeParent($koRound->getParentRound());
 		}
 	}
-	
+
 	/**
-	 * clean
+	 * remove
 	 *
 	 * @return void
 	 */
-	public function cleanCommand() {
-				
+	public function removeCommand() {
 		$finalRounds = $this->finalRoundRepository->findAll();
 		$finalRound = $finalRounds->current();
 		if ($finalRound instanceof \AchimFritz\ChampionShip\Domain\Model\FinalRound) {
 			$this->finalRoundRepository->remove($finalRound);
 			$this->persistenceManager->persistAll();
-			$this->outputLine('clean delete ' . $finalRound->getName());
-			$this->cleanParent($finalRound->getParentRound());
+			$this->outputLine('removed ' . $finalRound->getName());
+			$this->removeParent($finalRound->getParentRound());
 		} else {
 			$this->outputLine('no final rounds found');
 		}

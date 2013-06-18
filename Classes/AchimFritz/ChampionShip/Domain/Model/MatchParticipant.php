@@ -24,12 +24,6 @@ class MatchParticipant {
 	protected $team;
 
 	/**
-	 * The name
-	 * @var string
-	 */
-	protected $name = '';
-
-	/**
 	 * The winner of match
 	 * @var \AchimFritz\ChampionShip\Domain\Model\Match
 	 * @ORM\OneToOne
@@ -82,18 +76,19 @@ class MatchParticipant {
 	 * @return string The Match participant's name
 	 */
 	public function getName() {
-		return $this->name;
+		if (isset($this->team)) {
+			return $this->team->getName();
+		} elseif (isset($this->groupRound)) {
+			return $this->rankOfGroupRound . '. ' . $this->groupRound->getName();
+		} elseif (isset($this->winnerOfMatch)) {
+			return 'winner ' . $this->winnerOfMatch->getName();
+		} elseif (isset($this->looserOfMatch)) {
+			return 'looser ' . $this->looserOfMatch->getName();
+		} else {
+			return '';
+		}
 	}
 
-	/**
-	 * Sets this Match participant's name
-	 *
-	 * @param string $name The Match participant's name
-	 * @return void
-	 */
-	public function setName($name) {
-		$this->name = $name;
-	}
 
 	/**
 	 * Get the Match participant's winner of match

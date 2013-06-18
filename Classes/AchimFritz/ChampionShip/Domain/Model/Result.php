@@ -69,5 +69,63 @@ class Result {
 		$this->guestTeamGoals = $guestTeamGoals;
 	}
 
+   /**
+    * getGuestPoints 
+    * 
+    * @return integer
+    */
+   public function getGuestPoints() {
+      if ($this->getGuestWins()) {
+         return 3;
+      } elseif ($this->getHostWins()) {
+         return 0;
+      } elseif ($this->getIsRemis()) {
+         return 1;
+      }
+   }
+
+   /**
+    * getHostPoints 
+    * 
+    * @return integer
+    */
+   public function getHostPoints() {
+         // TODO Strategy, Policy
+      if ($this->getGuestWins()) {
+         return 0;
+      } elseif ($this->getHostWins()) {
+         return 3;
+      } elseif ($this->getIsRemis()) {
+         return 1;
+      }
+   }
+
+   /**
+    * getHostWins 
+    * 
+    * @return boolean
+    */
+   public function getHostWins(){
+      return ($this->hostTeamGoals > $this->guestTeamGoals);
+   }
+
+   /**
+    * getGuestWins 
+    * 
+    * @return boolean
+    */
+   public function getGuestWins() {
+      return ($this->hostTeamGoals < $this->guestTeamGoals);
+   }
+
+   /**
+    * getIsRemis 
+    * 
+    * @return boolean
+    */
+   public function getIsRemis() {
+      return ($this->hostTeamGoals === $this->guestTeamGoals);
+   }
+
 }
 ?>

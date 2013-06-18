@@ -32,6 +32,49 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @Flow\Inject
 	 */
 	protected $groupRoundService;
+	
+	/**
+	 * list
+	 *
+	 * @return void
+	 */
+	public function listCommand() {
+		$groupRounds = $this->groupRoundRepository->findAll();
+		#$groupRounds = array($this->groupRoundRepository->findOneByName('H'));
+		if (count($groupRounds)) {
+			foreach ($groupRounds AS $groupRound) {
+				$this->outputLine($groupRound->getName());
+				$matches = $groupRound->getGeneralMatches();
+				if (count($matches)) {
+					foreach ($matches as $match) {
+                  $line = ' ' . $match->getHostName() . ' - ' . $match->getGuestName();
+                  $result = $match->getResult();
+                  if (isset($result)) {
+                     $line .= ' ' . $result->getHostTeamGoals() . ':' . $result->getGuestTeamGoals();
+                  } else {
+                     $line .= ' -:-';
+                  }
+						$this->outputLine($line);
+					}
+				} else {
+					$this->outputLine(' no matches found');
+				}
+            $groupTableRows = $groupRound->getGroupTableRows();
+            if (count($groupTableRows)) {
+               foreach ($groupTableRows AS $row) {
+                  $line = ' ' . $row->getRank() . '. ' . $row->getCountOfMatchesPlayed() . ' ' .  $row->getPoints();
+                  $line .= ' ' . $row->getGoalsDiff() . ' ' . $row->getGoalsPlus() . ':' . $row->getGoalsMinus();
+                  $line .= ' ' . $row->getTeam()->getName();
+						$this->outputLine($line);
+               }
+            } else {
+               $this->outputLine('no groupTableRows found');
+            }
+			}
+		} else {
+			$this->outputLine('no groupRounds found');
+		}
+	}
 
 	/**
 	 * update
@@ -40,6 +83,7 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 */
 	public function updateCommand() {
 		$groupRounds = $this->groupRoundRepository->findAll();
+		#$groupRounds = array($this->groupRoundRepository->findOneByName('Gruppe A'));
 		foreach ($groupRounds AS $groupRound) {
 			$this->outputLine('update groupRound ' . $groupRound->getName());
 			$this->groupRoundService->updateGroup($groupRound);
