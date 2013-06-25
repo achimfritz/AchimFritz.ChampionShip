@@ -1,31 +1,9 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<h2>{groupRound.name}</h2>
-	
-	<h3>Matches</h3>
-	<f:render partial="Match/List" arguments="{matches: groupRound.generalMatches}" />
-	
-	
-	<h3>Table</h3>
-	<f:if condition="{groupRound.groupTableRows}">
-		<f:then>
-			<table>
-				<f:for each="{groupRound.groupTableRows}" as="row">
-					<tr>
-						<td>{row.rank}</td>
-						<td>{row.team.name}</td>
-						<td>{row.points}</td>
-						<td>{row.goalsPlus}:{row.goalsMinus}</td>
-						<td>{row.goalsDiff}</td>
-					</tr>
-				</f:for>
-			</table>				
-		</f:then>
-		<f:else>
-			<p>no groupTableRows</p>
-		</f:else>
-	</f:if>
+
+	<f:render partial="GroupRound/Show" arguments="{groupRound: groupRound}" />
+
 	
 	<h3>Teams</h3>
 	<f:render partial="Team/List" arguments="{teams: groupRound.teams}" />
@@ -36,5 +14,4 @@
 			<f:link.action action="show" controller="Cup" arguments="{cup: groupRound.cup}">to Cup {groupRound.cup.name}</f:link.action>
 		</li>
 	</ul>
-
 </f:section>

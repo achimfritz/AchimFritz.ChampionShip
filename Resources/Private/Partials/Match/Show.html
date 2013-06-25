@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:format.date format="d.m.Y H:i">{match.startDate}</f:format.date>
 
 <f:if condition="{match.hostParticipant.team}">
@@ -26,3 +27,9 @@
 		:
 	</f:else>
 </f:if>
+
+<cs:ifIsAdmin>
+	<f:link.action action="editResult" controller="Match" arguments="{match: match}">edit result</f:link.action>
+	<f:link.action action="changeHost" controller="Match" arguments="{match: match}">change host</f:link.action>
+	<f:link.action action="edit" controller="Match" arguments="{match: match}">edit</f:link.action>
+</cs:ifIsAdmin>

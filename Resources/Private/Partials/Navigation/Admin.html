@@ -1,0 +1,10 @@
+<h2>admin</h2>
+<ul>
+   <f:for each="{controllers}" as="controller">
+      <li>
+         <f:link.action controller="{controller}" action="index">{controller}</f:link.action>
+      </li>
+   </f:for>
+      <li>
+      <f:link.action controller="Account" action="index" package="TYPO3.UserManagement">user management</f:link.action></li>
+</ul>

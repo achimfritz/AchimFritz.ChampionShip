@@ -1,0 +1,26 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Content">
+
+	<f:if condition="{koRounds}">
+		<f:then>
+			<f:for each="{koRounds}" as="koRound">
+				<h2>{koRound.name}</h2>
+				<h3>Matches</h3>
+				<f:render partial="Match/List" arguments="{matches: koRound.generalMatches, account: account}" />
+			</f:for>
+		</f:then>
+		<f:else>
+			no koRounds found
+			<cs:ifIsAdmin>
+				<ul>
+					<li>
+						<f:link.action action="create" controller="KoRound" arguments="{cup: recentCup}">create from existing groupRounds</f:link.action>
+					</li>			
+				</ul>
+			</cs:ifIsAdmin>
+		</f:else>
+	</f:if>
+
+</f:section>

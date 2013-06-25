@@ -20,7 +20,7 @@ class KoRoundFactory {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\MatchFactory
+	 * @var \AchimFritz\ChampionShip\Domain\Factory\KoMatchFactory
 	 */
 	protected $matchFactory;
 

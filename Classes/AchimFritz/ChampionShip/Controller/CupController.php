@@ -17,11 +17,6 @@ use \AchimFritz\ChampionShip\Domain\Model\Cup;
  */
 class CupController extends ActionController {
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
-	 */
-	protected $cupRepository;
 	
 	/**
 	 * @Flow\Inject
@@ -47,7 +42,7 @@ class CupController extends ActionController {
 	 * @return void
 	 */
 	public function indexAction() {
-		$this->view->assign('cups', $this->cupRepository->findAll());
+#		$this->view->assign('cups', $this->cupRepository->findAll());
 	}
 
 	/**

@@ -1,10 +1,9 @@
 <f:layout name="Default" />
 
-<f:section name="Title">New match</f:section>
-
 <f:section name="Content">
 
 <f:render partial="Match/Show" arguments="{match: match}" />
+
 <h2>edit</h2>
 <f:form action="update" object="{match}" name="match">
 	<div class="control-group">
@@ -19,30 +18,6 @@
 			</div>
 		</div>
 </f:form>
-
-<ul>
-	<f:if condition="{match.round.isGroupRound}">
-		<li>
-			<f:link.action action="show" controller="GroupRound" arguments="{groupRound: match.round}" >
-				to groupRound: {match.round.name}
-			</f:link.action>
-		</li>
-	</f:if>
-	
-	<f:if condition="{match.round.isKoRound}">
-		<li>
-			<f:link.action action="show" controller="KoRound" arguments="{koRound: match.round}" >
-				to koRound: {match.round.name}
-			</f:link.action>
-		</li>
-	</f:if>
-		
-	<li>
-		<f:link.action action="show" controller="Cup" arguments="{cup: match.cup}" >
-			to cup: {match.cup.name}
-		</f:link.action>
-	</li>
-
-</ul>
+<f:render partial="Match/Continue" arguments="{match: match}" />
 
 </f:section>

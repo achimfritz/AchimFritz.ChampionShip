@@ -33,15 +33,6 @@ class MatchController extends ActionController {
 		$this->view->assign('matches', $this->matchRepository->findAll());
 	}
 
-	/**
-	 * Shows a single match object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match The match to show
-	 * @return void
-	 */
-	public function showAction(Match $match) {
-		$this->view->assign('match', $match);
-	}
 
 	/**
 	 * Shows a form for editing an existing match object
@@ -89,7 +80,7 @@ class MatchController extends ActionController {
 			$this->addErrorMessage('cannot update match');
 			$this->handleException($e);
 		}
-		$this->redirect('show', 'Match', NULL, array('match' => $match));
+		$this->view->assign('match', $match);
 	}
 
 }

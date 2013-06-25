@@ -19,7 +19,7 @@ class GroupRound extends Round {
 	/**
 	 * The group table
 	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupTableRow>
-	 * @ORM\OneToMany(mappedBy="groupRound")
+	 * @ORM\OneToMany(mappedBy="groupRound", cascade={"all"})
 	 * @ORM\OrderBy({"rank" = "ASC"})
 	 */
 	protected $groupTableRows;

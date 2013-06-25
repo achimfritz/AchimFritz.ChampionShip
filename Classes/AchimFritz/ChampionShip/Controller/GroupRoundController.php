@@ -9,6 +9,7 @@ namespace AchimFritz\ChampionShip\Controller;
 use TYPO3\Flow\Annotations as Flow;
 
 use \AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use \AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
  * GroupRound controller for the AchimFritz.ChampionShip package 
@@ -22,16 +23,26 @@ class GroupRoundController extends ActionController {
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
 	 */
 	protected $groupRoundRepository;
-
-
+	
 	/**
-	 * Shows a single group round object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound The group round to show
-	 * @return void
+	 * @var \AchimFritz\ChampionShip\Domain\Service\GroupRoundService
+	 * @Flow\Inject
 	 */
-	public function showAction(GroupRound $groupRound) {
+	protected $groupRoundService;
+	
+	/**
+	 * listAction
+	 * 
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
+	 */
+	public function listAction(Cup $cup, GroupRound $groupRound = NULL) {
+		$groupRounds = $this->groupRoundRepository->findByCup($cup);
+		if ($groupRound === NULL) {
+			$groupRound = $groupRounds->getFirst();
+		}
 		$this->view->assign('groupRound', $groupRound);
+		$this->view->assign('groupRounds', $groupRounds);
 	}
 
 	/**
@@ -59,7 +70,7 @@ class GroupRoundController extends ActionController {
 			$this->addErrorMessage('cannot create round');
 			$this->handleException($e);
 		}
-		$this->redirect('show', 'Cup', NULL, array('cup' => $newGroupRound->getCup()));
+		$this->redirect('list', 'GroupRound', NULL, array('cup' => $newGroupRound->getCup(), 'groupRound' => $newGroupRound));
 	}
 
 	/**
@@ -87,7 +98,7 @@ class GroupRoundController extends ActionController {
 			$this->addErrorMessage('cannot update round');
 			$this->handleException($e);
 		}
-		$this->redirect('show', 'Cup', NULL, array('cup' => $groupRound->getCup()));
+		$this->redirect('list', 'GroupRound', NULL, array('cup' => $newGroupRound->getCup(), 'groupRound' => $newGroupRound));
 	}
 
 	/**
@@ -105,7 +116,45 @@ class GroupRoundController extends ActionController {
 			$this->addErrorMessage('cannot delete round');
 			$this->handleException($e);
 		}
-		$this->redirect('show', 'Cup', NULL, array('cup' => $groupRound->getCup()));
+		$this->redirect('list', 'GroupRound', NULL, array('cup' => $newGroupRound->getCup(), 'groupRound' => $newGroupRound));
+	}
+	
+	/**
+	 * createMatchesAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound The group round to update
+	 * @return void
+	 */
+	public function createMatchesAction(GroupRound $groupRound) {
+		try {
+			$this->groupRoundService->updateMatches($groupRound);
+			$this->groupRoundRepository->update($groupRound);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('matches created');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot update round');
+			$this->handleException($e);
+		}
+		$this->redirect('list', 'GroupRound', NULL, array('cup' => $groupRound->getCup(), 'groupRound' => $groupRound));
+	}
+	
+	/**
+	 * updateGroupTableAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound The group round to update
+	 * @return void
+	 */
+	public function updateGroupTableAction(GroupRound $groupRound) {
+		try {
+			$this->groupRoundService->updateGroupTable($groupRound);
+			$this->groupRoundRepository->update($groupRound);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('GroupTable updatet');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot update round');
+			$this->handleException($e);
+		}
+		$this->redirect('list', 'GroupRound', NULL, array('cup' => $groupRound->getCup(), 'groupRound' => $groupRound));
 	}
 
 }

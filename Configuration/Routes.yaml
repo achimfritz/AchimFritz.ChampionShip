@@ -3,7 +3,7 @@
   uriPattern: ''
   defaults:
     '@package':    'AchimFritz.ChampionShip'
-    '@controller': 'Cup'
+    '@controller': 'Standard'
     '@action':     'index'
     '@format':     'html'
 

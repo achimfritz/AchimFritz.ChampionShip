@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,13 +17,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="span2">
-					<ul>
-						<f:for each="{controllers}" as="controller">
-							<li>
-								<f:link.action controller="{controller}" action="index">{controller}</f:link.action>
-							</li>
-						</f:for>
-					</ul>
+               <f:if condition="{recentCup}">
+                  <h2>{recentCup.name}</h2>
+                  <f:render partial="Navigation/Cups" arguments="{cups: cups}" />
+                  <f:render partial="Navigation/Matches" arguments="{cup: recentCup}" />
+                  <f:if condition="{account}">
+                  	<f:render partial="Navigation/Tips" arguments="{cup: recentCup}" />
+                  </f:if>
+               </f:if>
+               		<f:render partial="LoginForm" arguments="{account: account}"/>
+               		<cs:ifIsAdmin>
+						<f:render partial="Navigation/Admin" arguments="{controllers: controllers}" />
+					</cs:ifIsAdmin>
 				</div>
 				<div class="span10">
 					<h1>{title}</h1>

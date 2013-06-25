@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:layout name="Default" />
 
 
@@ -15,8 +16,10 @@
 					<li>
 						{groupRound.name} {groupRound.groupName}
 						<f:link.action action="show" controller="GroupRound" arguments="{groupRound: groupRound}">show</f:link.action>
-						<f:link.action action="edit" controller="GroupRound" arguments="{groupRound: groupRound}">edit</f:link.action>
-						<f:link.action action="delete" controller="GroupRound" arguments="{groupRound: groupRound}">delete</f:link.action>
+						<cs:ifIsAdmin>
+							<f:link.action action="edit" controller="GroupRound" arguments="{groupRound: groupRound}">edit</f:link.action>
+							<f:link.action action="delete" controller="GroupRound" arguments="{groupRound: groupRound}">delete</f:link.action>
+						</cs:ifIsAdmin>
 					</li>
 				</f:for>
 			</ul>
@@ -34,8 +37,10 @@
 					<li>
 						{koRound.name}
 						<f:link.action action="show" controller="KoRound" arguments="{koRound: koRound}">show</f:link.action>
-						<f:link.action action="edit" controller="KoRound" arguments="{koRound: koRound}">edit</f:link.action>
-						<f:link.action action="delete" controller="KoRound" arguments="{koRound: koRound}">delete</f:link.action>
+						<cs:ifIsAdmin>
+							<f:link.action action="edit" controller="KoRound" arguments="{koRound: koRound}">edit</f:link.action>
+							<f:link.action action="delete" controller="KoRound" arguments="{koRound: koRound}">delete</f:link.action>
+						</cs:ifIsAdmin>
 					</li>
 				</f:for>
 			</ul>
@@ -46,9 +51,10 @@
 	</f:if>
 	
 	<ul>
-		<li><f:link.action action="new" controller="KoRound" arguments="{cup: cup}">new cup</f:link.action></li>	
+		<cs:ifIsAdmin>
+			<li><f:link.action action="new" controller="KoRound" arguments="{cup: cup}">new cup</f:link.action></li>
+			<li><f:link.action action="edit" arguments="{cup: cup}">edit cup</f:link.action></li>
+			<li><f:link.action action="new" controller="KoRound" arguments="{cup: cup}">new KoRound</f:link.action></li>
+		</cs:ifIsAdmin>
 		<li><f:link.action action="index">Back to index</f:link.action></li>
-		<li><f:link.action action="edit" arguments="{cup: cup}">edit cup</f:link.action></li>
-		<li><f:link.action action="new" controller="GroupRound" arguments="{cup: cup}">new GroupRound</f:link.action></li>
-		<li><f:link.action action="new" controller="KoRound" arguments="{cup: cup}">new KoRound</f:link.action></li>
 </f:section>

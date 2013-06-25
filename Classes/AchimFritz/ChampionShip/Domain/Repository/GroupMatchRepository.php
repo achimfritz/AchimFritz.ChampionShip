@@ -9,22 +9,12 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
- * A repository for Cups
+ * A repository for Matches
  *
  * @Flow\Scope("singleton")
  */
-class CupRepository extends \TYPO3\Flow\Persistence\Repository {
+class GroupMatchRepository extends MatchRepository {
 
-   /**
-    * findOneActual 
-    * 
-    * @return \AchimFritz\ChampionShip\Domain\Model\Cup
-    */
-   public function findOneRecent() {
-		$query = $this->createQuery();
-      $query->setOrderings(array('startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
-      return $query->execute()->getFirst();
-   }
 
 }
 ?>

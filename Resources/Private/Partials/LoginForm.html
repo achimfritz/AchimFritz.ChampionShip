@@ -1,0 +1,30 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<h2>login</h2>
+<f:if condition="{account}">
+	<f:then>
+		logged in as {account.party.name}
+		<f:link.action action="logout" controller="Login">logout</f:link.action>
+		<cs:ifIsAdmin>ADMIN ACCOUNT</cs:ifIsAdmin>
+	</f:then>
+	<f:else>
+		<f:form action="authenticate" controller="Login">
+			<div class="control-group">
+				<label class="control-label" for="name">Username</label>
+				<div class="controlls">
+					<f:form.textfield name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="name">Password</label>
+				<div class="controlls">
+					<f:form.password name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<f:form.submit value="Login" class="btn"/>
+				</div>
+			</div>
+		</f:form>
+	</f:else>
+</f:if>
