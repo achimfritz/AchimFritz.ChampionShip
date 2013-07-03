@@ -45,11 +45,11 @@ class KoMatchFactory {
 	/**
 	 * createFromMatches
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match
+	 * @param \AchimFritz\ChampionShip\Domain\Model\KoMatch
+	 * @param \AchimFritz\ChampionShip\Domain\Model\KoMatch
 	 * @return \AchimFritz\ChampionShip\Domain\Model\KoMatch
 	 */
-	public function createFromWinners(Match $first, Match $second) {
+	public function createFromWinners(KoMatch $first, KoMatch $second) {
 		$hostParticipant = new MatchParticipant();
 		$guestParticipant = new MatchParticipant();
 		$hostParticipant->setWinnerOfMatch($first);

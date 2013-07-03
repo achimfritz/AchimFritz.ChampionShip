@@ -9,7 +9,7 @@
 	</f:if>
 	<f:if condition="{match.round.isKoRound}">
 		<li>
-			<f:link.action action="list" controller="KoRound" arguments="{cup: match.round.cup, koRound: match.round}" >to groupRound {match.round.name}</f:link.action>
+			<f:link.action action="list" controller="KoRound" arguments="{cup: match.round.cup, koRound: match.round}" >to koRound</f:link.action>
 		</li>
 	</f:if>
 </ul>

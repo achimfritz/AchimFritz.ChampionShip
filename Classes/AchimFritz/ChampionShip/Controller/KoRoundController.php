@@ -54,9 +54,8 @@ class KoRoundController extends ActionController {
 	 * @return void
 	 */
 	public function createAction(Cup $cup) {
-		$groupRounds = $this->groupRoundRepository->findByCup($cup);
 		try {
-			$groupRounds = $this->groupRoundRepository->findAll();
+			$groupRounds = $this->groupRoundRepository->findByCup($cup);
 			$koRounds = $this->koRoundService->createKoRounds($groupRounds);
 			foreach ($koRounds AS $koRound) {
 				$this->koRoundRepository->add($koRound);

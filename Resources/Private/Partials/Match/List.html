@@ -1,12 +1,10 @@
 <f:if condition="{matches}">
 	<f:then>
-		<ul>
+		<table>
 			<f:for each="{matches}" as="match">
-				<li>
-					<f:render partial="Match/Show" arguments="{match: match}" />
-				</li>
+				<f:render partial="Match/Show" arguments="{match: match}" />
 			</f:for>
-		</ul>
+		</table>
 	</f:then>
 	<f:else>
 		<p>No matches created yet.</p>

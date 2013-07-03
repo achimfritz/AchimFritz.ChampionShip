@@ -7,6 +7,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use AchimFritz\ChampionShip\Domain\Model\GroupRound;
 
 /**
  * A repository for Matches
@@ -15,6 +16,6 @@ use TYPO3\Flow\Annotations as Flow;
  */
 class GroupMatchRepository extends MatchRepository {
 
-
+	
 }
 ?>

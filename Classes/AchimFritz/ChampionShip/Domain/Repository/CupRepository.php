@@ -20,11 +20,11 @@ class CupRepository extends \TYPO3\Flow\Persistence\Repository {
     * 
     * @return \AchimFritz\ChampionShip\Domain\Model\Cup
     */
-   public function findOneRecent() {
+	public function findOneRecent() {
 		$query = $this->createQuery();
-      $query->setOrderings(array('startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
-      return $query->execute()->getFirst();
-   }
+		$query->setOrderings(array('startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
+		return $query->execute()->getFirst();
+	}
 
 }
 ?>

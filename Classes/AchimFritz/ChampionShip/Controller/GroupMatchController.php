@@ -9,6 +9,7 @@ namespace AchimFritz\ChampionShip\Controller;
 use TYPO3\Flow\Annotations as Flow;
 
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Domain\Model\GroupRound;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 

@@ -34,6 +34,29 @@ class GroupRound extends Round {
 		$this->groupTableRows = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 	
+	
+	/**
+	 * getWinnerTeam
+	 * 
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
+	 */
+	public function getWinnerTeam() {
+		$groupTableRows = $this->getGroupTableRows();
+		$row = $groupTableRow[0];
+		return $row->getTeam();
+	}
+	
+	/**
+	 * getSecondTeam
+	 * 
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
+	 */
+	public function getSecondTeam() {
+		$groupTableRows = $this->getGroupTableRows();
+		$row = $groupTableRow[0];
+		return $row->getTeam();
+	}
+	
 	/**
 	 * Get the Group table's group table rows
 	 *

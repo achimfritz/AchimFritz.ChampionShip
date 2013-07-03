@@ -54,6 +54,7 @@ class GroupRoundController extends ActionController {
 	public function newAction(\AchimFritz\ChampionShip\Domain\Model\Cup $cup) {
 		$this->view->assign('cup', $cup);
 	}
+	
 
 	/**
 	 * Adds the given new group round object to the group round repository
