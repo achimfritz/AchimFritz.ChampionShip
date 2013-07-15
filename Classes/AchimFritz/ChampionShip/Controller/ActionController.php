@@ -7,12 +7,15 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Mvc\Controller\RestController;
+
 
 /**
  * Action controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
+#class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 	/**
@@ -26,6 +29,12 @@ class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @Flow\Inject
 	 */
 	protected $securityContext;
+	
+	/**
+    * Supported content types. Needed for HTTP content negotiation.
+    * @var array
+    */
+   protected $supportedMediaTypes = array('text/html', 'application/json', 'application/xml');
 
 	/**
 	 * initializeView
@@ -53,6 +62,28 @@ class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 				$account = $token->getAccount();
 				$this->view->assign('account', $account);
 			}
+		}
+	}
+	
+	/**
+	 * resolveViewObjectName
+	 * 
+	 * @return void
+	 */
+	protected function resolveViewObjectName() {
+		$contentType = $this->request->getHttpRequest()->getNegotiatedMediaType($this->supportedMediaTypes);
+		$format = $this->request->getFormat();
+		if ($contentType === 'application/xml' OR $format === 'xml') {
+			$this->request->setFormat('xml');
+			$this->response->setHeader('Content-Type', 'application/xml');
+			return parent::resolveViewObjectName();
+		} elseif ($contentType === 'application/json' OR $format === 'json') {
+			$this->request->setFormat('json');
+			$this->response->setHeader('Content-Type', 'application/json');
+			return parent::resolveViewObjectName();
+			#return 'TYPO3\\Flow\\Mvc\\View\\JsonView';
+		} else {
+			return parent::resolveViewObjectName();
 		}
 	}
 
