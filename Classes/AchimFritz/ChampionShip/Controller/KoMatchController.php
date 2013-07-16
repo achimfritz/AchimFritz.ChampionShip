@@ -33,6 +33,7 @@ class KoMatchController extends ActionController {
 	public function updateFromGroupRoundAction(GroupRound $groupRound) {
 		try {
 			$match = $this->koMatchRepository->findOneInGroupRoundWithRank($groupRound, 1);
+			$content = $match->getName();
 			#return get_class($match);
 			return $match->getName();
 			/*

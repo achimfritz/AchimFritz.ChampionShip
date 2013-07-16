@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<f:render section="Content" />
+<root>
+	<messages>
+		<f:render partial="FlashMessages.xml" />
+	</messages>
+	<f:render section="Content" />
+</root>

@@ -26,6 +26,11 @@
 		</f:then>
 		<f:else>
 			<p>no group rounds found</p>
+			<cs:ifIsAdmin>
+				<ul>
+					<li><f:link.action action="new" controller="GroupRound" arguments="{cup: cup}">new groupRound</f:link.action></li>
+				</ul>
+			</cs:ifIsAdmin>
 		</f:else>
 	</f:if>
 
@@ -47,14 +52,18 @@
 		</f:then>
 		<f:else>
 			<p>no ko rounds found</p>
+			<cs:ifIsAdmin>
+				<ul>
+					<li><f:link.action action="new" controller="KoRound" arguments="{cup: cup}">new koRound</f:link.action></li>
+				</ul>
+			</cs:ifIsAdmin>
 		</f:else>
 	</f:if>
 	
-	<ul>
 		<cs:ifIsAdmin>
-			<li><f:link.action action="new" controller="KoRound" arguments="{cup: cup}">new cup</f:link.action></li>
-			<li><f:link.action action="edit" arguments="{cup: cup}">edit cup</f:link.action></li>
-			<li><f:link.action action="new" controller="KoRound" arguments="{cup: cup}">new KoRound</f:link.action></li>
+			<ul>
+				<li><f:link.action action="new" arguments="{cup: cup}">new cup</f:link.action></li>
+				<li><f:link.action action="edit" arguments="{cup: cup}">edit cup</f:link.action></li>
+			</ul>
 		</cs:ifIsAdmin>
-		<li><f:link.action action="index">Back to index</f:link.action></li>
 </f:section>

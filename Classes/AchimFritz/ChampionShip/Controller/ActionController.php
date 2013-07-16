@@ -52,6 +52,9 @@ class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		} else {
 			$cup = $this->cupRepository->findOneRecent();
 		}
+		if (!isset($cup)) {
+			$this->addWarningMessage('no cup found, login to create one');
+		}
 		$cups = $this->cupRepository->findAll();
 		$this->view->assign('recentCup', $cup);
 		$this->view->assign('cups', $cups);
@@ -96,6 +99,22 @@ class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
 	}
 	
+	/**
+	 * addWarningMessage
+	 * 
+	 * @param string $message
+	 */
+	protected function addWarningMessage($message) {
+		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_WARNING);
+	}
+	/**
+	 * addNoticeMessage
+	 * 
+	 * @param string $message
+	 */
+	protected function addNoticeMessage($message) {
+		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_NOTICE);
+	}
 	/**
 	 * addOkMessage
 	 * 
