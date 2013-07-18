@@ -37,12 +37,19 @@ class CupController extends ActionController {
 	protected $teamRepository;
 
 	/**
-	 * Shows a list of cups
-	 *
+	 * @var string
+	 */
+	protected $resourceArgumentName = 'cup';
+	
+	/**
+	 * listAction
+	 * 
 	 * @return void
 	 */
-	public function indexAction() {
-#		$this->view->assign('cups', $this->cupRepository->findAll());
+	public function listAction() {
+		$cups = $this->cupRepository->findAll();
+		$this->view->assign('cups', $cups);
+		$this->view->assign('allTeams', $this->teamRepository->findAll());
 	}
 
 	/**

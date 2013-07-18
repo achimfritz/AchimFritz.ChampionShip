@@ -32,8 +32,22 @@ class KoMatchController extends ActionController {
 	 */
 	public function updateFromGroupRoundAction(GroupRound $groupRound) {
 		try {
+			// TODO $groupRound->hasValidGroupTableRows()
+			$winner = $groupRound->getWinnerTeam();
+			$second = $groupRound->getSecondTeam();
 			$match = $this->koMatchRepository->findOneInGroupRoundWithRank($groupRound, 1);
+			#return $match->getName();
+			$hostParticipant = $match->getHostParticipant();
+			if ($hostParticipant->getRankOfGroupRound() === 1 AND $hostParticipant->getGroupRound() === $groupRound) {
+				$hostParticipant->setTeam($winner);
+			}
+			$guestParticipant = $match->getGuestParticipant();
+			if ($guestParticipant->getRankOfGroupRound() === 1 AND $guestParticipant->getGroupRound() === $groupRound) {
+				$guestParticipant->setTeam($winner);
+			}
+			$this->koMatchRepository->update($match);
 			$content = $match->getName();
+			$this->persistenceManager->persistAll();
 			#return get_class($match);
 			return $match->getName();
 			/*

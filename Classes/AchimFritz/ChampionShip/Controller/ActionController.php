@@ -16,7 +16,7 @@ use TYPO3\Flow\Mvc\Controller\RestController;
  * @Flow\Scope("singleton")
  */
 #class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
-class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
+class ActionController extends RestController {
 
 	/**
 	 * @Flow\Inject
@@ -58,6 +58,12 @@ class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$cups = $this->cupRepository->findAll();
 		$this->view->assign('recentCup', $cup);
 		$this->view->assign('cups', $cups);
+		
+		/*
+		 * <f:security.ifHasRole role="Administrator">
+        This is being shown in case you have the Administrator role (aka role).
+</f:security.ifHasRole>
+		 */
 		
 		$tokens = $this->securityContext->getAuthenticationTokens();
 		foreach ($tokens as $token) {

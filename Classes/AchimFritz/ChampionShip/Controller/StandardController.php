@@ -23,10 +23,8 @@ class StandardController extends ActionController {
 	 *
 	 * @return void
 	 */
-	public function indexAction() {
-      #if ($this->view instanceof JsonView) {
-      #   $this->view->setVariablesToRender(array('recentCup', 'cups'));
-      #}
+	public function listAction() {
+
 	}
 
 }

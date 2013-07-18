@@ -34,6 +34,18 @@ class GroupRound extends Round {
 		$this->groupTableRows = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 	
+	/**
+	 * getTeamByRank
+	 * 
+	 * @param integer $rank
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
+	 */
+	public function getTeamByRank($rank) {
+		$groupTableRows = $this->getGroupTableRows();
+		$row = $groupTableRows[$rank-1];
+		return $row->getTeam();
+	}
+	
 	
 	/**
 	 * getWinnerTeam
@@ -41,9 +53,7 @@ class GroupRound extends Round {
 	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
 	 */
 	public function getWinnerTeam() {
-		$groupTableRows = $this->getGroupTableRows();
-		$row = $groupTableRow[0];
-		return $row->getTeam();
+		return $this->getTeamByRank(1);
 	}
 	
 	/**
@@ -52,9 +62,7 @@ class GroupRound extends Round {
 	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
 	 */
 	public function getSecondTeam() {
-		$groupTableRows = $this->getGroupTableRows();
-		$row = $groupTableRow[0];
-		return $row->getTeam();
+		return $this->getTeamByRank(2);
 	}
 	
 	/**

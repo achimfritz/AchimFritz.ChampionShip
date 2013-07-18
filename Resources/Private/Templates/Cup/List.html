@@ -1,0 +1,60 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<f:if condition="{cups}">
+		<f:then>
+			<ul>
+				<f:for each="{cups}" as="cup">
+					<li>
+						{cup.name}
+						<f:link.action action="show" arguments="{cup: cup}">Show</f:link.action>
+						<f:form action="delete" method="delete">
+							<f:form.hidden name="cup" value="{cup}" />
+							<f:form.submit name="submit" value="delete" />
+						</f:form>
+						<cs:ifIsAdmin>
+							<f:link.action action="edit" arguments="{cup: cup}">Edit</f:link.action>
+							<f:link.action action="delete" arguments="{cup: cup}">Delete</f:link.action>
+						</cs:ifIsAdmin>
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			<p>No cups created yet.</p>
+		</f:else>
+	</f:if>
+	
+	<h2>new Cup</h2>
+
+	<f:form action="create" name="newCup" method="POST">
+		<div class="control-group">
+			<label class="control-label" for="name">Name</label>
+			<div class="controlls"><f:form.textfield property="name" id="name" /></div>
+		</div>
+	<div class="control-group">
+		<label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+		<div class="control-group">
+			<f:form.textfield property="startDate" id="startDate" />
+		</div>
+	</div>
+		<div class="control-group">
+			<label class="control-label" for="teams">Teams</label>
+				<div class="controlls">
+					<f:form.select multiple="1" options="{allTeams}" property="teams" id="teams" optionLabelField="name" />
+				</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit value="Create" class="btn"/>
+			</div>
+		</div>
+	</f:form>
+	
+	<cs:ifIsAdmin>
+		<ul>
+			<li><f:link.action action="new">Create a new cup</f:link.action></li>
+		</ul>
+	</cs:ifIsAdmin>
+</f:section>
