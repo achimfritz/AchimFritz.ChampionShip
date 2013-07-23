@@ -10,6 +10,7 @@ use TYPO3\Flow\Annotations as Flow;
 
 use \AchimFritz\ChampionShip\Domain\Model\Match;
 use \AchimFritz\ChampionShip\Domain\Model\KoRound;
+use \AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 
@@ -23,14 +24,29 @@ class MatchController extends ActionController {
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
 	 */
 	protected $matchRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\TeamRepository
+	 */
+	protected $teamRepository;
+
+
+	/**
+	 * @var string
+	 */
+	protected $resourceArgumentName = 'match';
+	
 	
 	/**
-	 * Shows a list of matches
-	 *
-	 * @return void
+	 * listAction
+	 * 
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
 	 */
-	public function indexAction() {
-		$this->view->assign('matches', $this->matchRepository->findAll());
+	public function listAction(Cup $cup) {
+		$matches = $this->matchRepository->findByCup($cup);
+		$this->view->assign('matches', $matches);
+		$this->view->assign('allTeams', $this->teamRepository->findAll());
 	}
 
 
@@ -51,6 +67,7 @@ class MatchController extends ActionController {
 	 * @return void
 	 */
 	public function changeHostAction(Match $match) {
+			// TODO
 		$match->changeHost();
 		$this->forward('update', 'Match', NULL, array('match' => $match));
 	}
@@ -62,6 +79,7 @@ class MatchController extends ActionController {
 	 * @return void
 	 */
 	public function editResultAction(Match $match) {
+			// TODO
 		$this->view->assign('match', $match);
 	}
 		

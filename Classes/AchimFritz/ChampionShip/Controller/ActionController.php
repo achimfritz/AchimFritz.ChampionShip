@@ -48,15 +48,14 @@ class ActionController extends RestController {
 		
 		if ($this->request->hasArgument('cup')) {
 			$arg = $this->request->getArgument('cup');
-			$cup = $this->cupRepository->findByIdentifier($arg['__identity']);
+			if (isset($arg['__identity'])) {
+				$cup = $this->cupRepository->findByIdentifier($arg['__identity']);
+				$this->view->assign('recentCup', $cup);
+			}
 		} else {
-			$cup = $this->cupRepository->findOneRecent();
-		}
-		if (!isset($cup)) {
-			$this->addWarningMessage('no cup found, login to create one');
+			#$cup = $this->cupRepository->findOneRecent();
 		}
 		$cups = $this->cupRepository->findAll();
-		$this->view->assign('recentCup', $cup);
 		$this->view->assign('cups', $cups);
 		
 		/*
@@ -137,6 +136,16 @@ class ActionController extends RestController {
 	 */
 	protected function handleException(\Exception $e) {
 		$this->addFlashMessage($e->getMessage(), get_class($e), \TYPO3\Flow\Error\Message::SEVERITY_ERROR, array(), $e->getCode());
+	}
+
+	/**
+	 * errorAction 
+	 * 
+	 * @return void
+	 */
+	protected function errorAction() {
+		$this->response->setStatus(400);
+		return parent::errorAction();
 	}
 
 }

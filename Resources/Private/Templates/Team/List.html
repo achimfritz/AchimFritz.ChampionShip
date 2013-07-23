@@ -1,23 +1,29 @@
 <f:layout name="Default" />
 
-
 <f:section name="Content">
-	<h2>{team.name}</h2>
-	
-	<h3>matches</h3>
-	<f:render partial="Match/List" arguments="{matches: matches}" />
-
-
-	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-
+	<f:if condition="{teams}">
+		<f:then>
+			<ul>
+				<f:for each="{teams}" as="team">
+					<li>
+						{team.name}
+						<f:link.action action="index" arguments="{team: team}">Show</f:link.action>
+						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 							<f:form action="index" method="delete" arguments="{team: team}">
 								<f:form.hidden name="__method" value="DELETE" />
 								<f:form.submit name="submit" value="delete" class="btn" />
 							</f:form>
-
-
-		<f:form action="index" object="{team}" name="team" method="put">
-			<f:form.hidden name="__method" value="PUT" />
+						</f:security.ifHasRole>
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			<p>No teams created yet.</p>
+		</f:else>
+	</f:if>
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<f:form action="index" name="team" method="post">
 			<div class="control-group">
 				<label class="control-label" for="name">Name</label>
 				<div class="controlls"><f:form.textfield property="name" id="name" /></div>
@@ -25,20 +31,15 @@
 			
 			<div class="control-group">
 				<label class="control-label" for="short">Short</label>
-					<div class="controlls"><f:form.textfield property="short" id="short" /></div>
+				<div class="controlls"><f:form.textfield property="short" id="short" /></div>
 			</div>
 			
 			<div class="control-group">
 				<div class="controls">
-					<f:form.submit value="Update" class="btn"/>
+				<f:form.submit value="Create" class="btn"/>
 				</div>
 			</div>
 		</f:form>
 	</f:security.ifHasRole>
-
-	<ul>
-		<li>
-			<f:link.action action="index" controller="Team">to Teams</f:link.action>
-		</li>
-	</ul>
+	
 </f:section>

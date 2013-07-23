@@ -8,6 +8,29 @@
 	<h3>Teams</h3>
 	<f:render partial="Team/List" arguments="{teams: groupRound.teams}" />
 	
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<f:form action="index" object="{groupRound}" name="groupRound" method="put">
+			<f:form.hidden name="__method" value="PUT" />
+			<div class="control-group">
+				<label class="control-label"for="name">Name</label>
+				<div class="controls"><f:form.textfield property="name" id="name" /></div>
+			</div>
+				
+			<div class="control-group">
+				<label class="control-label" for="teams">Teams</label>
+				<div class="controls">
+					<f:form.select multiple="1" options="{groupRound.cup.teams}" property="teams" id="teams" optionLabelField="name" />
+				</div>
+			</div>
+				
+			
+			<div class="control-group">
+				<div class="controls">
+					<f:form.submit value="Update" class="btn"/>
+				</div>
+			</div>
+		</f:form>
+	</f:security.ifHasRole>
 
 	<ul>
 		<li>

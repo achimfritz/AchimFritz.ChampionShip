@@ -16,14 +16,19 @@ use \AchimFritz\ChampionShip\Domain\Model\GroupRound;
  *
  * @Flow\Scope("singleton")
  */
-class KoMatchController extends ActionController {
+class KoMatchController extends MatchController {
 		
 	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoMatchRepository
 	 */
-	protected $koMatchRepository;
+	protected $matchRepository;
 	
+	/**
+	 * @var string
+	 */
+	protected $resourceArgumentName = 'koMatch';
+
 	/**
 	 * updateFromGroupRoundAction
 	 *
@@ -31,6 +36,7 @@ class KoMatchController extends ActionController {
 	 * @return void
 	 */
 	public function updateFromGroupRoundAction(GroupRound $groupRound) {
+		return 'TODO';
 		try {
 			// TODO $groupRound->hasValidGroupTableRows()
 			$winner = $groupRound->getWinnerTeam();

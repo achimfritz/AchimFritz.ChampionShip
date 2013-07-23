@@ -31,57 +31,45 @@ class GroupRoundController extends ActionController {
 	protected $groupRoundService;
 	
 	/**
+	 * @var string
+	 */
+	protected $resourceArgumentName = 'groupRound';
+
+	/**
 	 * listAction
 	 * 
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
 	 */
-	public function listAction(Cup $cup, GroupRound $groupRound = NULL) {
+	public function listAction(Cup $cup) {
 		$groupRounds = $this->groupRoundRepository->findByCup($cup);
-		if ($groupRound === NULL) {
-			$groupRound = $groupRounds->getFirst();
-		}
-		$this->view->assign('groupRound', $groupRound);
 		$this->view->assign('groupRounds', $groupRounds);
 	}
 
 	/**
-	 * Shows a form for creating a new group round object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup
-	 * @return void
+	 * showAction
+	 * 
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
 	 */
-	public function newAction(\AchimFritz\ChampionShip\Domain\Model\Cup $cup) {
-		$this->view->assign('cup', $cup);
+	public function showAction(GroupRound $groupRound) {
+		$this->view->assign('groupRound', $groupRound);
 	}
-	
 
 	/**
 	 * Adds the given new group round object to the group round repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $newGroupRound A new group round to add
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound A new group round to add
 	 * @return void
 	 */
-	public function createAction(GroupRound $newGroupRound) {
+	public function createAction(GroupRound $groupRound) {
 		try {
-			$this->groupRoundRepository->add($newGroupRound);
+			$this->groupRoundRepository->add($groupRound);
 			$this->persistenceManager->persistAll();
 			$this->addOkMessage('round created');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot create round');
 			$this->handleException($e);
 		}
-		$this->redirect('list', 'GroupRound', NULL, array('cup' => $newGroupRound->getCup(), 'groupRound' => $newGroupRound));
-	}
-
-	/**
-	 * Shows a form for editing an existing group round object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound The group round to edit
-	 * @return void
-	 */
-	public function editAction(GroupRound $groupRound) {
-		$this->view->assign('groupRound', $groupRound);
+		$this->redirect('list', 'GroupRound', NULL, array('cup' => $groupRound->getCup(), 'groupRound' => $groupRound));
 	}
 
 	/**
@@ -99,7 +87,7 @@ class GroupRoundController extends ActionController {
 			$this->addErrorMessage('cannot update round');
 			$this->handleException($e);
 		}
-		$this->redirect('list', 'GroupRound', NULL, array('cup' => $newGroupRound->getCup(), 'groupRound' => $newGroupRound));
+		$this->redirect('show', 'GroupRound', NULL, array('cup' => $groupRound->getCup(), 'groupRound' => $groupRound));
 	}
 
 	/**
@@ -109,6 +97,7 @@ class GroupRoundController extends ActionController {
 	 * @return void
 	 */
 	public function deleteAction(GroupRound $groupRound) {
+		$cup = $groupRound->getCup();
 		try {
 			$this->groupRoundRepository->remove($groupRound);
 			$this->persistenceManager->persistAll();
@@ -117,7 +106,7 @@ class GroupRoundController extends ActionController {
 			$this->addErrorMessage('cannot delete round');
 			$this->handleException($e);
 		}
-		$this->redirect('list', 'GroupRound', NULL, array('cup' => $newGroupRound->getCup(), 'groupRound' => $newGroupRound));
+		$this->redirect('list', 'GroupRound', NULL, array('cup' => $cup));
 	}
 	
 	/**
@@ -127,6 +116,7 @@ class GroupRoundController extends ActionController {
 	 * @return void
 	 */
 	public function createMatchesAction(GroupRound $groupRound) {
+		// TODO
 		try {
 			$this->groupRoundService->updateMatches($groupRound);
 			$this->groupRoundRepository->update($groupRound);
@@ -146,6 +136,7 @@ class GroupRoundController extends ActionController {
 	 * @return void
 	 */
 	public function updateGroupTableAction(GroupRound $groupRound) {
+		// TODO
 		try {
 			$this->groupRoundService->updateGroupTable($groupRound);
 			$this->groupRoundRepository->update($groupRound);
