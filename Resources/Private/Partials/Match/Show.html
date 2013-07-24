@@ -1,4 +1,3 @@
-{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <tr>
 	<td>{match.name}</td>
 	<td><f:format.date format="d.m.Y H:i">{match.startDate}</f:format.date></td>
@@ -12,13 +11,21 @@
 			:
 		</f:else>
 	</f:if>
+	<f:link.action action="index" arguments="{match: match}">Show</f:link.action>
+
+<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+                                                        <f:form action="index" method="delete" arguments="{match: match}">                                                                                                 <f:form.hidden name="__method" value="DELETE" />
+                                                                <f:form.submit name="submit" value="delete" class="btn" />
+                                                        </f:form>
+                                                </f:security.ifHasRole>
+
 	</td>
-	<cs:ifIsAdmin>
-		<td>
-			<f:link.action action="editResult" controller="Match" arguments="{match: match}">edit result</f:link.action>
-			<f:link.action action="changeHost" controller="Match" arguments="{match: match}">change host</f:link.action>
-			<f:link.action action="edit" controller="Match" arguments="{match: match}">edit</f:link.action>
-		</td>
-	</cs:ifIsAdmin>
+		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+			<td>
+				<f:link.action action="editResult" controller="Match" arguments="{match: match}">edit result</f:link.action>
+				<f:link.action action="changeHost" controller="Match" arguments="{match: match}">change host</f:link.action>
+				<f:link.action action="edit" controller="Match" arguments="{match: match}">edit</f:link.action>
+			</td>
+		</f:security.ifHasRole>
 	
 </tr>

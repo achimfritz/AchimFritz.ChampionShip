@@ -10,6 +10,7 @@ use TYPO3\Flow\Annotations as Flow;
 
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
 use \AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use \AchimFritz\ChampionShip\Domain\Model\KoMatch;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 
@@ -25,9 +26,22 @@ class KoMatchController extends MatchController {
 	protected $matchRepository;
 	
 	/**
-	 * @var string
+	 * Adds the given new match object to the cup repository
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\KoMatch $match
+	 * @return void
 	 */
-	protected $resourceArgumentName = 'koMatch';
+	public function createAction(KoMatch $match) {
+		try {
+			$this->matchRepository->add($match);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('match created');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot create match');
+			$this->handleException($e);
+		}		
+		$this->redirect('index', 'GroupMatch', NULL, array('cup' => $match->getCup()));
+	}
 
 	/**
 	 * updateFromGroupRoundAction

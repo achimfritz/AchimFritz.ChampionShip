@@ -9,7 +9,6 @@ namespace AchimFritz\ChampionShip\Controller;
 use TYPO3\Flow\Annotations as Flow;
 
 use \AchimFritz\ChampionShip\Domain\Model\Match;
-use \AchimFritz\ChampionShip\Domain\Model\KoRound;
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
@@ -27,16 +26,26 @@ class MatchController extends ActionController {
 
 	/**
 	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
+	 */
+	protected $koRoundRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 */
+	protected $groupRoundRepository;
+
+	/**
+	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\TeamRepository
 	 */
 	protected $teamRepository;
-
 
 	/**
 	 * @var string
 	 */
 	protected $resourceArgumentName = 'match';
-	
 	
 	/**
 	 * listAction
@@ -47,19 +56,25 @@ class MatchController extends ActionController {
 		$matches = $this->matchRepository->findByCup($cup);
 		$this->view->assign('matches', $matches);
 		$this->view->assign('allTeams', $this->teamRepository->findAll());
+		$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
+		$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
 	}
-
 
 	/**
-	 * Shows a form for editing an existing match object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match The match to edit
-	 * @return void
+	 * showAction
+	 * 
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
 	 */
-	public function editAction(Match $match) {
+	public function showAction(Match $match) {
 		$this->view->assign('match', $match);
+		$cup = $match->getCup();
+		$this->view->assign('allTeams', $this->teamRepository->findAll());
+		$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
+		$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
+	#	return parent::showAction($groupMatch);
 	}
-	
+
+
 	/**
 	 * changeHost
 	 *
@@ -99,6 +114,26 @@ class MatchController extends ActionController {
 			$this->handleException($e);
 		}
 		$this->view->assign('match', $match);
+		$this->redirect('show', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
+	}
+
+	/**
+	 * delete
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match The match to update
+	 * @return void
+	 */
+	public function deleteAction(Match $match) {
+		$cup = $match->getCup();
+		try {
+			$this->matchRepository->remove($match);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('match deleted');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot delete match');
+			$this->handleException($e);
+		}
+		$this->redirect('list', NULL, NULL, array('cup' => $cup));
 	}
 
 }
