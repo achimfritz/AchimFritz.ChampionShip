@@ -16,104 +16,31 @@ use \AchimFritz\ChampionShip\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class KoRoundController extends ActionController {
+class KoRoundController extends RoundController {
 
 	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
 	 */
-	protected $koRoundRepository;
+	protected $roundRepository;
 	
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Service\KoRoundService
-	 * @Flow\Inject
-	 */
-	protected $koRoundService;
-
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
-	 */
-	protected $groupRoundRepository;
-	
-	/**
-	 * listAction
-	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
-	 */
-	public function listAction(Cup $cup) {
-		$koRounds = $this->koRoundRepository->findByCup($cup);
-		$this->view->assign('koRounds', $koRounds);
-	}
-
-
-	/**
-	 * Adds the given new ko round object to the ko round repository
+	 * Adds the given new group round object to the group round repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup
+	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $round A new group round to add
 	 * @return void
 	 */
-	public function createAction(Cup $cup) {
+	public function createAction(KoRound $round) {
 		try {
-			$groupRounds = $this->groupRoundRepository->findByCup($cup);
-			$koRounds = $this->koRoundService->createKoRounds($groupRounds);
-			foreach ($koRounds AS $koRound) {
-				$this->koRoundRepository->add($koRound);
-			}
+			$this->roundRepository->add($round);
 			$this->persistenceManager->persistAll();
-			$this->addOkMessage('koRounds created');
+			$this->addOkMessage('round created');
 		} catch (\Exception $e) {
-			$this->handleException($e);	
-		}
-		$this->redirect('list', 'KoRound', NULL, array('cup' => $cup));
-	}
-
-	/**
-	 * Shows a form for editing an existing ko round object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $koRound The ko round to edit
-	 * @return void
-	 */
-	public function editAction(KoRound $koRound) {
-		$this->view->assign('koRound', $koRound);
-	}
-
-	/**
-	 * Updates the given ko round object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $koRound The ko round to update
-	 * @return void
-	 */
-	public function updateAction(KoRound $koRound) {
-		try {
-			$this->koRoundRepository->update($koRound);
-			$this->persistenceManager->persistAll();
-			$this->addOkMessage('round updatet');
-		} catch (\Exception $e) {
-			$this->addErrorMessage('cannot update round');
+			$this->addErrorMessage('cannot create round');
 			$this->handleException($e);
 		}
-		$this->redirect('list', 'KoRound', NULL, array('cup' => $cup));
+		$this->redirect('show', NULL, NULL, array('cup' => $round->getCup(), 'round' => $round));
 	}
-
-	/**
-	 * Removes the given ko round object from the ko round repository
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $koRound The ko round to delete
-	 * @return void
-	 */
-	public function deleteAction(KoRound $koRound) {
-		try {
-			$this->koRoundRepository->remove($koRound);
-			$this->persistenceManager->persistAll();
-			$this->addOkMessage('round deletet');
-		} catch (\Exception $e) {
-			$this->addErrorMessage('cannot delete round');
-			$this->handleException($e);
-		}
-		$this->redirect('list', 'KoRound', NULL, array('cup' => $cup));
-	}
-
 }
 
 ?>

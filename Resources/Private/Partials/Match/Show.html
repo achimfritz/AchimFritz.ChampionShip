@@ -12,6 +12,10 @@
 		</f:else>
 	</f:if>
 	<f:link.action action="index" arguments="{match: match}">Show</f:link.action>
+	<f:form action="index" method="get" arguments="{cup: match.cup}">
+		<f:form.submit value="list" class="btn" />
+	</f:form>
+
 
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
                                                         <f:form action="index" method="delete" arguments="{match: match}">                                                                                                 <f:form.hidden name="__method" value="DELETE" />
@@ -21,11 +25,6 @@
 
 	</td>
 		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-			<td>
-				<f:link.action action="editResult" controller="Match" arguments="{match: match}">edit result</f:link.action>
-				<f:link.action action="changeHost" controller="Match" arguments="{match: match}">change host</f:link.action>
-				<f:link.action action="edit" controller="Match" arguments="{match: match}">edit</f:link.action>
-			</td>
 		</f:security.ifHasRole>
 	
 </tr>

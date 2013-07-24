@@ -3,6 +3,8 @@
 <f:section name="Content">
 
 <f:render partial="Match/List" arguments="{matches: matches}" />
+
+
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 		<h2>new</h2>
 		<f:form action="index" name="match" method="post">

@@ -40,7 +40,7 @@ class KoMatchController extends MatchController {
 			$this->addErrorMessage('cannot create match');
 			$this->handleException($e);
 		}		
-		$this->redirect('index', 'GroupMatch', NULL, array('cup' => $match->getCup()));
+		$this->redirect('index', NULL, NULL, array('cup' => $match->getCup()));
 	}
 
 	/**

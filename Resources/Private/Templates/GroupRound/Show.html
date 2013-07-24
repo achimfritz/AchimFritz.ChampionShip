@@ -2,14 +2,10 @@
 
 <f:section name="Content">
 
-	<f:render partial="GroupRound/Show" arguments="{groupRound: groupRound}" />
-
-	
-	<h3>Teams</h3>
-	<f:render partial="Team/List" arguments="{teams: groupRound.teams}" />
+	<f:render partial="Round/Show" arguments="{round: round}" />
 	
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<f:form action="index" object="{groupRound}" name="groupRound" method="put">
+		<f:form action="index" object="{round}" name="round" method="put">
 			<f:form.hidden name="__method" value="PUT" />
 			<div class="control-group">
 				<label class="control-label"for="name">Name</label>
@@ -19,7 +15,7 @@
 			<div class="control-group">
 				<label class="control-label" for="teams">Teams</label>
 				<div class="controls">
-					<f:form.select multiple="1" options="{groupRound.cup.teams}" property="teams" id="teams" optionLabelField="name" />
+					<f:form.select multiple="1" options="{round.cup.teams}" property="teams" id="teams" optionLabelField="name" />
 				</div>
 			</div>
 				
@@ -31,10 +27,4 @@
 			</div>
 		</f:form>
 	</f:security.ifHasRole>
-
-	<ul>
-		<li>
-			<f:link.action action="show" controller="Cup" arguments="{cup: groupRound.cup}">to Cup {groupRound.cup.name}</f:link.action>
-		</li>
-	</ul>
 </f:section>

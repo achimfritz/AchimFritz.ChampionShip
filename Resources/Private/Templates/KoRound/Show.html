@@ -1,29 +1,30 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<h2>{koRound.name}</h2>
-	
-	<h3>parent</h3>
-	<f:if condition="{koRound.parentRound}">
-		<f:then>
-			<ul>
-				<li><f:link.action action="show">parent: {koRound.parentRound.name}</f:link.action></li>
-			</ul>
-		</f:then>
-		<f:else>
-			<p>no parent round found</p>
-		</f:else>		
-	</f:if>
 
-	<h3>Matches</h3>
-	<f:render partial="Match/List" arguments="{matches: koRound.generalMatches}" />
+	<f:render partial="Round/Show" arguments="{round: round}" />
 	
-	<h3>Teams</h3>
-	<f:render partial="Team/List" arguments="{teams: koRound.teams}" />
-
-	<ul>
-		<li>
-			<f:link.action action="show" controller="Cup" arguments="{cup: koRound.cup}">to Cup {koRound.cup.name}</f:link.action>
-		</li>
-	</ul>
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<f:form action="index" object="{round}" name="round" method="put">
+			<f:form.hidden name="__method" value="PUT" />
+			<div class="control-group">
+				<label class="control-label"for="name">Name</label>
+				<div class="controls"><f:form.textfield property="name" id="name" /></div>
+			</div>
+				
+			<div class="control-group">
+				<label class="control-label" for="teams">Teams</label>
+				<div class="controls">
+					<f:form.select multiple="1" options="{round.cup.teams}" property="teams" id="teams" optionLabelField="name" />
+				</div>
+			</div>
+				
+			
+			<div class="control-group">
+				<div class="controls">
+					<f:form.submit value="Update" class="btn"/>
+				</div>
+			</div>
+		</f:form>
+	</f:security.ifHasRole>
 </f:section>

@@ -1,31 +1,12 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-<f:if condition="{groupRounds}">
-<f:then>
-<ul>
-	<f:for each="{groupRounds}" as="round">
-		<li>
-		{round.name}	
-		<f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup, groupRound: round}">show</f:link.action>
-						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-							<f:form action="index" method="delete" arguments="{groupRound: groupRound}">
-								<f:form.hidden name="__method" value="DELETE" />
-								<f:form.submit name="submit" value="delete" class="btn" />
-							</f:form>
-						</f:security.ifHasRole>
-		</li>
-	</f:for>
-</ul>
-</f:then>
-<f:else>
-	no groupRounds created
-</f:else>
-</f:if>
+<f:render partial="Round/List" arguments="{rounds: rounds}" />
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<p>new group round:</p>
+		<p>new round:</p>
 
-		<f:form action="index" name="groupRound" method="post" arguments="{cup: recentCup}">
+		<f:form action="index" name="round" method="post" arguments="{cup: recentCup}">
+			<f:form.hidden property="cup" value="{recentCup}" />
 			<div class="control-group">
 				<label class="control-label" for="name">Name</label>
 				<div class="control-group"><f:form.textfield property="name" id="name" /></div>
@@ -45,14 +26,4 @@
 			</div>
 		</f:form>
 	</f:security.ifHasRole>
-
-
-<h2>TODO</h2>
-	<f:render partial="GroupRound/Show" arguments="{groupRound: groupRound, account: account}" />
-
-	<ul>
-		<li><f:link.action action="new" controller="GroupRound" arguments="{cup: recentCup}">new GroupRound</f:link.action></li>
-		<li><f:link.action action="create" controller="KoRound" arguments="{cup: recentCup}">new KoRounds from existing GroupRounds</f:link.action></li>
-	</ul>
-
 </f:section>

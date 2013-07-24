@@ -1,0 +1,21 @@
+<f:if condition="{rounds}">
+	<f:then>
+		<ul>   
+			<f:for each="{rounds}" as="round">
+				<li>
+				{round.name}
+				<f:link.action action="index" arguments="{cup: round.cup, round: round}">show</f:link.action>
+								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+									<f:form action="index" method="delete" arguments="{round: round}">
+										<f:form.hidden name="__method" value="DELETE" />
+										<f:form.submit name="submit" value="delete" class="btn" />
+									</f:form>
+								</f:security.ifHasRole>
+				</li>
+			</f:for>
+		</ul>
+	</f:then>
+	<f:else>
+		no Rounds created
+	</f:else>
+</f:if>
