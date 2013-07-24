@@ -20,15 +20,10 @@ use AchimFritz\ChampionShip\Domain\Model\GroupRound;
  */
 class GroupRoundService {
 	
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
-	 */
-	protected $matchRepository;
 	
    /**
     * @Flow\Inject
-    * @var \AchimFritz\ChampionShip\Domain\Factory\MatchFactory
+    * @var \AchimFritz\ChampionShip\Domain\Factory\GroupMatchFactory
     */
    protected $matchFactory;
 
@@ -50,26 +45,12 @@ class GroupRoundService {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
 	 * @return \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
 	 */
-	protected function updateGroupTable(GroupRound $groupRound) {
-      $matches = $groupRound->getGeneralMatches();
-      $groupTableCalculator = new \AchimFritz\ChampionShip\Domain\Service\GroupTableCalculator();
-      $groupTableRows = $groupTableCalculator->getGroupTableRows($matches);
+	public function updateGroupTable(GroupRound $groupRound) {
+		$matches = $groupRound->getGeneralMatches();
+		$groupTableCalculator = new \AchimFritz\ChampionShip\Domain\Service\GroupTableCalculator();
+		$groupTableRows = $groupTableCalculator->getGroupTableRows($matches);
 		$groupRound->clearGroupTableRows();
-      $groupRound->setGroupTableRows($groupTableRows);
-/*
-		$teams = $groupRound->getTeams();
-		$rank = 1;
-		foreach ($teams AS $team) {
-			$groupTableRow = new GroupTableRow();
-			$groupTableRow->setRank($rank);
-			$groupTableRow->setPoints(0);
-			$groupTableRow->setGoalsPlus(0);
-			$groupTableRow->setGroupRound($groupRound);
-			$groupTableRow->setTeam($team);
-			$groupRound->addGroupTableRow($groupTableRow);
-			$rank++;
-		}
-*/
+		$groupRound->setGroupTableRows($groupTableRows);
 		return $groupRound;
 	}
 	
@@ -79,12 +60,12 @@ class GroupRoundService {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
 	 * @return \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
 	 */
-	protected function updateMatches(GroupRound $groupRound) {
+	public function updateMatches(GroupRound $groupRound) {
 		$teams = $groupRound->getTeams();
 		if (count($teams) === 0) {
 			return $groupRound;
 		}
-		$existingMatches = $groupRound->getGeneralMatches();		
+		$existingMatches = $groupRound->getGeneralMatches();
 		$teamPairs = $this->getTeamPairs($teams);
 
 		foreach ($teamPairs AS $teamPair) {
@@ -98,25 +79,12 @@ class GroupRoundService {
 				}
 			}
 			if ($matchExists === FALSE) {
-					// TODO MatchFactory->createByRoundAndTeams()
-            $match = $this->matchFactory->createFromTeams($teamPair['teamOne'], $teamPair['teamTwo']);
-            /*
-				$hostParticipant = new MatchParticipant();
-				$hostParticipant->setTeam($teamPair['teamOne']);
-				$guestParticipant = new MatchParticipant();
-				$guestParticipant->setTeam($teamPair['teamTwo']);
-				$match = new Match();
-				$match->setHostParticipant($hostParticipant);
-				$match->setGuestParticipant($guestParticipant);
-				$match->setStartDate(new \DateTime());
-            */
+				$match = $this->matchFactory->createFromTeams($teamPair['teamOne'], $teamPair['teamTwo']);
 				$match->setCup($groupRound->getCup());
 				$match->setRound($groupRound);
-				#$groupRound->addGeneralMatch($match);
-				$this->matchRepository->add($match);
+				$groupRound->addGeneralMatch($match);
 			}
 		}
-			// intresting: $groupRound->addMatch($match) ist not needed
 		return $groupRound;
 	}
 	

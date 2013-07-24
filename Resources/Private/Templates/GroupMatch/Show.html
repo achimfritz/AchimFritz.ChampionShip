@@ -1,0 +1,50 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+<table>
+<f:render partial="Match/Show" arguments="{match: match}" />
+</table>
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<h2>new</h2>
+		<f:form method="put" object="{match}" action="index" name="match" > 
+			<f:form.hidden name="__method" value="PUT" />
+			<div class="control-group">
+				<label class="control-label" for="name">name</label>
+				<div class="control-group">
+					<f:form.textfield property="name" id="name" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+				<div class="control-group">
+					<f:form.textfield property="startDate" id="startDate" value="{match.startDate -> f:format.date(format:'Y-m-d\TH:i:sP')}"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="groupRound">groupRound</label>
+					<div class="controlls">
+						<f:form.select  options="{allGroupRounds}" property="round" id="groupRound" optionLabelField="name" />
+					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="hostTeam">hostTeam</label>
+					<div class="controlls">
+						<f:form.select  options="{allTeams}" property="hostParticipant.team" id="hostTeam" optionLabelField="name" />
+					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="goustTeam">goustTeam</label>
+					<div class="controlls">
+						<f:form.select  options="{allTeams}" property="guestParticipant.team" id="guestTeam" optionLabelField="name" />
+					</div>
+			</div>
+
+			<div class="control-group">
+					<div class="controls">
+						<f:form.submit value="Update" class="btn"/>
+					</div>
+				</div>
+		</f:form>
+	</f:security.ifHasRole>
+
+</f:section>

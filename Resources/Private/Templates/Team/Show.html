@@ -7,6 +7,35 @@
 	<h3>matches</h3>
 	<f:render partial="Match/List" arguments="{matches: matches}" />
 
+
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+
+							<f:form action="index" method="delete" arguments="{team: team}">
+								<f:form.hidden name="__method" value="DELETE" />
+								<f:form.submit name="submit" value="delete" class="btn" />
+							</f:form>
+
+
+		<f:form action="index" object="{team}" name="team" method="put">
+			<f:form.hidden name="__method" value="PUT" />
+			<div class="control-group">
+				<label class="control-label" for="name">Name</label>
+				<div class="controlls"><f:form.textfield property="name" id="name" /></div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="short">Short</label>
+					<div class="controlls"><f:form.textfield property="short" id="short" /></div>
+			</div>
+			
+			<div class="control-group">
+				<div class="controls">
+					<f:form.submit value="Update" class="btn"/>
+				</div>
+			</div>
+		</f:form>
+	</f:security.ifHasRole>
+
 	<ul>
 		<li>
 			<f:link.action action="index" controller="Team">to Teams</f:link.action>

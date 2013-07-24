@@ -1,0 +1,10 @@
+<h2>Cups</h2>
+<f:if condition="{cups}">
+<ul>
+   <f:for each="{cups}" as="cup">
+      <li>
+         <f:link.action controller="Cup" action="show" arguments="{cup: cup}" >{cup.name}</f:link.action>
+      </li>
+   </f:for>
+</ul>
+</f:if>

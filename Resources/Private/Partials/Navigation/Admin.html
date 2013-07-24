@@ -1,0 +1,8 @@
+<h2>admin</h2>
+<ul>
+   <f:for each="{controllers}" as="controller">
+      <li>
+         <f:link.action controller="{controller}" action="index">{controller}</f:link.action>
+      </li>
+   </f:for>
+</ul>

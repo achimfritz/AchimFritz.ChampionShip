@@ -1,0 +1,10 @@
+<f:flashMessages as="flashMessages">
+<f:for each="{flashMessages}" as="flashMessage">
+	<message>
+		<severity>{flashMessage.severity}</severity>
+		<message>{flashMessage}</message>
+		<code>{flashMessage.code}</code>
+	</message>
+</f:for>
+
+</f:flashMessages>

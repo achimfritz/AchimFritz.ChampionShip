@@ -31,6 +31,18 @@ class Cup {
 	 */
 	protected $teams;
 
+	/**
+	 * The start date
+	 * @var \DateTime
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $startDate;
+   
+   /**
+    * __construct 
+    * 
+    * @return void
+    */
    public function __construct() {
       $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
    }
@@ -74,6 +86,24 @@ class Cup {
 		$this->teams = $teams;
 	}
 
+	/**
+	 * Get the Match's start date
+	 *
+	 * @return \DateTime The Match's start date
+	 */
+	public function getStartDate() {
+		return $this->startDate;
+	}
+
+	/**
+	 * Sets this Match's start date
+	 *
+	 * @param \DateTime $startDate The Match's start date
+	 * @return void
+	 */
+	public function setStartDate(\DateTime $startDate) {
+		$this->startDate = $startDate;
+	}
 
 }
 ?>

@@ -1,17 +1,10 @@
 <f:if condition="{matches}">
 	<f:then>
-		<ul>
+		<table>
 			<f:for each="{matches}" as="match">
-				<li>
-					<f:render partial="Match/Show" arguments="{match: match}" />
-					
-					<f:link.action action="show" controller="Match" arguments="{match: match}">Show</f:link.action>
-					<f:link.action action="editResult" controller="Match" arguments="{match: match}">edit result</f:link.action>
-					<f:link.action action="changeHost" controller="Match" arguments="{match: match}">change host</f:link.action>
-					<f:link.action action="edit" controller="Match" arguments="{match: match}">edit</f:link.action>
-				</li>
+				<f:render partial="Match/Show" arguments="{match: match}" />
 			</f:for>
-		</ul>
+		</table>
 	</f:then>
 	<f:else>
 		<p>No matches created yet.</p>

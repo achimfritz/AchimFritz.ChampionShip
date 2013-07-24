@@ -7,6 +7,8 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Mvc\Controller\RestController;
+use TYPO3\Flow\Mvc\View\JsonView;
 
 /**
  * Standard controller for the AchimFritz.ChampionShip package 
@@ -15,13 +17,14 @@ use TYPO3\Flow\Annotations as Flow;
  */
 class StandardController extends ActionController {
 
+
 	/**
 	 * Index action
 	 *
 	 * @return void
 	 */
-	public function indexAction() {
-		
+	public function listAction() {
+
 	}
 
 }

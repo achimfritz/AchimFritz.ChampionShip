@@ -30,11 +30,16 @@ class TeamController extends ActionController {
 	protected $matchRepository;
 
 	/**
+	 * @var string
+	 */
+	protected $resourceArgumentName = 'team';
+
+	/**
 	 * Shows a list of teams
 	 *
 	 * @return void
 	 */
-	public function indexAction() {
+	public function listAction() {
 		$this->view->assign('teams', $this->teamRepository->findAll());
 	}
 
@@ -50,40 +55,23 @@ class TeamController extends ActionController {
 	}
 
 	/**
-	 * Shows a form for creating a new team object
-	 *
-	 * @return void
-	 */
-	public function newAction() {
-	}
-
-	/**
 	 * Adds the given new team object to the team repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Team $newTeam A new team to add
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Team $team A new team to add
 	 * @return void
 	 */
-	public function createAction(Team $newTeam) {
+	public function createAction(Team $team) {
 		try {
-			$this->teamRepository->add($newTeam);
+			$this->teamRepository->add($team);
 			$this->persistenceManager->persistAll();
 			$this->addOkMessage('team createt');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot create team');
 			$this->handleException($e);
 		}
-		$this->redirect('index');
+		$this->redirect('index', 'Team', NULL, array('team' => $team));
 	}
 
-	/**
-	 * Shows a form for editing an existing team object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Team $team The team to edit
-	 * @return void
-	 */
-	public function editAction(Team $team) {
-		$this->view->assign('team', $team);
-	}
 
 	/**
 	 * Updates the given team object
@@ -100,7 +88,7 @@ class TeamController extends ActionController {
 			$this->addErrorMessage('cannot update team');
 			$this->handleException($e);
 		}
-		$this->redirect('index');
+		$this->redirect('index', 'Team', NULL, array('team' => $team));
 	}
 
 	/**

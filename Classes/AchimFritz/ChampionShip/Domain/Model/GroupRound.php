@@ -19,7 +19,7 @@ class GroupRound extends Round {
 	/**
 	 * The group table
 	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupTableRow>
-	 * @ORM\OneToMany(mappedBy="groupRound")
+	 * @ORM\OneToMany(mappedBy="groupRound", cascade={"all"})
 	 * @ORM\OrderBy({"rank" = "ASC"})
 	 */
 	protected $groupTableRows;
@@ -32,6 +32,37 @@ class GroupRound extends Round {
 	public function __construct() {
       parent::__construct();
 		$this->groupTableRows = new \Doctrine\Common\Collections\ArrayCollection();
+	}
+	
+	/**
+	 * getTeamByRank
+	 * 
+	 * @param integer $rank
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
+	 */
+	public function getTeamByRank($rank) {
+		$groupTableRows = $this->getGroupTableRows();
+		$row = $groupTableRows[$rank-1];
+		return $row->getTeam();
+	}
+	
+	
+	/**
+	 * getWinnerTeam
+	 * 
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
+	 */
+	public function getWinnerTeam() {
+		return $this->getTeamByRank(1);
+	}
+	
+	/**
+	 * getSecondTeam
+	 * 
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
+	 */
+	public function getSecondTeam() {
+		return $this->getTeamByRank(2);
 	}
 	
 	/**

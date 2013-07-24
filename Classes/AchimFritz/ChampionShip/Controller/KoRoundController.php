@@ -9,6 +9,7 @@ namespace AchimFritz\ChampionShip\Controller;
 use TYPO3\Flow\Annotations as Flow;
 
 use \AchimFritz\ChampionShip\Domain\Model\KoRound;
+use \AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
  * KoRound controller for the AchimFritz.ChampionShip package 
@@ -22,43 +23,49 @@ class KoRoundController extends ActionController {
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
 	 */
 	protected $koRoundRepository;
+	
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Service\KoRoundService
+	 * @Flow\Inject
+	 */
+	protected $koRoundService;
 
 	/**
-	 * Shows a single ko round object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $koRound The ko round to show
-	 * @return void
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
 	 */
-	public function showAction(KoRound $koRound) {
-		$this->view->assign('koRound', $koRound);
+	protected $groupRoundRepository;
+	
+	/**
+	 * listAction
+	 * 
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
+	 */
+	public function listAction(Cup $cup) {
+		$koRounds = $this->koRoundRepository->findByCup($cup);
+		$this->view->assign('koRounds', $koRounds);
 	}
 
-	/**
-	 * Shows a form for creating a new group round object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup
-	 * @return void
-	 */
-	public function newAction(\AchimFritz\ChampionShip\Domain\Model\Cup $cup) {
-		$this->view->assign('cup', $cup);
-	}
 
 	/**
 	 * Adds the given new ko round object to the ko round repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $newKoRound A new ko round to add
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup
 	 * @return void
 	 */
-	public function createAction(KoRound $newKoRound) {
+	public function createAction(Cup $cup) {
 		try {
-			$this->koRoundRepository->add($newKoRound);
+			$groupRounds = $this->groupRoundRepository->findByCup($cup);
+			$koRounds = $this->koRoundService->createKoRounds($groupRounds);
+			foreach ($koRounds AS $koRound) {
+				$this->koRoundRepository->add($koRound);
+			}
 			$this->persistenceManager->persistAll();
-			$this->addOkMessage('round created');
+			$this->addOkMessage('koRounds created');
 		} catch (\Exception $e) {
-			$this->addErrorMessage('cannot create round');
-			$this->handleException($e);
+			$this->handleException($e);	
 		}
-		$this->redirect('show', 'Cup', NULL, array('cup' => $newKoRound->getCup()));
+		$this->redirect('list', 'KoRound', NULL, array('cup' => $cup));
 	}
 
 	/**
@@ -86,7 +93,7 @@ class KoRoundController extends ActionController {
 			$this->addErrorMessage('cannot update round');
 			$this->handleException($e);
 		}
-		$this->redirect('show', 'Cup', NULL, array('cup' => $koRound->getCup()));
+		$this->redirect('list', 'KoRound', NULL, array('cup' => $cup));
 	}
 
 	/**
@@ -104,7 +111,7 @@ class KoRoundController extends ActionController {
 			$this->addErrorMessage('cannot delete round');
 			$this->handleException($e);
 		}
-		$this->redirect('show', 'Cup', NULL, array('cup' => $koRound->getCup()));
+		$this->redirect('list', 'KoRound', NULL, array('cup' => $cup));
 	}
 
 }

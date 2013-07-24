@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * A Match
  *
  * @Flow\Entity
+ * @ORM\InheritanceType("JOINED")
  */
 class Match {
 

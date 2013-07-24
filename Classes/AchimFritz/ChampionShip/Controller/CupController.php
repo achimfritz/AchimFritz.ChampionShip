@@ -7,7 +7,6 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
@@ -17,11 +16,6 @@ use \AchimFritz\ChampionShip\Domain\Model\Cup;
  */
 class CupController extends ActionController {
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
-	 */
-	protected $cupRepository;
 	
 	/**
 	 * @Flow\Inject
@@ -42,12 +36,19 @@ class CupController extends ActionController {
 	protected $teamRepository;
 
 	/**
-	 * Shows a list of cups
-	 *
+	 * @var string
+	 */
+	protected $resourceArgumentName = 'cup';
+	
+	/**
+	 * listAction
+	 * 
 	 * @return void
 	 */
-	public function indexAction() {
-		$this->view->assign('cups', $this->cupRepository->findAll());
+	public function listAction() {
+		$cups = $this->cupRepository->findAll();
+		$this->view->assign('cups', $cups);
+		$this->view->assign('allTeams', $this->teamRepository->findAll());
 	}
 
 	/**
@@ -57,47 +58,28 @@ class CupController extends ActionController {
 	 * @return void
 	 */
 	public function showAction(Cup $cup) {
+		$this->view->assign('allTeams', $this->teamRepository->findAll());
 		$this->view->assign('cup', $cup);
 		$this->view->assign('groupRounds', $this->groupRoundRepository->findByCup($cup));
 		$this->view->assign('koRounds', $this->koRoundRepository->findByCup($cup));
 	}
 
 	/**
-	 * Shows a form for creating a new cup object
-	 *
-	 * @return void
-	 */
-	public function newAction() {
-		$this->view->assign('allTeams', $this->teamRepository->findAll());
-	}
-
-	/**
 	 * Adds the given new cup object to the cup repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $newCup A new cup to add
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup A new cup to add
 	 * @return void
 	 */
-	public function createAction(Cup $newCup) {		
+	public function createAction(Cup $cup) {		
 		try {
-			$this->cupRepository->add($newCup);
+			$this->cupRepository->add($cup);
 			$this->persistenceManager->persistAll();
 			$this->addOkMessage('cup created');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot create cup');
 			$this->handleException($e);
 		}		
-		$this->redirect('index');
-	}
-
-	/**
-	 * Shows a form for editing an existing cup object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup The cup to edit
-	 * @return void
-	 */
-	public function editAction(Cup $cup) {
-		$this->view->assign('allTeams', $this->teamRepository->findAll());
-		$this->view->assign('cup', $cup);
+		$this->redirect('index', 'Cup', NULL, array('cup' => $cup));
 	}
 
 	/**
@@ -115,7 +97,7 @@ class CupController extends ActionController {
 			$this->addErrorMessage('cannot update cup');
 			$this->handleException($e);
 		}
-		$this->redirect('index');
+		$this->redirect('index', 'Cup', NULL, array('cup' => $cup));
 	}
 
 	/**
