@@ -2,7 +2,18 @@
 
 <f:section name="Content">
 <table>
-<f:render partial="Match/Show" arguments="{match: match}" />
+	<tr>
+		<f:render partial="Match/Show" arguments="{match: match}" />
+		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+			<td>
+				<f:form action="index" method="delete" arguments="{match: match}">
+					<f:form.hidden name="__method" value="DELETE" />
+					<f:form.submit name="submit" value="delete" class="btn" />
+				</f:form>
+			</td>
+		</f:security.ifHasRole>
+	</tr>
 </table>
+<f:link.action action="index" class="btn" arguments="{cup: match.cup}">list</f:link.action>
 
 </f:section>

@@ -3,40 +3,28 @@
 <f:section name="Content">
 	<f:if condition="{cups}">
 		<f:then>
-			<ul>
-				<f:for each="{cups}" as="cup">
-					<li>
-						{cup.name}
-						<f:link.action action="index" arguments="{cup: cup}">Show</f:link.action>
-						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-							<f:form action="index" method="delete" arguments="{cup: cup}">
-								<f:form.hidden name="__method" value="DELETE" />
-								<f:form.submit name="submit" value="delete" class="btn" />
-							</f:form>
-						</f:security.ifHasRole>
-					</li>
-				</f:for>
-			</ul>
+			<h3>Cups</h3>
+			<f:render partial="Cup/List" arguments="{cups: cups}" />
 		</f:then>
 		<f:else>
-			<p>No cups created yet.</p>
+			<p>No Cups</p>
 		</f:else>
 	</f:if>
 	
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<h2>new Cup</h2>
+		<h3>new Cup</h3>
 
 		<f:form action="index" name="cup" method="post">
 			<div class="control-group">
 				<label class="control-label" for="name">Name</label>
 				<div class="controlls"><f:form.textfield property="name" id="name" /></div>
 			</div>
-		<div class="control-group">
-			<label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
 			<div class="control-group">
-				<f:form.textfield property="startDate" id="startDate" />
+				<label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+				<div class="control-group">
+					<f:form.textfield property="startDate" id="startDate" />
+				</div>
 			</div>
-		</div>
 			<div class="control-group">
 				<label class="control-label" for="teams">Teams</label>
 					<div class="controlls">

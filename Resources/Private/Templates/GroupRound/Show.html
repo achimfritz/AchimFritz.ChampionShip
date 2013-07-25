@@ -2,9 +2,12 @@
 
 <f:section name="Content">
 
+	<f:link.action class="btn" action="index" arguments="{cup: round.cup}">list</f:link.action>
 	<f:render partial="Round/Show" arguments="{round: round}" />
 	
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+
+		<h3>edit round</h3>
 		<f:form action="index" object="{round}" name="round" method="put">
 			<f:form.hidden name="__method" value="PUT" />
 			<div class="control-group">

@@ -2,79 +2,22 @@
 
 
 <f:section name="Content">
-	<h2>{cup.name}</h2>
-	<h3>Teams</h3>
-	
-	<f:render partial="Team/List" arguments="{teams: cup.teams}" />
-	
-	<h3>group rounds</h3>
-	<f:if condition="{groupRounds}">
-		<f:then>
-			<ul>
-				<f:for each="{groupRounds}" as="groupRound">
-					<li> TODO partial ...
-						{groupRound.name} {groupRound.groupName}
-						<f:link.action action="show" controller="GroupRound" arguments="{groupRound: groupRound}">show</f:link.action>
-						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-							<f:form action="index" controller="GroupRound" method="delete">
-								<f:form.hidden name="groupRound" value="{groupRound}" />
-								<f:form.submit name="submit" value="delete" class="btn" />
-							</f:form>
-						</f:security.ifHasRole>
-					</li>
-				</f:for>
-			</ul>
-		</f:then>
-		<f:else>
-			<p>no group rounds found</p>
-		</f:else>
-	</f:if>
-
-	<h3>ko rounds</h3>
-	<f:if condition="{koRounds}">
-		<f:then>
-			<ul>
-				<f:for each="{koRounds}" as="koRound">
-					<li>
-						{koRound.name}
-						<f:link.action action="show" controller="KoRound" arguments="{koRound: koRound}">show</f:link.action>
-						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-							<f:form action="index" controller="KoRound" method="delete">
-								<f:form.hidden name="koRound" value="{koRound}" />
-								<f:form.submit name="submit" value="delete" class="btn" />
-							</f:form>
-						</f:security.ifHasRole>
-					</li>
-				</f:for>
-			</ul>
-						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-							TODO new form
-							<f:form action="index" controller="KoRound" method="delete">
-							</f:form>
-						</f:security.ifHasRole>
-		</f:then>
-		<f:else>
-			<p>no ko rounds found</p>
-		</f:else>
-	</f:if>
+	<f:render partial="Cup/Show" arguments="{cup: cup, groupRounds: groupRounds, koRounds: koRounds}" />
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-							<f:form action="index" method="delete" arguments="{cup: cup}">
-								<f:form.hidden name="__method" value="DELETE" />
-								<f:form.submit name="submit" value="delete" class="btn" />
-							</f:form>
+		<h3>edit Cup</h3>
 
 		<f:form action="index" method="put" object="{cup}" name="cup">
-		<f:form.hidden name="__method" value="PUT" />
+			<f:form.hidden name="__method" value="PUT" />
 			<div class="control-group">
 				<label class="control-label" for="name">Name</label>
 				<div class="controlls"><f:form.textfield property="name" id="name" /></div>
 			</div>
-		<div class="control-group">
-			<label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
 			<div class="control-group">
-				<f:form.textfield property="startDate" id="startDate" value="{cup.startDate -> f:format.date(format:'Y-m-d\TH:i:sP')}" />
+				<label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+				<div class="control-group">
+					<f:form.textfield property="startDate" id="startDate" value="{cup.startDate -> f:format.date(format:'Y-m-d\TH:i:sP')}" />
+				</div>
 			</div>
-		</div>
 			<div class="control-group">
 				<label class="control-label" for="teams">Teams</label>
 				<div class="controlls">
@@ -88,9 +31,4 @@
 			</div>
 		</f:form>
 	</f:security.ifHasRole>
-	<ul>
-		<li>
-			<f:link.action action="index" controller="Cup">to Cups</f:link.action>
-		</li>
-	</ul>
 </f:section>

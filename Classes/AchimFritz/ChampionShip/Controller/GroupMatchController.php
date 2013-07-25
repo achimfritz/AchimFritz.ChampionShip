@@ -25,11 +25,6 @@ class GroupMatchController extends MatchController {
 	protected $matchRepository;
 
 	/**
-	 * @var string
-	 */
-	#protected $resourceArgumentName = 'groupMatch';
-
-	/**
 	 * Adds the given new match object to the cup repository
 	 *
 	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $match

@@ -1,10 +1,4 @@
 	<h2>{round.name}</h2>
-	<f:link.action action="index" arguments="{cup: round.cup}">list</f:link.action>
-
-
-	<f:form action="index" method="get" arguments="{cup: round.cup}">
-		<f:form.submit value="list" class="btn" />
-	</f:form>
 	<f:if condition="{round.generalMatches}">
 		<f:then>
 			<h3>Matches</h3>

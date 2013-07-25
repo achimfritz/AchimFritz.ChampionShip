@@ -1,30 +1,12 @@
-<tr>
 	<td>{match.name}</td>
 	<td><f:format.date format="d.m.Y H:i">{match.startDate}</f:format.date></td>
 	<td>{match.hostName} - {match.guestName}</td>
 	<td>
 		<f:if condition="{match.result}">
-		<f:then>
-			{match.result.hostTeamGoals} : {match.result.guestTeamGoals}
-		</f:then>
-		<f:else>
-			:
-		</f:else>
-	</f:if>
-	<f:link.action action="index" arguments="{match: match}">Show</f:link.action>
-	<f:form action="index" method="get" arguments="{cup: match.cup}">
-		<f:form.submit value="list" class="btn" />
-	</f:form>
-
-
-<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-                                                        <f:form action="index" method="delete" arguments="{match: match}">                                                                                                 <f:form.hidden name="__method" value="DELETE" />
-                                                                <f:form.submit name="submit" value="delete" class="btn" />
-                                                        </f:form>
-                                                </f:security.ifHasRole>
-
-	</td>
-		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		</f:security.ifHasRole>
-	
-</tr>
+			<f:then>
+				{match.result.hostTeamGoals} : {match.result.guestTeamGoals}
+			</f:then>
+			<f:else>
+				:
+			</f:else>
+		</f:if>

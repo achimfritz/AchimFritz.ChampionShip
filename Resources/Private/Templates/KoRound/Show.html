@@ -5,6 +5,8 @@
 	<f:render partial="Round/Show" arguments="{round: round}" />
 	
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+
+		<p>edit round</p>
 		<f:form action="index" object="{round}" name="round" method="put">
 			<f:form.hidden name="__method" value="PUT" />
 			<div class="control-group">

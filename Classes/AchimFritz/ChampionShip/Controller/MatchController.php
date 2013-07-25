@@ -71,33 +71,8 @@ class MatchController extends ActionController {
 		$this->view->assign('allTeams', $this->teamRepository->findAll());
 		$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
 		$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
-	#	return parent::showAction($groupMatch);
 	}
 
-
-	/**
-	 * changeHost
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
-	 * @return void
-	 */
-	public function changeHostAction(Match $match) {
-			// TODO
-		$match->changeHost();
-		$this->forward('update', 'Match', NULL, array('match' => $match));
-	}
-	
-	/**
-	 * editResultAction
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
-	 * @return void
-	 */
-	public function editResultAction(Match $match) {
-			// TODO
-		$this->view->assign('match', $match);
-	}
-		
 	/**
 	 * Updates the given match object
 	 *
@@ -135,6 +110,30 @@ class MatchController extends ActionController {
 		}
 		$this->redirect('list', NULL, NULL, array('cup' => $cup));
 	}
+
+	/**
+	 * changeHost
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
+	 * @return void
+	 */
+	public function changeHostAction(Match $match) {
+			// TODO
+		$match->changeHost();
+		$this->forward('update', 'Match', NULL, array('match' => $match));
+	}
+	
+	/**
+	 * editResultAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
+	 * @return void
+	 */
+	public function editResultAction(Match $match) {
+			// TODO
+		$this->view->assign('match', $match);
+	}
+		
 
 }
 

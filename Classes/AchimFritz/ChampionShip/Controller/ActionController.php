@@ -53,24 +53,12 @@ class ActionController extends RestController {
 				$this->view->assign('recentCup', $cup);
 			}
 		} else {
-			#$cup = $this->cupRepository->findOneRecent();
+			$cup = $this->cupRepository->findOneRecent();
+			$this->view->assign('recentCup', $cup);
 		}
 		$cups = $this->cupRepository->findAll();
 		$this->view->assign('cups', $cups);
 		
-		/*
-		 * <f:security.ifHasRole role="Administrator">
-        This is being shown in case you have the Administrator role (aka role).
-</f:security.ifHasRole>
-		 */
-		
-		$tokens = $this->securityContext->getAuthenticationTokens();
-		foreach ($tokens as $token) {
-			if ($token->isAuthenticated()) {
-				$account = $token->getAccount();
-				$this->view->assign('account', $account);
-			}
-		}
 	}
 	
 	/**
