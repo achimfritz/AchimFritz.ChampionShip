@@ -1,0 +1,62 @@
+<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+   <h4>admin</h4>
+   <ul>
+      <li>
+         <f:link.action controller="Cup" action="index">Cups</f:link.action>
+      </li>
+      <li>
+         <f:link.action controller="Team" action="index">Teams</f:link.action>
+      </li>
+      <li>
+         <f:link.action controller="User" action="index">Users</f:link.action>
+      </li>
+   </ul>
+</f:security.ifHasRole>
+<h4>Cups</h4>
+<f:if condition="{cups}">
+<ul>
+   <f:for each="{cups}" as="cup">
+      <li>
+         <f:link.action controller="Cup" action="index" arguments="{cup: cup}" >{cup.name}</f:link.action>
+      </li>
+   </f:for>
+</ul>
+</f:if>
+<h4>Matches</h4>
+<ul>
+   <li>
+      <f:link.action action="index" controller="Match" arguments="{cup: recentCup}">Match</f:link.action>
+   </li>
+   <li>
+      <f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}">GroupMatch</f:link.action>
+   </li>
+   <li>
+      <f:link.action action="index" controller="KoMatch" arguments="{cup: recentCup}">KoMatch</f:link.action>
+   </li>
+</ul>
+<h4>Rounds</h4>
+<ul>
+   <li>
+      <f:link.action action="index" controller="Round" arguments="{cup: recentCup}">Round</f:link.action>
+   </li>
+   <li>
+      <f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup}">GroupRound</f:link.action>
+   </li>
+   <li>
+      <f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}">KoRound</f:link.action>
+   </li>
+</ul>
+<f:security.ifAuthenticated>
+   <h4>Tips</h4>
+   <ul>
+      <li>
+         Groups
+      </li>
+      <li>
+         GroupRound 
+      </li>
+      <li>
+         FinalRound 
+      </li>
+   </ul>
+</f:security.ifAuthenticated>

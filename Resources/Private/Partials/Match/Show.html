@@ -10,3 +10,11 @@
 				:
 			</f:else>
 		</f:if>
+   </td>
+              <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+                  <td>
+                     <f:form action="index" method="delete" arguments="{match: match}">                                                                                                 <f:form.hidden name="__method" value="DELETE" />
+                        <f:form.submit name="submit" value="delete" class="btn" />
+                     </f:form>
+                  </td>
+               </f:security.ifHasRole>

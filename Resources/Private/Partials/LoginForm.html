@@ -1,10 +1,8 @@
-{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
-<h2>login</h2>
-<f:if condition="{account}">
+<h4>Login</h4>
+<f:security.ifAuthenticated>
 	<f:then>
-		logged in as {account.party.name}
-		<f:link.action action="logout" controller="Login">logout</f:link.action>
-		<cs:ifIsAdmin>ADMIN ACCOUNT</cs:ifIsAdmin>
+	   <p>TODO logged in AS?, admin?, restful links?, redirect?</p>
+		<f:link.action class="btn" action="logout" controller="Login">logout</f:link.action>
 	</f:then>
 	<f:else>
 		<f:form action="authenticate" controller="Login">
@@ -27,4 +25,4 @@
 			</div>
 		</f:form>
 	</f:else>
-</f:if>
+</f:security.ifAuthenticated>

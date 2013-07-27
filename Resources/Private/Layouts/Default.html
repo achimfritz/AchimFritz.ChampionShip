@@ -18,13 +18,9 @@
 			   <f:then>
                <div class="row">
                   <div class="span3">
-                     <f:render partial="LoginForm" arguments="{account: account}"/>
-	                  <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-                        <f:render partial="Navigation/Admin" arguments="{controllers: controllers}" />
-	                  </f:security.ifHasRole>
-                     <f:render partial="Navigation/Cups" arguments="{cups: cups}" />
-                     <f:render partial="Navigation/Matches" arguments="{cup: recentCup}" />
-                     <f:render partial="Navigation/Tips" arguments="{cup: recentCup}" />
+                     <h4><f:link.action controller="Standard" action="index">Home</f:link.action></h4>
+                     <f:render partial="LoginForm" />
+                     <f:render partial="ServiceDescription" arguments="{recentCup: recentCup, cups: cups}" />
                   </div>
                   <div class="span9">
                      <h1>{recentCup.name}</h1>

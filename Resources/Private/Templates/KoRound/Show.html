@@ -2,6 +2,7 @@
 
 <f:section name="Content">
 
+	<f:link.action class="btn" action="index" arguments="{cup: round.cup}">list</f:link.action>
 	<f:render partial="Round/Show" arguments="{round: round}" />
 	
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
@@ -13,14 +14,15 @@
 				<label class="control-label"for="name">Name</label>
 				<div class="controls"><f:form.textfield property="name" id="name" /></div>
 			</div>
-				
-			<div class="control-group">
-				<label class="control-label" for="teams">Teams</label>
-				<div class="controls">
-					<f:form.select multiple="1" options="{round.cup.teams}" property="teams" id="teams" optionLabelField="name" />
-				</div>
-			</div>
-				
+		   
+         <f:if condition="{round.parentRound}">		
+            <div class="control-group">
+               <label class="control-label" for="parentRound">parentRound</label>
+                  <div class="controlls">
+                     <f:form.select  options="{allKoRounds}" property="parentRound" id="parentRound" optionLabelField="name" />
+                  </div>
+            </div>
+         </f:if>
 			
 			<div class="control-group">
 				<div class="controls">

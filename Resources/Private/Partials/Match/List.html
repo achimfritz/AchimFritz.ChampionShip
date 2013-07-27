@@ -5,15 +5,8 @@
 				<tr>
 					<f:render partial="Match/Show" arguments="{match: match}" />
 					<td>
-						<f:link.action class="btn" action="index" controller="Match" arguments="{cup: match.cup, match: match}">Show</f:link.action>
+						<f:link.action class="btn" action="index" arguments="{cup: match.cup, match: match}">Show</f:link.action>
 					</td>
-					<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-						<td>
-							<f:form action="index" method="delete" arguments="{match: match}">                                                                                                 <f:form.hidden name="__method" value="DELETE" />
-								<f:form.submit name="submit" value="delete" class="btn" />
-							</f:form>
-						</td>
-					</f:security.ifHasRole>
 				</tr>
 			</f:for>
 		</table>

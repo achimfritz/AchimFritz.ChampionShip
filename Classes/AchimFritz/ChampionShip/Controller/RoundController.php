@@ -24,6 +24,18 @@ class RoundController extends ActionController {
 	 */
 	protected $roundRepository;
 	
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 */
+	protected $groupRoundRepository;
+	
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
+	 */
+	protected $koRoundRepository;
+	
 	
 	/**
 	 * @var string
@@ -38,6 +50,8 @@ class RoundController extends ActionController {
 	public function listAction(Cup $cup) {
 		$rounds = $this->roundRepository->findByCup($cup);
 		$this->view->assign('rounds', $rounds);
+      $this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
+      $this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
 	}
 
 	/**
@@ -46,7 +60,10 @@ class RoundController extends ActionController {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round
 	 */
 	public function showAction(Round $round) {
+      $cup = $round->getCup();
 		$this->view->assign('round', $round);
+      $this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
+      $this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
 	}
 
 
@@ -84,7 +101,7 @@ class RoundController extends ActionController {
 			$this->addErrorMessage('cannot delete round');
 			$this->handleException($e);
 		}
-		$this->redirect('list', 'Round', NULL, array('cup' => $cup));
+		$this->redirect('list', NULL, NULL, array('cup' => $cup));
 	}
 
 }
