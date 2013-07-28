@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="Content">
@@ -7,28 +8,117 @@
 	
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 
-		<p>edit round</p>
-		<f:form action="index" object="{round}" name="round" method="put">
-			<f:form.hidden name="__method" value="PUT" />
-			<div class="control-group">
-				<label class="control-label"for="name">Name</label>
-				<div class="controls"><f:form.textfield property="name" id="name" /></div>
-			</div>
-		   
-         <f:if condition="{round.parentRound}">		
-            <div class="control-group">
-               <label class="control-label" for="parentRound">parentRound</label>
-                  <div class="controlls">
-                     <f:form.select  options="{allKoRounds}" property="parentRound" id="parentRound" optionLabelField="name" />
+         <cs:ifIsChildKoRound round="{round}">
+            <f:then>
+               <h4>new winners of two matches match</h4>
+               <f:form action="index" name="match" controller="WinnersOfTwoMatchesMatch" method="post">
+                  <f:form.hidden property="cup" value="{recentCup}" />
+                  <f:form.hidden property="round" value="{round}" />
+                  <div class="control-group">
+                     <label class="control-label" for="name">name</label>
+                     <div class="control-group">
+                        <f:form.textfield property="name" id="name" />
+                     </div>
                   </div>
-            </div>
-         </f:if>
-			
-			<div class="control-group">
-				<div class="controls">
-					<f:form.submit value="Update" class="btn"/>
-				</div>
-			</div>
-		</f:form>
+                  <div class="control-group">
+                     <label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+                     <div class="control-group">
+                        <f:form.textfield property="startDate" id="startDate" />
+                     </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="hostMatch">hostMatch</label>
+                        <div class="controlls">
+                           <f:form.select  options="{round.parentRound.generalMatches}" property="hostMatch" id="hostMatch" optionLabelField="name" />
+                        </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="guestMatch">guestMatch</label>
+                        <div class="controlls">
+                           <f:form.select  options="{round.parentRound.generalMatches}" property="guestMatch" id="guestMatch" optionLabelField="name" />
+                        </div>
+                  </div>
+
+                  <div class="control-group">
+                        <div class="controls">
+                           <f:form.submit value="Create" class="btn"/>
+                        </div>
+                     </div>
+               </f:form>
+               <h4>edit round</h4>
+               <f:form action="index" object="{round}" name="round" method="put">
+                  <f:form.hidden name="__method" value="PUT" />
+                  <div class="control-group">
+                     <label class="control-label"for="name">Name</label>
+                     <div class="controls"><f:form.textfield property="name" id="name" /></div>
+                  </div>
+                  
+                     <div class="control-group">
+                        <label class="control-label" for="parentRound">parentRound</label>
+                           <div class="controlls">
+                              <f:form.select  options="{allKoRounds}" property="parentRound" id="parentRound" optionLabelField="name" />
+                           </div>
+                     </div>
+                  
+                  <div class="control-group">
+                     <div class="controls">
+                        <f:form.submit value="Update" class="btn"/>
+                     </div>
+                  </div>
+               </f:form>
+            </f:then>
+            <f:else>
+               <h4>new cross group round match</h4>
+               <f:form action="index" name="match" controller="CrossGroupRoundMatch" method="post">
+                  <f:form.hidden property="cup" value="{recentCup}" />
+                  <f:form.hidden property="round" value="{round}" />
+                  <div class="control-group">
+                     <label class="control-label" for="name">name</label>
+                     <div class="control-group">
+                        <f:form.textfield property="name" id="name" />
+                     </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+                     <div class="control-group">
+                        <f:form.textfield property="startDate" id="startDate" />
+                     </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="winnerOfGroupRound">winnerOfGroupRound</label>
+                        <div class="controlls">
+                           <f:form.select  options="{allGroupRounds}" property="winnerOfGroupRound" id="winnerOfGroupRound" optionLabelField="name" />
+                        </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="semiWinnerOfGroupRound">semiWinnerOfGroupRound</label>
+                        <div class="controlls">
+                           <f:form.select  options="{allGroupRounds}" property="semiWinnerOfGroupRound" id="semiWinnerOfGroupRound" optionLabelField="name" />
+                        </div>
+                  </div>
+
+                  <div class="control-group">
+                        <div class="controls">
+                           <f:form.submit value="Create" class="btn"/>
+                        </div>
+                     </div>
+               </f:form>
+
+               <h4>edit round</h4>
+               <f:form action="index" object="{round}" name="round" method="put">
+                  <f:form.hidden name="__method" value="PUT" />
+                  <div class="control-group">
+                     <label class="control-label"for="name">Name</label>
+                     <div class="controls"><f:form.textfield property="name" id="name" /></div>
+                  </div>
+                  
+                  <div class="control-group">
+                     <div class="controls">
+                        <f:form.submit value="Update" class="btn"/>
+                     </div>
+                  </div>
+               </f:form>
+            </f:else>
+      </cs:ifIsChildKoRound>
 	</f:security.ifHasRole>
 </f:section>

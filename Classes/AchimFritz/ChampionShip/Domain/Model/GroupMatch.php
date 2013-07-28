@@ -22,5 +22,20 @@ class GroupMatch extends Match {
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $round;
+
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Model\Team
+	 * @ORM\ManyToOne
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $hostTeam;
+
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Model\Team
+	 * @ORM\ManyToOne
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $guestTeam;
+
 }
 ?>

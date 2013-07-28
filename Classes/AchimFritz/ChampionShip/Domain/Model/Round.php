@@ -157,24 +157,6 @@ class Round {
 	public function setCup(\AchimFritz\ChampionShip\Domain\Model\Cup $cup) {
 		$this->cup = $cup;
 	}
-	
-	/**
-	 * getIsKoRound
-	 * 
-	 * @return boolean
-	 */
-	public function getIsKoRound() {
-		return FALSE;
-	}
-	
-	/**
-	 * getIsGroupRound
-	 * 
-	 * @return boolean
-	 */
-	public function getIsGroupRound() {
-		return FALSE;
-	}
 
 }
 ?>

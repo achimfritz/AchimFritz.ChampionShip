@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="Content">
@@ -7,5 +8,52 @@
 	</tr>
 </table>
 <f:link.action action="index" class="btn" arguments="{cup: match.cup}">list</f:link.action>
+<cs:ifIsGroupMatch match="{match}">
+   <f:link.action action="index" class="btn" arguments="{round: match.round, cup: match.cup}" controller="GroupRound">to {match.round.name}</f:link.action>
+</cs:ifIsGroupMatch>
+<cs:ifIsKoMatch match="{match}">
+   <f:link.action action="index" class="btn" arguments="{round: match.round, cup: match.cup}" controller="KoRound">to {match.round.name}</f:link.action>
+</cs:ifIsKoMatch>
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+         <cs:ifIsCrossGroupRoundMatch match="{match}">
+            <h2>edit cross group match</h2>
+            <f:form method="put" object="{match}" action="index" name="match" > 
+               <f:form.hidden name="__method" value="PUT" />
+               <div class="control-group">
+                  <label class="control-label" for="name">name</label>
+                  <div class="control-group">
+                     <f:form.textfield property="name" id="name" />
+                  </div>
+               </div>
+               <div class="control-group">
+                  <label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+                  <div class="control-group">
+                     <f:form.textfield property="startDate" id="startDate" value="{match.startDate -> f:format.date(format:'Y-m-d\TH:i:sP')}"/>
+                  </div>
+               </div>
+            <div class="control-group">
+               <label class="control-label" for="winnerOfGroupRound">winnerOfGroupRound</label>
+                  <div class="controlls">
+                     <f:form.select  options="{allGroupRounds}" property="winnerOfGroupRound" id="winnerOfGroupRound" optionLabelField="name" />
+                  </div>
+            </div>
+            <div class="control-group">
+               <label class="control-label" for="semiWinnerOfGroupRound">semiWinnerOfGroupRound</label>
+                  <div class="controlls">
+                     <f:form.select  options="{allGroupRounds}" property="semiWinnerOfGroupRound" id="semiWinnerOfGroupRound" optionLabelField="name" />
+                  </div>
+            </div>
+
+               <div class="control-group">
+                     <div class="controls">
+                        <f:form.submit value="Update" class="btn"/>
+                     </div>
+                  </div>
+            </f:form>
+         </cs:ifIsCrossGroupRoundMatch>
+         <cs:ifIsWinnersOfTwoMatchesMatch match="{match}">
+            TODO
+         </cs:ifIsWinnersOfTwoMatchesMatch>
+	</f:security.ifHasRole>
 
 </f:section>

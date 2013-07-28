@@ -5,7 +5,7 @@
 				<tr>
 					<f:render partial="Match/Show" arguments="{match: match}" />
 					<td>
-						<f:link.action class="btn" action="index" arguments="{cup: match.cup, match: match}">Show</f:link.action>
+						<f:link.action class="btn" action="index" controller="Match" arguments="{cup: match.cup, match: match}">Show</f:link.action>
 					</td>
 				</tr>
 			</f:for>

@@ -32,7 +32,13 @@
                </div>
             </f:then>
             <f:else>
-               oops no recentCup
+               <h1>oops no recentCup</h1>
+                     <f:render partial="ValidationErrors" />
+                     <f:render partial="FlashMessages" />
+                     <f:render partial="LoginForm" />
+                     <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+                        <f:render partial="Cup/New" />
+                     </f:security.ifHasRole>
             </f:else>
          </f:if>
       </div>

@@ -4,7 +4,7 @@
 	<f:render partial="Round/List" arguments="{rounds: rounds}" />
 
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<p>new round:</p>
+		<h3>new round:</h3>
 
 		<f:form action="index" name="round" method="post" arguments="{cup: recentCup}">
 			<f:form.hidden property="cup" value="{recentCup}" />

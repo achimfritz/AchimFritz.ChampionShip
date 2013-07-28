@@ -32,6 +32,7 @@ class KoMatchController extends MatchController {
 	 * @return void
 	 */
 	public function createAction(KoMatch $match) {
+      return 'TODO';
 		try {
 			$this->matchRepository->add($match);
 			$this->persistenceManager->persistAll();

@@ -28,12 +28,6 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $koRoundRepository;
 
 	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\FinalRoundRepository
-	 */
-	protected $finalRoundRepository;
-
-	/**
 	 * @var \AchimFritz\ChampionShip\Domain\Service\KoRoundService
 	 * @Flow\Inject
 	 */
@@ -110,6 +104,7 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @return void
 	 */
 	public function removeCommand() {
+/*
 		$finalRounds = $this->finalRoundRepository->findAll();
 		$finalRound = $finalRounds->current();
 		if ($finalRound instanceof \AchimFritz\ChampionShip\Domain\Model\FinalRound) {
@@ -120,6 +115,7 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 		} else {
 			$this->outputLine('no final rounds found');
 		}
+*/
 	}
 
 }

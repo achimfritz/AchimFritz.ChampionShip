@@ -9,6 +9,8 @@ namespace AchimFritz\ChampionShip\Controller;
 use TYPO3\Flow\Annotations as Flow;
 
 use \AchimFritz\ChampionShip\Domain\Model\Match;
+use \AchimFritz\ChampionShip\Domain\Model\KoRound;
+use \AchimFritz\ChampionShip\Domain\Model\GroupRound;
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
@@ -88,8 +90,14 @@ class MatchController extends ActionController {
 			$this->addErrorMessage('cannot update match');
 			$this->handleException($e);
 		}
-		$this->view->assign('match', $match);
-		$this->redirect('show', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
+      $round = $match->getRound();
+      if ($round instanceof KoRound) {
+		   $this->redirect('index', 'KoRound', NULL, array('round' => $round, 'cup' => $match->getCup()));
+      } elseif ($round instanceof GroupRound) {
+		   $this->redirect('index', 'GroupRound', NULL, array('round' => $round, 'cup' => $match->getCup()));
+      } else {
+		   $this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
+      }
 	}
 
 	/**
@@ -108,7 +116,14 @@ class MatchController extends ActionController {
 			$this->addErrorMessage('cannot delete match');
 			$this->handleException($e);
 		}
-		$this->redirect('list', NULL, NULL, array('cup' => $cup));
+      $round = $match->getRound();
+      if ($round instanceof KoRound) {
+		   $this->redirect('index', 'KoRound', NULL, array('round' => $round, 'cup' => $match->getCup()));
+      } elseif ($round instanceof GroupRound) {
+		   $this->redirect('index', 'GroupRound', NULL, array('round' => $round, 'cup' => $match->getCup()));
+      } else {
+		   $this->redirect('list', NULL, NULL, array('cup' => $cup));
+      }
 	}
 
 	/**

@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="Content">
@@ -28,24 +29,11 @@
 					<f:form.textfield property="startDate" id="startDate" value="{match.startDate -> f:format.date(format:'Y-m-d\TH:i:sP')}"/>
 				</div>
 			</div>
-			<div class="control-group">
-				<label class="control-label" for="groupRound">groupRound</label>
-					<div class="controlls">
-						<f:form.select  options="{allGroupRounds}" property="round" id="groupRound" optionLabelField="name" />
-					</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="hostTeam">hostTeam</label>
-					<div class="controlls">
-						<f:form.select  options="{allTeams}" property="hostParticipant.team" id="hostTeam" optionLabelField="name" />
-					</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="goustTeam">goustTeam</label>
-					<div class="controlls">
-						<f:form.select  options="{allTeams}" property="guestParticipant.team" id="guestTeam" optionLabelField="name" />
-					</div>
-			</div>
+         <cs:ifIsCrossGroupRoundMatch match="{match}">
+         </cs:ifIsCrossGroupRoundMatch>
+         <cs:ifIsWinnersOfTwoMatchesMatch match="{match}">
+            TODO
+         </cs:ifIsWinnersOfTwoMatchesMatch>
 
 			<div class="control-group">
 					<div class="controls">

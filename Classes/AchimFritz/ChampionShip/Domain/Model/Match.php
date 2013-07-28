@@ -8,6 +8,10 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use AchimFritz\ChampionShip\Domain\Model\Team;
+use AchimFritz\ChampionShip\Domain\Model\Cup;
+use AchimFritz\ChampionShip\Domain\Model\Round;
+use AchimFritz\ChampionShip\Domain\Model\Result;
 
 /**
  * A Match
@@ -18,21 +22,17 @@ use Doctrine\ORM\Mapping as ORM;
 class Match {
 
 	/**
-	 * The host participant
-	 * @var \AchimFritz\ChampionShip\Domain\Model\MatchParticipant
-	 * @ORM\OneToOne
-	 * @Flow\Validate(type="NotEmpty")
+	 * @var \AchimFritz\ChampionShip\Domain\Model\Team
+	 * @ORM\ManyToOne
 	 */
-	protected $hostParticipant;
+	protected $hostTeam;
 
 	/**
-	 * The guest participant
-	 * @var \AchimFritz\ChampionShip\Domain\Model\MatchParticipant
-	 * @ORM\OneToOne
-	 * @Flow\Validate(type="NotEmpty")
+	 * @var \AchimFritz\ChampionShip\Domain\Model\Team
+	 * @ORM\ManyToOne
 	 */
-	protected $guestParticipant;
-	
+	protected $guestTeam;
+
 	/**
 	 * The cup
 	 * @var \AchimFritz\ChampionShip\Domain\Model\Cup
@@ -74,6 +74,7 @@ class Match {
     * @return boolean
     */
    public function getTeamHasWonThisMatch(\AchimFritz\ChampionShip\Domain\Model\Team $team) {
+   /*
       $result = $this->getResult();
 		$host = $this->getHostParticipant();
 		$guest = $this->getGuestParticipant();
@@ -86,6 +87,7 @@ class Match {
       if ($guest->getTeam() === $team AND $result->getHostTeamGoals() < $result->getGuestTeamGoals()) {
          return TRUE;
       }
+*/
       return FALSE;
    }
 	
@@ -97,7 +99,7 @@ class Match {
 	 * @return boolean
 	 */
 	public function getTwoTeamsPlayThisMatch(\AchimFritz\ChampionShip\Domain\Model\Team $teamOne, \AchimFritz\ChampionShip\Domain\Model\Team $teamTwo) {
-		$host = $this->getHostParticipant();
+/*		$host = $this->getHostParticipant();
 		$guest = $this->getGuestParticipant();
 		if (!isset($host) OR !isset($guest)) {
 			return FALSE;
@@ -112,6 +114,7 @@ class Match {
 		} else {
 			return FALSE;
 		}
+*/
 	}
 	
 	/**
@@ -120,6 +123,7 @@ class Match {
 	 * @return void
 	 */
 	public function changeHost() {
+/*
 		$host = $this->getHostParticipant();
 		$guest = $this->getGuestParticipant();
 		if (!isset($host) OR !isset($guest)) {
@@ -142,6 +146,7 @@ class Match {
 			$this->getResult()->setGuestTeamGoals($goalsHostTeam);
 			$this->getResult()->setHostTeamGoals($goalsGuestTeam);
 		}
+*/
 	}
 	
 	/**
@@ -150,7 +155,7 @@ class Match {
 	 * @return string
 	 */
 	public function getHostName() {
-		return $this->getHostParticipant()->getName();
+#		return $this->getHostParticipant()->getName();
 	}
 	
 	/**
@@ -159,7 +164,7 @@ class Match {
 	 * @return string
 	 */
 	public function getGuestName() {
-		return $this->getGuestParticipant()->getName();
+#		return $this->getGuestParticipant()->getName();
 	}
 	
 	/**
@@ -180,44 +185,6 @@ class Match {
 	public function setName($name) {
 		$this->name = $name;
 	}
-
-	/**
-	 * Get the Match's host participant
-	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\MatchParticipant The Match's host participant
-	 */
-	public function getHostParticipant() {
-		return $this->hostParticipant;
-	}
-
-	/**
-	 * Sets this Match's host participant
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\MatchParticipant $hostParticipant The Match's host participant
-	 * @return void
-	 */
-	public function setHostParticipant(\AchimFritz\ChampionShip\Domain\Model\MatchParticipant $hostParticipant) {
-		$this->hostParticipant = $hostParticipant;
-	}
-
-	/**
-	 * Get the Match's guest participant
-	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\MatchParticipant The Match's guest participant
-	 */
-	public function getGuestParticipant() {
-		return $this->guestParticipant;
-	}
-
-	/**
-	 * Sets this Match's guest participant
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\MatchParticipant $guestParticipant The Match's guest participant
-	 * @return void
-	 */
-	public function setGuestParticipant(\AchimFritz\ChampionShip\Domain\Model\MatchParticipant $guestParticipant) {
-		$this->guestParticipant = $guestParticipant;
-	}
 	
 	/**
 	 * Get the Match's round
@@ -234,7 +201,7 @@ class Match {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round The Match's round
 	 * @return void
 	 */
-	public function setRound($round) {
+	public function setRound(Round $round) {
 		$this->round = $round;
 	}
 	
@@ -254,7 +221,7 @@ class Match {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup The Match's cup
 	 * @return void
 	 */
-	public function setCup($cup) {
+	public function setCup(Cup $cup) {
 		$this->cup = $cup;
 	}
 
@@ -273,7 +240,7 @@ class Match {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Result $result The Match's result
 	 * @return void
 	 */
-	public function setResult(\AchimFritz\ChampionShip\Domain\Model\Result $result) {
+	public function setResult(Result $result) {
 		$this->result = $result;
 	}
 
@@ -296,6 +263,43 @@ class Match {
 		$this->startDate = $startDate;
 	}
 	
+	/**
+	 * Get the Match hostTeam
+	 *
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Team 
+	 */
+	public function getHostTeam() {
+		return $this->hostTeam;
+	}
 
+	/**
+	 * Sets this Match host team
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Team $team 
+	 * @return void
+	 */
+	public function setHostTeam(Team $hostTeam) {
+		$this->hostTeam = $hostTeam;
+	}
+	
+	/**
+	 * Get the Match guestTeam
+	 *
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Team 
+	 */
+	public function getGuestTeam() {
+		return $this->guestTeam;
+	}
+
+	/**
+	 * Sets this Match guest team
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Team $team 
+	 * @return void
+	 */
+	public function setGuestTeam(Team $guestTeam) {
+		$this->guestTeam = $guestTeam;
+	}
+	
 }
 ?>

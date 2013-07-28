@@ -113,22 +113,5 @@ class GroupRound extends Round {
 		$this->groupTableRows->add($groupTableRow);
 	}
 	
-	/**
-	 * getIsKoRound
-	 * 
-	 * @return boolean
-	 */
-	public function getIsKoRound() {
-		return FALSE;
-	}
-	
-	/**
-	 * getIsGroupRound
-	 * 
-	 * @return boolean
-	 */
-	public function getIsGroupRound() {
-		return TRUE;
-	}
 }
 ?>

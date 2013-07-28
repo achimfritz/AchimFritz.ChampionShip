@@ -5,9 +5,9 @@
 	<f:render partial="Round/List" arguments="{rounds: rounds}" />
 
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<h4>new koRound without parent Round</h4>
+		<h4>new KoRound</h4>
 
-		<f:form action="index" name="round" method="post" arguments="{cup: recentCup}">
+		<f:form action="index" name="round" method="post" controller="KoRound" arguments="{cup: recentCup}">
 			<f:form.hidden property="cup" value="{recentCup}" />
 			<div class="control-group">
 				<label class="control-label" for="name">Name</label>
@@ -20,9 +20,9 @@
 				</div>
 			</div>
 		</f:form>
-		<h4>new koRound with parent Round</h4>
+		<h4>new ChildKoRound</h4>
 
-		<f:form action="index" name="round" method="post" arguments="{cup: recentCup}">
+		<f:form action="index" name="round" method="post" controller="ChildKoRound" arguments="{cup: recentCup}">
 			<f:form.hidden property="cup" value="{recentCup}" />
 			<div class="control-group">
 				<label class="control-label" for="name">Name</label>

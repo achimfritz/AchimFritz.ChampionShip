@@ -7,6 +7,43 @@
 	
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 
+		<h3>new match </h3>
+		<f:form action="index" name="match" controller="GroupMatch" method="post">
+			<f:form.hidden property="cup" value="{recentCup}" />
+			<f:form.hidden property="round" value="{round}" />
+			<div class="control-group">
+				<label class="control-label" for="name">name</label>
+				<div class="control-group">
+					<f:form.textfield property="name" id="name" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+				<div class="control-group">
+					<f:form.textfield property="startDate" id="startDate" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="hostTeam">hostTeam</label>
+					<div class="controlls">
+						<f:form.select  options="{round.Teams}" property="hostTeam" id="hostTeam" optionLabelField="name" />
+					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="guestTeam">guestTeam</label>
+					<div class="controlls">
+						<f:form.select  options="{round.Teams}" property="guestTeam" id="guestTeam" optionLabelField="name" />
+					</div>
+			</div>
+
+			<div class="control-group">
+					<div class="controls">
+						<f:form.submit value="Create" class="btn"/>
+					</div>
+				</div>
+		</f:form>
+
+
 		<h3>edit round</h3>
 		<f:form action="index" object="{round}" name="round" method="put">
 			<f:form.hidden name="__method" value="PUT" />

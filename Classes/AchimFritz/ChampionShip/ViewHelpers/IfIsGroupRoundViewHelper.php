@@ -12,6 +12,9 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use AchimFritz\ChampionShip\Domain\Model\Round;
+use AchimFritz\ChampionShip\Domain\Model\GroupRound;
+
 
 /**
  * 
@@ -19,41 +22,16 @@ use TYPO3\Flow\Annotations as Flow;
  * @author af
  *
  */
-class IfIsAdminViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class IfIsGroupRoundViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
 	
 	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
-	
-	/**
-	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Security\Policy\PolicyService
-	 */
-	protected $policyService;
-
-	/**
-	 * Renders <f:then> child if $condition is true, otherwise renders <f:else> child.
+	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
 	 *
-	 * @param boolean $condition View helper condition
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round
 	 * @return string the rendered string
-	 * @api
 	 */
-	public function render() {	
-		$tokens = $this->securityContext->getAuthenticationTokens();
-		$admin = FALSE;
-		foreach ($tokens as $token) {
-			if ($token->isAuthenticated()) {
-				$account = $token->getAccount();
-				$adminRole = $this->policyService->getRole('AchimFritz.ChampionShip:Administrator');
-				if ($account->hasRole($adminRole)) {
-					$admin = TRUE;
-				}
-			}
-		}
-		
-		if ($admin === TRUE) {
+	public function render(Round $round) {	
+		if ($match instanceof GroupRound) {
 			return $this->renderThenChild();
 		} else {
 			return $this->renderElseChild();

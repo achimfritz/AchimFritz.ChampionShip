@@ -27,7 +27,7 @@ class KoRoundController extends RoundController {
 	/**
 	 * Adds the given new group round object to the group round repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $round A new group round to add
+	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $groupRound A new group round to add
 	 * @return void
 	 */
 	public function createAction(KoRound $round) {
@@ -39,7 +39,7 @@ class KoRoundController extends RoundController {
 			$this->addErrorMessage('cannot create round');
 			$this->handleException($e);
 		}
-		$this->redirect('show', NULL, NULL, array('cup' => $round->getCup(), 'round' => $round));
+		$this->redirect('index', NULL, NULL, array('cup' => $round->getCup(), 'round' => $round));
 	}
 }
 

@@ -8,29 +8,29 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-use \AchimFritz\ChampionShip\Domain\Model\GroupMatch;
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Domain\Model\WinnersOfTwoMatchesMatch;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class GroupMatchController extends MatchController {
+class WinnersOfTwoMatchesMatchController extends MatchController {
 		
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupMatchRepository
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoMatchRepository
 	 */
 	protected $matchRepository;
-
+	
 	/**
 	 * Adds the given new match object to the cup repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $match
+	 * @param \AchimFritz\ChampionShip\Domain\Model\WinnersOfTwoMatchesMatch $match
 	 * @return void
 	 */
-	public function createAction(GroupMatch $match) {
+	public function createAction(WinnersOfTwoMatchesMatch $match) {
 		try {
 			$this->matchRepository->add($match);
 			$this->persistenceManager->persistAll();
@@ -39,8 +39,9 @@ class GroupMatchController extends MatchController {
 			$this->addErrorMessage('cannot create match');
 			$this->handleException($e);
 		}		
-		$this->redirect('index', 'GroupRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+		$this->redirect('index', 'KoMatch', NULL, array('match' => $match, 'cup' => $match->getCup()));
 	}
+
 }
 
 ?>
