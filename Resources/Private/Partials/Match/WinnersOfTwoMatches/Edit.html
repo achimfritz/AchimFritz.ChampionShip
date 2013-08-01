@@ -1,0 +1,34 @@
+<h2>edit winners of two matches match</h2>
+<f:form method="put" controller="Match" object="{match}" action="index" name="match" > 
+   <f:form.hidden name="__method" value="PUT" />
+   <div class="control-group">
+      <label class="control-label" for="name">name</label>
+      <div class="control-group">
+         <f:form.textfield property="name" id="name" />
+      </div>
+   </div>
+   <div class="control-group">
+      <label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+      <div class="control-group">
+         <f:form.textfield property="startDate" id="startDate" value="{match.startDate -> f:format.date(format:'Y-m-d\TH:i:sP')}"/>
+      </div>
+   </div>
+   <div class="control-group">
+      <label class="control-label" for="hostMatch">hostMatch</label>
+         <div class="controlls">
+            <f:form.select  options="{match.round.parentRound.generalMatches}" property="hostMatch" id="hostMatch" optionLabelField="name" />
+         </div>
+   </div>
+   <div class="control-group">
+      <label class="control-label" for="guestMatch">guestMatch</label>
+         <div class="controlls">
+            <f:form.select  options="{match.round.parentRound.generalMatches}" property="guestMatch" id="guestMatch" optionLabelField="name" />
+         </div>
+   </div>
+
+   <div class="control-group">
+         <div class="controls">
+            <f:form.submit value="Update" class="btn"/>
+         </div>
+      </div>
+</f:form>

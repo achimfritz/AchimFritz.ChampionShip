@@ -1,0 +1,36 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<f:if condition="{match.hostTeam}">
+   <f:then>
+      {match.hostTeam.name}
+   </f:then>
+   <f:else>
+      <cs:ifIsCrossGroupRoundMatch match="{match}">
+         <f:then>
+            1. {match.winnerOfGroupRound.name}
+         </f:then>
+         <f:else>
+            <cs:ifIsWinnersOfTwoMatchesMatch match="{match}">
+               winner of {match.hostMatch.name}
+            </cs:ifIsWinnersOfTwoMatchesMatch>
+         </f:else>
+      </cs:ifIsCrossGroupRoundMatch> 
+   </f:else>
+</f:if>
+-
+<f:if condition="{match.guestTeam}">
+   <f:then>
+      {match.guestTeam.name}
+   </f:then>
+   <f:else>
+      <cs:ifIsCrossGroupRoundMatch match="{match}">
+         <f:then>
+            2. {match.semiWinnerOfGroupRound.name}
+         </f:then>
+         <f:else>
+            <cs:ifIsWinnersOfTwoMatchesMatch match="{match}">
+               winner of {match.guestMatch.name}
+            </cs:ifIsWinnersOfTwoMatchesMatch>
+         </f:else>
+      </cs:ifIsCrossGroupRoundMatch> 
+   </f:else>
+</f:if>

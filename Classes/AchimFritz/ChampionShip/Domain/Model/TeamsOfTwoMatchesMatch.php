@@ -15,7 +15,7 @@ use AchimFritz\ChampionShip\Domain\Model\KoMatch;
  *
  * @Flow\Entity
  */
-class WinnersOfTwoMatchesMatch extends KoMatch {
+class TeamsOfTwoMatchesMatch extends KoMatch {
 
    /**
     * @var \AchimFritz\ChampionShip\Domain\Model\KoMatch
@@ -23,6 +23,17 @@ class WinnersOfTwoMatchesMatch extends KoMatch {
 	 * @Flow\Validate(type="NotEmpty")
     */
    protected $hostMatch;
+
+   /**
+    * @var boolean
+    */
+   protected $hostMatchIsWinner;
+
+   /**
+    * @var boolean
+    */
+   protected $guestMatchIsWinner;
+
 
    /**
     * @var \AchimFritz\ChampionShip\Domain\Model\KoMatch
@@ -68,5 +79,43 @@ class WinnersOfTwoMatchesMatch extends KoMatch {
    public function setGuestMatch(KoMatch $guestMatch) {
       $this->guestMatch = $guestMatch;
    } 
+
+   /**
+    * getGuestMatchIsWinner 
+    * 
+    * @return boolean
+    */
+   protected function getGuestMatchIsWinner() {
+      return $this->guestMatchIsWinner;
+   }
+
+   /**
+    * setGuestMatchIsWinner 
+    * 
+    * @param boolean $guestMatchIsWinner 
+    * @return void
+    */
+   protected function setGuestMatchIsWinner($guestMatchIsWinner) {
+      $this->guestMatchIsWinner = $guestMatchIsWinner;
+   }
+
+   /**
+    * getHostMatchIsWinner 
+    * 
+    * @return boolean
+    */
+   protected function getHostMatchIsWinner() {
+      return $this->hostMatchIsWinner;
+   }
+
+   /**
+    * setHostMatchIsWinner 
+    * 
+    * @param boolean $hostMatchIsWinner 
+    * @return void
+    */
+   protected function setHostMatchIsWinner($hostMatchIsWinner) {
+      $this->hostMatchIsWinner = $hostMatchIsWinner;
+   }
 }
 ?>

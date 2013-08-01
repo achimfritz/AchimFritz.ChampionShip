@@ -1,6 +1,6 @@
 	<td>{match.name}</td>
 	<td><f:format.date format="d.m.Y H:i">{match.startDate}</f:format.date></td>
-	<td>{match.hostName} - {match.guestName}</td>
+	<td><f:render partial="Match/Duell" arguments="{match: match}" /></td>
 	<td>
 		<f:if condition="{match.result}">
 			<f:then>

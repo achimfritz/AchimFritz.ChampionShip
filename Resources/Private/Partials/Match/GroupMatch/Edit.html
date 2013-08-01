@@ -1,0 +1,37 @@
+<h2>edit group match</h2>
+<f:form method="put" object="{match}" controller="Match" action="index" name="match" > 
+   <f:form.hidden name="__method" value="PUT" />
+   <div class="control-group">
+      <label class="control-label" for="name">name</label>
+      <div class="control-group">
+         <f:form.textfield property="name" id="name" />
+      </div>
+   </div>
+   <div class="control-group">
+      <label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+      <div class="control-group">
+         <f:form.textfield property="startDate" id="startDate" value="{match.startDate -> f:format.date(format:'Y-m-d\TH:i:sP')}"/>
+      </div>
+   </div>
+
+   <div class="control-group">
+      <label class="control-label" for="hostTeam">hostTeam</label>
+      <div class="controlls">
+         <f:form.select  options="{match.round.Teams}" property="hostTeam" id="hostTeam" optionLabelField="name" />
+      </div>
+   </div>
+   <div class="control-group">
+      <label class="control-label" for="guestTeam">guestTeam</label>
+      <div class="controlls">
+         <f:form.select  options="{match.round.Teams}" property="guestTeam" id="guestTeam" optionLabelField="name" />
+      </div>
+   </div>
+
+
+
+   <div class="control-group">
+         <div class="controls">
+            <f:form.submit value="Update" class="btn"/>
+         </div>
+      </div>
+</f:form>

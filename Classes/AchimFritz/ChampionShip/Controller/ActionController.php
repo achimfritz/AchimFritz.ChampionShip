@@ -67,6 +67,12 @@ class ActionController extends RestController {
 	 * @return void
 	 */
 	protected function resolveViewObjectName() {
+/* TODO
+goes to
+Accept:application/json
+not
+curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championship.import/wmTwoSix/index
+*/
 		$contentType = $this->request->getHttpRequest()->getNegotiatedMediaType($this->supportedMediaTypes);
 		$format = $this->request->getFormat();
 		if ($contentType === 'application/xml' OR $format === 'xml') {

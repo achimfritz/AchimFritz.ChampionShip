@@ -22,52 +22,102 @@ class CrossGroupRoundMatch extends KoMatch {
     * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
     */
-   protected $winnerOfGroupRound;
+   protected $hostGroupRound;
+
+   /**
+    * @var integer
+	 * @Flow\Validate(type="NotEmpty")
+    */
+   protected $hostGroupRank;
 
    /**
     * @var \AchimFritz\ChampionShip\Domain\Model\GroupRound
     * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
     */
-   protected $semiWinnerOfGroupRound;
+   protected $guestGroupRound;
 
    /**
-    * getWinnerOfGroupRound 
-    * 
-    * @return GroupRound winnerOfGroupRound
+    * @var integer
+	 * @Flow\Validate(type="NotEmpty")
     */
-   public function getWinnerOfGroupRound() {
-      return $this->winnerOfGroupRound;
+   protected $guestGroupRank;
+
+   /**
+    * getHostGroupRound 
+    * 
+    * @return GroupRound hostGroupRound
+    */
+   public function getHostGroupRound() {
+      return $this->hostGroupRound;
    }
 
    /**
-    * setWinnerOfGroupRound
+    * setHostGroupRound
     * 
-    * @param GroupRound $winnerOfGroupRound
+    * @param GroupRound $hostGroupRound
     * @return void
     */
-   public function setWinnerOfGroupRound(GroupRound $winnerOfGroupRound) {
-      $this->winnerOfGroupRound = $winnerOfGroupRound;
+   public function setHostGroupRound(GroupRound $hostGroupRound) {
+      $this->hostGroupRound = $hostGroupRound;
    } 
 
    /**
-    * getSemiWinnerOfGroupRound 
+    * getGuestGroupRound 
     * 
-    * @return GroupRound semiWinnerOfGroupRound
+    * @return GroupRound guestGroupRound
     */
-   public function getSemiWinnerOfGroupRound() {
-      return $this->semiWinnerOfGroupRound;
+   public function getGuestGroupRound() {
+      return $this->guestGroupRound;
    }
 
    /**
-    * setSemiWinnerOfGroupRound
+    * setGuestGroupRound
     * 
-    * @param GroupRound $semiWinnerOfGroupRound
+    * @param GroupRound $guestGroupRound
     * @return void
     */
-   public function setSemiWinnerOfGroupRound(GroupRound $semiWinnerOfGroupRound) {
-      $this->semiWinnerOfGroupRound = $semiWinnerOfGroupRound;
+   public function setGuestGroupRound(GroupRound $guestGroupRound) {
+      $this->guestGroupRound = $guestGroupRound;
    } 
+
+   /**
+    * setHostGroupRank 
+    * 
+    * @param integer $hostGroupRank 
+    * @return void
+    */
+   public function setHostGroupRank($hostGroupRank) {
+      $this->hostGroupRank = $hostGroupRank;
+   }
+
+   /**
+    * getHostGroupRank 
+    * 
+    * @return integer
+    */
+   public function getHostGroupRank() {
+      return $this->hostGroupRank;
+   }
+
+   /**
+    * setGuestGroupRank 
+    * 
+    * @param integer $guestGroupRank 
+    * @return void
+    */
+   public function setGuestGroupRank($guestGroupRank) {
+      $this->guestGroupRank = $guestGroupRank;
+   }
+
+   /**
+    * getGuestGroupRank 
+    * 
+    * @return integer
+    */
+   public function getGuestGroupRank() {
+      return $this->guestGroupRank;
+   }
 
 }
 ?>

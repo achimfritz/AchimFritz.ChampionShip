@@ -126,29 +126,6 @@ class MatchController extends ActionController {
       }
 	}
 
-	/**
-	 * changeHost
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
-	 * @return void
-	 */
-	public function changeHostAction(Match $match) {
-			// TODO
-		$match->changeHost();
-		$this->forward('update', 'Match', NULL, array('match' => $match));
-	}
-	
-	/**
-	 * editResultAction
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
-	 * @return void
-	 */
-	public function editResultAction(Match $match) {
-			// TODO
-		$this->view->assign('match', $match);
-	}
-		
 
 }
 
