@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\Team;
+use AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
  * A repository for Matches
@@ -26,8 +27,27 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 		$query = $this->createQuery();
 		return $query->matching(
             $query->logicalOr(
-				$query->equals('hostParticipant.team', $team),
-				$query->equals('guestParticipant.team', $team)
+				$query->equals('hostTeam', $team),
+				$query->equals('guestTeam', $team)
+			)
+		)
+		->execute();
+	}
+
+	/**
+	 * findByTowTeamsAndCup
+	 * 
+	 * @param Team $hostTeam
+	 * @param Team $guestTeam
+	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 */
+	public function findByTwoTeamsAndCup(Team $hostTeam, Team $guestTeam, Cup $cup) {
+		$query = $this->createQuery();
+		return $query->matching(
+            $query->logicalAnd(
+				$query->equals('hostTeam', $hostTeam),
+				$query->equals('guestTeam', $guestTeam),
+				$query->equals('cup', $cup)
 			)
 		)
 		->execute();

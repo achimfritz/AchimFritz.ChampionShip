@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use AchimFritz\ChampionShip\Domain\Model\Team;
 
 /**
  * A Cup
@@ -103,6 +104,26 @@ class Cup {
 	 */
 	public function setStartDate(\DateTime $startDate) {
 		$this->startDate = $startDate;
+	}
+
+	/**
+	 * hasTeam 
+	 * 
+	 * @param Team $team 
+	 * @return boolean
+	 */
+	public function hasTeam(Team $team) {
+		return $this->teams->contains($team);
+	}
+
+	/**
+	 * addTeam 
+	 * 
+	 * @param Team $team 
+	 * @return void
+	 */
+	public function addTeam(Team $team) {
+		$this->teams->add($team);
 	}
 
 }
