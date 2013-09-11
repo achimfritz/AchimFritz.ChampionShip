@@ -22,11 +22,17 @@ class GroupTableController extends ActionController {
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
 	 */
 	protected $roundRepository;
+
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Service\GroupRoundService
+	 * @Flow\Inject
+	 */
+	protected $groupRoundService;
 	
 	/**
 	 * @var string
 	 */
-	protected $resourceArgumentName = 'round';
+	protected $resourceArgumentName = 'groupRound';
 
 	/**
 	 * Updates the given team object
@@ -35,17 +41,16 @@ class GroupTableController extends ActionController {
 	 * @return void
 	 */
 	public function updateAction(GroupRound $groupRound) {
-	/*
 		try {
-			$this->teamRepository->update($team);
+			$this->groupRoundService->updateGroupTable($groupRound);
+			$this->roundRepository->update($groupRound);
 			$this->persistenceManager->persistAll();
-			$this->addOkMessage('team updated');
+			$this->addOkMessage('groupTable updatet');
 		} catch (\Exception $e) {
-			$this->addErrorMessage('cannot update team');
+			$this->addErrorMessage('cannot update groupTable');
 			$this->handleException($e);
 		}
-		$this->redirect('index', 'Team', NULL, array('team' => $team));
-*/
+		$this->redirect('index', 'GroupRound', NULL, array('round' => $groupRound));
 	}
 
 

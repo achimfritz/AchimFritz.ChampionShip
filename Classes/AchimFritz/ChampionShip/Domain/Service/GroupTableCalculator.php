@@ -26,7 +26,7 @@ class GroupTableCalculator {
       $rows = array();
       foreach($matches AS $match) {
             // TODO this must exist
-         $team = $match->getHostParticipant()->getTeam();
+         $team = $match->getHostTeam();
          $result = $match->getResult();
          if (isset($result)) {
             if (!isset($rows[$team->getName()])) {
@@ -42,7 +42,7 @@ class GroupTableCalculator {
             $groupTableRow->setCountOfMatchesPlayed($groupTableRow->getCountOfMatchesPlayed() + 1);
             $rows[$team->getName()] = $groupTableRow;
          }
-         $team = $match->getGuestParticipant()->getTeam();
+         $team = $match->getGuestTeam();
          if (isset($result)) {
             // same sam
             if (!isset($rows[$team->getName()])) {

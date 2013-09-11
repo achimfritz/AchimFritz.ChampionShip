@@ -31,7 +31,7 @@ class IfIsGroupRoundViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractCond
 	 * @return string the rendered string
 	 */
 	public function render(Round $round) {	
-		if ($match instanceof GroupRound) {
+		if ($round instanceof GroupRound) {
 			return $this->renderThenChild();
 		} else {
 			return $this->renderElseChild();

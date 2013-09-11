@@ -5,7 +5,9 @@
 				<tr>
 					<f:render partial="Match/Show" arguments="{match: match}" />
 					<td>
-						<f:link.action class="btn" action="index" controller="Match" arguments="{cup: match.cup, match: match}">Show</f:link.action>
+						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+							<f:link.action class="btn" action="index" controller="Match" arguments="{cup: match.cup, match: match}">Show</f:link.action>
+						</f:security.ifHasRole>
 					</td>
 				</tr>
 			</f:for>

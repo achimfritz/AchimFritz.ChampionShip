@@ -1,3 +1,4 @@
+	{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 	<h2>{round.name}</h2>
 	<f:if condition="{round.generalMatches}">
 		<f:then>
@@ -8,33 +9,11 @@
 			<p>no matches</p>
 		</f:else>
 	</f:if>	
+
+	<cs:ifIsGroupRound round="{round}">
+		<f:render partial="Round/GroupTable" arguments="{round: round}" />
+	</cs:ifIsGroupRound>
 	
-			<h3>GroupTable TODO partial</h3>
-	
-	<f:if condition="{round.groupTableRows}">
-		<f:then>
-			<table>
-				<f:for each="{round.groupTableRows}" as="row">
-					<tr>
-						<td>{row.rank}</td>
-						<td>{row.team.name}</td>
-						<td>{row.goalsPlus}:{row.goalsMinus}</td>
-						<td>{row.goalsDiff}</td>
-						<td>{row.points}</td>
-					</tr>
-				</f:for>
-			</table>				
-		</f:then>
-		<f:else>
-			<p>no groupTableRows</p>
-		</f:else>
-	</f:if>
-              <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-				  <f:form action="index" method="update" controller="GroupTable" arguments="{groupRound: groupRound}">
-							<f:form.hidden name="__method" value="PUT" />
-                        <f:form.submit name="submit" value="update" class="btn" />
-                     </f:form>
-				  </f:security.ifHasRole>
 
 			<h3>Teams</h3>
 

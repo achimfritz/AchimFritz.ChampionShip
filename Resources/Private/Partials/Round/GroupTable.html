@@ -1,0 +1,28 @@
+			
+			<h3>GroupTable</h3>
+	
+	<f:if condition="{round.groupTableRows}">
+		<f:then>
+			<table>
+				<f:for each="{round.groupTableRows}" as="row">
+					<tr>
+						<td>{row.rank}</td>
+						<td>{row.team.name}</td>
+						<td>{row.goalsPlus}:{row.goalsMinus}</td>
+						<td>{row.goalsDiff}</td>
+						<td>{row.points}</td>
+					</tr>
+				</f:for>
+			</table>				
+		</f:then>
+		<f:else>
+			<p>no groupTableRows</p>
+		</f:else>
+	</f:if>
+              <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+				  <f:form action="index" method="update" controller="GroupTable" arguments="{groupRound: round}">
+							<f:form.hidden name="__method" value="PUT" />
+                        <f:form.submit name="submit" value="update" class="btn" />
+                     </f:form>
+				  </f:security.ifHasRole>
+
