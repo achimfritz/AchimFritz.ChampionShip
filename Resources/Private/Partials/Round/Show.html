@@ -9,10 +9,10 @@
 		</f:else>
 	</f:if>	
 	
+			<h3>GroupTable TODO partial</h3>
 	
 	<f:if condition="{round.groupTableRows}">
 		<f:then>
-			<h3>GroupTable TODO partial</h3>
 			<table>
 				<f:for each="{round.groupTableRows}" as="row">
 					<tr>
@@ -29,10 +29,17 @@
 			<p>no groupTableRows</p>
 		</f:else>
 	</f:if>
+              <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+				  <f:form action="index" method="update" controller="GroupTable" arguments="{groupRound: groupRound}">
+							<f:form.hidden name="__method" value="PUT" />
+                        <f:form.submit name="submit" value="update" class="btn" />
+                     </f:form>
+				  </f:security.ifHasRole>
+
+			<h3>Teams</h3>
 
 	<f:if condition="{round.teams}">
 		<f:then>
-			<h3>Teams</h3>
 			<f:render partial="Team/List" arguments="{teams: round.teams}" />
 		</f:then>
 		<f:else>

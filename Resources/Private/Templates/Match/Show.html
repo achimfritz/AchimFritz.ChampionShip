@@ -7,13 +7,9 @@
 		<f:render partial="Match/Show" arguments="{match: match}" />
 	</tr>
 </table>
-<f:link.action action="index" class="btn" arguments="{cup: match.cup}">list</f:link.action>
-<cs:ifIsGroupMatch match="{match}">
-   <f:link.action action="index" class="btn" arguments="{round: match.round, cup: match.cup}" controller="GroupRound">to {match.round.name}</f:link.action>
-</cs:ifIsGroupMatch>
-<cs:ifIsKoMatch match="{match}">
-   <f:link.action action="index" class="btn" arguments="{round: match.round, cup: match.cup}" controller="KoRound">to {match.round.name}</f:link.action>
-</cs:ifIsKoMatch>
+
+<f:render partial="Match/Actions" arguments="{match: match}" />
+
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
          <cs:ifIsCrossGroupRoundMatch match="{match}">
             <f:render partial="Match/CrossGroupRound/Edit" arguments="{match: match, allGroupRounds: allGroupRounds}" />
