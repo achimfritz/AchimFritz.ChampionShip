@@ -8,7 +8,16 @@
 		<f:else>
 			<p>no matches</p>
 		</f:else>
-	</f:if>	
+	</f:if>
+
+	<cs:ifIsGroupRound round="{round}">
+              <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+				  <f:form action="index" method="update" controller="GroupMatchCreator" arguments="{groupRound: round}">
+							<f:form.hidden name="__method" value="PUT" />
+                        <f:form.submit name="submit" value="update" class="btn" />
+                     </f:form>
+				  </f:security.ifHasRole>
+	</cs:ifIsGroupRound>
 
 	<cs:ifIsGroupRound round="{round}">
 		<f:render partial="Round/GroupTable" arguments="{round: round}" />

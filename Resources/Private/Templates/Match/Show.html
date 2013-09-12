@@ -20,6 +20,7 @@
          <cs:ifIsGroupMatch match="{match}">
             <f:render partial="Match/GroupMatch/Edit" arguments="{match: match}" />
          </cs:ifIsGroupMatch>
+            <f:render partial="Match/Result" arguments="{match: match}" />
 	</f:security.ifHasRole>
 
 </f:section>

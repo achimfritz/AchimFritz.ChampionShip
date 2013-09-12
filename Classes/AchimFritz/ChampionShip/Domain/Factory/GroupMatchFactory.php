@@ -28,13 +28,9 @@ class GroupMatchFactory {
 	 * @return \AchimFritz\ChampionShip\Domain\Model\Match
     */
    public function createFromTeams(Team $host, Team $guest) {
-      $hostParticipant = new MatchParticipant();
-      $hostParticipant->setTeam($host);
-      $guestParticipant = new MatchParticipant();
-      $guestParticipant->setTeam($guest);
       $match = new GroupMatch();
-      $match->setHostParticipant($hostParticipant);
-      $match->setGuestParticipant($guestParticipant);
+      $match->setHostTeam($host);
+      $match->setGuestTeam($guest);
       $match->setStartDate(new \DateTime());
       return $match;
    }
