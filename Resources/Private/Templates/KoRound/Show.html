@@ -85,15 +85,27 @@
                      </div>
                   </div>
                   <div class="control-group">
-                     <label class="control-label" for="winnerOfGroupRound">winnerOfGroupRound</label>
+                     <label class="control-label" for="hostGroupRound">hostGroupRound</label>
                         <div class="controlls">
-                           <f:form.select  options="{allGroupRounds}" property="winnerOfGroupRound" id="winnerOfGroupRound" optionLabelField="name" />
+                           <f:form.select  options="{allGroupRounds}" property="hostGroupRound" id="hostGroupRound" optionLabelField="name" />
                         </div>
                   </div>
                   <div class="control-group">
-                     <label class="control-label" for="semiWinnerOfGroupRound">semiWinnerOfGroupRound</label>
+                     <label class="control-label" for="hostGroupRank">hostGroupRank</label>
                         <div class="controlls">
-                           <f:form.select  options="{allGroupRounds}" property="semiWinnerOfGroupRound" id="semiWinnerOfGroupRound" optionLabelField="name" />
+                           <f:form.textfield property="hostGroupRank" id="hostGroupRank"  />
+                        </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="guestGroupRound">guestGroupRound</label>
+                        <div class="controlls">
+                           <f:form.select  options="{allGroupRounds}" property="guestGroupRound" id="guestGroupRound" optionLabelField="name" />
+                        </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="guestGroupRank">guestGroupRank</label>
+                        <div class="controlls">
+                           <f:form.textfield property="guestGroupRank" id="guestGroupRound" />
                         </div>
                   </div>
 

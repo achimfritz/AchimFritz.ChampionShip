@@ -99,22 +99,21 @@ class Match {
 	 * @return boolean
 	 */
 	public function getTwoTeamsPlayThisMatch(\AchimFritz\ChampionShip\Domain\Model\Team $teamOne, \AchimFritz\ChampionShip\Domain\Model\Team $teamTwo) {
-/*		$host = $this->getHostParticipant();
-		$guest = $this->getGuestParticipant();
-		if (!isset($host) OR !isset($guest)) {
+		$hostTeam = $this->getHostTeam();
+		$guestTeam = $this->getGuestTeam();
+		if (!isset($hostTeam) OR !isset($guestTeam)) {
 			return FALSE;
 		}
-		#return TRUE;
 		if (
-			($this->getHostParticipant()->getTeam() === $teamOne AND
-			$this->getGuestParticipant()->getTeam() === $teamTwo) OR 
-			($this->getHostParticipant()->getTeam() === $teamTwo AND
-			$this->getGuestParticipant()->getTeam() === $teamOne)) {
-				return TRUE;
+				($hostTeam === $teamOne AND
+				 $guestTeam === $teamTwo) OR 
+				($hostTeam === $teamTwo AND
+				 $guestTeam === $teamOne)) {
+			return TRUE;
 		} else {
 			return FALSE;
 		}
-*/
+
 	}
 	
 	/**
