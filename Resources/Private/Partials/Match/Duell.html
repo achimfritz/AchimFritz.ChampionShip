@@ -9,9 +9,9 @@
             {match.hostGroupRank}. {match.hostGroupRound.name}
          </f:then>
          <f:else>
-            <cs:ifIsWinnersOfTwoMatchesMatch match="{match}">
+            <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
                winner of {match.hostMatch.name}
-            </cs:ifIsWinnersOfTwoMatchesMatch>
+            </cs:ifIsTeamsOfTwoMatchesMatch>
          </f:else>
       </cs:ifIsCrossGroupMatch> 
    </f:else>
@@ -27,9 +27,9 @@
             {match.guestGroupRank}. {match.guestGroupRound.name}
          </f:then>
          <f:else>
-            <cs:ifIsWinnersOfTwoMatchesMatch match="{match}">
+            <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
                winner of {match.guestMatch.name}
-            </cs:ifIsWinnersOfTwoMatchesMatch>
+            </cs:ifIsTeamsOfTwoMatchesMatch>
          </f:else>
       </cs:ifIsCrossGroupMatch> 
    </f:else>

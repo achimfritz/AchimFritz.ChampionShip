@@ -12,11 +12,11 @@
 
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
          <cs:ifIsCrossGroupMatch match="{match}">
-            <f:render partial="Match/CrossGroupRound/Edit" arguments="{match: match, allGroupRounds: allGroupRounds}" />
+            <f:render partial="Match/CrossGroupMatch/Edit" arguments="{match: match, allGroupRounds: allGroupRounds}" />
          </cs:ifIsCrossGroupMatch>
-         <cs:ifIsWinnersOfTwoMatchesMatch match="{match}">
-            <f:render partial="Match/WinnersOfTwoMatches/Edit" arguments="{match: match}" />
-         </cs:ifIsWinnersOfTwoMatchesMatch>
+         <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
+            <f:render partial="Match/TeamsOfTwoMatches/Edit" arguments="{match: match}" />
+         </cs:ifIsTeamsOfTwoMatchesMatch>
          <cs:ifIsGroupMatch match="{match}">
             <f:render partial="Match/GroupMatch/Edit" arguments="{match: match}" />
          </cs:ifIsGroupMatch>

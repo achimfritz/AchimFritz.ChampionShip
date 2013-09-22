@@ -13,7 +13,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\Match;
-use AchimFritz\ChampionShip\Domain\Model\WinnersOfTwoMatchesMatch;
+use AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch;
 
 
 /**
@@ -22,7 +22,7 @@ use AchimFritz\ChampionShip\Domain\Model\WinnersOfTwoMatchesMatch;
  * @author af
  *
  */
-class IfIsWinnersOfTwoMatchesMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class IfIsTeamsOfTwoMatchesMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
 	
 	/**
 	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
@@ -31,7 +31,7 @@ class IfIsWinnersOfTwoMatchesMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelpe
 	 * @return string the rendered string
 	 */
 	public function render(Match $match) {	
-		if ($match instanceof WinnersOfTwoMatchesMatch) {
+		if ($match instanceof TeamsOfTwoMatchesMatch) {
 			return $this->renderThenChild();
 		} else {
 			return $this->renderElseChild();

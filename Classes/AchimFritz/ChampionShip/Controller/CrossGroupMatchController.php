@@ -39,8 +39,8 @@ class CrossGroupMatchController extends MatchController {
 			$this->addErrorMessage('cannot create match');
 			$this->handleException($e);
 		}		
-		$this->redirect('index', 'KoMatch', NULL, array('match' => $match, 'cup' => $match->getCup()));
-		#$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+		#$this->redirect('index', 'KoMatch', NULL, array('match' => $match, 'cup' => $match->getCup()));
+		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
 	}
 
 }

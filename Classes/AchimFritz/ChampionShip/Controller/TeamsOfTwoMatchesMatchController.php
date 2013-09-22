@@ -9,7 +9,7 @@ namespace AchimFritz\ChampionShip\Controller;
 use TYPO3\Flow\Annotations as Flow;
 
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
-use \AchimFritz\ChampionShip\Domain\Model\WinnersOfTwoMatchesMatch;
+use \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 
@@ -39,7 +39,8 @@ class TeamsOfTwoMatchesMatchController extends MatchController {
 			$this->addErrorMessage('cannot create match');
 			$this->handleException($e);
 		}		
-		$this->redirect('index', 'KoMatch', NULL, array('match' => $match, 'cup' => $match->getCup()));
+		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+		#$this->redirect('index', 'KoMatch', NULL, array('match' => $match, 'cup' => $match->getCup()));
 	}
 
 }

@@ -42,6 +42,17 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
     */
    protected $guestMatch;
 
+	/**
+	 * __construct 
+	 * 
+	 * @return void
+	 */
+	public function __construct() {
+		$this->hostMatchIsWinner = TRUE;
+		$this->guestMatchIsWinner = TRUE;
+		return parent::__construct();
+	}
+
    /**
     * getHostMatch 
     * 
