@@ -1,0 +1,30 @@
+<?php
+namespace AchimFritz\ChampionShip\Controller;
+
+/*                                                                        *
+ * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
+ *                                                                        *
+ *                                                                        */
+
+use TYPO3\Flow\Annotations as Flow;
+
+use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use \AchimFritz\ChampionShip\Domain\Model\KoMatch;
+
+/**
+ * Match controller for the AchimFritz.ChampionShip package 
+ *
+ * @Flow\Scope("singleton")
+ */
+class KoMatchController extends MatchController {
+		
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoMatchRepository
+	 */
+	protected $matchRepository;
+
+}
+
+?>

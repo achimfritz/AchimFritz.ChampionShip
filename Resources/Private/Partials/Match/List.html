@@ -4,11 +4,16 @@
 			<f:for each="{matches}" as="match">
 				<tr>
 					<f:render partial="Match/Show" arguments="{match: match}" />
-					<td>
 						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-							<f:link.action class="btn" action="index" controller="Match" arguments="{cup: match.cup, match: match}">Show</f:link.action>
+							<td>
+									<f:link.action class="btn" action="index" controller="Match" arguments="{cup: match.cup, match: match}">Show</f:link.action>
+							</td>
 						</f:security.ifHasRole>
-					</td>
+						<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+							<td>
+								<f:render partial="Match/Tip" arguments="{match: match}" />
+							</td>
+						</f:security.ifHasRole>
 				</tr>
 			</f:for>
 		</table>

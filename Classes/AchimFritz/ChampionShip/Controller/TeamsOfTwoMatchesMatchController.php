@@ -16,7 +16,7 @@ use \AchimFritz\ChampionShip\Domain\Model\WinnersOfTwoMatchesMatch;
  *
  * @Flow\Scope("singleton")
  */
-class WinnersOfTwoMatchesMatchController extends MatchController {
+class TeamsOfTwoMatchesMatchController extends MatchController {
 		
 	/**
 	 * @Flow\Inject
@@ -27,10 +27,10 @@ class WinnersOfTwoMatchesMatchController extends MatchController {
 	/**
 	 * Adds the given new match object to the cup repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\WinnersOfTwoMatchesMatch $match
+	 * @param \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch $match
 	 * @return void
 	 */
-	public function createAction(WinnersOfTwoMatchesMatch $match) {
+	public function createAction(TeamsOfTwoMatchesMatch $match) {
 		try {
 			$this->matchRepository->add($match);
 			$this->persistenceManager->persistAll();

@@ -149,24 +149,6 @@ class Match {
 	}
 	
 	/**
-	 * getHostName
-	 * 
-	 * @return string
-	 */
-	public function getHostName() {
-#		return $this->getHostParticipant()->getName();
-	}
-	
-	/**
-	 * getGuestName
-	 * 
-	 * @return string
-	 */
-	public function getGuestName() {
-#		return $this->getGuestParticipant()->getName();
-	}
-	
-	/**
 	 * getName
 	 *
 	 * @return string name
