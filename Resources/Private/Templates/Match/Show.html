@@ -11,9 +11,9 @@
 <f:render partial="Match/Actions" arguments="{match: match}" />
 
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-         <cs:ifIsCrossGroupRoundMatch match="{match}">
+         <cs:ifIsCrossGroupMatch match="{match}">
             <f:render partial="Match/CrossGroupRound/Edit" arguments="{match: match, allGroupRounds: allGroupRounds}" />
-         </cs:ifIsCrossGroupRoundMatch>
+         </cs:ifIsCrossGroupMatch>
          <cs:ifIsWinnersOfTwoMatchesMatch match="{match}">
             <f:render partial="Match/WinnersOfTwoMatches/Edit" arguments="{match: match}" />
          </cs:ifIsWinnersOfTwoMatchesMatch>

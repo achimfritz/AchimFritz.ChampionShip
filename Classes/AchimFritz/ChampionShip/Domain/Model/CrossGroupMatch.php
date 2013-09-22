@@ -15,7 +15,7 @@ use AchimFritz\ChampionShip\Domain\Model\GroupRound;
  *
  * @Flow\Entity
  */
-class CrossGroupRoundMatch extends KoMatch {
+class CrossGroupMatch extends KoMatch {
 
    /**
     * @var \AchimFritz\ChampionShip\Domain\Model\GroupRound

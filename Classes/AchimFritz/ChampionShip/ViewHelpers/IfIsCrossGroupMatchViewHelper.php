@@ -13,7 +13,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\Match;
-use AchimFritz\ChampionShip\Domain\Model\CrossGroupRoundMatch;
+use AchimFritz\ChampionShip\Domain\Model\CrossGroupMatch;
 
 
 /**
@@ -22,7 +22,7 @@ use AchimFritz\ChampionShip\Domain\Model\CrossGroupRoundMatch;
  * @author af
  *
  */
-class IfIsCrossGroupRoundMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class IfIsCrossGroupMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
 	
 	/**
 	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
@@ -31,7 +31,7 @@ class IfIsCrossGroupRoundMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\Ab
 	 * @return string the rendered string
 	 */
 	public function render(Match $match) {	
-		if ($match instanceof CrossGroupRoundMatch) {
+		if ($match instanceof CrossGroupMatch) {
 			return $this->renderThenChild();
 		} else {
 			return $this->renderElseChild();

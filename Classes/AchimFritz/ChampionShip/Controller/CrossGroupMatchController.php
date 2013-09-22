@@ -9,14 +9,14 @@ namespace AchimFritz\ChampionShip\Controller;
 use TYPO3\Flow\Annotations as Flow;
 
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
-use \AchimFritz\ChampionShip\Domain\Model\CrossGroupRoundMatch;
+use \AchimFritz\ChampionShip\Domain\Model\CrossGroupMatch;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class CrossGroupRoundMatchController extends MatchController {
+class CrossGroupMatchController extends MatchController {
 		
 	/**
 	 * @Flow\Inject
@@ -27,10 +27,10 @@ class CrossGroupRoundMatchController extends MatchController {
 	/**
 	 * Adds the given new match object to the cup repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\CrossGroupRoundMatch $match
+	 * @param \AchimFritz\ChampionShip\Domain\Model\CrossGroupMatch $match
 	 * @return void
 	 */
-	public function createAction(CrossGroupRoundMatch $match) {
+	public function createAction(CrossGroupMatch $match) {
 		try {
 			$this->matchRepository->add($match);
 			$this->persistenceManager->persistAll();
