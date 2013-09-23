@@ -27,12 +27,12 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
    /**
     * @var boolean
     */
-   protected $hostMatchIsWinner;
+   protected $hostMatchIsWinner = TRUE;
 
    /**
     * @var boolean
     */
-   protected $guestMatchIsWinner;
+   protected $guestMatchIsWinner = TRUE;
 
 
    /**

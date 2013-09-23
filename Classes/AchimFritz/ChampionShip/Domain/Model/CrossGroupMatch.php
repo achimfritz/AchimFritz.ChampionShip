@@ -9,6 +9,7 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 use AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use AchimFritz\ChampionShip\Domain\Model\Team;
 
 /**
  * A Match
@@ -118,6 +119,30 @@ class CrossGroupMatch extends KoMatch {
    public function getGuestGroupRank() {
       return $this->guestGroupRank;
    }
+
+	/**
+	 * getCurrentHostTeam 
+	 * 
+	 * @return Team|NULL
+	 */
+	public function getCurrentHostTeam() {
+		$groupRound = $this->getHostGroupRound();
+		$rank = $this->getHostGroupRank();
+		$team = $groupRound->getTeamByRank($rank);
+		return $team;
+	}
+
+	/**
+	 * getCurrentGuestTeam 
+	 * 
+	 * @return Team|NULL
+	 */
+	public function getCurrentGuestTeam() {
+		$groupRound = $this->getGuestGroupRound();
+		$rank = $this->getGuestGroupRank();
+		$team = $groupRound->getTeamByRank($rank);
+		return $team;
+	}
 
 }
 ?>

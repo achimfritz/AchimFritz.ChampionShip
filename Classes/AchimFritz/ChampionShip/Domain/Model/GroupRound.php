@@ -38,12 +38,15 @@ class GroupRound extends Round {
 	 * getTeamByRank
 	 * 
 	 * @param integer $rank
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Team|NULL
 	 */
 	public function getTeamByRank($rank) {
 		$groupTableRows = $this->getGroupTableRows();
-		$row = $groupTableRows[$rank-1];
-		return $row->getTeam();
+		if (isset($groupTableRows[$rank-1])) {
+			$row = $groupTableRows[$rank-1];
+			return $row->getTeam();
+		}
+		return NULL;
 	}
 	
 	

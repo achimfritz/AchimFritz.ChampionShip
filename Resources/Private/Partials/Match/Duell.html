@@ -7,6 +7,9 @@
       <cs:ifIsCrossGroupMatch match="{match}">
          <f:then>
             {match.hostGroupRank}. {match.hostGroupRound.name}
+				<f:if condition="{match.currentHostTeam}">
+					({match.currentHostTeam.name})
+				</f:if>
          </f:then>
          <f:else>
             <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
@@ -25,6 +28,10 @@
       <cs:ifIsCrossGroupMatch match="{match}">
          <f:then>
             {match.guestGroupRank}. {match.guestGroupRound.name}
+				<f:if condition="{match.currentGuestTeam}">
+					({match.currentGuestTeam.name})
+				</f:if>
+
          </f:then>
          <f:else>
             <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
