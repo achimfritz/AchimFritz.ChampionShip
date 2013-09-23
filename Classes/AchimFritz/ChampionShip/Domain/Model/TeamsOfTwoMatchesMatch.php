@@ -27,12 +27,12 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
    /**
     * @var boolean
     */
-   protected $hostMatchIsWinner = TRUE;
+   protected $hostMatchIsWinner;
 
    /**
     * @var boolean
     */
-   protected $guestMatchIsWinner = TRUE;
+   protected $guestMatchIsWinner;
 
 
    /**
@@ -41,17 +41,6 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
 	 * @Flow\Validate(type="NotEmpty")
     */
    protected $guestMatch;
-
-	/**
-	 * __construct 
-	 * 
-	 * @return void
-	 */
-	public function __construct() {
-		$this->hostMatchIsWinner = TRUE;
-		$this->guestMatchIsWinner = TRUE;
-		return parent::__construct();
-	}
 
    /**
     * getHostMatch 
@@ -96,7 +85,7 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
     * 
     * @return boolean
     */
-   protected function getGuestMatchIsWinner() {
+   public function getGuestMatchIsWinner() {
       return $this->guestMatchIsWinner;
    }
 
@@ -106,7 +95,7 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
     * @param boolean $guestMatchIsWinner 
     * @return void
     */
-   protected function setGuestMatchIsWinner($guestMatchIsWinner) {
+   public function setGuestMatchIsWinner($guestMatchIsWinner) {
       $this->guestMatchIsWinner = $guestMatchIsWinner;
    }
 
@@ -115,7 +104,7 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
     * 
     * @return boolean
     */
-   protected function getHostMatchIsWinner() {
+   public function getHostMatchIsWinner() {
       return $this->hostMatchIsWinner;
    }
 
@@ -125,7 +114,7 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
     * @param boolean $hostMatchIsWinner 
     * @return void
     */
-   protected function setHostMatchIsWinner($hostMatchIsWinner) {
+   public function setHostMatchIsWinner($hostMatchIsWinner) {
       $this->hostMatchIsWinner = $hostMatchIsWinner;
    }
 }

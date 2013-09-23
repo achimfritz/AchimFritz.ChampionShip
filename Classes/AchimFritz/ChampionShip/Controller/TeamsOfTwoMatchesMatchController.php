@@ -25,25 +25,6 @@ class TeamsOfTwoMatchesMatchController extends MatchController {
 	protected $matchRepository;
 
 	/**
-	 * initializeCreateAction 
-	 * 
-	 * @return void
-	 */
-	public function initializeCreateAction() {
-		#$args = $this->arguments->getArgumentNames();
-		#var_dump($args);
-		#die('xx');
-		#foreach ($args AS $arg) {
-		#}
-	/*
-		$this->arguments->getArgument('hostMatchIsWinner')
-			->getPropertyMappingConfiguration()
-			->forProperty('hostMatchIsWinner')
-			->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\BooleanConverter');
-			*/
-	}
-	
-	/**
 	 * Adds the given new match object to the cup repository
 	 *
 	 * @param \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch $match
