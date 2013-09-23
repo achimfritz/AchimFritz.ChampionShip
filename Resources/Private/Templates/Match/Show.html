@@ -2,13 +2,13 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-<table>
-	<tr>
-		<f:render partial="Match/Show" arguments="{match: match}" />
-	</tr>
-</table>
+	<table>
+		<tr>
+			<f:render partial="Match/Show" arguments="{match: match}" />
+		</tr>
+	</table>
 
-<f:render partial="Match/Actions" arguments="{match: match}" />
+	<f:render partial="Match/Actions" arguments="{match: match}" />
 
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
          <cs:ifIsCrossGroupMatch match="{match}">
@@ -20,7 +20,7 @@
          <cs:ifIsGroupMatch match="{match}">
             <f:render partial="Match/GroupMatch/Edit" arguments="{match: match}" />
          </cs:ifIsGroupMatch>
-            <f:render partial="Match/Result" arguments="{match: match}" />
+         <f:render partial="Match/Result" arguments="{match: match}" />
 	</f:security.ifHasRole>
 
 </f:section>

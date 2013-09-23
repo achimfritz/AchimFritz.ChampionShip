@@ -1,5 +1,5 @@
 <f:if condition="{match.currentHostTeam}">
-	<h2>set hostTeam</h2>
+	<h4>set hostTeam</h4>
 	<f:form action="index" object="{match}"  name="match" controller="CrossGroupMatch" method="put">
 		<f:form.hidden name="__method" value="PUT" />
 		<div class="control-group">
@@ -17,7 +17,7 @@
 	</f:form>
 </f:if>
 <f:if condition="{match.currentGuestTeam}">
-	<h2>set guestTeam</h2>
+	<h4>set guestTeam</h4>
 	<f:form action="index" object="{match}"  name="match" controller="CrossGroupMatch" method="put">
 		<f:form.hidden name="__method" value="PUT" />
 		<div class="control-group">
@@ -34,9 +34,9 @@
 		</div>
 	</f:form>
 </f:if>
-<h2>edit cross group match</h2>
+<h4>edit cross group match</h4>
 
-<f:form action="index" object="{match}"  name="match" controller="CrossGroupMatch" method="put">
+<f:form class="form-horizontal" action="index" object="{match}"  name="match" controller="CrossGroupMatch" method="put">
    <f:form.hidden name="__method" value="PUT" />
 	<div class="control-group">
 		<label class="control-label" for="name">name</label>
