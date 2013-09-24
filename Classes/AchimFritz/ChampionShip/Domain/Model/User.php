@@ -17,32 +17,29 @@ use Doctrine\ORM\Mapping as ORM;
 class User {
 
 	/**
-	 * The name
-	 * @var string
-	 * @Flow\Identity
-     * @Flow\Validate(type="NotEmpty")
+	 * @var \TYPO3\Flow\Security\Account
+	 * @ORM\OneToOne
+	 * @Flow\Validate(type="NotEmpty")
 	 */
-	protected $name;
-
+	protected $account;
 
 	/**
-	 * Get the User's name
-	 *
-	 * @return string The User's name
+	 * getAccount 
+	 * 
+	 * @return Account account
 	 */
-	public function getName() {
-		return $this->name;
+	public function getAccount() {
+		return $this->account;
 	}
 
 	/**
-	 * Sets this User's name
-	 *
-	 * @param string $name The User's name
+	 * setAccount
+	 * 
+	 * @param Account $account
 	 * @return void
 	 */
-	public function setName($name) {
-		$this->name = $name;
-	}
-
+	public function setAccount($account) {
+		$this->account = $account;
+	} 
 }
 ?>

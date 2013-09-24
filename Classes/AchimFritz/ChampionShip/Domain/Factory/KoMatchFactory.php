@@ -8,7 +8,6 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\KoMatch;
-use AchimFritz\ChampionShip\Domain\Model\MatchParticipant;
 use AchimFritz\ChampionShip\Domain\Model\Team;
 use AchimFritz\ChampionShip\Domain\Model\GroupRound;
 
@@ -28,6 +27,7 @@ class KoMatchFactory {
 	 * @return \AchimFritz\ChampionShip\Domain\Model\KoMatch
 	 */
 	public function createFromGroupRounds(GroupRound $first, GroupRound $second) {
+		throw new Exception('foo', 145452452354);
 		$hostParticipant = new MatchParticipant();
 		$guestParticipant = new MatchParticipant();
 		$hostParticipant->setRankOfGroupRound(1);
@@ -50,6 +50,7 @@ class KoMatchFactory {
 	 * @return \AchimFritz\ChampionShip\Domain\Model\KoMatch
 	 */
 	public function createFromWinners(KoMatch $first, KoMatch $second) {
+		throw new Exception('foo', 145452452354);
 		$hostParticipant = new MatchParticipant();
 		$guestParticipant = new MatchParticipant();
 		$hostParticipant->setWinnerOfMatch($first);
@@ -70,6 +71,7 @@ class KoMatchFactory {
 	 * @return \AchimFritz\ChampionShip\Domain\Model\KoMatch
 	 */
 	public function createFromTeams(Team $host, Team $guest) {
+		throw new Exception('foo', 145452452354);
 		$hostParticipant = new MatchParticipant();
 		$hostParticipant->setTeam($host);
 		$guestParticipant = new MatchParticipant();

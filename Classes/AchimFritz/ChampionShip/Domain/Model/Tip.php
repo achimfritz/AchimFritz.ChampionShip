@@ -20,7 +20,7 @@ class Tip {
 	 * The user
 	 * @var \AchimFritz\ChampionShip\Domain\Model\User
 	 * @ORM\ManyToOne
-     * @Flow\Validate(type="NotEmpty")
+	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $user;
 
