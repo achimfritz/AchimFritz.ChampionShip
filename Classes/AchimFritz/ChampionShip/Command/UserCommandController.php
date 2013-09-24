@@ -56,7 +56,7 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @param string $email
 	 * @return void
 	 */
-	public function createCommand($username, $password, $firstName, $lastName, $email) {
+	public function createUserCommand($username, $password, $firstName, $lastName, $email) {
 		$roles = 'AchimFritz.ChampionShip:User';
 		$authenticationProvider = 'DefaultProvider';
 		$account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($username, $authenticationProvider);

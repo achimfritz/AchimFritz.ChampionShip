@@ -19,7 +19,6 @@ class User {
 	/**
 	 * @var \TYPO3\Flow\Security\Account
 	 * @ORM\OneToOne
-	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $account;
 
