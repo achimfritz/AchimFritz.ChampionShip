@@ -24,11 +24,16 @@ class UserController extends ActionController {
 	protected $userRepository;
 
 	/**
+	 * @var string
+	 */
+	protected $resourceArgumentName = 'user';
+
+	/**
 	 * Shows a list of users
 	 *
 	 * @return void
 	 */
-	public function indexAction() {
+	public function listAction() {
 		$this->view->assign('users', $this->userRepository->findAll());
 	}
 
@@ -43,14 +48,6 @@ class UserController extends ActionController {
 	}
 
 	/**
-	 * Shows a form for creating a new user object
-	 *
-	 * @return void
-	 */
-	public function newAction() {
-	}
-
-	/**
 	 * Adds the given new user object to the user repository
 	 *
 	 * @param \AchimFritz\ChampionShip\Domain\Model\User $newUser A new user to add
@@ -60,16 +57,6 @@ class UserController extends ActionController {
 		$this->userRepository->add($newUser);
 		$this->addFlashMessage('Created a new user.');
 		$this->redirect('index');
-	}
-
-	/**
-	 * Shows a form for editing an existing user object
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user The user to edit
-	 * @return void
-	 */
-	public function editAction(User $user) {
-		$this->view->assign('user', $user);
 	}
 
 	/**

@@ -68,5 +68,14 @@ class User {
 	public function setMainTipGroup($mainTipGroup) {
 		$this->mainTipGroup = $mainTipGroup;
 	} 
+
+	/**
+	 * getName 
+	 * 
+	 * @return string
+	 */
+	public function getName() {
+		return $this->getAccount()->getParty()->getName()->getOtherName();
+	}
 }
 ?>

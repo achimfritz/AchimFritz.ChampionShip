@@ -10,6 +10,7 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Party\Domain\Model\ElectronicAddress;
 use TYPO3\Party\Domain\Model\Person;
 use AchimFritz\ChampionShip\Domain\Model\User;
+use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 
 /**
  * The User Command Controller Service
@@ -25,6 +26,12 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $userFactory;
 
 	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
+	 * @Flow\Inject
+	 */
+	protected $tipGroupRepository;
+
+	/**
 	 * Create a new user
 	 *
 	 * @param string $username 
@@ -34,7 +41,15 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 */
 	public function createUserCommand($username, $nickName, $tipGroupName) {
 		try {
-			$user = $this->userFactory->create($username, $nickName, $tipGroupName);
+			$tipGroup = $this->tipGroupRepository->findOneByName($tipGroupName);
+			if (!$tipGroup instanceof TipGroup) {
+				$tipGroup = new TipGroup();
+				$tipGroup->setName($tipGroupName);
+				$this->tipGroupRepository->add($tipGroup);
+			}
+			$user = $this->userFactory->create($username, $nickName, $tipGroup);
+			$tipGroup->addUser($user);
+			$this->tipGroupRepository->update($tipGroup);
 			$this->outputLine('user created: ' . $username);
 		} catch (\Exception $e) {
 			$this->outputLine('ERROR ' . $e->getMessage());

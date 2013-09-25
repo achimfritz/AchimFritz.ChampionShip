@@ -38,11 +38,6 @@ class UserFactory {
 	 */
 	protected $accountFactory;
 
-	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
-	 * @Flow\Inject
-	 */
-	protected $tipGroupRepository;
 
 	/**
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
@@ -53,10 +48,12 @@ class UserFactory {
 	/**
 	 * Create a new user
 	 *
-	 * @param string $username The username of the user to be created.
+	 * @param string $username
+	 * @param string $nickName
+	 * @param TipGroup $tipGroup
 	 * @return User $user
 	 */
-	public function create($username, $nickName, $tipGroupName) {
+	public function create($username, $nickName, TipGroup $tipGroup) {
 		$roles = 'AchimFritz.ChampionShip:User';
 		$authenticationProvider = 'DefaultProvider';
 		$password = $username;
@@ -71,15 +68,8 @@ class UserFactory {
 		$electronicAddress->setIdentifier($email);
 		$electronicAddress->setType(ElectronicAddress::TYPE_EMAIL);
 		$person->setPrimaryElectronicAddress($electronicAddress);
-		$person->setName(new PersonName('', '', '', '', $nickName));
+		$person->setName(new PersonName('', '', '', '', $nickName . '@' . $tipGroup->getName()));
 		$this->partyRepository->add($person);
-
-		$tipGroup = $this->tipGroupRepository->findOneByName($tipGroupName);
-		if (!$tipGroup instanceof TipGroup) {
-			$tipGroup = new TipGroup();
-			$tipGroup->setName($tipGroupName);
-			$this->tipGroupRepository->add($tipGroup);
-		}
 
 		$account = $this->accountFactory->createAccountWithPassword($username, $password, explode(',', $roles), $authenticationProvider);
 		$account->setParty($person);
@@ -88,8 +78,6 @@ class UserFactory {
 		$user = new User();
 		$user->setAccount($account);
 		$user->setMainTipGroup($tipGroup);
-		$tipGroup->addUser($user);
-		$this->tipGroupRepository->update($tipGroup);
 		$this->userRepository->add($user);
 		return $user;
 	}
