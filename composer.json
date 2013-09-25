@@ -2,8 +2,15 @@
 	"name":"achimFritz/championship",
 	"type":"typo3-flow-package",
 	"description":"",
+	"repositories": [
+		{  
+			"type": "vcs",
+			"url": "git://github.com/comensee/jquery-ui.git"
+		}
+	],
 	"require":{
-		"typo3\/flow":"*"
+		"typo3/flow":"*",
+		"comensee/jquery-ui": "dev-master"
 	},
 	"autoload": {
 		"psr-0":{
