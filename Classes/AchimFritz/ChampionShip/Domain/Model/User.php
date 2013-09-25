@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 
 /**
  * A User
@@ -19,8 +20,16 @@ class User {
 	/**
 	 * @var \TYPO3\Flow\Security\Account
 	 * @ORM\OneToOne
+	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $account;
+
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Model\TipGroup
+	 * @Flow\Validate(type="NotEmpty")
+	 * @ORM\ManyToOne
+	 */
+	protected $mainTipGroup;
 
 	/**
 	 * getAccount 
@@ -39,6 +48,25 @@ class User {
 	 */
 	public function setAccount($account) {
 		$this->account = $account;
+	} 
+
+	/**
+	 * getMainTipGroup 
+	 * 
+	 * @return TipGroup mainTipGroup
+	 */
+	public function getMainTipGroup() {
+		return $this->mainTipGroup;
+	}
+
+	/**
+	 * setMainTipGroup
+	 * 
+	 * @param TipGroup $mainTipGroup
+	 * @return void
+	 */
+	public function setMainTipGroup($mainTipGroup) {
+		$this->mainTipGroup = $mainTipGroup;
 	} 
 }
 ?>

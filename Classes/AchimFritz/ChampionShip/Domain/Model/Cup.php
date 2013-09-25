@@ -21,7 +21,7 @@ class Cup {
 	 * The name
 	 * @var string
 	 * @Flow\Identity
-     * @Flow\Validate(type="NotEmpty")
+	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $name;
 

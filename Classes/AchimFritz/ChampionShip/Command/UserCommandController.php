@@ -9,7 +9,6 @@ namespace AchimFritz\ChampionShip\Command;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Party\Domain\Model\ElectronicAddress;
 use TYPO3\Party\Domain\Model\Person;
-use TYPO3\Party\Domain\Model\PersonName;
 use AchimFritz\ChampionShip\Domain\Model\User;
 
 /**
@@ -20,67 +19,27 @@ use AchimFritz\ChampionShip\Domain\Model\User;
 class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Factory\UserFactory
 	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Security\AccountRepository
 	 */
-	protected $accountRepository;
-
-	/**
-	 * @Flow\Inject
-	 * @var \TYPO3\Party\Domain\Repository\PartyRepository
-	 */
-	protected $partyRepository;
-
-	/**
-	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Security\AccountFactory
-	 */
-	protected $accountFactory;
-
-	/**
-	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Security\Cryptography\HashService
-	 */
-	protected $hashService;
+	protected $userFactory;
 
 	/**
 	 * Create a new user
 	 *
-	 * This command creates a new user which has access to the backend user interface.
-	 * It is recommended to user the email address as a username.
-	 *
-	 * @param string $username The username of the user to be created.
-	 * @param string $password Password of the user to be created
-	 * @param string $firstName First name of the user to be created
-	 * @param string $lastName Last name of the user to be created
-	 * @param string $email
+	 * @param string $username 
+	 * @param string $nickName
+	 * @param string $tipGroupName
 	 * @return void
 	 */
-	public function createUserCommand($username, $password, $firstName, $lastName, $email) {
-		$roles = 'AchimFritz.ChampionShip:User';
-		$authenticationProvider = 'DefaultProvider';
-		$account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($username, $authenticationProvider);
-		if ($account instanceof \TYPO3\Flow\Security\Account) {
-			$this->outputLine('User "%s" already exists.', array($username));
-			$this->quit(1);
+	public function createUserCommand($username, $nickName, $tipGroupName) {
+		try {
+			$user = $this->userFactory->create($username, $nickName, $tipGroupName);
+			$this->outputLine('user created: ' . $username);
+		} catch (\Exception $e) {
+			$this->outputLine('ERROR ' . $e->getMessage());
 		}
-
-		$person = new Person();
-		$name = new PersonName('', $firstName, '', $lastName, '', $username);
-		$electronicAddress = new ElectronicAddress();
-		$electronicAddress->setIdentifier($email);
-		$electronicAddress->setType(ElectronicAddress::TYPE_EMAIL);
-		$person->setName($name);
-		$person->setPrimaryElectronicAddress($electronicAddress);
-
-		#$this->partyRepository->add($person);
-
-		#$account = $this->accountFactory->createAccountWithPassword($username, $password, explode(',', $roles), $authenticationProvider);
-		#$account->setParty($user);
-		#$this->accountRepository->add($account);
-		#$this->outputLine('Created account "%s".', array($username));
 	}
-
 
 }
 
