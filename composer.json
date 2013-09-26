@@ -6,7 +6,6 @@
 		"vendor-dir": "Resources/Public/Vendor"
 	},
 	"require":{
-		"comensee/jquery-ui": "dev-master",
 		"typo3/flow":"*"
 	},
 	"autoload": {
