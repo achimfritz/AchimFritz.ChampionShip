@@ -2,9 +2,6 @@
 	"name":"achimFritz/championship",
 	"type":"typo3-flow-package",
 	"description":"",
-	"config": {
-		"vendor-dir": "Resources/Public/Vendor"
-	},
 	"require":{
 		"typo3/flow":"*"
 	},
