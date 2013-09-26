@@ -2,7 +2,11 @@
 	"name":"achimFritz/championship",
 	"type":"typo3-flow-package",
 	"description":"",
+	"config": {
+		"vendor-dir": "Resources/Public/Vendor"
+	},
 	"require":{
+		"comensee/jquery-ui": "dev-master"
 		"typo3/flow":"*"
 	},
 	"autoload": {
