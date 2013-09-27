@@ -1,0 +1,18 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Show tip group"{tipGroup.name}"</f:section>
+
+<f:section name="Content">
+	<table>
+		<tr>
+			<th>Name</th>
+			<td>{tipGroup.name}</td>
+		</tr>
+	
+		<tr>
+			<th>Users</th>
+			<td>{tipGroup.users}</td>
+		</tr>
+	</table>
+	<f:link.action action="index">Back</f:link.action>
+</f:section>
