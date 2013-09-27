@@ -1,3 +1,28 @@
+<h4><f:translate id="cups" /></h4>
+<f:if condition="{cups}">
+	<ul>
+		<f:for each="{cups}" as="cup">
+			<li>
+				<f:link.action controller="Cup" action="index" arguments="{cup: cup}" >{cup.name}</f:link.action>
+			</li>
+		</f:for>
+	</ul>
+</f:if>
+<h4><f:translate id="matches" /></h4>
+<ul>
+	<li>
+		<f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
+	</li>
+	<li>
+		<f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
+	</li>
+	<li>
+	<f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
+	</li>
+</ul>
+
+
+
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
    <h4>admin</h4>
    <ul>
@@ -17,59 +42,28 @@
          <f:link.action controller="Account" action="index" package="TYPO3.AccountManagement">(Account)</f:link.action>
       </li>
    </ul>
+	<h5>Matches</h5>
+	<ul>
+		<li>
+			<f:link.action action="index" controller="Match" arguments="{cup: recentCup}">Match</f:link.action>
+		</li>
+		<li>
+			<f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}">GroupMatch</f:link.action>
+		</li>
+		<li>
+			<f:link.action action="index" controller="KoMatch" arguments="{cup: recentCup}">KoMatch</f:link.action>
+		</li>
+	</ul>
+	<h5>Rounds</h5>
+	<ul>
+		<li>
+			<f:link.action action="index" controller="Round" arguments="{cup: recentCup}">Round</f:link.action>
+		</li>
+		<li>
+			<f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup}">GroupRound</f:link.action>
+		</li>
+		<li>
+			<f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}">KoRound</f:link.action>
+		</li>
+	</ul>
 </f:security.ifHasRole>
-<h4>Cups</h4>
-<f:if condition="{cups}">
-<ul>
-   <f:for each="{cups}" as="cup">
-      <li>
-         <f:link.action controller="Cup" action="index" arguments="{cup: cup}" >{cup.name}</f:link.action>
-      </li>
-   </f:for>
-</ul>
-</f:if>
-<h4>Matches</h4>
-<ul>
-   <li>
-      <f:link.action action="index" controller="Match" arguments="{cup: recentCup}">Match</f:link.action>
-   </li>
-   <li>
-      <f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}">GroupMatch</f:link.action>
-   </li>
-   <li>
-      <f:link.action action="index" controller="KoMatch" arguments="{cup: recentCup}">KoMatch</f:link.action>
-   </li>
-</ul>
-<h4>Rounds</h4>
-<ul>
-   <li>
-      <f:link.action action="index" controller="Round" arguments="{cup: recentCup}">Round</f:link.action>
-   </li>
-   <li>
-      <f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup}">GroupRound</f:link.action>
-   </li>
-   <li>
-      <f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}">KoRound</f:link.action>
-   </li>
-</ul>
-<f:security.ifAuthenticated>
-   <h4>Tips</h4>
-   <ul>
-      <li>
-         Groups
-      </li>
-		<li>
-			<ul><li>a</li>
-				<li>b</li></ul>
-      <li>
-         GroupRound  (all)
-      </li>
-      <li>
-         FinalRound
-		<li>
-			<ul><li>achtelfinale</li>
-				<li>viertelfinale</li></ul>
-      <li>
-      </li>
-   </ul>
-</f:security.ifAuthenticated>

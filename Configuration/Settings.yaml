@@ -7,3 +7,5 @@ TYPO3:
           DefaultProvider:
             provider: PersistedUsernamePasswordProvider
             entryPoint: 'WebRedirect'
+    i18n:
+      defaultLocale: de

@@ -6,10 +6,10 @@
 			<ul>
 				<f:for each="{users}" as="user">
 					<li>
-					{user.name}
-						<f:link.action action="show" arguments="{user: user}">Show</f:link.action>
-						<f:link.action action="edit" arguments="{user: user}">Edit</f:link.action>
-						<f:link.action action="delete" arguments="{user: user}">Delete</f:link.action>
+						<ul class="inline">
+							<li>{user.name}</li>
+							<f:render partial="ListActions" arguments="{controller: User, arguments: {user: user}}" />
+						</ul>
 					</li>
 				</f:for>
 			</ul>

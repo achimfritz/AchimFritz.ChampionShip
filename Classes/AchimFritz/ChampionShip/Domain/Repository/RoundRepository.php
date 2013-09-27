@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\Cup;
+use \TYPO3\Flow\Persistence\QueryInterface;
 
 /**
  * A repository for KoRounds
@@ -15,6 +16,16 @@ use AchimFritz\ChampionShip\Domain\Model\Cup;
  * @Flow\Scope("singleton")
  */
 class RoundRepository extends \TYPO3\Flow\Persistence\Repository {
+
+	/**
+	 * __construct 
+	 * 
+	 * @return void
+	 */
+	public function __construct() {
+		parent::__construct();
+		$this->setDefaultOrderings(array('generalMatches.startDate' => QueryInterface::ORDER_ASCENDING));
+	}
 
 	
 	/**
