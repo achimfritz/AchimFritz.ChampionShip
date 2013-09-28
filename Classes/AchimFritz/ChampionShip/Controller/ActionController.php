@@ -36,6 +36,44 @@ class ActionController extends RestController {
     */
    protected $supportedMediaTypes = array('text/html', 'application/json', 'application/xml');
 
+	
+	/**
+	 * Allow creation of resources in createAction()
+	 *
+	 * @return void
+	 */
+	public function initializeCreateAction() {
+		$propertyMappingConfiguration = $this->arguments[$this->resourceArgumentName]->getPropertyMappingConfiguration();
+		$propertyMappingConfiguration->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
+		$propertyMappingConfiguration->allowAllProperties();
+		$propertyMappingConfiguration
+			->forProperty('startDate')
+			->setTypeConverterOption(
+					'TYPO3\Flow\Property\TypeConverter\DateTimeConverter',
+					\TYPO3\Flow\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+					'd.m.Y H:i'
+					);
+	}
+
+	/**
+	 * Allow modification of resources in updateAction()
+	 *
+	 * @return void
+	 */
+	public function initializeUpdateAction() {
+		$propertyMappingConfiguration = $this->arguments[$this->resourceArgumentName]->getPropertyMappingConfiguration();
+		$propertyMappingConfiguration->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_MODIFICATION_ALLOWED, TRUE);
+		$propertyMappingConfiguration->allowAllProperties();
+		$propertyMappingConfiguration
+			->forProperty('startDate')
+			->setTypeConverterOption(
+					'TYPO3\Flow\Property\TypeConverter\DateTimeConverter',
+					\TYPO3\Flow\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+					'd.m.Y H:i'
+					);
+	}
+
+
 	/**
 	 * initializeView
 	 * 

@@ -1,0 +1,18 @@
+<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+<h3>new TipGroup</h3>
+	<f:form class="form-horizontal" action="index" name="tipGroup" method="post">
+		<f:form.hidden property="cup" value="{cup}" />
+		<div class="control-group">
+			<label class="control-label" for="name">name</label>
+			<div class="control-group">
+				<f:form.textfield property="name" id="name" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit class="btn" value="Create" />
+			</div>
+		</div>
+	</f:form>
+</f:security.ifHasRole>
+

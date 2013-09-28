@@ -1,9 +1,6 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<h2>{user.name}</h2>
-
-	<ul>
-		<li><f:link.action action="index">list</f:link.action></li>
-	</ul>
+	<f:render partial="User/Show" arguments="{user: user}" />
+	<f:render partial="User/Edit" arguments="{user: user}" />
 </f:section>

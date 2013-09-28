@@ -1,12 +1,22 @@
-<f:if condition="{teams}">
-	<f:then>
-		<ul>
-			<f:for each="{teams}" as="team">
-				<li>{team.name}</li>
-			</f:for>
-		</ul>
-	</f:then>
-	<f:else>
-		no teams found
-	</f:else>
-</f:if>
+	<f:if condition="{teams}">
+		<f:then>
+			<ul>
+				<f:for each="{teams}" as="team">
+					<li>
+						<ul class="inline">
+							<li>
+								<f:link.action class="btn" controller="Team" action="index" arguments="{team: team}" class="btn">
+									{team.name}
+								</f:link.action>
+							</li>
+							<f:render partial="DeleteAction" arguments="{controller: Team, arguments: {team: team}}" />
+						</ul>
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			<p>No teams created yet.</p>
+		</f:else>
+	</f:if>
+

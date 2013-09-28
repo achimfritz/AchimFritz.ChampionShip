@@ -50,11 +50,11 @@ class UserController extends ActionController {
 	/**
 	 * Adds the given new user object to the user repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\User $newUser A new user to add
+	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user A new user to add
 	 * @return void
 	 */
-	public function createAction(User $newUser) {
-		$this->userRepository->add($newUser);
+	public function createAction(User $user) {
+		$this->userRepository->add($user);
 		$this->addFlashMessage('Created a new user.');
 		$this->redirect('index');
 	}

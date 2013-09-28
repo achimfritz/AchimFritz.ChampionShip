@@ -14,7 +14,12 @@
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 	<td>
 		<ul class="inline">
-		<f:render partial="ListActions" arguments="{controller: Match, arguments: {match: match}}" />
+		<li>
+			<f:link.action action="index" class="btn" controller="Match" arguments="{match: match}">
+				show
+			</f:link.action>
+		</li>
+		<f:render partial="DeleteAction" arguments="{controller: Match, arguments: {match: match}}" />
 		</ul>
 	</td>
 </f:security.ifHasRole>

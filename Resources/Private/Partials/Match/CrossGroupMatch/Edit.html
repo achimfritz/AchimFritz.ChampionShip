@@ -45,9 +45,9 @@
 		</div>
 	</div>
 	<div class="control-group">
-		<label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
+		<label class="control-label" for="startDate">startDate</label>
 		<div class="control-group">
-         <f:form.textfield property="startDate" id="startDate" value="{match.startDate -> f:format.date(format:'Y-m-d\TH:i:sP')}"/>
+         <f:form.textfield property="startDate" id="startDate" class="datetimepicker" value="{match.startDate -> f:format.date(format:'d.m.Y H:i')}"/>
 		</div>
 	</div>
 	<div class="control-group">

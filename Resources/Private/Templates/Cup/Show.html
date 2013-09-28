@@ -3,32 +3,37 @@
 
 <f:section name="Content">
 	<f:render partial="Cup/Show" arguments="{cup: cup, groupRounds: groupRounds, koRounds: koRounds}" />
-	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<h3>edit Cup</h3>
+	<f:render partial="Cup/Edit" arguments="{cup: cup, allTeams: allTeams}" />
 
-		<f:form action="index" method="put" object="{cup}" name="cup">
-			<f:form.hidden name="__method" value="PUT" />
-			<div class="control-group">
-				<label class="control-label" for="name">Name</label>
-				<div class="controlls"><f:form.textfield property="name" id="name" /></div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
-				<div class="control-group">
-					<f:form.textfield property="startDate" id="startDate" value="{cup.startDate -> f:format.date(format:'Y-m-d\TH:i:sP')}" />
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="teams">Teams</label>
-				<div class="controlls">
-					<f:form.select multiple="1" options="{allTeams}" property="teams" id="teams" optionLabelField="name" />
-				</div>
-			</div>
-			<div class="control-group">
-				<div class="controls">
-					<f:form.submit value="Update" class="btn"/>
-				</div>
-			</div>
-		</f:form>
-	</f:security.ifHasRole>
+	<f:if condition="{cup.teams}">
+		<f:then>
+			<h3>Teams</h3>
+			<f:render partial="Team/List" arguments="{teams: cup.teams}" />
+		</f:then>
+		<f:else>
+			<p>no Teams</p>
+		</f:else>
+	</f:if>
+	
+	<f:if condition="{groupRounds}">
+		<f:then>
+			<h3>GroupRounds</h3>
+			<f:render partial="Round/List" arguments="{rounds: groupRounds}" />
+		</f:then>
+		<f:else>
+			<p>no GroupRounds</p>
+		</f:else>
+	</f:if>
+	
+	<f:if condition="{koRounds}">
+		<f:then>
+			<h3>KoRounds</h3>
+			<f:render partial="Round/List" arguments="{rounds: koRounds}" />
+		</f:then>
+		<f:else>
+			<p>no KoRounds</p>
+		</f:else>
+	</f:if>
+
+
 </f:section>

@@ -1,0 +1,7 @@
+	<h3>{user.name}</h3>
+	<ul class="inline">
+		<li>
+			<f:link.action action="index" controller="User" class="btn">list</f:link.action>
+		</li>
+		<f:render partial="DeleteAction" arguments="{controller: User, arguments: {user: user}}" />
+	</ul>

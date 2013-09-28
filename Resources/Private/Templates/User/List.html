@@ -1,24 +1,6 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<f:if condition="{users}">
-		<f:then>
-			<ul>
-				<f:for each="{users}" as="user">
-					<li>
-						<ul class="inline">
-							<li>{user.name}</li>
-							<f:render partial="ListActions" arguments="{controller: User, arguments: {user: user}}" />
-						</ul>
-					</li>
-				</f:for>
-			</ul>
-		</f:then>
-		<f:else>
-			<p>No users created yet.</p>
-		</f:else>
-	</f:if>
-	<ul>
-		<li><f:link.action action="new">Create a new user</f:link.action></li>
-	</ul>
+	<f:render partial="User/List" arguments="{users: users}" />
+	<f:render partial="User/New" />
 </f:section>

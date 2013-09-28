@@ -1,8 +1,5 @@
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 	<li>
-		<f:link.action class="btn" controller="{controller}"action="show" arguments="{arguments}">show</f:link.action>
-	</li>
-	<li>
 		<f:form action="index" method="delete" controller="{controller}" arguments="{arguments}">
 			<f:form.hidden name="__method" value="DELETE" />
 			<f:form.submit name="submit" value="delete" class="btn" />

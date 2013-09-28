@@ -1,0 +1,22 @@
+	<f:if condition="{tipGroups}">
+		<f:then>
+			<ul>
+				<f:for each="{tipGroups}" as="tipGroup">
+					<li>
+						<ul class="inline">
+							<li>
+								<f:link.action controller="TipGroup" action="index" class="btn" arguments="{tipGroup: tipGroup, cup: cup}">
+									{tipGroup.name}
+								</f:link.action>
+							</li>
+							<f:render partial="DeleteAction" arguments="{controller: TipGroup, arguments: {tipGroup: tipGroup, cup: cup}}" />
+						</ul>
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			<p>No tip groups created yet.</p>
+		</f:else>
+	</f:if>
+

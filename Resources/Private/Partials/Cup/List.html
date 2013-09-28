@@ -1,14 +1,14 @@
 <ul>
 	<f:for each="{cups}" as="cup">
 		<li>
-			{cup.name}
-			<f:link.action class="btn" action="index" arguments="{cup: cup}">Show</f:link.action>
-			<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-				<f:form action="index" method="delete" arguments="{cup: cup}">
-					<f:form.hidden name="__method" value="DELETE" />
-					<f:form.submit name="submit" value="delete" class="btn" />
-				</f:form>
-			</f:security.ifHasRole>
+			<ul class="inline">
+				<li>
+					<f:link.action class="btn" action="index" arguments="{cup: cup}">	
+					{cup.name}
+					</f:link.action>
+				</li>
+				<f:render partial="DeleteAction" arguments="{controller: Cup, arguments: {cup: cup}}" />
+			</ul>
 		</li>
 	</f:for>
 </ul>

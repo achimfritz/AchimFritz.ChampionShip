@@ -1,0 +1,22 @@
+	<f:if condition="{users}">
+		<f:then>
+			<ul>
+				<f:for each="{users}" as="user">
+					<li>
+						<ul class="inline">
+							<li>
+								<f:link.action class="btn" action="index" controller="User" arguments="{user: user}">
+									{user.name}
+								</f:link.action>
+							</li>
+							<f:render partial="DeleteAction" arguments="{controller: User, arguments: {user: user}}" />
+						</ul>
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			<p>No users created yet.</p>
+		</f:else>
+	</f:if>
+
