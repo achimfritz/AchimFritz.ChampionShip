@@ -117,5 +117,32 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
    public function setHostMatchIsWinner($hostMatchIsWinner) {
       $this->hostMatchIsWinner = $hostMatchIsWinner;
    }
+
+
+	/**
+	 * getCurrentHostTeam 
+	 * 
+	 * @return Team|NULL
+	 */
+	public function getCurrentHostTeam() {
+		if ($this->getHostMatchIsWinner() === TRUE) {
+			return $this->getHostMatch()->getWinnerTeam();
+		} else {
+			return $this->getHostMatch()->getLooserTeam();
+		}
+	}
+
+	/**
+	 * getCurrentGuestTeam 
+	 * 
+	 * @return Team|NULL
+	 */
+	public function getCurrentGuestTeam() {
+		if ($this->getGuestMatchIsWinner() === TRUE) {
+			return $this->getGuestMatch()->getWinnerTeam();
+		} else {
+			return $this->getGuestMatch()->getLooserTeam();
+		}
+	}
 }
 ?>

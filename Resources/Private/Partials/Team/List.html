@@ -5,9 +5,16 @@
 					<li>
 						<ul class="inline">
 							<li>
-								<f:link.action class="btn" controller="Team" action="index" arguments="{team: team}" class="btn">
-									{team.name}
-								</f:link.action>
+								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+									<f:then>
+										<f:link.action class="btn" controller="Team" action="index" arguments="{team: team}" class="btn">
+											{team.name}
+										</f:link.action>
+									</f:then>
+									<f:else>
+										{team.name}
+									</f:else>
+								</f:security.ifHasRole>
 							</li>
 							<f:render partial="DeleteAction" arguments="{controller: Team, arguments: {team: team}}" />
 						</ul>

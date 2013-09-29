@@ -3,43 +3,7 @@
 <f:section name="Content">
 
 	<f:render partial="Round/List" arguments="{rounds: rounds}" />
+	<f:render partial="Round/KoRound/New" arguments="{recentCup: recentCup}" />
+	<f:render partial="Round/ChildKoRound/New" arguments="{recentCup: recentCup, allKoRounds: allKoRounds}" />
 
-	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<h4>new KoRound</h4>
-
-		<f:form action="index" name="round" method="post" controller="KoRound" arguments="{cup: recentCup}">
-			<f:form.hidden property="cup" value="{recentCup}" />
-			<div class="control-group">
-				<label class="control-label" for="name">Name</label>
-				<div class="control-group"><f:form.textfield property="name" id="name" /></div>
-			</div>
-			
-			<div class="control-group">
-				<div class="controls">
-					<f:form.submit value="Create" class="btn"/>
-				</div>
-			</div>
-		</f:form>
-		<h4>new ChildKoRound</h4>
-
-		<f:form action="index" name="round" method="post" controller="ChildKoRound" arguments="{cup: recentCup}">
-			<f:form.hidden property="cup" value="{recentCup}" />
-			<div class="control-group">
-				<label class="control-label" for="name">Name</label>
-				<div class="control-group"><f:form.textfield property="name" id="name" /></div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="parentRound">parentRound</label>
-					<div class="controlls">
-						<f:form.select  options="{allKoRounds}" property="parentRound" id="parentRound" optionLabelField="name" />
-					</div>
-			</div>
-			
-			<div class="control-group">
-				<div class="controls">
-					<f:form.submit value="Create" class="btn"/>
-				</div>
-			</div>
-		</f:form>
-	</f:security.ifHasRole>
 </f:section>

@@ -110,7 +110,7 @@ class CupController extends ActionController {
 		try {
 			$this->cupRepository->remove($cup);
 			$this->persistenceManager->persistAll();
-			$this->addOkMessage('cup deletet');
+			$this->addOkMessage('cup deleted');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot delete cup');
 			$this->handleException($e);

@@ -1,6 +1,7 @@
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-<h3>new TipGroup</h3>
-	<f:form class="form-horizontal" action="index" name="tipGroup" method="post">
+<h3>edit TipGroup</h3>
+	<f:form class="form-horizontal" action="index" name="tipGroup" object="{tipGroup}">
+		<f:form.hidden name="__method" value="PUT" />
 		<div class="control-group">
 			<label class="control-label" for="name">name</label>
 			<div class="control-group">
@@ -15,7 +16,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<f:form.submit class="btn" value="Create" />
+				<f:form.submit class="btn" value="Update" />
 			</div>
 		</div>
 	</f:form>

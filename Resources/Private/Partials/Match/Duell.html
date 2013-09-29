@@ -14,6 +14,9 @@
          <f:else>
             <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
                winner of {match.hostMatch.name}
+				<f:if condition="{match.currentHostTeam}">
+					({match.currentHostTeam.name})
+				</f:if>
             </cs:ifIsTeamsOfTwoMatchesMatch>
          </f:else>
       </cs:ifIsCrossGroupMatch> 
@@ -36,6 +39,9 @@
          <f:else>
             <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
                winner of {match.guestMatch.name}
+					<f:if condition="{match.currentGuestTeam}">
+						({match.currentGuestTeam.name})
+					</f:if>
             </cs:ifIsTeamsOfTwoMatchesMatch>
          </f:else>
       </cs:ifIsCrossGroupMatch> 

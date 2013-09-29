@@ -67,29 +67,50 @@ class Match {
 	 */
 	protected $name = '';
 
-   /**
-    * getTeamHasWonThisMatch 
-    * 
-    * @param \AchimFritz\ChampionShip\Domain\Model\Team $team 
-    * @return boolean
-    */
-   public function getTeamHasWonThisMatch(\AchimFritz\ChampionShip\Domain\Model\Team $team) {
-   /*
+
+	/**
+	 * getLooserTeam 
+	 * 
+	 * @return Team|NULL
+	 */
+	public function getLooserTeam() {
       $result = $this->getResult();
-		$host = $this->getHostParticipant();
-		$guest = $this->getGuestParticipant();
-		if (!isset($host) OR !isset($guest) OR !isset($result)) {
-			return FALSE;
+		if ($result instanceof Result) {
+			if ($result->getHostTeamGoals() < $result->getGuestTeamGoals()) {
+				if ($this->getHostTeam() instanceof Team) {
+					return $this->getHostTeam();
+				}
+			}
+			if ($result->getHostTeamGoals() > $result->getGuestTeamGoals()) {
+				if ($this->getGuestTeam() instanceof Team) {
+					return $this->getGuestTeam();
+				}
+			}
 		}
-      if ($host->getTeam() === $team AND $result->getHostTeamGoals() > $result->getGuestTeamGoals()) {
-         return TRUE;
-      }
-      if ($guest->getTeam() === $team AND $result->getHostTeamGoals() < $result->getGuestTeamGoals()) {
-         return TRUE;
-      }
-*/
-      return FALSE;
-   }
+		return NULL;
+	}
+	
+	/**
+	 * getWinnerTeam 
+	 * 
+	 * @return Team|NULL
+	 */
+	public function getWinnerTeam() {
+      $result = $this->getResult();
+		if ($result instanceof Result) {
+			if ($result->getHostTeamGoals() > $result->getGuestTeamGoals()) {
+				if ($this->getHostTeam() instanceof Team) {
+					return $this->getHostTeam();
+				}
+			}
+			if ($result->getHostTeamGoals() < $result->getGuestTeamGoals()) {
+				if ($this->getGuestTeam() instanceof Team) {
+					return $this->getGuestTeam();
+				}
+			}
+		}
+		return NULL;
+	}
 	
 	/**
 	 * twoTeamsPlayThisMatch
@@ -98,7 +119,7 @@ class Match {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Team
 	 * @return boolean
 	 */
-	public function getTwoTeamsPlayThisMatch(\AchimFritz\ChampionShip\Domain\Model\Team $teamOne, \AchimFritz\ChampionShip\Domain\Model\Team $teamTwo) {
+	public function getTwoTeamsPlayThisMatch(Team $teamOne, Team $teamTwo) {
 		$hostTeam = $this->getHostTeam();
 		$guestTeam = $this->getGuestTeam();
 		if (!isset($hostTeam) OR !isset($guestTeam)) {

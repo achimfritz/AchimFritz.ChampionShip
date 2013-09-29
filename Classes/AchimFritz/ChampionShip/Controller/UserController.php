@@ -19,6 +19,12 @@ class UserController extends ActionController {
 
 	/**
 	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
+	 */
+	protected $tipGroupRepository;
+
+	/**
+	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
@@ -44,6 +50,8 @@ class UserController extends ActionController {
 	 * @return void
 	 */
 	public function showAction(User $user) {
+		$tipGroups = $this->tipGroupRepository->findByUser($user);
+		$this->view->assign('tipGroups', $tipGroups);
 		$this->view->assign('user', $user);
 	}
 
@@ -54,8 +62,14 @@ class UserController extends ActionController {
 	 * @return void
 	 */
 	public function createAction(User $user) {
-		$this->userRepository->add($user);
-		$this->addFlashMessage('Created a new user.');
+		try {
+			$this->userRepository->add($user);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('user created');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot create user');
+			$this->handleException($e);
+		}		
 		$this->redirect('index');
 	}
 
@@ -66,8 +80,14 @@ class UserController extends ActionController {
 	 * @return void
 	 */
 	public function updateAction(User $user) {
-		$this->userRepository->update($user);
-		$this->addFlashMessage('Updated the user.');
+		try {
+			$this->userRepository->update($user);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('user updated');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot update user');
+			$this->handleException($e);
+		}		
 		$this->redirect('index');
 	}
 
@@ -78,8 +98,14 @@ class UserController extends ActionController {
 	 * @return void
 	 */
 	public function deleteAction(User $user) {
-		$this->userRepository->remove($user);
-		$this->addFlashMessage('Deleted a user.');
+		try {
+			$this->userRepository->remove($user);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('user deleted');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot delete user');
+			$this->handleException($e);
+		}		
 		$this->redirect('index');
 	}
 

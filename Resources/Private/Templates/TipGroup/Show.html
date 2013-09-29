@@ -1,19 +1,7 @@
 <f:layout name="Default" />
 
-<f:section name="Title">Show tip group"{tipGroup.name}"</f:section>
-
 <f:section name="Content">
-	<h2>{tipGroup.name}</h2>
-	<table>
-		<tr>
-			<th>Name</th>
-			<td>{tipGroup.name}</td>
-		</tr>
-	
-		<tr>
-			<th>Users</th>
-			<td>{tipGroup.users}</td>
-		</tr>
-	</table>
-	<f:link.action action="index">Back</f:link.action>
+	<f:render partial="TipGroup/Show" arguments="{tipGroup: tipGroup}" />
+	<f:render partial="User/List" arguments="{users: tipGroup.users}" />
+	<f:render partial="TipGroup/Edit" arguments="{tipGroup: tipGroup, allUsers: allUsers}" />
 </f:section>

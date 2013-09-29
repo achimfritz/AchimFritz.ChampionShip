@@ -1,0 +1,21 @@
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+<f:if condition="{match.currentHostTeam}">
+	<h4>set hostTeam</h4>
+	<f:form action="index" object="{match}"  name="match" controller="CrossGroupMatch" method="put">
+		<f:form.hidden name="__method" value="PUT" />
+		<div class="control-group">
+			<label class="control-label" for="hostTeam">hostTeam {match.currentHostTeam.name}</label>
+			<div class="controlls">
+				<f:form.hidden property="hostTeam" id="hostTeam" value="{match.currentHostTeam}" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit value="Update" class="btn"/>
+			</div>
+		</div>
+	</f:form>
+</f:if>
+	</f:security.ifHasRole>
+

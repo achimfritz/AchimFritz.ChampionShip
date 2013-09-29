@@ -13,6 +13,12 @@ class TipGroupController extends ActionController {
 
 	/**
 	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
+
+	/**
+	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
 	 */
 	protected $tipGroupRepository;
@@ -26,6 +32,7 @@ class TipGroupController extends ActionController {
 	 * @return void
 	 */
 	public function listAction() {
+		$this->view->assign('allUsers', $this->userRepository->findAll());
 		$this->view->assign('tipGroups', $this->tipGroupRepository->findAll());
 	}
 
@@ -34,22 +41,23 @@ class TipGroupController extends ActionController {
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {
+		$this->view->assign('allUsers', $this->userRepository->findAll());
 		$this->view->assign('tipGroup', $tipGroup);
 	}
 
 	/**
+	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
-	public function newAction() {
-	}
-
-	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $newTipGroup
-	 * @return void
-	 */
-	public function createAction(TipGroup $newTipGroup) {
-		$this->tipGroupRepository->add($newTipGroup);
-		$this->addFlashMessage('Created a new tip group.');
+	public function createAction(TipGroup $tipGroup) {
+		try {
+			$this->tipGroupRepository->add($tipGroup);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('tipGroup created');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot create tipGroup');
+			$this->handleException($e);
+		}		
 		$this->redirect('index');
 	}
 
@@ -57,17 +65,15 @@ class TipGroupController extends ActionController {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
-	public function editAction(TipGroup $tipGroup) {
-		$this->view->assign('tipGroup', $tipGroup);
-	}
-
-	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
-	 * @return void
-	 */
 	public function updateAction(TipGroup $tipGroup) {
-		$this->tipGroupRepository->update($tipGroup);
-		$this->addFlashMessage('Updated the tip group.');
+		try {
+			$this->tipGroupRepository->update($tipGroup);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('tipGroup updated');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot update tipGroup');
+			$this->handleException($e);
+		}		
 		$this->redirect('index');
 	}
 
@@ -76,8 +82,14 @@ class TipGroupController extends ActionController {
 	 * @return void
 	 */
 	public function deleteAction(TipGroup $tipGroup) {
-		$this->tipGroupRepository->remove($tipGroup);
-		$this->addFlashMessage('Deleted a tip group.');
+		try {
+			$this->tipGroupRepository->remove($tipGroup);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('tipGroup deleted');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot delete tipGroup');
+			$this->handleException($e);
+		}		
 		$this->redirect('index');
 	}
 

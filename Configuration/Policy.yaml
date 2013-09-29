@@ -4,6 +4,8 @@ resources:
     AchimFritz_ChampionShipDeleteMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->deleteAction())'
     AchimFritz_ChampionShipNewMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->newAction())'
     AchimFritz_ChampionShipTipMethods: 'method(AchimFritz\ChampionShip\Controller\TipController->.*())'
+    AchimFritz_ChampionShipUserController: 'method(AchimFritz\ChampionShip\Controller\UserController->.*())'
+    AchimFritz_ChampionShipTipGroupController: 'method(AchimFritz\ChampionShip\Controller\TipGroupController->.*())'
 
 roles:
   Administrator: []
@@ -18,3 +20,5 @@ acls:
       AchimFritz_ChampionShipEditMethods: GRANT
       AchimFritz_ChampionShipDeleteMethods: GRANT
       AchimFritz_ChampionShipNewMethods: GRANT
+      AchimFritz_ChampionShipTipGroupController: GRANT
+      AchimFritz_ChampionShipUserController: GRANT

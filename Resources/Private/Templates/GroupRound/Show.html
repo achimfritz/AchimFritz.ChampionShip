@@ -4,67 +4,7 @@
 
 	<f:link.action class="btn" action="index" arguments="{cup: round.cup}">list</f:link.action>
 	<f:render partial="Round/Show" arguments="{round: round}" />
-	
-	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+	<f:render partial="Round/GroupRound/Edit" arguments="{round: round}" />
+	<f:render partial="Match/GroupMatch/New" arguments="{recentCup: recentCup, round: round}" />
 
-		<h3>new match </h3>
-		<f:form action="index" name="match" controller="GroupMatch" method="post">
-			<f:form.hidden property="cup" value="{recentCup}" />
-			<f:form.hidden property="round" value="{round}" />
-			<div class="control-group">
-				<label class="control-label" for="name">name</label>
-				<div class="control-group">
-					<f:form.textfield property="name" id="name" />
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="startDate">startDate (Y-m-d\TH:i:sP, 2005-08-15T15:52:01+00:00)</label>
-				<div class="control-group">
-					<f:form.textfield property="startDate" id="startDate" />
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="hostTeam">hostTeam</label>
-					<div class="controlls">
-						<f:form.select  options="{round.Teams}" property="hostTeam" id="hostTeam" optionLabelField="name" />
-					</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="guestTeam">guestTeam</label>
-					<div class="controlls">
-						<f:form.select  options="{round.Teams}" property="guestTeam" id="guestTeam" optionLabelField="name" />
-					</div>
-			</div>
-
-			<div class="control-group">
-					<div class="controls">
-						<f:form.submit value="Create" class="btn"/>
-					</div>
-				</div>
-		</f:form>
-
-
-		<h3>edit round</h3>
-		<f:form action="index" object="{round}" name="round" method="put">
-			<f:form.hidden name="__method" value="PUT" />
-			<div class="control-group">
-				<label class="control-label"for="name">Name</label>
-				<div class="controls"><f:form.textfield property="name" id="name" /></div>
-			</div>
-				
-			<div class="control-group">
-				<label class="control-label" for="teams">Teams</label>
-				<div class="controls">
-					<f:form.select multiple="1" options="{round.cup.teams}" property="teams" id="teams" optionLabelField="name" />
-				</div>
-			</div>
-				
-			
-			<div class="control-group">
-				<div class="controls">
-					<f:form.submit value="Update" class="btn"/>
-				</div>
-			</div>
-		</f:form>
-	</f:security.ifHasRole>
 </f:section>

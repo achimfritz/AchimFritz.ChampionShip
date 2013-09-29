@@ -5,3 +5,7 @@
 		</li>
 		<f:render partial="DeleteAction" arguments="{controller: User, arguments: {user: user}}" />
 	</ul>
+	<h4>mainTipGroup</h4>
+	<f:link.action action="index" controller="TipGroup" arguments="{tipGroup: user.mainTipGroup}" class="btn">
+		{user.mainTipGroup.name}
+	</f:link.action>
