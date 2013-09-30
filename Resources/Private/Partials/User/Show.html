@@ -9,3 +9,14 @@
 	<f:link.action action="index" controller="TipGroup" arguments="{tipGroup: user.mainTipGroup}" class="btn">
 		{user.mainTipGroup.name}
 	</f:link.action>
+
+<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+	<h4>init/update tips</h4>
+	<li>
+		<f:form action="index" method="post" controller="TipCreator" arguments="{user: user}">
+			<f:form.hidden name="__method" value="UPDATE" />
+			<f:form.submit name="submit" value="update" class="btn" />
+		</f:form>
+	</li>
+</f:security.ifHasRole>
+

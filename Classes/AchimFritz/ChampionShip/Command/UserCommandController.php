@@ -20,6 +20,12 @@ use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Factory\TipFactory
+	 * @Flow\Inject
+	 */
+	protected $tipFactory;
+
+	/**
 	 * @var \AchimFritz\ChampionShip\Domain\Factory\UserFactory
 	 * @Flow\Inject
 	 */
@@ -30,6 +36,12 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @Flow\Inject
 	 */
 	protected $tipGroupRepository;
+
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 * @Flow\Inject
+	 */
+	protected $userRepository;
 
 	/**
 	 * Create a new user
@@ -53,6 +65,23 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 			$this->outputLine('user created: ' . $username);
 		} catch (\Exception $e) {
 			$this->outputLine('ERROR ' . $e->getMessage());
+		}
+	}
+
+	/**
+	 * initTipCommand ($username)
+	 * 
+	 * @param string $username 
+	 * @return void
+	 */
+	public function initTipCommand($username) {
+		$user = $this->userRepository->findOneByUsername($username);
+		if ($user instanceof User) {
+			$this->outputLine($user->getName());
+			$tips = $this->tipFactory->initTips($user);
+			$this->outputLine('has ' . count($tips) . ' tips');
+		} else {
+			$this->outputline('no user found with username ' . $username);
 		}
 	}
 
