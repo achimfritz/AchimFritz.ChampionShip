@@ -7,6 +7,7 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use \AchimFritz\ChampionShip\Domain\Model\User;
 
 /**
  * Standard controller for the AchimFritz.ChampionShip package 
@@ -16,12 +17,39 @@ use TYPO3\Flow\Annotations as Flow;
 class TipController extends ActionController {
 
 	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 * @Flow\Inject
+	 */
+	protected $tipRepository;
+
+	/**
+	 * @var string
+	 */
+	protected $resourceArgumentName = 'tip';
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
+
+	/**
+	 * @var \TYPO3\Flow\Security\Context
+	 * @Flow\Inject
+	 */
+	protected $securityContext;
+
+
+	/**
 	 * Index action
 	 *
 	 * @return void
 	 */
 	public function indexAction() {
-		return 'foo';
+		$account = $this->securityContext->getAccount();
+		$user = $this->userRepository->findOneByAccout($account);
+		$tips = $this->tipRepository->findGroupMatchesByUser($user);
+		return count($tips);
 	}
 
 }

@@ -30,6 +30,18 @@ class GroupMatchTipController extends ActionController {
 	 * @var string
 	 */
 	protected $resourceArgumentName = 'tip';
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
+
+	/**
+	 * @var \TYPO3\Flow\Security\Context
+	 * @Flow\Inject
+	 */
+	protected $securityContext;
 	
 	/**
 	 * listAction
@@ -37,12 +49,17 @@ class GroupMatchTipController extends ActionController {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
 	 */
 	public function listAction(Cup $cup) {
+		$account = $this->securityContext->getAccount();
+		$user = $this->userRepository->findOneByAccount($account);
+		$tips = $this->tipRepository->findByUser($user);
+		return count($tips) . 'x';
+		$account = $this->securityContext->getAccount();
+		return $account->getAccountIdentifier();
 		#$matches = $this->matchRepository->findByCup($cup);
 		#$this->view->assign('matches', $matches);
 		#$this->view->assign('allTeams', $this->teamRepository->findAll());
 		#$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
 		#$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
-		return 'foo';
 	}
 
 

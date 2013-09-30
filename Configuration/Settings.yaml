@@ -7,5 +7,10 @@ TYPO3:
           DefaultProvider:
             provider: PersistedUsernamePasswordProvider
             entryPoint: 'WebRedirect'
+            entryPointOptions:
+              routeValues:
+                '@package': 'AchimFritz.Championship'
+                '@controller': 'Standard'
+                '@action': 'index'
     i18n:
       defaultLocale: de

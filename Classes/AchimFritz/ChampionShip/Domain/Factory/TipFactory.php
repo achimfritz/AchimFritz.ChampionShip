@@ -10,7 +10,7 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Account;
 use AchimFritz\ChampionShip\Domain\Model\User;
 use AchimFritz\ChampionShip\Domain\Model\Tip;
-use \Doctrine\Common\Collections\Collection;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * A TipFactory
@@ -38,9 +38,26 @@ class TipFactory {
 	 * @return Collection<Tip>
 	 */
 	public function initTips(User $user) {
-		$tips = $this->tipRepository->findByUser($user);
+		$existingTips = $this->tipRepository->findByUser($user);
+		var_dump(sizeof($existingTips));
+		$tips = new ArrayCollection();
 		$matches = $this->matchRepository->findAll();
 		foreach ($matches AS $match) {
+			$tipExists = FALSE;
+			foreach ($existingTips AS $tip) {
+				if ($tip->getMatch() === $match) {
+					$tipExists = TRUE;
+					$tips->add($tip);
+					continue;
+				}
+			}
+			if ($tipExists === FALSE) {
+				$tip = new Tip();
+				$tip->setMatch($match);
+				$tip->setUser($user);
+				$this->tipRepository->add($tip);
+				$tips->add($tip);
+			}
 		}
 		return $tips;
 	}

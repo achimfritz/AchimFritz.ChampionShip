@@ -36,7 +36,6 @@ class Tip {
 	 * The restult
 	 * @var \AchimFritz\ChampionShip\Domain\Model\Result
 	 * @ORM\OneToOne
-	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $result;
 

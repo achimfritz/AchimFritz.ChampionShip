@@ -7,7 +7,6 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-
 use \AchimFritz\ChampionShip\Domain\Model\User;
 
 /**
@@ -22,6 +21,12 @@ class UserController extends ActionController {
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
 	 */
 	protected $tipGroupRepository;
+
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 * @Flow\Inject
+	 */
+	protected $tipRepository;
 
 	/**
 	 * @Flow\Inject
@@ -50,7 +55,9 @@ class UserController extends ActionController {
 	 * @return void
 	 */
 	public function showAction(User $user) {
+		$tips = $this->tipRepository->findByUser($user);
 		$tipGroups = $this->tipGroupRepository->findByUser($user);
+		$this->view->assign('countOfTips', count($tips));
 		$this->view->assign('tipGroups', $tipGroups);
 		$this->view->assign('user', $user);
 	}
