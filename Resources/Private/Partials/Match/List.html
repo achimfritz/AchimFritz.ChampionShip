@@ -4,11 +4,6 @@
 			<f:for each="{matches}" as="match">
 				<tr>
 					<f:render partial="Match/Show" arguments="{match: match}" />
-						<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
-							<td>
-								<f:render partial="Match/Tip" arguments="{match: match}" />
-							</td>
-						</f:security.ifHasRole>
 				</tr>
 			</f:for>
 		</table>

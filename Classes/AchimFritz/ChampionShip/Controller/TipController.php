@@ -7,7 +7,8 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Domain\Model\User;
+use \AchimFritz\ChampionShip\Domain\Model\Tip;
+use \AchimFritz\ChampionShip\Domain\Model\Result;
 
 /**
  * Standard controller for the AchimFritz.ChampionShip package 
@@ -28,29 +29,32 @@ class TipController extends ActionController {
 	protected $resourceArgumentName = 'tip';
 
 	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
-
-	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
-
-
-	/**
 	 * Index action
 	 *
 	 * @return void
 	 */
-	public function indexAction() {
-		$account = $this->securityContext->getAccount();
-		$user = $this->userRepository->findOneByAccout($account);
-		$tips = $this->tipRepository->findGroupMatchesByUser($user);
-		return count($tips);
+	public function showAction(Tip $tip) {
+		$this->view->assign('tip', $tip);
 	}
+
+	/**
+	 * UpdateAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip
+	 * @return void
+	 */
+	public function updateAction(Tip $tip) {
+		try {
+			$this->tipRepository->update($tip);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('tip updated');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot update tip');
+			$this->handleException($e);
+		}
+		$this->redirect('show', NULL, NULL, array('tip' => $tip));
+	}
+
 
 }
 

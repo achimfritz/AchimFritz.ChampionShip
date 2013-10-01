@@ -138,38 +138,6 @@ class Match {
 	}
 	
 	/**
-	 * changeHost
-	 * 
-	 * @return void
-	 */
-	public function changeHost() {
-/*
-		$host = $this->getHostParticipant();
-		$guest = $this->getGuestParticipant();
-		if (!isset($host) OR !isset($guest)) {
-			return FALSE;
-		}
-		$hostTeam = $host->getTeam();
-		$guestTeam = $guest->getTeam();
-		if (isset($hostTeam) AND isset($guestTeam)) {
-			$this->getHostParticipant()->setTeam($guestTeam);
-			$this->getGuestParticipant()->setTeam($hostTeam);
-		} else {
-			throw new Excpetion('todo change winner/looser');
-			$this->setHostParticipant($guest);
-			$this->setGuestParticipant($host);
-		}
-		$result = $this->getResult();
-		if (isset($result)) {
-			$goalsHostTeam = $result->getHostTeamGoals();
-			$goalsGuestTeam = $result->getGuestTeamGoals();
-			$this->getResult()->setGuestTeamGoals($goalsHostTeam);
-			$this->getResult()->setHostTeamGoals($goalsGuestTeam);
-		}
-*/
-	}
-	
-	/**
 	 * getName
 	 *
 	 * @return string name

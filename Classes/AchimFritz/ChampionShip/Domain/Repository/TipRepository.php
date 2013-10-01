@@ -21,7 +21,7 @@ use \Doctrine\Common\Collections\ArrayCollection;
 class TipRepository extends Repository {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupMatchRepository
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
 	 * @Flow\Inject
 	 */
 	protected $matchRepository;

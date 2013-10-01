@@ -1,0 +1,20 @@
+<f:if condition="{tips}">
+	<f:then>
+		<table class="table">
+			<f:for each="{tips}" as="tip">
+				<tr>
+					<f:render partial="Match/Show" arguments="{match: tip.match}" />
+					<td>
+						<f:render partial="Tip/Show" arguments="{tip: tip}" />
+					</td>
+					<td>
+						<f:link.action action="index" controller="Tip" arguments="{tip: tip}" class="btn">show</f:link.action>
+					</td>
+				</tr>
+			</f:for>
+		</table>
+	</f:then>
+	<f:else>
+		<p>No tips created yet.</p>
+	</f:else>
+</f:if>

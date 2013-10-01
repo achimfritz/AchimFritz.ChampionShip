@@ -94,7 +94,7 @@ class Tip {
 	 * @return void
 	 */
 	public function setResult(\AchimFritz\ChampionShip\Domain\Model\Result $result) {
-		$this->restult = $result;
+		$this->result = $result;
 	}
 
 }
