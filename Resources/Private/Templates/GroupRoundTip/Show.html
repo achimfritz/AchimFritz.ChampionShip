@@ -1,0 +1,7 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+
+	<f:link.action class="btn" action="index" arguments="{cup: round.cup}">list</f:link.action>
+	<f:render partial="Tip/GroupRound" arguments="{round: round, tips: tips}" />
+</f:section>

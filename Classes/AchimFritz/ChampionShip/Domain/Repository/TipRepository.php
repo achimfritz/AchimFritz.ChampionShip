@@ -8,8 +8,10 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\User;
-use \TYPO3\Flow\Persistence\QueryInterface;
+use AchimFritz\ChampionShip\Domain\Model\Cup;
+use AchimFritz\ChampionShip\Domain\Model\Round;
 use \TYPO3\Flow\Persistence\Repository;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * A repository for TipGroups
@@ -19,13 +21,61 @@ use \TYPO3\Flow\Persistence\Repository;
 class TipRepository extends Repository {
 
 	/**
-	 * findGroupMatchesByUser 
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupMatchRepository
+	 * @Flow\Inject
+	 */
+	protected $matchRepository;
+
+	/**
+	 * findGroupMatchTipsByUserInCup
 	 * 
 	 * @param User $user 
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @param Cup $cup
+	 * @return ArrayCollection
 	 */
-	public function findGroupMatchesByUser(User $user) {
-		return $this->findByUser($user);
+	public function findGroupMatchTipsByUserInCup(User $user, Cup $cup) {
+		// TODO and Cup?
+		$all = $this->findByUser($user);
+		$tips = new ArrayCollection();
+		$matches = $this->matchRepository->findByCup($cup);
+		foreach ($matches AS $match) {
+			foreach ($all AS $tip) {
+				if ($tip->getMatch() === $match) {
+					$tips->add($tip);
+					continue;
+				}
+			}
+		}
+		if (count($tips) != count($matches)) {
+			// TODO
+		}
+		return $tips;
+	}
+
+	/**
+	 * findMatchTipsByUserInRound 
+	 * 
+	 * @param User $user 
+	 * @param GroupRound $round 
+	 * @return ArrayCollection
+	 */
+	public function findMatchTipsByUserInRound(User $user, Round $round) {
+		// TODO and Cup?
+		$all = $this->findByUser($user);
+		$tips = new ArrayCollection();
+		$matches = $this->matchRepository->findByRound($round);
+		foreach ($matches AS $match) {
+			foreach ($all AS $tip) {
+				if ($tip->getMatch() === $match) {
+					$tips->add($tip);
+					continue;
+				}
+			}
+		}
+		if (count($tips) != count($matches)) {
+			// TODO
+		}
+		return $tips;
 	}
 }
 ?>

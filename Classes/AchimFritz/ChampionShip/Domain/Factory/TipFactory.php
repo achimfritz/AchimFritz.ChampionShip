@@ -39,7 +39,6 @@ class TipFactory {
 	 */
 	public function initTips(User $user) {
 		$existingTips = $this->tipRepository->findByUser($user);
-		var_dump(sizeof($existingTips));
 		$tips = new ArrayCollection();
 		$matches = $this->matchRepository->findAll();
 		foreach ($matches AS $match) {

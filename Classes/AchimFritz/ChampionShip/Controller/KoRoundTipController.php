@@ -7,19 +7,16 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-
-use \AchimFritz\ChampionShip\Domain\Model\Match;
-use \AchimFritz\ChampionShip\Domain\Model\KoRound;
-use \AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use \AchimFritz\ChampionShip\Domain\Model\Round;
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
- * Match controller for the AchimFritz.ChampionShip package 
+ * GroupRound controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class GroupMatchTipController extends ActionController {
-		
+class KoRoundTipController extends RoundController {
+
 	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
@@ -39,16 +36,24 @@ class GroupMatchTipController extends ActionController {
 	protected $securityContext;
 	
 	/**
-	 * listAction
-	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
 	 */
-	public function listAction(Cup $cup) {
+	protected $roundRepository;
+	
+	/**
+	 * showAction
+	 * 
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round
+	 */
+	public function showAction(Round $round) {
 		$account = $this->securityContext->getAccount();
 		$user = $this->userRepository->findOneByAccount($account);
-		$tips = $this->tipRepository->findGroupMatchTipsByUserInCup($user, $cup);
+		$tips = $this->tipRepository->findMatchTipsByUserInRound($user, $round);
 		$this->view->assign('tips', $tips);
+		$this->view->assign('round', $round);
 	}
+
 
 }
 

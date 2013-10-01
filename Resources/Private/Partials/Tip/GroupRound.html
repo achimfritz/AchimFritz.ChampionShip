@@ -1,0 +1,26 @@
+	{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+	<h2>{round.name}</h2>
+	<f:if condition="{round.generalMatches}">
+		<f:then>
+			<h3>Matches</h3>
+			<f:render partial="Match/List" arguments="{matches: round.generalMatches}" />
+		</f:then>
+		<f:else>
+			<p>no matches</p>
+		</f:else>
+	</f:if>
+
+	<cs:ifIsGroupRound round="{round}">
+		<f:render partial="Round/GroupTable" arguments="{round: round}" />
+	</cs:ifIsGroupRound>
+
+			<h3>Teams</h3>
+
+	<f:if condition="{round.teams}">
+		<f:then>
+			<f:render partial="Team/List" arguments="{teams: round.teams}" />
+		</f:then>
+		<f:else>
+			<p>no teams</p>
+		</f:else>
+	</f:if>	
