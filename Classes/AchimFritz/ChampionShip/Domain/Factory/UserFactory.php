@@ -79,6 +79,7 @@ class UserFactory {
 		$user->setAccount($account);
 		$user->setMainTipGroup($tipGroup);
 		$this->userRepository->add($user);
+		// TODO $tipGroup->addUser($user);
 		return $user;
 	}
 

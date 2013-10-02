@@ -46,20 +46,39 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	}
 
 	/**
-	 * findByTowTeamsAndCup
+	 * findOneByTowTeamsAndCup
 	 * 
-	 * @param Team $hostTeam
-	 * @param Team $guestTeam
+	 * @param Team $team
+	 * @param Team $otherTeam
 	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
 	 */
-	public function findByTwoTeamsAndCup(Team $hostTeam, Team $guestTeam, Cup $cup) {
+	public function findOneByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup) {
+		return $this->findByTwoTeamsAndCup($team, $otherTeam, $cup)->getFirst();
+	}
+
+	/**
+	 * findByTowTeamsAndCup
+	 * 
+	 * @param Team $team
+	 * @param Team $otherTeam
+	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 */
+	public function findByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup) {
 		$query = $this->createQuery();
 		return $query->matching(
             $query->logicalAnd(
-				$query->equals('hostTeam', $hostTeam),
-				$query->equals('guestTeam', $guestTeam),
-				$query->equals('cup', $cup)
-			)
+					$query->logicalOr(
+						$query->logicalAnd(
+							$query->equals('hostTeam', $team),
+							$query->equals('guestTeam', $otherTeam)
+						),
+						$query->logicalAnd(
+							$query->equals('guestTeam', $team),
+							$query->equals('hostTeam', $otherTeam)
+						)
+					),
+					$query->equals('cup', $cup)
+				)
 		)
 		->execute();
 	}
