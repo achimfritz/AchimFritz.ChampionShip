@@ -41,13 +41,13 @@
          <f:link.action controller="Cup" action="index">Cups</f:link.action>
       </li>
       <li>
-         <f:link.action controller="Team" action="index">Teams</f:link.action>
+         <f:link.action controller="Team" action="index" arguments="{cup: recentCup}">Teams</f:link.action>
       </li>
       <li>
-         <f:link.action controller="User" action="index">Users</f:link.action>
+         <f:link.action controller="User" action="index" arguments="{cup: recentCup}">Users</f:link.action>
       </li>
       <li>
-         <f:link.action controller="TipGroup" action="index">TipGroup</f:link.action>
+         <f:link.action controller="TipGroup" action="index" arguments="{cup: recentCup}">TipGroup</f:link.action>
       </li>
       <li>
          <f:link.action controller="Account" action="index" package="TYPO3.AccountManagement">(Account)</f:link.action>

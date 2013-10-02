@@ -1,11 +1,21 @@
 	<h3>{user.name}</h3>
-	<p>{countOfTips} Tips</p>
 	<ul class="inline">
 		<li>
-			<f:link.action action="index" controller="User" class="btn">list</f:link.action>
+			<f:link.action action="index" controller="User" class="btn" arguments="{cup: recentCup}">list</f:link.action>
 		</li>
 		<f:render partial="DeleteAction" arguments="{controller: User, arguments: {user: user}}" />
 	</ul>
+	<ul>
+		<li>
+			account Identifier: {user.account.accountIdentifier}
+		</li>
+		<li>
+			<f:link.action action="index" controller="UserTip" arguments="{cup: recentCup, user: user}" class="btn">
+				{countOfTips} Tips
+			</f:link.action>
+		</li>
+	</ul>
+
 	<h4>mainTipGroup</h4>
 	<f:link.action action="index" controller="TipGroup" arguments="{tipGroup: user.mainTipGroup}" class="btn">
 		{user.mainTipGroup.name}
@@ -14,7 +24,7 @@
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 	<h4>init/update tips</h4>
 	<li>
-		<f:form action="index" method="post" controller="TipCreator" arguments="{user: user}">
+		<f:form action="index" method="post" controller="TipCreator" arguments="{user: user, cup: recentCup}">
 			<f:form.hidden name="__method" value="PUT" />
 			<f:form.submit name="submit" value="update" class="btn" />
 		</f:form>

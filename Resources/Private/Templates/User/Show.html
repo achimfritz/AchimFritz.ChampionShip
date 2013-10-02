@@ -1,7 +1,7 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<f:render partial="User/Show" arguments="{user: user, countOfTips: countOfTips}" />
+	<f:render partial="User/Show" arguments="{user: user, countOfTips: countOfTips, recentCup: recentCup}" />
 	<h4>tipgroups</h4>
-	<f:render partial="TipGroup/List" arguments="{tipGroups: tipGroups}" />
+	<f:render partial="TipGroup/List" arguments="{tipGroups: tipGroups, recentCup: recentCup}" />
 </f:section>

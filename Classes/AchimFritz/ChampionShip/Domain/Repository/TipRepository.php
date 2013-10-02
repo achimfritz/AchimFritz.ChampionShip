@@ -27,6 +27,24 @@ class TipRepository extends Repository {
 	protected $matchRepository;
 
 	/**
+	 * findOneByUserAndMatch 
+	 * 
+	 * @param User $user 
+	 * @param Match $match 
+	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 */
+	public function findOneByUserAndMatch(User $user, Match $match) {
+		$query = $this->createQuery();
+		return $query->matching(
+            $query->logicalAnd(
+				$query->equals('generalMatch', $match),
+				$query->equals('user', $user)
+			)
+		)
+		->execute()->getFirst();
+	}
+
+	/**
 	 * findGroupMatchTipsByUserInCup
 	 * 
 	 * @param User $user 
@@ -35,6 +53,7 @@ class TipRepository extends Repository {
 	 */
 	public function findGroupMatchTipsByUserInCup(User $user, Cup $cup) {
 		// TODO and Cup?
+		// TODO this are all tips not only GroupMatch
 		$all = $this->findByUser($user);
 		$tips = new ArrayCollection();
 		$matches = $this->matchRepository->findByCup($cup);
