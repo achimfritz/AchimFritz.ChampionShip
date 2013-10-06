@@ -36,7 +36,6 @@ class UserTipController extends ActionController {
 	 */
 	public function listAction(User $user, Cup $cup) {
 		$tips = $this->tipRepository->findGroupMatchTipsByUserInCup($user, $cup);
-		var_dump(count($tips));
 		$this->view->assign('tips', $tips);
 	}
 

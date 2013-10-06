@@ -20,14 +20,13 @@ class Team {
 	 * The name
 	 * @var string
 	 * @Flow\Identity
-     * @Flow\Validate(type="NotEmpty")
+	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $name;
 
 	/**
 	 * The short
 	 * @var string
-	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $short;
 
