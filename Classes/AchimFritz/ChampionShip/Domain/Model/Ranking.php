@@ -10,11 +10,11 @@ use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * A Points
+ * A Ranking
  *
  * @Flow\Entity
  */
-class Points {
+class Ranking {
 
 	/**
 	 * The cup
@@ -25,16 +25,9 @@ class Points {
 	protected $cup;
 	
 	/**
-	 * The match
-	 * @var \AchimFritz\ChampionShip\Domain\Model\Match
-	 * @ORM\ManyToOne
-	 * @Flow\Validate(type="NotEmpty")
-	 */
-	protected $generalMatch;
-
-	/**
 	 * The user
 	 * @var \AchimFritz\ChampionShip\Domain\Model\User
+	 * @Flow\Validate(type="NotEmpty")
 	 * @ORM\ManyToOne
 	 */
 	protected $user;
@@ -44,14 +37,6 @@ class Points {
 	 * @var integer
 	 */
 	protected $points;
-
-	/**
-	 * The team
-	 * @var \AchimFritz\ChampionShip\Domain\Model\Team
-	 * @ORM\ManyToOne
-	 */
-	protected $team;
-
 
 	/**
 	 * Get the Points's cup
@@ -72,25 +57,6 @@ class Points {
 		$this->cup = $cup;
 	}
 	
-	/**
-	 * Get the Points's match
-	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Match The Points's match
-	 */
-	public function getMatch() {
-		return $this->generalMatch;
-	}
-
-	/**
-	 * Sets this Points's match
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $abstractMatch The Points's match
-	 * @return void
-	 */
-	public function setMatch(\AchimFritz\ChampionShip\Domain\Model\Match $match) {
-		$this->generalMatch = $match;
-	}
-
 	/**
 	 * Get the Points's user
 	 *
@@ -128,25 +94,6 @@ class Points {
 	 */
 	public function setPoints($points) {
 		$this->points = $points;
-	}
-
-	/**
-	 * Get the Points's team
-	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Team The Points's team
-	 */
-	public function getTeam() {
-		return $this->team;
-	}
-
-	/**
-	 * Sets this Points's team
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Team $team The Points's team
-	 * @return void
-	 */
-	public function setTeam(\AchimFritz\ChampionShip\Domain\Model\Team $team) {
-		$this->team = $team;
 	}
 
 }

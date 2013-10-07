@@ -97,5 +97,32 @@ class Tip {
 		$this->result = $result;
 	}
 
+	/**
+	 * getPoints 
+	 * 
+	 * @return integer
+	 */
+	public function getPoints() {
+		$matchResult = $this->getMatch()->getResult();
+		if (!$matchResult instanceof Result) {
+			return 0;
+		}
+		$result = $this->getResult();
+		if (!$result instanceof Result) {
+			return 0;
+		}
+		$matchHostPoints = $matchResult->getHostPoints();
+		$hostPoints = $result->getHostPoints();
+		if ($matchHostPoints == $hostPoints) {
+			if ($result->getHostTeamGoals() == $matchResult->getHostTeamGoals() AND 
+				$result->getGuestTeamGoals() == $matchResult->getGuestTeamGoals()) {
+				return 3;
+
+			}
+			return 1;
+		}
+		return 0;
+	}
+
 }
 ?>
