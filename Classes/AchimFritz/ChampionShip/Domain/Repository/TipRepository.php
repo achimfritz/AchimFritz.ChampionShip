@@ -30,6 +30,24 @@ class TipRepository extends Repository {
 	 * findByCup 
 	 * 
 	 * @param Cup $cup 
+	 * @param User $user
+	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 */
+	public function findByUserInCup(User $user, Cup $cup) {
+		$query = $this->createQuery();
+		return $query->matching(
+         $query->logicalAnd(
+				$query->equals('generalMatch.cup', $cup),
+				$query->equals('user', $user)
+			)
+		)
+		->execute();
+	}
+
+	/**
+	 * findByCup 
+	 * 
+	 * @param Cup $cup 
 	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
 	 */
 	public function findByCup(Cup $cup) {
