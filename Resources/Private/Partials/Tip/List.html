@@ -10,6 +10,9 @@
 					<td>
 						<f:link.action action="index" controller="Tip" arguments="{tip: tip}" class="btn">show</f:link.action>
 					</td>
+					<td>
+						<f:link.action action="index" controller="MatchTip" arguments="{match: tip.match, cup: tip.match.cup}" class="btn">all</f:link.action>
+					</td>
 				</tr>
 			</f:for>
 		</table>

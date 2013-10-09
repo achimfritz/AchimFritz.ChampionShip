@@ -38,26 +38,5 @@ class CupRepository extends \TYPO3\Flow\Persistence\Repository {
 		return $query->execute()->getFirst();
 	}
 
-
-	/**
-	 * Removes an object from this repository.
-	 *
-	 * @param object $object The object to remove
-	 * @return void
-	 * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
-	 * @api
-	 */
-	public function remove($object) {
-		$matches = $this->matchRepository->findByCup($object);
-		foreach ($matches AS $match) {
-			$this->matchRepository->remove($match);
-		}
-		$rounds = $this->roundRepository->findByCup($object);
-		foreach ($rounds AS $round) {
-			$this->roundRepository->remove($round);
-		}
-		return parent::remove($object);
-	}
-
 }
 ?>

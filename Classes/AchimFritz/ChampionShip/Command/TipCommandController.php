@@ -42,24 +42,32 @@ class TipCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $roundRepository;
 	
 	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupMatchRepository
+	 */
+	protected $groupMatchRepository;
+	
+	/**
 	 * listCommand
 	 * 
 	 * @return void
 	 */
 	public function listCommand() {
-		$cup = $this->cupRepository->findOneByName('wm 2006');
+		$cup = $this->cupRepository->findOneByName('em 2008');
+		#$user = $this->userRepository->findOneByUsername('af@achimfritz.de');
 		$user = $this->userRepository->findOneByUsername('af@achimfritz.de');
 		$tips = $this->tipRepository->findByCup($cup);
 		$this->outputLine('found ' . count($tips) . ' tips in cup ' . $cup->getName());
 		$tips = $this->tipRepository->findByUserInCup($user, $cup);
 		$this->outputLine('found ' . count($tips) . ' tips in cup ' . $cup->getName() . ' for user ' . $user->getName());
-		$tips = $this->tipRepository->findGroupMatchTipsByUserInCup($user, $cup);
-		$this->outputLine('found ' . count($tips) . ' groupMatch tips in cup ' . $cup->getName() . ' for user ' . $user->getName());
 		$rounds = $this->roundRepository->findByCup($cup);
 		foreach ($rounds AS $round) {
-			$tips = $this->tipRepository->findMatchTipsByUserInRound($user, $round);
+			$tips = $this->tipRepository->findByUserInRound($user, $round);
 			$this->outputLine('found ' . count($tips) . ' tips in round ' . $round->getName() . ' for user ' . $user->getName());
 		}
+		$groupMatches = $this->groupMatchRepository->findByCup($cup);
+		$tips = $this->tipRepository->findByUserInMatches($user, $groupMatches);
+		$this->outputLine('found ' . count($tips) . ' tips in groupMatches');
 	}
 }
 

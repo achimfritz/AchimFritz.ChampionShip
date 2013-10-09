@@ -50,7 +50,7 @@ class GroupRoundTipController extends RoundController {
 	public function showAction(Round $round) {
 		$account = $this->securityContext->getAccount();
 		$user = $this->userRepository->findOneByAccount($account);
-		$tips = $this->tipRepository->findMatchTipsByUserInRound($user, $round);
+		$tips = $this->tipRepository->findByUserInRound($user, $round);
 		$this->view->assign('tips', $tips);
 		$this->view->assign('round', $round);
 	}

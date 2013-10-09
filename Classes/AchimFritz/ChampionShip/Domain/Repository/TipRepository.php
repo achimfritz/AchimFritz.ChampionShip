@@ -11,7 +11,7 @@ use AchimFritz\ChampionShip\Domain\Model\User;
 use AchimFritz\ChampionShip\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Domain\Model\Round;
 use \TYPO3\Flow\Persistence\Repository;
-use \Doctrine\Common\Collections\ArrayCollection;
+use \TYPO3\Flow\Persistence\QueryInterface;
 
 /**
  * A repository for TipGroups
@@ -21,10 +21,14 @@ use \Doctrine\Common\Collections\ArrayCollection;
 class TipRepository extends Repository {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
-	 * @Flow\Inject
+	 * __construct 
+	 * 
+	 * @return void
 	 */
-	protected $matchRepository;
+	public function __construct() {
+		parent::__construct();
+		$this->setDefaultOrderings(array('generalMatch.startDate' => QueryInterface::ORDER_ASCENDING));
+	}
 
 	/**
 	 * findByCup 
@@ -39,6 +43,7 @@ class TipRepository extends Repository {
          $query->logicalAnd(
 				$query->equals('generalMatch.cup', $cup),
 				$query->equals('user', $user)
+				#$query->logicalNot($query->isEmpty('result'))
 			)
 		)
 		->execute();
@@ -56,6 +61,33 @@ class TipRepository extends Repository {
 			$query->equals('generalMatch.cup', $cup)
 		)
 		->execute();
+	}
+
+	/**
+	 * findOneUserInMatches
+	 * 
+	 * @param User $user 
+	 * @param mixed $matches
+	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 */
+	public function findByUserInMatches(User $user, $matches) {
+		$query = $this->createQuery();
+		// bad hack ($query->in works not)
+		$c = array();
+		foreach ($matches AS $match) {
+			$c[] = $query->equals('generalMatch', $match);
+		}
+		if (count($c)) {
+			return $query->matching(
+				$query->logicalAnd(
+					$query->logicalOr($c),
+					$query->equals('user', $user)
+					)
+				)
+			->execute();
+		} else {
+			return array();
+		}
 	}
 
 	/**
@@ -77,56 +109,20 @@ class TipRepository extends Repository {
 	}
 
 	/**
-	 * findGroupMatchTipsByUserInCup
-	 * 
-	 * @param User $user 
-	 * @param Cup $cup
-	 * @return ArrayCollection
-	 */
-	public function findGroupMatchTipsByUserInCup(User $user, Cup $cup) {
-		// TODO and Cup?
-		// TODO this are all tips not only GroupMatch
-		$all = $this->findByUser($user);
-		$tips = new ArrayCollection();
-		$matches = $this->matchRepository->findByCup($cup);
-		foreach ($matches AS $match) {
-			foreach ($all AS $tip) {
-				if ($tip->getMatch() === $match) {
-					$tips->add($tip);
-					continue;
-				}
-			}
-		}
-		if (count($tips) != count($matches)) {
-			// TODO
-		}
-		return $tips;
-	}
-
-	/**
 	 * findMatchTipsByUserInRound 
 	 * 
 	 * @param User $user 
 	 * @param GroupRound $round 
 	 * @return ArrayCollection
 	 */
-	public function findMatchTipsByUserInRound(User $user, Round $round) {
-		// TODO and Cup?
-		$all = $this->findByUser($user);
-		$tips = new ArrayCollection();
-		$matches = $this->matchRepository->findByRound($round);
-		foreach ($matches AS $match) {
-			foreach ($all AS $tip) {
-				if ($tip->getMatch() === $match) {
-					$tips->add($tip);
-					continue;
-				}
-			}
-		}
-		if (count($tips) != count($matches)) {
-			// TODO
-		}
-		return $tips;
+	public function findByUserInRound(User $user, Round $round) {
+		$query = $this->createQuery();
+		return $query->matching(
+         $query->logicalAnd(
+				$query->equals('generalMatch.round', $round),
+				$query->equals('user', $user)
+			)
+		)->execute();
 	}
 }
 ?>
