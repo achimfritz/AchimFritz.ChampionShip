@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Domain\Model\User;
+use \AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 
@@ -25,24 +26,29 @@ class TipCreatorController extends ActionController {
 	/**
 	 * @var string
 	 */
-	protected $resourceArgumentName = 'user';
+	protected $resourceArgumentName = 'cup';
 
 	/**
-	 * Updates the given user object
+	 * create non existing tips for user
 	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
 	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user The user to update
 	 * @return void
 	 */
-	public function updateAction(User $user) {
+	public function createAction(Cup $cup, User $user = NULL) {
 		try {
-			$this->tipFactory->initTips($user);
+			$newTips = $this->tipFactory->initTips($cup, $user);
 			$this->persistenceManager->persistAll();
-			$this->addOkMessage('tips updated');
+			$this->addOkMessage(count($newTips) . ' tips created');
 		} catch (\Exception $e) {
-			$this->addErrorMessage('cannot update tips');
+			$this->addErrorMessage('cannot create tips');
 			$this->handleException($e);
 		}		
-		$this->redirect('show', 'User', NULL, array('user' => $user));
+		if ($user !== NULL) {
+			$this->redirect('show', 'User', NULL, array('user' => $user, 'cup' => $cup));
+		} else {
+			$this->redirect('show', 'Cup', NULL, array('cup' => $cup));
+		}
 	}
 
 

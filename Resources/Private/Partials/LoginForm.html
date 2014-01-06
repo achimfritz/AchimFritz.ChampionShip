@@ -1,7 +1,8 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <h4>Login</h4>
 <f:security.ifAuthenticated>
 	<f:then>
-	   <p>TODO logged in AS?, admin?, restful links?, redirect?</p>
+		<cs:username />
 		<f:link.action class="btn" action="logout" controller="Login">logout</f:link.action>
 	</f:then>
 	<f:else>

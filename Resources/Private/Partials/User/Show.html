@@ -15,19 +15,7 @@
 			</f:link.action>
 		</li>
 	</ul>
-
-	<h4>mainTipGroup</h4>
-	<f:link.action action="index" controller="TipGroup" arguments="{tipGroup: user.mainTipGroup}" class="btn">
-		{user.mainTipGroup.name}
-	</f:link.action>
-
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-	<h4>init/update tips</h4>
-	<li>
-		<f:form action="index" method="post" controller="TipCreator" arguments="{user: user, cup: recentCup}">
-			<f:form.hidden name="__method" value="PUT" />
-			<f:form.submit name="submit" value="update" class="btn" />
-		</f:form>
-	</li>
+	<f:render partial="TipCreator/Edit" arguments="{user: user, cup: recentCup}" />
 </f:security.ifHasRole>
 

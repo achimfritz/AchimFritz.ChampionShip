@@ -60,6 +60,16 @@ class TipGroup {
 	}
 
 	/**
+	 * removeUser 
+	 * 
+	 * @param User $user 
+	 * @return void
+	 */
+	public function removeUser(User $user) {
+		$this->users->removeElement($user);
+	}
+
+	/**
 	 * addUser 
 	 * 
 	 * @param User $user 

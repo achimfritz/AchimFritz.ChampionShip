@@ -21,18 +21,34 @@
 	</li>
 </ul>
 
-<h4>tips</h4>
+<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+<h4><f:translate id="tip" /></h4>
 <ul>
 	<li>
-		<f:link.action action="index" controller="GroupMatchTip" arguments="{cup: recentCup}">groupMatchTip</f:link.action>
+		<f:link.action action="index" controller="GroupMatchTip" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
 	</li>
 	<li>
-		<f:link.action action="index" controller="GroupRoundTip" arguments="{cup: recentCup}">groupRoundTip</f:link.action>
+		<f:link.action action="index" controller="GroupRoundTip" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
 	</li>
 	<li>
-		<f:link.action action="index" controller="KoRoundTip" arguments="{cup: recentCup}">koRoundTip</f:link.action>
+	<f:link.action action="index" controller="KoRoundTip" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
 	</li>
 </ul>
+</f:security.ifHasRole>
+
+<f:security.ifAuthenticated>
+<h4><f:translate id="ranking" /></h4>
+<ul>
+	<li>
+		<f:link.action action="index" controller="Ranking" arguments="{cup: recentCup}">{recentCup.name}</f:link.action>
+	</li>
+	<li>
+		<f:link.action action="index" controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
+	</li>
+</ul>
+</f:security.ifAuthenticated>
+
+
 
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
    <h4>admin</h4>

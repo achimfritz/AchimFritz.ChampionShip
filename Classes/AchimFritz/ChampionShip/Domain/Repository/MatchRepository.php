@@ -7,9 +7,10 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use AchimFritz\ChampionShip\Domain\Model\Result;
 use AchimFritz\ChampionShip\Domain\Model\Team;
 use AchimFritz\ChampionShip\Domain\Model\Cup;
-use \TYPO3\Flow\Persistence\QueryInterface;
+use TYPO3\Flow\Persistence\QueryInterface;
 
 /**
  * A repository for Matches
@@ -19,6 +20,12 @@ use \TYPO3\Flow\Persistence\QueryInterface;
 class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 
 	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Service\RankingCalculator
+	 */
+	protected $rankingCalculator;
+
+	/**
 	 * __construct 
 	 * 
 	 * @return void
@@ -26,6 +33,19 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	public function __construct() {
 		parent::__construct();
 		$this->setDefaultOrderings(array('startDate' => QueryInterface::ORDER_ASCENDING));
+	}
+
+	/**
+	 * update 
+	 * 
+	 * @param mixed $object 
+	 * @return void
+	 */
+	public function update($object) {
+		if ($object->getResult() instanceof Result) {
+			$this->rankingCalculator->updateMatch($object);
+		}
+		parent::update($object);
 	}
 
 	/**

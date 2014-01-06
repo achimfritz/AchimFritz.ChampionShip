@@ -1,7 +1,26 @@
-
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<f:render partial="Tip/List" arguments="{tips: tips}" />
-
+		<table class="table">
+         <f:for each="{tips}" as="tip">
+            <tr>
+               <f:render partial="Match/Show" arguments="{match: tip.match}" />
+               <td>
+                  <f:render partial="Tip/Show" arguments="{tip: tip}" />
+               </td>
+               <td>
+						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+							<f:link.action action="index" controller="Tip" arguments="{tip: tip, cup: tip.match.cup}" class="btn">show</f:link.action>
+						</f:security.ifHasRole>
+						<cs:ifIsOwnTip tip="{tip}">
+								<f:link.action action="index" controller="Tip" arguments="{tip: tip, cup: tip.match.cup}" class="btn">show</f:link.action>
+						</cs:ifIsOwnTip>
+               </td>
+               <td>
+                  <f:link.action action="index" controller="MatchTip" arguments="{match: tip.match, cup: tip.match.cup}" class="btn">all</f:link.action>
+               </td>
+            </tr>
+         </f:for>
+      </table>
 </f:section>

@@ -2,11 +2,13 @@
 
 <f:section name="Content">
 
-	<f:link.action class="btn" action="index" arguments="{cup: round.cup}">list</f:link.action>
+	<f:render partial="Round/List" arguments="{rounds: allGroupRounds}" />
 	<f:render partial="Round/Show" arguments="{round: round}" />
 	<f:render partial="Round/GroupTable" arguments="{round: round}" />
 
+	<f:render partial="Round/GroupRound/New" arguments="{recentCup: recentCup}" />
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<h6>auto create matches</h6>
 		<f:form action="index" method="update" controller="GroupMatchCreator" arguments="{groupRound: round}">
 			<f:form.hidden name="__method" value="PUT" />
 			<f:form.submit name="submit" value="update" class="btn" />

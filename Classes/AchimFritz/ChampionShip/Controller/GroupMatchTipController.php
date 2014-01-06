@@ -44,6 +44,12 @@ class GroupMatchTipController extends ActionController {
 	 * @Flow\Inject
 	 */
 	protected $securityContext;
+
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Factory\TipFactory
+	 * @Flow\Inject
+	 */
+	protected $tipFactory;
 	
 	/**
 	 * listAction
@@ -58,6 +64,11 @@ class GroupMatchTipController extends ActionController {
 		} else {
 			$matches = $this->matchRepository->findByCup($cup);
 			$tips = $this->tipRepository->findByUserInMatches($user, $matches);
+			if (count($matches) != count($tips)) {
+				$newTips = $this->tipFactory->initTips($cup, $user);
+				$this->persistenceManager->persistAll();
+				$tips = $this->tipRepository->findByUserInMatches($user, $matches);
+			}
 			$this->view->assign('tips', $tips);
 		}
 	}

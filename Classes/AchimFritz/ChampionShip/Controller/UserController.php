@@ -56,9 +56,7 @@ class UserController extends ActionController {
 	 */
 	public function showAction(User $user) {
 		$tips = $this->tipRepository->findByUser($user);
-		$tipGroups = $this->tipGroupRepository->findByUser($user);
 		$this->view->assign('countOfTips', count($tips));
-		$this->view->assign('tipGroups', $tipGroups);
 		$this->view->assign('user', $user);
 	}
 

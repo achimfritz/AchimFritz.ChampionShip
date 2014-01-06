@@ -19,17 +19,22 @@ class User {
 
 	/**
 	 * @var \TYPO3\Flow\Security\Account
-	 * @ORM\OneToOne
+	 * @ORM\OneToOne(cascade={"all"})
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $account;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\TipGroup
-	 * @Flow\Validate(type="NotEmpty")
-	 * @ORM\ManyToOne
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Tip>
+	 * @ORM\OneToMany(mappedBy="user", cascade={"all"})
 	 */
-	protected $mainTipGroup;
+	protected $tips;
+
+	/**
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Ranking>
+	 * @ORM\OneToMany(mappedBy="user", cascade={"all"})
+	 */
+	protected $rankings;
 
 	/**
 	 * getAccount 

@@ -36,7 +36,6 @@ class RoundController extends ActionController {
 	 */
 	protected $koRoundRepository;
 	
-	
 	/**
 	 * @var string
 	 */
@@ -48,10 +47,10 @@ class RoundController extends ActionController {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
 	 */
 	public function listAction(Cup $cup) {
-		$rounds = $this->roundRepository->findByCup($cup);
-		$this->view->assign('rounds', $rounds);
-      $this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
-      $this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
+		$round = $this->roundRepository->findOneByCup($cup);
+		if ($round instanceof Round) {
+			$this->forward('show', NULL, NULL, array('round' => $round, 'cup' => $round->getCup()));
+		}
 	}
 
 	/**

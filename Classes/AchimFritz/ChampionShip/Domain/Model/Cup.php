@@ -33,6 +33,12 @@ class Cup {
 	protected $teams;
 
 	/**
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Round>
+	 * @ORM\OneToMany(mappedBy="cup", cascade={"all"})
+	 */
+	protected $rounds;
+
+	/**
 	 * The start date
 	 * @var \DateTime
 	 * @Flow\Validate(type="NotEmpty")

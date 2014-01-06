@@ -19,6 +19,11 @@
 				show
 			</f:link.action>
 		</li>
+		<li>
+			<f:link.action action="index" class="btn" controller="MatchTip" arguments="{match: match}">
+				tips	
+			</f:link.action>
+		</li>
 		<f:render partial="DeleteAction" arguments="{controller: 'Match', arguments: {match: match}}" />
 		</ul>
 	</td>

@@ -14,6 +14,10 @@
 				<source>Final Round</source>
 				<target>Final Runde</target>
 			</trans-unit>
+			<trans-unit id="tip">
+				<source>Tip</source>
+				<target>Tippen</target>
+			</trans-unit>
 			<trans-unit id="matches">
 				<source>Matches</source>
 				<target>Spiele</target>
@@ -21,6 +25,14 @@
 			<trans-unit id="cups">
 				<source>Cups</source>
 				<target>Turniere</target>
+			</trans-unit>
+			<trans-unit id="ranking">
+				<source>Ranking</source>
+				<target>Rangliste</target>
+			</trans-unit>
+			<trans-unit id="globalRanking">
+				<source>pemanent</source>
+				<target>Ewigen Rangliste</target>
 			</trans-unit>
 		</body>
 	</file>

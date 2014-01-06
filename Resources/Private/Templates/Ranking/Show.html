@@ -1,0 +1,13 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<f:render partial="Rankings/List" arguments="{rankings: rankings}"/>
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+	<f:form action="index" method="put">
+		<f:form.hidden name="__method" value="PUT" />
+		<f:form.hidden name="cup" value="{cup}" />
+		<f:form.submit value="Update" class="btn"/>
+	</f:form>
+	</f:security.ifHasRole>
+</f:section>
+

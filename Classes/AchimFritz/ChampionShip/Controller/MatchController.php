@@ -60,6 +60,7 @@ class MatchController extends ActionController {
 		$this->view->assign('allTeams', $this->teamRepository->findAll());
 		$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
 		$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
+		$this->view->assign('recentCup', $cup);
 	}
 
 	/**
@@ -73,6 +74,7 @@ class MatchController extends ActionController {
 		$this->view->assign('allTeams', $this->teamRepository->findAll());
 		$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
 		$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
+		$this->view->assign('recentCup', $match->getCup());
 	}
 
 	/**

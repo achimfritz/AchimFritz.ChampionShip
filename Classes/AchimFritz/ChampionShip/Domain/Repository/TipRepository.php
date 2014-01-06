@@ -7,6 +7,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use AchimFritz\ChampionShip\Domain\Model\Match;
 use AchimFritz\ChampionShip\Domain\Model\User;
 use AchimFritz\ChampionShip\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Domain\Model\Round;
@@ -93,9 +94,9 @@ class TipRepository extends Repository {
 	/**
 	 * findOneByUserAndMatch 
 	 * 
-	 * @param User $user 
-	 * @param Match $match 
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user 
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match 
+	 * @return \AchimFritz\ChampionShip\Domain\Model\Tip
 	 */
 	public function findOneByUserAndMatch(User $user, Match $match) {
 		$query = $this->createQuery();

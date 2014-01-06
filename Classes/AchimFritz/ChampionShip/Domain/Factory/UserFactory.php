@@ -38,7 +38,6 @@ class UserFactory {
 	 */
 	protected $accountFactory;
 
-
 	/**
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
 	 * @Flow\Inject
@@ -50,10 +49,9 @@ class UserFactory {
 	 *
 	 * @param string $username
 	 * @param string $nickName
-	 * @param TipGroup $tipGroup
 	 * @return User $user
 	 */
-	public function create($username, $nickName, TipGroup $tipGroup) {
+	public function create($username, $nickName) {
 		$roles = 'AchimFritz.ChampionShip:User';
 		$authenticationProvider = 'DefaultProvider';
 		$password = $username;
@@ -68,7 +66,7 @@ class UserFactory {
 		$electronicAddress->setIdentifier($email);
 		$electronicAddress->setType(ElectronicAddress::TYPE_EMAIL);
 		$person->setPrimaryElectronicAddress($electronicAddress);
-		$person->setName(new PersonName('', '', '', '', $nickName . '@' . $tipGroup->getName()));
+		$person->setName(new PersonName('', '', '', '', $nickName));
 		$this->partyRepository->add($person);
 
 		$account = $this->accountFactory->createAccountWithPassword($username, $password, explode(',', $roles), $authenticationProvider);
@@ -77,9 +75,7 @@ class UserFactory {
 
 		$user = new User();
 		$user->setAccount($account);
-		$user->setMainTipGroup($tipGroup);
 		$this->userRepository->add($user);
-		// TODO $tipGroup->addUser($user);
 		return $user;
 	}
 

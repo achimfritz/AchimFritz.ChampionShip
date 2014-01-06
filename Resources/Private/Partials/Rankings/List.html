@@ -1,0 +1,13 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<f:if condition="{rankings}">
+	<f:then>
+			<ul>
+				<f:for each="{rankings}" as="ranking" iteration="cnt">
+					<li><cs:sum summandOne="{cnt.index}" summandTwo="1" />. {ranking.points} {ranking.user.name}</li>
+				</f:for>
+			</ul>
+	</f:then>
+	<f:else>
+		<p>no rankings</p>
+	</f:else>
+</f:if>

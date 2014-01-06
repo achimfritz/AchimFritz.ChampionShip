@@ -3,9 +3,11 @@
 
 <f:section name="Content">
 
-	<f:link.action class="btn" action="index" arguments="{cup: round.cup}">list</f:link.action>
+	<f:render partial="Round/List" arguments="{rounds: allKoRounds}" />
 	<f:render partial="Round/Show" arguments="{round: round}" />
 	
+	<f:render partial="Round/KoRound/New" arguments="{recentCup: recentCup}" />
+	<f:render partial="Round/ChildKoRound/New" arguments="{recentCup: recentCup, allKoRounds: allKoRounds}" />
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 
          <cs:ifIsChildKoRound round="{round}">

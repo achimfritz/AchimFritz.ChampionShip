@@ -1,5 +1,23 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<f:render partial="Tip/List" arguments="{currentCup: currentCup, tips: tips}" />
+	<h3>{user.name}</h3>
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<f:render partial="TipCreator/Edit" arguments="{user: user, cup: recentCup}" />
+	</f:security.ifHasRole>
+	<table class="table">
+		<f:for each="{tips}" as="tip">
+			<tr>
+				<f:render partial="Match/Show" arguments="{match: tip.match}" />
+				<td>
+					<f:render partial="Tip/Show" arguments="{tip: tip}" />
+				</td>
+				<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+					<td>
+						<f:link.action action="index" controller="Tip" arguments="{tip: tip, cup: tip.match.cup}" class="btn">show</f:link.action>
+					</td>
+				</f:security.ifHasRole>
+			</tr>
+		</f:for>
+	</table>
 </f:section>

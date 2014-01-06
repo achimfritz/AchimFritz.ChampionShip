@@ -36,6 +36,7 @@ class Round {
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Match>
 	 * @ORM\OneToMany(mappedBy="round", cascade={"all"})
+	 * @ORM\OrderBy({"startDate" = "ASC"})
 	 */
 	protected $generalMatches;
 

@@ -38,6 +38,7 @@ class MatchTipController extends ActionController {
 		$tips = $this->tipRepository->findByGeneralMatch($match);
 		$this->view->assign('tips', $tips);
 		$this->view->assign('match', $match);
+		$this->view->assign('recentCup', $match->getCup());
 	}
 
 }

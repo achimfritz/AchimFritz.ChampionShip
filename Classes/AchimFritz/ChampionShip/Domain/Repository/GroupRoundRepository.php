@@ -7,6 +7,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use \TYPO3\Flow\Persistence\QueryInterface;
 
 /**
  * A repository for GroupRounds
@@ -15,6 +16,16 @@ use TYPO3\Flow\Annotations as Flow;
  */
 class GroupRoundRepository extends RoundRepository {
 	
+	/**
+	 * __construct 
+	 * 
+	 * @return void
+	 */
+	public function __construct() {
+		parent::__construct();
+		$this->setDefaultOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
+	}
+
 
 }
 ?>

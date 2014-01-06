@@ -14,3 +14,6 @@ TYPO3:
                 '@action': 'index'
     i18n:
       defaultLocale: de
+    #persistence:
+    #  doctrine:
+    #    sqlLogger: TYPO3\Flow\Persistence\Doctrine\Logging\SqlLogger
