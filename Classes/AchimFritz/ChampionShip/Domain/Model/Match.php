@@ -63,6 +63,12 @@ class Match {
 	protected $startDate;
 	
 	/**
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Tip>
+	 * @ORM\OneToMany(mappedBy="generalMatch", cascade={"all"})
+	 */
+	protected $tips;
+
+	/**
 	 * @var string
 	 */
 	protected $name = '';

@@ -23,6 +23,7 @@ class KoRoundTipController extends RoundController {
 	 */
 	protected $tipRepository;
 
+
 	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
@@ -52,6 +53,7 @@ class KoRoundTipController extends RoundController {
 		$tips = $this->tipRepository->findByUserInRound($user, $round);
 		$this->view->assign('tips', $tips);
 		$this->view->assign('round', $round);
+      $this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($round->getCup()));
 	}
 
 

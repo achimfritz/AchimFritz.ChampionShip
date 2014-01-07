@@ -50,7 +50,7 @@ class GroupTableController extends ActionController {
 			$this->addErrorMessage('cannot update groupTable');
 			$this->handleException($e);
 		}
-		$this->redirect('index', 'GroupRound', NULL, array('round' => $groupRound));
+		$this->redirect('index', 'GroupRound', NULL, array('round' => $groupRound, 'cup' => $groupRound->getCup()));
 	}
 
 

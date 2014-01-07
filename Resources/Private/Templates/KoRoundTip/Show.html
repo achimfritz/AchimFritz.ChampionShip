@@ -3,6 +3,7 @@
 
 <f:section name="Content">
 
-	<f:link.action class="btn" action="index" arguments="{cup: round.cup}">list</f:link.action>
+	<f:render partial="Round/List" arguments="{rounds: allKoRounds}" />
+	<h3>{round.name}</h3>
 	<f:render partial="Tip/List" arguments="{tips: tips}" />
 </f:section>

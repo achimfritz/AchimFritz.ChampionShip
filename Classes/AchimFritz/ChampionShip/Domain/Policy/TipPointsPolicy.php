@@ -37,8 +37,8 @@ class TipPointsPolicy {
 		if ($matchHostPoints == $hostPoints) {
 			if ($result->getHostTeamGoals() == $matchResult->getHostTeamGoals() AND 
 				$result->getGuestTeamGoals() == $matchResult->getGuestTeamGoals()) {
-				return 3;
-
+					// TODO how much ?
+				return 2;
 			}
 			return 1;
 		}

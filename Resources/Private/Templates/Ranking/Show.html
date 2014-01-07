@@ -5,7 +5,7 @@
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 	<f:form action="index" method="put">
 		<f:form.hidden name="__method" value="PUT" />
-		<f:form.hidden name="cup" value="{cup}" />
+		<f:form.hidden name="cup" value="{recentCup}" />
 		<f:form.submit value="Update" class="btn"/>
 	</f:form>
 	</f:security.ifHasRole>

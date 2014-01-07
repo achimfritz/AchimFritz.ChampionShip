@@ -53,6 +53,7 @@ class GroupRoundTipController extends RoundController {
 		$tips = $this->tipRepository->findByUserInRound($user, $round);
 		$this->view->assign('tips', $tips);
 		$this->view->assign('round', $round);
+      $this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($round->getCup()));
 	}
 
 

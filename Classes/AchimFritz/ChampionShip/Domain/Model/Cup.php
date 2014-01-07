@@ -33,6 +33,12 @@ class Cup {
 	protected $teams;
 
 	/**
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Ranking>
+	 * @ORM\OneToMany(mappedBy="cup", cascade={"all"})
+	 */
+	protected $rankings;
+
+	/**
 	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Round>
 	 * @ORM\OneToMany(mappedBy="cup", cascade={"all"})
 	 */
