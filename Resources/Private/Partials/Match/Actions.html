@@ -1,25 +1,17 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+
 <ul class="inline">
-	<li>
-		<f:link.action action="index" controller="Match" class="btn" arguments="{cup: match.cup}">Match.list</f:link.action>
-	</li>
-	<li>
-		<f:link.action action="index" controller="Round" class="btn" arguments="{cup: match.cup}">Round.list</f:link.action>
-	</li>
 	<cs:ifIsGroupMatch match="{match}">
 		<li>
 			<f:link.action action="index" class="btn" arguments="{cup: match.cup}" controller="GroupMatch">GroupMatch.List</f:link.action>
 		</li>
 		<li>
-			<f:link.action action="index" class="btn" arguments="{round: match.round, cup: match.cup}" controller="GroupRound">GroupRound.List {match.round.name}</f:link.action>
+			<f:link.action action="index" class="btn" arguments="{round: match.round, cup: match.cup}" controller="GroupRound">Round.List {match.round.name}</f:link.action>
 		</li>
 	</cs:ifIsGroupMatch>
 	<cs:ifIsKoMatch match="{match}">
 		<li>
-			<f:link.action action="index" class="btn" arguments="{cup: match.cup}" controller="KoMatch">KoMatch.List</f:link.action>
-		</li>
-		<li>
-			<f:link.action action="index" class="btn" arguments="{round: match.round, cup: match.cup}" controller="KoRound">KoRound.List {match.round.name}</f:link.action>
+			<f:link.action action="index" class="btn" arguments="{round: match.round, cup: match.cup}" controller="KoRound">{match.round.name}</f:link.action>
 		</li>
 	</cs:ifIsKoMatch>
 </ul>

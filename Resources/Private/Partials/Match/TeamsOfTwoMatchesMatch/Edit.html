@@ -19,12 +19,24 @@
             <f:form.select  options="{match.round.parentRound.generalMatches}" property="hostMatch" id="hostMatch" optionLabelField="name" />
          </div>
    </div>
+                  <div class="control-group">
+                     <label class="control-label" for="hostMatchIsWinner">hostMatchIsWinner</label>
+                        <div class="controlls">
+                           <f:form.checkbox property="hostMatchIsWinner" id="hostMatchIsWinner" value="1" />
+                        </div>
+                  </div>
    <div class="control-group">
       <label class="control-label" for="guestMatch">guestMatch</label>
          <div class="controlls">
             <f:form.select  options="{match.round.parentRound.generalMatches}" property="guestMatch" id="guestMatch" optionLabelField="name" />
          </div>
    </div>
+                  <div class="control-group">
+                     <label class="control-label" for="guestMatchIsWinner">guestMatchIsWinner</label>
+                        <div class="controlls">
+                           <f:form.checkbox property="guestMatchIsWinner" id="guestMatchIsWinner" value="1" />
+                        </div>
+                  </div>
 
    <div class="control-group">
          <div class="controls">

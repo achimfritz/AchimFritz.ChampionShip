@@ -19,7 +19,7 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
 
    /**
     * @var \AchimFritz\ChampionShip\Domain\Model\KoMatch
-    * @ORM\OneToOne
+    * @ORM\ManyToOne(cascade={"detach"})
 	 * @Flow\Validate(type="NotEmpty")
     */
    protected $hostMatch;
@@ -37,7 +37,7 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
 
    /**
     * @var \AchimFritz\ChampionShip\Domain\Model\KoMatch
-    * @ORM\OneToOne
+    * @ORM\ManyToOne(cascade={"detach"})
 	 * @Flow\Validate(type="NotEmpty")
     */
    protected $guestMatch;

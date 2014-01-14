@@ -81,6 +81,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * 
 	 * @param Team $team
 	 * @param Team $otherTeam
+	 * @param Cup $cup
 	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
 	 */
 	public function findByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup) {
@@ -102,6 +103,18 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 		)
 		->execute();
 	}
+
+	public function findOneByNameAndCup($name, Cup $cup) {
+		$query = $this->createQuery();
+		return $query->matching(
+            $query->logicalAnd(
+					$query->equals('cup', $cup),
+					$query->equals('name', $name)
+				)
+		)
+		->execute()->getFirst();
+	}
+
 
 }
 ?>

@@ -50,6 +50,9 @@ class RoundController extends ActionController {
 		$round = $this->roundRepository->findOneByCup($cup);
 		if ($round instanceof Round) {
 			$this->forward('show', NULL, NULL, array('round' => $round, 'cup' => $round->getCup()));
+		} else {
+			$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
+			$this->addErrorMessage('no rounds found');
 		}
 	}
 

@@ -1,6 +1,7 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:if condition="{match.hostTeam}">
    <f:then>
+		<img src="/clear.gif" class="flag flag-{match.hostTeam.iso2}" alt="{match.hostTeam.name}" />
       {match.hostTeam.name}
    </f:then>
    <f:else>
@@ -13,7 +14,15 @@
          </f:then>
          <f:else>
             <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
-               winner of {match.hostMatch.name}
+					<f:if condition="{match.hostMatchIsWinner}">
+						<f:then>
+							winner of
+						</f:then>
+						<f:else>
+							looser of
+						</f:else>
+					</f:if>
+               {match.hostMatch.name}
 				<f:if condition="{match.currentHostTeam}">
 					({match.currentHostTeam.name})
 				</f:if>
@@ -25,6 +34,7 @@
 -
 <f:if condition="{match.guestTeam}">
    <f:then>
+		<img src="/clear.gif" class="flag flag-{match.guestTeam.iso2}" alt="{match.guestTeam.name}" />
       {match.guestTeam.name}
    </f:then>
    <f:else>
@@ -38,7 +48,15 @@
          </f:then>
          <f:else>
             <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
-               winner of {match.guestMatch.name}
+					<f:if condition="{match.guestMatchIsWinner}">
+						<f:then>
+							winner of
+						</f:then>
+						<f:else>
+							looser of
+						</f:else>
+					</f:if>
+               {match.guestMatch.name}
 					<f:if condition="{match.currentGuestTeam}">
 						({match.currentGuestTeam.name})
 					</f:if>

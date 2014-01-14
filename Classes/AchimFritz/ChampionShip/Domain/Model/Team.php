@@ -25,11 +25,29 @@ class Team {
 	protected $name;
 
 	/**
-	 * The short
 	 * @var string
 	 */
-	protected $short;
+	protected $nameDe = '';
 
+	/**
+	 * @var string
+	 */
+	protected $nameEn = '';
+
+	/**
+	 * @var string
+	 */
+	protected $nameLocal = '';
+
+	/**
+	 * @var string
+	 */
+	protected $iso2 = '';
+
+	/**
+	 * @var string
+	 */
+	protected $iso3 = '';
 
 	/**
 	 * Get the Team's name
@@ -51,22 +69,98 @@ class Team {
 	}
 
 	/**
-	 * Get the Team's short
-	 *
-	 * @return string The Team's short
+	 * getNameEn 
+	 * 
+	 * @return string nameEn
 	 */
-	public function getShort() {
-		return $this->short;
+	public function getNameEn() {
+		return $this->nameEn;
 	}
 
 	/**
-	 * Sets this Team's short
-	 *
-	 * @param string $short The Team's short
+	 * setNameEn
+	 * 
+	 * @param string $nameEn
 	 * @return void
 	 */
-	public function setShort($short) {
-		$this->short = $short;
+	public function setNameEn($nameEn) {
+		$this->nameEn = $nameEn;
+	}
+
+	/**
+	 * getNameDe 
+	 * 
+	 * @return string nameDe
+	 */
+	public function getNameDe() {
+		return $this->nameDe;
+	}
+
+	/**
+	 * setNameDe
+	 * 
+	 * @param string $nameDe
+	 * @return void
+	 */
+	public function setNameDe($nameDe) {
+		$this->nameDe = $nameDe;
+	}
+
+	/**
+	 * getNameLocal 
+	 * 
+	 * @return string nameLocal
+	 */
+	public function getNameLocal() {
+		return $this->nameLocal;
+	}
+
+	/**
+	 * setNameLocal
+	 * 
+	 * @param string $nameLocal
+	 * @return void
+	 */
+	public function setNameLocal($nameLocal) {
+		$this->nameLocal = $nameLocal;
+	}
+
+	/**
+	 * getIso2 
+	 * 
+	 * @return string iso2
+	 */
+	public function getIso2() {
+		return $this->iso2;
+	}
+
+	/**
+	 * setIso2
+	 * 
+	 * @param string $iso2
+	 * @return void
+	 */
+	public function setIso2($iso2) {
+		$this->iso2 = $iso2;
+	}
+
+	/**
+	 * getIso3 
+	 * 
+	 * @return string iso3
+	 */
+	public function getIso3() {
+		return $this->iso3;
+	}
+
+	/**
+	 * setIso3
+	 * 
+	 * @param string $iso3
+	 * @return void
+	 */
+	public function setIso3($iso3) {
+		$this->iso3 = $iso3;
 	}
 
 }

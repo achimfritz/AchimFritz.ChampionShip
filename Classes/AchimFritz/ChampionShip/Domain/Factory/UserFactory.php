@@ -47,18 +47,18 @@ class UserFactory {
 	/**
 	 * Create a new user
 	 *
-	 * @param string $username
+	 * @param string $email
 	 * @param string $nickName
 	 * @return User $user
 	 */
-	public function create($username, $nickName) {
+	public function create($email, $nickName) {
 		$roles = 'AchimFritz.ChampionShip:User';
 		$authenticationProvider = 'DefaultProvider';
-		$password = $username;
-		$email = $username;
-		$account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($username, $authenticationProvider);
+		$password = $email;
+		$accountIdentifier = $nickName . '@' . $email;
+		$account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($accountIdentifier, $authenticationProvider);
 		if ($account instanceof \TYPO3\Flow\Security\Account) {
-			throw new Exception('user already exists  ' . $username, 1380121115);
+			throw new Exception('user already exists  ' . $accountIdentifier, 1380121115);
 		}
 
 		$person = new Person();
@@ -69,7 +69,7 @@ class UserFactory {
 		$person->setName(new PersonName('', '', '', '', $nickName));
 		$this->partyRepository->add($person);
 
-		$account = $this->accountFactory->createAccountWithPassword($username, $password, explode(',', $roles), $authenticationProvider);
+		$account = $this->accountFactory->createAccountWithPassword($accountIdentifier, $password, explode(',', $roles), $authenticationProvider);
 		$account->setParty($person);
 		$this->accountRepository->add($account);
 
