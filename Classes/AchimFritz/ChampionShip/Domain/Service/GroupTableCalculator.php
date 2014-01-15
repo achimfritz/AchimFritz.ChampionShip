@@ -18,15 +18,16 @@ class GroupTableCalculator {
 	/**
 	 * updateGroup
 	 * 
-	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Match>
+	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupMatch>
 	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupTableRows>
 	 */
 	public function getGroupTableRows(\Doctrine\Common\Collections\Collection $matches) {
       $groupTableRows = new \Doctrine\Common\Collections\ArrayCollection();
       $rows = array();
+		$teams = array();
       foreach($matches AS $match) {
-            // TODO this must exist
          $team = $match->getHostTeam();
+			$teams[$team->getName()] = $team;
          $result = $match->getResult();
          if (isset($result)) {
             if (!isset($rows[$team->getName()])) {
@@ -43,8 +44,8 @@ class GroupTableCalculator {
             $rows[$team->getName()] = $groupTableRow;
          }
          $team = $match->getGuestTeam();
+			$teams[$team->getName()] = $team;
          if (isset($result)) {
-            // same sam
             if (!isset($rows[$team->getName()])) {
                $groupTableRow = new GroupTableRow();
                $groupTableRow->setTeam($team);
@@ -62,6 +63,21 @@ class GroupTableCalculator {
       }
       $rows = $this->setRank($rows);
       $rows = $this->checkDirect($rows, $matches);
+		$rank = count($rows) + 1;
+		foreach ($teams AS $team) {
+			if (!isset($rows[$team->getName()])) {
+				$groupTableRow = new GroupTableRow();
+				$groupTableRow->setTeam($team);
+				$groupTableRow->setGroupRound($match->getRound());
+				$groupTableRow->setPoints(0);
+				$groupTableRow->setGoalsPlus(0);
+				$groupTableRow->setGoalsMinus(0);
+				$groupTableRow->setCountOfMatchesPlayed(0);
+				$groupTableRow->setRank($rank);
+				$rank ++;
+				$rows[$team->getName()] = $groupTableRow;
+			}
+		}
       foreach ($rows AS $row) {
          $groupTableRows->add($row);
       }

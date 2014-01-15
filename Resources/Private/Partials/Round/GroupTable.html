@@ -7,7 +7,10 @@
 				<f:for each="{round.groupTableRows}" as="row">
 					<tr>
 						<td>{row.rank}</td>
-						<td>{row.team.name}</td>
+						<td>
+							<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{row.team.iso2}" alt="{row.team.name}" />
+							{row.team.name}
+						</td>
 						<td>{row.goalsPlus}:{row.goalsMinus}</td>
 						<td>{row.goalsDiff}</td>
 						<td>{row.points}</td>
