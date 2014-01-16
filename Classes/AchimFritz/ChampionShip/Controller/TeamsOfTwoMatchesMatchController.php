@@ -7,7 +7,6 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
 use \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch;
 
@@ -16,14 +15,8 @@ use \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch;
  *
  * @Flow\Scope("singleton")
  */
-class TeamsOfTwoMatchesMatchController extends MatchController {
+class TeamsOfTwoMatchesMatchController extends KoMatchController {
 		
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoMatchRepository
-	 */
-	protected $matchRepository;
-
 	/**
 	 * Adds the given new match object to the cup repository
 	 *
@@ -31,18 +24,31 @@ class TeamsOfTwoMatchesMatchController extends MatchController {
 	 * @return void
 	 */
 	public function createAction(TeamsOfTwoMatchesMatch $match) {
-		try {
-			$this->matchRepository->add($match);
-			$this->persistenceManager->persistAll();
-			$this->addOkMessage('match created');
-		} catch (\Exception $e) {
-			$this->addErrorMessage('cannot create match');
-			$this->handleException($e);
-		}		
+		$this->createMatch($match);
 		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
-		#$this->redirect('index', 'KoMatch', NULL, array('match' => $match, 'cup' => $match->getCup()));
 	}
 
+	/**
+	 * deleteAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch $match
+	 * @return void
+	 */
+	public function deleteAction(TeamsOfTwoMatchesMatch $match) {
+		$this->deleteMatch($match);
+		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+	}
+
+	/**
+	 * updateAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch $match
+	 * @return void
+	 */
+	public function updateAction(TeamsOfTwoMatchesMatch $match) {
+		$this->updateMatch($match);
+		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+	}
 }
 
 ?>

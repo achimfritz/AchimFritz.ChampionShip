@@ -1,0 +1,7 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<f:render partial="Round/GroupRound/New" arguments="{recentCup: recentCup}" />
+	</f:security.ifHasRole>
+</f:section>

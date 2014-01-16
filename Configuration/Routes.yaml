@@ -7,6 +7,22 @@
     '@action':     'index'
     '@format':     'html'
 
+#-
+#  name: 'test'
+#  uriPattern: '{@package}/foo/bar/{@action}'
+#  defaults:
+#    '@package': 'AchimFritz.ChampionShip'
+#    '@controller': 'Foo\Bar'
+#    '@action': 'index'
+
+#-
+#  name: 'Administration Userxx'
+#  uriPattern: '{@package}/foo/bar/{@action}'
+#  defaults:
+#    '@package': 'AchimFritz.ChampionShip'
+#    '@controller': 'Foo\Bar'
+#    '@action': 'list'
+
   
 #-
 #  name: 'finalmatch'

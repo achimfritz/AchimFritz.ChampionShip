@@ -16,6 +16,25 @@ use AchimFritz\ChampionShip\Domain\Model\GroupRound;
  */
 class GroupMatchRepository extends MatchRepository {
 
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Service\GroupRoundService
+	 * @Flow\Inject
+	 */
+	protected $groupRoundService;
+
+	/**
+	 * update 
+	 * 
+	 * @param mixed $object 
+	 * @return void
+	 */
+	public function update($object) {
+		if ($object->getResult() instanceof Result) {
+			$group = $this->groupRoundService->updateGroupTable($object->getGroup());
+		}
+		parent::update($group);
+	}
+
 	
 }
 ?>

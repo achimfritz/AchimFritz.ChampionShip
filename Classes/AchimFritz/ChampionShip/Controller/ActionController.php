@@ -131,6 +131,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * addErrorMessage
 	 * 
 	 * @param string $message
+	 * @return void
 	 */
 	protected function addErrorMessage($message) {
 		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
@@ -140,6 +141,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * addWarningMessage
 	 * 
 	 * @param string $message
+	 * @return void
 	 */
 	protected function addWarningMessage($message) {
 		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_WARNING);
@@ -148,6 +150,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * addNoticeMessage
 	 * 
 	 * @param string $message
+	 * @return void
 	 */
 	protected function addNoticeMessage($message) {
 		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_NOTICE);
@@ -156,6 +159,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * addOkMessage
 	 * 
 	 * @param string $message
+	 * @return void
 	 */
 	protected function addOkMessage($message) {
 		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
@@ -165,6 +169,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * handleException
 	 * 
 	 * @param \Exception $e
+	 * @return void
 	 */
 	protected function handleException(\Exception $e) {
 		$this->addFlashMessage($e->getMessage(), get_class($e), \TYPO3\Flow\Error\Message::SEVERITY_ERROR, array(), $e->getCode());

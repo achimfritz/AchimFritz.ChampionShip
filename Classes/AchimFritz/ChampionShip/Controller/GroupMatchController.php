@@ -31,15 +31,30 @@ class GroupMatchController extends MatchController {
 	 * @return void
 	 */
 	public function createAction(GroupMatch $match) {
-		try {
-			$this->matchRepository->add($match);
-			$this->persistenceManager->persistAll();
-			$this->addOkMessage('match created');
-		} catch (\Exception $e) {
-			$this->addErrorMessage('cannot create match');
-			$this->handleException($e);
-		}		
+		$this->createMatch($match);
 		$this->redirect('index', 'GroupRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+	}
+
+	/**
+	 * deleteAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $match
+	 * @return void
+	 */
+	public function deleteAction(GroupMatch $match) {
+		$this->deleteMatch($match);
+		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+	}
+
+	/**
+	 * updateAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $match
+	 * @return void
+	 */
+	public function updateAction(GroupMatch $match) {
+		$this->updateMatch($match);
+		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
 	}
 }
 

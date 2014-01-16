@@ -16,14 +16,8 @@ use \AchimFritz\ChampionShip\Domain\Model\CrossGroupMatch;
  *
  * @Flow\Scope("singleton")
  */
-class CrossGroupMatchController extends MatchController {
+class CrossGroupMatchController extends KoMatchController {
 		
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoMatchRepository
-	 */
-	protected $matchRepository;
-	
 	/**
 	 * Adds the given new match object to the cup repository
 	 *
@@ -31,18 +25,31 @@ class CrossGroupMatchController extends MatchController {
 	 * @return void
 	 */
 	public function createAction(CrossGroupMatch $match) {
-		try {
-			$this->matchRepository->add($match);
-			$this->persistenceManager->persistAll();
-			$this->addOkMessage('match created');
-		} catch (\Exception $e) {
-			$this->addErrorMessage('cannot create match');
-			$this->handleException($e);
-		}		
-		#$this->redirect('index', 'KoMatch', NULL, array('match' => $match, 'cup' => $match->getCup()));
+		$this->createMatch($match);
 		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
 	}
 
+	/**
+	 * deleteAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\CrossGroupMatch $match
+	 * @return void
+	 */
+	public function deleteAction(CrossGroupMatch $match) {
+		$this->deleteMatch($match);
+		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+	}
+
+	/**
+	 * updateAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\CrossGroupMatch $match
+	 * @return void
+	 */
+	public function updateAction(CrossGroupMatch $match) {
+		$this->updateMatch($match);
+		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+	}
 }
 
 ?>

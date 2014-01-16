@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <td>{match.name}</td>
 <td><f:format.date format="d.m.Y H:i">{match.startDate}</f:format.date></td>
 <td>{match.round.name}</td>
@@ -26,6 +27,7 @@
 			</f:link.action>
 		</li>
 		<f:render partial="DeleteAction" arguments="{controller: 'Match', arguments: {match: match}}" />
+		<cs:restDelete object="{match}"/>
 		</ul>
 	</td>
 </f:security.ifHasRole>

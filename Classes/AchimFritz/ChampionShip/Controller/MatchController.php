@@ -77,13 +77,14 @@ class MatchController extends ActionController {
 		$this->view->assign('recentCup', $match->getCup());
 	}
 
+
 	/**
-	 * Updates the given match object
+	 * updateMatch
 	 *
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match The match to update
 	 * @return void
 	 */
-	public function updateAction(Match $match) {
+	protected function updateMatch(Match $match) {
 		try {
 			$this->matchRepository->update($match);
 			$this->persistenceManager->persistAll();
@@ -92,24 +93,16 @@ class MatchController extends ActionController {
 			$this->addErrorMessage('cannot update match');
 			$this->handleException($e);
 		}
-      $round = $match->getRound();
-      if ($round instanceof KoRound) {
-		   $this->redirect('index', 'KoRound', NULL, array('round' => $round, 'cup' => $match->getCup()));
-      } elseif ($round instanceof GroupRound) {
-		   $this->redirect('index', 'GroupRound', NULL, array('round' => $round, 'cup' => $match->getCup()));
-      } else {
-		   $this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
-      }
 	}
 
+
 	/**
-	 * delete
+	 * deleteMatch
 	 *
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match The match to update
 	 * @return void
 	 */
-	public function deleteAction(Match $match) {
-		$cup = $match->getCup();
+	protected function deleteMatch(Match $match) {
 		try {
 			$this->matchRepository->remove($match);
 			$this->persistenceManager->persistAll();
@@ -118,16 +111,24 @@ class MatchController extends ActionController {
 			$this->addErrorMessage('cannot delete match');
 			$this->handleException($e);
 		}
-      $round = $match->getRound();
-      if ($round instanceof KoRound) {
-		   $this->redirect('index', 'KoRound', NULL, array('round' => $round, 'cup' => $match->getCup()));
-      } elseif ($round instanceof GroupRound) {
-		   $this->redirect('index', 'GroupRound', NULL, array('round' => $round, 'cup' => $match->getCup()));
-      } else {
-		   $this->redirect('list', NULL, NULL, array('cup' => $cup));
-      }
 	}
 
+	/**
+	 * createMatch
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
+	 * @return void
+	 */
+	protected function createMatch(Match $match) {
+		try {
+			$this->matchRepository->add($match);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('match created');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot create match');
+			$this->handleException($e);
+		}		
+	}
 
 }
 

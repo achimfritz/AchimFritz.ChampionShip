@@ -1,7 +1,7 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:if condition="{match.hostTeam}">
    <f:then>
-							<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{match.hostTeam.iso2}" alt="{match.hostTeam.name}" />
+		<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{match.hostTeam.iso2}" alt="{match.hostTeam.name}" />
       {match.hostTeam.name}
    </f:then>
    <f:else>
@@ -34,7 +34,7 @@
 -
 <f:if condition="{match.guestTeam}">
    <f:then>
-		<img src="/clear.gif" class="flag flag-{match.guestTeam.iso2}" alt="{match.guestTeam.name}" />
+		<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{match.guestTeam.iso2}" alt="{match.guestTeam.name}" />
       {match.guestTeam.name}
    </f:then>
    <f:else>
