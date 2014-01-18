@@ -24,6 +24,8 @@ class StandardController extends ActionController {
 	 * @return void
 	 */
 	public function listAction() {
+		$cup = $this->cupRepository->findOneRecent();
+		$this->redirect('index', 'Cup', NULL, array('cup' => $cup));
 
 	}
 

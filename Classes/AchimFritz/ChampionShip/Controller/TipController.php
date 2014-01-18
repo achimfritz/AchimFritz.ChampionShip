@@ -35,6 +35,7 @@ class TipController extends ActionController {
 	 */
 	public function showAction(Tip $tip) {
 		$this->view->assign('tip', $tip);
+		$this->view->assign('cup', $tip->getMatch()->getCup());
 	}
 
 	/**
@@ -52,7 +53,7 @@ class TipController extends ActionController {
 			$this->addErrorMessage('cannot update tip');
 			$this->handleException($e);
 		}
-		$this->redirect('show', NULL, NULL, array('tip' => $tip));
+		$this->redirect('show', NULL, NULL, array('tip' => $tip, 'cup' => $tip->getMatch()->getCup()));
 	}
 
 

@@ -28,6 +28,12 @@ class MatchController extends ActionController {
 
 	/**
 	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 */
+	protected $tipRepository;
+
+	/**
+	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
 	 */
 	protected $koRoundRepository;
@@ -69,14 +75,28 @@ class MatchController extends ActionController {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
 	 */
 	public function showAction(Match $match) {
-		return get_class($match);
 		$this->view->assign('match', $match);
 		$cup = $match->getCup();
+		$tips = $this->tipRepository->findByGeneralMatch($match);
+		$this->view->assign('tips', $tips);
 		$this->view->assign('allTeams', $this->teamRepository->findAll());
 		$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
 		$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
 		$this->view->assign('recentCup', $match->getCup());
 	}
+
+	/**
+	 * updateAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
+	 * @return void
+	 */
+	public function updateAction(Match $match) {
+		return get_class($match);
+		$this->updateMatch($match);
+		$this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
+	}
+
 
 
 	/**
