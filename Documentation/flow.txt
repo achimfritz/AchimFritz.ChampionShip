@@ -1,0 +1,10 @@
+Vorrunde 
+	GroupMatch
+		Match.Show -> GroupMatch.Show
+		Match.Delete -> GroupMatch.Delete
+GruppenSpiele
+	GroupRound
+		Match.Show -> GroupMatch.Show
+Finalrunde
+	KoRound
+		Match.Show -> KoMatch.Show

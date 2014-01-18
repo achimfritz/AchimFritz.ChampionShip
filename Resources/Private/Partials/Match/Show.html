@@ -17,17 +17,17 @@
 	<td>
 		<ul class="inline">
 		<li>
-			<f:link.action action="index" class="btn" controller="Match" arguments="{match: match}">
-				show
-			</f:link.action>
+			<a href="{cs:restUri(object: match)}"  class="btn">show</a>
 		</li>
 		<li>
 			<f:link.action action="index" class="btn" controller="MatchTip" arguments="{match: match}">
 				tips	
 			</f:link.action>
 		</li>
-		<f:render partial="DeleteAction" arguments="{controller: 'Match', arguments: {match: match}}" />
-		<cs:restDelete object="{match}"/>
+			<form action="{cs:restUri(object: match)}" method="post">
+				<f:form.hidden name="__method" value="DELETE" />
+				<f:form.submit name="submit" value="delete" class="btn" />
+			</form>
 		</ul>
 	</td>
 </f:security.ifHasRole>

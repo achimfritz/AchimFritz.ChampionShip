@@ -69,6 +69,7 @@ class MatchController extends ActionController {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
 	 */
 	public function showAction(Match $match) {
+		return get_class($match);
 		$this->view->assign('match', $match);
 		$cup = $match->getCup();
 		$this->view->assign('allTeams', $this->teamRepository->findAll());
