@@ -1,9 +1,4 @@
-	<h2>{cup.name}</h2>
-	<ul class="inline">
-		<li>
-			<f:link.action action="index" class="btn">list</f:link.action>
-		</li>
-		<f:render partial="DeleteAction" arguments="{controller: Cup, arguments: {cup: cup}}" />
-	</ul>
-
-
+<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<f:render partial="Actions/Delete" arguments="{object: cup}" />
+		<f:link.action action="index" class="btn">list</f:link.action>
+</f:security.ifHasRole>

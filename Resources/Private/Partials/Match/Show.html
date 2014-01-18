@@ -13,21 +13,9 @@
 	</f:else>
 </f:if>
 </td>
+
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 	<td>
-		<ul class="inline">
-		<li>
-			<a href="{cs:restUri(object: match)}"  class="btn">show</a>
-		</li>
-		<li>
-			<f:link.action action="index" class="btn" controller="MatchTip" arguments="{match: match}">
-				tips	
-			</f:link.action>
-		</li>
-			<form action="{cs:restUri(object: match)}" method="post">
-				<f:form.hidden name="__method" value="DELETE" />
-				<f:form.submit name="submit" value="delete" class="btn" />
-			</form>
-		</ul>
+		<f:render partial="Actions/Delete" arguments="{object: match}" />
 	</td>
 </f:security.ifHasRole>

@@ -1,23 +1,21 @@
-<f:if condition="{tips}">
-	<f:then>
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 		<table class="table">
-			<f:for each="{tips}" as="tip">
-				<tr>
-					<f:render partial="Match/Show" arguments="{match: tip.match}" />
-					<td>
-						<f:render partial="Tip/Show" arguments="{tip: tip}" />
-					</td>
-					<td>
-						<f:link.action action="index" controller="Tip" arguments="{tip: tip}" class="btn">show</f:link.action>
-					</td>
-					<td>
-						<f:link.action action="index" controller="MatchTip" arguments="{match: tip.match, cup: tip.match.cup}" class="btn">all</f:link.action>
-					</td>
-				</tr>
-			</f:for>
-		</table>
-	</f:then>
-	<f:else>
-		<p>No tips created yet.</p>
-	</f:else>
-</f:if>
+            <f:for each="{tips}" as="tip">
+               <tr>
+                  <td>
+                     {tip.user.name}
+                  </td>
+                  <td>
+                     <f:render partial="Tip/Show" arguments="{tip: tip}" />
+                  </td>
+                  <td>
+                     <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+								<f:render partial="RestAction" arguments="{object: tip}" />
+                     </f:security.ifHasRole>
+                     <cs:ifIsOwnTip tip="{tip}">
+                           <f:link.action action="index" controller="Tip" arguments="{tip: tip}" class="btn">show</f:link.action>
+                     </cs:ifIsOwnTip>
+                  </td>
+               </tr>
+            </f:for>
+         </table>

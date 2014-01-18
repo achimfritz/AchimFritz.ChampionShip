@@ -4,6 +4,11 @@
 			<f:for each="{matches}" as="match">
 				<tr>
 					<f:render partial="Match/Show" arguments="{match: match}" />
+					<f:security.ifAuthenticated>
+						<td>
+							<f:render partial="Actions/Show" arguments="{object: match}" />
+						</td>
+					</f:security.ifAuthenticated>
 				</tr>
 			</f:for>
 		</table>

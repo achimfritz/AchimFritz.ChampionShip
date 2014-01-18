@@ -6,8 +6,8 @@
 					<f:link.action class="btn" action="index" arguments="{cup: cup}">	
 					{cup.name}
 					</f:link.action>
+					<f:render partial="Actions/Delete" arguments="{object: cup}" />
 				</li>
-				<f:render partial="DeleteAction" arguments="{controller: Cup, arguments: {cup: cup}}" />
 			</ul>
 		</li>
 	</f:for>

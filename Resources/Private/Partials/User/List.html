@@ -8,13 +8,15 @@
 								<f:link.action class="btn" action="index" controller="User" arguments="{user: user, cup: recentCup}">
 									{user.name}
 								</f:link.action>
+								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+									<f:render partial="Actions/Delete" arguments="{object: user}" />
+								</f:security.ifHasRole>
 							</li>
 							<li>
 								<f:link.action class="btn" action="index" controller="UserTip" arguments="{user: user, cup: recentCup}">
 									tips
 								</f:link.action>
 							</li>
-							<f:render partial="DeleteAction" arguments="{controller: User, arguments: {user: user}}" />
 						</ul>
 					</li>
 				</f:for>

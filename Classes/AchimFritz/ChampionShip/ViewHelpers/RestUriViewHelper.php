@@ -12,7 +12,8 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Fluid\ViewHelpers\FormViewHelper;
+use AchimFritz\ChampionShip\Domain\Model\Match;
+use AchimFritz\ChampionShip\Domain\Model\Round;
 
 /**
  * 
@@ -31,13 +32,17 @@ class RestUriViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$name = get_class($object);
 		$parts = explode('\\', $name);
 		$model = array_pop($parts);
-		return $model;
-		$name = lcfirst($controller);
-		$name = 'match';
-		// TODO
-
+		if ($object instanceof Match) {
+			$resource = 'match';
+		} elseif ($object instanceof Round){
+			$resource = 'round';
+		} else {
+			$resource = lcfirst($model);
+		}
+		// controller is same as model
+		$controller = $model;
 		$action = 'index';
-		$arguments = array($name => $object);
+		$arguments = array($resource => $object);
 
 		$uriBuilder = $this->controllerContext->getUriBuilder();
 		$uriBuilder->reset();

@@ -3,11 +3,13 @@
 		<ul class="inline">   
 			<f:for each="{rounds}" as="round">
 				<li>
-				<f:link.action action="index" class="btn" arguments="{cup: round.cup, round: round}">
+				<f:link.action action="index" class="btn" arguments="{round: round}">
 					{round.name}
 				</f:link.action>
+				<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+						<f:render partial="Actions/Delete" arguments="{object: round}" />
+				</f:security.ifHasRole>
 				</li>
-				<f:render partial="DeleteAction" arguments="{controller: Round, arguments: {round: round}}" />
 			</f:for>
 		</ul>
 	</f:then>
