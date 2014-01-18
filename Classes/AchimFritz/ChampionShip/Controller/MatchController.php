@@ -86,20 +86,6 @@ class MatchController extends ActionController {
 	}
 
 	/**
-	 * updateAction
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
-	 * @return void
-	 */
-	public function updateAction(Match $match) {
-		return get_class($match);
-		$this->updateMatch($match);
-		$this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
-	}
-
-
-
-	/**
 	 * updateMatch
 	 *
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match The match to update
