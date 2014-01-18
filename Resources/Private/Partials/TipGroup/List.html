@@ -8,8 +8,10 @@
 								<f:link.action controller="TipGroup" action="index" class="btn" arguments="{tipGroup: tipGroup, cup: cup}">
 									{tipGroup.name}
 								</f:link.action>
+								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+										<f:render partial="Actions/Delete" arguments="{object: tipGroup}" />
+								</f:security.ifHasRole>
 							</li>
-							<f:render partial="DeleteAction" arguments="{controller: TipGroup, arguments: {tipGroup: tipGroup, cup: cup}}" />
 						</ul>
 					</li>
 				</f:for>

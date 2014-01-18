@@ -1,9 +1,11 @@
 	<h3>{user.name}</h3>
+		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+			<f:render partial="Actions/Delete" arguments="{object: user}" />
+		</f:security.ifHasRole>
 	<ul class="inline">
 		<li>
 			<f:link.action action="index" controller="User" class="btn" arguments="{cup: recentCup}">list</f:link.action>
 		</li>
-		<f:render partial="DeleteAction" arguments="{controller: User, arguments: {user: user}}" />
 	</ul>
 	<ul>
 		<li>

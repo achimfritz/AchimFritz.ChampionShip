@@ -26,7 +26,7 @@ class CrossGroupMatchController extends KoMatchController {
 	 */
 	public function createAction(CrossGroupMatch $match) {
 		$this->createMatch($match);
-		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+		$this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
 	}
 
 	/**
@@ -48,7 +48,7 @@ class CrossGroupMatchController extends KoMatchController {
 	 */
 	public function updateAction(CrossGroupMatch $match) {
 		$this->updateMatch($match);
-		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+		$this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
 	}
 }
 

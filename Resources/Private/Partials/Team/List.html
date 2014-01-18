@@ -1,23 +1,12 @@
 	<f:if condition="{teams}">
 		<f:then>
-			<ul>
+			<ul class="inline">
 				<f:for each="{teams}" as="team">
 					<li>
-						<ul class="inline">
-							<li>
-								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-									<f:then>
-										<f:link.action class="btn" controller="Team" action="index" arguments="{team: team}" class="btn">
-											{team.name}
-										</f:link.action>
-									</f:then>
-									<f:else>
-										{team.name}
-									</f:else>
-								</f:security.ifHasRole>
-							</li>
-							<f:render partial="DeleteAction" arguments="{controller: Team, arguments: {team: team}}" />
-						</ul>
+						<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{team.iso2}" alt="{tam.name}" />{team.name}
+						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+								<f:render partial="Actions/RestAction" arguments="{object: team}" />
+						</f:security.ifHasRole>
 					</li>
 				</f:for>
 			</ul>

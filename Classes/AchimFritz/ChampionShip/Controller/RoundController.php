@@ -63,6 +63,7 @@ class RoundController extends ActionController {
 	 */
 	public function showAction(Round $round) {
       $cup = $round->getCup();
+		$this->view->assign('cup', $cup);
 		$this->view->assign('round', $round);
       $this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
       $this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));

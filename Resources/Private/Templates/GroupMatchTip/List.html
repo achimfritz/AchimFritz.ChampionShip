@@ -17,9 +17,6 @@
 								<f:link.action action="index" controller="Tip" arguments="{tip: tip, cup: tip.match.cup}" class="btn">show</f:link.action>
 						</cs:ifIsOwnTip>
                </td>
-               <td>
-                  <f:link.action action="index" controller="MatchTip" arguments="{match: tip.match, cup: tip.match.cup}" class="btn">all</f:link.action>
-               </td>
             </tr>
          </f:for>
       </table>

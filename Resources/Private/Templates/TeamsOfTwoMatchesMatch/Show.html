@@ -7,6 +7,7 @@
 			<f:render partial="Match/Show" arguments="{match: match}" />
 		</tr>
 	</table>
+
 	<f:if condition="{tips}">
 		<f:then>
 			</f:then>
@@ -18,8 +19,9 @@
 	</f:if>
 
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<f:render partial="Match/GroupMatch/Edit" arguments="{match: match}" />
-		<f:render partial="Match/GroupMatch/ChangeMembers" arguments="{match: match}" />
+		<f:render partial="Match/EditCurrentHostTeam" arguments="{match: match}" />
+		<f:render partial="Match/EditCurrentGuestTeam" arguments="{match: match}" />
+		<f:render partial="Match/TeamsOfTwoMatchesMatch/Edit" arguments="{match: match}" />
 		<f:render partial="Match/Result" arguments="{match: match}" />
 	</f:security.ifHasRole>
 
