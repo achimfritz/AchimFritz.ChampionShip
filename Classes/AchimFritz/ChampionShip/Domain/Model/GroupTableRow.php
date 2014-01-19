@@ -46,7 +46,7 @@ class GroupTableRow {
 	/**
 	 * @var integer
 	 */
-	protected $rank = 0;
+	protected $rank = 1;
 
 	/**
 	 * @var integer

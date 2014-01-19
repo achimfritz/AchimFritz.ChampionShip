@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use AchimFritz\ChampionShip\Domain\Model\Result;
 
 /**
  * A repository for Matches
@@ -23,6 +24,12 @@ class GroupMatchRepository extends MatchRepository {
 	protected $groupRoundService;
 
 	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 */
+	protected $roundRepository;
+
+	/**
 	 * update 
 	 * 
 	 * @param mixed $object 
@@ -30,9 +37,10 @@ class GroupMatchRepository extends MatchRepository {
 	 */
 	public function update($object) {
 		if ($object->getResult() instanceof Result) {
-			$group = $this->groupRoundService->updateGroupTable($object->getGroup());
+			$groupRound = $this->groupRoundService->updateGroupTable($object->getRound());
+			$this->roundRepository->update($groupRound);
 		}
-		parent::update($group);
+		parent::update($object);
 	}
 
 	

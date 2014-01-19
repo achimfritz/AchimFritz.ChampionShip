@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Policy;
+namespace AchimFritz\ChampionShip\Domain\Policy\TipPoints;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -15,7 +15,7 @@ use AchimFritz\ChampionShip\Domain\Model\Result;
  *
  * @Flow\Scope("singleton")
  */
-class TipPointsPolicy {
+class TwoOnePolicy {
 
 	/**
 	 * getPointsForTip 
@@ -37,7 +37,6 @@ class TipPointsPolicy {
 		if ($matchHostPoints == $hostPoints) {
 			if ($result->getHostTeamGoals() == $matchResult->getHostTeamGoals() AND 
 				$result->getGuestTeamGoals() == $matchResult->getGuestTeamGoals()) {
-					// TODO how much ?
 				return 2;
 			}
 			return 1;

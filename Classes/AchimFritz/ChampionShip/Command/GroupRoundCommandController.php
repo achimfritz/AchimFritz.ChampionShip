@@ -7,6 +7,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use AchimFritz\ChampionShip\Domain\Model\GroupRound;
 
 /**
  * GroupRound command controller for the AchimFritz.ChampionShip package
@@ -59,17 +60,7 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 				} else {
 					$this->outputLine(' no matches found');
 				}
-            $groupTableRows = $groupRound->getGroupTableRows();
-            if (count($groupTableRows)) {
-               foreach ($groupTableRows AS $row) {
-                  $line = ' ' . $row->getRank() . '. ' . $row->getCountOfMatchesPlayed() . ' ' .  $row->getPoints();
-                  $line .= ' ' . $row->getGoalsDiff() . ' ' . $row->getGoalsPlus() . ':' . $row->getGoalsMinus();
-                  $line .= ' ' . $row->getTeam()->getName();
-						$this->outputLine($line);
-               }
-            } else {
-               $this->outputLine('no groupTableRows found');
-            }
+				$this->outputGroupRound($groupRound);
 			}
 		} else {
 			$this->outputLine('no groupRounds found');
@@ -85,10 +76,34 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 		$groupRounds = $this->groupRoundRepository->findAll();
 		#$groupRounds = array($this->groupRoundRepository->findOneByName('Gruppe A'));
 		foreach ($groupRounds AS $groupRound) {
-			$this->outputLine('update groupRound ' . $groupRound->getName());
+				if ($groupRound->getName() != 'G' OR $groupRound->getCup()->getName() != 'wm 2002') {
+					#continue;
+				}
+			$this->outputLine('update groupRound ' . $groupRound->getCup()->getName() . ' ' . $groupRound->getName());
 			$this->groupRoundService->updateGroup($groupRound);
+			$this->outputGroupRound($groupRound);
 			$this->groupRoundRepository->update($groupRound);
 		}
+	}
+
+	/**
+	 * outputGroupRound 
+	 * 
+	 * @param GroupRound $groupRound 
+	 * @return void
+	 */
+	protected function outputGroupRound(GroupRound $groupRound) {
+			$groupTableRows = $groupRound->getGroupTableRows();
+			if (count($groupTableRows)) {
+				foreach ($groupTableRows AS $row) {
+					$line = ' ' . $row->getRank() . '. ' . $row->getCountOfMatchesPlayed() . ' ' .  $row->getPoints();
+					$line .= ' ' . $row->getGoalsDiff() . ' ' . $row->getGoalsPlus() . ':' . $row->getGoalsMinus();
+					$line .= ' ' . $row->getTeam()->getName();
+					$this->outputLine($line);
+				}
+			} else {
+				$this->outputLine('no groupTableRows found');
+			}
 	}
 	
 	/**

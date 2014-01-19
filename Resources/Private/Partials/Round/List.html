@@ -3,7 +3,7 @@
 		<ul class="inline">   
 			<f:for each="{rounds}" as="round">
 				<li>
-				<f:link.action action="index" class="btn" arguments="{round: round}">
+				<f:link.action action="index" class="btn" arguments="{round: round, cup: round.cup}">
 					{round.name}
 				</f:link.action>
 				<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">

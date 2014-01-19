@@ -32,7 +32,7 @@ class GroupMatchController extends MatchController {
 	 */
 	public function createAction(GroupMatch $match) {
 		$this->createMatch($match);
-		$this->redirect('index', 'GroupRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+		$this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
 	}
 
 	/**
@@ -54,7 +54,7 @@ class GroupMatchController extends MatchController {
 	 */
 	public function updateAction(GroupMatch $match) {
 		$this->updateMatch($match);
-		$this->redirect('index', 'KoRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+		$this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
 	}
 }
 

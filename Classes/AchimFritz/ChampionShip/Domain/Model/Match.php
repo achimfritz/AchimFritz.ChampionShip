@@ -117,6 +117,20 @@ class Match {
 		}
 		return NULL;
 	}
+
+	/**
+	 * getTeamHasWonThisMatch 
+	 * 
+	 * @param Team $team 
+	 * @return boolean
+	 */
+	public function getTeamHasWonThisMatch(Team $team) {
+		$winner = $this->getWinnerTeam();
+		if ($winner instanceof Team AND $winner === $team) {
+			return TRUE;
+		}
+		return FALSE;
+	}
 	
 	/**
 	 * twoTeamsPlayThisMatch

@@ -16,6 +16,25 @@ use AchimFritz\ChampionShip\Domain\Model\Team;
  * @Flow\Entity
  */
 class Cup {
+
+	const GROUPTABLE_FIFA_POINT_EQUALITY_POLICY = '\AchimFritz\ChampionShip\Domain\Policy\GroupTable\FifaPointEqualityPolicy';
+	const GROUPTABLE_UEFA_POINT_EQUALITY_POLICY = '\AchimFritz\ChampionShip\Domain\Policy\GroupTable\UefaPointEqualityPolicy';
+	const GROUPTABLE_DEFAULT_POLICY = '\AchimFritz\ChampionShip\Domain\Policy\GroupTable\DefaultPolicy';
+
+	const TIP_POINTS_TWO_ONE_POLICY = '\AchimFritz\ChampionShip\Domain\Policy\TipPoints\TwoOnePolicy';
+	const TIP_POINTS_THREE_ONE_POLICY = '\AchimFritz\ChampionShip\Domain\Policy\TipPoints\ThreeOnePolicy';
+
+	/**
+	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $tipPointsPolicy = self::TIP_POINTS_TWO_ONE_POLICY;
+
+	/**
+	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $groupTablePolicy = self::GROUPTABLE_DEFAULT_POLICY;
 	
 	/**
 	 * The name
@@ -59,6 +78,44 @@ class Cup {
    public function __construct() {
       $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
    }
+
+	/**
+	 * setGroupTablePolicy 
+	 * 
+	 * @param string
+	 * @return void
+	 */
+	public function setGroupTablePolicy($groupTablePolicy) {
+		$this->groupTablePolicy = $groupTablePolicy;
+	}
+
+	/**
+	 * getGroupTablePolicy 
+	 * 
+	 * @return string
+	 */
+	public function getGroupTablePolicy() {
+		return $this->groupTablePolicy;
+	}
+
+	/**
+	 * getTipPointsPolicy 
+	 * 
+	 * @return string tipPointsPolicy
+	 */
+	public function getTipPointsPolicy() {
+		return $this->tipPointsPolicy;
+	}
+
+	/**
+	 * setTipPointsPolicy
+	 * 
+	 * @param string $tipPointsPolicy
+	 * @return void
+	 */
+	public function setTipPointsPolicy($tipPointsPolicy) {
+		$this->tipPointsPolicy = $tipPointsPolicy;
+	}
 	
 	/**
 	 * Get the Team's name

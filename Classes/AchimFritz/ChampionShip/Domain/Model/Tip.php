@@ -17,12 +17,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Tip {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Policy\TipPointsPolicy
-	 * @Flow\Inject
-	 */
-	protected $tipPointsPolicy;
-
-	/**
 	 * The user
 	 * @var \AchimFritz\ChampionShip\Domain\Model\User
 	 * @ORM\ManyToOne
@@ -109,7 +103,9 @@ class Tip {
 	 * @return integer
 	 */
 	public function getPoints() {
-		return $this->tipPointsPolicy->getPointsForTip($this);
+		$name = $this->getMatch()->getCup()->getTipPointsPolicy();
+		$tipPointsPolicy = new $name;
+		return $tipPointsPolicy->getPointsForTip($this);
 	}
 
 }

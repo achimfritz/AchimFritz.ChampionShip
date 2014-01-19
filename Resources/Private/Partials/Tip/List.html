@@ -10,7 +10,7 @@
                   </td>
                   <td>
                      <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-								<f:render partial="RestAction" arguments="{object: tip}" />
+								<f:render partial="Actions/RestAction" arguments="{object: tip}" />
                      </f:security.ifHasRole>
                      <cs:ifIsOwnTip tip="{tip}">
                            <f:link.action action="index" controller="Tip" arguments="{tip: tip}" class="btn">show</f:link.action>

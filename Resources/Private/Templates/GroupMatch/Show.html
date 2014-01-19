@@ -2,6 +2,8 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
+<f:link.action action="index" class="btn">list</f:link.action>
+<f:link.action action="index" class="btn" controller="GroupRound" arguments="{round: match.round}">{match.round.name}</f:link.action>
 	<table>
 		<tr>
 			<f:render partial="Match/Show" arguments="{match: match}" />
@@ -9,9 +11,8 @@
 	</table>
 	<f:if condition="{tips}">
 		<f:then>
-			</f:then>
 			<f:render partial="Tip/List" arguments="{tips: tips}" />
-
+			</f:then>
 			<f:else>
 				no tips created
 			</f:else>
