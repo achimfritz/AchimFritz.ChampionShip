@@ -34,6 +34,22 @@
 				<source>pemanent</source>
 				<target>Ewigen Rangliste</target>
 			</trans-unit>
+			<trans-unit id="username">
+				<source>username</source>
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="password">
+				<source>password</source>
+				<target>Passwort</target>
+			</trans-unit>
+			<trans-unit id="logout">
+				<source>logout</source>
+				<target>Logout</target>
+			</trans-unit>
+			<trans-unit id="login">
+				<source>login</source>
+				<target>Login</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 	<h3>edit Cup</h3>
 
@@ -6,38 +7,17 @@
 		<div class="control-group">
 			<label class="control-label" for="tipPointsPolicy">tipPointsPolicy</label>
 			<div class="controlls">
-				<f:form.select options='{AchimFritzCham: "foo"}'
-				property="tipPointsPolicy" id="tipPointsPolicy" />
+				<f:form.select options="{cs:cupPolicyOptions(prefix: 'TIP_POINTS')}" property="tipPointsPolicy" id="tipPointsPolicy" />
 			</div>
 		</div>
 
 		<div class="control-group">
-			<label class="control-label" for="tipPointsPolicy">tipPointsPolicy</label>
+			<label class="control-label" for="groupTablePolicy">groupTablePolicy</label>
 			<div class="controlls">
-				<f:form.select options='{AchimFritz\Cham: "foo"}'
-				property="tipPointsPolicy" id="tipPointsPolicy" />
-				<f:comment>
-				<f:form.select options="{Pal: '\AchimFritz\Cham',
-					visa: 'Visa Card'}" 
-				property="tipPointsPolicy" id="tipPointsPolicy" />
-<f:form.select options="{'twoOnePolicy': '\AchimFritz\ChampionShip\Domain\Policy\TipPoints\TwoOnePolicy',
-               'threeOnePolicy': '\AchimFritz\ChampionShip\Domain\Policy\TipPoints\ThreeOnePolicy'}"
-					            property="tipPointsPolicy" id="tipPointsPolicy" />
-
-<f:form.select options="{'twoOnePolicy': '\AchimFritz\ChampionShip\Domain\Policy\TipPoints\TwoOnePolicy',
-               'threeOnePolicy': '\AchimFritz\ChampionShip\Domain\Policy\TipPoints\ThreeOnePolicy'}"
-					            property="tipPointsPolicy" id="tipPointsPolicy" />
-
-
-				<f:form.select options="
-				{
-				'twoOne': '\AchimFritz\ChampionShip\Domain\Policy\TipPoints\TwoOnePolicy',
-				'threeOne': '\AchimFritz\ChampionShip\Domain\Policy\TipPoints\ThreeOnePolicy'
-				}" 
-				property="tipPointsPolicy" id="tipPointsPolicy" />
-				</f:comment>
+				<f:form.select options="{cs:cupPolicyOptions(prefix: 'GROUPTABLE')}" property="groupTablePolicy" id="groupTablePolicy" />
 			</div>
 		</div>
+
 		<div class="control-group">
 			<label class="control-label" for="name">Name</label>
 			<div class="controlls"><f:form.textfield property="name" id="name" /></div>

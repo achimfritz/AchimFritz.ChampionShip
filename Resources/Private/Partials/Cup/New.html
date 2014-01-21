@@ -1,6 +1,20 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 		<h3>new Cup</h3>
 
 		<f:form class="form-horizontal" action="index" controller="Cup" name="cup" method="post">
+		<div class="control-group">
+			<label class="control-label" for="tipPointsPolicy">tipPointsPolicy</label>
+			<div class="controlls">
+				<f:form.select options="{cs:cupPolicyOptions(prefix: 'TIP_POINTS')}" property="tipPointsPolicy" id="tipPointsPolicy" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="groupTablePolicy">groupTablePolicy</label>
+			<div class="controlls">
+				<f:form.select options="{cs:cupPolicyOptions(prefix: 'GROUPTABLE')}" property="groupTablePolicy" id="groupTablePolicy" />
+			</div>
+		</div>
 			<div class="control-group">
 				<label class="control-label" for="name">Name</label>
 				<div class="controlls"><f:form.textfield property="name" id="name" /></div>

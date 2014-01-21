@@ -81,7 +81,7 @@ class ActionController extends RestController {
 	 */
 	protected function initializeView(\TYPO3\Flow\Mvc\View\ViewInterface $view) {
 		$view->assign('controllers', array('Team', 'User', 'Cup', 'Standard'));
-		$view->assign('title', $this->request->getControllerName() . '->' . $this->request->getControllerActionName());
+		$view->assign('title', $this->request->getControllerName() . '.' . $this->request->getControllerActionName());
 		
 		
 		if ($this->request->hasArgument('cup')) {

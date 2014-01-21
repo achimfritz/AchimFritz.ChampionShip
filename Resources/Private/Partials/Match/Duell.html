@@ -1,4 +1,5 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<td>
 <f:if condition="{match.hostTeam}">
    <f:then>
 		<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{match.hostTeam.iso2}" alt="{match.hostTeam.name}" />
@@ -31,7 +32,8 @@
       </cs:ifIsCrossGroupMatch> 
    </f:else>
 </f:if>
--
+</td>
+<td>
 <f:if condition="{match.guestTeam}">
    <f:then>
 		<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{match.guestTeam.iso2}" alt="{match.guestTeam.name}" />
@@ -65,3 +67,4 @@
       </cs:ifIsCrossGroupMatch> 
    </f:else>
 </f:if>
+</td>

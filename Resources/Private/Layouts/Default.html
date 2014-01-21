@@ -22,17 +22,22 @@
 	   	<f:if condition="{recentCup}">
 			   <f:then>
                <div class="row">
-                  <div class="span3">
+                  <div class="span2">
                      <h4><f:link.action controller="Standard" action="index">Home</f:link.action></h4>
-                     <f:render partial="LoginForm" />
                      <f:render partial="ServiceDescription" arguments="{recentCup: recentCup, cups: cups}" />
                   </div>
-                  <div class="span9">
-                     <h1>{recentCup.name}</h1>
-                     <h2>{title}</h2>
+                  <div class="span8">
+                     <h1>{recentCup.name}
+								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+									{title}
+								</f:security.ifHasRole>
+							</h1>
                      <f:render partial="ValidationErrors" />
                      <f:render partial="FlashMessages" />
                      <f:render section="Content" />
+                  </div>
+                  <div class="span2">
+                     <f:render partial="LoginForm" />
                   </div>
                </div>
             </f:then>

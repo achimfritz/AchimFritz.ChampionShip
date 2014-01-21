@@ -2,6 +2,7 @@
 
 
 <f:section name="Content">
+	<img src="{f:uri.resource(path: 'Images/footballtip_start.jpg')}" alt="home" />
 	<f:render partial="Cup/Show" arguments="{cup: cup, groupRounds: groupRounds, koRounds: koRounds}" />
 	<f:render partial="Cup/Edit" arguments="{cup: cup, allTeams: allTeams}" />
 	<f:if condition="{cup.teams}">

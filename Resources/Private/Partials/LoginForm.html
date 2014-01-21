@@ -1,27 +1,26 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
-<h4>Login</h4>
 <f:security.ifAuthenticated>
 	<f:then>
 		<cs:username />
-		<f:link.action class="btn" action="logout" controller="Login">logout</f:link.action>
+		<f:link.action class="btn" action="logout" controller="Login"><f:translate id="logout" /></f:link.action>
 	</f:then>
 	<f:else>
 		<f:form action="authenticate" controller="Login">
 			<div class="control-group">
-				<label class="control-label" for="name">Username</label>
+				<label class="control-label" for="name"><f:translate id="username" /></label>
 				<div class="controlls">
-					<f:form.textfield name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" />
+					<f:form.textfield class="input-small" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" />
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="name">Password</label>
+				<label class="control-label" for="name"><f:translate id="password" /></label>
 				<div class="controlls">
-					<f:form.password name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
+					<f:form.password class="input-small" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
 				</div>
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<f:form.submit value="Login" class="btn"/>
+					<f:form.submit value="{f:translate(id: 'login')}" class="btn"/>
 				</div>
 			</div>
 		</f:form>
