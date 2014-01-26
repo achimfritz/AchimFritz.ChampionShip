@@ -1,3 +1,17 @@
+label {
+	margin-bottom: 0px;
+	font-size: 11px;
+	color: #537A00;
+}
+
+.control-group {
+	margin-bottom: 0px;
+}
+
+a {
+color: black;
+}
+
 form.inline {
 	display: inline;
 }
@@ -5,3 +19,169 @@ form.inline {
 img.flag {
 	margin-right: 5px;
 }
+
+
+body {
+	color: #000000;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 11px;
+	background: none repeat scroll 0 0 #F0F5E4;
+	/*
+	font-weight: normal;
+	*/
+}
+
+h6 {
+	color: #537A00;
+	margin: 0px;
+}
+
+div.cs-col {
+	background: none repeat scroll 0 0 #84B222;
+	border: 2px solid #F0F5E4;
+	/*
+	border: 2px solid #84B222;
+	*/
+	margin-left: 0px;
+}
+div.cs-col div.row {
+	margin-left: 0px;
+}
+
+div.cs-col-border {
+	background: none repeat scroll 0 0 #ABE039;
+	margin: 2px;
+	padding: 2px;
+}
+
+div.cs-container {
+	border: 1px solid #537A00;
+	padding: 4px;
+	margin-top: 2px;
+}
+
+div.cs-content {
+	background: none repeat scroll 0 0 #F0F5E4;
+	/*
+	*/
+}
+
+div.cs-container ul {
+	list-style: none outside none;
+	margin: 0;
+	margin-left: 4px;
+	padding: 0;
+}
+
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    background-color: #E6F8BF;
+    border: 1px solid #537A00;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    border-radius: 4px 4px 4px 4px;
+/*
+    color: #555555;
+*/
+    display: inline-block;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+	margin: 0px;
+	padding: 0px;
+/*
+    margin-bottom: 10px;
+    padding: 4px 6px;
+*/
+    vertical-align: middle;
+}
+
+/*.btn, .btn:hoover, .btn:focus {*/
+.btn {
+   background-color: #E6F8BF;
+	background-image: none;
+	background: url("/_Resources/Static/Packages/AchimFritz.ChampionShip/Images/ball.gif") no-repeat scroll 5px center #FFFFFF;
+	padding: 4px 5px 4px 25px;
+}
+
+/*
+input {
+    background: none repeat scroll 0 0 #E6F8BF;
+	     border: 2px solid #537A00;
+		      margin: 0;
+				    padding: 0;
+					 }
+*/
+
+/*
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    border-radius: 4px 4px 4px 4px;
+    color: #555555;
+    display: inline-block;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+*/
+
+
+.table td , .table th {
+	padding: 0px 3px 0px 3px;
+	border: 1px solid #F0F5E4;
+}
+
+.table th {
+    background: none repeat scroll 0 0 #84B222;
+    font-weight: normal;
+}
+
+.table {
+	margin-top: 4px;
+}
+
+tr.cs-odd {
+    background-color: #ABE039;
+}
+
+tr.cs-even {
+    background-color: #E6F8BF;
+}
+
+
+
+
+div.cs-teaser {
+    background: none repeat scroll 0 0 #E6F8BF;
+    border: 1px solid #84B222;
+    color: #537A00;
+    padding: 2px;
+	margin-top: 2px;
+}
+
+div.cs-teaser p {
+	margin: 0px;
+}
+
+div.cs-teaser .table td {
+	padding: 1px;
+	border-top: none;
+}
+
+div.cs-teaser .table {
+	margin: 0px;
+}
+
