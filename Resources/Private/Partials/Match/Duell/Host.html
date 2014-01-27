@@ -1,0 +1,33 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<f:if condition="{match.hostTeam}">
+   <f:then>
+		<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{match.hostTeam.iso2}" alt="{match.hostTeam.name}" />
+      {match.hostTeam.name}
+   </f:then>
+   <f:else>
+      <cs:ifIsCrossGroupMatch match="{match}">
+         <f:then>
+            {match.hostGroupRank}. {match.hostGroupRound.name}
+				<f:if condition="{match.currentHostTeam}">
+					({match.currentHostTeam.name})
+				</f:if>
+         </f:then>
+         <f:else>
+            <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
+					<f:if condition="{match.hostMatchIsWinner}">
+						<f:then>
+							winner of
+						</f:then>
+						<f:else>
+							looser of
+						</f:else>
+					</f:if>
+               {match.hostMatch.name}
+				<f:if condition="{match.currentHostTeam}">
+					({match.currentHostTeam.name})
+				</f:if>
+            </cs:ifIsTeamsOfTwoMatchesMatch>
+         </f:else>
+      </cs:ifIsCrossGroupMatch> 
+   </f:else>
+</f:if>

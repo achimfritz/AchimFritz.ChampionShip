@@ -9,14 +9,11 @@
 		<script src="{f:uri.resource(path: 'Vendor/bootstrap-2.3/js/bootstrap.min.js')}" type="text/javascript" ></script>
 		<script src="{f:uri.resource(path: 'Vendor/jquery-ui-1.10.3/jquery-ui.js')}" type="text/javascript" ></script>
 		<script src="{f:uri.resource(path: 'Vendor/jQuery-Timepicker-Addon/dist/jquery-ui-timepicker-addon.min.js')}" type="text/javascript" ></script>
-		<script src="{f:uri.resource(path: 'Vendor/Javascript-Grids/grids.js')}" type="text/javascript" ></script>
-
 		<link rel="stylesheet" href="{f:uri.resource(path: 'Vendor/Flags/flags.css')}" type="text/css" media="all" />
 		<link rel="stylesheet" href="{f:uri.resource(path: 'Vendor/jquery-ui-1.10.3/jquery-ui.css')}" type="text/css" media="all" />
 		<link rel="stylesheet" href="{f:uri.resource(path: 'Vendor/bootstrap-2.3/css/bootstrap.min.css')}" type="text/css" media="all" />
 		<link rel="stylesheet" href="{f:uri.resource(path: 'Vendor/jQuery-Timepicker-Addon/dist/jquery-ui-timepicker-addon.min.css')}" type="text/css" media="all" />
 
-		<script src="{f:uri.resource(path: 'JavaScript/cs.js')}" type="text/javascript" ></script>
 		<link rel="stylesheet" href="{f:uri.resource(path: 'Css/cs.css')}" type="text/css" media="all" />
    
    </head>
@@ -25,43 +22,31 @@
 	   	<f:if condition="{recentCup}">
 			   <f:then>
                <div class="row">
-                  <div class="span2 cs-col">
-							<div class="cs-col-border">
-								<f:render partial="ServiceDescription" arguments="{recentCup: recentCup, cups: cups}" />
-							</div>
+                  <div class="span2">
+                     <h4><f:link.action controller="Standard" action="index">Home</f:link.action></h4>
+                     <f:render partial="ServiceDescription" arguments="{recentCup: recentCup, cups: cups}" />
                   </div>
-                  <div class="span8 cs-col">
+                  <div class="span8">
+                     <h1>{recentCup.name}
+								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+									{title}
+								</f:security.ifHasRole>
+							</h1>
+                     <f:render partial="ValidationErrors" />
+                     <f:render partial="FlashMessages" />
+                     <f:render section="Content" />
+                  </div>
+                  <div class="span2">
 							<div class="row">
-								<div class="span2">
-									<f:link.action controller="Standard" action="index">Home</f:link.action>
-								</div>
-								<div class="span5">
-									<h1>{recentCup.name}
-										<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-											{title}
-										</f:security.ifHasRole>
-									</h1>
-								</div>
+								<f:render partial="LoginForm" />
 							</div>
-							<div class="row cs-content">
-									<f:render partial="ValidationErrors" />
-									<f:render partial="FlashMessages" />
-									<f:render section="Content" />
+							<div class="row">
+								<h4><f:translate id="nextMatches" /></h4>
+								<f:render partial="Match/Teaser" arguments="{matches: nextMatches}" />
 							</div>
-                  </div>
-                  <div class="span2 cs-col">
-							<div class="cs-col-border">
-								<div class="row cs-container">
-										<f:render partial="LoginForm" />
-								</div>
-								<div class="row cs-container">
-										<h6><f:translate id="nextMatches" /></h6>
-										<f:render partial="Match/Teaser" arguments="{matches: nextMatches}" />
-								</div>
-								<div class="row cs-container">
-										<h6><f:translate id="lastMatches" /></h6>
-										<f:render partial="Match/Teaser" arguments="{matches: lastMatches}" />
-								</div>
+							<div class="row">
+								<h4><f:translate id="lastMatches" /></h4>
+								<f:render partial="Match/Teaser" arguments="{matches: lastMatches}" />
 							</div>
                   </div>
                </div>

@@ -104,6 +104,13 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 		->execute();
 	}
 
+	/**
+	 * findOneByNameAndCup 
+	 * 
+	 * @param string $name 
+	 * @param Cup $cup 
+	 * @return Match|NULL
+	 */
 	public function findOneByNameAndCup($name, Cup $cup) {
 		$query = $this->createQuery();
 		return $query->matching(
@@ -113,6 +120,45 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 				)
 		)
 		->execute()->getFirst();
+	}
+
+	/**
+	 * findLastByCup 
+	 * 
+	 * @param Cup $cup 
+	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 */
+	public function findLastByCup(Cup $cup) {
+		$query = $this->createQuery();
+		$query->setOrderings(array('startDate' => QueryInterface::ORDER_DESCENDING));
+		$now = new \DateTime();
+		$result = $query->setLimit(2)->matching(
+			$query->logicalAnd(
+				$query->equals('cup', $cup),
+				$query->lessThan('startDate', $now)
+			)
+		)
+		->execute();
+		return $result;
+	}
+
+	/**
+	 * findNextByCup 
+	 * 
+	 * @param Cup $cup 
+	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 */
+	public function findNextByCup(Cup $cup) {
+		$query = $this->createQuery();
+		$now = new \DateTime();
+		$result = $query->setLimit(2)->matching(
+			$query->logicalAnd(
+				$query->equals('cup', $cup),
+				$query->greaterThan('startDate', $now)
+			)
+		)
+		->execute();
+		return $result;
 	}
 
 

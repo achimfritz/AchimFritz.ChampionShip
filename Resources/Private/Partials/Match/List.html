@@ -1,8 +1,23 @@
 <f:if condition="{matches}">
 	<f:then>
 		<table class="table">
-			<f:for each="{matches}" as="match">
+			<thead>
 				<tr>
+					<th>&nbsp;</th>
+					<th><f:translate id="match.date" /></th>
+					<th><f:translate id="match.group" /></th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+					</f:security.ifHasRole>
+				</tr>
+			</thead>
+			<tbody>
+			<f:for each="{matches}" as="match" iteration="it">
+				<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
 					<f:render partial="Match/Show" arguments="{match: match}" />
 					<f:security.ifAuthenticated>
 						<td>
@@ -11,6 +26,7 @@
 					</f:security.ifAuthenticated>
 				</tr>
 			</f:for>
+			</tbody>
 		</table>
 	</f:then>
 	<f:else>

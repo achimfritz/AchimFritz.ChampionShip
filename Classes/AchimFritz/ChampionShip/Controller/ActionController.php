@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\RestController;
+use \AchimFritz\ChampionShip\Domain\Model\Cup;
 
 
 /**
@@ -23,6 +24,12 @@ class ActionController extends RestController {
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
 	 */
 	protected $cupRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 */
+	protected $matchRepository;
 	
 	/**
 	 * @var \TYPO3\Flow\Security\Context
@@ -93,6 +100,12 @@ class ActionController extends RestController {
 		} else {
 			$cup = $this->cupRepository->findOneRecent();
 			$this->view->assign('recentCup', $cup);
+		}
+		if ($cup instanceof Cup) {
+			$nextMatches = $this->matchRepository->findNextByCup($cup);
+			$this->view->assign('nextMatches', $nextMatches);
+			$lastMatches = $this->matchRepository->findLastByCup($cup);
+			$this->view->assign('lastMatches', $lastMatches);
 		}
 		$cups = $this->cupRepository->findAll();
 		$this->view->assign('cups', $cups);

@@ -50,6 +50,22 @@
 				<source>login</source>
 				<target>Login</target>
 			</trans-unit>
+			<trans-unit id="nextMatches">
+				<source>next Matches</source>
+				<target>nächste Spiele</target>
+			</trans-unit>
+			<trans-unit id="lastMatches">
+				<source>last Matches</source>
+				<target>letzte Spiele</target>
+			</trans-unit>
+			<trans-unit id="match.date">
+				<source>Date</source>
+				<target>Datum</target>
+			</trans-unit>
+			<trans-unit id="match.group">
+				<source>group</source>
+				<target>Gruppe</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

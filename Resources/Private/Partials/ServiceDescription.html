@@ -1,4 +1,5 @@
-<h4><f:translate id="cups" /></h4>
+<div class="cs-container">
+<h6><f:translate id="cups" /></h6>
 <f:if condition="{cups}">
 	<ul>
 		<f:for each="{cups}" as="cup">
@@ -8,7 +9,9 @@
 		</f:for>
 	</ul>
 </f:if>
-<h4><f:translate id="matches" /></h4>
+</div>
+<div class="cs-container">
+<h6><f:translate id="matches" /></h6>
 <ul>
 	<li>
 		<f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
@@ -20,38 +23,44 @@
 	<f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
 	</li>
 </ul>
+</div>
 
 <f:security.ifHasRole role="AchimFritz.ChampionShip:User">
-<h4><f:translate id="tip" /></h4>
-<ul>
-	<li>
-		<f:link.action action="index" controller="GroupMatchTip" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
-	</li>
-	<li>
-		<f:link.action action="index" controller="GroupRoundTip" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
-	</li>
-	<li>
-	<f:link.action action="index" controller="KoRoundTip" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
-	</li>
-</ul>
+<div class="cs-container">
+	<h6><f:translate id="tip" /></h6>
+	<ul>
+		<li>
+			<f:link.action action="index" controller="GroupMatchTip" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
+		</li>
+		<li>
+			<f:link.action action="index" controller="GroupRoundTip" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
+		</li>
+		<li>
+		<f:link.action action="index" controller="KoRoundTip" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
+		</li>
+	</ul>
+</div>
 </f:security.ifHasRole>
 
 <f:security.ifAuthenticated>
-<h4><f:translate id="ranking" /></h4>
-<ul>
-	<li>
-		<f:link.action action="index" controller="Ranking" arguments="{cup: recentCup}">{recentCup.name}</f:link.action>
-	</li>
-	<li>
-		<f:link.action action="index" controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
-	</li>
-</ul>
+<div class="cs-container">
+	<h6><f:translate id="ranking" /></h6>
+	<ul>
+		<li>
+			<f:link.action action="index" controller="Ranking" arguments="{cup: recentCup}">{recentCup.name}</f:link.action>
+		</li>
+		<li>
+			<f:link.action action="index" controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
+		</li>
+	</ul>
+</div>
 </f:security.ifAuthenticated>
 
 
 
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-   <h4>admin</h4>
+<div class="cs-container">
+   <h6>admin</h6>
    <ul>
       <li>
          <f:link.action controller="Cup" action="index">Cups</f:link.action>
@@ -69,28 +78,5 @@
          <f:link.action controller="Account" action="index" package="TYPO3.AccountManagement">(Account)</f:link.action>
       </li>
    </ul>
-	<h5>Matches</h5>
-	<ul>
-		<li>
-			<f:link.action action="index" controller="Match" arguments="{cup: recentCup}">Match</f:link.action>
-		</li>
-		<li>
-			<f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}">GroupMatch</f:link.action>
-		</li>
-		<li>
-			<f:link.action action="index" controller="KoMatch" arguments="{cup: recentCup}">KoMatch</f:link.action>
-		</li>
-	</ul>
-	<h5>Rounds</h5>
-	<ul>
-		<li>
-			<f:link.action action="index" controller="Round" arguments="{cup: recentCup}">Round</f:link.action>
-		</li>
-		<li>
-			<f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup}">GroupRound</f:link.action>
-		</li>
-		<li>
-			<f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}">KoRound</f:link.action>
-		</li>
-	</ul>
+</div>
 </f:security.ifHasRole>

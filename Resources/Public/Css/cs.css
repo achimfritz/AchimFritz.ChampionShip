@@ -66,13 +66,13 @@ div.cs-content {
 	*/
 }
 
-div.cs-container ul {
+/*div.cs-container ul {*/
+ul {
 	list-style: none outside none;
 	margin: 0;
 	margin-left: 4px;
 	padding: 0;
 }
-
 
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
     background-color: #E6F8BF;
@@ -83,29 +83,28 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
     border-radius: 4px 4px 4px 4px;
-/*
-    color: #555555;
-*/
     display: inline-block;
     font-size: 14px;
     height: 20px;
     line-height: 20px;
 	margin: 0px;
 	padding: 0px;
-/*
-    margin-bottom: 10px;
-    padding: 4px 6px;
-*/
     vertical-align: middle;
 }
 
-/*.btn, .btn:hoover, .btn:focus {*/
+input[type="submit"] {
+	margin-top: 4px;
+}
+/*
+
 .btn {
    background-color: #E6F8BF;
 	background-image: none;
 	background: url("/_Resources/Static/Packages/AchimFritz.ChampionShip/Images/ball.gif") no-repeat scroll 5px center #FFFFFF;
 	padding: 4px 5px 4px 25px;
 }
+
+*/
 
 /*
 input {
@@ -185,3 +184,11 @@ div.cs-teaser .table {
 	margin: 0px;
 }
 
+
+/** admin **/
+
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus {
+	background-color: #ABE039;
+	color: #000000;
+}

@@ -2,7 +2,7 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-<f:link.action action="index" class="btn">list</f:link.action>
+<f:link.action action="index" class="btn" arguments="{cup: recentCup}">list</f:link.action>
 <f:link.action action="index" class="btn" controller="GroupRound" arguments="{round: match.round}">{match.round.name}</f:link.action>
 	<table>
 		<tr>
