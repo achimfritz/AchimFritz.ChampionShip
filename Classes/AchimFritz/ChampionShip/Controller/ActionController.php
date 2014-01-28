@@ -90,7 +90,7 @@ class ActionController extends RestController {
 		$view->assign('controllers', array('Team', 'User', 'Cup', 'Standard'));
 		$view->assign('title', $this->request->getControllerName() . '.' . $this->request->getControllerActionName());
 		
-		
+		$cup = NULL;	
 		if ($this->request->hasArgument('cup')) {
 			$arg = $this->request->getArgument('cup');
 			if (isset($arg['__identity'])) {
