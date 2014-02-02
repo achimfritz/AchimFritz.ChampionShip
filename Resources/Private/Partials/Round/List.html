@@ -1,19 +1,22 @@
-<f:if condition="{rounds}">
-	<f:then>
-		<ul class="inline">   
-			<f:for each="{rounds}" as="round">
-				<li>
-				<f:link.action action="index" class="btn" arguments="{round: round, cup: round.cup}">
-					{round.name}
-				</f:link.action>
-				<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-						<f:render partial="Actions/Delete" arguments="{object: round}" />
-				</f:security.ifHasRole>
-				</li>
-			</f:for>
-		</ul>
-	</f:then>
-	<f:else>
-		no Rounds created
-	</f:else>
-</f:if>
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<div class="row">
+	<f:if condition="{rounds}">
+		<f:then>
+			<ul class="nav nav-pills">
+				<f:for each="{rounds}" as="round">
+					<li {f:if(condition:'{round} == {activeRound}', then: ' class="active"')}>
+					<f:link.action action="index" arguments="{round: round, cup: round.cup}">
+						{round.name}
+					</f:link.action>
+					<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+							<f:render partial="Actions/Delete" arguments="{object: round}" />
+					</f:security.ifHasRole>
+					</li>
+				</f:for>
+			</ul>
+		</f:then>
+		<f:else>
+			no Rounds created
+		</f:else>
+	</f:if>
+</div>

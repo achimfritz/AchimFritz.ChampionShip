@@ -8,6 +8,11 @@
 
 		$('div.cs-col').equalHeight();
 
+		$('ul.nav li a').on('shown', function() {
+			//alert('foo');
+			//$('div.cs-col').equalHeight();
+		});
+
 		// delete action
 		$('form.deleteAction').each(function() {
 			var form = $(this);

@@ -1,16 +1,30 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<f:if condition="{cups}">
-		<f:then>
-			<h3>Cups</h3>
-			<f:render partial="Cup/List" arguments="{cups: cups}" />
-		</f:then>
-		<f:else>
-			<p>No Cups</p>
-		</f:else>
-	</f:if>
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<f:render partial="Cup/New" arguments="{allTeams: allTeams}" />
+		<div class="row">
+			<ul class="nav nav-pills">
+				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
+				<li><a href="#new" data-toggle="tab">new</a></li>
+			</ul>
+		</div>
 	</f:security.ifHasRole>
+	<div class="tab-content">
+		<div class="row tab-pane active" id="show">
+			<f:if condition="{cups}">
+				<f:then>
+					<h3>Cups</h3>
+					<f:render partial="Cup/List" arguments="{cups: cups}" />
+				</f:then>
+				<f:else>
+					<p>No Cups</p>
+				</f:else>
+			</f:if>
+		</div>
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+			<div class="row tab-pane" id="new">
+				<f:render partial="Cup/New" arguments="{allTeams: allTeams}" />
+		</div>
+	</f:security.ifHasRole>
+	</div>
 </f:section>

@@ -26,22 +26,38 @@ class GroupRoundController extends RoundController {
 	
 
 	/**
-	 * Adds the given new group round object to the group round repository
+	 * createAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound A new group round to add
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $round
 	 * @return void
 	 */
 	public function createAction(GroupRound $round) {
-		try {
-			$this->roundRepository->add($round);
-			$this->persistenceManager->persistAll();
-			$this->addOkMessage('round created');
-		} catch (\Exception $e) {
-			$this->addErrorMessage('cannot create round');
-			$this->handleException($e);
-		}
+		$this->createRound($round);
 		$this->redirect('index', NULL, NULL, array('cup' => $round->getCup(), 'round' => $round));
 	}
+
+	/**
+	 * updateAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $round
+	 * @return void
+	 */
+	public function updateAction(GroupRound $round) {
+		$this->updateRound($round);
+		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup(), 'round' => $round));
+	}
+
+	/**
+	 * deleteAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $round
+	 * @return void
+	 */
+	public function deleteAction(GroupRound $round) {
+		$this->deleteRound($round);
+		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup()));
+	}
+
 
 }
 

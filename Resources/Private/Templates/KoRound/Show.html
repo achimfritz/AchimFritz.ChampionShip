@@ -2,22 +2,50 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
+	<f:render partial="Round/List" arguments="{rounds: allKoRounds, activeRound: round}" />
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<div class="row">
+			<ul class="nav nav-pills">
+				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
+				<li><a href="#edit" data-toggle="tab">edit</a></li>
+				<li><a href="#new" data-toggle="tab">new</a></li>
+				<li><a href="#new-match" data-toggle="tab">new match</a></li>
+			</ul>
+		</div>
+	</f:security.ifHasRole>
 
-	<f:render partial="Round/List" arguments="{rounds: allKoRounds}" />
-	<f:render partial="Round/Show" arguments="{round: round}" />
+	<div class="tab-content">
+		<div class="row tab-pane active" id="show">
+			<f:render partial="Round/Show" arguments="{round: round}" />
+		</div>
+		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+			<div class="row tab-pane" id="edit">
+				<cs:ifIsChildKoRound round="{round}">
+					<f:then>
+						<f:render partial="Round/ChildKoRound/Edit" arguments="{round: round, allKoRounds: allKoRounds}" />
+					</f:then>
+					<f:else>
+						<f:render partial="Round/KoRound/Edit" arguments="{round: round}" />
+					</f:else>
+				</cs:ifIsChildKoRound>
+			</div>
+			<div class="row tab-pane" id="new">
+				<f:render partial="Round/ChildKoRound/New" arguments="{recentCup: recentCup, allKoRounds: allKoRounds}" />
+			</div>
+			<div class="row tab-pane" id="new-match">
+				<cs:ifIsChildKoRound round="{round}">
+					<f:then>
+						<f:render partial="Match/TeamsOfTwoMatchesMatch/New" arguments="{recentCup: recentCup, round: round}" />
+					</f:then>
+					<f:else>
+						<f:render partial="Match/CrossGroupMatch/New" arguments="{recentCup: recentCup, round: round, allGroupRounds: allGroupRounds}" />
+					</f:else>
+				</cs:ifIsChildKoRound>
+			</div>
+		</f:security.ifHasRole>
+	</div>
 	
-	<f:render partial="Round/ChildKoRound/New" arguments="{recentCup: recentCup, allKoRounds: allKoRounds}" />
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 
-         <cs:ifIsChildKoRound round="{round}">
-				<f:then>
-					<f:render partial="Match/TeamsOfTwoMatchesMatch/New" arguments="{recentCup: recentCup, round: round}" />
-					<f:render partial="Round/ChildKoRound/Edit" arguments="{round: round, allKoRounds: allKoRounds}" />
-				</f:then>
-            <f:else>
-					<f:render partial="Match/CrossGroupMatch/New" arguments="{recentCup: recentCup, round: round, allGroupRounds: allGroupRounds}" />
-					<f:render partial="Round/KoRound/Edit" arguments="{round: round}" />
-				</f:else>
-			</cs:ifIsChildKoRound>
 	</f:security.ifHasRole>
 </f:section>

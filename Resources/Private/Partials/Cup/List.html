@@ -1,9 +1,9 @@
 <ul>
 	<f:for each="{cups}" as="cup">
 		<li>
-			<ul class="inline">
+			<ul>
 				<li>
-					<f:link.action class="btn" action="index" arguments="{cup: cup}">	
+					<f:link.action action="index" arguments="{cup: cup}">	
 					{cup.name}
 					</f:link.action>
 					<f:render partial="Actions/Delete" arguments="{object: cup}" />

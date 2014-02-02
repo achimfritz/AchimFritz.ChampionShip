@@ -1,4 +1,6 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <div class="cs-container">
+
 <h6><f:translate id="cups" /></h6>
 <f:if condition="{cups}">
 	<ul>
@@ -13,13 +15,13 @@
 <div class="cs-container">
 <h6><f:translate id="matches" /></h6>
 <ul>
-	<li>
+	<li {cs:ifIsCurrentController(controllerName:'GroupMatch', then: 'class= "cs-active"')}>
 		<f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
 	</li>
-	<li>
+	<li {cs:ifIsCurrentController(controllerName:'GroupRound', then: 'class= "cs-active"')}>
 		<f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
 	</li>
-	<li>
+	<li {cs:ifIsCurrentController(controllerName:'KoRound', then: 'class= "cs-active"')}>
 	<f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
 	</li>
 </ul>

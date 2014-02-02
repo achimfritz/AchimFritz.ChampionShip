@@ -69,6 +69,22 @@ class RoundController extends ActionController {
       $this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
 	}
 
+	/**
+	 * Adds the given new group round object to the group round repository
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round
+	 * @return void
+	 */
+	protected function createRound(Round $round) {
+		try {
+			$this->roundRepository->add($round);
+			$this->persistenceManager->persistAll();
+			$this->addOkMessage('round created');
+		} catch (\Exception $e) {
+			$this->addErrorMessage('cannot create round');
+			$this->handleException($e);
+		}
+	}
 
 	/**
 	 * Updates the given group round object
@@ -76,7 +92,7 @@ class RoundController extends ActionController {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round The group round to update
 	 * @return void
 	 */
-	public function updateAction(Round $round) {
+	protected function updateRound(Round $round) {
 		try {
 			$this->roundRepository->update($round);
 			$this->persistenceManager->persistAll();
@@ -85,7 +101,6 @@ class RoundController extends ActionController {
 			$this->addErrorMessage('cannot update round');
 			$this->handleException($e);
 		}
-		$this->redirect('show', NULL, NULL, array('cup' => $round->getCup(), 'round' => $round));
 	}
 
 	/**
@@ -94,7 +109,7 @@ class RoundController extends ActionController {
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round The group round to delete
 	 * @return void
 	 */
-	public function deleteAction(Round $round) {
+	protected function deleteRound(Round $round) {
 		$cup = $round->getCup();
 		try {
 			$this->roundRepository->remove($round);
@@ -104,7 +119,6 @@ class RoundController extends ActionController {
 			$this->addErrorMessage('cannot delete round');
 			$this->handleException($e);
 		}
-		$this->redirect('list', NULL, NULL, array('cup' => $cup));
 	}
 
 }

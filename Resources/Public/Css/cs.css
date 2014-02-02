@@ -9,7 +9,7 @@ label {
 }
 
 a {
-color: black;
+	color: black;
 }
 
 form.inline {
@@ -70,11 +70,14 @@ div.cs-content {
 ul {
 	list-style: none outside none;
 	margin: 0;
-	margin-left: 4px;
 	padding: 0;
 }
 
-textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+ul li {
+	padding: 0 0 0 4px;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
     background-color: #E6F8BF;
     border: 1px solid #537A00;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
@@ -90,6 +93,9 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 	margin: 0px;
 	padding: 0px;
     vertical-align: middle;
+}
+
+select {
 }
 
 input[type="submit"] {
@@ -184,10 +190,18 @@ div.cs-teaser .table {
 	margin: 0px;
 }
 
+li.cs-active {
+	background: none repeat scroll 0 0 #E6F8BF;
+}
+
 
 /** admin **/
 
 
+.nav-pills > li > a {
+	background-color: #E6F8BF;
+	color: #000000;
+}
 .nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus {
 	background-color: #ABE039;
 	color: #000000;

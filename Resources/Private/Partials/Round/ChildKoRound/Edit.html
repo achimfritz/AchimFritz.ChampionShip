@@ -1,6 +1,6 @@
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
                <h4>edit ko round</h4>
-               <f:form action="index" object="{round}" name="round" method="put">
+               <f:form action="index" controller="ChildKoRound" object="{round}" name="round" method="put">
                   <f:form.hidden name="__method" value="PUT" />
                   <div class="control-group">
                      <label class="control-label"for="name">Name</label>

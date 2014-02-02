@@ -17,7 +17,7 @@ use \AchimFritz\ChampionShip\Domain\Model\Cup;
  * @Flow\Scope("singleton")
  */
 class ChildKoRoundController extends RoundController {
-
+	
 	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
@@ -25,21 +25,36 @@ class ChildKoRoundController extends RoundController {
 	protected $roundRepository;
 	
 	/**
-	 * Adds the given new group round object to the group round repository
+	 * createAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ChildKoRound $groupRound A new group round to add
+	 * @param \AchimFritz\ChampionShip\Domain\Model\ChildKoRound $round
 	 * @return void
 	 */
 	public function createAction(ChildKoRound $round) {
-		try {
-			$this->roundRepository->add($round);
-			$this->persistenceManager->persistAll();
-			$this->addOkMessage('round created');
-		} catch (\Exception $e) {
-			$this->addErrorMessage('cannot create round');
-			$this->handleException($e);
-		}
+		$this->createRound($round);
 		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup(), 'round' => $round));
+	}
+
+	/**
+	 * updateAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\ChildKoRound $round
+	 * @return void
+	 */
+	public function updateAction(ChildKoRound $round) {
+		$this->updateRound($round);
+		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup(), 'round' => $round));
+	}
+
+	/**
+	 * deleteAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\ChildKoRound $round
+	 * @return void
+	 */
+	public function deleteAction(ChildKoRound $round) {
+		$this->deleteRound($round);
+		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup()));
 	}
 }
 
