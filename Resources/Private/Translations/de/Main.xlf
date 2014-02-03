@@ -66,6 +66,26 @@
 				<source>group</source>
 				<target>Gruppe</target>
 			</trans-unit>
+			<trans-unit id="groupTable.rank">
+				<source>Rank</source>
+				<target>Platz</target>
+			</trans-unit>
+			<trans-unit id="groupTable.team">
+				<source>Team</source>
+				<target>Team</target>
+			</trans-unit>
+			<trans-unit id="groupTable.countOfMatchesPlayed">
+				<source>Matches</source>
+				<target>Spiele</target>
+			</trans-unit>
+			<trans-unit id="groupTable.goals">
+				<source>Goals</source>
+				<target>Tore</target>
+			</trans-unit>
+			<trans-unit id="groupTable.points">
+				<source>Points</source>
+				<target>Punkte</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -39,6 +39,13 @@ class GroupMatchRepository extends MatchRepository {
 		if ($object->getResult() instanceof Result) {
 			$groupRound = $this->groupRoundService->updateGroupTable($object->getRound());
 			$this->roundRepository->update($groupRound);
+			// TODO
+			/*
+			if ($object->getRound()->getRoundIsFinished() === TRUE) {
+				updateCrossGroupRoundMatch
+				
+			}
+			*/
 		}
 		parent::update($object);
 	}

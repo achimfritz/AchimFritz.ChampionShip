@@ -4,11 +4,11 @@
 <f:section name="Content">
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 		<div class="row">
-		<ul class="nav nav-pills">
-			<li>
-			<f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action>
-			</li>
-		</ul>
+			<ul class="nav nav-pills">
+				<li>
+					<f:link.action action="index" controller="GroupRound" arguments="{round: match.round}">to {match.round.name}</f:link.action>
+				</li>
+			</ul>
 		</div>
 		<div class="row">
 			<ul class="nav nav-pills">

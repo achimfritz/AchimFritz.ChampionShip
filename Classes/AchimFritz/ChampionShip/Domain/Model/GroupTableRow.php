@@ -52,12 +52,22 @@ class GroupTableRow {
 	 * @var integer
 	 */
 	protected $countOfMatchesPlayed = 0;
-	
 
-		#(inversedBy="groupTableRows")
-		#Flow\ValueObject
-		#$this->groupRound = $elements['groupRound'];
-		
+	/**
+	 * @var integer
+	 */
+	protected $countOfMatchesWon = 0;
+
+	/**
+	 * @var integer
+	 */
+	protected $countOfMatchesRemis = 0;
+
+	/**
+	 * @var integer
+	 */
+	protected $countOfMatchesLoosed = 0;
+
 	
 	/**
 	 * setGroupRound
@@ -206,7 +216,63 @@ class GroupTableRow {
       return $this->goalsPlus - $this->goalsMinus;
    }
 
+	/**
+	 * getCountOfMatchesWon 
+	 * 
+	 * @return integer countOfMatchesWon
+	 */
+	public function getCountOfMatchesWon() {
+		return $this->countOfMatchesWon;
+	}
 
+	/**
+	 * setCountOfMatchesWon
+	 * 
+	 * @param integer $countOfMatchesWon
+	 * @return void
+	 */
+	public function setCountOfMatchesWon($countOfMatchesWon) {
+		$this->countOfMatchesWon = $countOfMatchesWon;
+	}
+
+	/**
+	 * getCountOfMatchesLoosed 
+	 * 
+	 * @return integer countOfMatchesLoosed
+	 */
+	public function getCountOfMatchesLoosed() {
+		return $this->countOfMatchesLoosed;
+	}
+
+	/**
+	 * setCountOfMatchesLoosed
+	 * 
+	 * @param integer $countOfMatchesLoosed
+	 * @return void
+	 */
+	public function setCountOfMatchesLoosed($countOfMatchesLoosed) {
+		$this->countOfMatchesLoosed = $countOfMatchesLoosed;
+	} 
+
+	/**
+	 * getCountOfMatchesRemis 
+	 * 
+	 * @return integer countOfMatchesRemis
+	 */
+	public function getCountOfMatchesRemis() {
+		return $this->countOfMatchesRemis;
+	}
+
+	/**
+	 * setCountOfMatchesRemis
+	 * 
+	 * @param integer $countOfMatchesRemis
+	 * @return void
+	 */
+	public function setCountOfMatchesRemis($countOfMatchesRemis) {
+		$this->countOfMatchesRemis = $countOfMatchesRemis;
+	}
+	
 
 }
 ?>

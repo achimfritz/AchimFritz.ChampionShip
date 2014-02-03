@@ -35,7 +35,15 @@ class IfIsCurrentControllerViewHelper extends \TYPO3\Fluid\Core\ViewHelper\Abstr
 		if ($requestControllerName == $controllerName) {
 			return $this->renderThenChild();
 		} else {
-			// TODO : Match -> ControllerName Mapping
+			if ($controllerName == 'GroupRound' AND $requestControllerName == 'GroupRoundMatch') {
+				return $this->renderThenChild();
+			}
+			if ($controllerName == 'KoRound' AND $requestControllerName == 'CrossGroupMatch') {
+				return $this->renderThenChild();
+			}
+			if ($controllerName == 'KoRound' AND $requestControllerName == 'TeamsOfTwoMatchesMatch') {
+				return $this->renderThenChild();
+			}
 			return $this->renderElseChild();
 		}
 	}

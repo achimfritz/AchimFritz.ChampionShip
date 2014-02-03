@@ -41,6 +41,12 @@ class RestUriViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 		}
 		// controller is same as model
 		$controller = $model;
+		// but not on groupRoundMatch
+		$requestControllerName = $this->controllerContext->getRequest()->getControllerName();
+		if ($requestControllerName == 'GroupRound' AND $resource == 'match') {
+			$controller = 'GroupRoundMatch';
+		}
+
 		$action = 'index';
 		$arguments = array($resource => $object);
 

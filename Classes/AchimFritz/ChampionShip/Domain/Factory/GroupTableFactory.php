@@ -42,6 +42,13 @@ class GroupTableFactory {
 				$groupTableRow->setGoalsPlus($groupTableRow->getGoalsPlus() + $result->getHostTeamGoals());
 				$groupTableRow->setGoalsMinus($groupTableRow->getGoalsMinus() + $result->getGuestTeamGoals());
 				$groupTableRow->setCountOfMatchesPlayed($groupTableRow->getCountOfMatchesPlayed() + 1);
+				if ($result->getHostWins() === TRUE) {
+					$groupTableRow->setCountOfMatchesWon($groupTableRow->getCountOfMatchesWon() + 1);
+				} elseif ($result->getGuestWins() === TRUE) {
+					$groupTableRow->setCountOfMatchesLoosed($groupTableRow->getCountOfMatchesLoosed() + 1);
+				} else {
+					$groupTableRow->setCountOfMatchesRemis($groupTableRow->getCountOfMatchesRemis() + 1);
+				}
 			}
 			$rows[$team->getName()] = $groupTableRow;
 			$team = $match->getGuestTeam();
@@ -58,6 +65,13 @@ class GroupTableFactory {
 				$groupTableRow->setGoalsPlus($groupTableRow->getGoalsPlus() + $result->getGuestTeamGoals());
 				$groupTableRow->setGoalsMinus($groupTableRow->getGoalsMinus() + $result->getHostTeamGoals());
 				$groupTableRow->setCountOfMatchesPlayed($groupTableRow->getCountOfMatchesPlayed() + 1);
+				if ($result->getGuestWins() === TRUE) {
+					$groupTableRow->setCountOfMatchesWon($groupTableRow->getCountOfMatchesWon() + 1);
+				} elseif ($result->getHostWins() === TRUE) {
+					$groupTableRow->setCountOfMatchesLoosed($groupTableRow->getCountOfMatchesLoosed() + 1);
+				} else {
+					$groupTableRow->setCountOfMatchesRemis($groupTableRow->getCountOfMatchesRemis() + 1);
+				}
 			}
 			$rows[$team->getName()] = $groupTableRow;
       }

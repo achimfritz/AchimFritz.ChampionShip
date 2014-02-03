@@ -90,7 +90,6 @@ class Result {
     * @return integer
     */
    public function getHostPoints() {
-         // TODO Strategy, Policy
       if ($this->getGuestWins()) {
          return 0;
       } elseif ($this->getHostWins()) {
