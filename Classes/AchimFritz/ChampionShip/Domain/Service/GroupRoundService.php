@@ -28,16 +28,10 @@ class GroupRoundService {
    protected $matchFactory;
 
 	/**
-	 * updateGroup
-	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
-	 * @return \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
+	 * @var \AchimFritz\ChampionShip\Domain\Service\GroupTableCalculator
+	 * @Flow\Inject
 	 */
-	public function updateGroup(GroupRound $groupRound) {
-		$groupRound = $this->updateMatches($groupRound);
-		$groupRound = $this->updateGroupTable($groupRound);
-		return $groupRound;
-	}
+	protected $groupTableCalculator;
 	
 	/**
 	 * updateGroupTable
@@ -47,20 +41,19 @@ class GroupRoundService {
 	 */
 	public function updateGroupTable(GroupRound $groupRound) {
 		$matches = $groupRound->getGeneralMatches();
-		$groupTableCalculator = new \AchimFritz\ChampionShip\Domain\Service\GroupTableCalculator();
-		$groupTableRows = $groupTableCalculator->getGroupTableRows($matches);
+		$groupTableRows = $this->groupTableCalculator->getGroupTableRows($matches);
 		$groupRound->clearGroupTableRows();
 		$groupRound->setGroupTableRows($groupTableRows);
 		return $groupRound;
 	}
 	
 	/**
-	 * updateMatches
+	 * createMatches
 	 * 
 	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
 	 * @return \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
 	 */
-	public function updateMatches(GroupRound $groupRound) {
+	public function createMatches(GroupRound $groupRound) {
 		$teams = $groupRound->getTeams();
 		if (count($teams) === 0) {
 			return $groupRound;

@@ -7,6 +7,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use \AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
  * GroupRound command controller for the AchimFritz.ChampionShip package
@@ -40,6 +41,13 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $groupRoundRepository;
 
 	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
+	 */
+	protected $cupRepository;
+	
+
+	/**
 	 * list
 	 *
 	 * @return void
@@ -64,13 +72,25 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	}
 
 	/**
-	 * create
+	 * create($cupName)
 	 *
+	 * @param string $cupName
 	 * @return void
 	 */
-	public function createCommand() {
+	public function createCommand($cupName) {
+		$cup = $this->cupRepository->findOneByName($cupName);
+		if (!$cup instanceof Cup) {
+			$this->outputLine('no such cup ' . $cupName);
+			$this->quit();
+		}
+		$koRounds = $this->koRoundRepository->findByCup($cup);
+		if (count($koRounds) > 0) {
+			$this->outputLine('koRounds already exists');
+			$this->quit();
+			
+		}
 		try {
-			$groupRounds = $this->groupRoundRepository->findAll();
+			$groupRounds = $this->groupRoundRepository->findByCup($cup);
 			$koRounds = $this->koRoundService->createKoRounds($groupRounds);
 		} catch (\Exception $e) {
 			$this->outputLine('ERROR ' . $e->getMessage());

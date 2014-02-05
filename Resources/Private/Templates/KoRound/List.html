@@ -2,8 +2,24 @@
 
 <f:section name="Content">
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<f:render partial="Round/KoRound/New" arguments="{recentCup: recentCup}" />
-
+	<div class="row">
+		<ul class="nav nav-pills">
+			<li class="active"><a href="#new" data-toggle="tab">new</a></li>
+			<li><a href="#auto" data-toggle="tab">auto create rounds</a></li>
+		</ul>
+	</div>
+	<div class="tab-content">
+	   <div class="row tab-pane active" id="new">
+			<f:render partial="Round/KoRound/New" arguments="{recentCup: recentCup}" />
+		</div>
+		<div class="row tab-pane" id="auto">
+			<h6>auto create koRounds</h6>
+			<f:form action="index" controller="KoRoundCreator" arguments="{cup: recentCup}">
+				<f:form.hidden name="__method" value="POST" />
+				<f:form.submit name="submit" value="create" class="btn" />
+			</f:form>
+		</div>
+	</div>
 	</f:security.ifHasRole>
 </f:section>
 

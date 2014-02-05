@@ -19,6 +19,8 @@ use AchimFritz\ChampionShip\Domain\Model\Match;
  */
 class RankingCalculator {
 
+	// TODO do not use repositories in service
+
 	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository

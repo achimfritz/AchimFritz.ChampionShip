@@ -7,6 +7,8 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use AchimFritz\ChampionShip\Domain\Model\CrossGroupMatch;
+use AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch;
 use AchimFritz\ChampionShip\Domain\Model\KoMatch;
 use AchimFritz\ChampionShip\Domain\Model\Team;
 use AchimFritz\ChampionShip\Domain\Model\GroupRound;
@@ -24,19 +26,14 @@ class KoMatchFactory {
 	 *
 	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound
 	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound
-	 * @return \AchimFritz\ChampionShip\Domain\Model\KoMatch
+	 * @return \AchimFritz\ChampionShip\Domain\Model\CrossGroupMatch
 	 */
 	public function createFromGroupRounds(GroupRound $first, GroupRound $second) {
-		throw new Exception('foo', 145452452354);
-		$hostParticipant = new MatchParticipant();
-		$guestParticipant = new MatchParticipant();
-		$hostParticipant->setRankOfGroupRound(1);
-		$guestParticipant->setRankOfGroupRound(2);
-		$hostParticipant->setGroupRound($first);
-		$guestParticipant->setGroupRound($second);
-		$match = new KoMatch();
-		$match->setHostParticipant($hostParticipant);
-		$match->setGuestParticipant($guestParticipant);
+		$match = new CrossGroupMatch();
+		$match->setHostGroupRound($first);
+		$match->setHostGroupRank(1);
+		$match->setGuestGroupRound($second);
+		$match->setGuestGroupRank(2);
 		$match->setStartDate(new \DateTime());
 		$match->setCup($first->getCup());
 		return $match;
@@ -47,41 +44,17 @@ class KoMatchFactory {
 	 *
 	 * @param \AchimFritz\ChampionShip\Domain\Model\KoMatch
 	 * @param \AchimFritz\ChampionShip\Domain\Model\KoMatch
-	 * @return \AchimFritz\ChampionShip\Domain\Model\KoMatch
+	 * @return \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch
 	 */
 	public function createFromWinners(KoMatch $first, KoMatch $second) {
-		throw new Exception('foo', 145452452354);
-		$hostParticipant = new MatchParticipant();
-		$guestParticipant = new MatchParticipant();
-		$hostParticipant->setWinnerOfMatch($first);
-		$guestParticipant->setWinnerOfMatch($second);
-		$match = new KoMatch();
-		$match->setHostParticipant($hostParticipant);
-		$match->setGuestParticipant($guestParticipant);
+		$match = new TeamsOfTwoMatchesMatch();
+		$match->setHostMatch($first);
+		$match->setHostMatchIsWinner(TRUE);
+		$match->setGuestMatch($second);
+		$match->setGuestMatchIsWinner(TRUE);
 		$match->setStartDate(new \DateTime());
 		$match->setCup($first->getCup());
 		return $match;
 	}
-
-	/**
-	 * createFromTeams
-	 *
-	 * @param Team $host
-	 * @param Team $guest
-	 * @return \AchimFritz\ChampionShip\Domain\Model\KoMatch
-	 */
-	public function createFromTeams(Team $host, Team $guest) {
-		throw new Exception('foo', 145452452354);
-		$hostParticipant = new MatchParticipant();
-		$hostParticipant->setTeam($host);
-		$guestParticipant = new MatchParticipant();
-		$guestParticipant->setTeam($guest);
-		$match = new KoMatch();
-		$match->setHostParticipant($hostParticipant);
-		$match->setGuestParticipant($guestParticipant);
-		$match->setStartDate(new \DateTime());
-		return $match;
-	}
-
 }
 ?>

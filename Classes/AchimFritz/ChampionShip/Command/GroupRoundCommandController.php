@@ -79,8 +79,8 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 				if ($groupRound->getName() != 'G' OR $groupRound->getCup()->getName() != 'wm 2002') {
 					#continue;
 				}
-			$this->outputLine('update groupRound ' . $groupRound->getCup()->getName() . ' ' . $groupRound->getName());
-			$this->groupRoundService->updateGroup($groupRound);
+			$this->outputLine('update groupRoundTable ' . $groupRound->getCup()->getName() . ' ' . $groupRound->getName());
+			$this->groupRoundService->updateGroupTable($groupRound);
 			$this->outputGroupRound($groupRound);
 			$this->groupRoundRepository->update($groupRound);
 		}

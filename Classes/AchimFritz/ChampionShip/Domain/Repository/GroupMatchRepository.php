@@ -9,6 +9,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\GroupRound;
 use AchimFritz\ChampionShip\Domain\Model\Result;
+use AchimFritz\ChampionShip\Domain\Model\KoMatch;
 
 /**
  * A repository for Matches
@@ -22,6 +23,12 @@ class GroupMatchRepository extends MatchRepository {
 	 * @Flow\Inject
 	 */
 	protected $groupRoundService;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\CrossGroupMatchRepository
+	 */
+	protected $koMatchRepository;
 
 	/**
 	 * @Flow\Inject
@@ -39,13 +46,29 @@ class GroupMatchRepository extends MatchRepository {
 		if ($object->getResult() instanceof Result) {
 			$groupRound = $this->groupRoundService->updateGroupTable($object->getRound());
 			$this->roundRepository->update($groupRound);
-			// TODO
-			/*
 			if ($object->getRound()->getRoundIsFinished() === TRUE) {
-				updateCrossGroupRoundMatch
-				
+				// TODO crossGroupRoundService->setWinner()...
+				$winnerTeam = $object->getRound()->getWinnerTeam();
+				$secondTeam = $object->getRound()->getSecondTeam();
+				$koMatch = $this->koMatchRepository->findOneInGroupRoundWithRank($object->getRound(), 1);
+				if ($koMatch instanceof KoMatch) {
+					if ($koMatch->getHostGroupRank() === 1) {
+						$koMatch->setHostTeam($winnerTeam);
+					} elseif ($koMatch->getGuestGroupRank() === 1) {
+						$koMatch->setGuestTeam($winnerTeam);
+					}
+					$this->koMatchRepository->update($koMatch);
+				}
+				$otherKoMatch = $this->koMatchRepository->findOneInGroupRoundWithRank($object->getRound(), 2);
+				if ($otherKoMatch instanceof KoMatch) {
+					if ($otherKoMatch->getGuestGroupRank() === 2) {
+						$otherKoMatch->setGuestTeam($secondTeam);
+					} elseif ($otherKoMatch->getHostGroupRank() === 2) {
+						$otherKoMatch->setHostTeam($secondTeam);
+					}
+					$this->koMatchRepository->update($otherKoMatch);
+				}
 			}
-			*/
 		}
 		parent::update($object);
 	}

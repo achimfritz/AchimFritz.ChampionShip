@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\KoRound;
-use AchimFritz\ChampionShip\Domain\Model\FinalRound;
+use AchimFritz\ChampionShip\Domain\Model\ChildKoRound;
 
 
 /**
@@ -33,11 +33,7 @@ class KoRoundFactory {
 	 */
 	public function createFromKoRound(KoRound $parentKoRound) {
 		$matches = $parentKoRound->getGeneralMatches();
-		if (count($matches) === 2) {
-			$koRound = new FinalRound();
-		} else {
-			$koRound = new KoRound();
-		}
+		$koRound = new ChildKoRound();
 		$firstMatch = $matches[0];
 		$koRound->setCup($firstMatch->getCup());
 		$koRound->setName('1/' . (count($matches) / 2));

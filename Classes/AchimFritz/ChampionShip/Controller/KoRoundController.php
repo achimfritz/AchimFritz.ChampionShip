@@ -43,7 +43,7 @@ class KoRoundController extends RoundController {
 	 */
 	public function updateAction(KoRound $round) {
 		$this->updateRound($round);
-		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup(), 'round' => $round));
+		$this->redirect('index', NULL, NULL, array('cup' => $round->getCup(), 'round' => $round));
 	}
 
 	/**
@@ -54,7 +54,7 @@ class KoRoundController extends RoundController {
 	 */
 	public function deleteAction(KoRound $round) {
 		$this->deleteRound($round);
-		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup()));
+		$this->redirect('index', NULL, NULL, array('cup' => $round->getCup()));
 	}
 }
 

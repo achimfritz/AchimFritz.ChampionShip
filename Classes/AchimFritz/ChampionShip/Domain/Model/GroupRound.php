@@ -33,6 +33,21 @@ class GroupRound extends Round {
       parent::__construct();
 		$this->groupTableRows = new \Doctrine\Common\Collections\ArrayCollection();
 	}
+
+	/**
+	 * getRoundIsFinished 
+	 * 
+	 * @return boolean
+	 */
+	public function getRoundIsFinished() {
+		$matches = $this->getGeneralMatches();
+		foreach ($matches AS $match) {
+			if (!$match->getResult() instanceof Result) {
+				return FALSE;
+			}
+		}
+		return TRUE;
+	}
 	
 	/**
 	 * getTeamByRank

@@ -42,7 +42,7 @@ class GroupMatchCreatorController extends ActionController {
 	 */
 	public function updateAction(GroupRound $groupRound) {
 		try {
-			$this->groupRoundService->updateMatches($groupRound);
+			$this->groupRoundService->createMatches($groupRound);
 			$this->roundRepository->update($groupRound);
 			$this->persistenceManager->persistAll();
 			$this->addOkMessage('matches updatet');

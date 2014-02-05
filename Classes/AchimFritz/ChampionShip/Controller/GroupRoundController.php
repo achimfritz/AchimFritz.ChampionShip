@@ -44,7 +44,7 @@ class GroupRoundController extends RoundController {
 	 */
 	public function updateAction(GroupRound $round) {
 		$this->updateRound($round);
-		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup(), 'round' => $round));
+		$this->redirect('index', NULL, NULL, array('cup' => $round->getCup(), 'round' => $round));
 	}
 
 	/**
@@ -55,7 +55,7 @@ class GroupRoundController extends RoundController {
 	 */
 	public function deleteAction(GroupRound $round) {
 		$this->deleteRound($round);
-		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup()));
+		$this->redirect('index', NULL, NULL, array('cup' => $round->getCup()));
 	}
 
 
