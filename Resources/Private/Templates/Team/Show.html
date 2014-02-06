@@ -2,8 +2,35 @@
 
 
 <f:section name="Content">
-	<f:render partial="Team/Show" arguments="{team: team}" />	
-	<f:render partial="Team/Edit" arguments="{team:team}" />
-	<h3>matches</h3>
-	<f:render partial="Match/List" arguments="{matches: matches}" />
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<div class="row">
+		<ul class="nav nav-pills">
+			<li>
+			<f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action>
+			</li>
+		</ul>
+		</div>
+		<div class="row">
+			<ul class="nav nav-pills">
+				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
+				<li><a href="#edit" data-toggle="tab">edit</a></li>
+				<li><a href="#new" data-toggle="tab">new</a></li>
+			</ul>
+		</div>
+	</f:security.ifHasRole>
+	<div class="tab-content">
+		<div class="row tab-pane active" id="show">
+			<f:render partial="Team/Show" arguments="{team: team}" />	
+			<h6>matches</h6>
+			<f:render partial="Match/List" arguments="{matches: matches}" />
+		</div>
+		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+			<div class="row tab-pane" id="edit">
+				<f:render partial="Team/Edit" arguments="{team:team}" />
+			</div>
+			<div class="row tab-pane" id="new">
+				<f:render partial="Team/New" />
+			</div>
+		</f:security.ifHasRole>
+	</div>
 </f:section>

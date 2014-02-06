@@ -5,16 +5,14 @@
 					<li>
 						<ul class="inline">
 							<li>
-								<f:link.action class="btn" action="index" controller="User" arguments="{user: user, cup: recentCup}">
 									{user.name}
-								</f:link.action>
 								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-									<f:render partial="Actions/Delete" arguments="{object: user}" />
+									<f:render partial="Actions/RestAction" arguments="{object: user}" />
 								</f:security.ifHasRole>
 							</li>
 							<li>
 								<f:link.action class="btn" action="index" controller="UserTip" arguments="{user: user, cup: recentCup}">
-									tips
+									tips TODO should go to user show
 								</f:link.action>
 							</li>
 						</ul>
