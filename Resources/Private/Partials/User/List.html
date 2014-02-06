@@ -1,24 +1,33 @@
 	<f:if condition="{users}">
 		<f:then>
-			<ul>
-				<f:for each="{users}" as="user">
-					<li>
-						<ul class="inline">
-							<li>
-									{user.name}
-								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-									<f:render partial="Actions/RestAction" arguments="{object: user}" />
-								</f:security.ifHasRole>
-							</li>
-							<li>
-								<f:link.action class="btn" action="index" controller="UserTip" arguments="{user: user, cup: recentCup}">
-									tips TODO should go to user show
-								</f:link.action>
-							</li>
-						</ul>
-					</li>
+			<table class="table">
+				<thead>
+					<tr>
+					   <th>otherName</th>
+						<th>accountIdentifier</th>
+						<th>primaryElectronicAddress</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+				<f:for each="{users}" as="user" iteration="it">
+					<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+						<td>
+							{user.account.party.name.otherName}
+						</td>
+						<td>
+							{user.account.accountIdentifier}
+						</td>
+						<td>
+							{user.account.party.primaryElectronicAddress.identifier}
+						</td>
+						<td>
+							<f:render partial="Actions/RestAction" arguments="{object: user}" />
+						</td>
+					</tr>
 				</f:for>
-			</ul>
+				</tbody>
+			</table>
 		</f:then>
 		<f:else>
 			<p>No users created yet.</p>

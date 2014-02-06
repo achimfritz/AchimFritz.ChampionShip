@@ -83,5 +83,6 @@ class User {
 	public function getName() {
 		return $this->getAccount()->getParty()->getName()->getOtherName();
 	}
+
 }
 ?>

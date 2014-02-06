@@ -1,6 +1,7 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
-<form action="{cs:restUri(object: object)}" method="post" class="inline adminPanel deleteAction">
+<a href="javascript:;"><span class="icon-trash deleteAction"></span>
+<form action="{cs:restUri(object: object)}" method="post" class="inline adminPanel deleteAction" style="display: none">
 	<input type="hidden" name="__method" value="DELETE" />
-	<span class="icon-trash"></span>
 	<input type="submit" name="submit" value="delete" class="btn" />
 </form>
+</a>

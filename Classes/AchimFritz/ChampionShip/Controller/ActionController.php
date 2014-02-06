@@ -43,6 +43,16 @@ class ActionController extends RestController {
     */
    protected $supportedMediaTypes = array('text/html', 'application/json', 'application/xml');
 
+	/**
+	 * @var Cup
+	 */
+	protected $cup;
+
+	/**
+	 * @var \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 */
+	protected $cups;
+
 	
 	/**
 	 * Allow creation of resources in createAction()
@@ -106,8 +116,10 @@ class ActionController extends RestController {
 			$this->view->assign('nextMatches', $nextMatches);
 			$lastMatches = $this->matchRepository->findLastByCup($cup);
 			$this->view->assign('lastMatches', $lastMatches);
+			$this->cup = $cup;
 		}
 		$cups = $this->cupRepository->findAll();
+		$this->cups = $cups;
 		$this->view->assign('cups', $cups);
 		
 	}
