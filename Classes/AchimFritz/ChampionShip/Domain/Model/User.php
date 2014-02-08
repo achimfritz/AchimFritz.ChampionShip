@@ -16,14 +16,7 @@ use TYPO3\Flow\Security\Account;
  *
  * @Flow\Entity
  */
-class User {
-
-	/**
-	 * @var \TYPO3\Flow\Security\Account
-	 * @ORM\OneToOne(cascade={"all"})
-	 * @Flow\Validate(type="NotEmpty")
-	 */
-	protected $account;
+class User extends Account {
 
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Tip>
@@ -38,23 +31,11 @@ class User {
 	protected $rankings;
 
 	/**
-	 * getAccount 
-	 * 
-	 * @return Account account
+	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
+	 * @Flow\Validate(type="EmailAddress")
 	 */
-	public function getAccount() {
-		return $this->account;
-	}
-
-	/**
-	 * setAccount
-	 * 
-	 * @param Account $account
-	 * @return void
-	 */
-	public function setAccount($account) {
-		$this->account = $account;
-	} 
+	protected $email;
 
 	/**
 	 * getMainTipGroup 
@@ -76,12 +57,22 @@ class User {
 	} 
 
 	/**
-	 * getName 
+	 * getEmail 
 	 * 
 	 * @return string
 	 */
-	public function getName() {
-		return $this->getAccount()->getParty()->getName()->getOtherName();
+	public function getEmail() {
+		return $this->email;
+	}
+
+	/**
+	 * setEmail 
+	 * 
+	 * @param string $email 
+	 * @return void
+	 */
+	public function setEmail($email) {
+		$this->email = $email;
 	}
 
 }

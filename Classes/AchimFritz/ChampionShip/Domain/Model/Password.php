@@ -28,11 +28,11 @@ class Password {
 	protected $newPasswordRepeat;
 
 	/**
-	 * @var \TYPO3\Flow\Security\Account
+	 * @var \AchimFritz\ChampionShip\Domain\Model\User
 	 * @ORM\OneToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */
-	protected $account;
+	protected $user;
 
 	/**
 	 * @return string
@@ -80,22 +80,22 @@ class Password {
 	}
 
 	/**
-	 * getAccount 
+	 * getUser
 	 * 
-	 * @return Account account
+	 * @return User
 	 */
-	public function getAccount() {
-		return $this->account;
+	public function getUser() {
+		return $this->user;
 	}
 
 	/**
-	 * setAccount
+	 * setUser
 	 * 
-	 * @param Account $account
+	 * @param User $user
 	 * @return void
 	 */
-	public function setAccount(Account $account) {
-		$this->account = $account;
+	public function setUser(User $user) {
+		$this->user = $user;
 	} 
 
 
