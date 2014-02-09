@@ -1,20 +1,22 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:security.ifAuthenticated>
 	<f:then>
-		<cs:username />
+		<p>
+			<cs:username />
+		</p>
 		<f:link.action class="btn" action="logout" controller="Login"><f:translate id="logout" /></f:link.action>
 	</f:then>
 	<f:else>
 		<f:form action="authenticate" controller="Login">
 			<div class="control-group">
 				<label class="control-label" for="name"><f:translate id="username" /></label>
-				<div class="controlls">
+				<div class="controls">
 					<f:form.textfield class="input-small" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" />
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="name"><f:translate id="password" /></label>
-				<div class="controlls">
+				<div class="controls">
 					<f:form.password class="input-small" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
 				</div>
 			</div>

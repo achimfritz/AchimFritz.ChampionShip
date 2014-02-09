@@ -26,60 +26,6 @@ class TipGroup {
 	protected $name;
 
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\User>
-	 * @ORM\ManyToMany
-	 */
-	protected $users;
-
-   /**
-    * __construct 
-    * 
-    * @return void
-    */
-   public function __construct() {
-      $this->users = new \Doctrine\Common\Collections\ArrayCollection();
-   }
-
-	/**
-	 * getUsers
-	 *
-	 * @return  The Cup's users
-	 */
-	public function getUsers() {
-		return $this->users;
-	}
-
-	/**
-	 * setUsers
-	 *
-	 * @param  $users The Cup's users
-	 * @return void
-	 */
-	public function setUsers($users) {
-		$this->users = $users;
-	}
-
-	/**
-	 * removeUser 
-	 * 
-	 * @param User $user 
-	 * @return void
-	 */
-	public function removeUser(User $user) {
-		$this->users->removeElement($user);
-	}
-
-	/**
-	 * addUser 
-	 * 
-	 * @param User $user 
-	 * @return void
-	 */
-	public function addUser(User $user) {
-		$this->users->add($user);
-	}
-
-	/**
 	 * getName
 	 *
 	 * @return string 

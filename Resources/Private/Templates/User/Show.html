@@ -12,6 +12,7 @@
 		<div class="row">
 			<ul class="nav nav-pills">
 				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
+				<li><a href="#tips" data-toggle="tab">tips</a></li>
 				<li><a href="#edit" data-toggle="tab">edit</a></li>
 				<li><a href="#new" data-toggle="tab">new</a></li>
 			</ul>
@@ -19,16 +20,17 @@
 	</f:security.ifHasRole>
 	<div class="tab-content">
 		<div class="row tab-pane active" id="show">
-			<f:render partial="User/Show" arguments="{user: user, countOfTips: countOfTips, recentCup: recentCup}" />
-			<h4>tipgroups</h4>
-			<f:render partial="TipGroup/List" arguments="{tipGroups: tipGroups, recentCup: recentCup}" />
+			<f:render partial="User/Show" arguments="{user: user, recentCup: recentCup}" />
+		</div>
+		<div class="row tab-pane" id="tips">
+			<f:render partial="Tip/List" arguments="{tips: user.tips}" />
 		</div>
 		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 			<div class="row tab-pane" id="edit">
-				<f:render partial="User/Edit" arguments="{user: user}" />
+				<f:render partial="User/Edit" arguments="{user: user, allTipGroups: allTipGroups}" />
 			</div>
 			<div class="row tab-pane" id="new">
-				<f:render partial="User/New" />
+				<f:render partial="User/New" arguments="{allTipGroups: allTipGroups}" />
 			</div>
 		</f:security.ifHasRole>
 	</div>

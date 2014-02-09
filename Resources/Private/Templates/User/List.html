@@ -15,7 +15,7 @@
 		</div>
 		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 			<div class="row tab-pane" id="new">
-				<f:render partial="User/New" />
+				<f:render partial="User/New" arguments="{allTipGroups: allTipGroups}" />
 			</div>
 		</f:security.ifHasRole>
 	</div>

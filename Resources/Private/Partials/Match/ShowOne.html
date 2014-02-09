@@ -1,5 +1,3 @@
-<f:if condition="{matches}">
-	<f:then>
 		<table class="table">
 			<thead>
 				<tr>
@@ -12,15 +10,8 @@
 				</tr>
 			</thead>
 			<tbody>
-			<f:for each="{matches}" as="match" iteration="it">
-				<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+				<tr class="cs-even">
 					<f:render partial="Match/Show" arguments="{match: match}" />
 				</tr>
-			</f:for>
 			</tbody>
 		</table>
-	</f:then>
-	<f:else>
-		<p>No matches created yet.</p>
-	</f:else>
-</f:if>

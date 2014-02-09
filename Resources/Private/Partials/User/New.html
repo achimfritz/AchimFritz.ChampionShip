@@ -1,9 +1,18 @@
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 	<h3>new user</h3>
 	<f:form class="form-horizontal" action="index" name="user" method="post">
+		<f:form.hidden property="account.authenticationProviderName" value="DefaultProvider" />
 		<div class="control-group">
-			<label class="control-label" for="name">name</label>
-			<div class="controls"><f:form.textfield property="name" id="name" /></div>
+			<label class="control-label" for="accountIdentifier">accountIdentifier</label>
+			<div class="controls"><f:form.textfield property="account.accountIdentifier" id="accountIdentifier" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="email">email</label>
+			<div class="controls"><f:form.textfield property="email" id="email" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="tipGroups">tipGroups</label>
+			<div class="controls"><f:form.select options="{allTipGroups}" multiple="1" optionLabelField="name" property="tipGroups" id="tipGroups" /></div>
 		</div>
 		<div class="control-group">
 			<div class="controls">

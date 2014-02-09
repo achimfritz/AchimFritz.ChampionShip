@@ -54,14 +54,18 @@
 								<div class="row cs-container">
 										<f:render partial="LoginForm" />
 								</div>
-								<div class="row cs-container">
-										<h6><f:translate id="nextMatches" /></h6>
-										<f:render partial="Match/Teaser" arguments="{matches: nextMatches}" />
-								</div>
-								<div class="row cs-container">
-										<h6><f:translate id="lastMatches" /></h6>
-										<f:render partial="Match/Teaser" arguments="{matches: lastMatches}" />
-								</div>
+								<f:if condition="{nextMatches}">
+									<div class="row cs-container">
+											<h6><f:translate id="nextMatches" /></h6>
+											<f:render partial="Match/Teaser" arguments="{matches: nextMatches}" />
+									</div>
+								</f:if>
+								<f:if condition="{lastMatches}">
+									<div class="row cs-container">
+											<h6><f:translate id="lastMatches" /></h6>
+											<f:render partial="Match/Teaser" arguments="{matches: lastMatches}" />
+									</div>
+								</f:if>
 							</div>
                   </div>
                </div>

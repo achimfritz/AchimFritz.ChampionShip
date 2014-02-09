@@ -8,7 +8,6 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 use TYPO3\Flow\Security\Account;
 
 /**
@@ -16,7 +15,13 @@ use TYPO3\Flow\Security\Account;
  *
  * @Flow\Entity
  */
-class User extends Account {
+class User {
+
+	/**
+	 * @var \TYPO3\Flow\Security\Account
+	 * @ORM\OneToOne(cascade={"all"})
+	 */
+	protected $account;
 
 	/**
 	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Tip>
@@ -38,23 +43,58 @@ class User extends Account {
 	protected $email;
 
 	/**
-	 * getMainTipGroup 
-	 * 
-	 * @return TipGroup mainTipGroup
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\TipGroup>
+	 * @ORM\ManyToMany
 	 */
-	public function getMainTipGroup() {
-		return $this->mainTipGroup;
+	protected $tipGroups;
+
+   /**
+    * __construct 
+    * 
+    * @return void
+    */
+   public function __construct() {
+      $this->tipGroups = new \Doctrine\Common\Collections\ArrayCollection();
+   }
+
+	/**
+	 * getTipGroups
+	 *
+	 * @return  The Cup's tipGroups
+	 */
+	public function getTipGroups() {
+		return $this->tipGroups;
 	}
 
 	/**
-	 * setMainTipGroup
-	 * 
-	 * @param TipGroup $mainTipGroup
+	 * setTipGroups
+	 *
+	 * @param  $tipGroups The Cup's tipGroups
 	 * @return void
 	 */
-	public function setMainTipGroup($mainTipGroup) {
-		$this->mainTipGroup = $mainTipGroup;
-	} 
+	public function setTipGroups($tipGroups) {
+		$this->tipGroups = $tipGroups;
+	}
+
+	/**
+	 * removeTipGroup 
+	 * 
+	 * @param TipGroup $tipGroup 
+	 * @return void
+	 */
+	public function removeTipGroup(TipGroup $tipGroup) {
+		$this->tipGroups->removeElement($tipGroup);
+	}
+
+	/**
+	 * addTipGroup 
+	 * 
+	 * @param TipGroup $tipGroup 
+	 * @return void
+	 */
+	public function addTipGroup(TipGroup $tipGroup) {
+		$this->tipGroups->add($tipGroup);
+	}
 
 	/**
 	 * getEmail 
@@ -73,6 +113,66 @@ class User extends Account {
 	 */
 	public function setEmail($email) {
 		$this->email = $email;
+	}
+
+	/**
+	 * getName 
+	 * 
+	 * @return string
+	 */
+	public function getName() {
+		return $this->getAccount()->getAccountIdentifier();
+	}
+
+	/**
+	 * getFirstTipGroup 
+	 * 
+	 * @return TipGroup
+	 */
+	public function getFirstTipGroup() {
+		return $this->tipGroups->first();
+	}
+
+	/**
+	 * getDisplayName 
+	 * 
+	 * @return string
+	 */
+	public function getDisplayName() {
+		$tipGroup = $this->getFirstTipGroup();
+		if ($tipGroup instanceof TipGroup) {
+			return $this->getAccount()->getAccountIdentifier() . '@' . $tipGroup->getName();
+		} else {
+			return $this->getAccount()->getAccountIdentifier();
+		}
+	}
+
+	/**
+	 * setAccount 
+	 * 
+	 * @param Account $account 
+	 * @return void
+	 */
+	public function setAccount(Account $account) {
+		$this->account = $account;
+	}
+
+	/**
+	 * getAccount 
+	 * 
+	 * @return Account
+	 */
+	public function getAccount() {
+		return $this->account;
+	}
+
+	/**
+	 * getTips 
+	 * 
+	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Tip>
+	 */
+	public function getTips() {
+		return $this->tips;
 	}
 
 }

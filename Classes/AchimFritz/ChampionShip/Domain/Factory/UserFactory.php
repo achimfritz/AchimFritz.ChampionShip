@@ -7,12 +7,8 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Party\Domain\Model\ElectronicAddress;
-use TYPO3\Party\Domain\Model\PersonName;
-use TYPO3\Party\Domain\Model\Person;
 use AchimFritz\ChampionShip\Domain\Model\User;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
-
+use TYPO3\Flow\Security\AccountFactory;
 /**
  * The User Command Controller Service
  *
@@ -21,61 +17,26 @@ use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 class UserFactory {
 
 	/**
-	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Security\AccountRepository
-	 */
-	protected $accountRepository;
-
-	/**
-	 * @Flow\Inject
-	 * @var \TYPO3\Party\Domain\Repository\PartyRepository
-	 */
-	protected $partyRepository;
-
-	/**
-	 * @Flow\Inject
 	 * @var \TYPO3\Flow\Security\AccountFactory
+	 * @Flow\Inject
 	 */
 	protected $accountFactory;
 
-	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
-	 * @Flow\Inject
-	 */
-	protected $userRepository;
 
 	/**
 	 * Create a new user
 	 *
 	 * @param string $email
-	 * @param string $nickName
+	 * @param string $name
 	 * @return User $user
 	 */
-	public function create($email, $nickName) {
-		$roles = 'AchimFritz.ChampionShip:User';
-		$authenticationProvider = 'DefaultProvider';
+	public function create($email, $name) {
 		$password = $email;
-		$accountIdentifier = $nickName . '@' . $email;
-		$account = $this->accountRepository->findByAccountIdentifierAndAuthenticationProviderName($accountIdentifier, $authenticationProvider);
-		if ($account instanceof \TYPO3\Flow\Security\Account) {
-			throw new Exception('user already exists  ' . $accountIdentifier, 1380121115);
-		}
-
-		$person = new Person();
-		$electronicAddress = new ElectronicAddress();
-		$electronicAddress->setIdentifier($email);
-		$electronicAddress->setType(ElectronicAddress::TYPE_EMAIL);
-		$person->setPrimaryElectronicAddress($electronicAddress);
-		$person->setName(new PersonName('', '', '', '', $nickName));
-		$this->partyRepository->add($person);
-
-		$account = $this->accountFactory->createAccountWithPassword($accountIdentifier, $password, explode(',', $roles), $authenticationProvider);
-		$account->setParty($person);
-		$this->accountRepository->add($account);
-
+		$identifier = $name; 
 		$user = new User();
+		$user->setEmail($email);
+		$account = $this->accountFactory->createAccountWithPassword($identifier, $password, array('AchimFritz.ChampionShip:User'));
 		$user->setAccount($account);
-		$this->userRepository->add($user);
 		return $user;
 	}
 

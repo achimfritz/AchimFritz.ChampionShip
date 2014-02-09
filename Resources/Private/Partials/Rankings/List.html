@@ -2,14 +2,27 @@
 <f:if condition="{rankings}">
 	<f:then>
 		<table class="table">
+			<thead>
+				<tr>
+					<th>rank</th>
+					<th>points</th>
+					<th>user</th>
+				</tr>
+			</thead>
+			<tbody>
 				<f:for each="{rankings}" as="ranking" iteration="cnt">
-					<tr>
+					<tr class="{f:if(condition: cnt.isOdd, then: ' cs-odd', else: ' cs-even')}">
 						<td><cs:sum summandOne="{cnt.index}" summandTwo="1" /></td>
 						<td>{ranking.points}</td>
-						<td>{ranking.user.name}</td>
+						<td>{ranking.user.displayName}
+						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+							<f:render partial="Actions/Show" arguments="{object: ranking.user}" />
+						</f:security.ifHasRole>
+						</td>
 					</tr>
 				</f:for>
-			</table>
+			</tbody>
+		</table>
 	</f:then>
 	<f:else>
 		<p>no rankings</p>

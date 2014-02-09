@@ -35,6 +35,13 @@ class UserController extends ActionController {
 	protected $userRepository;
 
 	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Factory\UserFactory
+	 */
+	protected $userFactory;
+
+
+	/**
 	 * @var string
 	 */
 	protected $resourceArgumentName = 'user';
@@ -45,6 +52,7 @@ class UserController extends ActionController {
 	 * @return void
 	 */
 	public function listAction() {
+		$this->view->assign('allTipGroups', $this->tipGroupRepository->findAll());
 		$this->view->assign('users', $this->userRepository->findAll());
 	}
 
@@ -55,8 +63,7 @@ class UserController extends ActionController {
 	 * @return void
 	 */
 	public function showAction(User $user) {
-		$tips = $this->tipRepository->findByUser($user);
-		$this->view->assign('countOfTips', count($tips));
+		$this->view->assign('allTipGroups', $this->tipGroupRepository->findAll());
 		$this->view->assign('user', $user);
 	}
 
@@ -68,6 +75,7 @@ class UserController extends ActionController {
 	 */
 	public function createAction(User $user) {
 		try {
+			$user = $this->userFactory->create($user->getEmail(), $user->getAccount()->getAccountIdentifier());
 			$this->userRepository->add($user);
 			$this->persistenceManager->persistAll();
 			$this->addOkMessage('user created');
@@ -75,7 +83,7 @@ class UserController extends ActionController {
 			$this->addErrorMessage('cannot create user');
 			$this->handleException($e);
 		}		
-		$this->redirect('index');
+		$this->redirect('index', NULL, NULL, array('user' => $user));
 	}
 
 	/**
@@ -93,7 +101,7 @@ class UserController extends ActionController {
 			$this->addErrorMessage('cannot update user');
 			$this->handleException($e);
 		}		
-		$this->redirect('index');
+		$this->redirect('index', NULL, NULL, array('user' => $user));
 	}
 
 	/**

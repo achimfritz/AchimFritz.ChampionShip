@@ -24,6 +24,12 @@ use AchimFritz\ChampionShip\Domain\Model\Round;
 class RestUriViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
+	 * @var \TYPO3\Flow\Security\Context
+	 * @Flow\Inject
+	 */
+	protected $securityContext;
+
+	/**
 	 * render
 	 * @param object $object
 	 * @return string
@@ -45,6 +51,15 @@ class RestUriViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$requestControllerName = $this->controllerContext->getRequest()->getControllerName();
 		if ($requestControllerName == 'GroupRound' AND $resource == 'match') {
 			$controller = 'GroupRoundMatch';
+		}
+		// and not in tip
+		if ($resource == 'tip') {
+			$role = 'AchimFritz.ChampionShip:Administrator';
+			if ($this->securityContext->hasRole($role)) {
+				$controller = 'AdminTip';
+			} else {
+				$controller = $requestControllerName;
+			}
 		}
 
 		$action = 'index';

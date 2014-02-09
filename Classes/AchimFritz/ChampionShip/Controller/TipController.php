@@ -29,8 +29,15 @@ class TipController extends ActionController {
 	protected $resourceArgumentName = 'tip';
 
 	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Factory\TipFactory
+	 * @Flow\Inject
+	 */
+	protected $tipFactory;
+
+	/**
 	 * Index action
 	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip $tip 
 	 * @return void
 	 */
 	public function showAction(Tip $tip) {
@@ -39,12 +46,23 @@ class TipController extends ActionController {
 	}
 
 	/**
-	 * UpdateAction
+	 * updateAction 
+	 * 
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip $tip 
+	 * @return void
+	 */
+	public function updateAction(Tip $tip) {
+		$this->updateTip($tip);
+		$this->redirect('index', NULL, NULL, array('tip' => $tip));
+	}
+
+	/**
+	 * UpdateTip
 	 *
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip
 	 * @return void
 	 */
-	public function updateAction(Tip $tip) {
+	public function updateTip(Tip $tip) {
 		try {
 			$this->tipRepository->update($tip);
 			$this->persistenceManager->persistAll();
@@ -53,9 +71,7 @@ class TipController extends ActionController {
 			$this->addErrorMessage('cannot update tip');
 			$this->handleException($e);
 		}
-		$this->redirect('show', NULL, NULL, array('tip' => $tip, 'cup' => $tip->getMatch()->getCup()));
 	}
-
 
 }
 

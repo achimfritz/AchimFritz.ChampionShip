@@ -19,58 +19,23 @@ use \AchimFritz\ChampionShip\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class GroupMatchTipController extends ActionController {
+class GroupMatchTipController extends UserTipController {
 		
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
-	 */
-	protected $tipRepository;
-
 	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupMatchRepository
 	 */
 	protected $matchRepository;
-
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
-
-	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
-
-	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\TipFactory
-	 * @Flow\Inject
-	 */
-	protected $tipFactory;
 	
 	/**
 	 * listAction
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
+	 * @return void
 	 */
-	public function listAction(Cup $cup) {
-		$account = $this->securityContext->getAccount();
-		$user = $this->userRepository->findOneByAccount($account);
-		if (!$user instanceof User) {
-			$this->addErrorMessage('no user found');
-		} else {
-			$matches = $this->matchRepository->findByCup($cup);
-			$tips = $this->tipRepository->findByUserInMatches($user, $matches);
-			if (count($matches) != count($tips)) {
-				$newTips = $this->tipFactory->initTips($cup, $user);
-				$this->persistenceManager->persistAll();
-				$tips = $this->tipRepository->findByUserInMatches($user, $matches);
-			}
-			$this->view->assign('tips', $tips);
-		}
+	public function listAction() {
+		$matches = $this->matchRepository->findByCup($this->cup);
+		$tips = $this->tipRepository->findByUserInMatches($this->user, $matches);
+		$this->view->assign('tips', $tips);
 	}
 
 }

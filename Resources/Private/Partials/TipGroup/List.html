@@ -3,16 +3,12 @@
 			<ul>
 				<f:for each="{tipGroups}" as="tipGroup">
 					<li>
-						<ul class="inline">
-							<li>
-								<f:link.action controller="TipGroup" action="index" class="btn" arguments="{tipGroup: tipGroup, cup: cup}">
+								<f:link.action controller="TipGroup" action="index" arguments="{tipGroup: tipGroup, cup: cup}">
 									{tipGroup.name}
 								</f:link.action>
 								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-										<f:render partial="Actions/Delete" arguments="{object: tipGroup}" />
+										<f:render partial="Actions/Show" arguments="{object: tipGroup}" />
 								</f:security.ifHasRole>
-							</li>
-						</ul>
 					</li>
 				</f:for>
 			</ul>

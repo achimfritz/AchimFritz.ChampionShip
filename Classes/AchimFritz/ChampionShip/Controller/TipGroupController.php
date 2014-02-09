@@ -13,15 +13,15 @@ class TipGroupController extends ActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
-
-	/**
-	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
 	 */
 	protected $tipGroupRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
 
 	/**
 	 * @var string
@@ -32,7 +32,6 @@ class TipGroupController extends ActionController {
 	 * @return void
 	 */
 	public function listAction() {
-		$this->view->assign('allUsers', $this->userRepository->findAll());
 		$this->view->assign('tipGroups', $this->tipGroupRepository->findAll());
 	}
 
@@ -41,7 +40,7 @@ class TipGroupController extends ActionController {
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {
-		$this->view->assign('allUsers', $this->userRepository->findAll());
+		$this->view->assign('users', $this->userRepository->findInTipGroup($tipGroup));
 		$this->view->assign('tipGroup', $tipGroup);
 	}
 
@@ -58,7 +57,7 @@ class TipGroupController extends ActionController {
 			$this->addErrorMessage('cannot create tipGroup');
 			$this->handleException($e);
 		}		
-		$this->redirect('index');
+		$this->redirect('index', NULL, NULL, array('tipGroup' => $tipGroup));
 	}
 
 	/**
@@ -74,7 +73,7 @@ class TipGroupController extends ActionController {
 			$this->addErrorMessage('cannot update tipGroup');
 			$this->handleException($e);
 		}		
-		$this->redirect('index');
+		$this->redirect('index', NULL, NULL, array('tipGroup' => $tipGroup));
 	}
 
 	/**

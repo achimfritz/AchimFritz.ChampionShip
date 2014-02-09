@@ -4,8 +4,17 @@ should have email, accountidentitfier
 	<f:form class="form-horizontal" action="index" object="{user}" name="user">
 		<f:form.hidden name="__method" value="PUT" />
 		<div class="control-group">
-			<label class="control-label" for="name">Name</label>
-			<div class="controls"><f:form.textfield property="name" id="name" /></div>
+			<label class="control-label" for="accountIdentifier">accountIdentifier</label>
+			<div class="controls"><f:form.textfield property="account.accountIdentifier" id="accountIdentifier" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="email">email</label>
+			<div class="controls"><f:form.textfield property="email" id="email" /></div>
+		</div>
+		
+		<div class="control-group">
+			<label class="control-label" for="tipGroups">tipGroups</label>
+			<div class="controls"><f:form.select options="{allTipGroups}" multiple="1" optionLabelField="name" property="tipGroups" id="tipGroups" /></div>
 		</div>
 		
 		<div class="control-group">

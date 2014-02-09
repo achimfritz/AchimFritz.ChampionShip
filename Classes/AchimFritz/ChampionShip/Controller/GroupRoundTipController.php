@@ -16,25 +16,7 @@ use \AchimFritz\ChampionShip\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class GroupRoundTipController extends RoundController {
-
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
-	 */
-	protected $tipRepository;
-
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
-
-	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
+class GroupRoundTipController extends UserTipController {
 	
 	/**
 	 * @Flow\Inject
@@ -47,13 +29,14 @@ class GroupRoundTipController extends RoundController {
 	 * 
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round
 	 */
-	public function showAction(Round $round) {
-		$account = $this->securityContext->getAccount();
-		$user = $this->userRepository->findOneByAccount($account);
-		$tips = $this->tipRepository->findByUserInRound($user, $round);
+	public function listAction(Round $round = NULL) {
+		if ($round === NULL) {
+			$round = $this->roundRepository->findOneByCup($this->cup);
+		}
+		$tips = $this->tipRepository->findByUserInRound($this->user, $round);
 		$this->view->assign('tips', $tips);
 		$this->view->assign('round', $round);
-      $this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($round->getCup()));
+      $this->view->assign('allRounds', $this->roundRepository->findByCup($round->getCup()));
 	}
 
 

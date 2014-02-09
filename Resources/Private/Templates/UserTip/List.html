@@ -10,38 +10,17 @@
 	<div class="tab-content">
 		<div class="row tab-pane active" id="show">
 			<h6>Tips for {user.name} in Cup {cup.name}</h6>
-			<f:if condition="{tips}">
-				<f:then>
-				<table class="table">
-					<f:for each="{tips}" as="tip">
-						<tr>
-							<f:render partial="Match/Show" arguments="{match: tip.match}" />
-							<td>
-								<f:render partial="Tip/Show" arguments="{tip: tip}" />
-							</td>
-							<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-								<td>
-									<f:link.action action="index" controller="Tip" arguments="{tip: tip, cup: tip.match.cup}" class="btn">show</f:link.action>
-								</td>
-							</f:security.ifHasRole>
-						</tr>
-					</f:for>
-				</table>
-				</f:then>
-				<f:else>
-					no tips
-				</f:else>
-			</f:if>
-			</div>
-			<div class="row tab-pane" id="change">
-				<h6>change cup</h6>
-				<ul>
-				<f:for each="{cups}" as="loopCup">
-					<li>
-						<f:link.action action="index" arguments="{cup: loopCup, user:user}">{loopCup.name}</f:link.action>
-					</li>
-				</f:for>
-				</ul>
-			</div>
+			<f:render partial="UserTip/List" arguments="{tips: tips}" />
 		</div>
+		<div class="row tab-pane" id="change">
+			<h6>change cup</h6>
+			<ul>
+			<f:for each="{cups}" as="loopCup">
+				<li>
+					<f:link.action action="index" arguments="{cup: loopCup, user:user}">{loopCup.name}</f:link.action>
+				</li>
+			</f:for>
+			</ul>
+		</div>
+	</div>
 </f:section>

@@ -126,13 +126,14 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * findLastByCup 
 	 * 
 	 * @param Cup $cup 
+	 * @param integer $limit
 	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
 	 */
-	public function findLastByCup(Cup $cup) {
+	public function findLastByCup(Cup $cup, $limit = 2) {
 		$query = $this->createQuery();
 		$query->setOrderings(array('startDate' => QueryInterface::ORDER_DESCENDING));
 		$now = new \DateTime();
-		$result = $query->setLimit(2)->matching(
+		$result = $query->setLimit($limit)->matching(
 			$query->logicalAnd(
 				$query->equals('cup', $cup),
 				$query->lessThan('startDate', $now)
@@ -146,12 +147,13 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * findNextByCup 
 	 * 
 	 * @param Cup $cup 
+	 * @param integer $limit
 	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
 	 */
-	public function findNextByCup(Cup $cup) {
+	public function findNextByCup(Cup $cup, $limit = 2) {
 		$query = $this->createQuery();
 		$now = new \DateTime();
-		$result = $query->setLimit(2)->matching(
+		$result = $query->setLimit($limit)->matching(
 			$query->logicalAnd(
 				$query->equals('cup', $cup),
 				$query->greaterThan('startDate', $now)

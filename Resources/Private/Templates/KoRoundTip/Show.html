@@ -1,9 +1,14 @@
-{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="Content">
-
-	<f:render partial="Round/List" arguments="{rounds: allKoRounds}" />
-	<h3>{round.name}</h3>
-	<f:render partial="Tip/List" arguments="{tips: tips}" />
+		<div class="row">
+		<ul class="nav nav-pills">
+			<li>
+			<f:link.action action="index" arguments="{round: tip.match.round}">to list {tip.match.round.name}</f:link.action>
+			</li>
+		</ul>
+		</div>
+		<f:render partial="Match/ShowOne" arguments="{match: tip.match}" />
+		<f:render partial="Tip/Show" arguments="{tip: tip}" />
+		<f:render partial="Tip/Edit" arguments="{tip: tip}" />
 </f:section>

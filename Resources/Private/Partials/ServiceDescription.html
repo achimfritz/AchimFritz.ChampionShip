@@ -31,13 +31,13 @@
 <div class="cs-container">
 	<h6><f:translate id="tip" /></h6>
 	<ul>
-		<li>
+		<li {cs:ifIsCurrentController(controllerName:'GroupMatchTip', then: 'class= "cs-active"')}>
 			<f:link.action action="index" controller="GroupMatchTip" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
 		</li>
-		<li>
+		<li {cs:ifIsCurrentController(controllerName:'GroupRoundTip', then: 'class= "cs-active"')}>
 			<f:link.action action="index" controller="GroupRoundTip" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
 		</li>
-		<li>
+		<li {cs:ifIsCurrentController(controllerName:'KoRoundTip', then: 'class= "cs-active"')}>
 		<f:link.action action="index" controller="KoRoundTip" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
 		</li>
 	</ul>
@@ -48,10 +48,10 @@
 <div class="cs-container">
 	<h6><f:translate id="ranking" /></h6>
 	<ul>
-		<li>
+		<li {cs:ifIsCurrentController(controllerName:'Ranking', then: 'class= "cs-active"')}>
 			<f:link.action action="index" controller="Ranking" arguments="{cup: recentCup}">{recentCup.name}</f:link.action>
 		</li>
-		<li>
+		<li {cs:ifIsCurrentController(controllerName:'GlobalRanking', then: 'class= "cs-active"')}>
 			<f:link.action action="index" controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
 		</li>
 	</ul>

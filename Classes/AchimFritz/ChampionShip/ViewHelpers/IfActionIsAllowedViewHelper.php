@@ -12,7 +12,9 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\User;
+use AchimFritz\ChampionShip\Domain\Model\Tip;
+
+
 
 /**
  * 
@@ -20,8 +22,8 @@ use AchimFritz\ChampionShip\Domain\Model\User;
  * @author af
  *
  */
-class UsernameViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
-
+class IfActionIsAllowedViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+	
 	/**
 	 * @var \TYPO3\Flow\Security\Context
 	 * @Flow\Inject
@@ -29,28 +31,24 @@ class UsernameViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
 	protected $securityContext;
 
 	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
-
-	
-	/**
-	 * Renders username
+	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
 	 *
+	 * @param object $object
 	 * @return string the rendered string
 	 */
-	public function render() {	
-		$account = $this->securityContext->getAccount();
-		if ($account) {
-			$user = $this->userRepository->findOneByAccount($account);
-			if ($user instanceof User) {
-				return $user->getDisplayName();
-			} else {
-				return $account->getAccountIdentifier();
+	public function render($object) {
+		$role = 'AchimFritz.ChampionShip:Administrator';
+		if ($this->securityContext->hasRole($role)) {
+			return $this->renderThenChild();
+		} else {
+			if ($object instanceof Tip) {
+				$role = 'AchimFritz.ChampionShip:User';
+				if ($this->securityContext->hasRole($role)) {
+					return $this->renderThenChild();
+				}
 			}
 		}
-		return '';
+		return $this->renderElseChild();
 	}
 }
 

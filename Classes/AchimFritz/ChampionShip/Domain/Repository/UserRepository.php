@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Account;
+use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 
 /**
  * A repository for Users
@@ -29,11 +30,48 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * @return User|NULL
 	 */
 	public function findOneByUsername($username) {
+		$query = $this->createQuery();
+		return $query->matching(
+					$query->equals('account.accountIdentifier', $username)
+				)
+			->execute()->getFirst();
+			/*
 		$account = $this->accountRepository->findOneByAccountIdentifier($username);
 		if ($account instanceof Account) {
 			return $this->findOneByAccount($account);
 		}
-		return NULL;
+		return NULL;*/
+	}
+
+	/**
+	 * findOneByIdentifierAndEmail 
+	 * 
+	 * @param string $identifier 
+	 * @param string $email 
+	 * @return Uesr|NULL
+	 */
+	public function findOneByIdentifierAndEmail($identifier, $email) {
+		$query = $this->createQuery();
+		return $query->matching(
+				$query->logicalAnd(
+					$query->equals('account.accountIdentifier', $identifier),
+					$query->equals('email', $email)
+					)
+				)
+			->execute()->getFirst();
+	}
+
+	/**
+	 * findInTipGroup 
+	 * 
+	 * @param TipGroup $tipGroup 
+	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 */
+	public function findInTipGroup(TipGroup $tipGroup) {
+		$query = $this->createQuery();
+		return $query->matching(
+			$query->contains('tipGroups', $tipGroup)
+		)->execute();
 	}
 
 

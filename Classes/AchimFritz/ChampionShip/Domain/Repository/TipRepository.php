@@ -73,7 +73,16 @@ class TipRepository extends Repository {
 	 */
 	public function findByUserInMatches(User $user, $matches) {
 		$query = $this->createQuery();
-		// bad hack ($query->in works not)
+		/*
+			return $query->matching(
+				$query->logicalAnd(
+					$query->in('generalMatch', $matches),
+					$query->equals('user', $user)
+					)
+				)
+			->execute();
+			*/
+		// bad hack ($query->in works not) TODO
 		$c = array();
 		foreach ($matches AS $match) {
 			$c[] = $query->equals('generalMatch', $match);

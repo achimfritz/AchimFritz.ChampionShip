@@ -2,11 +2,7 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<table>
-		<tr>
-			<f:render partial="Match/Show" arguments="{match: match}" />
-		</tr>
-	</table>
+	<f:render partial="Match/ShowOne" arguments="{match: match}" />
 	<f:if condition="{tips}">
 		<f:then>
 			<f:render partial="Tip/List" arguments="{tips: tips}" />

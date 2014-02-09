@@ -1,10 +1,14 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="Content">
 		<div class="row">
 		<ul class="nav nav-pills">
 			<li>
-			<f:link.action action="index" arguments="{round: tip.match.round}">to list {tip.match.round.name}</f:link.action>
+			<f:link.action action="index" controller="User" arguments="{cup: recentCup, user: tip.user}">to user</f:link.action>
+			</li>
+			<li>
+				<a href="{cs:restUri(object: tip.match)}">to match</a>
 			</li>
 		</ul>
 		</div>

@@ -21,11 +21,7 @@
 	</f:security.ifHasRole>
 	<div class="tab-content">
 		<div class="row tab-pane active" id="show">
-			<table>
-				<tr>
-					<f:render partial="Match/Show" arguments="{match: match}" />
-				</tr>
-			</table>
+			<f:render partial="Match/ShowOne" arguments="{match: match}" />
 			<h6>Tips</h6>
 			<f:if condition="{tips}">
 				<f:then>

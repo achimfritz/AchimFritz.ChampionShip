@@ -1,10 +1,5 @@
-	<h3>{tipGroup.name}</h3>
-	<ul class="inline">
-		<li>
-			<f:link.action action="index" controller="TipGroup" class="btn">list</f:link.action>
-		</li>
+	{tipGroup.name}
 		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 				<f:render partial="Actions/Delete" arguments="{object: tipGroup}" />
 		</f:security.ifHasRole>
-	</ul>
 

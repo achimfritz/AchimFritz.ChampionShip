@@ -53,6 +53,25 @@ class ActionController extends RestController {
 	 */
 	protected $cups;
 
+
+	/**
+	 * initializeAction 
+	 * 
+	 * @return void
+	 */
+	protected function initializeAction() {
+		$this->cup = NULL;
+		if ($this->request->hasArgument('cup')) {
+			$arg = $this->request->getArgument('cup');
+			if (isset($arg['__identity'])) {
+				$this->cup = $this->cupRepository->findByIdentifier($arg['__identity']);
+			}
+		} else {
+			$this->cup = $this->cupRepository->findOneRecent();
+		}
+		$this->cups = $this->cupRepository->findAll();
+	}
+
 	
 	/**
 	 * Allow creation of resources in createAction()
@@ -91,6 +110,7 @@ class ActionController extends RestController {
 	}
 
 
+
 	/**
 	 * initializeView
 	 * 
@@ -99,28 +119,15 @@ class ActionController extends RestController {
 	protected function initializeView(\TYPO3\Flow\Mvc\View\ViewInterface $view) {
 		$view->assign('controllers', array('Team', 'User', 'Cup', 'Standard'));
 		$view->assign('title', $this->request->getControllerName() . '.' . $this->request->getControllerActionName());
-		
-		$cup = NULL;	
-		if ($this->request->hasArgument('cup')) {
-			$arg = $this->request->getArgument('cup');
-			if (isset($arg['__identity'])) {
-				$cup = $this->cupRepository->findByIdentifier($arg['__identity']);
-				$this->view->assign('recentCup', $cup);
-			}
-		} else {
-			$cup = $this->cupRepository->findOneRecent();
-			$this->view->assign('recentCup', $cup);
-		}
-		if ($cup instanceof Cup) {
-			$nextMatches = $this->matchRepository->findNextByCup($cup);
+		$this->view->assign('cup', $this->cup);
+		$this->view->assign('recentCup', $this->cup);
+		if ($this->cup instanceof Cup) {
+			$nextMatches = $this->matchRepository->findNextByCup($this->cup);
 			$this->view->assign('nextMatches', $nextMatches);
-			$lastMatches = $this->matchRepository->findLastByCup($cup);
+			$lastMatches = $this->matchRepository->findLastByCup($this->cup);
 			$this->view->assign('lastMatches', $lastMatches);
-			$this->cup = $cup;
 		}
-		$cups = $this->cupRepository->findAll();
-		$this->cups = $cups;
-		$this->view->assign('cups', $cups);
+		$this->view->assign('cups', $this->cups);
 		
 	}
 	
@@ -150,6 +157,31 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 		} else {
 			return parent::resolveViewObjectName();
 		}
+	}
+
+	/**
+	 * Redirects the request to another action and / or controller.
+	 *
+	 * @param string $actionName Name of the action to forward to
+	 * @param string $controllerName Unqualified object name of the controller to forward to. If not specified, the current controller is used.
+	 * @param string $packageKey Key of the package containing the controller to forward to. If not specified, the current package is assumed.
+	 * @param array $arguments Array of arguments for the target action
+	 * @param integer $delay (optional) The delay in seconds. Default is no delay.
+	 * @param integer $statusCode (optional) The HTTP status code for the redirect. Default is "303 See Other"
+	 * @param string $format The format to use for the redirect URI
+	 * @return void
+	 * @throws \TYPO3\Flow\Mvc\Exception\StopActionException
+	 * @see forward()
+	 * @api
+	 */
+	protected function redirect($actionName, $controllerName = NULL, $packageKey = NULL, array $arguments = NULL, $delay = 0, $statusCode = 303, $format = NULL) {
+		// TODO $format = json...
+		if ($arguments === NULL) {
+			$arguments = array('cup' => $this->cup);
+		} elseif (!isset($arguments['cup'])) {
+			$arguments['cup'] = $this->cup;
+		}
+		return parent::redirect($actionName, $controllerName, $packageKey, $arguments, $delay, $statusCode, $format);
 	}
 
 	/**

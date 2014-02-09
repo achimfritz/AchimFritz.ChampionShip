@@ -1,19 +1,13 @@
-	<h3>{user.name}</h3>
-		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-			<f:render partial="Actions/Delete" arguments="{object: user}" />
-		</f:security.ifHasRole>
-	<ul class="inline">
-		<li>
-			<f:link.action action="index" controller="User" class="btn" arguments="{cup: recentCup}">list</f:link.action>
-		</li>
-	</ul>
 	<ul>
 		<li>
-			account Identifier: {user.account.accountIdentifier}
+			accountIdentifier: {user.account.accountIdentifier}
+			<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+				<f:render partial="Actions/Delete" arguments="{object: user}" />
+			</f:security.ifHasRole>
 		</li>
 		<li>
-			<f:link.action action="index" controller="UserTip" arguments="{cup: recentCup, user: user}" class="btn">
-				{countOfTips} Tips
-			</f:link.action>
+			email: {user.email}
 		</li>
 	</ul>
+	<h6>TipGroups</h6>
+	<f:render partial="TipGroup/List" arguments="{tipGroups: user.tipGroups}" />
