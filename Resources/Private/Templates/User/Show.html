@@ -15,6 +15,7 @@
 				<li><a href="#tips" data-toggle="tab">tips</a></li>
 				<li><a href="#edit" data-toggle="tab">edit</a></li>
 				<li><a href="#new" data-toggle="tab">new</a></li>
+				<li><a href="#password" data-toggle="tab">password</a></li>
 			</ul>
 		</div>
 	</f:security.ifHasRole>
@@ -31,6 +32,9 @@
 			</div>
 			<div class="row tab-pane" id="new">
 				<f:render partial="User/New" arguments="{allTipGroups: allTipGroups}" />
+			</div>
+			<div class="row tab-pane" id="password">
+				<f:render partial="User/Password" arguments="{user: user}" />
 			</div>
 		</f:security.ifHasRole>
 	</div>
