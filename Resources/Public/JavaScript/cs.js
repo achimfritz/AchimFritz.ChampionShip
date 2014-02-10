@@ -19,6 +19,14 @@
 		});
 				//form.trigger('submit');
 				//ev.preventDefault();
+
+		var oTable = $('.dataTable').dataTable({
+          "bJQueryUI": false,
+          "aLengthMenu": [ 20, 50, 200 ],
+          'aaSorting': [ [0, 'asc'] ],
+          'iDisplayLength': 20
+          //'sDom': 'lfrtip'
+     });
 	});
 }(jQuery));
 
