@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\User;
+use AchimFritz\ChampionShip\Domain\Model\Registration;
 use TYPO3\Flow\Security\AccountFactory;
 /**
  * The User Command Controller Service
@@ -33,6 +34,23 @@ class UserFactory {
 	public function create($email, $name) {
 		$password = $email;
 		$identifier = $name; 
+		$user = new User();
+		$user->setEmail($email);
+		$account = $this->accountFactory->createAccountWithPassword($identifier, $password, array('AchimFritz.ChampionShip:User'));
+		$user->setAccount($account);
+		return $user;
+	}
+
+	/**
+	 * createFromRegistration 
+	 * 
+	 * @param Registration $registration 
+	 * @return User $user
+	 */
+	public function createFromRegistration(Registration $registration) {
+		$password = $registration->getPassword();
+		$identifier = $registration->getUsername();
+		$email = $registration->getEmail();
 		$user = new User();
 		$user->setEmail($email);
 		$account = $this->accountFactory->createAccountWithPassword($identifier, $password, array('AchimFritz.ChampionShip:User'));

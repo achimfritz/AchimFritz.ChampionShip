@@ -1,30 +1,36 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <div class="cs-container">
-
-<h6><f:translate id="cups" /></h6>
-<f:if condition="{cups}">
+	<h6>Home</h6>
 	<ul>
-		<f:for each="{cups}" as="cup">
-			<li>
-				<f:link.action controller="Cup" action="index" arguments="{cup: cup}" >{cup.name}</f:link.action>
-			</li>
-		</f:for>
+		<li><f:link.action controller="Registration" action="index" arguments="{cup: recentCup}">Registration</f:link.action></li>
 	</ul>
-</f:if>
+</div>
+
+<div class="cs-container">
+	<h6><f:translate id="cups" /></h6>
+	<f:if condition="{cups}">
+		<ul>
+			<f:for each="{cups}" as="cup">
+				<li>
+					<f:link.action controller="Cup" action="index" arguments="{cup: cup}" >{cup.name}</f:link.action>
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
 </div>
 <div class="cs-container">
-<h6><f:translate id="matches" /></h6>
-<ul>
-	<li {cs:ifIsCurrentController(controllerName:'GroupMatch', then: 'class= "cs-active"')}>
-		<f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
-	</li>
-	<li {cs:ifIsCurrentController(controllerName:'GroupRound', then: 'class= "cs-active"')}>
-		<f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
-	</li>
-	<li {cs:ifIsCurrentController(controllerName:'KoRound', then: 'class= "cs-active"')}>
-	<f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
-	</li>
-</ul>
+	<h6><f:translate id="matches" /></h6>
+	<ul>
+		<li {cs:ifIsCurrentController(controllerName:'GroupMatch', then: 'class= "cs-active"')}>
+			<f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
+		</li>
+		<li {cs:ifIsCurrentController(controllerName:'GroupRound', then: 'class= "cs-active"')}>
+			<f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
+		</li>
+		<li {cs:ifIsCurrentController(controllerName:'KoRound', then: 'class= "cs-active"')}>
+		<f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
+		</li>
+	</ul>
 </div>
 
 <f:security.ifHasRole role="AchimFritz.ChampionShip:User">
