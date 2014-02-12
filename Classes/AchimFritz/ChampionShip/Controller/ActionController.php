@@ -32,12 +32,6 @@ class ActionController extends RestController {
 	protected $matchRepository;
 	
 	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
-	
-	/**
     * Supported content types. Needed for HTTP content negotiation.
     * @var array
     */

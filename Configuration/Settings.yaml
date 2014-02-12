@@ -2,16 +2,17 @@ TYPO3:
   Flow:
     security:
       authentication:
-        authenticationStrategy: oneToken
+        #authenticationStrategy: atLeastOneToken
         providers:
           DefaultProvider:
             provider: PersistedUsernamePasswordProvider
-            entryPoint: 'WebRedirect'
-            entryPointOptions:
-              routeValues:
-                '@package': 'AchimFritz.Championship'
-                '@controller': 'Standard'
-                '@action': 'index'
+            #entryPoint: 'WebRedirect'
+            token: TYPO3\Flow\Security\Authentication\Token\UsernamePasswordHttpBasic
+            #entryPointOptions:
+            #  routeValues:
+            #    '@package': 'AchimFritz.Championship'
+            #    '@controller': 'Standard'
+            #    '@action': 'index'
     i18n:
       defaultLocale: de
     #persistence:
