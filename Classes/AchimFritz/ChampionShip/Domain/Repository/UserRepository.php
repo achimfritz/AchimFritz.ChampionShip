@@ -30,17 +30,21 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * @return User|NULL
 	 */
 	public function findOneByUsername($username) {
+		return $this->findOneByAccountIdentifier($username);
+	}
+
+	/**
+	 * findOneByAccountIdentifier
+	 * 
+	 * @param string $username 
+	 * @return User|NULL
+	 */
+	public function findOneByAccountIdentifier($accountIdentifier) {
 		$query = $this->createQuery();
 		return $query->matching(
-					$query->equals('account.accountIdentifier', $username)
+					$query->equals('account.accountIdentifier', $accountIdentifier)
 				)
 			->execute()->getFirst();
-			/*
-		$account = $this->accountRepository->findOneByAccountIdentifier($username);
-		if ($account instanceof Account) {
-			return $this->findOneByAccount($account);
-		}
-		return NULL;*/
 	}
 
 	/**
