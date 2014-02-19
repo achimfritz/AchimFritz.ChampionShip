@@ -12,27 +12,26 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @Flow\Entity
  */
-class PasswordRequest extends AccountRequest {
+class RegistrationRequest extends AccountRequest {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\User
-	 * @ORM\OneToOne
+	 * @var string
 	 */
-	protected $user = NULL;
+	protected $username = '';
 
 	/**
-	 * @return \AchimFritz\ChampionShip\Domain\Model\User
+	 * @return string
 	 */
-	public function getUser() {
-		return $this->user;
+	public function getUsername() {
+		return $this->username;
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user
+	 * @param string $username
 	 * @return void
 	 */
-	public function setUser(User $user) {
-		$this->user = $user;
+	public function setUsername($username) {
+		$this->username = $username;
 	}
 
 }

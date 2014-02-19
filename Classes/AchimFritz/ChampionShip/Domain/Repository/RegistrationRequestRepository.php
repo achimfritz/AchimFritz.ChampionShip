@@ -11,7 +11,7 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Scope("singleton")
  */
-class PasswordRequestRepository extends AccountRequestRepository {
+class RegistrationRequestRepository extends AccountRequestRepository {
 
 	// add customized methods here
 
