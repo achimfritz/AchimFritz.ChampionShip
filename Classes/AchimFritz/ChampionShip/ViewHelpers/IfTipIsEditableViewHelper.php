@@ -20,7 +20,7 @@ use AchimFritz\ChampionShip\Domain\Model\Tip;
  * @author af
  *
  */
-class IfIsOwnTipViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
 
 	/**
 	 * @var \TYPO3\Flow\Security\Context
@@ -42,6 +42,9 @@ class IfIsOwnTipViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditio
 	 */
 	public function render(Tip $tip) {
 		$account = $this->securityContext->getAccount();
+		if ($account->hasRole('AchimFritz.ChampionShip:Administrator')) {
+			return $this->renderThenChild();
+		}
 		if ($account) {
 			$user = $this->userRepository->findOneByAccount($account);
 			if ($user === $tip->getUser()) {

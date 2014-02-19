@@ -23,7 +23,9 @@
 						<f:render partial="Match/Show" arguments="{match: tip.match}" />
                   <td>
                      <f:render partial="Tip/Show" arguments="{tip: tip}" />
-							<f:render partial="Actions/Show" arguments="{object: tip}" />
+							<cs:ifTipIsEditable tip="{tip}">
+								<f:render partial="Actions/Show" arguments="{object: tip}" />
+							</cs:ifTipIsEditable>
                   </td>
                </tr>
             </f:for>

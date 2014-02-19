@@ -63,7 +63,7 @@ class UserTipController extends TipController {
 	 */
 	public function initializeListAction() {
 		// tip possible ? -> then check if tips have to be created
-		$lastMatches = $this->matchRepository->findLastByCup($this->cup, 1);
+		$lastMatches = $this->matchRepository->findNextByCup($this->cup, 1);
 		$lastMatch = $lastMatches->getFirst();
 		if ($lastMatch instanceof Match) {
 			$now = new \DateTime();

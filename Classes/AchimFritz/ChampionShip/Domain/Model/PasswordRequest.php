@@ -8,81 +8,93 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
-use TYPO3\Flow\Security\Account;
 
 /**
  * @Flow\Entity
  */
-class Password {
-
-	/**
-	 * @var string
-	 * @Flow\Validate(type="NotEmpty")
-	 * @Flow\Validate(type="StringLength", options={ "minimum"=6, "maximum"=50 })
-	 */
-	protected $newPassword;
+class PasswordRequest {
 
 	/**
 	 * @var string
 	 */
-	protected $newPasswordRepeat;
+	protected $username = '';
+
+	/**
+	 * @var string
+	 */
+	protected $email = '';
+
+	/**
+	 * @var string
+	 */
+	protected $hmac;
 
 	/**
 	 * @var \AchimFritz\ChampionShip\Domain\Model\User
 	 * @ORM\OneToOne
-	 * @Flow\Validate(type="NotEmpty")
 	 */
-	protected $user;
+	protected $user = NULL;
+
 
 	/**
 	 * @return string
 	 */
-	public function getNewPassword() {
-		return $this->newPassword;
+	public function getUsername() {
+		return $this->username;
 	}
 
 	/**
-	 * @param string $newPassword
+	 * @param string $username
 	 * @return void
 	 */
-	public function setNewPassword($newPassword) {
-		$this->newPassword = $newPassword;
+	public function setUsername($username) {
+		$this->username = $username;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getNewPasswordRepeat() {
-		return $this->newPasswordRepeat;
+	public function getEmail() {
+		return $this->email;
 	}
 
 	/**
-	 * @param string $newPasswordRepeat
+	 * @param string $email
 	 * @return void
 	 */
-	public function setNewPasswordRepeat($newPasswordRepeat) {
-		$this->newPasswordRepeat = $newPasswordRepeat;
+	public function setEmail($email) {
+		$this->email = $email;
 	}
 
 	/**
-	 * getUser
-	 * 
-	 * @return User
+	 * @return string
+	 */
+	public function getHmac() {
+		return $this->hmac;
+	}
+
+	/**
+	 * @param string $hmac
+	 * @return void
+	 */
+	public function setHmac($hmac) {
+		$this->hmac = $hmac;
+	}
+
+	/**
+	 * @return \AchimFritz\ChampionShip\Domain\Model\User
 	 */
 	public function getUser() {
 		return $this->user;
 	}
 
 	/**
-	 * setUser
-	 * 
-	 * @param User $user
+	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user
 	 * @return void
 	 */
 	public function setUser(User $user) {
 		$this->user = $user;
-	} 
-
+	}
 
 }
 ?>

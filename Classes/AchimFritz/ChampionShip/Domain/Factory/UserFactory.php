@@ -23,6 +23,11 @@ class UserFactory {
 	 */
 	protected $accountFactory;
 
+	/**
+	 * @var \TYPO3\Flow\Security\Cryptography\HashService
+	 * @Flow\Inject
+	 */
+	protected $hashService;
 
 	/**
 	 * Create a new user
@@ -53,6 +58,8 @@ class UserFactory {
 		$email = $registration->getEmail();
 		$user = new User();
 		$user->setEmail($email);
+		#$user->setHmac($hmac);
+		#$account = $this->accountFactory->createAccountWithPassword($identifier, $password, array('AchimFritz.ChampionShip:InRegistration'), 'HmacProvicer');
 		$account = $this->accountFactory->createAccountWithPassword($identifier, $password, array('AchimFritz.ChampionShip:User'));
 		$user->setAccount($account);
 		return $user;
