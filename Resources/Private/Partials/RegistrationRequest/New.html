@@ -1,5 +1,5 @@
 	<h3>registration</h3>
-	<f:form class="form-horizontal" action="index" controller="Registration" name="registration" method="post">
+	<f:form class="form-horizontal" action="index" controller="RegistrationRequest" name="registrationRequest" method="post">
 		<div class="control-group">
 			<label class="control-label" for="username">username</label>
 			<div class="controls"><f:form.textfield property="username" id="username" /></div>
@@ -7,14 +7,6 @@
 		<div class="control-group">
 			<label class="control-label" for="email">email</label>
 			<div class="controls"><f:form.textfield property="email" id="email" /></div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="password">password</label>
-			<div class="controls"><f:form.password property="password" id="password" /></div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="passwordRepeat">passwordRepeat</label>
-			<div class="controls"><f:form.password property="passwordRepeat" id="passwordRepeat" /></div>
 		</div>
 		<div class="control-group">
 			<div class="controls">

@@ -43,6 +43,7 @@ class PasswordRequestService {
 			$newRequest = new PasswordRequest();
 			$newRequest->setEmail($email);
 			$newRequest->setUser($user);
+			$newRequest->setCreationDate(new \DateTime());
 			$string = $email . $user->getAccount()->getAccountIdentifier();
 			$hmac = $this->hashService->generateHmac($string);
 			$newRequest->setHmac($hmac);

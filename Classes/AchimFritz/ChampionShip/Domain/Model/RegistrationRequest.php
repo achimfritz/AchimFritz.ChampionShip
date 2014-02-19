@@ -16,6 +16,8 @@ class RegistrationRequest extends AccountRequest {
 
 	/**
 	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
+	 * @Flow\Validate(type="StringLength", options={ "minimum"=6, "maximum"=50 })
 	 */
 	protected $username = '';
 

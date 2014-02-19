@@ -8,25 +8,25 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-use AchimFritz\ChampionShip\Domain\Model\PasswordRequest;
+use AchimFritz\ChampionShip\Domain\Model\RegistrationRequest;
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class PasswordRequestController extends ActionController {
+class RegistrationRequestController extends ActionController {
 
 	/**
 	 * @var string
 	 */
-	protected $resourceArgumentName = 'passwordRequest';
+	protected $resourceArgumentName = 'registrationRequest';
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Service\PasswordRequestService
+	 * @var \AchimFritz\ChampionShip\Domain\Service\RegistrationRequestService
 	 * @Flow\Inject
 	 */
-	protected $passwordRequestService;
+	protected $registrationRequestService;
 
 	/**
 	 * listAction 
@@ -39,13 +39,13 @@ class PasswordRequestController extends ActionController {
 	/**
 	 * createAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\PasswordRequest $passwordRequest
+	 * @param \AchimFritz\ChampionShip\Domain\Model\RegistrationRequest $registrationRequest
 	 * @return void
 	 */
-	public function createAction(PasswordRequest $passwordRequest) {
-		$this->passwordRequestService->handle($passwordRequest);
-		$this->addOkMessage('PasswordRequest created');
-		$this->view->assign('passwordRequest', $passwordRequest);
+	public function createAction(RegistrationRequest $registrationRequest) {
+		$this->registrationRequestService->handle($registrationRequest);
+		$this->addOkMessage('RegistrationRequest created');
+		$this->view->assign('registrationRequest', $registrationRequest);
 	}
 
 
