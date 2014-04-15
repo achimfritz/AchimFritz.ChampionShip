@@ -1,9 +1,9 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:security.ifAuthenticated>
 	<f:then>
-		<p>
+		<h5>
 			<cs:username />
-		</p>
+		</h5>
 		<f:link.action class="btn" action="logout" controller="Login"><f:translate id="logout" /></f:link.action>
 	</f:then>
 	<f:else>

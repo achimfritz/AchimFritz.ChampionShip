@@ -36,9 +36,3 @@
 			<p>no groupTableRows</p>
 		</f:else>
 	</f:if>
-  <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-  <f:form action="index" method="update" controller="GroupTable" arguments="{groupRound: round}">
-			<f:form.hidden name="__method" value="PUT" />
-				<f:form.submit name="submit" value="update" class="btn" />
-			</f:form>
-  </f:security.ifHasRole>

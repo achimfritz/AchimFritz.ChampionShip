@@ -87,7 +87,7 @@ class RankingCalculator {
                $ranking->setUser($user);
                $this->rankingRepository->add($ranking);
             }
-            $ranking->setPoints(0);
+				$ranking->setPoints(0);
          } else {
             $ranking = $userRankings[$identifier];
          }

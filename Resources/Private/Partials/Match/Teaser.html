@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:if condition="{matches}">
 	<f:then>
 			<f:for each="{matches}" as="match">
@@ -10,13 +11,11 @@
 						</td>
 						<td>
 						<f:if condition="{match.result}">
-							<f:then>
-								{match.result.hostTeamGoals}
-							</f:then>
-							<f:else>
-								:
-							</f:else>
+							{match.result.hostTeamGoals}
 						</f:if>
+						<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+							(<cs:userTip match="{match}" />)
+						</f:security.ifHasRole>
 						</td>
 					</tr>
 					<tr>
@@ -25,13 +24,11 @@
 						</td>
 						<td>
 						<f:if condition="{match.result}">
-							<f:then>
 								{match.result.guestTeamGoals}
-							</f:then>
-							<f:else>
-								:
-							</f:else>
 						</f:if>
+								<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+									(<cs:userTip match="{match}" />)
+								</f:security.ifHasRole>
 						</td>
 					</tr>
 				</table>

@@ -12,7 +12,9 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\Tip;
+use AchimFritz\ChampionShip\Domain\Model\Match;
+use AchimFritz\ChampionShip\Domain\Model\Result;
+
 
 /**
  * 
@@ -20,7 +22,13 @@ use AchimFritz\ChampionShip\Domain\Model\Tip;
  * @author af
  *
  */
-class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class UserTipViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 * @Flow\Inject
+	 */
+	protected $tipRepository;
 
 	/**
 	 * @var \TYPO3\Flow\Security\Context
@@ -39,29 +47,32 @@ class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractCon
 	 * @var \TYPO3\Flow\Security\Policy\PolicyService
 	 */
 	protected $policyService;
-	
+
 	/**
-	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
+	 * render
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip $tip
-	 * @return string the rendered string
+	 * @param Match $match
+	 * @return string
 	 */
-	public function render(Tip $tip) {
-		$adminRole = $this->policyService->getRole('AchimFritz.ChampionShip:Administrator');
+	public function render(Match $match) {
+		$userRole = $this->policyService->getRole('AchimFritz.ChampionShip:User');
 		$account = $this->securityContext->getAccount();
-		if ($account->hasRole($adminRole)) {
-			return $this->renderThenChild();
-		}
 		if ($account) {
 			$user = $this->userRepository->findOneByAccount($account);
+			$tip = $this->tipRepository->findOneByUserAndMatch($user, $match);
+			if ($tip->getResult() instanceof Result) {
+				return 'TODO';
+			}
+		return 'TODO';
+			/*
 			if ($user === $tip->getUser()) {
 				$now = new \DateTime();
 				if ($now < $tip->getMatch()->getStartDate()) {
 					return $this->renderThenChild();
 				}
 			}
+			*/
 		}
-		return $this->renderElseChild();
 	}
 }
 

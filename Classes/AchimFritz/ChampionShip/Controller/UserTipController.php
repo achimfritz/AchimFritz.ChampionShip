@@ -62,6 +62,7 @@ class UserTipController extends TipController {
 	 * @return void
 	 */
 	public function initializeListAction() {
+		// TODO Policy + tipFactory
 		// tip possible ? -> then check if tips have to be created
 		$lastMatches = $this->matchRepository->findNextByCup($this->cup, 1);
 		$lastMatch = $lastMatches->getFirst();

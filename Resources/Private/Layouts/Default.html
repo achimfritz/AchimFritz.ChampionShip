@@ -34,13 +34,13 @@
                   <div class="span8 cs-col">
 							<div class="row">
 								<div class="span2">
-									<f:link.action controller="Standard" action="index">Home</f:link.action>
+									<p><f:link.action controller="Standard" action="index">Home</f:link.action></p>
+										<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+											<h5>{title}</h5>
+										</f:security.ifHasRole>
 								</div>
 								<div class="span5">
 									<h1>{recentCup.name}
-										<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-											{title}
-										</f:security.ifHasRole>
 									</h1>
 								</div>
 							</div>

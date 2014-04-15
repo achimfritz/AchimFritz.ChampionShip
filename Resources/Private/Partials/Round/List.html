@@ -8,9 +8,6 @@
 					<f:link.action action="index" arguments="{round: round, cup: round.cup}">
 						{round.name}
 					</f:link.action>
-					<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-							<f:render partial="Actions/Delete" arguments="{object: round}" />
-					</f:security.ifHasRole>
 					</li>
 				</f:for>
 			</ul>
