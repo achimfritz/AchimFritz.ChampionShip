@@ -9,6 +9,7 @@ namespace AchimFritz\ChampionShip\Controller;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\RestController;
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Domain\Model\User;
 
 
 /**
@@ -30,6 +31,18 @@ class ActionController extends RestController {
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
 	 */
 	protected $matchRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
+
+	/**
+	 * @var \TYPO3\Flow\Security\Context
+	 * @Flow\Inject
+	 */
+	protected $securityContext;
 	
 	/**
     * Supported content types. Needed for HTTP content negotiation.
@@ -40,12 +53,17 @@ class ActionController extends RestController {
 	/**
 	 * @var Cup
 	 */
-	protected $cup;
+	protected $cup = NULL;
 
 	/**
 	 * @var \TYPO3\FLOW3\Persistence\QueryResultInterface
 	 */
-	protected $cups;
+	protected $cups = NULL;
+
+	/**
+	 * @var User
+	 */
+	protected $user = NULL;
 
 
 	/**
@@ -54,7 +72,6 @@ class ActionController extends RestController {
 	 * @return void
 	 */
 	protected function initializeAction() {
-		$this->cup = NULL;
 		if ($this->request->hasArgument('cup')) {
 			$arg = $this->request->getArgument('cup');
 			if (isset($arg['__identity'])) {
@@ -64,6 +81,13 @@ class ActionController extends RestController {
 			$this->cup = $this->cupRepository->findOneRecent();
 		}
 		$this->cups = $this->cupRepository->findAll();
+		$account = $this->securityContext->getAccount();
+		if ($account) {
+			$user = $this->userRepository->findOneByAccount($account);
+			if ($user instanceof User) {
+				$this->user = $user;
+			}
+		}
 	}
 
 	
@@ -122,6 +146,7 @@ class ActionController extends RestController {
 			$this->view->assign('lastMatches', $lastMatches);
 		}
 		$this->view->assign('cups', $this->cups);
+		$this->view->assign('user', $this->user);
 		
 	}
 	

@@ -1,9 +1,16 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:security.ifAuthenticated>
 	<f:then>
-		<h5>
-			<cs:username />
-		</h5>
+		<p>
+			<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+				<f:then>
+					{user.displayName}
+				</f:then>
+				<f:else>
+					ADMIN
+				</f:else>
+			</f:security.ifHasRole>
+		</p>
 		<f:link.action class="btn" action="logout" controller="Login"><f:translate id="logout" /></f:link.action>
 	</f:then>
 	<f:else>

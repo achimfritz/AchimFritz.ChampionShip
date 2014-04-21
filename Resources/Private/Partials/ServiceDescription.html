@@ -2,23 +2,13 @@
 <div class="cs-container">
 	<h6>Home</h6>
 	<ul>
-		<li><f:link.action controller="RegistrationRequest" action="index" arguments="{cup: recentCup}">RegistrationRequest</f:link.action></li>
-		<li><f:link.action controller="PasswordRequest" action="index" arguments="{cup: recentCup}">PasswordRequest</f:link.action></li>
+		<li><f:link.action controller="Standard" action="index" arguments="{cup: recentCup}">Home</f:link.action></li>
+		<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+			<li><f:link.action controller="User" action="index" arguments="{cup: recentCup, user:user}">{user.displayName}</f:link.action></li>
+		</f:security.ifHasRole>
 	</ul>
 </div>
 
-<div class="cs-container">
-	<h6><f:translate id="cups" /></h6>
-	<f:if condition="{cups}">
-		<ul>
-			<f:for each="{cups}" as="cup">
-				<li>
-					<f:link.action controller="Cup" action="index" arguments="{cup: cup}" >{cup.name}</f:link.action>
-				</li>
-			</f:for>
-		</ul>
-	</f:if>
-</div>
 <div class="cs-container">
 	<h6><f:translate id="matches" /></h6>
 	<ul>
@@ -66,6 +56,18 @@
 </f:security.ifAuthenticated>
 
 
+<div class="cs-container">
+	<h6><f:translate id="cups" /></h6>
+	<f:if condition="{cups}">
+		<ul>
+			<f:for each="{cups}" as="cup">
+				<li>
+					<f:link.action controller="Cup" action="index" arguments="{cup: cup}" >{cup.name}</f:link.action>
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+</div>
 
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 <div class="cs-container">

@@ -28,20 +28,19 @@
                <div class="row">
                   <div class="span2 cs-col">
 							<div class="cs-col-border">
-								<f:render partial="ServiceDescription" arguments="{recentCup: recentCup, cups: cups}" />
+								<f:render partial="ServiceDescription" arguments="{recentCup: recentCup, cups: cups, user: user}" />
 							</div>
                   </div>
                   <div class="span8 cs-col">
 							<div class="row">
-								<div class="span2">
-									<p><f:link.action controller="Standard" action="index">Home</f:link.action></p>
-										<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-											<h5>{title}</h5>
-										</f:security.ifHasRole>
-								</div>
 								<div class="span5">
 									<h1>{recentCup.name}
 									</h1>
+								</div>
+								<div class="span2">
+										<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+											<h5>{title}</h5>
+										</f:security.ifHasRole>
 								</div>
 							</div>
 							<div class="row cs-content">
@@ -53,7 +52,7 @@
                   <div class="span2 cs-col">
 							<div class="cs-col-border">
 								<div class="row cs-container">
-										<f:render partial="LoginForm" />
+										<f:render partial="LoginForm" arguments="{user: user}" />
 								</div>
 								<f:if condition="{nextMatches}">
 									<div class="row cs-container">

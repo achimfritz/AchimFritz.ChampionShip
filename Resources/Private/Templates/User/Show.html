@@ -3,11 +3,11 @@
 <f:section name="Content">
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 		<div class="row">
-		<ul class="nav nav-pills">
-			<li>
-			<f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action>
-			</li>
-		</ul>
+			<ul class="nav nav-pills">
+				<li>
+				<f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action>
+				</li>
+			</ul>
 		</div>
 		<div class="row">
 			<ul class="nav nav-pills">
@@ -18,15 +18,13 @@
 				<li><a href="#password" data-toggle="tab">password</a></li>
 			</ul>
 		</div>
-	</f:security.ifHasRole>
-	<div class="tab-content">
-		<div class="row tab-pane active" id="show">
-			<f:render partial="User/Show" arguments="{user: user, recentCup: recentCup}" />
-		</div>
-		<div class="row tab-pane" id="tips">
-			<f:render partial="Tip/List" arguments="{tips: user.tips}" />
-		</div>
-		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<div class="tab-content">
+			<div class="row tab-pane active" id="show">
+				<f:render partial="User/Show" arguments="{user: user, recentCup: recentCup}" />
+			</div>
+			<div class="row tab-pane" id="tips">
+				<f:render partial="Tip/List" arguments="{tips: user.tips}" />
+			</div>
 			<div class="row tab-pane" id="edit">
 				<f:render partial="User/Edit" arguments="{user: user, allTipGroups: allTipGroups}" />
 			</div>
@@ -36,6 +34,18 @@
 			<div class="row tab-pane" id="password">
 				<f:render partial="User/Password" arguments="{user: user}" />
 			</div>
-		</f:security.ifHasRole>
-	</div>
+		</div>
+	</f:security.ifHasRole>
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+		<div class="row">
+			<f:render partial="User/Show" arguments="{user: user, recentCup: recentCup}" />
+		</div>
+		<div class="row">
+			<f:render partial="User/Edit" arguments="{user: user, allTipGroups: allTipGroups}" />
+		</div>
+		<div class="row" /> 
+			<f:render partial="User/Password" arguments="{user: user}" />
+		</div>
+	</f:security.ifHasRole>
 </f:section>
+
