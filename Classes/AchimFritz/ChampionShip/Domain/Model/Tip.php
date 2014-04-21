@@ -39,6 +39,11 @@ class Tip {
 	 */
 	protected $result;
 
+	/**
+	 * @var integer
+	 */
+	protected $points = 0;
+
 
 	/**
 	 * Get the Tip's user
@@ -103,9 +108,17 @@ class Tip {
 	 * @return integer
 	 */
 	public function getPoints() {
-		$name = $this->getMatch()->getCup()->getTipPointsPolicy();
-		$tipPointsPolicy = new $name;
-		return $tipPointsPolicy->getPointsForTip($this);
+		return $this->points;
+	}
+
+	/**
+	 * setPoints 
+	 * 
+	 * @param integer $points 
+	 * @return void
+	 */
+	public function setPoints($points) {
+		$this->points = $points;
 	}
 
 }

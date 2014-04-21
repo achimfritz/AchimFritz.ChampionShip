@@ -15,14 +15,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @Flow\Entity
  */
 class Ranking {
-
-	/**
-	 * The cup
-	 * @var \AchimFritz\ChampionShip\Domain\Model\Cup
-	 * @ORM\ManyToOne
-	 * @Flow\Validate(type="NotEmpty")
-	 */
-	protected $cup;
 	
 	/**
 	 * The user
@@ -39,23 +31,9 @@ class Ranking {
 	protected $points;
 
 	/**
-	 * Get the Points's cup
-	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Cup The Points's cup
+	 * @var integer
 	 */
-	public function getCup() {
-		return $this->cup;
-	}
-
-	/**
-	 * Sets this Points's cup
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup The Points's cup
-	 * @return void
-	 */
-	public function setCup(\AchimFritz\ChampionShip\Domain\Model\Cup $cup) {
-		$this->cup = $cup;
-	}
+	protected $rank;
 	
 	/**
 	 * Get the Points's user
@@ -94,6 +72,25 @@ class Ranking {
 	 */
 	public function setPoints($points) {
 		$this->points = $points;
+	}
+
+	/**
+	 * Get the Rank's rank
+	 *
+	 * @return integer The Rank's rank
+	 */
+	public function getRank() {
+		return $this->rank;
+	}
+
+	/**
+	 * Sets this Rank's rank
+	 *
+	 * @param integer $rank The Rank's rank
+	 * @return void
+	 */
+	public function setRank($rank) {
+		$this->rank = $rank;
 	}
 
 }

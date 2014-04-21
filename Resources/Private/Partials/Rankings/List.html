@@ -15,9 +15,6 @@
 						<td><cs:sum summandOne="{cnt.index}" summandTwo="1" /></td>
 						<td>{ranking.points}</td>
 						<td>{ranking.user.displayName}
-						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-							<f:render partial="Actions/Show" arguments="{object: ranking.user}" />
-						</f:security.ifHasRole>
 						</td>
 					</tr>
 				</f:for>

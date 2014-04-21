@@ -58,8 +58,8 @@
 		<li {cs:ifIsCurrentController(controllerName:'Ranking', then: 'class= "cs-active"')}>
 			<f:link.action action="index" controller="Ranking" arguments="{cup: recentCup}">{recentCup.name}</f:link.action>
 		</li>
-		<li {cs:ifIsCurrentController(controllerName:'GlobalRanking', then: 'class= "cs-active"')}>
-			<f:link.action action="index" controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
+		<li {cs:ifIsCurrentController(controllerName:'Ranking', then: 'class= "cs-active"')}>
+			<f:link.action action="index" controller="Ranking"><f:translate id="globalRanking" /></f:link.action>
 		</li>
 	</ul>
 </div>

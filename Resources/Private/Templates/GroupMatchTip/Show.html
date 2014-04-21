@@ -11,4 +11,13 @@
 		<f:render partial="Match/ShowOne" arguments="{match: tip.match}" />
 		<f:render partial="Tip/Show" arguments="{tip: tip}" />
 		<f:render partial="Tip/Edit" arguments="{tip: tip}" />
+		<h6>Tips</h6>
+		<f:if condition="{tips}">
+			<f:then>
+				<f:render partial="Tip/List" arguments="{tips: tips}" />
+			</f:then>
+			<f:else>
+				no tips created
+			</f:else>
+		</f:if>
 </f:section>

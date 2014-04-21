@@ -4,34 +4,47 @@
 			<f:for each="{matches}" as="match">
 				<div class="cs-teaser">
 				<p><f:format.date format="d.m.Y H:i">{match.startDate}</f:format.date></p>
-				<table class="table">
-					<tr>
-						<td>
-							<f:render partial="Match/Duell/Host" arguments="{match: match}" />
-						</td>
-						<td>
-						<f:if condition="{match.result}">
-							{match.result.hostTeamGoals}
-						</f:if>
-						<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
-							(<cs:userTip match="{match}" />)
-						</f:security.ifHasRole>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<f:render partial="Match/Duell/Guest" arguments="{match: match}" />
-						</td>
-						<td>
-						<f:if condition="{match.result}">
-								{match.result.guestTeamGoals}
-						</f:if>
-								<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
-									(<cs:userTip match="{match}" />)
-								</f:security.ifHasRole>
-						</td>
-					</tr>
-				</table>
+				<cs:userTip match="{match}">
+					<table class="table">
+						<tr>
+							<td>
+								<f:render partial="Match/Duell/Host" arguments="{match: match}" />
+							</td>
+							<td>
+							<f:if condition="{match.result}">
+								{match.result.hostTeamGoals}
+							</f:if>
+											(
+											<f:if condition="{tip.result}">
+												{tip.result.hostTeamGoals}
+											</f:if>
+											)
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<f:render partial="Match/Duell/Guest" arguments="{match: match}" />
+							</td>
+							<td>
+							<f:if condition="{match.result}">
+									{match.result.guestTeamGoals}
+							</f:if>
+											(
+											<f:if condition="{tip.result}">
+												{tip.result.guestTeamGoals}
+											</f:if>
+											)
+							</td>
+						</tr>
+					</table>
+					<f:if condition="{tip}">
+						<cs:ifTipIsEditable tip="{tip}">
+							<f:link.action action="index" controller="{tipController}" arguments="{tip: tip}">
+								<span class="icon-pencil"></span>
+							</f:link.action>
+						</cs:ifTipIsEditable>
+					</f:if>
+				</cs:userTip>
 				<f:security.ifAuthenticated>
 						<f:render partial="Actions/Show" arguments="{object: match}" />
 				</f:security.ifAuthenticated>

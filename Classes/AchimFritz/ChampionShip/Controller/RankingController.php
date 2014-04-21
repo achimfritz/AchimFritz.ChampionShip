@@ -20,20 +20,31 @@ class RankingController extends ActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\RankingRepository
+	 * @var \AchimFritz\ChampionShip\Domain\Factory\RankingsFactory
 	 */
-	protected $rankingRepository;
+	protected $rankingsFactory;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Service\RankingCalculator
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
 	 */
-	protected $rankingCalculator;
+	protected $matchRepository;
 
 	/**
 	 * @var string
 	 */
 	protected $resourceArgumentName = 'cup';
+
+	/**
+	 * listAction 
+	 * 
+	 * @return void
+	 */
+	public function listAction() {
+		$matches = $this->matchRepository->findAll();
+		$rankings = $this->rankingsFactory->create($matches);
+		$this->view->assign('rankings', $rankings);
+	}
 
 	/**
 	 * Shows a list of rankings
@@ -42,22 +53,10 @@ class RankingController extends ActionController {
 	 * @return void
 	 */
 	public function showAction(Cup $cup) {
-		$this->view->assign('rankings', $this->rankingRepository->findByCup($cup));
+		$matches = $this->matchRepository->findByCup($cup);
+		$rankings = $this->rankingsFactory->create($matches);
+		$this->view->assign('rankings', $rankings);
 	}
-
-
-	/**
-	 * updateAction
-	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
-	 * @return void
-	 */
-	public function updateAction(Cup $cup) {
-		$rankings = $this->rankingCalculator->updateCup($cup);
-		$this->addOkMessage(count($rankings) . ' rankings updatet');
-		$this->redirect('show', NULL, NULL, array('cup' => $cup));
-	}
-
 
 }
 

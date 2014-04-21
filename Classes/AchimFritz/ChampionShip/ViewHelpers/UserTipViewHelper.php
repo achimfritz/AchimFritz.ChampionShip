@@ -13,7 +13,9 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\Match;
-use AchimFritz\ChampionShip\Domain\Model\Result;
+use AchimFritz\ChampionShip\Domain\Model\KoMatch;
+use AchimFritz\ChampionShip\Domain\Model\GroupMatch;
+use AchimFritz\ChampionShip\Domain\Model\Tip;
 
 
 /**
@@ -55,24 +57,33 @@ class UserTipViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 	 * @return string
 	 */
 	public function render(Match $match) {
+		$renderChildrenClosure = $this->buildRenderChildrenClosure();
 		$userRole = $this->policyService->getRole('AchimFritz.ChampionShip:User');
 		$account = $this->securityContext->getAccount();
-		if ($account) {
+		if ($account && $account->hasRole($userRole)) {
 			$user = $this->userRepository->findOneByAccount($account);
 			$tip = $this->tipRepository->findOneByUserAndMatch($user, $match);
-			if ($tip->getResult() instanceof Result) {
-				return 'TODO';
-			}
-		return 'TODO';
-			/*
-			if ($user === $tip->getUser()) {
+			if ($tip instanceof Tip) {
 				$now = new \DateTime();
 				if ($now < $tip->getMatch()->getStartDate()) {
-					return $this->renderThenChild();
+					$templateVariableContainer = $this->renderingContext->getTemplateVariableContainer();
+					if ($match instanceof GroupMatch) {
+						$templateVariableContainer->add('tipController', 'GroupMatchTip');
+					} elseif ($match instanceof KoMatch) {
+						$templateVariableContainer->add('tipController', 'KoMatchTip');
+					} else {
+						throw new \Exception('unknown match class', 1397838535);
+					}
+					$templateVariableContainer->add('tip', $tip);
+					$output = $renderChildrenClosure();
+					$templateVariableContainer->remove('tip');
+					$templateVariableContainer->remove('tipController');
+					return $output;
 				}
 			}
-			*/
 		}
+		$output = $renderChildrenClosure();
+		return $output;
 	}
 }
 

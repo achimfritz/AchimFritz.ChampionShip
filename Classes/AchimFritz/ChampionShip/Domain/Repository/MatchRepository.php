@@ -20,10 +20,10 @@ use TYPO3\Flow\Persistence\QueryInterface;
 class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 
 	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Service\RankingCalculator
 	 */
-	protected $rankingCalculator;
+	protected $tipRepository;
 
 	/**
 	 * __construct 
@@ -42,8 +42,16 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * @return void
 	 */
 	public function update($object) {
+		// TODO add remove ...
 		if ($object->getResult() instanceof Result) {
-			$this->rankingCalculator->updateMatch($object);
+			$tips = $this->tipRepository->findByGeneralMatch($object);
+			foreach ($tips AS $tip) {
+				$name = $object->getCup()->getTipPointsPolicy();
+				$tipPointsPolicy = new $name;
+				$points = $tipPointsPolicy->getPointsForTip($tip);
+				$tip->setPoints($points);
+				$this->tipRepository->update($tip);
+			}
 		}
 		parent::update($object);
 	}

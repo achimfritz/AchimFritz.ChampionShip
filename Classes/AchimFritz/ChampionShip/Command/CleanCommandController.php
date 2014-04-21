@@ -31,12 +31,6 @@ class CleanCommandController extends \TYPO3\Flow\Cli\CommandController {
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\RankingRepository
-	 */
-	protected $rankingRepository;
-	
-	/**
-	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
 	 */
 	protected $tipGroupRepository;

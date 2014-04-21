@@ -11,6 +11,7 @@ use AchimFritz\ChampionShip\Domain\Model\Match;
 use AchimFritz\ChampionShip\Domain\Model\User;
 use AchimFritz\ChampionShip\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Domain\Model\Round;
+use AchimFritz\ChampionShip\Domain\Model\Result;
 use \TYPO3\Flow\Persistence\Repository;
 use \TYPO3\Flow\Persistence\QueryInterface;
 
@@ -134,5 +135,24 @@ class TipRepository extends Repository {
 			)
 		)->execute();
 	}
+
+	/**
+	 * update 
+	 * 
+	 * @param mixed $object 
+	 * @return void
+	 */
+	public function update($object) {
+		// TODO add remove ...
+		if ($object->getResult() instanceof Result) {
+			$name = $object->getMatch()->getCup()->getTipPointsPolicy();
+			$tipPointsPolicy = new $name;
+			$points = $tipPointsPolicy->getPointsForTip($object);
+			$object->setPoints($points);
+		}
+		parent::update($object);
+	}
+
+
 }
 ?>

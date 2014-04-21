@@ -42,7 +42,10 @@ class TipController extends ActionController {
 	 */
 	public function showAction(Tip $tip) {
 		$this->view->assign('tip', $tip);
-		$this->view->assign('cup', $tip->getMatch()->getCup());
+		$match = $tip->getMatch();
+		$tips = $this->tipRepository->findByGeneralMatch($match);
+		$this->view->assign('tips', $tips);
+		$this->view->assign('cup', $match->getCup());
 	}
 
 	/**
