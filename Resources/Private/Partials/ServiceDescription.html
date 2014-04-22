@@ -2,9 +2,13 @@
 <div class="cs-container">
 	<h6>Home</h6>
 	<ul>
-		<li><f:link.action controller="Standard" action="index" arguments="{cup: recentCup}">Home</f:link.action></li>
+		<li>
+			<f:link.action controller="Standard" action="index" arguments="{cup: recentCup}">Home</f:link.action>
+		</li>
 		<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
-			<li><f:link.action controller="User" action="index" arguments="{cup: recentCup, user:user}">{user.displayName}</f:link.action></li>
+			<li {cs:ifIsCurrentController(controllerName:'User', then: 'class= "cs-active"')}>
+				<f:link.action controller="User" action="index" arguments="{cup: recentCup, user:user}">{user.displayName}</f:link.action>
+			</li>
 		</f:security.ifHasRole>
 	</ul>
 </div>
@@ -45,10 +49,10 @@
 <div class="cs-container">
 	<h6><f:translate id="ranking" /></h6>
 	<ul>
-		<li {cs:ifIsCurrentController(controllerName:'Ranking', then: 'class= "cs-active"')}>
+		<li {cs:ifIsCurrentController(controllerName:'Ranking', action:"show", then: 'class= "cs-active"')}>
 			<f:link.action action="index" controller="Ranking" arguments="{cup: recentCup}">{recentCup.name}</f:link.action>
 		</li>
-		<li {cs:ifIsCurrentController(controllerName:'Ranking', then: 'class= "cs-active"')}>
+		<li {cs:ifIsCurrentController(controllerName:'Ranking', action:"list", then: 'class= "cs-active"')}>
 			<f:link.action action="index" controller="Ranking"><f:translate id="globalRanking" /></f:link.action>
 		</li>
 	</ul>
@@ -61,7 +65,7 @@
 	<f:if condition="{cups}">
 		<ul>
 			<f:for each="{cups}" as="cup">
-				<li>
+				<li  {cs:ifIsCurrentController(controllerName:'Cup', cup: cup, then: 'class= "cs-active"')}>
 					<f:link.action controller="Cup" action="index" arguments="{cup: cup}" >{cup.name}</f:link.action>
 				</li>
 			</f:for>
@@ -73,16 +77,16 @@
 <div class="cs-container">
    <h6>admin</h6>
    <ul>
-      <li>
+      <li {cs:ifIsCurrentController(controllerName:'Cup', then: 'class= "cs-active"')}>
          <f:link.action controller="Cup" action="index">Cups</f:link.action>
       </li>
-      <li>
+      <li {cs:ifIsCurrentController(controllerName:'Team', then: 'class= "cs-active"')}>
          <f:link.action controller="Team" action="index" arguments="{cup: recentCup}">Teams</f:link.action>
       </li>
-      <li>
+      <li {cs:ifIsCurrentController(controllerName:'User', then: 'class= "cs-active"')}>
          <f:link.action controller="User" action="index" arguments="{cup: recentCup}">Users</f:link.action>
       </li>
-      <li>
+      <li {cs:ifIsCurrentController(controllerName:'TipGroup', then: 'class= "cs-active"')}>
          <f:link.action controller="TipGroup" action="index" arguments="{cup: recentCup}">TipGroup</f:link.action>
       </li>
       <li>

@@ -14,11 +14,13 @@
 							<f:if condition="{match.result}">
 								{match.result.hostTeamGoals}
 							</f:if>
-											(
-											<f:if condition="{tip.result}">
-												{tip.result.hostTeamGoals}
-											</f:if>
-											)
+								<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+									(
+									<f:if condition="{tip.result}">
+										{tip.result.hostTeamGoals}
+									</f:if>
+									)
+								</f:security.ifHasRole>
 							</td>
 						</tr>
 						<tr>
@@ -29,11 +31,13 @@
 							<f:if condition="{match.result}">
 									{match.result.guestTeamGoals}
 							</f:if>
-											(
-											<f:if condition="{tip.result}">
-												{tip.result.guestTeamGoals}
-											</f:if>
-											)
+								<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+									(
+									<f:if condition="{tip.result}">
+										{tip.result.guestTeamGoals}
+									</f:if>
+									)
+								</f:security.ifHasRole>
 							</td>
 						</tr>
 					</table>
