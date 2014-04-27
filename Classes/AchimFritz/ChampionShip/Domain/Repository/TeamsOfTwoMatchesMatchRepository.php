@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,20 +7,14 @@ namespace AchimFritz\ChampionShip\Domain\Model;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use Doctrine\ORM\Mapping as ORM;
+use AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch;
 
 /**
- * A Ko round
+ * A repository for Matches
  *
- * @Flow\Entity
+ * @Flow\Scope("singleton")
  */
-class KoRound extends Round {
-
-	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\ChildKoRound>
-	 * @ORM\OneToMany(mappedBy="parentRound", cascade={"remove"})
-	 */
-	protected $childKoRounds;
+class TeamsOfTwoMatchesMatchRepository extends KoMatchRepository {
 
 }
 ?>

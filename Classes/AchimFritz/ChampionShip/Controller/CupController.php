@@ -115,7 +115,7 @@ class CupController extends ActionController {
 			$this->addErrorMessage('cannot delete cup');
 			$this->handleException($e);
 		}
-		$this->redirect('index');
+		\TYPO3\Flow\Mvc\Controller\RestController::redirect('index');
 	}
 
 }
