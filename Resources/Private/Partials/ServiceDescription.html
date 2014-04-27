@@ -89,9 +89,6 @@
       <li {cs:ifIsCurrentController(controllerName:'TipGroup', then: 'class= "cs-active"')}>
          <f:link.action controller="TipGroup" action="index" arguments="{cup: recentCup}">TipGroup</f:link.action>
       </li>
-      <li>
-         <f:link.action controller="Account" action="index" package="TYPO3.AccountManagement">(Account)</f:link.action>
-      </li>
    </ul>
 </div>
 </f:security.ifHasRole>

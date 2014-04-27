@@ -11,6 +11,7 @@ use TYPO3\Flow\Security\Account;
 use AchimFritz\ChampionShip\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Domain\Model\User;
 use AchimFritz\ChampionShip\Domain\Model\Tip;
+use AchimFritz\ChampionShip\Domain\Model\Match;
 use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -33,6 +34,33 @@ class TipFactory {
 	protected $matchRepository;
 
 	/**
+	 * @var \TYPO3\Flow\Persistence\Doctrine\PersistenceManager
+	 * @Flow\Inject
+	 */
+	protected $persistenceManager;
+
+
+	/**
+	 * checkUserTips 
+	 * 
+	 * @param Cup $cup 
+	 * @param User $user 
+	 * @return void
+	 */
+	public function checkUserTips(Cup $cup, User $user) {
+		// init tips if match in future exists and use has no tips in cup
+		$lastMatches = $this->matchRepository->findNextByCup($cup, 1);
+		$lastMatch = $lastMatches->getFirst();
+		if ($lastMatch instanceof Match) {
+			$tips = $this->tipRepository->findByUserInCup($user, $cup);
+			if (count($tips) === 0) {
+				$newTips = $this->initTips($cup, $user);
+				$this->persistenceManager->persistAll();
+			}
+		}
+	}
+
+	/**
 	 * initTips 
 	 * 
 	 * @param Cup $cup
@@ -42,7 +70,6 @@ class TipFactory {
 	public function initTips(Cup $cup, User $user = NULL) {
 		$existingTips = $this->tipRepository->findByUser($user);
 		$tips = new ArrayCollection();
-		#$matches = $this->matchRepository->findAll();
 		$matches = $this->matchRepository->findByCup($cup);
 		foreach ($matches AS $match) {
 			$tipExists = FALSE;

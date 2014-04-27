@@ -38,6 +38,12 @@ class UserTipController extends TipController {
 
 	/**
 	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Factory\TipFactory
+	 */
+	protected $tipFactory;
+
+	/**
+	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
@@ -62,20 +68,11 @@ class UserTipController extends TipController {
 	 * @return void
 	 */
 	public function initializeListAction() {
-		// TODO Policy + tipFactory
-		// tip possible ? -> then check if tips have to be created
-		$lastMatches = $this->matchRepository->findNextByCup($this->cup, 1);
-		$lastMatch = $lastMatches->getFirst();
-		if ($lastMatch instanceof Match) {
-			$now = new \DateTime();
-			if ($lastMatch->getStartDate() > $now) {
-				$matches = $this->matchRepository->findByCup($this->cup);
-				$tips = $this->tipRepository->findByUserInMatches($this->user, $matches);
-				if (count($matches) > count($tips)) {
-					$newTips = $this->tipFactory->initTips($this->cup, $this->user);
-					$this->persistenceManager->persistAll();
-				}
-			}
+		try {
+			// TODO : too often called?
+			$this->tipFactory->checkUserTips($this->cup, $this->user);
+		} catch (\Exception $e) {
+			throw new \Exception('cannot check User Tips', 1398446760);
 		}
 	}
 

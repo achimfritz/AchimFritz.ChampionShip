@@ -32,10 +32,15 @@ class KoRoundTipController extends UserTipController {
 		if ($round === NULL) {
 			$round = $this->roundRepository->findOneByCup($this->cup);
 		}
-		$tips = $this->tipRepository->findByUserInRound($this->user, $round);
-		$this->view->assign('tips', $tips);
-		$this->view->assign('round', $round);
-      $this->view->assign('allRounds', $this->roundRepository->findByCup($round->getCup()));
+		if ($round instanceof Round) {
+			$tips = $this->tipRepository->findByUserInRound($this->user, $round);
+			$this->view->assign('tips', $tips);
+			$this->view->assign('round', $round);
+			$this->view->assign('allRounds', $this->roundRepository->findByCup($round->getCup()));
+		} else {
+			$this->addErrorMessage('no rounds found');
+		}
+
 	}
 
 

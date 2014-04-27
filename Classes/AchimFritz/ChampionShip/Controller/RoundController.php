@@ -44,15 +44,19 @@ class RoundController extends ActionController {
 	/**
 	 * listAction
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
+	 * @return void
 	 */
-	public function listAction(Cup $cup) {
-		$round = $this->roundRepository->findOneByCup($cup);
-		if ($round instanceof Round) {
-			$this->forward('show', NULL, NULL, array('round' => $round, 'cup' => $round->getCup()));
+	public function listAction() {
+		if ($this->cup instanceof Cup) {
+			$round = $this->roundRepository->findOneByCup($this->cup);
+			if ($round instanceof Round) {
+				$this->forward('show', NULL, NULL, array('round' => $round, 'cup' => $round->getCup()));
+			} else {
+				$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($this->cup));
+				$this->addErrorMessage('no rounds found');
+			}
 		} else {
-			$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
-			$this->addErrorMessage('no rounds found');
+				$this->addErrorMessage('no cup');
 		}
 	}
 
