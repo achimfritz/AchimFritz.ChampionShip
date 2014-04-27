@@ -46,12 +46,11 @@ class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractCon
 	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip $tip
 	 * @return string the rendered string
 	 */
-	public function render(Tip $tip) {
-		$adminRole = $this->policyService->getRole('AchimFritz.ChampionShip:Administrator');
-		$account = $this->securityContext->getAccount();
-		if ($account->hasRole($adminRole)) {
-			return $this->renderThenChild();
+	public function render(Tip $tip = NULL) {
+		if ($tip === NULL) {
+			return $this->renderElseChild();
 		}
+		$account = $this->securityContext->getAccount();
 		if ($account) {
 			$user = $this->userRepository->findOneByAccount($account);
 			if ($user === $tip->getUser()) {

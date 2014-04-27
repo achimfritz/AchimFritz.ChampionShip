@@ -34,6 +34,22 @@ class TipController extends ActionController {
 	 */
 	protected $tipFactory;
 
+
+	/**
+	 * Allow modification of resources in updateAction()
+	 *
+	 * @return void
+	 */
+	public function initializeUpdateAction() {
+		parent::initializeUpdateAction();
+		// allow tip.result
+		$propertyMappingConfiguration = $this->arguments[$this->resourceArgumentName]->getPropertyMappingConfiguration();
+		$propertyMappingConfiguration->forProperty('result');
+		$sub = $propertyMappingConfiguration->getConfigurationFor('result');
+		$sub->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
+		$sub->allowAllProperties();
+	}
+
 	/**
 	 * Index action
 	 *

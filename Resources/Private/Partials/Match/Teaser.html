@@ -5,7 +5,7 @@
 				<div class="cs-teaser">
 				<p><f:format.date format="d.m.Y H:i">{match.startDate}</f:format.date></p>
 				<cs:userTip match="{match}">
-					<table class="table">
+					<table class="table {cs:ifTipIsEditable(tip: tip, then: ' tip')}">
 						<tr>
 							<td>
 								<f:render partial="Match/Duell/Host" arguments="{match: match}" />
@@ -16,9 +16,15 @@
 							</f:if>
 								<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 									(
-									<f:if condition="{tip.result}">
-										{tip.result.hostTeamGoals}
-									</f:if>
+										<cs:ifTipIsEditable tip="{tip}">
+											<f:then>
+												<input class="tipId" type="hidden" value="{f:format.identifier(value: tip)}" />
+												<input class="hostTip" type="text" size="1" style="width: 15px;" value="{tip.result.hostTeamGoals}" />
+											</f:then>
+											<f:else>
+												{tip.result.hostTeamGoals}
+											</f:else>
+										</cs:ifTipIsEditable>
 									)
 								</f:security.ifHasRole>
 							</td>
@@ -33,21 +39,19 @@
 							</f:if>
 								<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 									(
-									<f:if condition="{tip.result}">
-										{tip.result.guestTeamGoals}
-									</f:if>
+										<cs:ifTipIsEditable tip="{tip}">
+											<f:then>
+												<input class="guestTip" type="text" size="1" style="width: 15px;" value="{tip.result.guestTeamGoals}" />
+											</f:then>
+											<f:else>
+												{tip.result.guestTeamGoals}
+											</f:else>
+										</cs:ifTipIsEditable>
 									)
 								</f:security.ifHasRole>
 							</td>
 						</tr>
 					</table>
-					<f:if condition="{tip}">
-						<cs:ifTipIsEditable tip="{tip}">
-							<f:link.action action="index" controller="{tipController}" arguments="{tip: tip}">
-								<span class="icon-pencil"></span>
-							</f:link.action>
-						</cs:ifTipIsEditable>
-					</f:if>
 				</cs:userTip>
 				<f:security.ifAuthenticated>
 						<f:render partial="Actions/Show" arguments="{object: match}" />

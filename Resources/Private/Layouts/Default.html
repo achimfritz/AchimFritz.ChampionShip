@@ -18,7 +18,11 @@
 		<link rel="stylesheet" href="{f:uri.resource(path: 'Vendor/jQuery-Timepicker-Addon/dist/jquery-ui-timepicker-addon.min.css')}" type="text/css" media="all" />
 
 		<script src="{f:uri.resource(path: 'JavaScript/cs.js')}" type="text/javascript" ></script>
-		<link rel="stylesheet" href="{f:uri.resource(path: 'Css/cs.css')}" type="text/css" media="all" />
+		<script src="{f:uri.resource(path: 'JavaScript/tips.js')}" type="text/javascript" ></script>
+			<link rel="stylesheet" href="{f:uri.resource(path: 'Css/tips.css')}" type="text/css" media="all" />
+		<f:if condition="{settings.csStyle}">
+			<link rel="stylesheet" href="{f:uri.resource(path: 'Css/cs.css')}" type="text/css" media="all" />
+		</f:if>
    
    </head>
    <body>

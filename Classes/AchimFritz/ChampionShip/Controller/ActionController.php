@@ -7,6 +7,7 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Error\Message;
 use TYPO3\Flow\Mvc\Controller\RestController;
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
 use \AchimFritz\ChampionShip\Domain\Model\User;
@@ -194,11 +195,55 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * @api
 	 */
 	protected function redirect($actionName, $controllerName = NULL, $packageKey = NULL, array $arguments = NULL, $delay = 0, $statusCode = 303, $format = NULL) {
-		// TODO $format = json...
+		// autoset cup argument
 		if ($arguments === NULL) {
 			$arguments = array('cup' => $this->cup);
 		} elseif (!isset($arguments['cup'])) {
 			$arguments['cup'] = $this->cup;
+		}
+		// TODO $format = json...
+		$contentType = $this->request->getHttpRequest()->getNegotiatedMediaType($this->supportedMediaTypes);
+		$format = $this->request->getFormat();
+		if ($contentType === 'application/json' OR $format === 'json') {
+			// build uri (see parent)
+			if ($packageKey !== NULL && strpos($packageKey, '\\') !== FALSE) {
+				list($packageKey, $subpackageKey) = explode('\\', $packageKey, 2);
+			} else {
+				$subpackageKey = NULL;
+			}
+			$this->uriBuilder->reset();
+			if ($format === NULL) {
+				$this->uriBuilder->setFormat($this->request->getFormat());
+			} else {
+				$this->uriBuilder->setFormat($format);
+			}
+
+			$uri = $this->uriBuilder->setCreateAbsoluteUri(TRUE)->uriFor($actionName, $arguments, $controllerName, $packageKey, $subpackageKey);
+
+			// check error messages to proof success
+			$errorMessages = $this->flashMessageContainer->getMessages(Message::SEVERITY_ERROR);
+			if (count($errorMessages) > 0) {
+				$success = FALSE;
+			} else {
+				$success = TRUE;
+			}
+	
+			// create json messages
+			$allMessages = $this->flashMessageContainer->getMessagesAndFlush();
+			$messages = array();
+			foreach ($allMessages AS $message) {
+				$messages[] = array('message' => $message->getMessage(), 'title' => $message->getTitle(), 'severity' => $message->getSeverity());
+			}
+
+			// create json response
+			$response = array(
+				'success' => $success,
+				'messages' => $messages,
+				'see' => $uri,
+			);
+			$content = json_encode($response);
+			$this->response->setContent($content);
+			throw new \TYPO3\Flow\Mvc\Exception\StopActionException();
 		}
 		return parent::redirect($actionName, $controllerName, $packageKey, $arguments, $delay, $statusCode, $format);
 	}
@@ -210,7 +255,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * @return void
 	 */
 	protected function addErrorMessage($message) {
-		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+		$this->addFlashMessage($message, '', Message::SEVERITY_ERROR);
 	}
 	
 	/**
@@ -220,7 +265,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * @return void
 	 */
 	protected function addWarningMessage($message) {
-		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_WARNING);
+		$this->addFlashMessage($message, '', Message::SEVERITY_WARNING);
 	}
 	/**
 	 * addNoticeMessage
@@ -229,7 +274,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * @return void
 	 */
 	protected function addNoticeMessage($message) {
-		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_NOTICE);
+		$this->addFlashMessage($message, '', Message::SEVERITY_NOTICE);
 	}
 	/**
 	 * addOkMessage
@@ -238,7 +283,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * @return void
 	 */
 	protected function addOkMessage($message) {
-		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
+		$this->addFlashMessage($message, '', Message::SEVERITY_OK);
 	}
 	
 	/**
@@ -248,7 +293,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * @return void
 	 */
 	protected function handleException(\Exception $e) {
-		$this->addFlashMessage($e->getMessage(), get_class($e), \TYPO3\Flow\Error\Message::SEVERITY_ERROR, array(), $e->getCode());
+		$this->addFlashMessage($e->getMessage(), get_class($e), Message::SEVERITY_ERROR, array(), $e->getCode());
 	}
 
 	/**

@@ -23,9 +23,9 @@
 						<f:render partial="Match/Show" arguments="{match: tip.match}" />
                   <td>
                      <f:render partial="Tip/Show" arguments="{tip: tip}" />
-							<cs:ifTipIsEditable tip="{tip}">
+							<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 								<f:render partial="Actions/Show" arguments="{object: tip}" />
-							</cs:ifTipIsEditable>
+							</f:security.ifHasRole>
                   </td>
                </tr>
             </f:for>
