@@ -48,6 +48,12 @@ class User {
 	 */
 	protected $tipGroups;
 
+	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Model\TipGroup
+	 * @ORM\ManyToOne
+	 */
+	protected $tipGroup;
+
    /**
     * __construct 
     * 
@@ -56,6 +62,25 @@ class User {
    public function __construct() {
       $this->tipGroups = new \Doctrine\Common\Collections\ArrayCollection();
    }
+
+	/**
+	 * getTipGroup
+	 *
+	 * @return TipGroup
+	 */
+	public function getTipGroup() {
+		return $this->tipGroup;
+	}
+
+	/**
+	 * setTipGroup
+	 *
+	 * @param TipGroup $tipGroup
+	 * @return void
+	 */
+	public function setTipGroup(TipGroup $tipGroup) {
+		$this->tipGroup = $tipGroup;
+	}
 
 	/**
 	 * getTipGroups
@@ -125,21 +150,12 @@ class User {
 	}
 
 	/**
-	 * getFirstTipGroup 
-	 * 
-	 * @return TipGroup
-	 */
-	public function getFirstTipGroup() {
-		return $this->tipGroups->first();
-	}
-
-	/**
 	 * getDisplayName 
 	 * 
 	 * @return string
 	 */
 	public function getDisplayName() {
-		$tipGroup = $this->getFirstTipGroup();
+		$tipGroup = $this->getTipGroup();
 		if ($tipGroup instanceof TipGroup) {
 			return $this->getAccount()->getAccountIdentifier() . '@' . $tipGroup->getName();
 		} else {
