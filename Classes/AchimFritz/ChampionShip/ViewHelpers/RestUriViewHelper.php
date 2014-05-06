@@ -64,6 +64,9 @@ class RestUriViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 
 		$action = 'index';
 		$arguments = array($resource => $object);
+		if ($this->controllerContext->getRequest()->hasArgument('cup')) {
+			$arguments['cup'] = $this->controllerContext->getRequest()->getArgument('cup');
+		}
 
 		$uriBuilder = $this->controllerContext->getUriBuilder();
 		$uriBuilder->reset();

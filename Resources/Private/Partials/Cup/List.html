@@ -1,15 +1,30 @@
-<ul>
-	<f:for each="{cups}" as="cup">
-		<li>
-			<ul>
-				<li>
-					<f:link.action action="index" arguments="{cup: cup}">	
-					{cup.name}
-					</f:link.action>
-					<f:render partial="Actions/Delete" arguments="{object: cup}" />
-				</li>
-			</ul>
-		</li>
-	</f:for>
-</ul>
+<f:if condition="{cups}">
+	<f:then>
+		<table class="table dataTable">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<f:for each="{cups}" as="cup" iteration="it">
+					<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+						<td>
+							{cup.name}
+						</td>
+						<td>
+							<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+									<f:render partial="Actions/RestAction" arguments="{object: cup}" />
+							</f:security.ifHasRole>
+						</td>
+					</tr>
+				</f:for>
+			</tbody>
+		</table>
+	</f:then>
+	<f:else>
+		<p>no cups created</p>
+	</f:else>
+</f:if>
 

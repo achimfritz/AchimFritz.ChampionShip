@@ -1,15 +1,27 @@
 	<f:if condition="{teams}">
 		<f:then>
-			<ul>
-				<f:for each="{teams}" as="team">
-					<li>
-						<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{team.iso2}" alt="{tam.name}" />{team.name}
-						<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-								<f:render partial="Actions/RestAction" arguments="{object: team}" />
-						</f:security.ifHasRole>
-					</li>
-				</f:for>
-			</ul>
+			<table class="table dataTable">
+				<thead>
+					<tr>
+						<th>name</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<f:for each="{teams}" as="team" iteration="it">
+						<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+							<td>
+								<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{team.iso2}" alt="{tam.name}" />{team.name}
+							</td>
+							<td>
+								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+										<f:render partial="Actions/RestAction" arguments="{object: team}" />
+								</f:security.ifHasRole>
+							</td>
+						</tr>
+					</f:for>
+				</tbody>
+			</table>
 		</f:then>
 		<f:else>
 			<p>No teams created yet.</p>
