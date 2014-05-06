@@ -1,32 +1,34 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:if condition="{match.guestTeam}">
    <f:then>
-		<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{match.guestTeam.iso2}" alt="{match.guestTeam.name}" />
-      {match.guestTeam.name}
+		<img src="{f:uri.resource(path: 'Images/clear.gif')}" title="{match.guestTeam.name}" class="flag flag-{match.guestTeam.iso2}" alt="{match.guestTeam.name}" />
+		<f:if condition="{short}">
+			<f:then>
+				<f:comment>
+				<cs:strToUpper value="{match.guestTeam.iso3}" />
+				</f:comment>
+			</f:then>
+			<f:else>
+				{match.guestTeam.name}
+			</f:else>
+		</f:if>
    </f:then>
    <f:else>
       <cs:ifIsCrossGroupMatch match="{match}">
          <f:then>
             {match.guestGroupRank}. {match.guestGroupRound.name}
-				<f:if condition="{match.currentGuestTeam}">
-					({match.currentGuestTeam.name})
-				</f:if>
-
          </f:then>
          <f:else>
             <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
 					<f:if condition="{match.guestMatchIsWinner}">
 						<f:then>
-							winner of
+							1.
 						</f:then>
 						<f:else>
-							looser of
+							2.
 						</f:else>
 					</f:if>
                {match.guestMatch.name}
-					<f:if condition="{match.currentGuestTeam}">
-						({match.currentGuestTeam.name})
-					</f:if>
             </cs:ifIsTeamsOfTwoMatchesMatch>
          </f:else>
       </cs:ifIsCrossGroupMatch> 

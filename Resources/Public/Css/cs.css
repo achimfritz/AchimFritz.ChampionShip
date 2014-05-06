@@ -31,8 +31,11 @@ body {
 	*/
 }
 
-h6 {
+h1, h2, h3, h4, h5, h6 {
 	color: #537A00;
+}
+
+h6 {
 	margin: 0px;
 }
 
@@ -201,6 +204,30 @@ div.cs-teaser .table {
 li.cs-active {
 	background: none repeat scroll 0 0 #E6F8BF;
 }
+
+/* tips */
+span.cs-tip-1 {
+	/* silver */
+	background-color:	#C0C0C0;
+}
+span.cs-tip-2 {
+	/* gold */
+	background-color:	#FFD700;
+}
+span.cs-tip-3 {
+	background-color:	#FFD700;
+}
+/*
+span.cs-tip-1 {
+	background-color: yellow;
+}
+span.cs-tip-2 {
+	background-color: #84B222;
+}
+span.cs-tip-3 {
+	background-color: #84B222;
+}
+*/
 
 
 /** admin **/

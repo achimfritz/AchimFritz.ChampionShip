@@ -4,9 +4,10 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>rank</th>
-					<th>points</th>
-					<th>user</th>
+					<th><f:translate id="ranking.rank" /></th>
+					<th><f:translate id="ranking.points" /></th>
+					<th><f:translate id="ranking.user" /></th>
+					<th><f:translate id="ranking.countOfTips" /></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -16,6 +17,7 @@
 						<td>{ranking.points}</td>
 						<td>{ranking.user.displayName}
 						</td>
+						<td>{ranking.countOfTips}</td>
 					</tr>
 				</f:for>
 			</tbody>

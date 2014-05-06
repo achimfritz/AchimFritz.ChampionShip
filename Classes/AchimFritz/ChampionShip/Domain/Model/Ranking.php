@@ -34,6 +34,11 @@ class Ranking {
 	 * @var integer
 	 */
 	protected $rank;
+
+	/**
+	 * @var integer
+	 */
+	protected $countOfTips;
 	
 	/**
 	 * Get the Points's user
@@ -91,6 +96,25 @@ class Ranking {
 	 */
 	public function setRank($rank) {
 		$this->rank = $rank;
+	}
+
+	/**
+	 * Get the CountOfTips's countOfTips
+	 *
+	 * @return integer The CountOfTips's countOfTips
+	 */
+	public function getCountOfTips() {
+		return $this->countOfTips;
+	}
+
+	/**
+	 * Sets this CountOfTips's countOfTips
+	 *
+	 * @param integer $countOfTips The CountOfTips's countOfTips
+	 * @return void
+	 */
+	public function setCountOfTips($countOfTips) {
+		$this->countOfTips = $countOfTips;
 	}
 
 }

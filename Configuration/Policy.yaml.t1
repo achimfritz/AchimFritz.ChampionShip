@@ -1,8 +1,8 @@
 resources:
   methods:
-    AchimFritz_ChampionShipEditMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->editAction())'
+    AchimFritz_ChampionShipUpdateMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->updateAction())'
     AchimFritz_ChampionShipDeleteMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->deleteAction())'
-    AchimFritz_ChampionShipNewMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->newAction())'
+    AchimFritz_ChampionShipCreateMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->createAction())'
     AchimFritz_ChampionShipTipMethods: 'method(AchimFritz\ChampionShip\Controller\TipController->.*())'
     AchimFritz_ChampionShipUserController: 'method(AchimFritz\ChampionShip\Controller\UserController->.*())'
     AchimFritz_ChampionShipTipGroupController: 'method(AchimFritz\ChampionShip\Controller\TipGroupController->.*())'

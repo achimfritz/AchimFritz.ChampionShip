@@ -8,6 +8,8 @@
 		<li>
 			email: {user.email}
 		</li>
-	</ul>
-	<h6>TipGroups</h6>
-	<f:render partial="TipGroup/List" arguments="{tipGroups: user.tipGroups}" />
+		<li>TipGroups</li>
+		<li>
+			<f:render partial="TipGroup/List" arguments="{tipGroups: user.tipGroups}" />
+		</li>
+		</ul>

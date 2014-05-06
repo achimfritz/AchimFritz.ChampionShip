@@ -1,23 +1,24 @@
-<h3>edit User</h3>
-<f:form class="form-horizontal" action="index" object="{user}" name="user">
+<h5><f:translate id="user.edit" /></h5>
+<f:form action="index" object="{user}" name="user">
 	<f:form.hidden name="__method" value="PUT" />
 	<div class="control-group">
-		<label class="control-label" for="accountIdentifier">accountIdentifier</label>
+		<label class="control-label" for="accountIdentifier"><f:translate id="user.accountIdentifier" /></label>
 		<div class="controls"><f:form.textfield property="account.accountIdentifier" id="accountIdentifier" /></div>
 	</div>
 	<div class="control-group">
-		<label class="control-label" for="email">email</label>
+		<label class="control-label" for="email"><f:translate id="user.email" /></label>
 		<div class="controls"><f:form.textfield property="email" id="email" /></div>
 	</div>
-	
+<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">	
 	<div class="control-group">
-		<label class="control-label" for="tipGroup">tipGroup</label>
+		<label class="control-label" for="tipGroup"><f:translate id="user.tipGroup" /></label>
 		<div class="controls"><f:form.select options="{allTipGroups}" optionLabelField="name" property="tipGroup" id="tipGroup" /></div>
 	</div>
 	<div class="control-group">
-		<label class="control-label" for="tipGroups">tipGroups</label>
+		<label class="control-label" for="tipGroups"><f:translate id="user.tipGroups" /></label>
 		<div class="controls"><f:form.select options="{allTipGroups}" multiple="1" optionLabelField="name" property="tipGroups" id="tipGroups" /></div>
 	</div>
+</f:security.ifHasRole>
 	
 	
 	<div class="control-group">

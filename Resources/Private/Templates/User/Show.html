@@ -1,21 +1,19 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
+	<h5>{user.displayName}</h5>
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 		<div class="row">
 			<ul class="nav nav-pills">
 				<li>
-				<f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action>
+					<f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action>
 				</li>
-			</ul>
-		</div>
-		<div class="row">
-			<ul class="nav nav-pills">
 				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
 				<li><a href="#tips" data-toggle="tab">tips</a></li>
-				<li><a href="#edit" data-toggle="tab">edit</a></li>
 				<li><a href="#new" data-toggle="tab">new</a></li>
+				<li><a href="#edit" data-toggle="tab">edit</a></li>
 				<li><a href="#password" data-toggle="tab">password</a></li>
+				<li><f:render partial="Actions/Delete" arguments="{object: user}" /></li>
 			</ul>
 		</div>
 		<div class="tab-content">
@@ -32,20 +30,22 @@
 				<f:render partial="User/New" arguments="{allTipGroups: allTipGroups}" />
 			</div>
 			<div class="row tab-pane" id="password">
-				<f:render partial="User/Password" arguments="{user: user}" />
+				<f:render partial="Password/New" arguments="{user: user}" />
 			</div>
 		</div>
 	</f:security.ifHasRole>
+
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 		<div class="row">
-			<f:render partial="User/Show" arguments="{user: user, recentCup: recentCup}" />
-		</div>
-		<div class="row">
-			<f:render partial="User/Edit" arguments="{user: user, allTipGroups: allTipGroups}" />
-		</div>
-		<div class="row" /> 
-			<f:render partial="User/Password" arguments="{user: user}" />
+			<div class="span3">
+				<f:render partial="User/Edit" arguments="{user: user, allTipGroups: allTipGroups}" />
+			</div>
+			<div class="span1"></div>
+			<div class="span3">
+				<f:render partial="Password/New" arguments="{user: user}" />
+			</div>
 		</div>
 	</f:security.ifHasRole>
+
 </f:section>
 

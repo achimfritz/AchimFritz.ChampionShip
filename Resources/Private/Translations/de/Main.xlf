@@ -86,6 +86,66 @@
 				<source>Points</source>
 				<target>Punkte</target>
 			</trans-unit>
+			<trans-unit id="tipGroupResults">
+				<source>Tip Group</source>
+				<target>Tipp Gruppe</target>
+			</trans-unit>
+			<trans-unit id="tipGroupGroupRoundResults">
+				<source>Tips Group Round</source>
+				<target>Tipps Vorrunde</target>
+			</trans-unit>
+			<trans-unit id="tipGroupKoRoundResults">
+				<source>Tips Ko Round</source>
+				<target>Tipps Finalrunde </target>
+			</trans-unit>
+			<trans-unit id="ranking.points">
+				<source>Points</source>
+				<target>Punkte</target>
+			</trans-unit>
+			<trans-unit id="ranking.user">
+				<source>Name</source>
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="ranking.rank">
+				<source>Rank</source>
+				<target>Platz</target>
+			</trans-unit>
+			<trans-unit id="ranking.countOfTips">
+				<source>Number of Tips</source>
+				<target>Anzahl Tips</target>
+			</trans-unit>
+			<trans-unit id="password.edit">
+				<source>Change Password</source>
+				<target>Passwort ändern</target>
+			</trans-unit>
+			<trans-unit id="password.newPassword">
+				<source>new Password</source>
+				<target>neues Passwort</target>
+			</trans-unit>
+			<trans-unit id="password.newPasswordRepeat">
+				<source>repeat</source>
+				<target>Wiederholung</target>
+			</trans-unit>
+			<trans-unit id="user.edit">
+				<source>Edit Profile</source>
+				<target>Profile bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="user.accountIdentifier">
+				<source>Name</source>
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="user.email">
+				<source>E-Mail</source>
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="user.tipGroup">
+				<source>tipGroup</source>
+				<target>Tip Gruppe</target>
+			</trans-unit>
+			<trans-unit id="user.tipGroups">
+				<source>tipGroups</source>
+				<target>Tip Gruppen</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

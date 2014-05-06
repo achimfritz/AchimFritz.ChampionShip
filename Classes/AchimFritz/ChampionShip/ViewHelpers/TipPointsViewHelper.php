@@ -14,34 +14,29 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\Tip;
 
+
 /**
  * 
  * Enter description here ...
  * @author af
  *
  */
-class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class TipPointsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Policy\TipEditablePolicy
-	 */
-	protected $tipEditablePolicy;
-	
-	/**
-	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
+	 * render
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip $tip
-	 * @return string the rendered string
+	 * @param Tip $tip
+	 * @return string
 	 */
-	public function render(Tip $tip = NULL) {
-		if ($tip === NULL) {
-			return $this->renderElseChild();
+	public function render(Tip $tip) {
+		if ($tip->getPoints() == 2) {
+			return '<span class="icon-circle-arrow-up"></span>';
+		} elseif ($tip->getPoints() == 1) {
+			return '<span class="icon-circle-arrow-right"></span>';
+		} else {
+			return '';
 		}
-		if ($this->tipEditablePolicy->editAllowed($tip) === TRUE) {
-			return $this->renderThenChild();
-		}
-		return $this->renderElseChild();
 	}
 }
 

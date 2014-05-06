@@ -51,12 +51,22 @@
 									tip.container.append($('<span />').addClass('icon-ok'));
 								} else {
 									tip.container.removeClass('loading');
-									tip.container.append($('<span />').addClass('icon-exclamation-sign'));
+									//tip.container.append($('<span />').addClass('icon-exclamation-sign'));
+									if (response.messages.length) {
+										var html = '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error</strong>';
+										for (var i = 0; i < response.messages.length; i++) {
+											html += ' ' + response.messages[i].message;
+										}
+										html += '</div>';
+										tip.container.append(html);
+									}
 								}
 							},
 							'error': function() {
 									tip.container.removeClass('loading');
-									tip.container.append($('<span />').addClass('icon-exclamation-sign'));
+									var html = '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><strong>Fatal Error</strong></div>';
+									tip.container.append(html);
+									//tip.container.append($('<span />').addClass('icon-exclamation-sign'));
 							}
 						});
 				}
@@ -97,12 +107,20 @@
 									tip.container.append($('<span />').addClass('icon-ok'));
 								} else {
 									tip.container.removeClass('loading');
-									tip.container.append($('<span />').addClass('icon-exclamation-sign'));
+									if (response.messages.length) {
+										var html = '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error</strong>';
+										for (var i = 0; i < response.messages.length; i++) {
+											html += ' ' + response.messages[i].message;
+										}
+										html += '</div>';
+										tip.container.append(html);
+									}
 								}
 							},
 							'error': function() {
 									tip.container.removeClass('loading');
-									tip.container.append($('<span />').addClass('icon-exclamation-sign'));
+									var html = '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><strong>Fatal Error</strong></div>';
+									tip.container.append(html);
 							}
 						});
 				}

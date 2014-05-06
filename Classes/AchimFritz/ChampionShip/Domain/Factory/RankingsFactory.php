@@ -42,7 +42,7 @@ class RankingsFactory {
 		foreach ($matches AS $match) {
 			$identifiers[] = "'" . $this->persistenceManager->getIdentifierByObject($match) . "'";
 		}
-		$dql = 'SELECT user,sum(tip.points) AS points FROM \AchimFritz\ChampionShip\Domain\Model\User user JOIN user.tips tip WITH tip.generalMatch IN (' . implode(',', $identifiers) . ') WHERE tip.points > 0 GROUP BY user ORDER BY points DESC';
+		$dql = 'SELECT user,sum(tip.points) AS points, count(tip) AS cnt FROM \AchimFritz\ChampionShip\Domain\Model\User user JOIN user.tips tip WITH tip.generalMatch IN (' . implode(',', $identifiers) . ') GROUP BY user ORDER BY points DESC';
 		$query = $this->entityManager->createQuery($dql);
 		$result = $query->execute();
 		$rank = 1;
@@ -53,6 +53,7 @@ class RankingsFactory {
 			$ranking->setUser($user);
 			$ranking->setPoints($points);
 			$ranking->setRank($rank);
+			$ranking->setCountOfTips($item['cnt']);
 			$rankings->add($ranking);
 			$rank++;
 		}

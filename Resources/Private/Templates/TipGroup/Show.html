@@ -1,23 +1,20 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-		<div class="row">
+	<f:render partial="TipGroup/Show" arguments="{tipGroup: tipGroup}" />
+	<div class="row">
 		<ul class="nav nav-pills">
-			<li>
-			<f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action>
-			</li>
-		</ul>
-		</div>
-		<div class="row">
-			<ul class="nav nav-pills">
+			<li><f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action></li>
+			<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
 				<li><a href="#edit" data-toggle="tab">edit</a></li>
 				<li><a href="#new" data-toggle="tab">new</a></li>
-			</ul>
-		</div>
+				<li><f:render partial="Actions/Delete" arguments="{object: tipGroup}" /></li>
+			</f:security.ifHasRole>
+		</ul>
+	</div>
 	<div class="tab-content">
 		<div class="row tab-pane active" id="show">
-			<f:render partial="TipGroup/Show" arguments="{tipGroup: tipGroup}" />
 			<f:render partial="User/List" arguments="{users: users}" />
 		</div>
 		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">

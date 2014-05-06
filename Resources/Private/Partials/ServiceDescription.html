@@ -59,6 +59,24 @@
 </div>
 </f:security.ifAuthenticated>
 
+<f:security.ifAuthenticated>
+<div class="cs-container">
+	<h6><f:translate id="tipGroupResults" /></h6>
+	<ul>
+		<li {cs:ifIsCurrentController(controllerName:'TipGroupGroupRoundResults', then: 'class= "cs-active"')}>
+			<f:link.action action="index" controller="TipGroupGroupRoundResults" arguments="{cup: recentCup}">
+				<f:translate id="tipGroupGroupRoundResults" />
+			</f:link.action>
+		</li>
+		<li {cs:ifIsCurrentController(controllerName:'TipGroupKoRoundResults', then: 'class= "cs-active"')}>
+			<f:link.action action="index" controller="TipGroupKoRoundResults" arguments="{cup: recentCup}">
+				<f:translate id="tipGroupKoRoundResults" />
+			</f:link.action>
+		</li>
+	</ul>
+</div>
+</f:security.ifAuthenticated>
+
 
 <div class="cs-container">
 	<h6><f:translate id="cups" /></h6>

@@ -13,7 +13,7 @@
 				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
 				<li><a href="#edit" data-toggle="tab">edit</a></li>
 				<li><a href="#result" data-toggle="tab">result</a></li>
-				<li><a href="#teams" data-toggle="tab">set teams (TODO)</a></li>
+				<li><a href="#change" data-toggle="tab">change host</a></li>
 			</ul>
 		</div>
 	</f:security.ifHasRole>
@@ -38,10 +38,8 @@
 			<div class="row tab-pane" id="result">
 				<f:render partial="Match/Result" arguments="{match: match}" />
 			</div>
-			<div class="row tab-pane" id="teams">
-				<h6>TODO is this neccessary?</h6>
-				<f:render partial="Match/EditCurrentHostTeam" arguments="{match: match}" />
-				<f:render partial="Match/EditCurrentGuestTeam" arguments="{match: match}" />
+			<div class="row tab-pane" id="change">
+				<f:render partial="Match/ChangeMembers" arguments="{match: match}" />
 			</div>
 		</f:security.ifHasRole>
 	</div>

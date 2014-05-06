@@ -1,17 +1,32 @@
 	<f:if condition="{tipGroups}">
 		<f:then>
-			<ul>
-				<f:for each="{tipGroups}" as="tipGroup">
-					<li>
-								<f:link.action controller="TipGroup" action="index" arguments="{tipGroup: tipGroup, cup: cup}">
-									{tipGroup.name}
-								</f:link.action>
-								<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-										<f:render partial="Actions/Show" arguments="{object: tipGroup}" />
-								</f:security.ifHasRole>
-					</li>
-				</f:for>
-			</ul>
+			<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+				<f:then>
+					<table class="table dataTable">
+						<thead>
+							<tr>
+								<th>name</th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+						<f:for each="{tipGroups}" as="tipGroup" iteration="it">
+							<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+											<td>{tipGroup.name}</td>
+											<td><f:render partial="Actions/RestAction" arguments="{object: tipGroup}" /></td>
+							</tr>
+						</f:for>
+						</tbody>
+					</table>
+				</f:then>
+				<f:else>
+					<ul>
+						<f:for each="{tipGroups}" as="tipGroup" iteration="it">
+							<li>{tipGroup.name}</li>
+						</f:for>
+					</ul>
+				</f:else>
+			</f:security.ifHasRole>
 		</f:then>
 		<f:else>
 			<p>No tip groups created yet.</p>

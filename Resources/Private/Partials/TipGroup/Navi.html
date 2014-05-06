@@ -1,0 +1,11 @@
+<div class="row">
+			<ul class="nav nav-pills">
+				<f:for each="{tipGroups}" as="tipGroup">
+					<li {f:if(condition:'{tipGroup} == {active}', then: ' class="active"')}>
+						<f:link.action action="index" arguments="{tipGroup: tipGroup, cup: cup}">
+							{tipGroup.name}
+						</f:link.action>
+					</li>
+				</f:for>
+			</ul>
+</div>
