@@ -47,20 +47,6 @@
 
 <f:security.ifAuthenticated>
 <div class="cs-container">
-	<h6><f:translate id="ranking" /></h6>
-	<ul>
-		<li {cs:ifIsCurrentController(controllerName:'Ranking', action:"show", then: 'class= "cs-active"')}>
-			<f:link.action action="index" controller="Ranking" arguments="{cup: recentCup}">{recentCup.name}</f:link.action>
-		</li>
-		<li {cs:ifIsCurrentController(controllerName:'Ranking', action:"list", then: 'class= "cs-active"')}>
-			<f:link.action action="index" controller="Ranking"><f:translate id="globalRanking" /></f:link.action>
-		</li>
-	</ul>
-</div>
-</f:security.ifAuthenticated>
-
-<f:security.ifAuthenticated>
-<div class="cs-container">
 	<h6><f:translate id="tipGroupResults" /></h6>
 	<ul>
 		<li {cs:ifIsCurrentController(controllerName:'TipGroupGroupRoundResults', then: 'class= "cs-active"')}>
@@ -72,6 +58,12 @@
 			<f:link.action action="index" controller="TipGroupKoRoundResults" arguments="{cup: recentCup}">
 				<f:translate id="tipGroupKoRoundResults" />
 			</f:link.action>
+		</li>
+		<li {cs:ifIsCurrentController(controllerName:'Ranking', then: 'class= "cs-active"')}>
+			<f:link.action action="index" controller="Ranking" arguments="{cup: recentCup}"><f:translate id="ranking" /></f:link.action>
+		</li>
+		<li {cs:ifIsCurrentController(controllerName:'GlobalRanking', then: 'class= "cs-active"')}>
+			<f:link.action action="index" controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
 		</li>
 	</ul>
 </div>

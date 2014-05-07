@@ -15,7 +15,7 @@ use \AchimFritz\ChampionShip\Domain\Model\Result;
  *
  * @Flow\Scope("singleton")
  */
-class TipController extends ActionController {
+class TipController extends AbstractUserController {
 
 	/**
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
@@ -33,7 +33,6 @@ class TipController extends ActionController {
 	 * @Flow\Inject
 	 */
 	protected $tipFactory;
-
 
 	/**
 	 * Allow modification of resources in updateAction()

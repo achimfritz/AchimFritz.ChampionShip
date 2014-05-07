@@ -7,27 +7,27 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Mvc\Controller\RestController;
-use TYPO3\Flow\Mvc\View\JsonView;
+
+use AchimFritz\ChampionShip\Domain\Model\Ranking;
+use AchimFritz\ChampionShip\Domain\Model\Cup;
 
 /**
- * Standard controller for the AchimFritz.ChampionShip package 
+ * Team controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class StandardController extends AbstractActionController {
-
+class AbstractRankingController extends AbstractUserController {
 
 	/**
-	 * Index action
-	 *
-	 * @return void
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Factory\RankingsFactory
 	 */
-	public function listAction() {
-		$cup = $this->cupRepository->findOneRecent();
-		$this->redirect('index', 'Cup', NULL, array('cup' => $cup));
+	protected $rankingsFactory;
 
-	}
+	/**
+	 * @var string
+	 */
+	protected $resourceArgumentName = 'tipGroup';
 
 }
 

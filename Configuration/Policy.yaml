@@ -7,7 +7,7 @@ resources:
     AchimFritz_ChampionShipCreateMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->createAction())'
     AchimFritz_ChampionShipMatchCreatorResource: 'method(AchimFritz\ChampionShip\Controller\.*MatchCreatorController->.*())'
     AchimFritz_ChampionShipAdminTipResource: 'method(AchimFritz\ChampionShip\Controller\AdminTipController->.*())'
-    AchimFritz_ChampionShipRankingResource: 'method(AchimFritz\ChampionShip\Controller\RankingController->listAction()) || method(AchimFritz\ChampionShip\Controller\RankingController->showAction())'
+    AchimFritz_ChampionShipRankingResource: 'method(AchimFritz\ChampionShip\Controller\.*RankingController->listAction()) || method(AchimFritz\ChampionShip\Controller\RankingController->showAction())'
     AchimFritz_ChampionShipTipGroupResultsResource: 'method(AchimFritz\ChampionShip\Controller\TipGroup.*ResultsController->listAction()) || method(AchimFritz\ChampionShip\Controller\TipGroup.*ResultsController->showAction())'
     AchimFritz_ChampionShipTipGroupResource: 'method(AchimFritz\ChampionShip\Controller\TipGroupController->listAction()) || method(AchimFritz\ChampionShip\Controller\TipGroupController->showAction())'
     AchimFritz_ChampionShipUserResource: 'method(AchimFritz\ChampionShip\Controller\UserController->showAction()) || method(AchimFritz\ChampionShip\Controller\UserController->updateAction())'

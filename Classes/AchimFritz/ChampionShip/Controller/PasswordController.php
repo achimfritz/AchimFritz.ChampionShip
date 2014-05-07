@@ -15,7 +15,7 @@ use AchimFritz\ChampionShip\Domain\Model\Password;
  *
  * @Flow\Scope("singleton")
  */
-class PasswordController extends ActionController {
+class PasswordController extends AbstractActionController {
 
 	/**
 	 * @var \TYPO3\Flow\Security\Cryptography\HashService

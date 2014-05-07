@@ -18,7 +18,7 @@ use \AchimFritz\ChampionShip\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class MatchController extends ActionController {
+class MatchController extends AbstractActionController {
 		
 	/**
 	 * @Flow\Inject

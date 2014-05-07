@@ -15,7 +15,7 @@ use AchimFritz\ChampionShip\Domain\Model\GroupRound;
  *
  * @Flow\Scope("singleton")
  */
-class GroupMatchCreatorController extends ActionController {
+class GroupMatchCreatorController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject

@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\Ranking;
+use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 use Doctrine\Common\Collections\ArrayCollection;
 use TYPO3\Flow\Persistence\Doctrine\QueryResult;
 
@@ -34,15 +35,29 @@ class RankingsFactory {
 	 * create 
 	 * 
 	 * @param QueryResult<\AchimFritz\ChampionShip\Domain\Model\Match>
+	 * @param TipGroup $tipGroup
 	 * @return \Doctrine\Common\Collections\ArrayCollection
 	 */
-	public function create(QueryResult $matches) {
+	public function create(QueryResult $matches, TipGroup $tipGroup = NULL) {
 		$rankings = new ArrayCollection;
 		$identifiers = array();
 		foreach ($matches AS $match) {
 			$identifiers[] = "'" . $this->persistenceManager->getIdentifierByObject($match) . "'";
 		}
-		$dql = 'SELECT user,sum(tip.points) AS points, count(tip) AS cnt FROM \AchimFritz\ChampionShip\Domain\Model\User user JOIN user.tips tip WITH tip.generalMatch IN (' . implode(',', $identifiers) . ') GROUP BY user ORDER BY points DESC';
+		$where = 'tip.generalMatch IN (' . implode(',', $identifiers) . ')';
+		$dql = 'SELECT user,sum(tip.points) AS points, count(tip) AS cnt 
+			FROM \AchimFritz\ChampionShip\Domain\Model\User user 
+			JOIN user.tips tip 
+			WHERE ' . $where . ' GROUP BY user ORDER BY points DESC';
+		if ($tipGroup !== NULL) {
+			$identifier = "'" . $this->persistenceManager->getIdentifierByObject($tipGroup) . "'";
+			$where .= ' AND tipGroup = ' . $identifier;
+			$dql = 'SELECT user,sum(tip.points) AS points, count(tip) AS cnt 
+				FROM \AchimFritz\ChampionShip\Domain\Model\User user 
+				JOIN user.tips tip 
+				JOIN user.tipGroups tipGroup
+				WHERE ' . $where . ' GROUP BY user ORDER BY points DESC';
+		}
 		$query = $this->entityManager->createQuery($dql);
 		$result = $query->execute();
 		$rank = 1;

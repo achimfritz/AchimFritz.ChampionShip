@@ -18,8 +18,7 @@ use \AchimFritz\ChampionShip\Domain\Model\User;
  *
  * @Flow\Scope("singleton")
  */
-#class ActionController extends \TYPO3\Flow\Mvc\Controller\ActionController {
-class ActionController extends RestController {
+class AbstractActionController extends RestController {
 
 	/**
 	 * @Flow\Inject

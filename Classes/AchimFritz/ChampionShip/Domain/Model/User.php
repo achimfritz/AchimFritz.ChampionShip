@@ -80,6 +80,7 @@ class User {
 	 */
 	public function setTipGroup(TipGroup $tipGroup) {
 		$this->tipGroup = $tipGroup;
+		$this->addTipGroup($tipGroup);
 	}
 
 	/**

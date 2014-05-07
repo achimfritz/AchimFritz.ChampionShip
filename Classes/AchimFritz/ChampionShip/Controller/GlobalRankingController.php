@@ -17,7 +17,7 @@ use AchimFritz\ChampionShip\Domain\Model\TipGroup;
  *
  * @Flow\Scope("singleton")
  */
-class RankingController extends AbstractRankingController {
+class GlobalRankingController extends AbstractRankingController {
 
 	/**
 	 * listAction 
@@ -25,7 +25,7 @@ class RankingController extends AbstractRankingController {
 	 * @return void
 	 */
 	public function listAction() {
-		$matches = $this->matchRepository->findByCup($this->cup);
+		$matches = $this->matchRepository->findAll();
 		$rankings = $this->rankingsFactory->create($matches);
 		$this->view->assign('rankings', $rankings);
 	}
@@ -37,7 +37,7 @@ class RankingController extends AbstractRankingController {
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {
-		$matches = $this->matchRepository->findByCup($this->cup);
+		$matches = $this->matchRepository->findAll();
 		$rankings = $this->rankingsFactory->create($matches, $tipGroup);
 		$this->view->assign('rankings', $rankings);
 		$this->view->assign('tipGroup', $tipGroup);

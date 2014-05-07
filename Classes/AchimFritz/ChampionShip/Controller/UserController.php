@@ -14,7 +14,7 @@ use \AchimFritz\ChampionShip\Domain\Model\User;
  *
  * @Flow\Scope("singleton")
  */
-class UserController extends ActionController {
+class UserController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject

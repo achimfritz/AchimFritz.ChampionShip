@@ -64,22 +64,19 @@ class UserTipViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 			$user = $this->userRepository->findOneByAccount($account);
 			$tip = $this->tipRepository->findOneByUserAndMatch($user, $match);
 			if ($tip instanceof Tip) {
-				$now = new \DateTime();
-				if ($now < $tip->getMatch()->getStartDate()) {
-					$templateVariableContainer = $this->renderingContext->getTemplateVariableContainer();
-					if ($match instanceof GroupMatch) {
-						$templateVariableContainer->add('tipController', 'GroupMatchTip');
-					} elseif ($match instanceof KoMatch) {
-						$templateVariableContainer->add('tipController', 'KoMatchTip');
-					} else {
-						throw new \Exception('unknown match class', 1397838535);
-					}
-					$templateVariableContainer->add('tip', $tip);
-					$output = $renderChildrenClosure();
-					$templateVariableContainer->remove('tip');
-					$templateVariableContainer->remove('tipController');
-					return $output;
+				$templateVariableContainer = $this->renderingContext->getTemplateVariableContainer();
+				if ($match instanceof GroupMatch) {
+					$templateVariableContainer->add('tipController', 'GroupMatchTip');
+				} elseif ($match instanceof KoMatch) {
+					$templateVariableContainer->add('tipController', 'KoMatchTip');
+				} else {
+					throw new \Exception('unknown match class', 1397838535);
 				}
+				$templateVariableContainer->add('tip', $tip);
+				$output = $renderChildrenClosure();
+				$templateVariableContainer->remove('tip');
+				$templateVariableContainer->remove('tipController');
+				return $output;
 			}
 		}
 		$output = $renderChildrenClosure();

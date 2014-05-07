@@ -4,8 +4,7 @@
 			<f:for each="{matches}" as="match">
 				<div class="cs-teaser">
 				<p><f:format.date format="d.m.Y H:i">{match.startDate}</f:format.date></p>
-				<cs:userTip match="{match}">
-					<table class="table {cs:ifTipIsEditable(tip: tip, then: ' tip')}">
+					<table class="table">
 						<tr>
 							<td>
 								<f:render partial="Match/Duell/Host" arguments="{match: match}" />
@@ -14,19 +13,6 @@
 							<f:if condition="{match.result}">
 								{match.result.hostTeamGoals}
 							</f:if>
-								<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
-									(
-										<cs:ifTipIsEditable tip="{tip}">
-											<f:then>
-												<input class="tipId" type="hidden" value="{f:format.identifier(value: tip)}" />
-												<input class="hostTip" type="text" size="1" style="width: 15px;" value="{tip.result.hostTeamGoals}" />
-											</f:then>
-											<f:else>
-												{tip.result.hostTeamGoals}
-											</f:else>
-										</cs:ifTipIsEditable>
-									)
-								</f:security.ifHasRole>
 							</td>
 						</tr>
 						<tr>
@@ -37,22 +23,30 @@
 							<f:if condition="{match.result}">
 									{match.result.guestTeamGoals}
 							</f:if>
-								<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
-									(
-										<cs:ifTipIsEditable tip="{tip}">
-											<f:then>
-												<input class="guestTip" type="text" size="1" style="width: 15px;" value="{tip.result.guestTeamGoals}" />
-											</f:then>
-											<f:else>
-												{tip.result.guestTeamGoals}
-											</f:else>
-										</cs:ifTipIsEditable>
-									)
-								</f:security.ifHasRole>
 							</td>
 						</tr>
 					</table>
-				</cs:userTip>
+					<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+						<cs:userTip match="{match}">
+							<p {cs:ifTipIsEditable(tip: tip, then: ' class="tip"')}>Tip:
+							<cs:ifTipIsEditable tip="{tip}">
+								<f:then>
+									<input class="tipId" type="hidden" value="{f:format.identifier(value: tip)}" />
+									<input class="hostTip" type="text" size="1" style="width: 15px;" value="{tip.result.hostTeamGoals}" />
+									:
+									<input class="guestTip" type="text" size="1" style="width: 15px;" value="{tip.result.guestTeamGoals}" />
+								</f:then>
+								<f:else>
+									<span class="cs-tip-{tip.points}">
+										{tip.result.hostTeamGoals}
+										:
+										{tip.result.guestTeamGoals}
+									</span>
+								</f:else>
+							</cs:ifTipIsEditable>
+							</p>
+						</cs:userTip>
+					</f:security.ifHasRole>
 				<f:security.ifAuthenticated>
 						<f:render partial="Actions/Show" arguments="{object: match}" />
 				</f:security.ifAuthenticated>

@@ -14,7 +14,7 @@ use AchimFritz\ChampionShip\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class KoRoundCreatorController extends ActionController {
+class KoRoundCreatorController extends AbstractActionController {
 
 
 	/**
