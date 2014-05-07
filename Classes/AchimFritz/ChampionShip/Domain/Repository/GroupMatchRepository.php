@@ -10,6 +10,7 @@ use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\GroupRound;
 use AchimFritz\ChampionShip\Domain\Model\Result;
 use AchimFritz\ChampionShip\Domain\Model\KoMatch;
+use AchimFritz\ChampionShip\Domain\Model\GroupMatch;
 
 /**
  * A repository for Matches
@@ -43,14 +44,35 @@ class GroupMatchRepository extends MatchRepository {
 	 * @return void
 	 */
 	public function update($object) {
-		if ($object->getResult() instanceof Result) {
-			$groupRound = $this->groupRoundService->updateGroupTable($object->getRound());
+		$this->updateRound($object);
+		parent::update($object);
+	}
+
+	/**
+	 * add
+	 * 
+	 * @param mixed $object 
+	 * @return void
+	 */
+	public function add($object) {
+		$this->updateRound($object);
+		parent::add($object);
+	}
+
+	/**
+	 * updateRound 
+	 * 
+	 * @param GroupMatch $match 
+	 * @return void
+	 */
+	protected function updateRound(GroupMatch $match) {
+		if ($match->getResult() instanceof Result) {
+			$groupRound = $this->groupRoundService->updateGroupTable($match->getRound());
 			$this->roundRepository->update($groupRound);
-			if ($object->getRound()->getRoundIsFinished() === TRUE) {
-				// TODO crossGroupRoundService->setWinner()...
-				$winnerTeam = $object->getRound()->getWinnerTeam();
-				$secondTeam = $object->getRound()->getSecondTeam();
-				$koMatch = $this->koMatchRepository->findOneInGroupRoundWithRank($object->getRound(), 1);
+			if ($match->getRound()->getRoundIsFinished() === TRUE) {
+				$winnerTeam = $match->getRound()->getWinnerTeam();
+				$secondTeam = $match->getRound()->getSecondTeam();
+				$koMatch = $this->koMatchRepository->findOneInGroupRoundWithRank($match->getRound(), 1);
 				if ($koMatch instanceof KoMatch) {
 					if ($koMatch->getHostGroupRank() === 1) {
 						$koMatch->setHostTeam($winnerTeam);
@@ -59,7 +81,7 @@ class GroupMatchRepository extends MatchRepository {
 					}
 					$this->koMatchRepository->update($koMatch);
 				}
-				$otherKoMatch = $this->koMatchRepository->findOneInGroupRoundWithRank($object->getRound(), 2);
+				$otherKoMatch = $this->koMatchRepository->findOneInGroupRoundWithRank($match->getRound(), 2);
 				if ($otherKoMatch instanceof KoMatch) {
 					if ($otherKoMatch->getGuestGroupRank() === 2) {
 						$otherKoMatch->setGuestTeam($secondTeam);
@@ -70,7 +92,6 @@ class GroupMatchRepository extends MatchRepository {
 				}
 			}
 		}
-		parent::update($object);
 	}
 
 	

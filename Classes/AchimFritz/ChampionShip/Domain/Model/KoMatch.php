@@ -22,5 +22,17 @@ class KoMatch extends Match {
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $round;
+
+   /**
+    * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch>
+	 * @ORM\OneToMany(mappedBy="hostMatch", cascade={"all"})
+    */
+	protected $childMatchHostMatches;
+
+   /**
+    * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch>
+	 * @ORM\OneToMany(mappedBy="guestMatch", cascade={"all"})
+    */
+	protected $childMatchGuestMatches;
 }
 ?>

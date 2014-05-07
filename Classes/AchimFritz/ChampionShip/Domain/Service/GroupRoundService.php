@@ -41,9 +41,11 @@ class GroupRoundService {
 	 */
 	public function updateGroupTable(GroupRound $groupRound) {
 		$matches = $groupRound->getGeneralMatches();
-		$groupTableRows = $this->groupTableCalculator->getGroupTableRows($matches);
-		$groupRound->clearGroupTableRows();
-		$groupRound->setGroupTableRows($groupTableRows);
+		if (count($matches) > 0) {
+			$groupTableRows = $this->groupTableCalculator->getGroupTableRows($matches);
+			$groupRound->clearGroupTableRows();
+			$groupRound->setGroupTableRows($groupTableRows);
+		}
 		return $groupRound;
 	}
 	

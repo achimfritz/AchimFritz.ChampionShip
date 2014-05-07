@@ -34,16 +34,18 @@ class GroupTableCalculator {
 	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupTableRows>
 	 */
 	public function getGroupTableRows(Collection $matches) {
-		$first = $matches->first();
-		$cup = $first->getCup();
-		$name = $cup->getGroupTablePolicy();
-		$rankingPolicy = new $name;
       $groupTableRows = new ArrayCollection();
-      $rows = $this->groupTableFactory->createTable($matches);
-		$rows = $rankingPolicy->updateTable($rows, $matches);
-      foreach ($rows AS $row) {
-         $groupTableRows->add($row);
-      }
+		#if (count($matches) > 0) {
+			$first = $matches->first();
+			$cup = $first->getCup();
+			$name = $cup->getGroupTablePolicy();
+			$rankingPolicy = new $name;
+			$rows = $this->groupTableFactory->createTable($matches);
+			$rows = $rankingPolicy->updateTable($rows, $matches);
+			foreach ($rows AS $row) {
+				$groupTableRows->add($row);
+			}
+		#}
       return $groupTableRows;
 	}
 
