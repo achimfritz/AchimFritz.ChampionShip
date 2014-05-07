@@ -27,6 +27,16 @@ class CupRepository extends \TYPO3\Flow\Persistence\Repository {
 	 */
 	protected $roundRepository;
 
+	/**
+	 * __construct 
+	 * 
+	 * @return void
+	 */
+	public function __construct() {
+		parent::__construct();
+		$this->setDefaultOrderings(array('startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
+	}
+
    /**
     * findOneActual 
     * 
