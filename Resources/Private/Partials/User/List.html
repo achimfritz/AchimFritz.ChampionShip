@@ -5,6 +5,7 @@
 					<tr>
 						<th>accountIdentifier</th>
 						<th>email</th>
+						<th>tipGroup</th>
 						<th>&nbsp;</th>
 					</tr>
 				</thead>
@@ -16,6 +17,9 @@
 						</td>
 						<td>
 							{user.email}
+						</td>
+						<td>
+							{user.tipGroup.name}
 						</td>
 						<td>
 							<f:render partial="Actions/RestAction" arguments="{object: user}" />

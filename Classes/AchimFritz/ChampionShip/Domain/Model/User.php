@@ -113,13 +113,25 @@ class User {
 	}
 
 	/**
+	 * hasTipGroup 
+	 * 
+	 * @param TipGroup $tipGroup 
+	 * @return void
+	 */
+	public function hasTipGroup(TipGroup $tipGroup) {
+		return $this->tipGroups->contains($tipGroup);
+	}
+
+	/**
 	 * addTipGroup 
 	 * 
 	 * @param TipGroup $tipGroup 
 	 * @return void
 	 */
 	public function addTipGroup(TipGroup $tipGroup) {
-		$this->tipGroups->add($tipGroup);
+		if ($this->hasTipGroup($tipGroup) === FALSE) {
+			$this->tipGroups->add($tipGroup);
+		}
 	}
 
 	/**
