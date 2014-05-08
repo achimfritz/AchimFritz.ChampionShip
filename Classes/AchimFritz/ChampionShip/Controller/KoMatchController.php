@@ -17,7 +17,7 @@ use \AchimFritz\ChampionShip\Domain\Model\KoMatch;
  *
  * @Flow\Scope("singleton")
  */
-class KoMatchController extends MatchController {
+class KoMatchController extends AbstractMatchController {
 		
 	/**
 	 * @Flow\Inject

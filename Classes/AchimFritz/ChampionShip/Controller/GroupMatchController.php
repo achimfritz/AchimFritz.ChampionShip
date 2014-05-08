@@ -16,7 +16,7 @@ use \AchimFritz\ChampionShip\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class GroupMatchController extends MatchController {
+class GroupMatchController extends AbstractMatchController {
 		
 	/**
 	 * @Flow\Inject
