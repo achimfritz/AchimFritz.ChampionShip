@@ -1,17 +1,17 @@
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-               <h4>new cross group round match</h4>
+               <h5>new cross group round match</h5>
                <f:form action="index" name="match" controller="CrossGroupMatch" method="post" class="form-horizontal">
                   <f:form.hidden property="cup" value="{recentCup}" />
                   <f:form.hidden property="round" value="{round}" />
                   <div class="control-group">
                      <label class="control-label" for="name">name</label>
-                     <div class="control-group">
+                     <div class="controls">
                         <f:form.textfield property="name" id="name" />
                      </div>
                   </div>
                   <div class="control-group">
                      <label class="control-label" for="startDate">startDate</label>
-                     <div class="control-group">
+                     <div class="controls">
                         <f:form.textfield property="startDate" id="startDate" class="datetimepicker" />
                      </div>
                   </div>

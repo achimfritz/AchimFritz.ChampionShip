@@ -1,17 +1,17 @@
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-		<h3>new match </h3>
-		<f:form class="form-horizontal" action="index" name="match" controller="GroupMatch" method="post">
+		<h5>new match </h5>
+		<f:form class="form-horizontal" action="index" name="match" controller="GroupRoundMatch" method="post">
 			<f:form.hidden property="cup" value="{recentCup}" />
 			<f:form.hidden property="round" value="{round}" />
 			<div class="control-group">
 				<label class="control-label" for="name">name</label>
-				<div class="control-group">
+				<div class="controls">
 					<f:form.textfield property="name" id="name" />
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="startDate">startDate</label>
-				<div class="control-group">
+				<div class="controls">
 					<f:form.textfield property="startDate" id="startDate" class="datetimepicker" />
 				</div>
 			</div>

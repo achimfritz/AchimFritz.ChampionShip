@@ -1,15 +1,15 @@
-<h4>edit winners of two matches match</h4>
+<h5>edit winners of two matches match</h5>
 <f:form class="form-horizontal" method="put" controller="TeamsOfTwoMatchesMatch" object="{match}" action="index" name="match" > 
    <f:form.hidden name="__method" value="PUT" />
    <div class="control-group">
       <label class="control-label" for="name">name</label>
-      <div class="control-group">
+      <div class="controls">
          <f:form.textfield property="name" id="name" />
       </div>
    </div>
    <div class="control-group">
       <label class="control-label" for="startDate">startDate</label>
-      <div class="control-group">
+      <div class="controls">
          <f:form.textfield property="startDate" class="datetimepicker" id="startDate" value="{match.startDate -> f:format.date(format:'d.m.Y H:i')}"/>
       </div>
    </div>

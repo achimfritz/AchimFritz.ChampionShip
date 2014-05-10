@@ -1,25 +1,32 @@
-<table class="table">
-	<thead>
-		<tr>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
-				<f:for each="{matrix.users}" as="user">
-					<th>{user.name}</th>
+<f:if condition="{matrix.users}">
+	<f:then>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+						<f:for each="{matrix.users}" as="user">
+							<th>{user.name}</th>
+						</f:for>
+				<tr>
+			</thead>
+			<tbody>
+				<f:for each="{matrix.rows}" as="row" iteration="cnt">
+					<tr class="{f:if(condition: cnt.isOdd, then: ' cs-odd', else: ' cs-even')}">
+						<f:render partial="Match/Duell/Duell" arguments="{match: row.match, short: 1}" />
+						<td>
+							{row.match.result.hostTeamGoals} : {row.match.result.guestTeamGoals}
+						</td>
+						<f:for each="{row.tips}" as="tip">
+							<td> <f:render partial="Tip/Show" arguments="{tip: tip}" /> </td>
+						</f:for>
+					</tr>
 				</f:for>
-		<tr>
-	</thead>
-	<tbody>
-		<f:for each="{matrix.rows}" as="row" iteration="cnt">
-			<tr class="{f:if(condition: cnt.isOdd, then: ' cs-odd', else: ' cs-even')}">
-				<f:render partial="Match/Duell/Duell" arguments="{match: row.match, short: 1}" />
-				<td>
-					{row.match.result.hostTeamGoals} : {row.match.result.guestTeamGoals}
-				</td>
-				<f:for each="{row.tips}" as="tip">
-					<td> <f:render partial="Tip/Show" arguments="{tip: tip}" /> </td>
-				</f:for>
-			</tr>
-		</f:for>
-	</tbody>
-</table>
+			</tbody>
+		</table>
+	</f:then>
+	<f:else>
+		<f:translate id="noTips" />
+	</f:else>
+</f:if>

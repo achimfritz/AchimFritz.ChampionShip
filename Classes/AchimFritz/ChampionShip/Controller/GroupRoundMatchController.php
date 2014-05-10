@@ -18,6 +18,38 @@ use \AchimFritz\ChampionShip\Domain\Model\Cup;
  */
 class GroupRoundMatchController extends GroupMatchController {
 		
+	/**
+	 * Adds the given new match object to the cup repository
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $match
+	 * @return void
+	 */
+	public function createAction(GroupMatch $match) {
+		$this->createMatch($match);
+		$this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
+	}
+
+	/**
+	 * deleteAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $match
+	 * @return void
+	 */
+	public function deleteAction(GroupMatch $match) {
+		$this->deleteMatch($match);
+		$this->redirect('index', 'GroupRound', NULL, array('round' => $match->getRound(), 'cup' => $match->getCup()));
+	}
+
+	/**
+	 * updateAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $match
+	 * @return void
+	 */
+	public function updateAction(GroupMatch $match) {
+		$this->updateMatch($match);
+		$this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
+	}
 }
 
 ?>

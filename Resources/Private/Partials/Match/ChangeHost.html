@@ -1,6 +1,6 @@
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 <f:if condition="{match.currentHostTeam}">
-	<h4>set hostTeam</h4>
+	<h5>set hostTeam</h5>
 	<f:form action="index" object="{match}"  name="match" controller="CrossGroupMatch" method="put">
 		<f:form.hidden name="__method" value="PUT" />
 		<div class="control-group">

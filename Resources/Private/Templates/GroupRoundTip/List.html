@@ -2,8 +2,8 @@
 
 <f:section name="Content">
 
+	<h5><f:translate id="tip" /> <f:translate id="match.group" /> {round.name}</h5>
 	<f:render partial="Round/List" arguments="{rounds: allRounds, activeRound: round}" />
-	<h3>{round.name}</h3>
 	<f:render partial="Tip/List" arguments="{tips: tips}" />
 	<f:render partial="Round/GroupTable" arguments="{round: round}" />
 </f:section>

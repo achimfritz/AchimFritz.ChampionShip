@@ -2,6 +2,10 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 	<file original="" source-language="en" target-language="de" datatype="plaintext">
 		<body>
+			<trans-unit id="noTips">
+				<source>no Tips</source>
+				<target>Es wurden keine Tips abgegeben</target>
+			</trans-unit>
 			<trans-unit id="groupMatch">
 				<source>Preliminary</source>
 				<target>Vorrunde</target>

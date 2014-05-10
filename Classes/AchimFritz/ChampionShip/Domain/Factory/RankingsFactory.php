@@ -40,6 +40,9 @@ class RankingsFactory {
 	 */
 	public function create(QueryResult $matches, TipGroup $tipGroup = NULL) {
 		$rankings = new ArrayCollection;
+		if (count($matches) === 0) {
+			return $rankings;
+		}
 		$identifiers = array();
 		foreach ($matches AS $match) {
 			$identifiers[] = "'" . $this->persistenceManager->getIdentifierByObject($match) . "'";

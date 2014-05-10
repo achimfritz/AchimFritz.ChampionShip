@@ -1,5 +1,4 @@
 	{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
-	<h2>{round.name}</h2>
 	<f:if condition="{round.generalMatches}">
 		<f:then>
 			<f:render partial="Match/List" arguments="{matches: round.generalMatches}" />
