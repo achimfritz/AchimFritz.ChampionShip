@@ -57,9 +57,6 @@ class UserTipController extends TipController {
 		parent::initializeAction();
 		$account = $this->securityContext->getAccount();
 		$this->user = $this->userRepository->findOneByAccount($account);
-		if (!$this->user instanceof User) {
-			throw new \Exception('need user', 1391953325);
-		}
 	}
 
 	/**
