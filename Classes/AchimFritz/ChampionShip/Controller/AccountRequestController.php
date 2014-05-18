@@ -15,7 +15,7 @@ use AchimFritz\ChampionShip\Domain\Model\AccountRequest;
  *
  * @Flow\Scope("singleton")
  */
-class AccountRequestController extends ActionController {
+class AccountRequestController extends AbstractActionController {
 
 	/**
 	 * @var string

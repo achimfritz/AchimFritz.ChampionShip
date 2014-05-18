@@ -15,18 +15,12 @@ use AchimFritz\ChampionShip\Domain\Model\PasswordRequest;
  *
  * @Flow\Scope("singleton")
  */
-class PasswordRequestController extends ActionController {
+class PasswordRequestController extends AccountRequestController {
 
 	/**
 	 * @var string
 	 */
 	protected $resourceArgumentName = 'passwordRequest';
-
-	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Service\PasswordRequestService
-	 * @Flow\Inject
-	 */
-	protected $passwordRequestService;
 
 	/**
 	 * listAction 
@@ -43,7 +37,7 @@ class PasswordRequestController extends ActionController {
 	 * @return void
 	 */
 	public function createAction(PasswordRequest $passwordRequest) {
-		$this->passwordRequestService->handle($passwordRequest);
+		#$this->passwordRequestService->handle($passwordRequest);
 		$this->addOkMessage('PasswordRequest created');
 		$this->view->assign('passwordRequest', $passwordRequest);
 	}
