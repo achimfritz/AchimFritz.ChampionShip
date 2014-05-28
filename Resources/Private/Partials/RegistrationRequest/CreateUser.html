@@ -1,0 +1,25 @@
+<h5>Create User</h5>
+<f:if condition="{user}">
+	<f:then>
+		user already exists with username {registraionRequest.username}
+	</f:then>
+	<f:else>
+		<f:if condition="{tipGroup}">
+			<f:then>
+				<p>OK no user found, tipGroup found</p>
+				<f:form action="index" controller="UserCreator" method="post">
+					<f:form.hidden name="registrationRequest" value="{registrationRequest}" />	
+					<div class="control-group">
+						<div class="controls">
+							<f:form.submit class="btn" value="Create" />
+						</div>
+					</div>
+				</f:form>
+			</f:then>
+			<f:else>
+				no tipGroup found with name {registrationRequest.tipGroupName}
+				<f:render partial="TipGroup/New" />
+			</f:else>
+		</f:if>
+	</f:else>
+</f:if>

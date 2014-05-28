@@ -7,22 +7,22 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-
-use AchimFritz\ChampionShip\Domain\Model\AccountRequest;
+use TYPO3\Flow\Mvc\Controller\RestController;
 
 /**
- * Team controller for the AchimFritz.ChampionShip package 
+ * Standard controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class AccountRequestController extends AbstractActionController {
+class InfoController extends AbstractActionController {
 
 	/**
-	 * @var string
+	 * Index action
+	 *
+	 * @return void
 	 */
-	protected $resourceArgumentName = 'accountRequest';
-
-
+	public function listAction() {
+	}
 
 }
 

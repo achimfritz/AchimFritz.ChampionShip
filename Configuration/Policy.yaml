@@ -1,5 +1,8 @@
 resources:
   methods:
+    AchimFritz_ChampionShipChatEntryCreateMethods: 'method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->createAction()) || method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->listAction())'
+    AchimFritz_ChampionShipContactRequestCreateMethods: 'method(AchimFritz\ChampionShip\Controller\ContactRequestController->createAction())'
+    AchimFritz_ChampionShipRegistrationRequestCreateMethods: 'method(AchimFritz\ChampionShip\Controller\RegistrationRequestController->createAction())'
     AchimFritz_ChampionShipTipMethods: 'method(AchimFritz\ChampionShip\Controller\.*TipController->update.*())'
     AchimFritz_ChampionShipUserTipResource: 'method(AchimFritz\ChampionShip\Controller\.*TipController->listAction()) || method(AchimFritz\ChampionShip\Controller\.*TipController->showAction())'
     AchimFritz_ChampionShipUpdateMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->updateAction())'
@@ -13,6 +16,7 @@ resources:
     AchimFritz_ChampionShipUserResource: 'method(AchimFritz\ChampionShip\Controller\UserController->showAction()) || method(AchimFritz\ChampionShip\Controller\UserController->updateAction())'
     AchimFritz_ChampionShipUserAdminResource: 'method(AchimFritz\ChampionShip\Controller\UserController->listAction())'
     AchimFritz_ChampionShipPasswordResource: 'method(AchimFritz\ChampionShip\Controller\PasswordController->.*())'
+    AchimFritz_ChampionShipChatEntryResource: 'method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->showAction())'
 
 
 roles:
@@ -21,6 +25,11 @@ roles:
   Administrator: []
 
 acls:
+  Anonymous:
+    methods: 
+      AchimFritz_ChampionShipRegistrationRequestCreateMethods: GRANT
+      AchimFritz_ChampionShipContactRequestCreateMethods: GRANT
+
   User:
     methods: 
       AchimFritz_ChampionShipTipMethods: GRANT
@@ -31,6 +40,12 @@ acls:
       AchimFritz_ChampionShipTipGroupResource: GRANT
       AchimFritz_ChampionShipPasswordResource: GRANT
       AchimFritz_ChampionShipAdminTipResource: DENY
+      AchimFritz_ChampionShipChatEntryResource: DENY 
+      AchimFritz_ChampionShipChatEntryCreateMethods: GRANT
+
+      AchimFritz_ChampionShipContactRequestCreateMethods: GRANT
+      AchimFritz_ChampionShipRegistrationRequestCreateMethods: GRANT
+
   Administrator:
     methods:
       AchimFritz_ChampionShipTipMethods: GRANT
@@ -47,3 +62,9 @@ acls:
       AchimFritz_ChampionShipCreateMethods: GRANT
       AchimFritz_ChampionShipMatchCreatorResource: GRANT
       AchimFritz_ChampionShipAdminTipResource: GRANT
+      AchimFritz_ChampionShipChatEntryCreateMethods: GRANT
+      AchimFritz_ChampionShipChatEntryResource: GRANT
+
+      AchimFritz_ChampionShipContactRequestCreateMethods: GRANT
+      AchimFritz_ChampionShipRegistrationRequestCreateMethods: GRANT
+

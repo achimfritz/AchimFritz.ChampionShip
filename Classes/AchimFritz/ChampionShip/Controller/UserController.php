@@ -30,12 +30,6 @@ class UserController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
-
-	/**
-	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Factory\UserFactory
 	 */
 	protected $userFactory;

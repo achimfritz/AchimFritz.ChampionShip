@@ -59,20 +59,6 @@ class UserTipController extends TipController {
 		$this->user = $this->userRepository->findOneByAccount($account);
 	}
 
-	/**
-	 * be sure to have tips
-	 *
-	 * @return void
-	 */
-	public function initializeListAction() {
-		try {
-			// TODO : too often called?
-			$this->tipFactory->checkUserTips($this->cup, $this->user);
-		} catch (\Exception $e) {
-			throw new \Exception('cannot check User Tips', 1398446760);
-		}
-	}
-
 }
 
 ?>

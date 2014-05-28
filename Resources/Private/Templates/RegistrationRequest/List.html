@@ -1,0 +1,27 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<f:then>
+			<h5>RegistrationRequests</h5>
+			<div class="row">
+				<ul class="nav nav-pills">
+					<li class="active"><a href="#show" data-toggle="tab">show</a></li>
+					<li><a href="#new" data-toggle="tab">new</a></li>
+				</ul>
+			</div>
+		<div class="tab-content">
+			<div class="row tab-pane active" id="show">
+				<f:render partial="RegistrationRequest/List" arguments="{registrationRequests: registrationRequests}" />
+			</div>
+			<div class="row tab-pane" id="new">
+				<f:render partial="RegistrationRequest/New" />
+			</div>
+		</div>
+	</f:then>
+	<f:else>
+			<f:render partial="RegistrationRequest/New" />
+	</f:else>
+	</f:security.ifHasRole>
+
+</f:section>

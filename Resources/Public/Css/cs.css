@@ -97,6 +97,9 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 	padding: 0px;
     vertical-align: middle;
 }
+textarea {
+	height: 100px;
+}
 
 select {
 }

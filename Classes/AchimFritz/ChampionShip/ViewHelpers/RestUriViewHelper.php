@@ -14,6 +14,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\Match;
 use AchimFritz\ChampionShip\Domain\Model\Round;
+use AchimFritz\ChampionShip\Domain\Model\ChatEntry;
 
 /**
  * 
@@ -42,6 +43,8 @@ class RestUriViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 			$resource = 'match';
 		} elseif ($object instanceof Round){
 			$resource = 'round';
+		} elseif ($object instanceof ChatEntry){
+			$resource = 'chatEntry';
 		} else {
 			$resource = lcfirst($model);
 		}

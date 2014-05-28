@@ -1,0 +1,22 @@
+	<h5><f:translate id="contactRequest" /></h5>
+	<f:form class="form-horizontal" action="index" controller="ContactRequest" name="contactRequest" method="post">
+		<div class="control-group">
+			<label class="control-label" for="email">Email:</label>
+			<div class="controls"><f:form.textfield property="email" id="email" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="subject"><f:translate id="contactRequest.subject" />:</label>
+			<div class="controls"><f:form.textfield property="subject" id="subject" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="message"><f:translate id="contactRequest.message" />:</label>
+			<div class="controls">
+				<f:form.textarea property="message" id="message" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit class="btn" value="Create" />
+			</div>
+		</div>
+	</f:form>

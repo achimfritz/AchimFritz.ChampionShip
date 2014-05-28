@@ -8,7 +8,6 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\RestController;
-use TYPO3\Flow\Mvc\View\JsonView;
 
 /**
  * Standard controller for the AchimFritz.ChampionShip package 

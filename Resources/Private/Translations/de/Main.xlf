@@ -2,6 +2,66 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 	<file original="" source-language="en" target-language="de" datatype="plaintext">
 		<body>
+			<trans-unit id="errorCode.1268676866">
+				<source>Passwords missmatch</source>
+				<target>Die Passwörter stimmen nicht überein</target>
+			</trans-unit>
+			<trans-unit id="errorCode.1238108067">
+				<source>The length of the text must be between {0} and {1} characters</source>
+				<target>Die Text-Länge muss zwischen {0} und {1} Zeichen sein.</target>
+			</trans-unit>
+			<trans-unit id="errorCode.1221559976">
+				<source>Please specify a valid email address.</source>
+				<target>Die E-Mail Adresse ist ungültig</target>
+			</trans-unit>
+			<trans-unit id="info">
+				<source>Info</source>
+				<target>Info</target>
+			</trans-unit>
+			<trans-unit id="tipGroupName">
+				<source>Tip Group Name</source>
+				<target>Tip Gruppe Name</target>
+			</trans-unit>
+			<trans-unit id="flashMessage.chatEntry.created">
+				<source>chatEntry created</source>
+				<target>Gelaber gespeichert</target> 
+			</trans-unit>
+			<trans-unit id="flashMessage.logged.in">
+				<source>logged in</source>
+				<target>Erfolgreich angemeldet</target> 
+			</trans-unit>
+			<trans-unit id="flashMessage.access.denied">
+				<source>access denied</source>
+				<target>Zugriff verweigert</target> 
+			</trans-unit>
+			<trans-unit id="flashMessage.contactRequest.created">
+				<source>contact request created. We will answer as soon as possible</source>
+				<target>Deine Kontakt Anfrage wurde versendet. Wir melden uns schnellstmöglichst bei Dir.</target> 
+			</trans-unit>
+			<trans-unit id="flashMessage.registrationRequest.created">
+				<source>Registration created. Your Request will be proofed by Administrator. You will be notified</source>
+				<target>Deine Registrierungs Anfrage wurde erstellt und wird jetzt vom Administrator überprüft. Dein Account wird dann schnellstmöglichst freigeschaltet.</target>
+			</trans-unit>
+			<trans-unit id="contactRequest.subject">
+				<source>Subject</source>
+				<target>Betreff</target>
+			</trans-unit>
+			<trans-unit id="contactRequest.message">
+				<source>Message</source>
+				<target>Nachricht</target>
+			</trans-unit>
+			<trans-unit id="contactRequest">
+				<source>Contact</source>
+				<target>Kontakt</target>
+			</trans-unit>
+			<trans-unit id="chatEntry">
+				<source>Chat</source>
+				<target>Gelaber</target>
+			</trans-unit>
+			<trans-unit id="registrationRequest">
+				<source>Registration</source>
+				<target>Registrieren</target>
+			</trans-unit>
 			<trans-unit id="noTips">
 				<source>no Tips</source>
 				<target>Es wurden keine Tips abgegeben</target>

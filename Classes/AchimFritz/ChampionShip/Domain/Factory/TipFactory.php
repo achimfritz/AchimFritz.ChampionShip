@@ -34,6 +34,12 @@ class TipFactory {
 	protected $matchRepository;
 
 	/**
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
+	 * @Flow\Inject
+	 */
+	protected $cupRepository;
+
+	/**
 	 * @var \TYPO3\Flow\Persistence\Doctrine\PersistenceManager
 	 * @Flow\Inject
 	 */
@@ -58,6 +64,20 @@ class TipFactory {
 				$this->persistenceManager->persistAll();
 			}
 		}
+	}
+
+	/**
+	 * initUserTipsForCurrentCup 
+	 * 
+	 * @param User $user 
+	 * @return void
+	 */
+	public function initUserTipsForCurrentCup(User $user) {
+		$cup = $this->cupRepository->findOneRecent();
+		if (!$cup instanceof Cup) {
+			throw new \Exception('no recent cup found', 1401293181);
+		}
+		$this->checkUserTips($cup, $user);
 	}
 
 	/**

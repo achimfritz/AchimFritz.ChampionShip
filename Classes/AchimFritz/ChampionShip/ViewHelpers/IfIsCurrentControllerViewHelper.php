@@ -60,6 +60,9 @@ class IfIsCurrentControllerViewHelper extends \TYPO3\Fluid\Core\ViewHelper\Abstr
 			if ($controllerName == 'KoRound' AND $requestControllerName == 'TeamsOfTwoMatchesMatch') {
 				$renderChild = TRUE;
 			}
+			if ($controllerName == 'OpenChatEntry' AND $requestControllerName == 'TipGroupChatEntry') {
+				$renderChild = TRUE;
+			}
 		}
 		if ($renderChild === TRUE) {
 			if ($cup === NULL && $action === '') {

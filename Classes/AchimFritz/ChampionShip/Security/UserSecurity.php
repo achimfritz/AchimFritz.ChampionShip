@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Policy;
+namespace AchimFritz\ChampionShip\Security;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,26 +7,20 @@ namespace AchimFritz\ChampionShip\Domain\Policy;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\Tip;
+use AchimFritz\ChampionShip\Domain\Model\User;
 
 /**
- * TipEditablePolicy
+ * UserSecurity
  *
  * @Flow\Scope("singleton")
  */
-class TipEditablePolicy {
+class UserSecurity {
 
 	/**
 	 * @var \TYPO3\Flow\Security\Context
 	 * @Flow\Inject
 	 */
 	protected $securityContext;
-
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
 
 	/**
 	 * @Flow\Inject
@@ -37,10 +31,10 @@ class TipEditablePolicy {
 	/**
 	 * isEditable
 	 * 
-	 * @param Tip $tip 
+	 * @param User $user
 	 * @return boolean
 	 */
-	public function editAllowed(Tip $tip) {
+	public function editAllowed(User $user) {
 		if (FLOW_SAPITYPE === 'CLI') {
 			return TRUE;
 		}
@@ -48,14 +42,8 @@ class TipEditablePolicy {
 			return TRUE;
 		}
 		$account = $this->securityContext->getAccount();
-		if ($account) {
-			$user = $this->userRepository->findOneByAccount($account);
-			if ($user === $tip->getUser()) {
-				$now = new \DateTime();
-				if ($now < $tip->getMatch()->getStartDate()) {
-					return TRUE;
-				}
-			}
+		if ($account === $user->getAccount()) {
+			return TRUE;
 		}
 		return FALSE;
 	}

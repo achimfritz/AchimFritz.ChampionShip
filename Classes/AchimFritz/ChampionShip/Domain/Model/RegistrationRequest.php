@@ -12,12 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @Flow\Entity
  */
-class RegistrationRequest extends AccountRequest {
+class RegistrationRequest {
 
 	/**
 	 * @var string
 	 * @Flow\Validate(type="NotEmpty")
-	 * @Flow\Validate(type="StringLength", options={ "minimum"=6, "maximum"=50 })
+	 * @Flow\Validate(type="StringLength", options={ "minimum"=6, "maximum"=100 })
 	 */
 	protected $newPassword;
 
@@ -27,10 +27,40 @@ class RegistrationRequest extends AccountRequest {
 	protected $newPasswordRepeat;
 
 	/**
+	 * @var \DateTime
+	 */
+	protected $creationDate;
+
+
+	/**
 	 * @var string
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $tipGroupName;
+
+	/**
+	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
+	 * @Flow\Validate(type="EmailAddress")
+	 */
+	protected $email = '';
+
+	/**
+	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
+	 * @Flow\Validate(type="StringLength", options={ "minimum"=3, "maximum"=50 })
+	 */
+	protected $username = '';
+
+	/**
+	 * __construct 
+	 * 
+	 * @return void
+	 */
+	public function __construct() {
+		$this->creationDate = new \DateTime();
+	}
+
 
 	/**
 	 * @return string
@@ -80,6 +110,55 @@ class RegistrationRequest extends AccountRequest {
 	public function setTipGroupName($tipGroupName) {
 		$this->tipGroupName = $tipGroupName;
 	} 
+
+	/**
+	 * @return string
+	 */
+	public function getUsername() {
+		return $this->username;
+	}
+
+	/**
+	 * @param string $username
+	 * @return void
+	 */
+	public function setUsername($username) {
+		$this->username = $username;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getEmail() {
+		return $this->email;
+	}
+
+	/**
+	 * @param string $email
+	 * @return void
+	 */
+	public function setEmail($email) {
+		$this->email = $email;
+	}
+
+	/**
+	 * setCreationDate 
+	 * 
+	 * @param \DateTime $creationDate 
+	 * @return void
+	 */
+	public function setCreationDate(\DateTime $creationDate) {
+		$this->creationDate = $creationDate;
+	}
+
+	/**
+	 * getCreationDate 
+	 * 
+	 * @return \DateTime
+	 */
+	public function getCreationDate() {
+		return $this->creationDate;
+	}
 
 }
 ?>

@@ -11,28 +11,42 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @Flow\Entity
- * @ORM\InheritanceType("JOINED")
  */
-class AccountRequest {
+class ContactRequest {
 
 	/**
 	 * @var string
 	 * @Flow\Validate(type="NotEmpty")
 	 * @Flow\Validate(type="EmailAddress")
 	 */
-	protected $email = '';
+	protected $email;
 
 	/**
 	 * @var string
 	 * @Flow\Validate(type="NotEmpty")
-	 * @Flow\Validate(type="StringLength", options={ "minimum"=3, "maximum"=50 })
 	 */
-	protected $username = '';
+	protected $subject;
 
 	/**
 	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
 	 */
-	protected $hmac;
+	protected $message;
+
+	/**
+	 * @var \DateTime
+	 */
+	protected $creationDate;
+
+	/**
+	 * __construct 
+	 * 
+	 * @return void
+	 */
+	public function __construct() {
+		$this->creationDate = new \DateTime();
+	}
+
 
 	/**
 	 * @return string
@@ -52,34 +66,47 @@ class AccountRequest {
 	/**
 	 * @return string
 	 */
-	public function getHmac() {
-		return $this->hmac;
+	public function getSubject() {
+		return $this->subject;
 	}
 
 	/**
-	 * @param string $hmac
+	 * @param string $subject
 	 * @return void
 	 */
-	public function setHmac($hmac) {
-		$this->hmac = $hmac;
+	public function setSubject($subject) {
+		$this->subject = $subject;
 	}
-
 
 	/**
 	 * @return string
 	 */
-	public function getUsername() {
-		return $this->username;
+	public function getMessage() {
+		return $this->message;
 	}
 
 	/**
-	 * @param string $username
+	 * @param string $message
 	 * @return void
 	 */
-	public function setUsername($username) {
-		$this->username = $username;
+	public function setMessage($message) {
+		$this->message = $message;
 	}
 
+	/**
+	 * @return \DateTime
+	 */
+	public function getCreationDate() {
+		return $this->creationDate;
+	}
+
+	/**
+	 * @param \DateTime $creationDate
+	 * @return void
+	 */
+	public function setCreationDate($creationDate) {
+		$this->creationDate = $creationDate;
+	}
 
 }
 ?>

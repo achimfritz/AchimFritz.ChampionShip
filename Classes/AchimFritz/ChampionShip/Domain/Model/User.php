@@ -36,6 +36,13 @@ class User {
 	protected $rankings;
 
 	/**
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\ChatEntry>
+	 * @ORM\OneToMany(mappedBy="user", cascade={"all"})
+	 */
+	protected $chatEntries;
+
+
+	/**
 	 * @var string
 	 * @Flow\Validate(type="NotEmpty")
 	 * @Flow\Validate(type="EmailAddress")
@@ -151,6 +158,15 @@ class User {
 	 */
 	public function setEmail($email) {
 		$this->email = $email;
+	}
+
+	/**
+	 * getName 
+	 * 
+	 * @return string
+	 */
+	public function getUsername() {
+		return $this->getAccount()->getAccountIdentifier();
 	}
 
 	/**

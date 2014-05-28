@@ -1,6 +1,8 @@
 AchimFritz:
   ChampionShip:
-    csStyle: 1
+    csStyle: 0
+    mailTo: mailTo@domain.tld
+    mailFrom: noreply@domain.tld
 TYPO3:
   Flow:
     security:
@@ -12,13 +14,10 @@ TYPO3:
             token: TYPO3\Flow\Security\Authentication\Token\UsernamePasswordHttpBasic
           DefaultProvider:
             provider: PersistedUsernamePasswordProvider
-            entryPoint: 'WebRedirect'
             token: TYPO3\Flow\Security\Authentication\Token\UsernamePassword
+            entryPoint: 'WebRedirect'
             entryPointOptions:
-              routeValues:
-                '@package': 'AchimFritz.Championship'
-                '@controller': 'Standard'
-                '@action': 'index'
+              uri: /achimfritz.championship/accessdenied
     i18n:
       defaultLocale: de
     #persistence:

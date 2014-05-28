@@ -1,0 +1,23 @@
+<f:if condition="{chatEntries}">
+	<f:then>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>username</th>
+					<th>message</th>
+				</tr>
+			</thead>
+			<tbody>
+			<f:for each="{chatEntries}" as="chatEntry" iteration="it">
+				<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+					<td>{chatEntry.user.displayName}</td>
+					<td>{chatEntry.message}</td>
+				</tr>
+			</f:for>
+			</tbody>
+		</table>
+	</f:then>
+	<f:else>
+		<p>no chat entry created</p>
+	</f:else>
+</f:if>

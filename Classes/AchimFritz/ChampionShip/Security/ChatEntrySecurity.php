@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Policy;
+namespace AchimFritz\ChampionShip\Security;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,20 +7,26 @@ namespace AchimFritz\ChampionShip\Domain\Policy;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\User;
+use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 
 /**
- * UserEditablePolicy
+ * ChatEntrySecurity
  *
  * @Flow\Scope("singleton")
  */
-class UserEditablePolicy {
+class ChatEntrySecurity {
 
 	/**
 	 * @var \TYPO3\Flow\Security\Context
 	 * @Flow\Inject
 	 */
 	protected $securityContext;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
 
 	/**
 	 * @Flow\Inject
@@ -31,10 +37,10 @@ class UserEditablePolicy {
 	/**
 	 * isEditable
 	 * 
-	 * @param User $user
+	 * @param Tip $tip 
 	 * @return boolean
 	 */
-	public function editAllowed(User $user) {
+	public function accessAllowed(TipGroup $tipGroup) {
 		if (FLOW_SAPITYPE === 'CLI') {
 			return TRUE;
 		}
@@ -42,8 +48,11 @@ class UserEditablePolicy {
 			return TRUE;
 		}
 		$account = $this->securityContext->getAccount();
-		if ($account === $user->getAccount()) {
-			return TRUE;
+		if ($account) {
+			$user = $this->userRepository->findOneByAccount($account);
+			if ($user->hasTipGroup($tipGroup)) {
+				return TRUE;
+			}
 		}
 		return FALSE;
 	}

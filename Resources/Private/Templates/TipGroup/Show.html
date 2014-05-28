@@ -1,7 +1,7 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<f:render partial="TipGroup/Show" arguments="{tipGroup: tipGroup}" />
+	<h5>{tipGroup.name}</h5>
 	<div class="row">
 		<ul class="nav nav-pills">
 			<li><f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action></li>
@@ -16,6 +16,11 @@
 	<div class="tab-content">
 		<div class="row tab-pane active" id="show">
 			<f:render partial="User/List" arguments="{users: users}" />
+			<f:if condition="{users}">
+				<f:else>
+					<f:render partial="User/New" arguments="{allTipGroups: tipGroups}" />
+				</f:else>
+			</f:if>
 		</div>
 		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 			<div class="row tab-pane" id="edit">

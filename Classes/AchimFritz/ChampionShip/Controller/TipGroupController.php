@@ -40,6 +40,7 @@ class TipGroupController extends AbstractActionController {
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {
+		$this->view->assign('tipGroups', $this->tipGroupRepository->findAll());
 		$this->view->assign('users', $this->userRepository->findInTipGroup($tipGroup));
 		$this->view->assign('tipGroup', $tipGroup);
 	}

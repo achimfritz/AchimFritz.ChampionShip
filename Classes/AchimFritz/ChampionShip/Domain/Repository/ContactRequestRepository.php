@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,13 +7,14 @@ namespace AchimFritz\ChampionShip\Domain\Model;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use Doctrine\ORM\Mapping as ORM;
+use TYPO3\Flow\Persistence\Repository;
 
 /**
- * @Flow\Entity
+ * @Flow\Scope("singleton")
  */
-class PasswordRequest extends AccountRequest {
+class ContactRequestRepository extends Repository {
 
+	// add customized methods here
 
 }
 ?>

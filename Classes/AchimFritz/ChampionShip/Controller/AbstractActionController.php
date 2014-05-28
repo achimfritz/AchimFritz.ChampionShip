@@ -21,6 +21,12 @@ use \AchimFritz\ChampionShip\Domain\Model\User;
 class AbstractActionController extends RestController {
 
 	/**
+	 * @var \TYPO3\Flow\I18n\Translator
+	 * @Flow\Inject
+	 */
+	protected $translator;
+
+	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
 	 */
@@ -296,6 +302,31 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	}
 
 	/**
+	 * Creates a Message object and adds it to the FlashMessageContainer.
+	 *
+	 * This method should be used to add FlashMessages rather than interacting with the container directly.
+	 *
+	 * @param string $messageBody text of the FlashMessage
+	 * @param string $messageTitle optional header of the FlashMessage
+	 * @param string $severity severity of the FlashMessage (one of the \TYPO3\Flow\Error\Message::SEVERITY_* constants)
+	 * @param array $messageArguments arguments to be passed to the FlashMessage
+	 * @param integer $messageCode
+	 * @return void
+	 * @throws \InvalidArgumentException if the message body is no string
+	 * @see \TYPO3\Flow\Error\Message
+	 */
+	public function addFlashMessage($messageBody, $messageTitle = '', $severity = Message::SEVERITY_OK, array $messageArguments = array(), $messageCode = NULL) {
+		// try to translate message
+		$id = 'flashMessage.' . str_replace(' ', '.',  $messageBody);
+		$msg = $this->translator->translateById($id, array(), NULL, NULL, 'Main', 'AchimFritz.ChampionShip');
+		if ($msg === $id) {
+			return parent::addFlashMessage($messageBody, $messageTitle, $severity, $messageArguments, $messageCode);
+		} else {
+			return parent::addFlashMessage($msg, $messageTitle, $severity, $messageArguments, $messageCode);
+		}
+	}
+
+	/**
 	 * errorAction 
 	 * 
 	 * @return void
@@ -303,6 +334,18 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	protected function errorAction() {
 		$this->response->setStatus(400);
 		return parent::errorAction();
+	}
+
+	/**
+	 * A template method for displaying custom error flash messages, or to
+	 * display no flash message at all on errors. Override this to customize
+	 * the flash message in your action controller.
+	 *
+	 * @return \TYPO3\Flow\Error\Message The flash message or FALSE if no flash message should be set
+	 * @api
+	 */
+	protected function getErrorFlashMessage() {
+		return FALSE;
 	}
 
 }

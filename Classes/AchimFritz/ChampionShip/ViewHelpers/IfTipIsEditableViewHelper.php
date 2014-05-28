@@ -24,9 +24,9 @@ class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractCon
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Policy\TipEditablePolicy
+	 * @var \AchimFritz\ChampionShip\Security\TipSecurity
 	 */
-	protected $tipEditablePolicy;
+	protected $tipSecurity;
 	
 	/**
 	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
@@ -38,7 +38,7 @@ class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractCon
 		if ($tip === NULL) {
 			return $this->renderElseChild();
 		}
-		if ($this->tipEditablePolicy->editAllowed($tip) === TRUE) {
+		if ($this->tipSecurity->editAllowed($tip) === TRUE) {
 			return $this->renderThenChild();
 		}
 		return $this->renderElseChild();

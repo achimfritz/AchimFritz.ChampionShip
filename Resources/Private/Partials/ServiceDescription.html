@@ -2,9 +2,18 @@
 <div class="cs-container">
 	<h6>Home</h6>
 	<ul>
-		<li>
+		<li  {cs:ifIsCurrentController(controllerName:'Cup', cup: cup, then: 'class= "cs-active"')}>
 			<f:link.action controller="Standard" action="index" arguments="{cup: recentCup}">Home</f:link.action>
 		</li>
+		<li {cs:ifIsCurrentController(controllerName:'Info', then: 'class= "cs-active"')}>
+			<f:link.action action="index" controller="Info" arguments="{cup: recentCup}"><f:translate id="info" /></f:link.action>
+		</li>
+      <li {cs:ifIsCurrentController(controllerName:'RegistrationRequest', then: 'class= "cs-active"')}>
+         <f:link.action controller="RegistrationRequest" action="index" arguments="{cup: recentCup}"><f:translate id="registrationRequest" /></f:link.action>
+      </li>
+      <li {cs:ifIsCurrentController(controllerName:'ContactRequest', then: 'class= "cs-active"')}>
+         <f:link.action controller="ContactRequest" action="index" arguments="{cup: recentCup}"><f:translate id="contactRequest" /></f:link.action>
+      </li>
 		<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 			<li {cs:ifIsCurrentController(controllerName:'User', then: 'class= "cs-active"')}>
 				<f:link.action controller="User" action="index" arguments="{cup: recentCup, user:user}">{user.displayName}</f:link.action>
@@ -65,6 +74,9 @@
 		<li {cs:ifIsCurrentController(controllerName:'GlobalRanking', then: 'class= "cs-active"')}>
 			<f:link.action action="index" controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
 		</li>
+      <li {cs:ifIsCurrentController(controllerName:'OpenChatEntry', then: 'class= "cs-active"')}>
+         <f:link.action controller="OpenChatEntry" action="index" arguments="{cup: recentCup}"><f:translate id="chatEntry" /></f:link.action>
+      </li>
 	</ul>
 </div>
 </f:security.ifAuthenticated>

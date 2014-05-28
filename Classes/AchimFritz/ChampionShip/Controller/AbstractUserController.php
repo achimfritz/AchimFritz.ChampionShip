@@ -14,32 +14,9 @@ class AbstractUserController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
-
-	/**
-	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
 	 */
 	protected $tipGroupRepository;
-
-	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\User
-	 */
-	protected $user;
-
-
-	/**
-	 * initializeAction
-	 * 
-	 * @return void
-	 */
-	protected function initializeAction() {
-		parent::initializeAction();
-		$account = $this->securityContext->getAccount();
-		$this->user = $this->userRepository->findOneByAccount($account);
-	}
 
 	/**
 	 * initializeView 

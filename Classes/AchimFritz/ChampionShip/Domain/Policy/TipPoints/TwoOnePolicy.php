@@ -15,34 +15,18 @@ use AchimFritz\ChampionShip\Domain\Model\Result;
  *
  * @Flow\Scope("singleton")
  */
-class TwoOnePolicy {
+class TwoOnePolicy extends DefaultPolicy {
 
 	/**
-	 * getPointsForTip 
-	 * 
-	 * @param Tip $tip 
-	 * @return integer
+	 * @var integer
 	 */
-	public function getPointsForTip(Tip $tip) {
-		$matchResult = $tip->getMatch()->getResult();
-		if (!$matchResult instanceof Result) {
-			return 0;
-		}
-		$result = $tip->getResult();
-		if (!$result instanceof Result) {
-			return 0;
-		}
-		$matchHostPoints = $matchResult->getHostPoints();
-		$hostPoints = $result->getHostPoints();
-		if ($matchHostPoints == $hostPoints) {
-			if ($result->getHostTeamGoals() == $matchResult->getHostTeamGoals() AND 
-				$result->getGuestTeamGoals() == $matchResult->getGuestTeamGoals()) {
-				return 2;
-			}
-			return 1;
-		}
-		return 0;
-	}
+	protected $exact = 2;
+
+	/**
+	 * @var integer
+	 */
+	protected $trend = 1;
+
 
 }
 ?>
