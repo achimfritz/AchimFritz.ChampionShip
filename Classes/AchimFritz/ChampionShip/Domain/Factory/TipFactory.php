@@ -40,13 +40,6 @@ class TipFactory {
 	protected $cupRepository;
 
 	/**
-	 * @var \TYPO3\Flow\Persistence\Doctrine\PersistenceManager
-	 * @Flow\Inject
-	 */
-	protected $persistenceManager;
-
-
-	/**
 	 * checkUserTips 
 	 * 
 	 * @param Cup $cup 
@@ -61,7 +54,6 @@ class TipFactory {
 			$tips = $this->tipRepository->findByUserInCup($user, $cup);
 			if (count($tips) === 0) {
 				$newTips = $this->initTips($cup, $user);
-				$this->persistenceManager->persistAll();
 			}
 		}
 	}

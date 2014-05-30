@@ -52,8 +52,8 @@ class UserCreatorController extends AbstractActionController {
 	public function createAction(RegistrationRequest $registrationRequest) {
 		try {
 			$user = $this->userFactory->createFromRegistrationRequest($registrationRequest);
-			$this->registrationRequestRepository->remove($registrationRequest);
 			$this->userRepository->add($user);
+			$this->registrationRequestRepository->remove($registrationRequest);
 			$this->persistenceManager->persistAll();
 			$this->addOkMessage('user created');
 		} catch (\Exception $e) {
