@@ -16,7 +16,7 @@
       </li>
 		<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 			<li {cs:ifIsCurrentController(controllerName:'User', then: 'class= "cs-active"')}>
-				<f:link.action controller="User" action="index" arguments="{cup: recentCup, user:user}">{user.displayName}</f:link.action>
+				<f:link.action controller="User" action="index" arguments="{cup: recentCup, user:user}">Profile</f:link.action>
 			</li>
 		</f:security.ifHasRole>
 	</ul>

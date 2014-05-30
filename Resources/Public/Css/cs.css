@@ -12,6 +12,10 @@ a {
 	color: black;
 }
 
+.cs-content a {
+	color: #537A00;
+}
+
 form.inline {
 	display: inline;
 }
