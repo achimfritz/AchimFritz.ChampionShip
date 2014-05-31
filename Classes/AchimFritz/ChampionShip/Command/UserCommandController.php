@@ -52,6 +52,25 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 	/**
 	 * inviteUserCommand 
 	 * 
+	 * @param string username
+	 * @param boolean $sendMail 
+	 * @return void
+	 */
+	public function inviteOneUserCommand($username, $sendMail = FALSE) {
+		$user = $this->userRepository->findOneByUsername($username);
+		if (!$user instanceof User) {
+			$this->outputLine('user not found ' . $username);
+		}
+		$this->outputLine('will sent invitation mail to ' . $user->getEmail());
+		if ($sendMail === TRUE) {
+			$this->notificationService->inviteUser($user);
+			$this->outputLine('sending ' . $user->getEmail());
+		}
+	}
+
+	/**
+	 * inviteUserCommand 
+	 * 
 	 * @param boolean $sendMail 
 	 * @return void
 	 */
