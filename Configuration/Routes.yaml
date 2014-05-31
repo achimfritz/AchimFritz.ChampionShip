@@ -6,33 +6,3 @@
     '@controller': 'Standard'
     '@action':     'index'
     '@format':     'html'
-
-#-
-#  name: 'test'
-#  uriPattern: '{@package}/foo/bar/{@action}'
-#  defaults:
-#    '@package': 'AchimFritz.ChampionShip'
-#    '@controller': 'Foo\Bar'
-#    '@action': 'index'
-
-#-
-#  name: 'Administration Userxx'
-#  uriPattern: '{@package}/foo/bar/{@action}'
-#  defaults:
-#    '@package': 'AchimFritz.ChampionShip'
-#    '@controller': 'Foo\Bar'
-#    '@action': 'list'
-
-  
-#-
-#  name: 'finalmatch'
-#  uriPattern: '{@package}/match/finalmatch(/{@action})'
-#  defaults:
-#    '@controller': 'Match\FinalMatch'
-    
-#-
-#  name: 'quarter final match'
-#  uriPattern: '{@package}/match/@controller(/{@action})'
-#  defaults:
-#    '@controller': 'Match\@controller'
-#  appendExceedingArguments: true
