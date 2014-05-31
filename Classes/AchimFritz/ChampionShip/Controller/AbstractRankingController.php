@@ -20,6 +20,13 @@ class AbstractRankingController extends AbstractUserController {
 
 	/**
 	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 */
+	protected $matchRepository;
+
+
+	/**
+	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Factory\RankingsFactory
 	 */
 	protected $rankingsFactory;
