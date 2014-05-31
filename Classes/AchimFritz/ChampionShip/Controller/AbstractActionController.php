@@ -36,7 +36,7 @@ class AbstractActionController extends RestController {
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
 	 */
-	protected $matchRepository;
+	protected $cupMatchRepository;
 
 	/**
 	 * @Flow\Inject
@@ -146,9 +146,9 @@ class AbstractActionController extends RestController {
 		$this->view->assign('cup', $this->cup);
 		$this->view->assign('recentCup', $this->cup);
 		if ($this->cup instanceof Cup) {
-			$nextMatches = $this->matchRepository->findNextByCup($this->cup);
+			$nextMatches = $this->cupMatchRepository->findNextByCup($this->cup);
 			$this->view->assign('nextMatches', $nextMatches);
-			$lastMatches = $this->matchRepository->findLastByCup($this->cup);
+			$lastMatches = $this->cupMatchRepository->findLastByCup($this->cup);
 			$this->view->assign('lastMatches', $lastMatches);
 		}
 		$this->view->assign('cups', $this->cups);
