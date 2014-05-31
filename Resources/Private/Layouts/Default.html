@@ -30,12 +30,12 @@
 	   	<f:if condition="{recentCup}">
 			   <f:then>
                <div class="row">
-                  <div class="span2 cs-col">
+                  <div class="span2 cs-col cs-menu">
 							<div class="cs-col-border">
 								<f:render partial="ServiceDescription" arguments="{recentCup: recentCup, cups: cups, user: user}" />
 							</div>
                   </div>
-                  <div class="span8 cs-col">
+                  <div class="span8 cs-col cs-main">
 							<div class="row">
 								<div class="span5">
 									<h1>{recentCup.name}
@@ -53,7 +53,7 @@
 									<f:render section="Content" />
 							</div>
                   </div>
-                  <div class="span2 cs-col">
+                  <div class="span2 cs-col cs-right">
 							<div class="cs-col-border">
 								<div class="row cs-container">
 										<f:render partial="LoginForm" arguments="{user: user}" />
