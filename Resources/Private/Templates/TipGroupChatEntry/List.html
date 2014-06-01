@@ -22,8 +22,8 @@
 		</div>
 	</f:then>
 	<f:else>
-			<f:render partial="ChatEntry/List" arguments="{chatEntries: chatEntries}" />
 			<f:render partial="TipGroupChatEntry/New" arguments="{user: user, users: users, tipGroup: tipGroup}"/>
+			<f:render partial="ChatEntry/List" arguments="{chatEntries: chatEntries}" />
 	</f:else>
 	</f:security.ifHasRole>
 

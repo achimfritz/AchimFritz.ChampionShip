@@ -4,6 +4,7 @@
 			<thead>
 				<tr>
 					<th>username</th>
+					<th style="width: 80px;">date</th>
 					<th>message</th>
 				</tr>
 			</thead>
@@ -11,6 +12,7 @@
 			<f:for each="{chatEntries}" as="chatEntry" iteration="it">
 				<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
 					<td>{chatEntry.user.displayName}</td>
+					<td>{chatEntry.creationDate -> f:format.date(format: 'd.m H:i')}</td>
 					<td>{chatEntry.message}</td>
 				</tr>
 			</f:for>

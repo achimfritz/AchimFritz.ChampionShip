@@ -8,6 +8,7 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Message;
+use TYPO3\Flow\Security\Account;
 use TYPO3\Flow\Mvc\Controller\RestController;
 use \AchimFritz\ChampionShip\Domain\Model\Cup;
 use \AchimFritz\ChampionShip\Domain\Model\User;
@@ -71,6 +72,11 @@ class AbstractActionController extends RestController {
 	 */
 	protected $user = NULL;
 
+	/**
+	 * @var Account
+	 */
+	protected $account = NULL;
+
 
 	/**
 	 * initializeAction 
@@ -87,9 +93,9 @@ class AbstractActionController extends RestController {
 			$this->cup = $this->cupRepository->findOneRecent();
 		}
 		$this->cups = $this->cupRepository->findAll();
-		$account = $this->securityContext->getAccount();
-		if ($account) {
-			$user = $this->userRepository->findOneByAccount($account);
+		$this->account = $this->securityContext->getAccount();
+		if ($this->account) {
+			$user = $this->userRepository->findOneByAccount($this->account);
 			if ($user instanceof User) {
 				$this->user = $user;
 			}
@@ -298,7 +304,10 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * @return void
 	 */
 	protected function handleException(\Exception $e) {
-		$this->addFlashMessage($e->getMessage(), get_class($e), Message::SEVERITY_ERROR, array(), $e->getCode());
+		if ($this->user === NULL && $this->account !== NULL) {
+			// must be an admin
+			$this->addFlashMessage($e->getMessage(), get_class($e), Message::SEVERITY_ERROR, array(), $e->getCode());
+		}
 	}
 
 	/**

@@ -45,7 +45,7 @@ class GroupMatchCreatorController extends AbstractActionController {
 			$this->groupRoundService->createMatches($groupRound);
 			$this->roundRepository->update($groupRound);
 			$this->persistenceManager->persistAll();
-			$this->addOkMessage('matches updatet');
+			$this->addOkMessage('matches updated');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot update matches');
 			$this->handleException($e);

@@ -36,7 +36,11 @@ class AbstractTipGroupResultsController extends AbstractUserController {
 			// admin only
 			$tipGroup = $this->tipGroupRepository->findAll()->getFirst();
 		}
-		$this->forward('show', NULL, NULL, array('tipGroup' => $tipGroup, 'cup' => $this->cup));
+		if ($tipGroup instanceof TipGroup) {
+			$this->forward('show', NULL, NULL, array('tipGroup' => $tipGroup, 'cup' => $this->cup));
+		} else {
+			$this->addErrorMessage('no tipGroup found');
+		}
 	}
 
 	/**

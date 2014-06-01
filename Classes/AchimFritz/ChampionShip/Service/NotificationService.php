@@ -56,7 +56,7 @@ class NotificationService {
 		$body .= 'URL: http://www.tipptrip.de/' . chr(10);
 		$body .= 'Username: ' . $user->getUsername() . chr(10);
 		$body .= 'Dein Passwort: ' . $user->getEmail() . chr(10) . chr(10);
-		$body .= 'Viel Spass und noch mehr Erfolg wünscht Dir,' . chr(10);
+		$body .= 'Viel Spass wünscht Dir,' . chr(10);
 		$body .= 'das www.tipptrip.de-Team';
 
 		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
@@ -83,7 +83,7 @@ class NotificationService {
 		$body .= 'URL: http://www.tipptrip.de/' . chr(10);
 		$body .= 'Username: ' . $user->getUsername() . chr(10);
 		$body .= 'Dein Passwort: **********' . chr(10) . chr(10);
-		$body .= 'Viel Spass und noch mehr Erfolg wünscht Dir,' . chr(10);
+		$body .= 'Viel Spass wünscht Dir,' . chr(10);
 		$body .= 'das www.tipptrip.de-Team';
 
 		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
@@ -108,7 +108,7 @@ class NotificationService {
 		$body = 'Deine Registrierung wurde erfolgreich angelegt' . chr(10);
 		$body .= 'Der Administrator wird Deine Daten prüfen und sich dann bei Dir melden' . chr(10) . chr(10);
 		$body .= 'URL: http://www.tipptrip.de/' . chr(10) . chr(10);
-		$body .= 'Viel Spass und noch mehr Erfolg wünscht Dir,' . chr(10);
+		$body .= 'Viel Spass wünscht Dir,' . chr(10);
 		$body .= 'das www.tipptrip.de-Team';
 
 		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
@@ -144,7 +144,7 @@ class NotificationService {
 		$body = 'Deine Kontakt Anfrage ist bei uns eingegangen' . chr(10);
 		$body = 'Der Administrator wird Deine Daten prüfen und sich dann bei Dir melden' . chr(10) . chr(10);
 		$body .= 'URL: http://www.tipptrip.de/' . chr(10) . chr(10);
-		$body .= 'Viel Spass und noch mehr Erfolg wünscht Dir,' . chr(10);
+		$body .= 'Viel Spass wünscht Dir,' . chr(10);
 		$body .= 'das www.tipptrip.de-Team';
 
 		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');

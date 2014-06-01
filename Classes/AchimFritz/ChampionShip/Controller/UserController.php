@@ -69,15 +69,18 @@ class UserController extends AbstractActionController {
 	 */
 	public function createAction(User $user) {
 		try {
-			$user = $this->userFactory->create($user->getEmail(), $user->getAccount()->getAccountIdentifier());
-			$this->userRepository->add($user);
+			$newUser = $this->userFactory->create($user->getEmail(), $user->getAccount()->getAccountIdentifier());
+			$newUser->setTipGroup($user->getTipGroup());
+			$newUser->setTipGroups($user->getTipGroups());
+			$this->userRepository->add($newUser);
 			$this->persistenceManager->persistAll();
 			$this->addOkMessage('user created');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot create user');
 			$this->handleException($e);
+			$this->redirect('index');
 		}		
-		$this->redirect('index', NULL, NULL, array('user' => $user));
+		$this->redirect('index', NULL, NULL, array('user' => $newUser));
 	}
 
 	/**

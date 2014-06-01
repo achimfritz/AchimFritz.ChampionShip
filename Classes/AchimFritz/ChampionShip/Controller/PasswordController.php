@@ -46,7 +46,7 @@ class PasswordController extends AbstractActionController {
 			$user->getAccount()->setCredentialsSource($this->hashService->hashPassword($password->getNewPassword(), 'default'));
 			$this->userRepository->update($user);
 			$this->persistenceManager->persistAll();
-			$this->addOkMessage('password updatet');
+			$this->addOkMessage('password updated');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot update password');
 			$this->handleException($e);

@@ -63,8 +63,7 @@ class RegistrationRequestController extends AbstractActionController {
 		$user = $this->userRepository->findOneByUsername($registrationRequest->getUsername());
 		$tipGroup = $this->tipGroupRepository->findOneByName($registrationRequest->getTipGroupName());
 		// warnings for admin
-		$account = $this->securityContext->getAccount();
-		if (!$this->user instanceof User && $account instanceof Account) {
+		if (!$this->user instanceof User && $this->account instanceof Account) {
 			if ($user instanceof User) {
 				$this->addWarningMessage('user exisists with username ' . $registrationRequest->getUsername());
 			}

@@ -30,8 +30,7 @@
 
 				// valide
 				if(
-					ev.keyCode >= 48
-					&& ev.keyCode <= 57
+					((ev.keyCode >= 48 && ev.keyCode <= 57) || ev.keyCode == 8 || ev.keyCode == 46 || ev.keyCode == 13)
 					&& Math.floor(cTip.tip.result.hostTeamGoals) == cTip.tip.result.hostTeamGoals 
 					&& $.isNumeric(cTip.tip.result.hostTeamGoals)
 					&& Math.floor(cTip.tip.result.guestTeamGoals) == cTip.tip.result.guestTeamGoals 
@@ -48,7 +47,19 @@
 							'success': function (response) {
 								if (response.success == true) {
 									tip.container.removeClass('loading');
-									tip.container.append($('<span />').addClass('icon-ok'));
+									$('span', tip.container).remove();
+									var result = tip.hostTip.val() + ':' + tip.guestTip.val();
+									//tip.container.append($('<span />').text(result)).append($('<span />').addClass('icon-ok'))
+									tip.container.append($('<span />').addClass('icon-ok'))
+									if (response.messages.length) {
+										var html = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>OK</strong>';
+										for (var i = 0; i < response.messages.length; i++) {
+											html += ' ' + response.messages[i].message;
+										}
+										html += '</div>';
+										$('#flashMessageContainer').empty().append(html);
+										//$('#flashMessageContainer').append(html);
+									}
 								} else {
 									tip.container.removeClass('loading');
 									//tip.container.append($('<span />').addClass('icon-exclamation-sign'));
@@ -86,8 +97,7 @@
 
 				// valide
 				if(
-					ev.keyCode >= 48
-					&& ev.keyCode <= 57
+					((ev.keyCode >= 48 && ev.keyCode <= 57) || ev.keyCode == 8 || ev.keyCode == 46 || ev.keyCode == 13)
 					&& Math.floor(cTip.tip.result.hostTeamGoals) == cTip.tip.result.hostTeamGoals 
 					&& $.isNumeric(cTip.tip.result.hostTeamGoals)
 					&& Math.floor(cTip.tip.result.guestTeamGoals) == cTip.tip.result.guestTeamGoals 
@@ -104,7 +114,19 @@
 							'success': function (response) {
 								if (response.success == true) {
 									tip.container.removeClass('loading');
-									tip.container.append($('<span />').addClass('icon-ok'));
+									$('span', tip.container).remove();
+									var result = tip.hostTip.val() + ':' + tip.guestTip.val();
+									tip.container.append($('<span />').addClass('icon-ok'))
+									if (response.messages.length) {
+										var html = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>OK</strong>';
+										for (var i = 0; i < response.messages.length; i++) {
+											html += ' ' + response.messages[i].message;
+										}
+										html += '</div>';
+										$('#flashMessageContainer').empty().append(html);
+										//$('#flashMessageContainer').append(html);
+									}
+									//tip.container.append($('<span />').text(result)).append($('<span />').addClass('icon-ok'))
 								} else {
 									tip.container.removeClass('loading');
 									if (response.messages.length) {

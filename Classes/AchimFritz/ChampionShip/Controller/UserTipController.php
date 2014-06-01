@@ -20,17 +20,6 @@ use \AchimFritz\ChampionShip\Domain\Model\Cup;
 class UserTipController extends TipController {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\User
-	 */
-	protected $user;
-
-	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
-
-	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
 	 */
@@ -47,17 +36,6 @@ class UserTipController extends TipController {
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
-	
-	/**
-	 * initializeView
-	 * 
-	 * @return void
-	 */
-	protected function initializeAction() {
-		parent::initializeAction();
-		$account = $this->securityContext->getAccount();
-		$this->user = $this->userRepository->findOneByAccount($account);
-	}
 
 }
 

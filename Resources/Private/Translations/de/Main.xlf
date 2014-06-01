@@ -2,6 +2,10 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 	<file original="" source-language="en" target-language="de" datatype="plaintext">
 		<body>
+			<trans-unit id="errorCode.1268676865">
+				<source>Passwords missmatch</source>
+				<target>Die Passwörter stimmen nicht überein</target>
+			</trans-unit>
 			<trans-unit id="errorCode.1268676866">
 				<source>Passwords missmatch</source>
 				<target>Die Passwörter stimmen nicht überein</target>
@@ -14,6 +18,22 @@
 				<source>Please specify a valid email address.</source>
 				<target>Die E-Mail Adresse ist ungültig</target>
 			</trans-unit>
+			<trans-unit id="profile">
+				<source>Profile</source>
+				<target>Meine Daten</target>
+			</trans-unit>
+			<trans-unit id="tipGroupResults.info">
+				<source>Tips of your Buddies</source>
+				<target>Hier die Tipps Deiner Kumpels</target>
+			</trans-unit>
+			<trans-unit id="banner">
+				<source>Tip until Kick Off</source>
+				<target>Tippen bis zum Anpfiff</target>
+			</trans-unit>
+			<trans-unit id="history">
+				<source>History</source>
+				<target>Historie</target>
+			</trans-unit>
 			<trans-unit id="info">
 				<source>Info</source>
 				<target>Info</target>
@@ -21,6 +41,22 @@
 			<trans-unit id="tipGroupName">
 				<source>Tip Group Name</source>
 				<target>Tip Gruppe Name</target>
+			</trans-unit>
+			<trans-unit id="flashMessage.tip.updated">
+				<source>Tip updated</source>
+				<target>Dein Tip wurde gespeichert</target> 
+			</trans-unit>
+			<trans-unit id="flashMessage.password.updated">
+				<source>Password updated</source>
+				<target>Dein Passwort wurde gespeichert</target> 
+			</trans-unit>
+			<trans-unit id="flashMessage.user.updated">
+				<source>User updated</source>
+				<target>Deine Daten wurden gespeichert</target> 
+			</trans-unit>
+			<trans-unit id="flashMessage.cannot.update.user">
+				<source>Cannot update User</source>
+				<target>Deine Daten konnten nicht gespeichert werden</target> 
 			</trans-unit>
 			<trans-unit id="flashMessage.chatEntry.created">
 				<source>chatEntry created</source>
@@ -40,7 +76,7 @@
 			</trans-unit>
 			<trans-unit id="flashMessage.registrationRequest.created">
 				<source>Registration created. Your Request will be proofed by Administrator. You will be notified</source>
-				<target>Deine Registrierungs Anfrage wurde erstellt und wird jetzt vom Administrator überprüft. Dein Account wird dann schnellstmöglichst freigeschaltet.</target>
+				<target>Deine Registrierungs-Anfrage wurde erstellt und wird jetzt vom Administrator überprüft. Dein Account wird dann schnellstmöglichst freigeschaltet.</target>
 			</trans-unit>
 			<trans-unit id="contactRequest.subject">
 				<source>Subject</source>

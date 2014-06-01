@@ -100,7 +100,7 @@ class RoundController extends AbstractActionController {
 		try {
 			$this->roundRepository->update($round);
 			$this->persistenceManager->persistAll();
-			$this->addOkMessage('round updatet');
+			$this->addOkMessage('round updated');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot update round');
 			$this->handleException($e);

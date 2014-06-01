@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -38,19 +39,33 @@
                   <div class="span8 cs-col cs-main">
 							<div class="row">
 								<div class="span5">
-									<h1>{recentCup.name}
-									</h1>
+									<h3><a href="/">www.tipptrip.de/{recentCup.name}</a>
+									</h3>
 								</div>
 								<div class="span2">
 										<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-											<h5>{title}</h5>
+											<f:then>
+												<h5>{title}</h5>
+											</f:then>
+											<f:else>
+												<h5>Tippen bis zum Anpfiff<h5>
+											</f:else>
 										</f:security.ifHasRole>
 								</div>
 							</div>
 							<div class="row cs-content">
-									<f:render partial="ValidationErrors" />
-									<f:render partial="FlashMessages" />
-									<f:render section="Content" />
+								<cs:ifIsRecentCup cup="{cup}">
+									<f:else>
+										<div class="alert alert-error">
+											<strong><f:translate id="history" /></strong> {cup.name}
+										</div>
+									</f:else>
+								</cs:ifIsRecentCup>
+								<f:render partial="ValidationErrors" />
+								<div id="flashMessageContainer">
+								<f:render partial="FlashMessages" />
+								</div>
+								<f:render section="Content" />
 							</div>
                   </div>
                   <div class="span2 cs-col cs-right">

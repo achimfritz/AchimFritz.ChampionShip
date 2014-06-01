@@ -16,24 +16,9 @@
       </li>
 		<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 			<li {cs:ifIsCurrentController(controllerName:'User', then: 'class= "cs-active"')}>
-				<f:link.action controller="User" action="index" arguments="{cup: recentCup, user:user}">Profile</f:link.action>
+				<f:link.action controller="User" action="index" arguments="{cup: recentCup, user:user}"><f:translate id="profile" /></f:link.action>
 			</li>
 		</f:security.ifHasRole>
-	</ul>
-</div>
-
-<div class="cs-container">
-	<h6><f:translate id="matches" /></h6>
-	<ul>
-		<li {cs:ifIsCurrentController(controllerName:'GroupMatch', then: 'class= "cs-active"')}>
-			<f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
-		</li>
-		<li {cs:ifIsCurrentController(controllerName:'GroupRound', then: 'class= "cs-active"')}>
-			<f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
-		</li>
-		<li {cs:ifIsCurrentController(controllerName:'KoRound', then: 'class= "cs-active"')}>
-		<f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
-		</li>
 	</ul>
 </div>
 
@@ -81,9 +66,24 @@
 </div>
 </f:security.ifAuthenticated>
 
+<div class="cs-container">
+	<h6><f:translate id="matches" /></h6>
+	<ul>
+		<li {cs:ifIsCurrentController(controllerName:'GroupMatch', then: 'class= "cs-active"')}>
+			<f:link.action action="index" controller="GroupMatch" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
+		</li>
+		<li {cs:ifIsCurrentController(controllerName:'GroupRound', then: 'class= "cs-active"')}>
+			<f:link.action action="index" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
+		</li>
+		<li {cs:ifIsCurrentController(controllerName:'KoRound', then: 'class= "cs-active"')}>
+		<f:link.action action="index" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
+		</li>
+	</ul>
+</div>
+
 
 <div class="cs-container">
-	<h6><f:translate id="cups" /></h6>
+	<h6><f:translate id="history" /></h6>
 	<f:if condition="{cups}">
 		<ul>
 			<f:for each="{cups}" as="cup">

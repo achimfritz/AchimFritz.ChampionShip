@@ -92,7 +92,7 @@ class CupController extends AbstractActionController {
 		try {
 			$this->cupRepository->update($cup);
 			$this->persistenceManager->persistAll();
-			$this->addOkMessage('cup updatet');
+			$this->addOkMessage('cup updated');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot update cup');
 			$this->handleException($e);
