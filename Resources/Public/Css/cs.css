@@ -224,21 +224,20 @@ span.cs-tip-2 {
 span.cs-tip-3 {
 	background-color:	#FFD700;
 }
-/*
-span.cs-tip-1 {
-	background-color: yellow;
+
+/* fixed sizes */
+
+th.cs-chatEntryDate {
+	width: 80px;
 }
-span.cs-tip-2 {
-	background-color: #84B222;
+
+input.cs-tipInput {
+	width: 17px;
 }
-span.cs-tip-3 {
-	background-color: #84B222;
-}
-*/
+
 
 
 /** admin **/
-
 
 .nav-pills > li > a {
 	background-color: #E6F8BF;
@@ -248,3 +247,5 @@ span.cs-tip-3 {
 	background-color: #ABE039;
 	color: #000000;
 }
+
+

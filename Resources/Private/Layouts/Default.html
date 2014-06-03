@@ -95,7 +95,7 @@
                      <f:render partial="FlashMessages" />
                      <f:render partial="LoginForm" />
                      <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-                        <f:render partial="Cup/New" />
+                        <f:render partial="Cup/New" arguments="{allTeams: allTeams}" />
                      </f:security.ifHasRole>
             </f:else>
          </f:if>

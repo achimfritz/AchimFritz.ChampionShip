@@ -51,7 +51,7 @@ class RankingsFactory {
 		$dql = 'SELECT user,sum(tip.points) AS points, count(tip) AS cnt 
 			FROM \AchimFritz\ChampionShip\Domain\Model\User user 
 			JOIN user.tips tip 
-			WHERE ' . $where . ' GROUP BY user ORDER BY points DESC';
+			WHERE ' . $where . ' GROUP BY user HAVING points > 0 ORDER BY points DESC';
 		if ($tipGroup !== NULL) {
 			$identifier = "'" . $this->persistenceManager->getIdentifierByObject($tipGroup) . "'";
 			$where .= ' AND tipGroup = ' . $identifier;

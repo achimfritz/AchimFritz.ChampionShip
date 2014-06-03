@@ -1,6 +1,6 @@
 AchimFritz:
   ChampionShip:
-    csStyle: 0
+    csStyle: 1
     mailTo: mailTo@domain.tld
     mailFrom: noreply@domain.tld
 TYPO3:

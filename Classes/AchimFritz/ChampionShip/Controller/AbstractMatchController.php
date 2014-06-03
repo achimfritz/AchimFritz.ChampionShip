@@ -62,6 +62,10 @@ class AbstractMatchController extends AbstractActionController {
 	 */
 	public function listAction(Cup $cup) {
 		$matches = $this->matchRepository->findByCup($cup);
+		if (count($matches) === 0) {
+			$this->addErrorMessage('no matches found, create a useable GroupRound');
+			$this->redirect('index', 'GroupRound');
+		}
 		$this->view->assign('matches', $matches);
 		$this->view->assign('allTeams', $this->teamRepository->findAll());
 		$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
