@@ -14,6 +14,10 @@
 				<source>The length of the text must be between {0} and {1} characters</source>
 				<target>Die Text-Länge muss zwischen {0} und {1} Zeichen sein.</target>
 			</trans-unit>
+			<trans-unit id="errorCode.1221560718">
+				<source>This property is required.</source>
+				<target>Nicht all Pflichtfelder ausgefüllt.</target>
+			</trans-unit>
 			<trans-unit id="errorCode.1221559976">
 				<source>Please specify a valid email address.</source>
 				<target>Die E-Mail Adresse ist ungültig</target>
@@ -40,7 +44,7 @@
 			</trans-unit>
 			<trans-unit id="tipGroupName">
 				<source>Tip Group Name</source>
-				<target>Tip Gruppe Name</target>
+				<target>Tipp Gruppen Name</target>
 			</trans-unit>
 			<trans-unit id="flashMessage.tip.updated">
 				<source>Tip updated</source>
