@@ -11,7 +11,7 @@ use TYPO3\Flow\Mvc\Controller\ActionController;
 use AchimFritz\ChampionShip\Domain\Model\ChatEntry;
 use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 
-class AbstractChatEntryController extends AbstractUserController {
+class AbstractChatEntryController extends AbstractTipGroupController {
 
 	/**
 	 * @var string

@@ -16,7 +16,7 @@ use AchimFritz\ChampionShip\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class AbstractRankingController extends AbstractUserController {
+class AbstractRankingController extends AbstractTipGroupController {
 
 	/**
 	 * @Flow\Inject

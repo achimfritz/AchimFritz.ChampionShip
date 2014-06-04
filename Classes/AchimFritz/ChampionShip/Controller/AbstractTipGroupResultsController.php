@@ -10,7 +10,7 @@ use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 use AchimFritz\ChampionShip\Domain\Model\User;
 
-class AbstractTipGroupResultsController extends AbstractUserController {
+class AbstractTipGroupResultsController extends AbstractTipGroupController {
 
 
 	/**

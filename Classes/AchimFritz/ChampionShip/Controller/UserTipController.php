@@ -31,11 +31,6 @@ class UserTipController extends TipController {
 	 */
 	protected $tipFactory;
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
 
 }
 

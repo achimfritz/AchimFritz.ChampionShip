@@ -15,7 +15,7 @@ use \AchimFritz\ChampionShip\Domain\Model\Result;
  *
  * @Flow\Scope("singleton")
  */
-class TipController extends AbstractUserController {
+class TipController extends AbstractActionController {
 
 	/**
 	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
