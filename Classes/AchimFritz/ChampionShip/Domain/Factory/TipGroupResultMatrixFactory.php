@@ -9,6 +9,7 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\Doctrine\QueryResult;
 use Doctrine\Common\Collections\ArrayCollection;
+use AchimFritz\ChampionShip\Domain\Model\Result;
 use AchimFritz\ChampionShip\Domain\Model\Tip;
 use AchimFritz\ChampionShip\Domain\Model\TipGroupResultMatrix;
 use AchimFritz\ChampionShip\Domain\Model\TipGroupResultMatrixRow;
@@ -34,7 +35,7 @@ class TipGroupResultMatrixFactory {
 		foreach ($users AS $user) {
 			foreach ($matches AS $match) {
 				foreach ($user->getTips() AS $tip) {
-					if ($tip->getMatch() === $match) {
+					if ($tip->getMatch() === $match && $tip->getResult() instanceof Result) {
 						$usersWithTips->add($user);
 						continue 3;
 					}
