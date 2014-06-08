@@ -16,7 +16,7 @@
 			</trans-unit>
 			<trans-unit id="errorCode.1221560718">
 				<source>This property is required.</source>
-				<target>Nicht all Pflichtfelder ausgefüllt.</target>
+				<target>Nicht alle Pflichtfelder ausgefüllt.</target>
 			</trans-unit>
 			<trans-unit id="errorCode.1221559976">
 				<source>Please specify a valid email address.</source>
