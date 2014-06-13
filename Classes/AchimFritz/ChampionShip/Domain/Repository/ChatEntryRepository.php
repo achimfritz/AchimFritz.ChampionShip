@@ -22,7 +22,7 @@ class ChatEntryRepository extends Repository {
 	 */
 	public function __construct() {
 		parent::__construct();
-		$this->setDefaultOrderings(array('creationDate' => QueryInterface::ORDER_ASCENDING));
+		$this->setDefaultOrderings(array('creationDate' => QueryInterface::ORDER_DESCENDING));
 	}
 
 
