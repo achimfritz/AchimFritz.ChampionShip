@@ -1,13 +1,18 @@
 {
-	"name":"achimFritz/championship",
-	"type":"typo3-flow-package",
-	"description":"",
-	"require":{
-		"typo3/flow":"*"
-	},
-	"autoload": {
-		"psr-0":{
-			"AchimFritz\\ChampionShip":"Classes"
-		}
-	}
+    "name": "achimFritz/championship",
+    "type": "typo3-flow-package",
+    "description": "",
+    "require": {
+        "typo3/flow": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "AchimFritz\\ChampionShip": "Classes"
+        }
+    },
+    "extra": {
+        "applied-flow-migrations": [
+            "TYPO3.FLOW3-201201261636"
+        ]
+    }
 }

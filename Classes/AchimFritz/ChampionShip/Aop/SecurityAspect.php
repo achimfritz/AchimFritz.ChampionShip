@@ -2,7 +2,7 @@
 namespace AchimFritz\ChampionShip\Aop;
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\AOP\JoinPointInterface;
+use TYPO3\Flow\Aop\JoinPointInterface;
 
 /**
  * SecurityAspect 
@@ -33,7 +33,7 @@ class SecurityAspect {
 	/**
 	 * tipIsEditable 
 	 * 
-	 * @param \TYPO3\Flow\AOP\JoinPointInterface $joinPoint
+	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
 	 * @throws Exception
 	 * @return void
 	 * @Flow\Before("method(AchimFritz\ChampionShip\Domain\Repository\TipRepository->update()) || method(AchimFritz\ChampionShip\Domain\Repository\TipRepository->add())")
@@ -48,7 +48,7 @@ class SecurityAspect {
 	/**
 	 * userIsEditable 
 	 * 
-	 * @param \TYPO3\Flow\AOP\JoinPointInterface $joinPoint
+	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
 	 * @throws Exception
 	 * @Flow\Before("method(AchimFritz\ChampionShip\Domain\Repository\UserRepository->update())")
 	 * @return void
