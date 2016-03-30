@@ -60,7 +60,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * findByTeam
 	 * 
 	 * @param Team $team
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findByTeam(Team $team) {
 		$query = $this->createQuery();
@@ -78,7 +78,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * 
 	 * @param Team $team
 	 * @param Team $otherTeam
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findOneByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup) {
 		return $this->findByTwoTeamsAndCup($team, $otherTeam, $cup)->getFirst();
@@ -90,7 +90,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * @param Team $team
 	 * @param Team $otherTeam
 	 * @param Cup $cup
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup) {
 		$query = $this->createQuery();
@@ -135,7 +135,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * 
 	 * @param Cup $cup 
 	 * @param integer $limit
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findLastByCup(Cup $cup, $limit = 2) {
 		$query = $this->createQuery();
@@ -156,7 +156,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * 
 	 * @param Cup $cup 
 	 * @param integer $limit
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findNextByCup(Cup $cup, $limit = 2) {
 		$query = $this->createQuery();

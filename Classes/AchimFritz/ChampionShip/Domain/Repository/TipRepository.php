@@ -38,7 +38,7 @@ class TipRepository extends Repository {
 	 * 
 	 * @param Cup $cup 
 	 * @param User $user
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findByUserInCup(User $user, Cup $cup) {
 		$query = $this->createQuery();
@@ -56,7 +56,7 @@ class TipRepository extends Repository {
 	 * findByCup 
 	 * 
 	 * @param Cup $cup 
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findByCup(Cup $cup) {
 		$query = $this->createQuery();
@@ -71,7 +71,7 @@ class TipRepository extends Repository {
 	 * 
 	 * @param User $user 
 	 * @param mixed $matches
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findByUserInMatches(User $user, $matches) {
 		$query = $this->createQuery();

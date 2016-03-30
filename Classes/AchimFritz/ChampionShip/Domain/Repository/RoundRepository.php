@@ -33,7 +33,7 @@ class RoundRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * 
 	 * @param string $name
 	 * @param Cup $cup
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findOneByNameAndCup($name, Cup $cup) {
 		$query = $this->createQuery();

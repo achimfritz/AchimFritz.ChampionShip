@@ -63,7 +63,7 @@ class AbstractActionController extends RestController {
 	protected $cup = NULL;
 
 	/**
-	 * @var \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @var \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	protected $cups = NULL;
 

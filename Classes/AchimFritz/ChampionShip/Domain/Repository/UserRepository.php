@@ -69,7 +69,7 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * findInTipGroup 
 	 * 
 	 * @param TipGroup $tipGroup 
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findInTipGroup(TipGroup $tipGroup) {
 		$query = $this->createQuery();

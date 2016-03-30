@@ -21,7 +21,7 @@ class TipGroupRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * findByUser 
 	 * 
 	 * @param User $user 
-	 * @return \TYPO3\FLOW3\Persistence\QueryResultInterface
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findByUser(User $user) {
 		$query = $this->createQuery();
