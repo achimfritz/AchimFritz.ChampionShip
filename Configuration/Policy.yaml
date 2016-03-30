@@ -1,70 +1,137 @@
-resources:
-  methods:
-    AchimFritz_ChampionShipChatEntryCreateMethods: 'method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->createAction()) || method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->listAction())'
-    AchimFritz_ChampionShipContactRequestCreateMethods: 'method(AchimFritz\ChampionShip\Controller\ContactRequestController->createAction())'
-    AchimFritz_ChampionShipRegistrationRequestCreateMethods: 'method(AchimFritz\ChampionShip\Controller\RegistrationRequestController->createAction())'
-    AchimFritz_ChampionShipTipMethods: 'method(AchimFritz\ChampionShip\Controller\.*TipController->update.*())'
-    AchimFritz_ChampionShipUserTipResource: 'method(AchimFritz\ChampionShip\Controller\.*TipController->listAction()) || method(AchimFritz\ChampionShip\Controller\.*TipController->showAction())'
-    AchimFritz_ChampionShipUpdateMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->updateAction())'
-    AchimFritz_ChampionShipDeleteMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->deleteAction())'
-    AchimFritz_ChampionShipCreateMethods: 'method(AchimFritz\ChampionShip\Controller\.*Controller->createAction())'
-    AchimFritz_ChampionShipMatchCreatorResource: 'method(AchimFritz\ChampionShip\Controller\.*MatchCreatorController->.*())'
-    AchimFritz_ChampionShipAdminTipResource: 'method(AchimFritz\ChampionShip\Controller\AdminTipController->.*())'
-    AchimFritz_ChampionShipRankingResource: 'method(AchimFritz\ChampionShip\Controller\.*RankingController->listAction()) || method(AchimFritz\ChampionShip\Controller\RankingController->showAction())'
-    AchimFritz_ChampionShipTipGroupResultsResource: 'method(AchimFritz\ChampionShip\Controller\TipGroup.*ResultsController->listAction()) || method(AchimFritz\ChampionShip\Controller\TipGroup.*ResultsController->showAction())'
-    AchimFritz_ChampionShipTipGroupResource: 'method(AchimFritz\ChampionShip\Controller\TipGroupController->listAction()) || method(AchimFritz\ChampionShip\Controller\TipGroupController->showAction())'
-    AchimFritz_ChampionShipUserResource: 'method(AchimFritz\ChampionShip\Controller\UserController->showAction()) || method(AchimFritz\ChampionShip\Controller\UserController->updateAction())'
-    AchimFritz_ChampionShipUserAdminResource: 'method(AchimFritz\ChampionShip\Controller\UserController->listAction())'
-    AchimFritz_ChampionShipPasswordResource: 'method(AchimFritz\ChampionShip\Controller\PasswordController->.*())'
-    AchimFritz_ChampionShipChatEntryResource: 'method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->showAction())'
 
-
+privilegeTargets:
+  TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    AchimFritz_ChampionShipChatEntryCreateMethods:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->createAction()) || method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->listAction())'
+    AchimFritz_ChampionShipContactRequestCreateMethods:
+      matcher: method(AchimFritz\ChampionShip\Controller\ContactRequestController->createAction())
+    AchimFritz_ChampionShipRegistrationRequestCreateMethods:
+      matcher: method(AchimFritz\ChampionShip\Controller\RegistrationRequestController->createAction())
+    AchimFritz_ChampionShipTipMethods:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\.*TipController->update.*())'
+    AchimFritz_ChampionShipUserTipResource:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\.*TipController->listAction()) || method(AchimFritz\ChampionShip\Controller\.*TipController->showAction())'
+    AchimFritz_ChampionShipUpdateMethods:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\.*Controller->updateAction())'
+    AchimFritz_ChampionShipDeleteMethods:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\.*Controller->deleteAction())'
+    AchimFritz_ChampionShipCreateMethods:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\.*Controller->createAction())'
+    AchimFritz_ChampionShipMatchCreatorResource:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\.*MatchCreatorController->.*())'
+    AchimFritz_ChampionShipAdminTipResource:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\AdminTipController->.*())'
+    AchimFritz_ChampionShipRankingResource:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\.*RankingController->listAction()) || method(AchimFritz\ChampionShip\Controller\RankingController->showAction())'
+    AchimFritz_ChampionShipTipGroupResultsResource:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\TipGroup.*ResultsController->listAction()) || method(AchimFritz\ChampionShip\Controller\TipGroup.*ResultsController->showAction())'
+    AchimFritz_ChampionShipTipGroupResource:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\TipGroupController->listAction()) || method(AchimFritz\ChampionShip\Controller\TipGroupController->showAction())'
+    AchimFritz_ChampionShipUserResource:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\UserController->showAction()) || method(AchimFritz\ChampionShip\Controller\UserController->updateAction())'
+    AchimFritz_ChampionShipUserAdminResource:
+      matcher: method(AchimFritz\ChampionShip\Controller\UserController->listAction())
+    AchimFritz_ChampionShipPasswordResource:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\PasswordController->.*())'
+    AchimFritz_ChampionShipChatEntryResource:
+      matcher: 'method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->showAction())'
 roles:
-  User: []
-#  Administrator: ['User']
-  Administrator: []
-
-acls:
-  Anonymous:
-    methods: 
-      AchimFritz_ChampionShipRegistrationRequestCreateMethods: GRANT
-      AchimFritz_ChampionShipContactRequestCreateMethods: GRANT
-
-  User:
-    methods: 
-      AchimFritz_ChampionShipTipMethods: GRANT
-      AchimFritz_ChampionShipRankingResource: GRANT
-      AchimFritz_ChampionShipTipGroupResultsResource: GRANT
-      AchimFritz_ChampionShipUserTipResource: GRANT
-      AchimFritz_ChampionShipUserResource: GRANT
-      AchimFritz_ChampionShipTipGroupResource: GRANT
-      AchimFritz_ChampionShipPasswordResource: GRANT
-      AchimFritz_ChampionShipAdminTipResource: DENY
-      AchimFritz_ChampionShipChatEntryResource: DENY 
-      AchimFritz_ChampionShipChatEntryCreateMethods: GRANT
-
-      AchimFritz_ChampionShipContactRequestCreateMethods: GRANT
-      AchimFritz_ChampionShipRegistrationRequestCreateMethods: GRANT
-
-  Administrator:
-    methods:
-      AchimFritz_ChampionShipTipMethods: GRANT
-      AchimFritz_ChampionShipRankingResource: GRANT
-      AchimFritz_ChampionShipTipGroupResultsResource: GRANT
-      AchimFritz_ChampionShipUserTipResource: GRANT
-      AchimFritz_ChampionShipUserResource: GRANT
-      AchimFritz_ChampionShipTipGroupResource: GRANT
-      AchimFritz_ChampionShipPasswordResource: GRANT
-
-      AchimFritz_ChampionShipUserAdminResource: GRANT
-      AchimFritz_ChampionShipUpdateMethods: GRANT
-      AchimFritz_ChampionShipDeleteMethods: GRANT
-      AchimFritz_ChampionShipCreateMethods: GRANT
-      AchimFritz_ChampionShipMatchCreatorResource: GRANT
-      AchimFritz_ChampionShipAdminTipResource: GRANT
-      AchimFritz_ChampionShipChatEntryCreateMethods: GRANT
-      AchimFritz_ChampionShipChatEntryResource: GRANT
-
-      AchimFritz_ChampionShipContactRequestCreateMethods: GRANT
-      AchimFritz_ChampionShipRegistrationRequestCreateMethods: GRANT
-
+  'AchimFritz.ChampionShip:User':
+    privileges:
+      -
+        privilegeTarget: AchimFritz_ChampionShipTipMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipRankingResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipTipGroupResultsResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipUserTipResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipUserResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipTipGroupResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipPasswordResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipAdminTipResource
+        permission: DENY
+      -
+        privilegeTarget: AchimFritz_ChampionShipChatEntryResource
+        permission: DENY
+      -
+        privilegeTarget: AchimFritz_ChampionShipChatEntryCreateMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipContactRequestCreateMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipRegistrationRequestCreateMethods
+        permission: GRANT
+  'AchimFritz.ChampionShip:Administrator':
+    privileges:
+      -
+        privilegeTarget: AchimFritz_ChampionShipTipMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipRankingResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipTipGroupResultsResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipUserTipResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipUserResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipTipGroupResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipPasswordResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipUserAdminResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipUpdateMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipDeleteMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipCreateMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipMatchCreatorResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipAdminTipResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipChatEntryCreateMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipChatEntryResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipContactRequestCreateMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipRegistrationRequestCreateMethods
+        permission: GRANT
+  'TYPO3.Flow:Anonymous':
+    privileges:
+      -
+        privilegeTarget: AchimFritz_ChampionShipRegistrationRequestCreateMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipContactRequestCreateMethods
+        permission: GRANT
