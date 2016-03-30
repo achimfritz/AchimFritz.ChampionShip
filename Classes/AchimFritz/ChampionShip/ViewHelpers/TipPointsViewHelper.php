@@ -23,6 +23,14 @@ use AchimFritz\ChampionShip\Domain\Model\Tip;
  */
 class TipPointsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
+	
+	/**
+	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
+	 * @see AbstractViewHelper::isOutputEscapingEnabled()
+	 * @var boolean
+	 */
+	protected $escapeOutput = FALSE;
+
 	/**
 	 * render
 	 *
