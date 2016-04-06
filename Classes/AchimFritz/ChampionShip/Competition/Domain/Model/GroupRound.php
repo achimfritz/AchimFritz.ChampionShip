@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Competition\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -18,7 +18,7 @@ class GroupRound extends Round {
 
 	/**
 	 * The group table
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupTableRow>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow>
 	 * @ORM\OneToMany(mappedBy="groupRound", cascade={"all"})
 	 * @ORM\OrderBy({"rank" = "ASC"})
 	 */
@@ -68,7 +68,7 @@ class GroupRound extends Round {
 	/**
 	 * getWinnerTeam
 	 * 
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Team
 	 */
 	public function getWinnerTeam() {
 		return $this->getTeamByRank(1);
@@ -77,7 +77,7 @@ class GroupRound extends Round {
 	/**
 	 * getSecondTeam
 	 * 
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Team
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Team
 	 */
 	public function getSecondTeam() {
 		return $this->getTeamByRank(2);
@@ -86,7 +86,7 @@ class GroupRound extends Round {
 	/**
 	 * Get the Group table's group table rows
 	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\GroupTableRow The Group table's group table rows
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow The Group table's group table rows
 	 */
 	public function getGroupTableRows() {
 		return $this->groupTableRows;
@@ -95,7 +95,7 @@ class GroupRound extends Round {
 	/**
 	 * Sets this Group table's group table rows
 	 *
-	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupTableRow>
+	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow>
 	 * @return void
 	 */
 	public function setGroupTableRows(\Doctrine\Common\Collections\Collection $groupTableRows) {
@@ -114,20 +114,20 @@ class GroupRound extends Round {
 	/**
 	 * removeGroupTableRow
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupTableRow $groupTableRow
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Competition\GroupTableRow $groupTableRow
 	 * @return void
 	 */
-	public function removeGroupTableRow(\AchimFritz\ChampionShip\Domain\Model\GroupTableRow $groupTableRow) {
+	public function removeGroupTableRow(\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow $groupTableRow) {
 		$this->groupTableRows->remove($groupTableRow);
 	}
 	
 	/**
 	 * Sets this Group table's group table rows
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupTableRow
+	 * @param \AchimFritz\ChampionShip\Domain\Model\Competition\GroupTableRow
 	 * @return void
 	 */
-	public function addGroupTableRow(\AchimFritz\ChampionShip\Domain\Model\GroupTableRow $groupTableRow) {
+	public function addGroupTableRow(\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow $groupTableRow) {
 		$this->groupTableRows->add($groupTableRow);
 	}
 	

@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use \AchimFritz\ChampionShip\Domain\Model\Ranking;
 
 /**
@@ -19,7 +19,7 @@ class TipCommandController extends \TYPO3\Flow\Cli\CommandController {
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
 	 */
 	protected $cupRepository;
 	
@@ -37,13 +37,13 @@ class TipCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\RoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\RoundRepository
 	 */
 	protected $roundRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupMatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository
 	 */
 	protected $groupMatchRepository;
 	

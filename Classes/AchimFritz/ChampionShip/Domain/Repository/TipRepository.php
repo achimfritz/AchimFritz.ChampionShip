@@ -7,10 +7,10 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\Match;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use AchimFritz\ChampionShip\Domain\Model\User;
-use AchimFritz\ChampionShip\Domain\Model\Cup;
-use AchimFritz\ChampionShip\Domain\Model\Round;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Round;
 use AchimFritz\ChampionShip\Domain\Model\Result;
 use AchimFritz\ChampionShip\Domain\Model\Tip;
 use \TYPO3\Flow\Persistence\Repository;

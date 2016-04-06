@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Repository;
+namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -17,13 +17,13 @@ class CupRepository extends \TYPO3\Flow\Persistence\Repository {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
 	 */
 	protected $matchRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\RoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\RoundRepository
 	 */
 	protected $roundRepository;
 

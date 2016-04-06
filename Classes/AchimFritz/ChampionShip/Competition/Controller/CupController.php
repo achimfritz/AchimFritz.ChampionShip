@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Competition\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,31 +7,31 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
  * Cup controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class CupController extends AbstractActionController {
+class CupController extends \AchimFritz\ChampionShip\Controller\AbstractActionController {
 
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupRoundRepository
 	 */
 	protected $groupRoundRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
 	 */
 	protected $koRoundRepository;
 		
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TeamRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamRepository
 	 */
 	protected $teamRepository;
 
@@ -54,7 +54,7 @@ class CupController extends AbstractActionController {
 	/**
 	 * Shows a single cup object
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup The cup to show
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup The cup to show
 	 * @return void
 	 */
 	public function showAction(Cup $cup) {
@@ -67,10 +67,10 @@ class CupController extends AbstractActionController {
 	/**
 	 * Adds the given new cup object to the cup repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup A new cup to add
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup A new cup to add
 	 * @return void
 	 */
-	public function createAction(Cup $cup) {		
+	public function createAction(Cup $cup) {
 		try {
 			$this->cupRepository->add($cup);
 			$this->persistenceManager->persistAll();
@@ -85,7 +85,7 @@ class CupController extends AbstractActionController {
 	/**
 	 * Updates the given cup object
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup The cup to update
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup The cup to update
 	 * @return void
 	 */
 	public function updateAction(Cup $cup) {
@@ -103,7 +103,7 @@ class CupController extends AbstractActionController {
 	/**
 	 * Removes the given cup object from the cup repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup The cup to delete
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup The cup to delete
 	 * @return void
 	 */
 	public function deleteAction(Cup $cup) {

@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Competition\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,8 +8,7 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-use \AchimFritz\ChampionShip\Domain\Model\GroupMatch;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 
@@ -21,7 +20,7 @@ class GroupRoundMatchController extends GroupMatchController {
 	/**
 	 * Adds the given new match object to the cup repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch $match
 	 * @return void
 	 */
 	public function createAction(GroupMatch $match) {
@@ -32,7 +31,7 @@ class GroupRoundMatchController extends GroupMatchController {
 	/**
 	 * deleteAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch $match
 	 * @return void
 	 */
 	public function deleteAction(GroupMatch $match) {
@@ -43,7 +42,7 @@ class GroupRoundMatchController extends GroupMatchController {
 	/**
 	 * updateAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch $match
 	 * @return void
 	 */
 	public function updateAction(GroupMatch $match) {

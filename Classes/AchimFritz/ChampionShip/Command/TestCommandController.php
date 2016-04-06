@@ -7,11 +7,11 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Domain\Model\KoMatch;
-use \AchimFritz\ChampionShip\Domain\Model\Team;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Team;
 use \AchimFritz\ChampionShip\Domain\Model\Result;
-use \AchimFritz\ChampionShip\Domain\Model\KoRound;
-use \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
 
 /**
  * Point Command
@@ -28,31 +28,31 @@ class TestCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
 	 */
 	protected $cupRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoMatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository
 	 */
 	protected $matchRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TeamsOfTwoMatchesMatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamsOfTwoMatchesMatchRepository
 	 */
 	protected $teamsOfTwoMatchesMatchRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TeamRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamRepository
 	 */
 	protected $teamRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\RoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\RoundRepository
 	 */
 	protected $roundRepository;
 

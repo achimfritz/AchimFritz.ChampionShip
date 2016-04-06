@@ -14,7 +14,7 @@ class TipGroupGroupRoundResultsController extends AbstractTipGroupResultsControl
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupMatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository
 	 */
 	protected $matchRepository;
 

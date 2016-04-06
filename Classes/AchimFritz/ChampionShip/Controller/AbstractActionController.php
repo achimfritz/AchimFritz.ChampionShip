@@ -10,7 +10,7 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Message;
 use TYPO3\Flow\Security\Account;
 use TYPO3\Flow\Mvc\Controller\RestController;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use \AchimFritz\ChampionShip\Domain\Model\User;
 
 
@@ -29,13 +29,13 @@ class AbstractActionController extends RestController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
 	 */
 	protected $cupRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
 	 */
 	protected $cupMatchRepository;
 

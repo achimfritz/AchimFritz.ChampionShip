@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Competition\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,21 +8,19 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-use \AchimFritz\ChampionShip\Domain\Model\Match;
-use \AchimFritz\ChampionShip\Domain\Model\KoRound;
-use \AchimFritz\ChampionShip\Domain\Model\GroupRound;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Match;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class AbstractMatchController extends AbstractActionController {
+class AbstractMatchController extends \AchimFritz\ChampionShip\Controller\AbstractActionController {
 		
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
 	 */
 	protected $matchRepository;
 
@@ -34,19 +32,19 @@ class AbstractMatchController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
 	 */
 	protected $koRoundRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupRoundRepository
 	 */
 	protected $groupRoundRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TeamRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamRepository
 	 */
 	protected $teamRepository;
 
@@ -58,7 +56,7 @@ class AbstractMatchController extends AbstractActionController {
 	/**
 	 * listAction
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup
 	 */
 	public function listAction(Cup $cup) {
 		$matches = $this->matchRepository->findByCup($cup);
@@ -76,7 +74,7 @@ class AbstractMatchController extends AbstractActionController {
 	/**
 	 * showAction
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
 	 */
 	public function showAction(Match $match) {
 		$this->view->assign('match', $match);
@@ -92,7 +90,7 @@ class AbstractMatchController extends AbstractActionController {
 	/**
 	 * updateMatch
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match The match to update
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match The match to update
 	 * @return void
 	 */
 	protected function updateMatch(Match $match) {
@@ -109,7 +107,7 @@ class AbstractMatchController extends AbstractActionController {
 	/**
 	 * deleteMatch
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match The match to update
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match The match to update
 	 * @return void
 	 */
 	protected function deleteMatch(Match $match) {
@@ -126,7 +124,7 @@ class AbstractMatchController extends AbstractActionController {
 	/**
 	 * createMatch
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
 	 * @return void
 	 */
 	protected function createMatch(Match $match) {

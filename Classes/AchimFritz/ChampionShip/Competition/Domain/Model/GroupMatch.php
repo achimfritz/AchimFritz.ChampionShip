@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Competition\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -17,21 +17,21 @@ use Doctrine\ORM\Mapping as ORM;
 class GroupMatch extends Match {
 	
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\GroupRound
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound
 	 * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $round;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\Team
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Team
 	 * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $hostTeam;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\Team
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Team
 	 * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */

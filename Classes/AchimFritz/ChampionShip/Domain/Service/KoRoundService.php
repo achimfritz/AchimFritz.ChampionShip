@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Domain\Service;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\KoRound;
+use AchimFritz\ChampionShip\Competition\Domain\Model\KoRound;
 use AchimFritz\ChampionShip\Domain\Model\FinalRound;
 
 

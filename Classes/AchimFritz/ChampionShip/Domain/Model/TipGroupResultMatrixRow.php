@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 class TipGroupResultMatrixRow {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\Match
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Match
 	 * @ORM\OneToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */
@@ -33,7 +33,7 @@ class TipGroupResultMatrixRow {
 	/**
 	 * setMatch
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match
 	 * @return void
 	 */
 	public function setMatch($match) {
@@ -43,7 +43,7 @@ class TipGroupResultMatrixRow {
 	/**
 	 * Get the Points's match
 	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Match The Points's match
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Match The Points's match
 	 */
 	public function getMatch() {
 		return $this->generalMatch;

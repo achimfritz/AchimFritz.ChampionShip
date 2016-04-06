@@ -14,7 +14,7 @@ class TipGroupKoRoundResultsController extends AbstractTipGroupResultsController
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoMatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository
 	 */
 	protected $matchRepository;
 

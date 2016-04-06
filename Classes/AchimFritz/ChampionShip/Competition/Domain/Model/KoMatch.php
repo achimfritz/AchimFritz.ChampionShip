@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Competition\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -17,20 +17,20 @@ use Doctrine\ORM\Mapping as ORM;
 class KoMatch extends Match {
 	
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\KoRound
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound
 	 * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $round;
 
    /**
-    * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch>
+    * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch>
 	 * @ORM\OneToMany(mappedBy="hostMatch", cascade={"all"})
     */
 	protected $childMatchHostMatches;
 
    /**
-    * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch>
+    * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch>
 	 * @ORM\OneToMany(mappedBy="guestMatch", cascade={"all"})
     */
 	protected $childMatchGuestMatches;

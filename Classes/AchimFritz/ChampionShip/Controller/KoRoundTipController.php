@@ -7,27 +7,25 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-
-use \AchimFritz\ChampionShip\Domain\Model\Round;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Round;
 
 /**
  * GroupRound controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class GroupRoundTipController extends UserTipController {
-	
+class KoRoundTipController extends UserTipController {
+
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
 	 */
 	protected $roundRepository;
 	
 	/**
 	 * showAction
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round
 	 */
 	public function listAction(Round $round = NULL) {
 		if ($round === NULL) {
@@ -41,6 +39,7 @@ class GroupRoundTipController extends UserTipController {
 		} else {
 			$this->addErrorMessage('no rounds found');
 		}
+
 	}
 
 

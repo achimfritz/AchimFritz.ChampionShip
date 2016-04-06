@@ -8,9 +8,9 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Domain\Model\Tip;
-use \AchimFritz\ChampionShip\Domain\Model\Match;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use \AchimFritz\ChampionShip\Domain\Model\User;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
  * Standard controller for the AchimFritz.ChampionShip package 
@@ -21,7 +21,7 @@ class UserTipController extends TipController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
 	 */
 	protected $matchRepository;
 

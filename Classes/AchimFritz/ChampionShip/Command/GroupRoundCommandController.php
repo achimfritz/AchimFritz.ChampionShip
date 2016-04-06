@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 
 /**
  * GroupRound command controller for the AchimFritz.ChampionShip package
@@ -18,13 +18,13 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupRoundRepository
 	 */
 	protected $groupRoundRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
 	 */
 	protected $matchRepository;
 	

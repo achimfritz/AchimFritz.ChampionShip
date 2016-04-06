@@ -6,3 +6,10 @@
     '@controller': 'Standard'
     '@action':     'index'
     '@format':     'html'
+
+-
+  name: 'default with action and format'
+  uriPattern: '{@package}/{@subpackage}/{@controller}/{@action}(.{@format})'
+  defaults:
+    '@format':     'html'
+  appendExceedingArguments: true

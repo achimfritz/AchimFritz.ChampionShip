@@ -7,11 +7,11 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\CrossGroupMatch;
-use AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch;
-use AchimFritz\ChampionShip\Domain\Model\KoMatch;
-use AchimFritz\ChampionShip\Domain\Model\Team;
-use AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupMatch;
+use AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
+use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 
 
 /**

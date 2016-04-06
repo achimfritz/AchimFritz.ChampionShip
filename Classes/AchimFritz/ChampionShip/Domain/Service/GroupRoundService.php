@@ -9,8 +9,8 @@ namespace AchimFritz\ChampionShip\Domain\Service;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\GroupTableRow;
 use AchimFritz\ChampionShip\Domain\Model\MatchParticipant;
-use AchimFritz\ChampionShip\Domain\Model\Match;
-use AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 
 
 /**

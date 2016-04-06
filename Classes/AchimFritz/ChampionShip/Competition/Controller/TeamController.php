@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Competition\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,24 +8,24 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-use AchimFritz\ChampionShip\Domain\Model\Team;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class TeamController extends AbstractActionController {
+class TeamController extends \AchimFritz\ChampionShip\Controller\AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TeamRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamRepository
 	 */
 	protected $teamRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
 	 */
 	protected $matchRepository;
 
@@ -46,7 +46,7 @@ class TeamController extends AbstractActionController {
 	/**
 	 * Shows a single team object
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Team $team The team to show
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Team $team The team to show
 	 * @return void
 	 */
 	public function showAction(Team $team) {
@@ -57,7 +57,7 @@ class TeamController extends AbstractActionController {
 	/**
 	 * Adds the given new team object to the team repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Team $team A new team to add
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Team $team A new team to add
 	 * @return void
 	 */
 	public function createAction(Team $team) {
@@ -76,7 +76,7 @@ class TeamController extends AbstractActionController {
 	/**
 	 * Updates the given team object
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Team $team The team to update
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Team $team The team to update
 	 * @return void
 	 */
 	public function updateAction(Team $team) {
@@ -94,7 +94,7 @@ class TeamController extends AbstractActionController {
 	/**
 	 * Removes the given team object from the team repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Team $team The team to delete
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Team $team The team to delete
 	 * @return void
 	 */
 	public function deleteAction(Team $team) {

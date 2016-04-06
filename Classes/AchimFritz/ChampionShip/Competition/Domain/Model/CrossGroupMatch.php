@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Competition\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,8 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
-use AchimFritz\ChampionShip\Domain\Model\GroupRound;
-use AchimFritz\ChampionShip\Domain\Model\Team;
+
 
 /**
  * A Match
@@ -19,7 +18,7 @@ use AchimFritz\ChampionShip\Domain\Model\Team;
 class CrossGroupMatch extends KoMatch {
 
    /**
-    * @var \AchimFritz\ChampionShip\Domain\Model\GroupRound
+    * @var \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound
     * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
     */
@@ -32,7 +31,7 @@ class CrossGroupMatch extends KoMatch {
    protected $hostGroupRank;
 
    /**
-    * @var \AchimFritz\ChampionShip\Domain\Model\GroupRound
+    * @var \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound
     * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
     */

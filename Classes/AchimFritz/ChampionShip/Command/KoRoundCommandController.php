@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
  * GroupRound command controller for the AchimFritz.ChampionShip package
@@ -24,7 +24,7 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
 	 */
 	protected $koRoundRepository;
 
@@ -36,13 +36,13 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupRoundRepository
 	 */
 	protected $groupRoundRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
 	 */
 	protected $cupRepository;
 	
@@ -106,10 +106,10 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	/**
 	 * removeParents
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $koRound
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound $koRound
 	 * @return void
 	 */
-	protected function removeParent(\AchimFritz\ChampionShip\Domain\Model\KoRound $koRound = NULL) {
+	protected function removeParent(\AchimFritz\ChampionShip\Competition\Domain\Model\KoRound $koRound = NULL) {
 		if ($koRound !== NULL) {
 			$this->outputLine('removed ' . $koRound->getName());
 			$this->koRoundRepository->remove($koRound);

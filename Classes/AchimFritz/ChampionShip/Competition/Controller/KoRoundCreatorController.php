@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Competition\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,19 +7,19 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\Cup;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class KoRoundCreatorController extends AbstractActionController {
+class KoRoundCreatorController extends \AchimFritz\ChampionShip\Controller\AbstractActionController {
 
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
 	 */
 	protected $koRoundRepository;
 
@@ -31,7 +31,7 @@ class KoRoundCreatorController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupRoundRepository
 	 */
 	protected $groupRoundRepository;
 
@@ -43,7 +43,7 @@ class KoRoundCreatorController extends AbstractActionController {
 	/**
 	 * createAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup
 	 * @return void
 	 */
 	public function createAction(Cup $cup) {

@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Competition\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,8 +8,6 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
-use AchimFritz\ChampionShip\Domain\Model\Match;
-use AchimFritz\ChampionShip\Domain\Model\Team;
 
 /**
  * A Round
@@ -28,13 +26,13 @@ class Round {
 
 	/**
 	 * The teams
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Team>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\Team>
 	 * @ORM\ManyToMany
 	 */
 	protected $teams;
 	
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Match>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\Match>
 	 * @ORM\OneToMany(mappedBy="round", cascade={"all"})
 	 * @ORM\OrderBy({"startDate" = "ASC"})
 	 */
@@ -42,7 +40,7 @@ class Round {
 
 	/**
 	 * The cup
-	 * @var \AchimFritz\ChampionShip\Domain\Model\Cup
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Cup
 	 * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */
@@ -59,7 +57,7 @@ class Round {
 	/**
 	 * addGeneralMatch
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match
 	 * @return void
 	 */
 	public function addGeneralMatch(Match $generalMatch) {
@@ -70,7 +68,7 @@ class Round {
 	/**
 	 * setGeneralMatches
 	 * 
-	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Match>
+	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\Match>
 	 */
 	public function getGeneralMatches() {
 		return $this->generalMatches;
@@ -98,7 +96,7 @@ class Round {
 	/**
 	 * Get the Round's teams
 	 *
-	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Team> The Round's teams
+	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\Team> The Round's teams
 	 */
 	public function getTeams() {
 		return $this->teams;
@@ -107,7 +105,7 @@ class Round {
 	/**
 	 * Sets this Round's teams
 	 *
-	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Team> $teams The Round's teams
+	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\Team> $teams The Round's teams
 	 * @return void
 	 */
 	public function setTeams(\Doctrine\Common\Collections\Collection $teams) {
@@ -143,7 +141,7 @@ class Round {
 	/**
 	 * Get the Round's cup
 	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Cup The Round's cup
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Cup The Round's cup
 	 */
 	public function getCup() {
 		return $this->cup;
@@ -152,7 +150,7 @@ class Round {
 	/**
 	 * Sets this Round's cup
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $cup The Round's cup
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup The Round's cup
 	 * @return void
 	 */
 	public function setCup(\AchimFritz\ChampionShip\Domain\Model\Cup $cup) {

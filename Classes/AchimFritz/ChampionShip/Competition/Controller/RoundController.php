@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Competition\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,31 +8,31 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-use \AchimFritz\ChampionShip\Domain\Model\Round;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Round;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
  * GroupRound controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class RoundController extends AbstractActionController {
+class RoundController extends \AchimFritz\ChampionShip\Controller\AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\RoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\RoundRepository
 	 */
 	protected $roundRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupRoundRepository
 	 */
 	protected $groupRoundRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
 	 */
 	protected $koRoundRepository;
 	
@@ -63,7 +63,7 @@ class RoundController extends AbstractActionController {
 	/**
 	 * showAction
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round
 	 */
 	public function showAction(Round $round) {
       $cup = $round->getCup();
@@ -76,7 +76,7 @@ class RoundController extends AbstractActionController {
 	/**
 	 * Adds the given new group round object to the group round repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round
 	 * @return void
 	 */
 	protected function createRound(Round $round) {
@@ -93,7 +93,7 @@ class RoundController extends AbstractActionController {
 	/**
 	 * Updates the given group round object
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round The group round to update
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round The group round to update
 	 * @return void
 	 */
 	protected function updateRound(Round $round) {
@@ -110,7 +110,7 @@ class RoundController extends AbstractActionController {
 	/**
 	 * Removes the given group round object from the group round repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round The group round to delete
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round The group round to delete
 	 * @return void
 	 */
 	protected function deleteRound(Round $round) {

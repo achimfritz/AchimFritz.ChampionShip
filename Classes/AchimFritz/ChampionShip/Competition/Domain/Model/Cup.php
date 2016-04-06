@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Competition\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
-use AchimFritz\ChampionShip\Domain\Model\Team;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
 
 /**
  * A Cup
@@ -46,13 +46,13 @@ class Cup {
 
 	/**
 	 * The teams
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Team>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\Team>
 	 * @ORM\ManyToMany
 	 */
 	protected $teams;
 
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Round>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\Round>
 	 * @ORM\OneToMany(mappedBy="cup", cascade={"all"})
 	 */
 	protected $rounds;

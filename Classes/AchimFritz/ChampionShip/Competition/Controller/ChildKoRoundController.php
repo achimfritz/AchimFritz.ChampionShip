@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Competition\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,8 +8,7 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-use \AchimFritz\ChampionShip\Domain\Model\ChildKoRound;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound;
 
 /**
  * ChildKoRound controller for the AchimFritz.ChampionShip package 
@@ -20,14 +19,14 @@ class ChildKoRoundController extends RoundController {
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\KoRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
 	 */
 	protected $roundRepository;
 	
 	/**
 	 * createAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ChildKoRound $round
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound $round
 	 * @return void
 	 */
 	public function createAction(ChildKoRound $round) {
@@ -38,7 +37,7 @@ class ChildKoRoundController extends RoundController {
 	/**
 	 * updateAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ChildKoRound $round
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound $round
 	 * @return void
 	 */
 	public function updateAction(ChildKoRound $round) {
@@ -49,7 +48,7 @@ class ChildKoRoundController extends RoundController {
 	/**
 	 * deleteAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ChildKoRound $round
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound $round
 	 * @return void
 	 */
 	public function deleteAction(ChildKoRound $round) {

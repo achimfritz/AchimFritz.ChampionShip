@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Repository;
+namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,10 +7,10 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 use AchimFritz\ChampionShip\Domain\Model\Result;
-use AchimFritz\ChampionShip\Domain\Model\KoMatch;
-use AchimFritz\ChampionShip\Domain\Model\GroupMatch;
+use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
 
 /**
  * A repository for Matches
@@ -27,13 +27,13 @@ class GroupMatchRepository extends MatchRepository {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CrossGroupMatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupMatchRepository
 	 */
 	protected $koMatchRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupRoundRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupRoundRepository
 	 */
 	protected $roundRepository;
 

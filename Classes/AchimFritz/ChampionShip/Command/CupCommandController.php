@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
  * Cup Command Controller for the AchimFritz.ChampionShip package
@@ -18,7 +18,7 @@ class CupCommandController extends \TYPO3\Flow\Cli\CommandController {
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
 	 */
 	protected $cupRepository;
 	
@@ -49,7 +49,7 @@ class CupCommandController extends \TYPO3\Flow\Cli\CommandController {
 	/**
 	 * clean
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Cup $newCup A new cup to add
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $newCup A new cup to add
 	 * @return void
 	 */
 	public function createCommand(Cup $cup) {

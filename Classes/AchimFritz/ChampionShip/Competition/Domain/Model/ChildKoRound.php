@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Competition\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -18,7 +18,7 @@ class ChildKoRound extends KoRound {
 
 	/**
 	 * The parent round
-	 * @var \AchimFritz\ChampionShip\Domain\Model\KoRound
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound
 	 * @ORM\ManyToOne
 	 */
 	protected $parentRound;
@@ -26,7 +26,7 @@ class ChildKoRound extends KoRound {
 	/**
 	 * Get the Ko round's parent round
 	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\KoRound The Ko round's parent round
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound The Ko round's parent round
 	 */
 	public function getParentRound() {
 		return $this->parentRound;
@@ -35,7 +35,7 @@ class ChildKoRound extends KoRound {
 	/**
 	 * Sets this Ko round's parent round
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $parentRound The Ko round's parent round
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound $parentRound The Ko round's parent round
 	 * @return void
 	 */
 	public function setParentRound(KoRound $parentRound) {

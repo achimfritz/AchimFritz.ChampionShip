@@ -8,8 +8,8 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\GroupTableRow;
-use AchimFritz\ChampionShip\Domain\Model\Team;
-use AchimFritz\ChampionShip\Domain\Model\Match;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use Doctrine\Common\Collections\Collection;
 
 

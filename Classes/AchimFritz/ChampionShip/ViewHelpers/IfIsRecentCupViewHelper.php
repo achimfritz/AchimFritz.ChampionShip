@@ -12,7 +12,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\Cup;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 
 /**
@@ -25,7 +25,7 @@ class IfIsRecentCupViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractCondi
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
 	 */
 	protected $cupRepository;
 

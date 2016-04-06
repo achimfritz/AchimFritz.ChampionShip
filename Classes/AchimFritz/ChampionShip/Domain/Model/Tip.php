@@ -26,7 +26,7 @@ class Tip {
 
 	/**
 	 * The match
-	 * @var \AchimFritz\ChampionShip\Domain\Model\Match
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Match
 	 * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */
@@ -34,7 +34,7 @@ class Tip {
 
 	/**
 	 * The restult
-	 * @var \AchimFritz\ChampionShip\Domain\Model\Result
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Result
 	 * @ORM\OneToOne
 	 */
 	protected $result;
@@ -67,7 +67,7 @@ class Tip {
 	/**
 	 * Get the Points's match
 	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Match The Points's match
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Match The Points's match
 	 */
 	public function getMatch() {
 		return $this->generalMatch;
@@ -76,17 +76,17 @@ class Tip {
 	/**
 	 * Sets this Points's match
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $abstractMatch The Points's match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $abstractMatch The Points's match
 	 * @return void
 	 */
-	public function setMatch(\AchimFritz\ChampionShip\Domain\Model\Match $match) {
+	public function setMatch(\AchimFritz\ChampionShip\Competition\Domain\Model\Match $match) {
 		$this->generalMatch = $match;
 	}
 
 	/**
 	 * Get the Tip's result
 	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Result The Tip's result
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Result The Tip's result
 	 */
 	public function getResult() {
 		return $this->result;
@@ -95,10 +95,10 @@ class Tip {
 	/**
 	 * Sets this Tip's restult
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Result $result The Tip's restult
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Result $result The Tip's restult
 	 * @return void
 	 */
-	public function setResult(\AchimFritz\ChampionShip\Domain\Model\Result $result) {
+	public function setResult(\AchimFritz\ChampionShip\Competition\Domain\Model\Result $result) {
 		$this->result = $result;
 	}
 

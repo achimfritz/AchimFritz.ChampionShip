@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Repository;
+namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,8 +7,8 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch;
-use AchimFritz\ChampionShip\Domain\Model\KoMatch;
+use AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
+use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
 
 /**
  * A repository for Matches

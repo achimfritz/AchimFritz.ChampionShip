@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Repository;
+namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\GroupRound;
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 
 /**
  * A repository for Matches
@@ -19,9 +19,9 @@ class CrossGroupMatchRepository extends KoMatchRepository {
 	/**
 	 * findOneInGroupRoundWithRank
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound $groupRound
 	 * @param int $rank
-	 * @return \AchimFritz\ChampionShip\Domain\Model\KoMatch
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch
 	 */
 	public function findOneInGroupRoundWithRank(GroupRound $groupRound, $rank) {
 		$query = $this->createQuery();

@@ -12,9 +12,9 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\Match;
-use AchimFritz\ChampionShip\Domain\Model\KoMatch;
-use AchimFritz\ChampionShip\Domain\Model\GroupMatch;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
+use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
 use AchimFritz\ChampionShip\Domain\Model\Tip;
 
 

@@ -7,8 +7,8 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
-use \AchimFritz\ChampionShip\Domain\Model\GroupMatch;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
 
 /**
  * GroupMatch Command Controller for the AchimFritz.ChampionShip package
@@ -19,13 +19,13 @@ class GroupMatchCommandController extends \TYPO3\Flow\Cli\CommandController {
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
 	 */
 	protected $cupRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\GroupMatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository
 	 */
 	protected $groupMatchRepository;
 	
@@ -57,7 +57,7 @@ class GroupMatchCommandController extends \TYPO3\Flow\Cli\CommandController {
 	/**
 	 * clean
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupMatch $newGroupMatch A new groupMatch to add
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch $newGroupMatch A new groupMatch to add
 	 * @return void
 	 */
 	public function createCommand(GroupMatch $groupMatch) {

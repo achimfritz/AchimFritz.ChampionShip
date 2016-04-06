@@ -8,10 +8,10 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Account;
-use AchimFritz\ChampionShip\Domain\Model\Cup;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Domain\Model\User;
 use AchimFritz\ChampionShip\Domain\Model\Tip;
-use AchimFritz\ChampionShip\Domain\Model\Match;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -28,13 +28,13 @@ class TipFactory {
 	protected $tipRepository;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\MatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
 	 * @Flow\Inject
 	 */
 	protected $matchRepository;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\CupRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
 	 * @Flow\Inject
 	 */
 	protected $cupRepository;

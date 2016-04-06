@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Competition\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,8 +7,7 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Domain\Model\Cup;
-use \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 
@@ -20,7 +19,7 @@ class TeamsOfTwoMatchesMatchController extends KoMatchController {
 	/**
 	 * Adds the given new match object to the cup repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch $match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch $match
 	 * @return void
 	 */
 	public function createAction(TeamsOfTwoMatchesMatch $match) {
@@ -31,7 +30,7 @@ class TeamsOfTwoMatchesMatchController extends KoMatchController {
 	/**
 	 * deleteAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch $match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch $match
 	 * @return void
 	 */
 	public function deleteAction(TeamsOfTwoMatchesMatch $match) {
@@ -42,7 +41,7 @@ class TeamsOfTwoMatchesMatchController extends KoMatchController {
 	/**
 	 * updateAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TeamsOfTwoMatchesMatch $match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch $match
 	 * @return void
 	 */
 	public function updateAction(TeamsOfTwoMatchesMatch $match) {
