@@ -24,7 +24,7 @@ class StandardController extends AbstractActionController {
 	 */
 	public function listAction() {
 		$cup = $this->cupRepository->findOneRecent();
-		$this->redirect('index', 'Cup', NULL, array('cup' => $cup));
+		$this->redirect('index', 'Cup', 'AchimFritz.ChampionShip\\Competition', array('cup' => $cup));
 
 	}
 
