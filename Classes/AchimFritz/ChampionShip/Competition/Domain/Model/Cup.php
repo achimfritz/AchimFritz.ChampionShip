@@ -8,7 +8,6 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Model;
 
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
-use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
 
 /**
  * A Cup
@@ -17,12 +16,12 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
  */
 class Cup {
 
-	const GROUPTABLE_DEFAULT_POLICY = '\AchimFritz\ChampionShip\Domain\Policy\GroupTable\DefaultPolicy';
-	const GROUPTABLE_FIFA_POINT_EQUALITY_POLICY = '\AchimFritz\ChampionShip\Domain\Policy\GroupTable\FifaPointEqualityPolicy';
-	const GROUPTABLE_UEFA_POINT_EQUALITY_POLICY = '\AchimFritz\ChampionShip\Domain\Policy\GroupTable\UefaPointEqualityPolicy';
+	const GROUPTABLE_DEFAULT_POLICY = '\AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable\DefaultPolicy';
+	const GROUPTABLE_FIFA_POINT_EQUALITY_POLICY = '\AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable\FifaPointEqualityPolicy';
+	const GROUPTABLE_UEFA_POINT_EQUALITY_POLICY = '\AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable\UefaPointEqualityPolicy';
 
-	const TIP_POINTS_TWO_ONE_POLICY = '\AchimFritz\ChampionShip\Domain\Policy\TipPoints\TwoOnePolicy';
-	const TIP_POINTS_THREE_ONE_POLICY = '\AchimFritz\ChampionShip\Domain\Policy\TipPoints\ThreeOnePolicy';
+	const TIP_POINTS_TWO_ONE_POLICY = '\AchimFritz\ChampionShip\Competition\Domain\Policy\TipPoints\TwoOnePolicy';
+	const TIP_POINTS_THREE_ONE_POLICY = '\AchimFritz\ChampionShip\Competition\Domain\Policy\TipPoints\ThreeOnePolicy';
 
 	/**
 	 * @var string

@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\GroupTableRow;
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow;
 
 
 /**

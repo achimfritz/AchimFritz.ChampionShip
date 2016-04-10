@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Tip\Domain\Policy\TipPoints;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
-use AchimFritz\ChampionShip\Domain\Model\Result;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Result;
 
 /**
  * TipPolicy

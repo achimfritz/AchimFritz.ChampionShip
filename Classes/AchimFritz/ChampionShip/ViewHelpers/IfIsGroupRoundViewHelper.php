@@ -27,7 +27,7 @@ class IfIsGroupRoundViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractCond
 	/**
 	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Round $round
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round
 	 * @return string the rendered string
 	 */
 	public function render(Round $round) {	

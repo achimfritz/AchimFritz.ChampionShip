@@ -60,7 +60,7 @@ class Tip {
 	 * @param \AchimFritz\ChampionShip\User\Domain\Model\User $user The Tip's user
 	 * @return void
 	 */
-	public function setUser(\AchimFritz\ChampionShip\Domain\Model\User $user) {
+	public function setUser(\AchimFritz\ChampionShip\User\Domain\Model\User $user) {
 		$this->user = $user;
 	}
 

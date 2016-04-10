@@ -31,7 +31,7 @@ class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractCon
 	/**
 	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip $tip
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\Tip $tip
 	 * @return string the rendered string
 	 */
 	public function render(Tip $tip = NULL) {

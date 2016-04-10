@@ -23,8 +23,8 @@ class TipGroupResultMatrixFactory {
 	/**
 	 * create 
 	 * 
-	 * @param QueryResult<\AchimFritz\ChampionShip\Domain\Model\User>
-	 * @param QueryResult<\AchimFritz\ChampionShip\Domain\Model\Match>
+	 * @param QueryResult<\AchimFritz\ChampionShip\User\Domain\Model\User>
+	 * @param QueryResult<\AchimFritz\ChampionShip\Competition\Domain\Model\Match>
 	 * @return TipGroupResultMatrix
 	 */
 	public function create(QueryResult $users, QueryResult $matches) {

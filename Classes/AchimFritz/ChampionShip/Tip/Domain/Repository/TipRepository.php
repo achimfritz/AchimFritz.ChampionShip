@@ -11,7 +11,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Round;
-use AchimFritz\ChampionShip\Domain\Model\Result;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Result;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 use \TYPO3\Flow\Persistence\Repository;
 use \TYPO3\Flow\Persistence\QueryInterface;

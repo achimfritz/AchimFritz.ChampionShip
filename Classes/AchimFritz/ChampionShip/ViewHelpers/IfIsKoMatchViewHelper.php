@@ -27,7 +27,7 @@ class IfIsKoMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditi
 	/**
 	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
 	 * @return string the rendered string
 	 */
 	public function render(Match $match) {	

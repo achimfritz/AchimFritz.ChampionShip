@@ -54,7 +54,7 @@ class UserController extends AbstractActionController {
 	/**
 	 * Shows a single user object
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user The user to show
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\User $user The user to show
 	 * @return void
 	 */
 	public function showAction(User $user) {
@@ -65,7 +65,7 @@ class UserController extends AbstractActionController {
 	/**
 	 * Adds the given new user object to the user repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user A new user to add
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\User $user A new user to add
 	 * @return void
 	 */
 	public function createAction(User $user) {
@@ -87,7 +87,7 @@ class UserController extends AbstractActionController {
 	/**
 	 * Updates the given user object
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user The user to update
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\User $user The user to update
 	 * @return void
 	 */
 	public function updateAction(User $user) {
@@ -105,7 +105,7 @@ class UserController extends AbstractActionController {
 	/**
 	 * Removes the given user object from the user repository
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user The user to delete
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\User $user The user to delete
 	 * @return void
 	 */
 	public function deleteAction(User $user) {

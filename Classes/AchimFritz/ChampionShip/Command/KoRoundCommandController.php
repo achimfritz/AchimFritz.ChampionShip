@@ -118,25 +118,6 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 		}
 	}
 
-	/**
-	 * remove
-	 *
-	 * @return void
-	 */
-	public function removeCommand() {
-/*
-		$finalRounds = $this->finalRoundRepository->findAll();
-		$finalRound = $finalRounds->current();
-		if ($finalRound instanceof \AchimFritz\ChampionShip\Domain\Model\FinalRound) {
-			$this->finalRoundRepository->remove($finalRound);
-			$this->persistenceManager->persistAll();
-			$this->outputLine('removed ' . $finalRound->getName());
-			$this->removeParent($finalRound->getParentRound());
-		} else {
-			$this->outputLine('no final rounds found');
-		}
-*/
-	}
 
 }
 

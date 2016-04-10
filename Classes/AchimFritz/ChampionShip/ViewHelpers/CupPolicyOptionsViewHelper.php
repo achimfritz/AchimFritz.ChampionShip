@@ -38,7 +38,7 @@ class CupPolicyOptionsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractVi
 	 * @return array
 	 */
 	public function render($prefix) {
-		$classReflection = new ClassReflection('AchimFritz\ChampionShip\Domain\Model\Cup');
+		$classReflection = new ClassReflection('AchimFritz\ChampionShip\Competition\Domain\Model\Cup');
 		$constants = $classReflection->getConstants();
 		$options = array();
 		foreach ($constants AS $name => $val) {

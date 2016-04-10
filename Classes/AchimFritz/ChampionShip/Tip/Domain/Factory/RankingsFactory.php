@@ -49,14 +49,14 @@ class RankingsFactory {
 		}
 		$where = 'tip.generalMatch IN (' . implode(',', $identifiers) . ')';
 		$dql = 'SELECT user,sum(tip.points) AS points, count(tip) AS cnt 
-			FROM \AchimFritz\ChampionShip\Domain\Model\User user 
+			FROM \AchimFritz\ChampionShip\User\Domain\Model\User user
 			JOIN user.tips tip 
 			WHERE ' . $where . ' GROUP BY user HAVING points > 0 ORDER BY points DESC';
 		if ($tipGroup !== NULL) {
 			$identifier = "'" . $this->persistenceManager->getIdentifierByObject($tipGroup) . "'";
 			$where .= ' AND tipGroup = ' . $identifier;
 			$dql = 'SELECT user,sum(tip.points) AS points, count(tip) AS cnt 
-				FROM \AchimFritz\ChampionShip\Domain\Model\User user 
+				FROM \AchimFritz\ChampionShip\User\Domain\Model\User user
 				JOIN user.tips tip 
 				JOIN user.tipGroups tipGroup
 				WHERE ' . $where . ' GROUP BY user ORDER BY points DESC';

@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\GroupTableRow;
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -135,9 +135,9 @@ abstract class AbstractPointEqualityPolicy {
    /**
     * updateTable
     * 
-    * @param array<\AchimFritz\ChampionShip\Domain\Model\GroupTableRow>
-	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupMatch>
-    * @return array<\AchimFritz\ChampionShip\Domain\Model\GroupTableRow>
+    * @param array<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow>
+	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch>
+    * @return array<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow>
     */
    public function updateTable(array $rows, Collection $matches) {
 		$first = $matches->first();

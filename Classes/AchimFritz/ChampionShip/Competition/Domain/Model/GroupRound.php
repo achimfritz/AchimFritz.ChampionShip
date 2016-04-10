@@ -53,7 +53,7 @@ class GroupRound extends Round {
 	 * getTeamByRank
 	 * 
 	 * @param integer $rank
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Team|NULL
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Team|NULL
 	 */
 	public function getTeamByRank($rank) {
 		$groupTableRows = $this->getGroupTableRows();
@@ -114,7 +114,7 @@ class GroupRound extends Round {
 	/**
 	 * removeGroupTableRow
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Competition\GroupTableRow $groupTableRow
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow $groupTableRow
 	 * @return void
 	 */
 	public function removeGroupTableRow(\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow $groupTableRow) {
@@ -124,7 +124,7 @@ class GroupRound extends Round {
 	/**
 	 * Sets this Group table's group table rows
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Competition\GroupTableRow
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow
 	 * @return void
 	 */
 	public function addGroupTableRow(\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow $groupTableRow) {

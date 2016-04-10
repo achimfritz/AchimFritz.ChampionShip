@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
-use AchimFritz\ChampionShip\Domain\Model\Result;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Result;
 
 /**
  * A repository for Matches

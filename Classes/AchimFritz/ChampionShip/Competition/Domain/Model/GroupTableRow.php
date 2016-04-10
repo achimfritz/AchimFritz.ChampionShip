@@ -75,7 +75,7 @@ class GroupTableRow {
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound
 	 * @return void
 	 */
-	public function setGroupRound(\AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound) {
+	public function setGroupRound(\AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound $groupRound) {
 		$this->groupRound = $groupRound;
 	}
 
@@ -85,7 +85,7 @@ class GroupTableRow {
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Team The Group table row's team
 	 * @return void
 	 */
-	public function setTeam(\AchimFritz\ChampionShip\Domain\Model\Team $team) {
+	public function setTeam(\AchimFritz\ChampionShip\Competition\Domain\Model\Team $team) {
 		$this->team = $team;
 	}
 

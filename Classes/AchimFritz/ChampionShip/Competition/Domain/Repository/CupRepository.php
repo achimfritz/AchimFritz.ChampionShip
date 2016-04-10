@@ -40,7 +40,7 @@ class CupRepository extends \TYPO3\Flow\Persistence\Repository {
    /**
     * findOneActual 
     * 
-    * @return \AchimFritz\ChampionShip\Domain\Model\Cup
+    * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Cup
     */
 	public function findOneRecent() {
 		$query = $this->createQuery();

@@ -153,7 +153,7 @@ class Round {
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup The Round's cup
 	 * @return void
 	 */
-	public function setCup(\AchimFritz\ChampionShip\Domain\Model\Cup $cup) {
+	public function setCup(\AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup) {
 		$this->cup = $cup;
 	}
 

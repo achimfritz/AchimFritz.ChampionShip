@@ -34,7 +34,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 		if ($originalRequest !== NULL) {
 			$this->redirectToRequest($originalRequest);
 		} else {
-			$this->redirect('index', 'Standard');
+			$this->redirect('index', 'Standard', 'AchimFritz.ChampionShip\\Generic');
 		}
 	}
 	
@@ -49,7 +49,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 		parent::logoutAction();
 		$message = 'logged out';
 		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
-		$this->redirect('index', 'Standard');
+		$this->redirect('index', 'Standard', 'AchimFritz.ChampionShip\\Generic');
 	}
 	
 	/**
@@ -73,7 +73,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	 * @return void
 	 */
 	protected function errorAction() {
-		$this->redirect('index', 'Standard');
+		$this->redirect('index', 'Standard', 'AchimFritz.ChampionShip\\Generic');
 	}
 
 }

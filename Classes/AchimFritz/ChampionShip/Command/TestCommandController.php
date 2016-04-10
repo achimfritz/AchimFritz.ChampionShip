@@ -8,9 +8,7 @@ namespace AchimFritz\ChampionShip\Command;
 
 use TYPO3\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
-use \AchimFritz\ChampionShip\Competition\Domain\Model\Team;
-use \AchimFritz\ChampionShip\Domain\Model\Result;
-use \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound;
+use \AchimFritz\ChampionShip\Competition\Domain\Model\Result;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
 
 /**
