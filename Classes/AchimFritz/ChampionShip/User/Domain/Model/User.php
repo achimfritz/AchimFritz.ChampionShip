@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\User\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -24,19 +24,19 @@ class User {
 	protected $account;
 
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Tip>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Tip\Domain\Model\Tip>
 	 * @ORM\OneToMany(mappedBy="user", cascade={"all"})
 	 */
 	protected $tips;
 
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Ranking>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Tip\Domain\Model\Ranking>
 	 * @ORM\OneToMany(mappedBy="user", cascade={"all"})
 	 */
 	protected $rankings;
 
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\ChatEntry>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Chat\Domain\Model\ChatEntry>
 	 * @ORM\OneToMany(mappedBy="user", cascade={"all"})
 	 */
 	protected $chatEntries;
@@ -50,13 +50,13 @@ class User {
 	protected $email;
 
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\TipGroup>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup>
 	 * @ORM\ManyToMany
 	 */
 	protected $tipGroups;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\TipGroup
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup
 	 * @ORM\ManyToOne
 	 */
 	protected $tipGroup;
@@ -214,7 +214,7 @@ class User {
 	/**
 	 * getTips 
 	 * 
-	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Tip>
+	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Tip\Domain\Model\Tip>
 	 */
 	public function getTips() {
 		return $this->tips;

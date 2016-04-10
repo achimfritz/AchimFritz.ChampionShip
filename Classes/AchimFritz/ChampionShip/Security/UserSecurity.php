@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Security;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\User;
+use AchimFritz\ChampionShip\User\Domain\Model\User;
 
 /**
  * UserSecurity

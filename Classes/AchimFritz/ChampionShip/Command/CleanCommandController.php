@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Command;
 
 use TYPO3\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
-use \AchimFritz\ChampionShip\Domain\Model\Ranking;
+use \AchimFritz\ChampionShip\Tip\Domain\Model\Ranking;
 
 /**
  * Point Command
@@ -31,19 +31,19 @@ class CleanCommandController extends \TYPO3\Flow\Cli\CommandController {
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipGroupRepository
 	 */
 	protected $tipGroupRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
 	 */
 	protected $tipRepository;
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
 

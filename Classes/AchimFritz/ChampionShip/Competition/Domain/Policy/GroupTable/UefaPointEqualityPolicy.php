@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Policy\GroupTable;
+namespace AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*

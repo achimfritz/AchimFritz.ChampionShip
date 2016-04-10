@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Factory;
+namespace AchimFritz\ChampionShip\Tip\Domain\Factory;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,8 +7,8 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\Ranking;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\Tip\Domain\Model\Ranking;
+use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
 use Doctrine\Common\Collections\ArrayCollection;
 use TYPO3\Flow\Persistence\Doctrine\QueryResult;
 
@@ -34,7 +34,7 @@ class RankingsFactory {
 	/**
 	 * create 
 	 * 
-	 * @param QueryResult<\AchimFritz\ChampionShip\Domain\Model\Match>
+	 * @param QueryResult<\AchimFritz\ChampionShip\Competition\Domain\Model\Match>
 	 * @param TipGroup $tipGroup
 	 * @return \Doctrine\Common\Collections\ArrayCollection
 	 */

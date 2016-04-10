@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Service;
+namespace AchimFritz\ChampionShip\Competition\Domain\Service;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,9 +7,7 @@ namespace AchimFritz\ChampionShip\Domain\Service;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\GroupTableRow;
 use AchimFritz\ChampionShip\Domain\Model\MatchParticipant;
-use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 
 
@@ -23,12 +21,12 @@ class GroupRoundService {
 	
    /**
     * @Flow\Inject
-    * @var \AchimFritz\ChampionShip\Domain\Factory\GroupMatchFactory
+    * @var \AchimFritz\ChampionShip\Competition\Domain\Factory\GroupMatchFactory
     */
    protected $matchFactory;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Service\GroupTableCalculator
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Service\GroupTableCalculator
 	 * @Flow\Inject
 	 */
 	protected $groupTableCalculator;
@@ -36,8 +34,8 @@ class GroupRoundService {
 	/**
 	 * updateGroupTable
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
-	 * @return \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound $groupRound
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound $groupRound
 	 */
 	public function updateGroupTable(GroupRound $groupRound) {
 		$matches = $groupRound->getGeneralMatches();
@@ -52,8 +50,8 @@ class GroupRoundService {
 	/**
 	 * createMatches
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
-	 * @return \AchimFritz\ChampionShip\Domain\Model\GroupRound $groupRound
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound $groupRound
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound $groupRound
 	 */
 	public function createMatches(GroupRound $groupRound) {
 		$teams = $groupRound->getTeams();

@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Service;
+namespace AchimFritz\ChampionShip\Competition\Domain\Service;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -20,14 +20,14 @@ class KoRoundService {
 	
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\KoRoundFactory
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Factory\KoRoundFactory
 	 */
 	protected $koRoundFactory;
 		
 	/**
 	 * createKoRounds
 	 * 
-	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\KoRound>
+	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\KoRound>
 	 */
 	public function createKoRounds(\TYPO3\Flow\Persistence\Doctrine\QueryResult $groupRounds) {
 		$koRounds = new \Doctrine\Common\Collections\ArrayCollection();

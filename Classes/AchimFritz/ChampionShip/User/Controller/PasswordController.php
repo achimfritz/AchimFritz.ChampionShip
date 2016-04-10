@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\User\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,7 +8,8 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-use AchimFritz\ChampionShip\Domain\Model\Password;
+use AchimFritz\ChampionShip\User\Domain\Model\Password;
+use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
@@ -25,7 +26,7 @@ class PasswordController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
 	
@@ -37,7 +38,7 @@ class PasswordController extends AbstractActionController {
 	/**
 	 * Updates the given team object
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Password $password
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\Password $password
 	 * @return void
 	 */
 	public function createAction(Password $password) {

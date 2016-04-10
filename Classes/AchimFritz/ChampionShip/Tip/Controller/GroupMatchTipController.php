@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Tip\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,11 +8,6 @@ namespace AchimFritz\ChampionShip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-use \AchimFritz\ChampionShip\Domain\Model\User;
-use \AchimFritz\ChampionShip\Competition\Domain\Model\Match;
-use \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound;
-use \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
-use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
  * Match controller for the AchimFritz.ChampionShip package 

@@ -16,7 +16,7 @@ use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class AbstractMatchController extends \AchimFritz\ChampionShip\Controller\AbstractActionController {
+class AbstractMatchController extends \AchimFritz\ChampionShip\Generic\Controller\AbstractActionController {
 		
 	/**
 	 * @Flow\Inject
@@ -26,7 +26,7 @@ class AbstractMatchController extends \AchimFritz\ChampionShip\Controller\Abstra
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
 	 */
 	protected $tipRepository;
 

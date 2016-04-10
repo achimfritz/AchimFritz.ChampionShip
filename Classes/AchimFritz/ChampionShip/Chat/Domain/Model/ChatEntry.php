@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Chat\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 class ChatEntry {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\User
+	 * @var \AchimFritz\ChampionShip\User\Domain\Model\User
 	 * @ORM\ManyToOne
 	 */
 	protected $user;
@@ -43,14 +43,14 @@ class ChatEntry {
 
 
 	/**
-	 * @return \AchimFritz\ChampionShip\Domain\Model\User
+	 * @return \AchimFritz\ChampionShip\User\Domain\Model\User
 	 */
 	public function getUser() {
 		return $this->user;
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\User $user
 	 * @return void
 	 */
 	public function setUser($user) {

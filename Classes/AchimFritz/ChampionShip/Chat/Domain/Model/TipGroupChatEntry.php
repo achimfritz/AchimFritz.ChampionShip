@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Chat\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -15,20 +15,20 @@ use Doctrine\ORM\Mapping as ORM;
 class TipGroupChatEntry extends ChatEntry {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\TipGroup
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup
 	 * @ORM\ManyToOne
 	 */
 	protected $tipGroup;
 
 	/**
-	 * @return \AchimFritz\ChampionShip\Domain\Model\TipGroup
+	 * @return \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup
 	 */
 	public function getTipGroup() {
 		return $this->tipGroup;
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function setTipGroup($tipGroup) {

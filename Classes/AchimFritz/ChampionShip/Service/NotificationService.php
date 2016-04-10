@@ -7,9 +7,9 @@ namespace AchimFritz\ChampionShip\Service;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\User;
-use AchimFritz\ChampionShip\Domain\Model\RegistrationRequest;
-use AchimFritz\ChampionShip\Domain\Model\ContactRequest;
+use AchimFritz\ChampionShip\User\Domain\Model\User;
+use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
+use AchimFritz\ChampionShip\User\Domain\Model\ContactRequest;
 
 /**
  * A NotificationService

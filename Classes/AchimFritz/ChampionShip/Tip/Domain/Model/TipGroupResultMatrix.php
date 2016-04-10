@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Tip\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -17,13 +17,13 @@ use Doctrine\ORM\Mapping as ORM;
 class TipGroupResultMatrix {
 
 	/**
-	 * @var array<\AchimFritz\ChampionShip\Domain\Model\User>
+	 * @var array<\AchimFritz\ChampionShip\User\Domain\Model\User>
 	 * @ORM\ManyToMany
 	 */
 	protected $users;
 
 	/**
-	 * @var array<\AchimFritz\ChampionShip\Domain\Model\TipGroupResultMatrixRow>
+	 * @var array<\AchimFritz\ChampionShip\Tip\Domain\Model\TipGroupResultMatrixRow>
 	 * @ORM\ManyToMany
 	 */
 	protected $rows;
@@ -31,7 +31,7 @@ class TipGroupResultMatrix {
 	/**
 	 * setUsers 
 	 * 
-	 * @param array<\AchimFritz\ChampionShip\Domain\Model\TipGroupResultMatrixRow>
+	 * @param array<\AchimFritz\ChampionShip\User\Domain\Model\User>
 	 * @return void
 	 */
 	public function setUsers($users) {
@@ -41,7 +41,7 @@ class TipGroupResultMatrix {
 	/**
 	 * getUsers
 	 * 
-	 * @return array<\AchimFritz\ChampionShip\Domain\Model\TipGroupResultMatrixRow>
+	 * @return array<\AchimFritz\ChampionShip\User\Domain\Model\User>
 	 */
 	public function getUsers() {
 		return $this->users;
@@ -50,7 +50,7 @@ class TipGroupResultMatrix {
 	/**
 	 * setRows 
 	 * 
-	 * @param array<\AchimFritz\ChampionShip\Domain\Model\User>
+	 * @param array
 	 * @return void
 	 */
 	public function setRows($rows) {
@@ -60,7 +60,7 @@ class TipGroupResultMatrix {
 	/**
 	 * getRows
 	 * 
-	 * @return array<\AchimFritz\ChampionShip\Domain\Model\User>
+	 * @return array
 	 */
 	public function getRows() {
 		return $this->rows;

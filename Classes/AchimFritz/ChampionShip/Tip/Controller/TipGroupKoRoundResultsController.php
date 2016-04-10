@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Tip\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,8 +7,6 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
-use AchimFritz\ChampionShip\Domain\Model\User;
 
 class TipGroupKoRoundResultsController extends AbstractTipGroupResultsController {
 

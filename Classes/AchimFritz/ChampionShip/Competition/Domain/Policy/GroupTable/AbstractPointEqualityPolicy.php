@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Policy\GroupTable;
+namespace AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -22,13 +22,13 @@ abstract class AbstractPointEqualityPolicy {
 	/**
 	 * groupTableFactory 
 	 * 
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\GroupTableFactory
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Factory\GroupTableFactory
 	 * @Flow\Inject
 	 */
 	protected $groupTableFactory;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Policy\GroupTable\DefaultPolicy
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable\DefaultPolicy
 	 * @Flow\Inject
 	 */
 	protected $defaultPolicy;

@@ -29,7 +29,7 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $matchRepository;
 	
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Service\GroupRoundService
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Service\GroupRoundService
 	 * @Flow\Inject
 	 */
 	protected $groupRoundService;

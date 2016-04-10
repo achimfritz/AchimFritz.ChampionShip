@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\User\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -28,7 +28,7 @@ class Password {
 	protected $newPasswordRepeat;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Model\User
+	 * @var \AchimFritz\ChampionShip\User\Domain\Model\User
 	 * @ORM\OneToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */

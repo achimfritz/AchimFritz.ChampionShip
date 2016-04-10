@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Security;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
 
 /**
  * ChatEntrySecurity
@@ -24,7 +24,7 @@ class ChatEntrySecurity {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
 

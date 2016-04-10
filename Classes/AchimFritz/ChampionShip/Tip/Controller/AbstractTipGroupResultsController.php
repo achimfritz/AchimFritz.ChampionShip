@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Tip\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,14 +7,14 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
-use AchimFritz\ChampionShip\Domain\Model\User;
+use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\User\Domain\Model\User;
 
 class AbstractTipGroupResultsController extends AbstractTipGroupController {
 
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\TipGroupResultMatrixFactory
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Factory\TipGroupResultMatrixFactory
 	 * @Flow\Inject
 	 */
 	protected $matrixFactory;
@@ -46,7 +46,7 @@ class AbstractTipGroupResultsController extends AbstractTipGroupController {
 	/**
 	 * showAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {

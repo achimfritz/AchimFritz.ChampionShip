@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\User\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "Flow.Login".  *

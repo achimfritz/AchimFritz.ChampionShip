@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Tip\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -18,7 +18,7 @@ class Tip {
 
 	/**
 	 * The user
-	 * @var \AchimFritz\ChampionShip\Domain\Model\User
+	 * @var \AchimFritz\ChampionShip\User\Domain\Model\User
 	 * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
 	 */
@@ -48,7 +48,7 @@ class Tip {
 	/**
 	 * Get the Tip's user
 	 *
-	 * @return \AchimFritz\ChampionShip\Domain\Model\User The Tip's user
+	 * @return \AchimFritz\ChampionShip\User\Domain\Model\User The Tip's user
 	 */
 	public function getUser() {
 		return $this->user;
@@ -57,7 +57,7 @@ class Tip {
 	/**
 	 * Sets this Tip's user
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user The Tip's user
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\User $user The Tip's user
 	 * @return void
 	 */
 	public function setUser(\AchimFritz\ChampionShip\Domain\Model\User $user) {

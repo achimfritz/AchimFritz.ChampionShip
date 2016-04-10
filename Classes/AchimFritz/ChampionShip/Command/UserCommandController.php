@@ -7,10 +7,8 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Party\Domain\Model\ElectronicAddress;
-use TYPO3\Party\Domain\Model\Person;
-use AchimFritz\ChampionShip\Domain\Model\User;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\User\Domain\Model\User;
+use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
 
 /**
  * The User Command Controller Service
@@ -20,25 +18,25 @@ use AchimFritz\ChampionShip\Domain\Model\TipGroup;
 class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\TipFactory
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Factory\TipFactory
 	 * @Flow\Inject
 	 */
 	protected $tipFactory;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\UserFactory
+	 * @var \AchimFritz\ChampionShip\User\Domain\Factory\UserFactory
 	 * @Flow\Inject
 	 */
 	protected $userFactory;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipGroupRepository
 	 * @Flow\Inject
 	 */
 	protected $tipGroupRepository;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
 	 * @Flow\Inject
 	 */
 	protected $userRepository;

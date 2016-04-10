@@ -36,7 +36,7 @@ class SecurityAspect {
 	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
 	 * @throws Exception
 	 * @return void
-	 * @Flow\Before("method(AchimFritz\ChampionShip\Domain\Repository\TipRepository->update()) || method(AchimFritz\ChampionShip\Domain\Repository\TipRepository->add())")
+	 * @Flow\Before("method(AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository->update()) || method(AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository->add())")
 	 */
 	public function tipIsEditable(JoinPointInterface $joinPoint) {
 		$tip = $joinPoint->getMethodArgument('object');
@@ -50,7 +50,7 @@ class SecurityAspect {
 	 * 
 	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
 	 * @throws Exception
-	 * @Flow\Before("method(AchimFritz\ChampionShip\Domain\Repository\UserRepository->update())")
+	 * @Flow\Before("method(AchimFritz\ChampionShip\User\Domain\Repository\UserRepository->update())")
 	 * @return void
 	 */
 	public function userIsEditable(JoinPointInterface $joinPoint) {
@@ -65,7 +65,7 @@ class SecurityAspect {
 	 * 
 	 * @param JoinPointInterface $joinPoint 
 	 * @throws Exception
-	 * @Flow\Before("method(AchimFritz\ChampionShip\Domain\Repository\TipGroupChatEntryRepository->findByTipGroup())")
+	 * @Flow\Before("method(AchimFritz\ChampionShip\Chat\Domain\Repository\TipGroupChatEntryRepository->findByTipGroup())")
 	 * @return void
 	 */
 	public function tipGroupChatEntriesMayBeFound(JoinPointInterface $joinPoint) {
@@ -80,7 +80,7 @@ class SecurityAspect {
 	 * 
 	 * @param JoinPointInterface $joinPoint 
 	 * @throws Exception
-	 * @Flow\Before("method(AchimFritz\ChampionShip\Domain\Repository\TipGroupChatEntryRepository->add())")
+	 * @Flow\Before("method(AchimFritz\ChampionShip\Chat\Domain\Repository\TipGroupChatEntryRepository->add())")
 	 * @return void
 	 */
 	public function tipGroupChatEntryMayBeCreated(JoinPointInterface $joinPoint) {

@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Service;
+namespace AchimFritz\ChampionShip\Competition\Domain\Service;
 
 class Exception extends \AchimFritz\ChampionShip\Exception {
 

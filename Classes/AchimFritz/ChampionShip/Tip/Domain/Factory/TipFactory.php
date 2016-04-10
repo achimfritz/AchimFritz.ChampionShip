@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Factory;
+namespace AchimFritz\ChampionShip\Tip\Domain\Factory;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,10 +7,9 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Security\Account;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
-use AchimFritz\ChampionShip\Domain\Model\User;
-use AchimFritz\ChampionShip\Domain\Model\Tip;
+use AchimFritz\ChampionShip\User\Domain\Model\User;
+use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use \Doctrine\Common\Collections\ArrayCollection;
 
@@ -22,7 +21,7 @@ use \Doctrine\Common\Collections\ArrayCollection;
 class TipFactory {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
 	 * @Flow\Inject
 	 */
 	protected $tipRepository;

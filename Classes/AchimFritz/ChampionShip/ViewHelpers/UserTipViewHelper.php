@@ -15,7 +15,7 @@ use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
-use AchimFritz\ChampionShip\Domain\Model\Tip;
+use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 
 
 /**
@@ -35,7 +35,7 @@ class UserTipViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 	protected $escapeOutput = FALSE;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
 	 * @Flow\Inject
 	 */
 	protected $tipRepository;
@@ -48,7 +48,7 @@ class UserTipViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
 

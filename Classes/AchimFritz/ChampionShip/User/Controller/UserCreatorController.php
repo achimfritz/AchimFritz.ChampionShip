@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\User\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,7 +7,8 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\RegistrationRequest;
+use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
+use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
@@ -23,19 +24,19 @@ class UserCreatorController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\RegistrationRequestRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\RegistrationRequestRepository
 	 */
 	protected $registrationRequestRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\UserFactory
+	 * @var \AchimFritz\ChampionShip\User\Domain\Factory\UserFactory
 	 */
 	protected $userFactory;
 
@@ -46,7 +47,7 @@ class UserCreatorController extends AbstractActionController {
 	protected $notificationService;
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\RegistrationRequest $registrationRequest
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest $registrationRequest
 	 * @return void
 	 */
 	public function createAction(RegistrationRequest $registrationRequest) {

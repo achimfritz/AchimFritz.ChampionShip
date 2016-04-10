@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Factory;
+namespace AchimFritz\ChampionShip\Competition\Domain\Factory;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -20,7 +20,7 @@ class KoRoundFactory {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\KoMatchFactory
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Factory\KoMatchFactory
 	 */
 	protected $matchFactory;
 
@@ -28,8 +28,8 @@ class KoRoundFactory {
 	/**
 	 * createFromParentKoRound
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\KoRound $parentKoRound
-	 * @return \AchimFritz\ChampionShip\Domain\Model\KoRound
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound $parentKoRound
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound
 	 */
 	public function createFromKoRound(KoRound $parentKoRound) {
 		$matches = $parentKoRound->getGeneralMatches();
@@ -52,8 +52,8 @@ class KoRoundFactory {
 	/**
 	 * createFromGroupRounds
 	 *
-	 * @param \TYPO3\Flow\Persistence\Doctrine\QueryResult<\AchimFritz\ChampionShip\Domain\Model\GroupRound>
-	 * @return \AchimFritz\ChampionShip\Domain\Model\KoRound
+	 * @param \TYPO3\Flow\Persistence\Doctrine\QueryResult<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound>
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound
 	 */
 	public function createFromGroupRounds(\TYPO3\Flow\Persistence\Doctrine\QueryResult $groupRounds) {
 		$koRound = new KoRound();

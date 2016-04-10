@@ -14,7 +14,7 @@ use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class CupController extends \AchimFritz\ChampionShip\Controller\AbstractActionController {
+class CupController extends \AchimFritz\ChampionShip\Generic\Controller\AbstractActionController {
 
 	
 	/**

@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Repository;
+namespace AchimFritz\ChampionShip\User\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Account;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
 
 /**
  * A repository for Users

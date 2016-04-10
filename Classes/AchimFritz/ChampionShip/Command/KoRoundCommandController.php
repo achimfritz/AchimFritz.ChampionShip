@@ -29,7 +29,7 @@ class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $koRoundRepository;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Service\KoRoundService
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Service\KoRoundService
 	 * @Flow\Inject
 	 */
 	protected $koRoundService;

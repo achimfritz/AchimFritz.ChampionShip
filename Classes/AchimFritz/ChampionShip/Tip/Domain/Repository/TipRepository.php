@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Repository;
+namespace AchimFritz\ChampionShip\Tip\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,11 +8,11 @@ namespace AchimFritz\ChampionShip\Domain\Repository;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
-use AchimFritz\ChampionShip\Domain\Model\User;
+use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Round;
 use AchimFritz\ChampionShip\Domain\Model\Result;
-use AchimFritz\ChampionShip\Domain\Model\Tip;
+use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 use \TYPO3\Flow\Persistence\Repository;
 use \TYPO3\Flow\Persistence\QueryInterface;
 
@@ -46,7 +46,6 @@ class TipRepository extends Repository {
          $query->logicalAnd(
 				$query->equals('generalMatch.cup', $cup),
 				$query->equals('user', $user)
-				#$query->logicalNot($query->isEmpty('result'))
 			)
 		)
 		->execute();
@@ -105,9 +104,9 @@ class TipRepository extends Repository {
 	/**
 	 * findOneByUserAndMatch 
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\User $user 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Match $match 
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Tip
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\User $user
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
+	 * @return \AchimFritz\ChampionShip\Tip\Domain\Model\Tip
 	 */
 	public function findOneByUserAndMatch(User $user, Match $match) {
 		$query = $this->createQuery();

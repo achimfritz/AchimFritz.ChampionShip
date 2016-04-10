@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Chat\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,9 +7,8 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Mvc\Controller\ActionController;
-use AchimFritz\ChampionShip\Domain\Model\ChatEntry;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\Chat\Domain\Model\ChatEntry;
+use AchimFritz\ChampionShip\Tip\Controller\AbstractTipGroupController;
 
 class AbstractChatEntryController extends AbstractTipGroupController {
 
@@ -34,7 +33,7 @@ class AbstractChatEntryController extends AbstractTipGroupController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\ChatEntry $chatEntry
 	 * @return void
 	 */
 	protected function createChatEntry(ChatEntry $chatEntry) {
@@ -49,7 +48,7 @@ class AbstractChatEntryController extends AbstractTipGroupController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\ChatEntry $chatEntry
 	 * @return void
 	 */
 	protected function updateChatEntry(ChatEntry $chatEntry) {
@@ -64,7 +63,7 @@ class AbstractChatEntryController extends AbstractTipGroupController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\ChatEntry $chatEntry
 	 * @return void
 	 */
 	protected function deleteChatEntry(ChatEntry $chatEntry) {

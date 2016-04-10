@@ -14,7 +14,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Round;
-use AchimFritz\ChampionShip\Domain\Model\ChatEntry;
+use AchimFritz\ChampionShip\Chat\Domain\Model\ChatEntry;
 
 /**
  * 

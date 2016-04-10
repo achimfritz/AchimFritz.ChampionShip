@@ -16,13 +16,13 @@ use TYPO3\Flow\Annotations as Flow;
 class TipGroupMatrixCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\TipGroupResultMatrixFactory
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Factory\TipGroupResultMatrixFactory
 	 * @Flow\Inject
 	 */
 	protected $matrixFactory;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
 	 * @Flow\Inject
 	 */
 	protected $userRepository;

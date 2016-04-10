@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\User\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,7 +7,8 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Domain\Model\User;
+use \AchimFritz\ChampionShip\User\Domain\Model\User;
+use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 /**
  * User controller for the AchimFritz.ChampionShip package 
@@ -18,19 +19,19 @@ class UserController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipGroupRepository
 	 */
 	protected $tipGroupRepository;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
 	 * @Flow\Inject
 	 */
 	protected $tipRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\UserFactory
+	 * @var \AchimFritz\ChampionShip\User\Domain\Factory\UserFactory
 	 */
 	protected $userFactory;
 

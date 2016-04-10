@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Chat\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,15 +7,14 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Mvc\Controller\ActionController;
-use AchimFritz\ChampionShip\Domain\Model\OpenChatEntry;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\Chat\Domain\Model\OpenChatEntry;
+
 
 class OpenChatEntryController extends AbstractChatEntryController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\OpenChatEntryRepository
+	 * @var \AchimFritz\ChampionShip\Chat\Domain\Repository\OpenChatEntryRepository
 	 */
 	protected $chatEntryRepository;
 
@@ -27,7 +26,7 @@ class OpenChatEntryController extends AbstractChatEntryController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\OpenChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\OpenChatEntry $chatEntry
 	 * @return void
 	 */
 	public function showAction(OpenChatEntry $chatEntry) {
@@ -35,7 +34,7 @@ class OpenChatEntryController extends AbstractChatEntryController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\OpenChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\OpenChatEntry $chatEntry
 	 * @return void
 	 */
 	public function createAction(OpenChatEntry $chatEntry) {
@@ -44,7 +43,7 @@ class OpenChatEntryController extends AbstractChatEntryController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\OpenChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\OpenChatEntry $chatEntry
 	 * @return void
 	 */
 	public function updateAction(OpenChatEntry $chatEntry) {
@@ -53,7 +52,7 @@ class OpenChatEntryController extends AbstractChatEntryController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\OpenChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\OpenChatEntry $chatEntry
 	 * @return void
 	 */
 	public function deleteAction(OpenChatEntry $chatEntry) {

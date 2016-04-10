@@ -59,7 +59,7 @@ class Match {
 	protected $startDate;
 	
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\Tip>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Tip\Domain\Model\Tip>
 	 * @ORM\OneToMany(mappedBy="generalMatch", cascade={"all"})
 	 */
 	protected $tips;

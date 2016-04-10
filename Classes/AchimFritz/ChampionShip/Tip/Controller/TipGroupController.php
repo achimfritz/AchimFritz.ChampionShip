@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Tip\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,19 +7,20 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 class TipGroupController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipGroupRepository
 	 */
 	protected $tipGroupRepository;
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
 
@@ -36,7 +37,7 @@ class TipGroupController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {
@@ -46,7 +47,7 @@ class TipGroupController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function createAction(TipGroup $tipGroup) {
@@ -62,7 +63,7 @@ class TipGroupController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function updateAction(TipGroup $tipGroup) {
@@ -78,7 +79,7 @@ class TipGroupController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function deleteAction(TipGroup $tipGroup) {

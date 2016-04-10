@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Chat\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,21 +7,21 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\TipGroupChatEntry;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\Chat\Domain\Model\TipGroupChatEntry;
+use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
 
 class TipGroupChatEntryController extends AbstractChatEntryController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipGroupChatEntryRepository
+	 * @var \AchimFritz\ChampionShip\Chat\Domain\Repository\TipGroupChatEntryRepository
 	 */
 	protected $chatEntryRepository;
 
 	/**
 	 * Shows a list of rankings
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function listAction(TipGroup $tipGroup) {
@@ -30,7 +30,7 @@ class TipGroupChatEntryController extends AbstractChatEntryController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroupChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\TipGroupChatEntry $chatEntry
 	 * @return void
 	 */
 	public function showAction(TipGroupChatEntry $chatEntry) {
@@ -38,7 +38,7 @@ class TipGroupChatEntryController extends AbstractChatEntryController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroupChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\TipGroupChatEntry $chatEntry
 	 * @return void
 	 */
 	public function createAction(TipGroupChatEntry $chatEntry) {
@@ -47,7 +47,7 @@ class TipGroupChatEntryController extends AbstractChatEntryController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroupChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\TipGroupChatEntry $chatEntry
 	 * @return void
 	 */
 	public function updateAction(TipGroupChatEntry $chatEntry) {
@@ -56,7 +56,7 @@ class TipGroupChatEntryController extends AbstractChatEntryController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroupChatEntry $chatEntry
+	 * @param \AchimFritz\ChampionShip\Chat\Domain\Model\TipGroupChatEntry $chatEntry
 	 * @return void
 	 */
 	public function deleteAction(TipGroupChatEntry $chatEntry) {

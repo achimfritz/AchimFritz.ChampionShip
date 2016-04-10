@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Generic\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -11,7 +11,7 @@ use TYPO3\Flow\Error\Message;
 use TYPO3\Flow\Security\Account;
 use TYPO3\Flow\Mvc\Controller\RestController;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
-use \AchimFritz\ChampionShip\Domain\Model\User;
+use \AchimFritz\ChampionShip\User\Domain\Model\User;
 
 
 /**
@@ -41,7 +41,7 @@ class AbstractActionController extends RestController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\UserRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
 

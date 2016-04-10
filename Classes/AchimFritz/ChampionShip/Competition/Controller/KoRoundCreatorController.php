@@ -14,7 +14,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class KoRoundCreatorController extends \AchimFritz\ChampionShip\Controller\AbstractActionController {
+class KoRoundCreatorController extends \AchimFritz\ChampionShip\Generic\Controller\AbstractActionController {
 
 
 	/**
@@ -24,7 +24,7 @@ class KoRoundCreatorController extends \AchimFritz\ChampionShip\Controller\Abstr
 	protected $koRoundRepository;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Service\KoRoundService
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Service\KoRoundService
 	 * @Flow\Inject
 	 */
 	protected $koRoundService;

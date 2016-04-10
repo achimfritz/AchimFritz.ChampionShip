@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Tip\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,10 +7,7 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-
-use AchimFritz\ChampionShip\Domain\Model\Ranking;
-use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
-use AchimFritz\ChampionShip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
@@ -33,7 +30,7 @@ class GlobalRankingController extends AbstractRankingController {
 	/**
 	 * Shows a list of rankings
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {

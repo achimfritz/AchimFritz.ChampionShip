@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Factory;
+namespace AchimFritz\ChampionShip\Competition\Domain\Factory;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,7 +7,6 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\MatchParticipant;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
 
@@ -25,7 +24,7 @@ class GroupMatchFactory {
     * 
     * @param Team $host
     * @param Team $guest 
-	 * @return \AchimFritz\ChampionShip\Domain\Model\Match
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Match
     */
    public function createFromTeams(Team $host, Team $guest) {
       $match = new GroupMatch();

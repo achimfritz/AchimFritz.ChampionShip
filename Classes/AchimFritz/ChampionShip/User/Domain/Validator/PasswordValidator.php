@@ -1,7 +1,7 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Validator;
+namespace AchimFritz\ChampionShip\User\Domain\Validator;
 
-use AchimFritz\ChampionShip\Domain\Model\Password;
+use AchimFritz\ChampionShip\User\Domain\Model\Password;
 
 /**
  * PasswordValidator 

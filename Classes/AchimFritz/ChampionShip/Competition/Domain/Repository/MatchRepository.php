@@ -20,7 +20,7 @@ use TYPO3\Flow\Persistence\QueryInterface;
 class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
 	 * @Flow\Inject
 	 */
 	protected $tipRepository;

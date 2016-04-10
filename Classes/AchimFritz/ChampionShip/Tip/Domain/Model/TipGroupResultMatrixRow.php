@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Model;
+namespace AchimFritz\ChampionShip\Tip\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -24,7 +24,7 @@ class TipGroupResultMatrixRow {
 	protected $generalMatch;
 
 	/**
-	 * @var array<\AchimFritz\ChampionShip\Domain\Model\Tip>
+	 * @var array<\AchimFritz\ChampionShip\Tip\Domain\Model\Tip>
 	 * @ORM\ManyToMany
 	 */
 	protected $tips;
@@ -52,7 +52,7 @@ class TipGroupResultMatrixRow {
 	/**
 	 * setTips 
 	 * 
-	 * @param array<\AchimFritz\ChampionShip\Domain\Model\Tip>
+	 * @param array<\AchimFritz\ChampionShip\Tip\Domain\Model\Tip>
 	 * @return void
 	 */
 	public function setTips($tips) {
@@ -62,7 +62,7 @@ class TipGroupResultMatrixRow {
 	/**
 	 * getTips 
 	 * 
-	 * @return array<\AchimFritz\ChampionShip\Domain\Model\Tip>
+	 * @return array<\AchimFritz\ChampionShip\Tip\Domain\Model\Tip>
 	 */
 	public function getTips() {
 		return $this->tips;

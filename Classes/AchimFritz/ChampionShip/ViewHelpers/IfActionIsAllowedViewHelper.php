@@ -12,7 +12,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\Tip;
+use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 
 
 

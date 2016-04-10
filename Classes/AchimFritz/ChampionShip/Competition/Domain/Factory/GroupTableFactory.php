@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Factory;
+namespace AchimFritz\ChampionShip\Competition\Domain\Factory;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -8,8 +8,6 @@ namespace AchimFritz\ChampionShip\Domain\Factory;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Domain\Model\GroupTableRow;
-use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
-use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use Doctrine\Common\Collections\Collection;
 
 
@@ -21,7 +19,7 @@ class GroupTableFactory {
 	/**
 	 * createTable
 	 * 
-	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupMatch>
+	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch>
 	 * @return array<GroupTableRow>
 	 */
 	public function createTable(Collection $matches) {

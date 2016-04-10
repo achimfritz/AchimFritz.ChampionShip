@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\User\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,7 +7,9 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\ContactRequest;
+use AchimFritz\ChampionShip\User\Domain\Model\ContactRequest;
+use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
+
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
@@ -23,7 +25,7 @@ class ContactRequestController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\ContactRequestRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\ContactRequestRepository
 	 */
 	protected $contactRequestRepository;
 
@@ -41,7 +43,7 @@ class ContactRequestController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ContactRequest $contactRequest
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\ContactRequest $contactRequest
 	 * @return void
 	 */
 	public function showAction(ContactRequest $contactRequest) {
@@ -49,7 +51,7 @@ class ContactRequestController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ContactRequest $contactRequest
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\ContactRequest $contactRequest
 	 * @return void
 	 */
 	public function createAction(ContactRequest $contactRequest) {
@@ -68,7 +70,7 @@ class ContactRequestController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ContactRequest $contactRequest
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\ContactRequest $contactRequest
 	 * @return void
 	 */
 	public function updateAction(ContactRequest $contactRequest) {
@@ -84,7 +86,7 @@ class ContactRequestController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Domain\Model\ContactRequest $contactRequest
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\ContactRequest $contactRequest
 	 * @return void
 	 */
 	public function deleteAction(ContactRequest $contactRequest) {

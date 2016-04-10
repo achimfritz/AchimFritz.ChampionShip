@@ -20,7 +20,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
 class GroupMatchRepository extends MatchRepository {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Service\GroupRoundService
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Service\GroupRoundService
 	 * @Flow\Inject
 	 */
 	protected $groupRoundService;

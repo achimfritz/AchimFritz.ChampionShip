@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Policy\GroupTable;
+namespace AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,7 +7,6 @@ namespace AchimFritz\ChampionShip\Domain\Policy\GroupTable;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\GroupTableRow;
 
 
 /**
@@ -18,8 +17,8 @@ class DefaultPolicy {
    /**
     * updateTable
     * 
-    * @param array<\AchimFritz\ChampionShip\Domain\Model\GroupTableRow>
-    * @return array<\AchimFritz\ChampionShip\Domain\Model\GroupTableRow>
+    * @param array<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow>
+    * @return array<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow>
     */
    public function updateTable(array $rows) {
       $points = array();

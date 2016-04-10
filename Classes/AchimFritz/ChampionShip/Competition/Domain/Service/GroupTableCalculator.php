@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Domain\Service;
+namespace AchimFritz\ChampionShip\Competition\Domain\Service;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,7 +7,6 @@ namespace AchimFritz\ChampionShip\Domain\Service;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Domain\Model\GroupTableRow;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -22,7 +21,7 @@ class GroupTableCalculator {
 	/**
 	 * groupTableFactory 
 	 * 
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\GroupTableFactory
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Factory\GroupTableFactory
 	 * @Flow\Inject
 	 */
 	protected $groupTableFactory;
@@ -30,8 +29,8 @@ class GroupTableCalculator {
 	/**
 	 * updateGroup
 	 * 
-	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupMatch>
-	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Domain\Model\GroupTableRows>
+	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch>
+	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRows>
 	 */
 	public function getGroupTableRows(Collection $matches) {
       $groupTableRows = new ArrayCollection();

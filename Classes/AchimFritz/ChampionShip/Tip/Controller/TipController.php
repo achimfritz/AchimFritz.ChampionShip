@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Controller;
+namespace AchimFritz\ChampionShip\Tip\Controller;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,8 +7,8 @@ namespace AchimFritz\ChampionShip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Domain\Model\Tip;
-use \AchimFritz\ChampionShip\Domain\Model\Result;
+use \AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
+use \AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 /**
  * Standard controller for the AchimFritz.ChampionShip package 
@@ -18,7 +18,7 @@ use \AchimFritz\ChampionShip\Domain\Model\Result;
 class TipController extends AbstractActionController {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Repository\TipRepository
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
 	 * @Flow\Inject
 	 */
 	protected $tipRepository;
@@ -29,7 +29,7 @@ class TipController extends AbstractActionController {
 	protected $resourceArgumentName = 'tip';
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Domain\Factory\TipFactory
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Factory\TipFactory
 	 * @Flow\Inject
 	 */
 	protected $tipFactory;
@@ -52,7 +52,7 @@ class TipController extends AbstractActionController {
 	/**
 	 * Index action
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip $tip 
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\Tip $tip
 	 * @return void
 	 */
 	public function showAction(Tip $tip) {
@@ -66,7 +66,7 @@ class TipController extends AbstractActionController {
 	/**
 	 * updateAction 
 	 * 
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip $tip 
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\Tip $tip
 	 * @return void
 	 */
 	public function updateAction(Tip $tip) {
@@ -77,7 +77,7 @@ class TipController extends AbstractActionController {
 	/**
 	 * UpdateTip
 	 *
-	 * @param \AchimFritz\ChampionShip\Domain\Model\Tip
+	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\Tip
 	 * @return void
 	 */
 	public function updateTip(Tip $tip) {
