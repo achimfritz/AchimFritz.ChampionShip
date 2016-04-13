@@ -41,7 +41,7 @@
 
 					$.ajax({
 							'type': 'PUT',
-							'url': '/achimfritz.championship/usertip/index',
+							'url': '/achimfritz.championship/tip/usertip/index',
 							'data': cTip,
 							'dataType': 'json',
 							'success': function (response) {
@@ -108,7 +108,7 @@
 
 					$.ajax({
 							'type': 'PUT',
-							'url': '/achimfritz.championship/usertip/index',
+							'url': '/achimfritz.championship/tip/usertip/index',
 							'data': cTip,
 							'dataType': 'json',
 							'success': function (response) {

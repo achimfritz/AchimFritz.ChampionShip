@@ -22,6 +22,8 @@ class GroupMatchController extends AbstractMatchController {
 	 */
 	protected $matchRepository;
 
+
+
 }
 
 ?>

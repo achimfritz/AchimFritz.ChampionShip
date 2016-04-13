@@ -9,6 +9,7 @@ namespace AchimFritz\ChampionShip\User\Domain\Model;
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Security\Account;
+use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
 
 /**
  * A User

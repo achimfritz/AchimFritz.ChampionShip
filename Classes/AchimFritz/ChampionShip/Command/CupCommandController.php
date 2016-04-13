@@ -7,7 +7,6 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
  * Cup Command Controller for the AchimFritz.ChampionShip package
@@ -28,33 +27,10 @@ class CupCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @return void
 	 */
 	public function listCommand() {
-		#$cup = new Cup();
-		#$cup->setName('test1');
-		#$cup->setStartDate(new \DateTime());
-		#$this->cupRepository->add($cup);
 		$cups = $this->cupRepository->findAll();
 		foreach ($cups AS $cup) {
 			$this->outputLine($cup->getName());
 		}
 	}
 
-	/**
-	 * update
-	 *
-	 * @return void
-	 */
-	public function updateCommand() {
-	}
-	
-	/**
-	 * clean
-	 *
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $newCup A new cup to add
-	 * @return void
-	 */
-	public function createCommand(Cup $cup) {
-	}
-
 }
-
-?>

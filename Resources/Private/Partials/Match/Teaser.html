@@ -48,7 +48,7 @@
 						</cs:userTip>
 					</f:security.ifHasRole>
 				<f:security.ifAuthenticated>
-						<f:render partial="Actions/Show" arguments="{object: match}" />
+						<f:render partial="Actions/Show" arguments="{object: match, subpackage: 'competition'}" />
 				</f:security.ifAuthenticated>
 				</div>
 			</f:for>

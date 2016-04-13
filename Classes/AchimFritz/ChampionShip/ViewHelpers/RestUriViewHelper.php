@@ -41,9 +41,10 @@ class RestUriViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 	/**
 	 * render
 	 * @param object $object
+	 * @param string|NULL subpackage
 	 * @return string
 	 */
-	public function render($object) {
+	public function render($object, $subpackage = NULL) {
 		$name = get_class($object);
 		$parts = explode('\\', $name);
 		$model = array_pop($parts);
@@ -84,7 +85,8 @@ class RestUriViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$uriBuilder = $this->controllerContext->getUriBuilder();
 		$uriBuilder->reset();
 		$uriBuilder->setCreateAbsoluteUri(TRUE);
-		$actionUri = $uriBuilder->uriFor($action, $arguments, $controller);
+
+		$actionUri = $uriBuilder->uriFor($action, $arguments, $controller, NULL, $subpackage);
 		return $actionUri;
 	}
 }
