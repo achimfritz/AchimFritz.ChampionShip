@@ -1,0 +1,9 @@
+standard:
+  - concat
+default:
+  - standard
+dev:
+  - concat
+  - watch
+sniff:
+  - jshint

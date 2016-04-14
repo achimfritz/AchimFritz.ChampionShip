@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-jslint": "*",
+    "grunt-newer": "*",
+    "grunt-ng-annotate": "^0.4.0",
+    "jshint-stylish": "^1.0.0",
+    "load-grunt-config": "*",
+    "load-grunt-tasks": "*"
+  }
+}
