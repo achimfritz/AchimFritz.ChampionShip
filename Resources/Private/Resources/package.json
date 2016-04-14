@@ -2,14 +2,14 @@
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-concat": "*",
-    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-jshint": "*",
     "grunt-contrib-less": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "grunt-jslint": "*",
     "grunt-newer": "*",
-    "grunt-ng-annotate": "^0.4.0",
-    "jshint-stylish": "^1.0.0",
+    "grunt-ng-annotate": "*",
+    "jshint-stylish": "*",
     "load-grunt-config": "*",
     "load-grunt-tasks": "*"
   }
