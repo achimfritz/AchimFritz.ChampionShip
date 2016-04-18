@@ -52,11 +52,10 @@ class RoundController extends \AchimFritz\ChampionShip\Generic\Controller\Abstra
 			if ($round instanceof Round) {
 				$this->forward('show', NULL, NULL, array('round' => $round, 'cup' => $round->getCup()));
 			} else {
-				$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($this->cup));
 				$this->addErrorMessage('no rounds found');
 			}
 		} else {
-				$this->addErrorMessage('no cup');
+			$this->addErrorMessage('no cup');
 		}
 	}
 
@@ -66,11 +65,11 @@ class RoundController extends \AchimFritz\ChampionShip\Generic\Controller\Abstra
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round
 	 */
 	public function showAction(Round $round) {
-      $cup = $round->getCup();
+		$cup = $round->getCup();
 		$this->view->assign('cup', $cup);
 		$this->view->assign('round', $round);
-      $this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
-      $this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
+		$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
+		$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
 	}
 
 	/**

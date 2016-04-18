@@ -36,8 +36,6 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	}
 
 	/**
-	 * update 
-	 * 
 	 * @param mixed $object 
 	 * @return void
 	 */
