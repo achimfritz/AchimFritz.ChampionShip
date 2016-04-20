@@ -69,6 +69,28 @@ class Match {
 	 */
 	protected $name = '';
 
+	/**
+	 * @param Cup $cup
+	 * @param Round $round
+	 * @param Team $hostTeam
+	 * @param Team $guestTeam
+	 * @return void
+	 */
+	public function __construct(Cup $cup = NULL, Round $round = NULL, Team $hostTeam =  NULL, Team $guestTeam = NULL) {
+		if ($cup !== NULL) {
+			$this->setCup($cup);
+		}
+		if ($round !== NULL) {
+			$this->setRound($round);
+		}
+		if ($hostTeam !== NULL && $guestTeam !== NULL) {
+			$this->setHostTeam($hostTeam);
+			$this->setGuestTeam($guestTeam);
+		}
+		$this->setStartDate(new \DateTime());
+	}
+
+
 
 	/**
 	 * getLooserTeam 

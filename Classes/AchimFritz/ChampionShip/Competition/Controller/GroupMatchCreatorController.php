@@ -24,12 +24,6 @@ class GroupMatchCreatorController extends \AchimFritz\ChampionShip\Generic\Contr
 	protected $roundRepository;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Service\GroupRoundService
-	 * @Flow\Inject
-	 */
-	protected $groupRoundService;
-	
-	/**
 	 * @var string
 	 */
 	protected $resourceArgumentName = 'groupRound';
@@ -42,7 +36,7 @@ class GroupMatchCreatorController extends \AchimFritz\ChampionShip\Generic\Contr
 	 */
 	public function updateAction(GroupRound $groupRound) {
 		try {
-			$this->groupRoundService->createMatches($groupRound);
+			$groupRound->createMatches();
 			$this->roundRepository->update($groupRound);
 			$this->persistenceManager->persistAll();
 			$this->addOkMessage('matches updated');

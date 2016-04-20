@@ -20,12 +20,6 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
 class GroupMatchRepository extends MatchRepository {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Service\GroupRoundService
-	 * @Flow\Inject
-	 */
-	protected $groupRoundService;
-
-	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupMatchRepository
 	 */
@@ -67,7 +61,8 @@ class GroupMatchRepository extends MatchRepository {
 	 */
 	protected function updateRound(GroupMatch $match) {
 		if ($match->getRound() instanceof GroupRound) {
-			$groupRound = $this->groupRoundService->updateGroupTable($match->getRound());
+			$groupRound = $match->getRound();
+			$groupRound->updateGroupTable();
 			$this->roundRepository->update($groupRound);
 		}
 		if ($match->getResult() instanceof Result) {

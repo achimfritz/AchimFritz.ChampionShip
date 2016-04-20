@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\Collection;
 
 
 /**
- * A GroupTableCalculator
+ * A GroupTableFactory
  */
 class GroupTableFactory {
 	

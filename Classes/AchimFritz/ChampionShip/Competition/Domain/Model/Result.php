@@ -30,6 +30,14 @@ class Result {
 	 */
 	protected $guestTeamGoals;
 
+    /**
+     * @param integer $hostTeamGoals
+     * @param integer $guestTeamGoals
+     */
+    public function __construct($hostTeamGoals, $guestTeamGoals) {
+        $this->hostTeamGoals = $hostTeamGoals;
+        $this->guestTeamGoals = $guestTeamGoals;
+    }
 
 	/**
 	 * Get the Result's host team goals
