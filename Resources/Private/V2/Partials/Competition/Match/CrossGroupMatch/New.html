@@ -1,0 +1,51 @@
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+               <h5>new cross group round match</h5>
+               <f:form action="index" name="match" controller="CrossGroupMatch" method="post" class="form-horizontal">
+                  <f:form.hidden property="cup" value="{recentCup}" />
+                  <f:form.hidden property="round" value="{round}" />
+                  <div class="control-group">
+                     <label class="control-label" for="name">name</label>
+                     <div class="controls">
+                        <f:form.textfield property="name" id="name" />
+                     </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="startDate">startDate</label>
+                     <div class="controls">
+                        <f:form.textfield property="startDate" id="startDate" class="datetimepicker" />
+                     </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="hostGroupRound">hostGroupRound</label>
+                        <div class="controls">
+                           <f:form.select  options="{allGroupRounds}" property="hostGroupRound" id="hostGroupRound" optionLabelField="name" />
+                        </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="hostGroupRank">hostGroupRank</label>
+                        <div class="controls">
+                           <f:form.textfield property="hostGroupRank" id="hostGroupRank"  />
+                        </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="guestGroupRound">guestGroupRound</label>
+                        <div class="controls">
+                           <f:form.select  options="{allGroupRounds}" property="guestGroupRound" id="guestGroupRound" optionLabelField="name" />
+                        </div>
+                  </div>
+                  <div class="control-group">
+                     <label class="control-label" for="guestGroupRank">guestGroupRank</label>
+                        <div class="controls">
+                           <f:form.textfield property="guestGroupRank" id="guestGroupRound" />
+                        </div>
+                  </div>
+
+                  <div class="control-group">
+                        <div class="controls">
+                           <f:form.submit value="Create" class="btn"/>
+                        </div>
+                     </div>
+               </f:form>
+
+	</f:security.ifHasRole>
+

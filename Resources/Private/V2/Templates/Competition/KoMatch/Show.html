@@ -1,0 +1,16 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<f:render partial="Match/ShowOne" arguments="{match: match}" />
+	<f:if condition="{tips}">
+		<f:then>
+			<f:render partial="Tip/List" arguments="{tips: tips}" />
+			</f:then>
+			<f:else>
+				no tips created
+			</f:else>
+	</f:if>
+
+<p>cannot determine KoRound Implementation (CrossGroup or TeamsOfTwoMatches)</p>
+</f:section>

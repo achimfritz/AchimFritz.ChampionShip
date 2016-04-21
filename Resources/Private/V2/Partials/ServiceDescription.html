@@ -1,0 +1,53 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<div class="cs-container">
+	<h6>Home</h6>
+	<ul>
+		<li>
+			<f:link.action controller="Standard" subpackage="Generic" action="index" arguments="{cup: recentCup}">Home</f:link.action>
+		</li>
+	</ul>
+</div>
+
+
+<div class="cs-container">
+	<h6><f:translate id="matches" /></h6>
+	<ul>
+		<li>
+			<f:link.action action="index" subpackage="Competition" controller="GroupMatch" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
+		</li>
+		<li>
+			<f:link.action action="index" subpackage="Competition" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
+		</li>
+		<li>
+		<f:link.action action="index" subpackage="Competition" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
+		</li>
+	</ul>
+</div>
+
+
+<div class="cs-container">
+	<h6><f:translate id="history" /></h6>
+	<f:if condition="{cups}">
+		<ul>
+			<f:for each="{cups}" as="cup">
+				<li>
+					<f:link.action subpackage="Competition" controller="Cup" action="index" arguments="{cup: cup}" >{cup.name}</f:link.action>
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+</div>
+
+
+<div class="cs-container">
+   <h6>admin</h6>
+   <ul>
+      <li {cs:ifIsCurrentController(controllerName:'Cup', then: 'class= "cs-active"')}>
+         <f:link.action subpackage="Competition" controller="Cup" action="index">Cups</f:link.action>
+      </li>
+      <li {cs:ifIsCurrentController(controllerName:'Team', then: 'class= "cs-active"')}>
+         <f:link.action subpackage="Competition" controller="Team" action="index" arguments="{cup: recentCup}">Teams</f:link.action>
+      </li>
+   </ul>
+</div>
+

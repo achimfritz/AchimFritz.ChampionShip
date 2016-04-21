@@ -5,6 +5,7 @@ module.exports = {
     scripts: {
         files: [
             'JavaScript/**/*.js',
+            'JavaScript/*.js',
             'Css/**/*.css'
         ],
         tasks: ['concat' ],

@@ -1,0 +1,27 @@
+<f:if condition="{cups}">
+	<f:then>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<f:for each="{cups}" as="cup" iteration="it">
+					<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+						<td>
+							{cup.name}
+						</td>
+						<f:render partial="Actions/TdRestAction" arguments="{object: cup}" />
+					</tr>
+				</f:for>
+			</tbody>
+		</table>
+	</f:then>
+	<f:else>
+		<p>no cups created</p>
+	</f:else>
+</f:if>
+

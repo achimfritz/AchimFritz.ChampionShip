@@ -1,0 +1,41 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+	<h5>edit Cup</h5>
+
+	<f:form class="form-horizontal" action="index" method="put" object="{cup}" name="cup">
+		<f:form.hidden name="__method" value="PUT" />
+		<div class="control-group">
+			<label class="control-label" for="tipPointsPolicy">tipPointsPolicy</label>
+			<div class="controls">
+				<f:form.select options="{cs:cupPolicyOptions(prefix: 'TIP_POINTS')}" property="tipPointsPolicy" id="tipPointsPolicy" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="groupTablePolicy">groupTablePolicy</label>
+			<div class="controls">
+				<f:form.select options="{cs:cupPolicyOptions(prefix: 'GROUPTABLE')}" property="groupTablePolicy" id="groupTablePolicy" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="name">Name</label>
+			<div class="controls"><f:form.textfield property="name" id="name" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="startDate">startDate</label>
+			<div class="controls">
+				<f:form.textfield class="datetimepicker" property="startDate" id="startDate" value="{cup.startDate -> f:format.date(format:'d.m.Y H:i')}" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="teams">Teams</label>
+			<div class="controls">
+				<f:form.select size="20"  multiple="1" options="{allTeams}" property="teams" id="teams" optionLabelField="name" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit value="Update" class="btn"/>
+			</div>
+		</div>
+	</f:form>

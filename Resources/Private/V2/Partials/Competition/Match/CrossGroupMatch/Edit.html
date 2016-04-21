@@ -1,0 +1,50 @@
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+<h5>edit cross group match</h5>
+
+<f:form class="form-horizontal" action="index" object="{match}"  name="match" controller="CrossGroupMatch" method="put">
+   <f:form.hidden name="__method" value="PUT" />
+	<div class="control-group">
+		<label class="control-label" for="name">name</label>
+		<div class="controls">
+			<f:form.textfield property="name" id="name" />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="startDate">startDate</label>
+		<div class="controls">
+         <f:form.textfield property="startDate" id="startDate" class="datetimepicker" value="{match.startDate -> f:format.date(format:'d.m.Y H:i')}"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="hostGroupRound">hostGroupRound</label>
+		<div class="controls">
+			<f:form.select  options="{allGroupRounds}" property="hostGroupRound" id="hostGroupRound" optionLabelField="name" />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="hostGroupRank">hostGroupRank</label>
+		<div class="controls">
+			<f:form.textfield property="hostGroupRank" id="hostGroupRank"  />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="guestGroupRound">guestGroupRound</label>
+		<div class="controls">
+			<f:form.select  options="{allGroupRounds}" property="guestGroupRound" id="guestGroupRound" optionLabelField="name" />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="guestGroupRank">guestGroupRank</label>
+		<div class="controls">
+			<f:form.textfield property="guestGroupRank" id="guestGroupRound" />
+		</div>
+	</div>
+
+	<div class="control-group">
+		<div class="controls">
+			<f:form.submit value="Update" class="btn"/>
+		</div>
+	</div>
+</f:form>
+	</f:security.ifHasRole>
+

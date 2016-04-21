@@ -9,6 +9,7 @@
     "grunt-jslint": "*",
     "grunt-newer": "*",
     "grunt-ng-annotate": "*",
+    "grunt-svg-sprite": "^1.2.19",
     "jshint-stylish": "*",
     "load-grunt-config": "*",
     "load-grunt-tasks": "*"

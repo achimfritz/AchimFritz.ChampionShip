@@ -1,0 +1,27 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Content">
+
+	<div class="row">
+		<f:link.action action="index">
+			<botton type="button" class="btn btn-default">
+				list
+			</botton>
+		</f:link.action>
+	</div>
+
+	<div class="row">
+		<f:render partial="Match/ShowOne" arguments="{match: match}" />
+	</div>
+
+	<div class="row">
+		<f:render partial="Match/GroupMatch/Edit" arguments="{match: match}" />
+	</div>
+	<div class="row">
+		<f:render partial="Match/ChangeMembers" arguments="{match: match}" />
+	</div>
+	<div class="row">
+		<f:render partial="Match/Result" arguments="{match: match}" />
+	</div>
+</f:section>

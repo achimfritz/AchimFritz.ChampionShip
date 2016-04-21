@@ -1,0 +1,31 @@
+	<f:if condition="{teams}">
+		<f:then>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>&nbsp;</th>
+						<th>name</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<f:for each="{teams}" as="team" iteration="it">
+						<tr>
+							<td>
+								<span class="flag-icon flag-icon-{team.iso2}"></span>
+							</td>
+							<td>{team.name}</td>
+
+							<f:render partial="Actions/TdRestAction" arguments="{object: team}" />
+
+						</tr>
+					</f:for>
+				</tbody>
+			</table>
+		</f:then>
+		<f:else>
+			<p>No teams created yet.</p>
+		</f:else>
+	</f:if>
+

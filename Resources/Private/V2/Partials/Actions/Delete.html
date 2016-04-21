@@ -1,0 +1,6 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+
+<form action="{cs:restUri(object: object)}" method="post">
+	<input type="hidden" name="__method" value="DELETE" />
+	<input type="submit" name="submit" value="delete" class="btn btn-danger" />
+</form>

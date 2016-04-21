@@ -1,0 +1,37 @@
+<h5>edit group match</h5>
+<f:form class="form-horizontal" method="put" object="{match}" action="index" name="match" > 
+   <f:form.hidden name="__method" value="PUT" />
+   <div class="control-group">
+      <label class="control-label" for="name">name</label>
+      <div class="controls">
+         <f:form.textfield property="name" id="name" />
+      </div>
+   </div>
+   <div class="control-group">
+      <label class="control-label" for="startDate">startDate</label>
+      <div class="controls">
+         <f:form.textfield property="startDate" class="datetimepicker" id="startDate" value="{match.startDate -> f:format.date(format:'d.m.Y H:i')}"/>
+      </div>
+   </div>
+
+   <div class="control-group">
+      <label class="control-label" for="hostTeam">hostTeam</label>
+      <div class="controls">
+         <f:form.select  options="{match.round.Teams}" property="hostTeam" id="hostTeam" optionLabelField="name" />
+      </div>
+   </div>
+   <div class="control-group">
+      <label class="control-label" for="guestTeam">guestTeam</label>
+      <div class="controls">
+         <f:form.select  options="{match.round.Teams}" property="guestTeam" id="guestTeam" optionLabelField="name" />
+      </div>
+   </div>
+
+
+
+   <div class="control-group">
+         <div class="controls">
+            <f:form.submit value="Update" class="btn"/>
+         </div>
+      </div>
+</f:form>

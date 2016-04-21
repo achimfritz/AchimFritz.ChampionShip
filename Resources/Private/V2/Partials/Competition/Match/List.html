@@ -1,0 +1,27 @@
+<f:if condition="{matches}">
+	<f:then>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th><f:translate id="match.date" /></th>
+					<th><f:translate id="match.group" /></th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+			<f:for each="{matches}" as="match" iteration="it">
+				<tr>
+					<f:render partial="Match/Show" arguments="{match: match}" />
+				</tr>
+			</f:for>
+			</tbody>
+		</table>
+	</f:then>
+	<f:else>
+		<p>No matches created yet.</p>
+	</f:else>
+</f:if>

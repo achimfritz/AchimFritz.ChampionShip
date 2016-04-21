@@ -7,3 +7,5 @@ dev:
   - watch
 sniff:
   - jshint
+svg:
+  - svg_sprite

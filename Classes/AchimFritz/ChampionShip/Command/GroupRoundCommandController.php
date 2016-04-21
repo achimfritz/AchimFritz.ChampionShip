@@ -27,12 +27,7 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
 	 */
 	protected $matchRepository;
-	
-	/**
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Service\GroupRoundService
-	 * @Flow\Inject
-	 */
-	protected $groupRoundService;
+
 	
 	/**
 	 * list
@@ -80,7 +75,7 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 					#continue;
 				}
 			$this->outputLine('update groupRoundTable ' . $groupRound->getCup()->getName() . ' ' . $groupRound->getName());
-			$this->groupRoundService->updateGroupTable($groupRound);
+			$groupRound->updateGroupTable();
 			$this->outputGroupRound($groupRound);
 			$this->groupRoundRepository->update($groupRound);
 		}

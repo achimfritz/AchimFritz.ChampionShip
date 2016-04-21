@@ -1,0 +1,47 @@
+	{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+
+	<h5>change host / guest</h5>
+	<table class="table">
+		<tr>
+			<td>new hostTeam</td>
+			<td><f:render partial="Match/Duell/Guest" arguments="{match: match}" /></td>
+			<f:if condition="{match.result}"><td>{match.result.guestTeamGoals}</td></f:if>
+		</tr>
+		<tr>
+			<td>new guestTeam</td>
+			<td><f:render partial="Match/Duell/Host" arguments="{match: match}" /></td>
+			<f:if condition="{match.result}"><td>{match.result.hostTeamGoals}</td></f:if>
+		</tr>
+	</table>
+
+	<f:form class="form-horizontal" method="put" object="{match}" action="index" name="match" > 
+		<f:form.hidden name="__method" value="PUT" />
+				<f:if condition="{match.guestTeam}">
+					<f:form.hidden property="hostTeam" value="{match.guestTeam}" />
+				</f:if>
+				<f:if condition="{match.hostTeam}">
+					<f:form.hidden property="guestTeam" value="{match.hostTeam}" />
+				</f:if>
+				<cs:ifIsCrossGroupMatch match="{match}">
+					<f:form.hidden property="hostGroupRound" value="{match.guestGroupRound}" />
+					<f:form.hidden property="hostGroupRank" value="{match.guestGroupRank}" />
+					<f:form.hidden property="guestGroupRound" value="{match.hostGroupRound}" />
+					<f:form.hidden property="guestGroupRank" value="{match.hostGroupRank}" />
+				</cs:ifIsCrossGroupMatch>
+				<cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
+					<f:form.hidden property="hostMatch" value="{match.guestMatch}" />
+					<f:form.hidden property="guestMatch" value="{match.hostMatch}" />
+					<f:form.hidden property="hostMatchIsWinner" value="{match.guestMatchIsWinner}" />
+					<f:form.hidden property="guestMatchIsWinner" value="{match.hostMatchIsWinner}" />
+				</cs:ifIsTeamsOfTwoMatchesMatch>
+				<f:if condition="{match.result}">
+					<f:form.hidden property="result.hostTeamGoals" value="{match.result.guestTeamGoals}" />
+					<f:form.hidden property="result.guestTeamGoals" value="{match.result.hostTeamGoals}" />
+				</f:if>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit value="Update" class="btn"/>
+			</div>
+		</div>
+	</f:form>
+

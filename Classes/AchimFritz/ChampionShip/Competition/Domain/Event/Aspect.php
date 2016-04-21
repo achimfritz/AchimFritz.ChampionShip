@@ -10,15 +10,28 @@ use TYPO3\Flow\Aop\JoinPointInterface;
  */
 class Aspect {
 
+	/**
+	 * @Flow\Inject
+	 * @var \TYPO3\Flow\SignalSlot\Dispatcher
+	 */
+	protected $dispatcher;
 
 	/**
 	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
 	 * @return void
-	 * @Flow\After("method(AchimFritz\ChampionShip\Competition\Domain\Repository\.*MatchRepository->update()) || method(AchimFritz\ChampionShip\Competition\Domain\Repository\.*MatchRepository->add())")
+	 * @Flow\Before("method(AchimFritz\ChampionShip\Competition\Domain\Repository\.*MatchRepository->update())")
 	 */
-	public function matchChanged(JoinPointInterface $joinPoint) {
-		$match = $joinPoint->getMethodArgument('object');
+	public function matchUpdated(JoinPointInterface $joinPoint) {
+		$this->dispatcher->dispatch($joinPoint->getClassName(), 'matchUpdated', $joinPoint->getMethodArguments());
+	}
 
+	/**
+	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+	 * @return void
+	 * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\.*MatchRepository->add())")
+	 */
+	public function matchAdded(JoinPointInterface $joinPoint) {
+		$this->dispatcher->dispatch($joinPoint->getClassName(), 'matchAdded', $joinPoint->getMethodArguments());
 	}
 }
 

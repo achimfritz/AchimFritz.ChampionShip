@@ -61,9 +61,9 @@ class GroupMatchRepository extends MatchRepository {
 	 */
 	protected function updateRound(GroupMatch $match) {
 		if ($match->getRound() instanceof GroupRound) {
-			$groupRound = $match->getRound();
-			$groupRound->updateGroupTable();
-			$this->roundRepository->update($groupRound);
+			#$groupRound = $match->getRound();
+			#$groupRound->updateGroupTable();
+			#$this->roundRepository->update($groupRound);
 		}
 		if ($match->getResult() instanceof Result) {
 			if ($match->getRound()->getRoundIsFinished() === TRUE) {

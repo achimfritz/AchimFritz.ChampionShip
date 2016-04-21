@@ -1,0 +1,16 @@
+<f:layout name="Default" />
+
+
+<f:section name="Content">
+	<h5>{cup.name}</h5>
+			<div class="row">
+				<f:link.action action="index">
+					<botton type="button" class="btn btn-default">
+						list
+					</botton>
+				</f:link.action>
+			</div>
+			<div class="row">
+				<f:render partial="Cup/Edit" arguments="{cup: cup, allTeams: allTeams}" />
+			</div>
+</f:section>
