@@ -14,7 +14,13 @@ use \AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
  *
  * @Flow\Scope("singleton")
  */
-class TeamsOfTwoMatchesMatchController extends KoMatchController {
+class TeamsOfTwoMatchesMatchController extends MatchController {
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository
+	 */
+	protected $matchRepository;
 		
 	/**
 	 * Adds the given new match object to the cup repository

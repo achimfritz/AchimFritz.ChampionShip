@@ -12,5 +12,9 @@
 		:
 	</f:else>
 </f:if>
-		<f:render partial="Actions/RestAction" arguments="{object: match}" />
+	<cs:ifIsJustKoMatch match="{match}">
+		<f:else>
+			<f:render partial="Actions/RestAction" arguments="{object: match}" />
+		</f:else>
+	</cs:ifIsJustKoMatch>
 </td>

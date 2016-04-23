@@ -16,7 +16,7 @@ use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class AbstractMatchController extends \AchimFritz\ChampionShip\Generic\Controller\AbstractActionController {
+class MatchController extends \AchimFritz\ChampionShip\Generic\Controller\AbstractActionController {
 		
 	/**
 	 * @Flow\Inject
@@ -88,8 +88,6 @@ class AbstractMatchController extends \AchimFritz\ChampionShip\Generic\Controlle
 	}
 
 	/**
-	 * updateMatch
-	 *
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match The match to update
 	 * @return void
 	 */
@@ -105,8 +103,6 @@ class AbstractMatchController extends \AchimFritz\ChampionShip\Generic\Controlle
 	}
 
 	/**
-	 * deleteMatch
-	 *
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match The match to update
 	 * @return void
 	 */
@@ -122,8 +118,6 @@ class AbstractMatchController extends \AchimFritz\ChampionShip\Generic\Controlle
 	}
 
 	/**
-	 * createMatch
-	 *
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
 	 * @return void
 	 */

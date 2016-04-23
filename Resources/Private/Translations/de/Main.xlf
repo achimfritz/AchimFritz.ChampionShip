@@ -110,6 +110,10 @@
 				<source>Preliminary</source>
 				<target>Vorrunde</target>
 			</trans-unit>
+			<trans-unit id="matches">
+				<source>Matches</source>
+				<target>Spiele</target>
+			</trans-unit>
 			<trans-unit id="groupRound">
 				<source>Groups</source>
 				<target>Gruppen</target>

@@ -69,8 +69,8 @@
 <div class="cs-container">
 	<h6><f:translate id="matches" /></h6>
 	<ul>
-		<li {cs:ifIsCurrentController(controllerName:'GroupMatch', then: 'class= "cs-active"')}>
-			<f:link.action action="index" subpackage="Competition" controller="GroupMatch" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
+		<li {cs:ifIsCurrentController(controllerName:'Match', then: 'class= "cs-active"')}>
+			<f:link.action action="index" subpackage="Competition" controller="Match" arguments="{cup: recentCup}"><f:translate id="matches" /></f:link.action>
 		</li>
 		<li {cs:ifIsCurrentController(controllerName:'GroupRound', then: 'class= "cs-active"')}>
 			<f:link.action action="index" subpackage="Competition" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>

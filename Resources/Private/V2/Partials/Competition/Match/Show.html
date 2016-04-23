@@ -13,4 +13,11 @@
 	</f:else>
 </f:if>
 </td>
+<cs:ifIsJustKoMatch match="{match}">
+	<f:then>
+		<td></td><td></td>
+	</f:then>
+	<f:else>
 		<f:render partial="Actions/TdRestAction" arguments="{object: match}" />
+	</f:else>
+</cs:ifIsJustKoMatch>

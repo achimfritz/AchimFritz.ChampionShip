@@ -15,7 +15,13 @@ use \AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupMatch;
  *
  * @Flow\Scope("singleton")
  */
-class CrossGroupMatchController extends KoMatchController {
+class CrossGroupMatchController extends MatchController {
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository
+	 */
+	protected $matchRepository;
 		
 	/**
 	 * Adds the given new match object to the cup repository

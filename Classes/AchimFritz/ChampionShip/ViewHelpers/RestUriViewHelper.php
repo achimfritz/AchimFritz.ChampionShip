@@ -61,11 +61,13 @@ class RestUriViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper 
 		$controller = $model;
 		// but not on groupRoundMatch
 		$requestControllerName = $this->controllerContext->getRequest()->getControllerName();
+		/*
 		if ($requestControllerName == 'GroupRound' AND $resource == 'match') {
 			$controller = 'GroupRoundMatch';
 		} elseif ($requestControllerName == 'GroupMatch' AND $resource == 'match') {
 			$controller = 'GroupRoundMatch';
 		}
+		*/
 		// and not in tip
 		if ($resource == 'tip') {
 			$role = 'AchimFritz.ChampionShip:Administrator';
