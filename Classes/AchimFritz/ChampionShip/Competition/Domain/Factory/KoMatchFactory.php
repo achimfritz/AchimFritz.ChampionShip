@@ -35,6 +35,12 @@ class KoMatchFactory {
 		$match->setGuestGroupRank(2);
 		$match->setStartDate(new \DateTime());
 		$match->setCup($first->getCup());
+		if ($first->getRoundIsFinished() === TRUE) {
+			$match->setHostTeam($first->getWinnerTeam());
+		}
+		if ($second->getRoundIsFinished() === TRUE) {
+			$match->setGuestTeam($second->getSecondTeam());
+		}
 		return $match;
 	}
 
@@ -53,6 +59,12 @@ class KoMatchFactory {
 		$match->setGuestMatchIsWinner(TRUE);
 		$match->setStartDate(new \DateTime());
 		$match->setCup($first->getCup());
+		if ($first->getWinnerTeam() !== NULL) {
+			$match->setHostTeam($first->getWinnerTeam());
+		}
+		if ($second->getWinnerTeam() !== NULL) {
+			$match->setGuestTeam($second->getWinnerTeam());
+		}
 		return $match;
 	}
 }
