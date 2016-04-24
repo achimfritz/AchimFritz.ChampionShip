@@ -19,7 +19,7 @@ class CrossGroupMatchController extends MatchController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupMatchRepository
 	 */
 	protected $matchRepository;
 		
@@ -53,6 +53,7 @@ class CrossGroupMatchController extends MatchController {
 	 */
 	public function updateAction(CrossGroupMatch $match) {
 		$this->updateMatch($match);
+		#return 'x';
 		$this->redirect('index', NULL, NULL, array('match' => $match, 'cup' => $match->getCup()));
 	}
 }

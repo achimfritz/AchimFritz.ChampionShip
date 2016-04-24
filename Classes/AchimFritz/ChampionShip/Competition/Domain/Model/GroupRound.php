@@ -24,14 +24,14 @@ class GroupRound extends Round {
 	 * @ORM\OrderBy({"rank" = "ASC"})
 	 */
 	protected $groupTableRows;
-	
+
 	/**
 	 * __construct
-	 * 
+	 *
 	 * @return void
 	 */
 	public function __construct() {
-      parent::__construct();
+		parent::__construct();
 		$this->groupTableRows = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
@@ -206,6 +206,7 @@ class GroupRound extends Round {
 					$this->addGeneralMatch($match);
 				}
 			}
+			$this->updateGroupTable();
 		}
 	}
 

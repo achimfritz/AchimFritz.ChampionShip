@@ -4,7 +4,7 @@
 <f:section name="Content">
 	<h5>{round.name}</h5>
 	<f:render partial="Round/List" arguments="{rounds: allKoRounds, activeRound: round}" />
-
+	<f:render partial="Actions/Delete" arguments="{object: round}" />
 
 		<div class="row tab-pane active" id="show">
 			<f:render partial="Round/Show" arguments="{round: round}" />

@@ -6,6 +6,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow;
 use Doctrine\Common\Collections\Collection;
@@ -19,13 +20,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 abstract class AbstractPointEqualityPolicy {
 
-	/**
-	 * groupTableFactory 
-	 * 
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Factory\GroupTableFactory
-	 * @Flow\Inject
-	 */
-	protected $groupTableFactory;
 
 	/**
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable\DefaultPolicy
@@ -121,7 +115,10 @@ abstract class AbstractPointEqualityPolicy {
 			$this->addMessage($row->getTeam()->getName() . ' with rank ' . $row->getRank());
 		}
 		$relevant = $this->getRelevantMatches($rows, $matches);
-		$groupTableRows = $this->groupTableFactory->createTable($relevant);
+		$round = new GroupRound();
+		$round->setGeneralMatches($relevant);
+		$round->updateGroupTable();
+		$groupTableRows = $round->getGroupTableRows();
 		$groupTableRows = $this->defaultPolicy->updateTable($groupTableRows);
 		foreach($rows AS $row) {
 			$teamName = $row->getTeam()->getName();

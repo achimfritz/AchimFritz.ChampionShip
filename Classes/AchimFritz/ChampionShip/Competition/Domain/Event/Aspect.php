@@ -33,5 +33,14 @@ class Aspect {
 	public function matchAdded(JoinPointInterface $joinPoint) {
 		$this->dispatcher->dispatch($joinPoint->getClassName(), 'matchAdded', $joinPoint->getMethodArguments());
 	}
+
+	/**
+	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+	 * @return void
+	 * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\.*MatchRepository->remove())")
+	 */
+	public function matchRemoved(JoinPointInterface $joinPoint) {
+		$this->dispatcher->dispatch($joinPoint->getClassName(), 'matchRemoved', $joinPoint->getMethodArguments());
+	}
 }
 

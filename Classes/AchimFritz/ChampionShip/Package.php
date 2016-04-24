@@ -19,11 +19,31 @@ class Package extends BasePackage {
 		$dispatcher = $bootstrap->getSignalSlotDispatcher();
 		$dispatcher->connect(
 			'AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository', 'matchAdded',
-			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\GroupMatchListener', 'onMatchAdded'
+			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onGroupMatchChanged'
 		);
 		$dispatcher->connect(
 			'AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository', 'matchUpdated',
-			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\GroupMatchListener', 'onMatchUpdated'
+			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onGroupMatchChanged'
+		);
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupMatchRepository', 'matchAdded',
+			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onCrossGroupMatchChanged'
+		);
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupMatchRepository', 'matchUpdated',
+			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onCrossGroupMatchChanged'
+		);
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository', 'matchAdded',
+			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onKoMatchChanged'
+		);
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository', 'matchUpdated',
+			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onKoMatchChanged'
+		);
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository', 'matchRemoved',
+			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onKoMatchRemoved'
 		);
 	}
 

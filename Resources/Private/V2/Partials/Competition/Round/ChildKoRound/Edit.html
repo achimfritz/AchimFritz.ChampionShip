@@ -1,25 +1,24 @@
-	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-               <h5>edit ko round</h5>
-               <f:form action="index" controller="ChildKoRound" object="{round}" name="round" method="put">
-                  <f:form.hidden name="__method" value="PUT" />
-                  <div class="control-group">
-                     <label class="control-label"for="name">Name</label>
-                     <div class="controls"><f:form.textfield property="name" id="name" /></div>
-                  </div>
-                  
-                     <div class="control-group">
-                        <label class="control-label" for="parentRound">parentRound</label>
-                           <div class="controls">
-                              <f:form.select  options="{allKoRounds}" property="parentRound" id="parentRound" optionLabelField="name" />
-                           </div>
-                     </div>
-                  
-                  <div class="control-group">
-                     <div class="controls">
-                        <f:form.submit value="Update" class="btn"/>
-                     </div>
-                  </div>
-               </f:form>
 
-	</f:security.ifHasRole>
+<h5>edit ko round</h5>
+<f:form action="index" controller="ChildKoRound" object="{round}" name="round" method="put">
+  <f:form.hidden name="__method" value="PUT" />
+  <div class="control-group">
+	 <label class="control-label"for="name">Name</label>
+	 <div class="controls"><f:form.textfield property="name" id="name" /></div>
+  </div>
+
+	 <div class="control-group">
+		<label class="control-label" for="parentRound">parentRound</label>
+		   <div class="controls">
+			  <f:form.select  options="{allKoRounds}" property="parentRound" id="parentRound" optionLabelField="name" />
+		   </div>
+	 </div>
+
+  <div class="control-group">
+	 <div class="controls">
+		<f:form.submit value="Update" class="btn"/>
+	 </div>
+  </div>
+</f:form>
+
 

@@ -18,7 +18,7 @@ class TeamsOfTwoMatchesMatchController extends MatchController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamsOfTwoMatchesMatchRepository
 	 */
 	protected $matchRepository;
 		

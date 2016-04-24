@@ -30,6 +30,7 @@ class KoMatchRepository extends MatchRepository {
 	 * @return void
 	 */
 	public function remove($object) {
+		/*
 		$hostMatch = $this->teamsOfTwoMatchesMatchRepository->findOneByHostMatch($object);
 		if ($hostMatch instanceof TeamsOfTwoMatchesMatch) {
 			$this->remove($hostMatch);
@@ -38,6 +39,7 @@ class KoMatchRepository extends MatchRepository {
 		if ($guestMatch instanceof TeamsOfTwoMatchesMatch) {
 			$this->remove($guestMatch);
 		}
+		*/
 		parent::remove($object);
 	}
 
@@ -48,6 +50,7 @@ class KoMatchRepository extends MatchRepository {
 	 * @return void
 	 */
 	public function update($object) {
+		/*
 		if ($object->getResult() instanceof Result) {
 			$winnerTeam = $object->getWinnerTeam();
 			$looserTeam = $object->getLooserTeam();
@@ -77,6 +80,7 @@ class KoMatchRepository extends MatchRepository {
 				}
 			}
 		}
+		*/
 
 		parent::update($object);
 	}

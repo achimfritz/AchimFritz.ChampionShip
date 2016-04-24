@@ -53,6 +53,14 @@ class Round {
 		$this->teams = new \Doctrine\Common\Collections\ArrayCollection();
 		$this->generalMatches = new \Doctrine\Common\Collections\ArrayCollection();
 	}
+
+	/**
+	 * @param \Doctrine\Common\Collections\Collection $generalMatches
+	 */
+	public function setGeneralMatches($generalMatches) {
+		$this->generalMatches = $generalMatches;
+	}
+
 		
 	/**
 	 * addGeneralMatch
