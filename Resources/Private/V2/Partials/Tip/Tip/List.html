@@ -1,0 +1,39 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<f:if condition="{tips}">
+	<f:then>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>username</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>tip</th>
+				</tr>
+			</thead>
+			<tbody>
+            <f:for each="{tips}" as="tip" iteration="it">
+               <tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+                  <td>
+                     {tip.user.name}
+                  </td>
+						<f:render partial="Competition/Match/Show" arguments="{match: tip.match}" />
+                  <td>
+                     <f:render partial="Tip/Show" arguments="{tip: tip}" />
+							<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+								<f:render partial="Actions/Show" arguments="{object: tip}" />
+							</f:security.ifHasRole>
+                  </td>
+               </tr>
+            </f:for>
+			</tbody>
+         </table>
+	</f:then>
+	<f:else>
+		<p><f:translate id="noTips" /></p>
+	</f:else>
+</f:if>
+

@@ -17,20 +17,28 @@
 				<f:translate id="contactRequest"/>
 			</f:link.action>
 		</li>
-		<f:security.ifAuthenticated>
+		<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 			<li>
 				<f:link.action controller="User" subpackage="User" action="index" arguments="{user:user}">
 					<f:translate id="profile"/>
 				</f:link.action>
 			</li>
-		</f:security.ifAuthenticated>
-		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-			<li>
-				<f:link.action controller="User" subpackage="User" action="index">
-					<f:translate id="profile"/>
-				</f:link.action>
-			</li>
 		</f:security.ifHasRole>
 	</ul>
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<h6>User Admin</h6>
+		<ul>
+			<li>
+				<f:link.action controller="User" subpackage="User" action="index">
+					Users
+				</f:link.action>
+			</li>
+			<li>
+				<f:link.action controller="TipGroup" subpackage="User" action="index">
+					TipGroups
+				</f:link.action>
+			</li>
+		</ul>
+	</f:security.ifHasRole>
 </div>
 

@@ -1,0 +1,8 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<h5><f:translate id="ranking" /></h5>
+	<f:render partial="TipGroup/Navi" arguments="{tipGroups: tipGroups, active: tipGroup, cup: recentCup, listAction: true}" />
+	<f:render partial="Rankings/List" arguments="{rankings: rankings}"/>
+</f:section>
+

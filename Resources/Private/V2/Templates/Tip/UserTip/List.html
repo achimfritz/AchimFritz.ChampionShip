@@ -1,0 +1,26 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+		<div class="row">
+			<ul class="nav nav-pills">
+				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
+				<li><a href="#change" data-toggle="tab">change cup</a></li>
+			</ul>
+		</div>
+	<div class="tab-content">
+		<div class="row tab-pane active" id="show">
+			<h6>Tips for {user.name} in Cup {cup.name}</h6>
+			<f:render partial="UserTip/List" arguments="{tips: tips}" />
+		</div>
+		<div class="row tab-pane" id="change">
+			<h6>change cup</h6>
+			<ul>
+			<f:for each="{cups}" as="loopCup">
+				<li>
+					<f:link.action action="index" arguments="{cup: loopCup, user:user}">{loopCup.name}</f:link.action>
+				</li>
+			</f:for>
+			</ul>
+		</div>
+	</div>
+</f:section>

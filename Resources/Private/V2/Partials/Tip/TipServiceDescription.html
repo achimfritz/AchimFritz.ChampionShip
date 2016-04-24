@@ -1,0 +1,43 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+
+<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+	<div class="cs-container">
+		<h6><f:translate id="tip" /> aaa </h6>
+		<ul>
+			<li>
+				<f:link.action action="index" subpackage="Tip" controller="GroupMatchTip" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
+			</li>
+			<li>
+				<f:link.action action="index" subpackage="Tip" controller="GroupRoundTip" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
+			</li>
+			<li>
+				<f:link.action action="index" subpackage="Tip" controller="KoRoundTip" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
+			</li>
+		</ul>
+	</div>
+</f:security.ifHasRole>
+
+<f:security.ifAuthenticated>
+	<div class="cs-container">
+		<h6><f:translate id="tipGroupResults" /></h6>
+		<ul>
+			<li>
+				<f:link.action action="index" subpackage="Tip" controller="TipGroupGroupRoundResults" arguments="{cup: recentCup}">
+					<f:translate id="tipGroupGroupRoundResults" />
+				</f:link.action>
+			</li>
+			<li>
+				<f:link.action action="index" subpackage="Tip" controller="TipGroupKoRoundResults" arguments="{cup: recentCup}">
+					<f:translate id="tipGroupKoRoundResults" />
+				</f:link.action>
+			</li>
+			<li>
+				<f:link.action action="index" subpackage="Tip" controller="Ranking" arguments="{cup: recentCup}"><f:translate id="ranking" /></f:link.action>
+			</li>
+			<li>
+				<f:link.action action="index" subpackage="Tip"  controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
+			</li>
+		</ul>
+	</div>
+</f:security.ifAuthenticated>
+

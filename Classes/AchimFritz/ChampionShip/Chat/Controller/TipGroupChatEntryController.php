@@ -21,7 +21,7 @@ class TipGroupChatEntryController extends AbstractChatEntryController {
 	/**
 	 * Shows a list of rankings
 	 *
-	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function listAction(TipGroup $tipGroup) {

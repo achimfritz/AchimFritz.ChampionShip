@@ -109,7 +109,7 @@
          <f:link.action subpackage="User" controller="User" action="index" arguments="{cup: recentCup}">Users</f:link.action>
       </li>
       <li {cs:ifIsCurrentController(controllerName:'TipGroup', then: 'class= "cs-active"')}>
-         <f:link.action subpackage="Tip" controller="TipGroup" action="index" arguments="{cup: recentCup}">TipGroup</f:link.action>
+         <f:link.action subpackage="User" controller="TipGroup" action="index" arguments="{cup: recentCup}">TipGroup</f:link.action>
       </li>
    </ul>
 </div>

@@ -37,7 +37,7 @@ class TipGroupController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {
@@ -47,7 +47,7 @@ class TipGroupController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function createAction(TipGroup $tipGroup) {
@@ -63,7 +63,7 @@ class TipGroupController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function updateAction(TipGroup $tipGroup) {
@@ -79,7 +79,7 @@ class TipGroupController extends AbstractActionController {
 	}
 
 	/**
-	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function deleteAction(TipGroup $tipGroup) {
