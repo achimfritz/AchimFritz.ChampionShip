@@ -1,0 +1,32 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<h5>{contactRequest.email}</h5>
+		<div class="row">
+			<ul class="nav nav-pills">
+				<li>
+					<f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action>
+				</li>
+				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
+				<li><a href="#new" data-toggle="tab">new</a></li>
+				<li><a href="#edit" data-toggle="tab">edit</a></li>
+				<li><f:render partial="Actions/Delete" arguments="{object: contactRequest}" /></li>
+			</ul>
+		</div>
+		<div class="tab-content">
+			<div class="row tab-pane active" id="show">
+				<f:render partial="ContactRequest/Show" arguments="{contactRequest: contactRequest}" />
+			</div>
+			<div class="row tab-pane" id="edit">
+				<f:render partial="ContactRequest/Edit" arguments="{contactRequest: contactRequest}" />
+			</div>
+			<div class="row tab-pane" id="new">
+				<f:render partial="ContactRequest/New" />
+			</div>
+		</div>
+	</f:security.ifHasRole>
+
+</f:section>
+
+

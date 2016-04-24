@@ -1,0 +1,27 @@
+<f:if condition="{registrationRequests}">
+	<f:then>
+		<table class="table dataTable">
+			<thead>
+				<tr>
+					<th>username</th>
+					<th>email</th>
+					<th>creationDate</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+			<f:for each="{registrationRequests}" as="registrationRequest" iteration="it">
+				<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+								<td>{registrationRequest.username}</td>
+								<td>{registrationRequest.email}</td>
+								<td><f:format.date format="d.m.Y H:i">{registrationRequest.creationDate}</f:format.date></td>
+								<td><f:render partial="Actions/RestAction" arguments="{object: registrationRequest}" /></td>
+				</tr>
+			</f:for>
+			</tbody>
+		</table>
+	</f:then>
+	<f:else>
+		<p>no request created</p>
+	</f:else>
+</f:if>

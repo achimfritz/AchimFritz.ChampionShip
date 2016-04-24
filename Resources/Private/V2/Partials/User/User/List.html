@@ -1,0 +1,36 @@
+	<f:if condition="{users}">
+		<f:then>
+			<table class="table dataTable">
+				<thead>
+					<tr>
+						<th>accountIdentifier</th>
+						<th>email</th>
+						<th>tipGroup</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+				<f:for each="{users}" as="user" iteration="it">
+					<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+						<td>
+							{user.account.accountIdentifier}
+						</td>
+						<td>
+							{user.email}
+						</td>
+						<td>
+							{user.tipGroup.name}
+						</td>
+						<td>
+							<f:render partial="Actions/RestAction" arguments="{object: user}" />
+						</td>
+					</tr>
+				</f:for>
+				</tbody>
+			</table>
+		</f:then>
+		<f:else>
+			<p>No users created yet.</p>
+		</f:else>
+	</f:if>
+

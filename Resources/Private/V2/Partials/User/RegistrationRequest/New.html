@@ -1,0 +1,28 @@
+	<h5><f:translate id="registrationRequest" /></h5>
+	<f:form class="form-horizontal" action="index" controller="RegistrationRequest" name="registrationRequest" method="post">
+		<div class="control-group">
+			<label class="control-label" for="username">Username:</label>
+			<div class="controls"><f:form.textfield property="username" id="username" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="email">Email:</label>
+			<div class="controls"><f:form.textfield property="email" id="email" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="newPassword"><f:translate id="password.newPassword" /></label>
+			<div class="controls"><f:form.password property="newPassword" id="newPassword" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="newPasswordRepeat"><f:translate id="password.newPasswordRepeat" /></label>
+			<div class="controls"><f:form.password property="newPasswordRepeat" id="newPasswordRepeat" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="tipGroupName"><f:translate id="tipGroupName" /></label>
+			<div class="controls"><f:form.textfield property="tipGroupName" id="tipGroupName" /></div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit class="btn" value="Create" />
+			</div>
+		</div>
+	</f:form>

@@ -1,0 +1,22 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+	<h5>Users</h5>
+	<div class="row">
+		<ul class="nav nav-pills">
+			<li class="active"><a href="#show" data-toggle="tab">show</a></li>
+			<li><a href="#new" data-toggle="tab">new</a></li>
+		</ul>
+	</div>
+
+	<div class="tab-content">
+		<div class="row tab-pane active" id="show">
+			<f:render partial="User/List" arguments="{users: users, recentCup: recentCup}" />
+		</div>
+			<div class="row tab-pane" id="new">
+				<f:render partial="User/New" arguments="{allTipGroups: allTipGroups}" />
+			</div>
+	</div>
+	</f:security.ifHasRole>
+</f:section>

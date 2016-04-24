@@ -35,7 +35,6 @@ class UserController extends AbstractActionController {
 	 */
 	protected $userFactory;
 
-
 	/**
 	 * @var string
 	 */

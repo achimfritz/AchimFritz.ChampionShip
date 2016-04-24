@@ -20,6 +20,22 @@ use TYPO3\Flow\Annotations as Flow;
  */
 class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\AbstractAuthenticationController {
 
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
+
+	/**
+	 * @return string
+	 */
+	public function indexAction() {
+		$account = $this->securityContext->getAccount();
+		if ($account) {
+			$user = $this->userRepository->findOneByAccount($account);
+			$this->view->assign('user', $user);
+		}
+	}
 
 
 	/**

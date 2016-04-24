@@ -1,0 +1,36 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<div class="cs-container">
+	<h6>User</h6>
+	<ul>
+		<li>
+			<f:link.action controller="Login" subpackage="User" action="index">
+				Login
+			</f:link.action>
+		</li>
+		<li>
+			<f:link.action controller="RegistrationRequest" subpackage="User" action="index">
+				<f:translate id="registrationRequest"/>
+			</f:link.action>
+		</li>
+		<li>
+			<f:link.action controller="ContactRequest" subpackage="User" action="index">
+				<f:translate id="contactRequest"/>
+			</f:link.action>
+		</li>
+		<f:security.ifAuthenticated>
+			<li>
+				<f:link.action controller="User" subpackage="User" action="index" arguments="{user:user}">
+					<f:translate id="profile"/>
+				</f:link.action>
+			</li>
+		</f:security.ifAuthenticated>
+		<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+			<li>
+				<f:link.action controller="User" subpackage="User" action="index">
+					<f:translate id="profile"/>
+				</f:link.action>
+			</li>
+		</f:security.ifHasRole>
+	</ul>
+</div>
+

@@ -33,10 +33,10 @@
 <div class="cs-container">
    <h6>admin</h6>
    <ul>
-      <li {cs:ifIsCurrentController(controllerName:'Cup', then: 'class= "cs-active"')}>
+      <li>
          <f:link.action subpackage="Competition" controller="Cup" action="index">Cups</f:link.action>
       </li>
-      <li {cs:ifIsCurrentController(controllerName:'Team', then: 'class= "cs-active"')}>
+      <li>
          <f:link.action subpackage="Competition" controller="Team" action="index" arguments="{cup: recentCup}">Teams</f:link.action>
       </li>
    </ul>
