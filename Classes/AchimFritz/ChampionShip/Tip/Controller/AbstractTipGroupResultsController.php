@@ -46,7 +46,7 @@ class AbstractTipGroupResultsController extends AbstractTipGroupController {
 	/**
 	 * showAction
 	 *
-	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {

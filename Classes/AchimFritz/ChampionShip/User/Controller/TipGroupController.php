@@ -14,7 +14,7 @@ class TipGroupController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipGroupRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\TipGroupRepository
 	 */
 	protected $tipGroupRepository;
 

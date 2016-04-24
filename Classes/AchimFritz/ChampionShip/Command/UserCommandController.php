@@ -30,7 +30,7 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $userFactory;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipGroupRepository
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\TipGroupRepository
 	 * @Flow\Inject
 	 */
 	protected $tipGroupRepository;

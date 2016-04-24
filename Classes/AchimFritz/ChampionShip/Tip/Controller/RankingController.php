@@ -32,7 +32,7 @@ class RankingController extends AbstractRankingController {
 	/**
 	 * Shows a list of rankings
 	 *
-	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup $tipGroup
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {

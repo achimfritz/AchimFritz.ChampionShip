@@ -9,7 +9,6 @@ namespace AchimFritz\ChampionShip\User\Domain\Model;
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Security\Account;
-use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 
 /**
  * A User
@@ -51,13 +50,13 @@ class User {
 	protected $email;
 
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup>
+	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\User\Domain\Model\TipGroup>
 	 * @ORM\ManyToMany
 	 */
 	protected $tipGroups;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup
+	 * @var \AchimFritz\ChampionShip\User\Domain\Model\TipGroup
 	 * @ORM\ManyToOne
 	 */
 	protected $tipGroup;
