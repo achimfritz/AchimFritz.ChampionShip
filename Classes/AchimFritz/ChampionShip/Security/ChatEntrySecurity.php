@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Security;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 
 /**
  * ChatEntrySecurity

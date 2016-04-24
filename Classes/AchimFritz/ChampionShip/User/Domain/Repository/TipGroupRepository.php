@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Tip\Domain\Repository;
+namespace AchimFritz\ChampionShip\User\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*

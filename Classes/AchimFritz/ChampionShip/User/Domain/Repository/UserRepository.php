@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\User\Domain\Repository;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Account;
-use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 
 /**
  * A repository for Users

@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Command;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
-use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 
 /**
  * The User Command Controller Service

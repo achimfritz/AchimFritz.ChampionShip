@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\User\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Account;
-use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
 use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;

@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Chat\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Chat\Domain\Model\TipGroupChatEntry;
-use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 
 class TipGroupChatEntryController extends AbstractChatEntryController {
 
