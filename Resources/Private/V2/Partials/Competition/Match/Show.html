@@ -13,11 +13,15 @@
 	</f:else>
 </f:if>
 </td>
-<cs:ifIsJustKoMatch match="{match}">
-	<f:then>
-		<td></td><td></td>
-	</f:then>
+<f:if condition="{hideActions}">
 	<f:else>
-		<f:render partial="Actions/TdRestAction" arguments="{object: match, subpackage: 'Competition'}" />
+		<cs:ifIsJustKoMatch match="{match}">
+			<f:then>
+				<td></td><td></td>
+			</f:then>
+			<f:else>
+				<f:render partial="Actions/TdRestAction" arguments="{object: match, subpackage: 'Competition'}" />
+			</f:else>
+		</cs:ifIsJustKoMatch>
 	</f:else>
-</cs:ifIsJustKoMatch>
+</f:if>

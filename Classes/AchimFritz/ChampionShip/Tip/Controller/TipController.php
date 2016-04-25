@@ -29,12 +29,6 @@ class TipController extends AbstractActionController {
 	protected $resourceArgumentName = 'tip';
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Factory\TipFactory
-	 * @Flow\Inject
-	 */
-	protected $tipFactory;
-
-	/**
 	 * Allow modification of resources in updateAction()
 	 *
 	 * @return void

@@ -6,9 +6,10 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
  *                                                                        *
  *                                                                        */
 
-use AchimFritz\ChampionShip\User\Domain\Model\User;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 
 
 /**
@@ -16,13 +17,13 @@ use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
  *
  * @Flow\Scope("singleton")
  */
-class UserTipController extends AbstractActionController {
+class MatchTipController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
 	 */
-	protected $userRepository;
+	protected $matchRepository;
 
 	/**
 	 * @Flow\Inject
@@ -33,25 +34,25 @@ class UserTipController extends AbstractActionController {
 	/**
 	 * @var string
 	 */
-	protected $resourceArgumentName = 'user';
+	protected $resourceArgumentName = 'match';
 
 	/**
-	 * Shows a list of users
-	 *
-	 * @return void
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup
 	 */
-	public function listAction() {
-		$this->view->assign('users', $this->userRepository->findAll());
+	public function listAction(Cup $cup) {
+		$matches = $this->matchRepository->findByCup($cup);
+		$this->view->assign('matches', $matches);
 	}
 
 	/**
-	 * @param User $user
-	 * @return void
+	 * showAction
+	 *
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
 	 */
-	public function showAction(User $user) {
-		$tips = $this->tipRepository->findByUserInCup($user, $this->cup);
+	public function showAction(Match $match) {
+		$tips = $this->tipRepository->findByGeneralMatch($match);
 		$this->view->assign('tips', $tips);
-		$this->view->assign('user', $user);
+		$this->view->assign('match', $match);
 	}
 
 

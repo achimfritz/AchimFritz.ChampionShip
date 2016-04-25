@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use \AchimFritz\ChampionShip\User\Domain\Model\User;
+use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 /**
@@ -22,12 +22,6 @@ class UserController extends AbstractActionController {
 	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\TipGroupRepository
 	 */
 	protected $tipGroupRepository;
-
-	/**
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
-	 * @Flow\Inject
-	 */
-	protected $tipRepository;
 
 	/**
 	 * @Flow\Inject

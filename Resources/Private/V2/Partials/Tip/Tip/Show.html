@@ -5,6 +5,7 @@
 					:
 					{tip.result.guestTeamGoals}
 					({tip.points})
+					<f:render partial="Actions/Show" arguments="{object: tip}" />
 				</f:then>
 				<f:else>
 					<cs:ifTipIsEditable tip="{tip}">

@@ -2,7 +2,7 @@
 
 <f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 	<div class="cs-container">
-		<h6><f:translate id="tip" /> aaa </h6>
+		<h6><f:translate id="tip" /></h6>
 		<ul>
 			<li>
 				<f:link.action action="index" subpackage="Tip" controller="GroupMatchTip" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
@@ -40,4 +40,18 @@
 		</ul>
 	</div>
 </f:security.ifAuthenticated>
+
+<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+	<div class="cs-container">
+		<h6><f:translate id="tipGroupResults" /></h6>
+		<ul>
+			<li>
+				<f:link.action action="index" subpackage="Tip" controller="UserTip" arguments="{cup: recentCup}">UserTip</f:link.action>
+			</li>
+			<li>
+				<f:link.action action="index" subpackage="Tip"  controller="MatchTip" arguments="{cup: recentCup}">MatchTip</f:link.action>
+			</li>
+		</ul>
+	</div>
+</f:security.ifHasRole>
 
