@@ -2,17 +2,17 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-		<div class="row">
+
+	<div class="row">
 		<ul class="nav nav-pills">
 			<li>
-			<f:link.action action="index" controller="User" arguments="{cup: recentCup, user: tip.user}">to user</f:link.action>
+				<f:link.action action="index" controller="UserTip" arguments="{cup: recentCup, user: tip.user}">to user {tip.user.displayName}</f:link.action>
 			</li>
 			<li>
-				<a href="{cs:restUri(object: tip.match)}">to match</a>
+				<f:link.action action="index" controller="MatchTip" arguments="{cup: recentCup, match: tip.match}">to match</f:link.action>
 			</li>
 		</ul>
-		</div>
-		<f:render partial="Match/ShowOne" arguments="{match: tip.match}" />
-		<f:render partial="Tip/Show" arguments="{tip: tip}" />
-		<f:render partial="Tip/Edit" arguments="{tip: tip}" />
+	</div>
+	<f:render partial="Match/ShowOne" arguments="{match: tip.match}" />
+	<f:render partial="Tip/Edit" arguments="{tip: tip}" />
 </f:section>

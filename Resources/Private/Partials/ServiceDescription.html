@@ -99,18 +99,24 @@
 <div class="cs-container">
    <h6>admin</h6>
    <ul>
-      <li {cs:ifIsCurrentController(controllerName:'Cup', then: 'class= "cs-active"')}>
-         <f:link.action subpackage="Competition" controller="Cup" action="index">Cups</f:link.action>
-      </li>
-      <li {cs:ifIsCurrentController(controllerName:'Team', then: 'class= "cs-active"')}>
-         <f:link.action subpackage="Competition" controller="Team" action="index" arguments="{cup: recentCup}">Teams</f:link.action>
-      </li>
-      <li {cs:ifIsCurrentController(controllerName:'User', then: 'class= "cs-active"')}>
-         <f:link.action subpackage="User" controller="User" action="index" arguments="{cup: recentCup}">Users</f:link.action>
-      </li>
-      <li {cs:ifIsCurrentController(controllerName:'TipGroup', then: 'class= "cs-active"')}>
-         <f:link.action subpackage="User" controller="TipGroup" action="index" arguments="{cup: recentCup}">TipGroup</f:link.action>
-      </li>
+		<li {cs:ifIsCurrentController(controllerName:'Cup', then: 'class= "cs-active"')}>
+			<f:link.action subpackage="Competition" controller="Cup" action="index">Cups</f:link.action>
+		</li>
+	  <li {cs:ifIsCurrentController(controllerName:'Team', then: 'class= "cs-active"')}>
+		 <f:link.action subpackage="Competition" controller="Team" action="index" arguments="{cup: recentCup}">Teams</f:link.action>
+	  </li>
+	  <li {cs:ifIsCurrentController(controllerName:'User', then: 'class= "cs-active"')}>
+		 <f:link.action subpackage="User" controller="User" action="index" arguments="{cup: recentCup}">Users</f:link.action>
+	  </li>
+	  <li {cs:ifIsCurrentController(controllerName:'TipGroup', then: 'class= "cs-active"')}>
+		 <f:link.action subpackage="User" controller="TipGroup" action="index" arguments="{cup: recentCup}">TipGroup</f:link.action>
+	  </li>
+	   <li {cs:ifIsCurrentController(controllerName:'MatchTip', then: 'class= "cs-active"')}>
+	   <f:link.action subpackage="Tip" controller="MatchTip" action="index" arguments="{cup: recentCup}">MatchTip</f:link.action>
+	   </li>
+	   <li {cs:ifIsCurrentController(controllerName:'UserTip', then: 'class= "cs-active"')}>
+	   <f:link.action subpackage="Tip" controller="UserTip" action="index" arguments="{cup: recentCup}">UserTip</f:link.action>
+	   </li>
    </ul>
 </div>
 </f:security.ifHasRole>
