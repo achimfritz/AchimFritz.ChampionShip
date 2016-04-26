@@ -19,7 +19,7 @@ class Aspect {
 	/**
 	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
 	 * @return void
-	 * @Flow\Before("method(AchimFritz\ChampionShip\Competition\Domain\Repository\.*MatchRepository->update())")
+	 * @Flow\Before("method(AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository->update())")
 	 */
 	public function matchUpdated(JoinPointInterface $joinPoint) {
 		$this->dispatcher->dispatch($joinPoint->getClassName(), 'matchUpdated', $joinPoint->getMethodArguments());
@@ -28,7 +28,7 @@ class Aspect {
 	/**
 	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
 	 * @return void
-	 * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\.*MatchRepository->add())")
+	 * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository->add())")
 	 */
 	public function matchAdded(JoinPointInterface $joinPoint) {
 		$this->dispatcher->dispatch($joinPoint->getClassName(), 'matchAdded', $joinPoint->getMethodArguments());
@@ -37,7 +37,7 @@ class Aspect {
 	/**
 	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
 	 * @return void
-	 * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\.*MatchRepository->remove())")
+	 * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository->remove())")
 	 */
 	public function matchRemoved(JoinPointInterface $joinPoint) {
 		$this->dispatcher->dispatch($joinPoint->getClassName(), 'matchRemoved', $joinPoint->getMethodArguments());
@@ -46,7 +46,7 @@ class Aspect {
 	/**
 	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
 	 * @return void
-	 * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Model\.*Round->addGeneralMatch())")
+	 * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Model\KoRound->addGeneralMatch())")
 	 */
 	public function matchAddedToRound(JoinPointInterface $joinPoint) {
 		$this->dispatcher->dispatch($joinPoint->getClassName(), 'matchAddedToRound', $joinPoint->getMethodArguments());

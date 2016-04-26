@@ -26,12 +26,6 @@ class MatchController extends \AchimFritz\ChampionShip\Generic\Controller\Abstra
 
 	/**
 	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
-	 */
-	protected $tipRepository;
-
-	/**
-	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
 	 */
 	protected $koRoundRepository;
@@ -79,8 +73,6 @@ class MatchController extends \AchimFritz\ChampionShip\Generic\Controller\Abstra
 	public function showAction(Match $match) {
 		$this->view->assign('match', $match);
 		$cup = $match->getCup();
-		$tips = $this->tipRepository->findByGeneralMatch($match);
-		$this->view->assign('tips', $tips);
 		$this->view->assign('allTeams', $this->teamRepository->findAll());
 		$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
 		$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
@@ -94,7 +86,6 @@ class MatchController extends \AchimFritz\ChampionShip\Generic\Controller\Abstra
 	protected function updateMatch(Match $match) {
 		try {
 			$this->matchRepository->update($match);
-			$this->persistenceManager->persistAll();
 			$this->addOkMessage('match updated');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot update match');
@@ -109,7 +100,6 @@ class MatchController extends \AchimFritz\ChampionShip\Generic\Controller\Abstra
 	protected function deleteMatch(Match $match) {
 		try {
 			$this->matchRepository->remove($match);
-			$this->persistenceManager->persistAll();
 			$this->addOkMessage('match deleted');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot delete match');
@@ -124,7 +114,6 @@ class MatchController extends \AchimFritz\ChampionShip\Generic\Controller\Abstra
 	protected function createMatch(Match $match) {
 		try {
 			$this->matchRepository->add($match);
-			$this->persistenceManager->persistAll();
 			$this->addOkMessage('match created');
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot create match');

@@ -46,20 +46,13 @@ class Package extends BasePackage {
 			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onKoMatchRemoved'
 		);
 
+
 		$dispatcher->connect(
 			'AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository', 'matchAdded',
 			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\MatchListener', 'onMatchChanged'
 		);
 		$dispatcher->connect(
 			'AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository', 'matchUpdated',
-			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\MatchListener', 'onMatchChanged'
-		);
-		$dispatcher->connect(
-			'AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository', 'matchUpdated',
-			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\MatchListener', 'onMatchChanged'
-		);
-		$dispatcher->connect(
-			'AchimFritz\ChampionShip\Competition\Domain\Model\Round', 'matchAddedToRound',
 			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\MatchListener', 'onMatchChanged'
 		);
 	}

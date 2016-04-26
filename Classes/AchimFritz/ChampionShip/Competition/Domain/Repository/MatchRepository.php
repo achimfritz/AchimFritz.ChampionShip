@@ -20,12 +20,6 @@ use TYPO3\Flow\Persistence\QueryInterface;
 class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
-	 * @Flow\Inject
-	 */
-	protected $tipRepository;
-
-	/**
 	 * __construct 
 	 * 
 	 * @return void
@@ -33,25 +27,6 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 	public function __construct() {
 		parent::__construct();
 		$this->setDefaultOrderings(array('startDate' => QueryInterface::ORDER_ASCENDING));
-	}
-
-	/**
-	 * @param mixed $object 
-	 * @return void
-	 */
-	public function update($object) {
-		// TODO add remove ...
-		if ($object->getResult() instanceof Result) {
-			$tips = $this->tipRepository->findByGeneralMatch($object);
-			foreach ($tips AS $tip) {
-				$name = $object->getCup()->getTipPointsPolicy();
-				$tipPointsPolicy = new $name;
-				$points = $tipPointsPolicy->getPointsForTip($tip);
-				$tip->setPoints($points);
-				$this->tipRepository->update($tip);
-			}
-		}
-		parent::update($object);
 	}
 
 	/**

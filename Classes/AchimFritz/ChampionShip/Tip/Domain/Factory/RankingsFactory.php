@@ -52,6 +52,7 @@ class RankingsFactory {
 			FROM \AchimFritz\ChampionShip\User\Domain\Model\User user
 			JOIN user.tips tip 
 			WHERE ' . $where . ' GROUP BY user HAVING points > 0 ORDER BY points DESC';
+		
 		if ($tipGroup !== NULL) {
 			$identifier = "'" . $this->persistenceManager->getIdentifierByObject($tipGroup) . "'";
 			$where .= ' AND tipGroup = ' . $identifier;
@@ -61,6 +62,7 @@ class RankingsFactory {
 				JOIN user.tipGroups tipGroup
 				WHERE ' . $where . ' GROUP BY user ORDER BY points DESC';
 		}
+
 		$query = $this->entityManager->createQuery($dql);
 		$result = $query->execute();
 		$rank = 1;

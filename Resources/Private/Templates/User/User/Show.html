@@ -9,7 +9,6 @@
 					<f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action>
 				</li>
 				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
-				<li><a href="#tips" data-toggle="tab">tips</a></li>
 				<li><a href="#new" data-toggle="tab">new</a></li>
 				<li><a href="#edit" data-toggle="tab">edit</a></li>
 				<li><a href="#password" data-toggle="tab">password</a></li>
@@ -19,9 +18,6 @@
 		<div class="tab-content">
 			<div class="row tab-pane active" id="show">
 				<f:render partial="User/Show" arguments="{user: user, recentCup: recentCup}" />
-			</div>
-			<div class="row tab-pane" id="tips">
-				<f:render partial="Tip/List" arguments="{tips: user.tips}" />
 			</div>
 			<div class="row tab-pane" id="edit">
 				<f:render partial="User/Edit" arguments="{user: user, allTipGroups: allTipGroups}" />

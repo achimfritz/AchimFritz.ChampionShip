@@ -21,6 +21,12 @@ use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroupResultMatrixRow;
 class TipGroupResultMatrixFactory {
 
 	/**
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
+	 * @Flow\Inject
+	 */
+	protected $tipRepository;
+
+	/**
 	 * create 
 	 * 
 	 * @param QueryResult<\AchimFritz\ChampionShip\User\Domain\Model\User>
@@ -33,7 +39,8 @@ class TipGroupResultMatrixFactory {
 		// filter users
 		foreach ($users AS $user) {
 			foreach ($matches AS $match) {
-				foreach ($user->getTips() AS $tip) {
+				$tips = $this->tipRepository->findByUser($user);
+				foreach ($tips AS $tip) {
 					if ($tip->getMatch() === $match) {
 						$usersWithTips->add($user);
 						continue 3;
@@ -49,7 +56,8 @@ class TipGroupResultMatrixFactory {
 			$tips = new ArrayCollection();
 			foreach ($usersWithTips AS $user) {
 				$tipFound = FALSE;
-				foreach ($user->getTips() AS $tip) {
+				$userTips = $this->tipRepository->findByUser($user);
+				foreach ($userTips AS $tip) {
 					if ($tip->getMatch() === $match) {
 						$tipFound = TRUE;
 						$tips->add($tip);
