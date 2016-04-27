@@ -57,12 +57,6 @@ class Match {
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $startDate;
-	
-	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Tip\Domain\Model\Tip>
-	 * @ORM\OneToMany(mappedBy="generalMatch", cascade={"all"})
-	 */
-	protected $tips;
 
 	/**
 	 * @var string

@@ -14,8 +14,6 @@ use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroupResultMatrix;
 use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroupResultMatrixRow;
 
 /**
- * A RankingsFactory
- *
  * @Flow\Scope("singleton")
  */
 class TipGroupResultMatrixFactory {

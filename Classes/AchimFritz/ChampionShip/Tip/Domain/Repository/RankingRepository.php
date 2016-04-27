@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Tip\Domain\Model;
+namespace AchimFritz\ChampionShip\Tip\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,13 +7,13 @@ namespace AchimFritz\ChampionShip\Tip\Domain\Model;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
- * A Ranking
+ * A repository for TipGroups
  *
- * @Flow\Entity
+ * @Flow\Scope("singleton")
  */
-class Ranking extends AbstractRanking {
+class RankingRepository extends AbstractRankingRepository {
+
 
 }

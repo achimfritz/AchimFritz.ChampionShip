@@ -73,32 +73,17 @@ class TipRepository extends Repository {
 	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findByUserInMatches(User $user, $matches) {
+		$identifiers = array();
+		foreach ($matches as $match) {
+			$identifiers[] = $this->persistenceManager->getIdentifierByObject($match);
+		}
 		$query = $this->createQuery();
-		/*
-			return $query->matching(
-				$query->logicalAnd(
-					$query->in('generalMatch', $matches),
-					$query->equals('user', $user)
-					)
-				)
-			->execute();
-			*/
-		// bad hack ($query->in works not) TODO
-		$c = array();
-		foreach ($matches AS $match) {
-			$c[] = $query->equals('generalMatch', $match);
-		}
-		if (count($c)) {
-			return $query->matching(
-				$query->logicalAnd(
-					$query->logicalOr($c),
-					$query->equals('user', $user)
-					)
-				)
-			->execute();
-		} else {
-			return array();
-		}
+		return $query->matching(
+			$query->logicalAnd(
+				$query->in('generalMatch', $identifiers),
+				$query->equals('user', $user)
+			)
+		)->execute();
 	}
 
 	/**

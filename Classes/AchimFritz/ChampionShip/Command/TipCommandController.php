@@ -46,6 +46,7 @@ class TipCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository
 	 */
 	protected $groupMatchRepository;
+
 	
 	/**
 	 * listCommand

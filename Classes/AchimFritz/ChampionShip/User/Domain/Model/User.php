@@ -24,12 +24,6 @@ class User {
 	protected $account;
 
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Tip\Domain\Model\Tip>
-	 * @ORM\OneToMany(mappedBy="user", cascade={"all"})
-	 */
-	protected $tips;
-
-	/**
 	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Tip\Domain\Model\Ranking>
 	 * @ORM\OneToMany(mappedBy="user", cascade={"all"})
 	 */

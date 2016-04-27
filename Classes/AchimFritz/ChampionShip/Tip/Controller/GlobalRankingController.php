@@ -14,7 +14,24 @@ use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
  *
  * @Flow\Scope("singleton")
  */
-class GlobalRankingController extends AbstractRankingController {
+class GlobalRankingController extends AbstractTipGroupController {
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\RankingRepository
+	 */
+	protected $rankingRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
+
+	/**
+	 * @var string
+	 */
+	protected $resourceArgumentName = 'tipGroup';
 
 	/**
 	 * listAction 
@@ -22,8 +39,7 @@ class GlobalRankingController extends AbstractRankingController {
 	 * @return void
 	 */
 	public function listAction() {
-		$matches = $this->matchRepository->findAll();
-		$rankings = $this->rankingsFactory->create($matches);
+		$rankings = $this->rankingRepository->findAll();
 		$this->view->assign('rankings', $rankings);
 	}
 
@@ -34,8 +50,8 @@ class GlobalRankingController extends AbstractRankingController {
 	 * @return void
 	 */
 	public function showAction(TipGroup $tipGroup) {
-		$matches = $this->matchRepository->findAll();
-		$rankings = $this->rankingsFactory->create($matches, $tipGroup);
+		$users = $this->userRepository->findInTipGroup($tipGroup);
+		$rankings = $this->rankingRepository->findByUsers($users);
 		$this->view->assign('rankings', $rankings);
 		$this->view->assign('tipGroup', $tipGroup);
 	}

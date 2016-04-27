@@ -11,9 +11,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<f:for each="{rankings}" as="ranking" iteration="cnt">
+				<f:for each="{rankings}" as="ranking">
 					<tr class="{f:if(condition: cnt.isOdd, then: ' cs-odd', else: ' cs-even')}">
-						<td><cs:sum summandOne="{cnt.index}" summandTwo="1" /></td>
+						<td>{ranking.rank}</td>
 						<td>{ranking.points}</td>
 						<td>{ranking.user.displayName}
 						</td>
