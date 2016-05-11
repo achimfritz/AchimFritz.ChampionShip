@@ -20,15 +20,6 @@ class Cup {
 	const GROUPTABLE_FIFA_POINT_EQUALITY_POLICY = '\AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable\FifaPointEqualityPolicy';
 	const GROUPTABLE_UEFA_POINT_EQUALITY_POLICY = '\AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable\UefaPointEqualityPolicy';
 
-	const TIP_POINTS_TWO_ONE_POLICY = '\AchimFritz\ChampionShip\Tip\Domain\Policy\TipPoints\TwoOnePolicy';
-	const TIP_POINTS_THREE_ONE_POLICY = '\AchimFritz\ChampionShip\Tip\Domain\Policy\TipPoints\ThreeOnePolicy';
-
-	/**
-	 * @var string
-	 * @Flow\Validate(type="NotEmpty")
-	 */
-	protected $tipPointsPolicy = self::TIP_POINTS_TWO_ONE_POLICY;
-
 	/**
 	 * @var string
 	 * @Flow\Validate(type="NotEmpty")
@@ -36,7 +27,6 @@ class Cup {
 	protected $groupTablePolicy = self::GROUPTABLE_DEFAULT_POLICY;
 	
 	/**
-	 * The name
 	 * @var string
 	 * @Flow\Identity
 	 * @Flow\Validate(type="NotEmpty")
@@ -44,7 +34,6 @@ class Cup {
 	protected $name;
 
 	/**
-	 * The teams
 	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\Team>
 	 * @ORM\ManyToMany
 	 */
@@ -57,15 +46,12 @@ class Cup {
 	protected $rounds;
 
 	/**
-	 * The start date
 	 * @var \DateTime
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $startDate;
    
    /**
-    * __construct 
-    * 
     * @return void
     */
    public function __construct() {
@@ -73,8 +59,6 @@ class Cup {
    }
 
 	/**
-	 * setGroupTablePolicy 
-	 * 
 	 * @param string
 	 * @return void
 	 */
@@ -83,36 +67,13 @@ class Cup {
 	}
 
 	/**
-	 * getGroupTablePolicy 
-	 * 
 	 * @return string
 	 */
 	public function getGroupTablePolicy() {
 		return $this->groupTablePolicy;
 	}
-
-	/**
-	 * getTipPointsPolicy 
-	 * 
-	 * @return string tipPointsPolicy
-	 */
-	public function getTipPointsPolicy() {
-		return $this->tipPointsPolicy;
-	}
-
-	/**
-	 * setTipPointsPolicy
-	 * 
-	 * @param string $tipPointsPolicy
-	 * @return void
-	 */
-	public function setTipPointsPolicy($tipPointsPolicy) {
-		$this->tipPointsPolicy = $tipPointsPolicy;
-	}
 	
 	/**
-	 * Get the Team's name
-	 *
 	 * @return string The Team's name
 	 */
 	public function getName() {
@@ -120,8 +81,6 @@ class Cup {
 	}
 
 	/**
-	 * Sets this Team's name
-	 *
 	 * @param string $name The Team's name
 	 * @return void
 	 */
@@ -131,8 +90,6 @@ class Cup {
 
 
 	/**
-	 * Get the Cup's teams
-	 *
 	 * @return  The Cup's teams
 	 */
 	public function getTeams() {
@@ -140,8 +97,6 @@ class Cup {
 	}
 
 	/**
-	 * Sets this Cup's teams
-	 *
 	 * @param  $teams The Cup's teams
 	 * @return void
 	 */
@@ -150,8 +105,6 @@ class Cup {
 	}
 
 	/**
-	 * Get the Match's start date
-	 *
 	 * @return \DateTime The Match's start date
 	 */
 	public function getStartDate() {
@@ -159,8 +112,6 @@ class Cup {
 	}
 
 	/**
-	 * Sets this Match's start date
-	 *
 	 * @param \DateTime $startDate The Match's start date
 	 * @return void
 	 */
@@ -169,8 +120,6 @@ class Cup {
 	}
 
 	/**
-	 * hasTeam 
-	 * 
 	 * @param Team $team 
 	 * @return boolean
 	 */
@@ -179,8 +128,6 @@ class Cup {
 	}
 
 	/**
-	 * addTeam 
-	 * 
 	 * @param Team $team 
 	 * @return void
 	 */
@@ -189,4 +136,3 @@ class Cup {
 	}
 
 }
-?>

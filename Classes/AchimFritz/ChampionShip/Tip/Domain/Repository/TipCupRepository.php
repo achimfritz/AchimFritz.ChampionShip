@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
+namespace AchimFritz\ChampionShip\Tip\Domain\Repository;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -7,28 +7,29 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
+use \TYPO3\Flow\Persistence\Repository;
 
 /**
- * A repository for Cups
+ * A repository for TipGroups
  *
  * @Flow\Scope("singleton")
  */
-class CupRepository extends \TYPO3\Flow\Persistence\Repository {
+class TipCupRepository extends Repository {
 
 	/**
 	 * @return void
 	 */
 	public function __construct() {
 		parent::__construct();
-		$this->setDefaultOrderings(array('startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
+		$this->setDefaultOrderings(array('cup.startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
 	}
 
 	/**
-	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Cup
+	 * @return \AchimFritz\ChampionShip\Tip\Domain\Model\TipCup
 	 */
 	public function findOneRecent() {
 		$query = $this->createQuery();
-		$query->setOrderings(array('startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
+		$query->setOrderings(array('cup.startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
 		return $query->execute()->getFirst();
 	}
 
