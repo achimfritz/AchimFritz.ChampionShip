@@ -55,6 +55,27 @@ class Package extends BasePackage {
 			'AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository', 'matchUpdated',
 			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\MatchListener', 'onMatchChanged'
 		);
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository', 'matchRemoved',
+			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\MatchListener', 'onMatchRemoved'
+		);
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository', 'cupRemoved',
+			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\CupListener', 'onCupRemoved'
+		);
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\RoundRepository', 'roundRemoved',
+			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\RoundListener', 'onRoundRemoved'
+		);
+
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository', 'tipAdded',
+			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\TipListener', 'onTipChanged'
+		);
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository', 'tipUpdated',
+			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\TipListener', 'onTipChanged'
+		);
 	}
 
 }

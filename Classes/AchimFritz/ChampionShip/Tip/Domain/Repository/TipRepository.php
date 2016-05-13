@@ -11,8 +11,6 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Round;
-use AchimFritz\ChampionShip\Competition\Domain\Model\Result;
-use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 use \TYPO3\Flow\Persistence\Repository;
 use \TYPO3\Flow\Persistence\QueryInterface;
 
@@ -24,8 +22,6 @@ use \TYPO3\Flow\Persistence\QueryInterface;
 class TipRepository extends Repository {
 
 	/**
-	 * __construct 
-	 * 
 	 * @return void
 	 */
 	public function __construct() {
@@ -34,8 +30,6 @@ class TipRepository extends Repository {
 	}
 
 	/**
-	 * findByCup 
-	 * 
 	 * @param Cup $cup 
 	 * @param User $user
 	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
@@ -52,8 +46,6 @@ class TipRepository extends Repository {
 	}
 
 	/**
-	 * findByCup 
-	 * 
 	 * @param Cup $cup 
 	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
@@ -66,8 +58,6 @@ class TipRepository extends Repository {
 	}
 
 	/**
-	 * findOneUserInMatches
-	 * 
 	 * @param User $user 
 	 * @param mixed $matches
 	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
@@ -87,8 +77,6 @@ class TipRepository extends Repository {
 	}
 
 	/**
-	 * findOneByUserAndMatch 
-	 * 
 	 * @param \AchimFritz\ChampionShip\User\Domain\Model\User $user
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
 	 * @return \AchimFritz\ChampionShip\Tip\Domain\Model\Tip
@@ -105,10 +93,8 @@ class TipRepository extends Repository {
 	}
 
 	/**
-	 * findMatchTipsByUserInRound 
-	 * 
 	 * @param User $user 
-	 * @param GroupRound $round 
+	 * @param Round $round
 	 * @return ArrayCollection
 	 */
 	public function findByUserInRound(User $user, Round $round) {
@@ -122,43 +108,14 @@ class TipRepository extends Repository {
 	}
 
 	/**
-	 * add
-	 * 
-	 * @param mixed $object 
-	 * @return void
+	 * @param Round $round
+	 * @return ArrayCollection
 	 */
-	public function add($object) {
-		$tip = $this->updateTipResult($object);
-		parent::add($object);
+	public function findByRound(Round $round) {
+		$query = $this->createQuery();
+		return $query->matching(
+			$query->equals('generalMatch.round', $round)
+		)->execute();
 	}
-
-	/**
-	 * update 
-	 * 
-	 * @param mixed $object 
-	 * @return void
-	 */
-	public function update($object) {
-		$tip = $this->updateTipResult($object);
-		parent::update($object);
-	}
-
-	/**
-	 * updateTipResult 
-	 * 
-	 * @param Tip $tip 
-	 * @return Tip $tip
-	 */
-	protected function updateTipResult(Tip $tip) {
-		if ($tip->getResult() instanceof Result) {
-			$name = $tip->getMatch()->getCup()->getTipPointsPolicy();
-			$tipPointsPolicy = new $name;
-			$points = $tipPointsPolicy->getPointsForTip($tip);
-			$tip->setPoints($points);
-		}
-		return $tip;
-	}
-
 
 }
-?>

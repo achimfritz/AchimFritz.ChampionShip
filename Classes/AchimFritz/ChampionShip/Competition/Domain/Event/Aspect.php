@@ -51,5 +51,23 @@ class Aspect {
 	public function matchAddedToRound(JoinPointInterface $joinPoint) {
 		$this->dispatcher->dispatch($joinPoint->getClassName(), 'matchAddedToRound', $joinPoint->getMethodArguments());
 	}
+
+	/**
+	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+	 * @return void
+	 * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository->remove())")
+	 */
+	public function cupRemoved(JoinPointInterface $joinPoint) {
+		$this->dispatcher->dispatch($joinPoint->getClassName(), 'cupRemoved', $joinPoint->getMethodArguments());
+	}
+
+	/**
+	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+	 * @return void
+	 * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\RoundRepository->remove())")
+	 */
+	public function roundRemoved(JoinPointInterface $joinPoint) {
+		$this->dispatcher->dispatch($joinPoint->getClassName(), 'roundRemoved', $joinPoint->getMethodArguments());
+	}
 }
 

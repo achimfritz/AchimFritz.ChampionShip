@@ -1,0 +1,103 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Content">
+<h5>TipCup</h5>
+
+	<f:if condition="{tipCups}">
+		<f:then>
+			<table class="table">
+				<thead>
+				<tr>
+					<th>Cup Name</th>
+					<th>Policy</th>
+					<th>&nbsp;</th>
+				</tr>
+				</thead>
+				<tbody>
+					<f:for each="{tipCups}" as="tipCup">
+						<tr>
+							<td>{tipCup.cup.name}</td>
+							<td>{tipCup.tipPointsPolicy}</td>
+							<f:render partial="Actions/TdRestAction" arguments="{object: tipCup}" />
+						</tr>
+					</f:for>
+				</tbody>
+			</table>
+		</f:then>
+		<f:else>
+			<p>no Tip Cups</p>
+		</f:else>
+	</f:if>
+
+	<f:if condition="{cups}">
+		<f:then>
+			<h5>new from existing cup</h5>
+			<f:form class="form-horizontal" action="index" controller="TipCup" name="tipCup" method="post">
+				<div class="control-group">
+					<label class="control-label" for="tipPointsPolicy">tipPointsPolicy</label>
+					<div class="controls">
+						<f:form.select options="{cs:tipCupPolicyOptions(prefix: 'TIP_POINTS')}" property="tipPointsPolicy" id="tipPointsPolicy" />
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="cup">Cup</label>
+					<div class="controls">
+						<f:form.select options="{cups}" property="cup" id="cup" optionLabelField="name" />
+					</div>
+				</div>
+
+				<div class="control-group">
+					<div class="controls">
+						<f:form.submit value="Create" class="btn"/>
+					</div>
+				</div>
+			</f:form>
+		</f:then>
+		<f:else>
+			<p>all existing cups has tips</p>
+		</f:else>
+	</f:if>
+
+
+	<h5>new</h5>
+	<f:form class="form-horizontal" action="index" controller="TipCup" name="tipCup" method="post">
+		<div class="control-group">
+			<label class="control-label" for="tipPointsPolicy">tipPointsPolicy</label>
+			<div class="controls">
+				<f:form.select options="{cs:tipCupPolicyOptions(prefix: 'TIP_POINTS')}" property="tipPointsPolicy" id="tipPointsPolicy" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="groupTablePolicy">groupTablePolicy</label>
+			<div class="controls">
+				<f:form.select options="{cs:cupPolicyOptions(prefix: 'GROUPTABLE')}" property="cup.groupTablePolicy" id="groupTablePolicy" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="name">Name</label>
+			<div class="controls"><f:form.textfield property="cup.name" id="name" /></div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="startDate">startDate</label>
+			<div class="controls">
+				<f:form.textfield property="cup.startDate" id="startDate" class="datetimepicker" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="teams">Teams</label>
+			<div class="controls">
+				<f:form.select size="20" multiple="1" options="{allTeams}" property="cup.teams" id="teams" optionLabelField="name" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<f:form.submit value="Create" class="btn"/>
+			</div>
+		</div>
+
+	</f:form>
+
+</f:section>

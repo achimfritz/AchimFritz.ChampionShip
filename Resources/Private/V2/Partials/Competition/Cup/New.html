@@ -2,19 +2,12 @@
 		<h5>new Cup</h5>
 
 		<f:form class="form-horizontal" action="index" controller="Cup" name="cup" method="post">
-		<div class="control-group">
-			<label class="control-label" for="tipPointsPolicy">tipPointsPolicy</label>
-			<div class="controls">
-				<f:form.select options="{cs:cupPolicyOptions(prefix: 'TIP_POINTS')}" property="tipPointsPolicy" id="tipPointsPolicy" />
+			<div class="control-group">
+				<label class="control-label" for="groupTablePolicy">groupTablePolicy</label>
+				<div class="controls">
+					<f:form.select options="{cs:cupPolicyOptions(prefix: 'GROUPTABLE')}" property="groupTablePolicy" id="groupTablePolicy" />
+				</div>
 			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="groupTablePolicy">groupTablePolicy</label>
-			<div class="controls">
-				<f:form.select options="{cs:cupPolicyOptions(prefix: 'GROUPTABLE')}" property="groupTablePolicy" id="groupTablePolicy" />
-			</div>
-		</div>
 			<div class="control-group">
 				<label class="control-label" for="name">Name</label>
 				<div class="controls"><f:form.textfield property="name" id="name" /></div>

@@ -3,6 +3,7 @@ namespace AchimFritz\ChampionShip\Tip\Domain\Event\Listener;
 
 
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
+use AchimFritz\ChampionShip\Tip\Domain\Model\TipCup;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use AchimFritz\ChampionShip\Domain\Model\Result;
@@ -25,6 +26,12 @@ class MatchListener {
 	protected $tipRepository;
 
 	/**
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipCupRepository
+	 * @Flow\Inject
+	 */
+	protected $tipCupRepository;
+
+	/**
 	 * @param Match $match
 	 * @return void
 	 */
@@ -43,13 +50,16 @@ class MatchListener {
 			}
 		}
 		if ($match->getResult() instanceof Result) {
-			$tips = $this->tipRepository->findByGeneralMatch($match);
-			foreach ($tips AS $tip) {
-				$name = $match->getCup()->getTipPointsPolicy();
+			$tipCup = $this->tipCupRepository->findOneByCup($match->getCup());
+			if ($tipCup instanceof TipCup) {
+				$name = $tipCup->getTipPointsPolicy();
 				$tipPointsPolicy = new $name;
-				$points = $tipPointsPolicy->getPointsForTip($tip);
-				$tip->setPoints($points);
-				$this->tipRepository->update($tip);
+				$tips = $this->tipRepository->findByGeneralMatch($match);
+				foreach ($tips AS $tip) {
+					$points = $tipPointsPolicy->getPointsForTip($tip);
+					$tip->setPoints($points);
+					$this->tipRepository->update($tip);
+				}
 			}
 		}
 	}

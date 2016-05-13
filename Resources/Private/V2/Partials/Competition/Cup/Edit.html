@@ -3,12 +3,6 @@
 
 	<f:form class="form-horizontal" action="index" method="put" object="{cup}" name="cup">
 		<f:form.hidden name="__method" value="PUT" />
-		<div class="control-group">
-			<label class="control-label" for="tipPointsPolicy">tipPointsPolicy</label>
-			<div class="controls">
-				<f:form.select options="{cs:cupPolicyOptions(prefix: 'TIP_POINTS')}" property="tipPointsPolicy" id="tipPointsPolicy" />
-			</div>
-		</div>
 
 		<div class="control-group">
 			<label class="control-label" for="groupTablePolicy">groupTablePolicy</label>

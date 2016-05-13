@@ -21,7 +21,7 @@ class TipCup {
 
 	/**
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Cup
-	 * @ORM\OneToOne
+	 * @ORM\OneToOne(cascade={"persist"})
 	 */
 	protected $cup;
 
