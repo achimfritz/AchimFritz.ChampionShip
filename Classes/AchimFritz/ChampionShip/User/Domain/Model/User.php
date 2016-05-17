@@ -56,8 +56,6 @@ class User {
 	protected $tipGroup;
 
    /**
-    * __construct 
-    * 
     * @return void
     */
    public function __construct() {
@@ -65,8 +63,6 @@ class User {
    }
 
 	/**
-	 * getTipGroup
-	 *
 	 * @return TipGroup
 	 */
 	public function getTipGroup() {
@@ -74,8 +70,6 @@ class User {
 	}
 
 	/**
-	 * setTipGroup
-	 *
 	 * @param TipGroup $tipGroup
 	 * @return void
 	 */
@@ -85,8 +79,6 @@ class User {
 	}
 
 	/**
-	 * getTipGroups
-	 *
 	 * @return  The Cup's tipGroups
 	 */
 	public function getTipGroups() {
@@ -94,8 +86,6 @@ class User {
 	}
 
 	/**
-	 * setTipGroups
-	 *
 	 * @param  $tipGroups The Cup's tipGroups
 	 * @return void
 	 */
@@ -104,8 +94,6 @@ class User {
 	}
 
 	/**
-	 * removeTipGroup 
-	 * 
 	 * @param TipGroup $tipGroup 
 	 * @return void
 	 */
@@ -114,8 +102,6 @@ class User {
 	}
 
 	/**
-	 * hasTipGroup 
-	 * 
 	 * @param TipGroup $tipGroup 
 	 * @return void
 	 */
@@ -124,8 +110,6 @@ class User {
 	}
 
 	/**
-	 * addTipGroup 
-	 * 
 	 * @param TipGroup $tipGroup 
 	 * @return void
 	 */
@@ -136,8 +120,6 @@ class User {
 	}
 
 	/**
-	 * getEmail 
-	 * 
 	 * @return string
 	 */
 	public function getEmail() {
@@ -145,8 +127,6 @@ class User {
 	}
 
 	/**
-	 * setEmail 
-	 * 
 	 * @param string $email 
 	 * @return void
 	 */
@@ -155,8 +135,6 @@ class User {
 	}
 
 	/**
-	 * getName 
-	 * 
 	 * @return string
 	 */
 	public function getUsername() {
@@ -164,8 +142,6 @@ class User {
 	}
 
 	/**
-	 * getName 
-	 * 
 	 * @return string
 	 */
 	public function getName() {
@@ -173,8 +149,6 @@ class User {
 	}
 
 	/**
-	 * getDisplayName 
-	 * 
 	 * @return string
 	 */
 	public function getDisplayName() {
@@ -187,8 +161,6 @@ class User {
 	}
 
 	/**
-	 * setAccount 
-	 * 
 	 * @param Account $account 
 	 * @return void
 	 */
@@ -197,22 +169,10 @@ class User {
 	}
 
 	/**
-	 * getAccount 
-	 * 
 	 * @return Account
 	 */
 	public function getAccount() {
 		return $this->account;
 	}
 
-	/**
-	 * getTips 
-	 * 
-	 * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Tip\Domain\Model\Tip>
-	 */
-	public function getTips() {
-		return $this->tips;
-	}
-
 }
-?>
