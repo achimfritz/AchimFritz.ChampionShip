@@ -22,7 +22,7 @@ class TipListener {
 	 * @param Tip $tip
 	 * @return void
 	 */
-	public function onTipUpdatet(Tip $tip) {
+	public function onTipChanged(Tip $tip) {
 		if ($tip->getResult() instanceof Result) {
 			$tipCup = $this->tipCupRepository->findOneByCup($tip->getMatch()->getCup());
 			if ($tipCup instanceof TipCup) {

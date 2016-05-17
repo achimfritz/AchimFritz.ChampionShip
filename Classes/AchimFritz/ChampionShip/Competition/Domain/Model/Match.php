@@ -73,6 +73,9 @@ class Match {
 	public function __construct(Cup $cup = NULL, Round $round = NULL, Team $hostTeam =  NULL, Team $guestTeam = NULL) {
 		if ($cup !== NULL) {
 			$this->setCup($cup);
+			$this->setStartDate($cup->getStartDate());
+		} else {
+			$this->setStartDate(new \DateTime());
 		}
 		if ($round !== NULL) {
 			$this->setRound($round);
@@ -81,7 +84,6 @@ class Match {
 			$this->setHostTeam($hostTeam);
 			$this->setGuestTeam($guestTeam);
 		}
-		$this->setStartDate(new \DateTime());
 	}
 
 

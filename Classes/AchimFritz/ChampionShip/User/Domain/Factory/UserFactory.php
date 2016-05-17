@@ -30,14 +30,6 @@ class UserFactory {
 	protected $tipGroupRepository;
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Factory\TipFactory
-	 * @Flow\Inject
-	 */
-	protected $tipFactory;
-
-	/**
-	 * Create a new user
-	 *
 	 * @param string $email
 	 * @param string $name
 	 * @return User $user
@@ -49,14 +41,10 @@ class UserFactory {
 		$user->setEmail($email);
 		$account = $this->accountFactory->createAccountWithPassword($identifier, $password, array('AchimFritz.ChampionShip:User'));
 		$user->setAccount($account);
-		// TODO in future: avoid incomplete cup
-		$this->tipFactory->initUserTipsForCurrentCup($user);
 		return $user;
 	}
 
 	/**
-	 * createFromRegistrationRequest 
-	 * 
 	 * @param RegistrationRequest $registrationRequest 
 	 * @return User
 	 */
@@ -71,11 +59,7 @@ class UserFactory {
 		$account->setCredentialsSource($registrationRequest->getNewPassword());
 		$user->setAccount($account);
 		$user->setTipGroup($tipGroup);
-		// TODO in future: avoid incomplete cup
-		$this->tipFactory->initUserTipsForCurrentCup($user);
 		return $user;
 	}
 
 }
-
-?>

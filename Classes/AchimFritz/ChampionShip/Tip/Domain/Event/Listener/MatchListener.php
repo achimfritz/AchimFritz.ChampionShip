@@ -6,7 +6,7 @@ use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 use AchimFritz\ChampionShip\Tip\Domain\Model\TipCup;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
-use AchimFritz\ChampionShip\Domain\Model\Result;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Result;
 
 /**
  * @Flow\Scope("singleton")

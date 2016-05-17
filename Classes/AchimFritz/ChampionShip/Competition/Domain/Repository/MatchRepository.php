@@ -144,6 +144,16 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
 		return $result;
 	}
 
+	/**
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
+	 */
+	public function findInFuture() {
+		$query = $this->createQuery();
+		$now = new \DateTime();
+		return $query->matching(
+			$query->greaterThan('startDate', $now)
+		)->execute();
+	}
+
 
 }
-?>

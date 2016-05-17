@@ -6,7 +6,6 @@ use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
-use AchimFritz\ChampionShip\Domain\Model\Result;
 
 /**
  * @Flow\Scope("singleton")
@@ -20,14 +19,24 @@ class UserListener {
 	protected $tipRepository;
 
 	/**
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
+	 * @Flow\Inject
+	 */
+	protected $matchRepository;
+
+	/**
 	 * @param Match $match
 	 * @return void
 	 */
 	public function onUserAdded(User $user) {
-		$now = new \DateTime();
-
+		$matches = $this->matchRepository->findInFuture();
+		foreach ($matches as $match) {
+			$tip = new Tip();
+			$tip->setMatch($match);
+			$tip->setUser($user);
+			$this->tipRepository->add($tip);
+		}
 	}
-
 
 }
 

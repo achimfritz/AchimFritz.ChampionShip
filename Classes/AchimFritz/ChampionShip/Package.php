@@ -76,6 +76,11 @@ class Package extends BasePackage {
 			'AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository', 'tipUpdated',
 			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\TipListener', 'onTipChanged'
 		);
+
+		$dispatcher->connect(
+			'AchimFritz\ChampionShip\User\Domain\Repository\UserRepository', 'userAdded',
+			'AchimFritz\ChampionShip\Tip\Domain\Event\Listener\UserListener', 'onUserAdded'
+		);
 	}
 
 }

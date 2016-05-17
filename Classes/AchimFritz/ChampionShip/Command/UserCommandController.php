@@ -18,12 +18,6 @@ use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 	/**
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Factory\TipFactory
-	 * @Flow\Inject
-	 */
-	protected $tipFactory;
-
-	/**
 	 * @var \AchimFritz\ChampionShip\User\Domain\Factory\UserFactory
 	 * @Flow\Inject
 	 */
@@ -80,23 +74,6 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 				$this->notificationService->inviteUser($user);
 				$this->outputLine('sending ' . $user->getEmail());
 			}
-		}
-	}
-
-	/**
-	 * initUsersForRecentCupCommand 
-	 * 
-	 * @return void
-	 */
-	public function initUsersForRecentCupCommand() {
-		$users = $this->userRepository->findAll();
-		try {
-			foreach ($users as $user) {
-				$this->tipFactory->initUserTipsForCurrentCup($user);
-				$this->outputLine('OK ' . $user->getUsername());
-			}
-		} catch (\Exception $e) {
-			$this->outputLine('ERROR ' . $e->getMessage());
 		}
 	}
 
