@@ -9,9 +9,9 @@ namespace AchimFritz\ChampionShip\Generic\Controller;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Message;
 use TYPO3\Flow\Security\Account;
-use TYPO3\Flow\Mvc\Controller\RestController;
-use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
-use \AchimFritz\ChampionShip\User\Domain\Model\User;
+use AchimFritz\Rest\Controller\RestController;
+use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
+use AchimFritz\ChampionShip\User\Domain\Model\User;
 
 
 /**
@@ -50,12 +50,11 @@ class AbstractActionController extends RestController {
 	 * @Flow\Inject
 	 */
 	protected $securityContext;
-	
+
 	/**
-    * Supported content types. Needed for HTTP content negotiation.
-    * @var array
-    */
-   protected $supportedMediaTypes = array('text/html', 'application/json', 'application/xml');
+	 * @var array
+	 */
+	protected $viewFormatToObjectNameMap = array('json' => 'AchimFritz\\ChampionShip\\Mvc\\View\\JsonView');
 
 	/**
 	 * @var Cup
@@ -76,69 +75,6 @@ class AbstractActionController extends RestController {
 	 * @var Account
 	 */
 	protected $account = NULL;
-
-
-	/**
-	 * initializeAction 
-	 * 
-	 * @return void
-	 */
-	protected function initializeAction() {
-		if ($this->request->hasArgument('cup')) {
-			$arg = $this->request->getArgument('cup');
-			if (isset($arg['__identity'])) {
-				$this->cup = $this->cupRepository->findByIdentifier($arg['__identity']);
-			}
-		} else {
-			$this->cup = $this->cupRepository->findOneRecent();
-		}
-		$this->cups = $this->cupRepository->findAll();
-		$this->account = $this->securityContext->getAccount();
-		if ($this->account) {
-			$user = $this->userRepository->findOneByAccount($this->account);
-			if ($user instanceof User) {
-				$this->user = $user;
-			}
-		}
-	}
-
-	
-	/**
-	 * Allow creation of resources in createAction()
-	 *
-	 * @return void
-	 */
-	public function initializeCreateAction() {
-		$propertyMappingConfiguration = $this->arguments[$this->resourceArgumentName]->getPropertyMappingConfiguration();
-		$propertyMappingConfiguration->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
-		$propertyMappingConfiguration->allowAllProperties();
-		$propertyMappingConfiguration
-			->forProperty('startDate')
-			->setTypeConverterOption(
-					'TYPO3\Flow\Property\TypeConverter\DateTimeConverter',
-					\TYPO3\Flow\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
-					'd.m.Y H:i'
-					);
-	}
-
-	/**
-	 * Allow modification of resources in updateAction()
-	 *
-	 * @return void
-	 */
-	public function initializeUpdateAction() {
-		$propertyMappingConfiguration = $this->arguments[$this->resourceArgumentName]->getPropertyMappingConfiguration();
-		$propertyMappingConfiguration->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_MODIFICATION_ALLOWED, TRUE);
-		$propertyMappingConfiguration->allowAllProperties();
-		$propertyMappingConfiguration
-			->forProperty('startDate')
-			->setTypeConverterOption(
-					'TYPO3\Flow\Property\TypeConverter\DateTimeConverter',
-					\TYPO3\Flow\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
-					'd.m.Y H:i'
-					);
-	}
-
 
 
 	/**
@@ -222,16 +158,6 @@ class AbstractActionController extends RestController {
 		} else {
 			return parent::addFlashMessage($msg, $messageTitle, $severity, $messageArguments, $messageCode);
 		}
-	}
-
-	/**
-	 * errorAction 
-	 * 
-	 * @return void
-	 */
-	protected function errorAction() {
-		$this->response->setStatus(400);
-		return parent::errorAction();
 	}
 
 	/**

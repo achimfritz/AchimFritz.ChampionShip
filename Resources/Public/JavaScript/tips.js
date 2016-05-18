@@ -45,33 +45,20 @@
 							'data': cTip,
 							'dataType': 'json',
 							'success': function (response) {
-								if (response.success == true) {
 									tip.container.removeClass('loading');
 									$('span', tip.container).remove();
 									var result = tip.hostTip.val() + ':' + tip.guestTip.val();
 									//tip.container.append($('<span />').text(result)).append($('<span />').addClass('icon-ok'))
 									tip.container.append($('<span />').addClass('icon-ok'))
-									if (response.messages.length) {
+									if (response.flashMessages.length) {
 										var html = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>OK</strong>';
-										for (var i = 0; i < response.messages.length; i++) {
-											html += ' ' + response.messages[i].message;
+										for (var i = 0; i < response.flashMessages.length; i++) {
+											html += ' ' + response.flashMessages[i].message;
 										}
 										html += '</div>';
 										$('#flashMessageContainer').empty().append(html);
 										//$('#flashMessageContainer').append(html);
 									}
-								} else {
-									tip.container.removeClass('loading');
-									//tip.container.append($('<span />').addClass('icon-exclamation-sign'));
-									if (response.messages.length) {
-										var html = '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error</strong>';
-										for (var i = 0; i < response.messages.length; i++) {
-											html += ' ' + response.messages[i].message;
-										}
-										html += '</div>';
-										tip.container.append(html);
-									}
-								}
 							},
 							'error': function() {
 									tip.container.removeClass('loading');
@@ -112,32 +99,20 @@
 							'data': cTip,
 							'dataType': 'json',
 							'success': function (response) {
-								if (response.success == true) {
 									tip.container.removeClass('loading');
 									$('span', tip.container).remove();
 									var result = tip.hostTip.val() + ':' + tip.guestTip.val();
 									tip.container.append($('<span />').addClass('icon-ok'))
-									if (response.messages.length) {
+									if (response.flashMessages.length) {
 										var html = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>OK</strong>';
-										for (var i = 0; i < response.messages.length; i++) {
-											html += ' ' + response.messages[i].message;
+										for (var i = 0; i < response.flashMessages.length; i++) {
+											html += ' ' + response.flashMessages[i].message;
 										}
 										html += '</div>';
 										$('#flashMessageContainer').empty().append(html);
 										//$('#flashMessageContainer').append(html);
 									}
 									//tip.container.append($('<span />').text(result)).append($('<span />').addClass('icon-ok'))
-								} else {
-									tip.container.removeClass('loading');
-									if (response.messages.length) {
-										var html = '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><strong>Error</strong>';
-										for (var i = 0; i < response.messages.length; i++) {
-											html += ' ' + response.messages[i].message;
-										}
-										html += '</div>';
-										tip.container.append(html);
-									}
-								}
 							},
 							'error': function() {
 									tip.container.removeClass('loading');

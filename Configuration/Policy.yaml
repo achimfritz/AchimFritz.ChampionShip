@@ -20,7 +20,7 @@ privilegeTargets:
     AchimFritz_ChampionShipMatchCreatorResource:
       matcher: 'method(AchimFritz\ChampionShip\Cup\Controller\.*MatchCreatorController->.*())'
     AchimFritz_ChampionShipAdminTipResource:
-      matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\AdminTipController->.*()) || method(AchimFritz\ChampionShip\Tip\Controller\MatchTipController->.*()) || method(AchimFritz\ChampionShip\Tip\Controller\UserTipController->.*())'
+      matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\AdminTipController->.*()) || method(AchimFritz\ChampionShip\Tip\Controller\MatchTipController->.*())'
     AchimFritz_ChampionShipRankingResource:
       matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\.*RankingController->listAction()) || method(AchimFritz\ChampionShip\Tip\Controller\.*RankingController->showAction())'
     AchimFritz_ChampionShipTipGroupResultsResource:

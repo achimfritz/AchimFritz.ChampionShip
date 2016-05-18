@@ -2,14 +2,7 @@
 <f:security.ifAuthenticated>
 	<f:then>
 		<p>
-			<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
-				<f:then>
-					{user.displayName}
-				</f:then>
-				<f:else>
-					ADMIN
-				</f:else>
-			</f:security.ifHasRole>
+			<cs:userName />
 		</p>
 		<f:link.action class="btn" action="logout" subpackage="User" controller="Login"><f:translate id="logout" /></f:link.action>
 	</f:then>
