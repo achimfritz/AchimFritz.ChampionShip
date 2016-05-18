@@ -15,7 +15,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
  *
  * @Flow\Scope("singleton")
  */
-class TeamController extends \AchimFritz\ChampionShip\Generic\Controller\AbstractActionController {
+class TeamController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject

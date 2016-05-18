@@ -17,16 +17,10 @@ class StandardController extends AbstractActionController {
 
 
 	/**
-	 * Index action
-	 *
 	 * @return void
 	 */
 	public function listAction() {
-		$cup = $this->cupRepository->findOneRecent();
-		$this->redirect('index', 'Cup', 'AchimFritz.ChampionShip\\Competition', array('cup' => $cup));
-
+		$this->redirect('index', 'Cup', 'AchimFritz.ChampionShip\\Competition');
 	}
 
 }
-
-?>

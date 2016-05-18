@@ -6,16 +6,16 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\Rest\Controller\RestController;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
-use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class UserCreatorController extends AbstractActionController {
+class UserCreatorController extends RestController {
 
 	/**
 	 * @var string
@@ -61,7 +61,7 @@ class UserCreatorController extends AbstractActionController {
 			$this->addErrorMessage('cannot create user');
 			$this->handleException($e);
 			$this->redirect('index');
-		}		
+		}
 		try {
 			$this->notificationService->registrationFinished($user);
 		} catch (\Exception $e) {
@@ -73,5 +73,3 @@ class UserCreatorController extends AbstractActionController {
 	}
 
 }
-
-?>

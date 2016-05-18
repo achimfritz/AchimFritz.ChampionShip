@@ -6,17 +6,16 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\Rest\Controller\RestController;
 use TYPO3\Flow\Annotations as Flow;
-
 use AchimFritz\ChampionShip\User\Domain\Model\Password;
-use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class PasswordController extends AbstractActionController {
+class PasswordController extends RestController {
 
 	/**
 	 * @var \TYPO3\Flow\Security\Cryptography\HashService

@@ -6,9 +6,9 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\Rest\Controller\RestController;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\ContactRequest;
-use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 
 /**
@@ -16,7 +16,7 @@ use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
  *
  * @Flow\Scope("singleton")
  */
-class ContactRequestController extends AbstractActionController {
+class ContactRequestController extends RestController {
 
 	/**
 	 * @var string

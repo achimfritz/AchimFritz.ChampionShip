@@ -8,7 +8,6 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
 
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 
 /**

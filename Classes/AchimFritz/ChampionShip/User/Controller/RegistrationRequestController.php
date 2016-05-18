@@ -6,19 +6,19 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\Rest\Controller\RestController;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Security\Account;
 use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
-use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 /**
  * Team controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class RegistrationRequestController extends AbstractActionController {
+class RegistrationRequestController extends RestController {
 
 	/**
 	 * @var string

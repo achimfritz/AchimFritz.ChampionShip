@@ -6,16 +6,16 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\Rest\Controller\RestController;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
-use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 
 /**
  * User controller for the AchimFritz.ChampionShip package 
  *
  * @Flow\Scope("singleton")
  */
-class UserController extends AbstractActionController {
+class UserController extends RestController {
 
 	/**
 	 * @Flow\Inject

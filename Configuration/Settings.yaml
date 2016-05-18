@@ -17,7 +17,7 @@ TYPO3:
             token: TYPO3\Flow\Security\Authentication\Token\UsernamePassword
             entryPoint: 'WebRedirect'
             entryPointOptions:
-              uri: /achimfritz.championship/accessdenied
+              uri: /achimfritz.championship/generic/accessdenied/index
     i18n:
       defaultLocale: de
     #persistence:

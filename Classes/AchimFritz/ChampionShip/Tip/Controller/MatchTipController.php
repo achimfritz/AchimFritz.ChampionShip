@@ -7,7 +7,6 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 

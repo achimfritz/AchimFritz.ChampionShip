@@ -149,114 +149,6 @@ class AbstractActionController extends RestController {
 	protected function initializeView(\TYPO3\Flow\Mvc\View\ViewInterface $view) {
 		$view->assign('controllers', array('Team', 'User', 'Cup', 'Standard'));
 		$view->assign('title', $this->request->getControllerName() . '.' . $this->request->getControllerActionName());
-		$this->view->assign('cup', $this->cup);
-		$this->view->assign('recentCup', $this->cup);
-		if ($this->cup instanceof Cup) {
-			$nextMatches = $this->cupMatchRepository->findNextByCup($this->cup);
-			$this->view->assign('nextMatches', $nextMatches);
-			$lastMatches = $this->cupMatchRepository->findLastByCup($this->cup);
-			$this->view->assign('lastMatches', $lastMatches);
-		}
-		$this->view->assign('cups', $this->cups);
-		$this->view->assign('user', $this->user);
-		
-	}
-	
-	/**
-	 * resolveViewObjectName
-	 * 
-	 * @return void
-	 */
-	protected function resolveViewObjectName() {
-/* TODO
-goes to
-Accept:application/json
-not
-curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championship.import/wmTwoSix/index
-*/
-		$contentType = $this->request->getHttpRequest()->getNegotiatedMediaType($this->supportedMediaTypes);
-		$format = $this->request->getFormat();
-		if ($contentType === 'application/xml' OR $format === 'xml') {
-			$this->request->setFormat('xml');
-			$this->response->setHeader('Content-Type', 'application/xml');
-			return parent::resolveViewObjectName();
-		} elseif ($contentType === 'application/json' OR $format === 'json') {
-			$this->request->setFormat('json');
-			$this->response->setHeader('Content-Type', 'application/json');
-			return parent::resolveViewObjectName();
-			#return 'TYPO3\\Flow\\Mvc\\View\\JsonView';
-		} else {
-			return parent::resolveViewObjectName();
-		}
-	}
-
-	/**
-	 * Redirects the request to another action and / or controller.
-	 *
-	 * @param string $actionName Name of the action to forward to
-	 * @param string $controllerName Unqualified object name of the controller to forward to. If not specified, the current controller is used.
-	 * @param string $packageKey Key of the package containing the controller to forward to. If not specified, the current package is assumed.
-	 * @param array $arguments Array of arguments for the target action
-	 * @param integer $delay (optional) The delay in seconds. Default is no delay.
-	 * @param integer $statusCode (optional) The HTTP status code for the redirect. Default is "303 See Other"
-	 * @param string $format The format to use for the redirect URI
-	 * @return void
-	 * @throws \TYPO3\Flow\Mvc\Exception\StopActionException
-	 * @see forward()
-	 * @api
-	 */
-	protected function redirect($actionName, $controllerName = NULL, $packageKey = NULL, array $arguments = NULL, $delay = 0, $statusCode = 303, $format = NULL) {
-		// autoset cup argument
-		if ($arguments === NULL) {
-			$arguments = array('cup' => $this->cup);
-		} elseif (!isset($arguments['cup'])) {
-			$arguments['cup'] = $this->cup;
-		}
-		// TODO $format = json...
-		$contentType = $this->request->getHttpRequest()->getNegotiatedMediaType($this->supportedMediaTypes);
-		$format = $this->request->getFormat();
-		if ($contentType === 'application/json' OR $format === 'json') {
-			// build uri (see parent)
-			if ($packageKey !== NULL && strpos($packageKey, '\\') !== FALSE) {
-				list($packageKey, $subpackageKey) = explode('\\', $packageKey, 2);
-			} else {
-				$subpackageKey = NULL;
-			}
-			$this->uriBuilder->reset();
-			if ($format === NULL) {
-				$this->uriBuilder->setFormat($this->request->getFormat());
-			} else {
-				$this->uriBuilder->setFormat($format);
-			}
-
-			$uri = $this->uriBuilder->setCreateAbsoluteUri(TRUE)->uriFor($actionName, $arguments, $controllerName, $packageKey, $subpackageKey);
-
-			// check error messages to proof success
-			$errorMessages = $this->flashMessageContainer->getMessages(Message::SEVERITY_ERROR);
-			if (count($errorMessages) > 0) {
-				$success = FALSE;
-			} else {
-				$success = TRUE;
-			}
-	
-			// create json messages
-			$allMessages = $this->flashMessageContainer->getMessagesAndFlush();
-			$messages = array();
-			foreach ($allMessages AS $message) {
-				$messages[] = array('message' => $message->getMessage(), 'title' => $message->getTitle(), 'severity' => $message->getSeverity());
-			}
-
-			// create json response
-			$response = array(
-				'success' => $success,
-				'messages' => $messages,
-				'see' => $uri,
-			);
-			$content = json_encode($response);
-			$this->response->setContent($content);
-			throw new \TYPO3\Flow\Mvc\Exception\StopActionException();
-		}
-		return parent::redirect($actionName, $controllerName, $packageKey, $arguments, $delay, $statusCode, $format);
 	}
 
 	/**
@@ -304,10 +196,7 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	 * @return void
 	 */
 	protected function handleException(\Exception $e) {
-		if ($this->user === NULL && $this->account !== NULL) {
-			// must be an admin
-			$this->addFlashMessage($e->getMessage(), get_class($e), Message::SEVERITY_ERROR, array(), $e->getCode());
-		}
+		$this->addFlashMessage($e->getMessage(), get_class($e), Message::SEVERITY_ERROR, array(), $e->getCode());
 	}
 
 	/**
@@ -358,5 +247,3 @@ curl -X GET  -H "Content-Type:application/json" http://cs2/achimfritz.championsh
 	}
 
 }
-
-?>

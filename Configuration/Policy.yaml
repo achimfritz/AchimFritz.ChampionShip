@@ -2,39 +2,39 @@
 privilegeTargets:
   TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
     AchimFritz_ChampionShipChatEntryCreateMethods:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->createAction()) || method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->listAction())'
+      matcher: 'method(AchimFritz\ChampionShip\Chat\Controller\.*ChatEntryController->createAction()) || method(AchimFritz\ChampionShip\Chat\Controller\.*ChatEntryController->listAction())'
     AchimFritz_ChampionShipContactRequestCreateMethods:
-      matcher: method(AchimFritz\ChampionShip\Controller\ContactRequestController->createAction())
+      matcher: 'method(AchimFritz\ChampionShip\User\Controller\ContactRequestController->createAction())'
     AchimFritz_ChampionShipRegistrationRequestCreateMethods:
-      matcher: method(AchimFritz\ChampionShip\Controller\RegistrationRequestController->createAction())
+      matcher: 'method(AchimFritz\ChampionShip\User\Controller\RegistrationRequestController->createAction())'
     AchimFritz_ChampionShipTipMethods:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\.*TipController->update.*())'
+      matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\.*TipController->update.*())'
     AchimFritz_ChampionShipUserTipResource:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\.*TipController->listAction()) || method(AchimFritz\ChampionShip\Controller\.*TipController->showAction())'
+      matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\.*TipController->listAction()) || method(AchimFritz\ChampionShip\Tip\Controller\.*TipController->showAction())'
     AchimFritz_ChampionShipUpdateMethods:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\.*Controller->updateAction())'
+      matcher: 'method(AchimFritz\ChampionShip\.*\Controller\.*Controller->updateAction())'
     AchimFritz_ChampionShipDeleteMethods:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\.*Controller->deleteAction())'
+      matcher: 'method(AchimFritz\ChampionShip\.*\Controller\.*Controller->deleteAction())'
     AchimFritz_ChampionShipCreateMethods:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\.*Controller->createAction())'
+      matcher: 'method(AchimFritz\ChampionShip\.*\Controller\.*Controller->createAction())'
     AchimFritz_ChampionShipMatchCreatorResource:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\.*MatchCreatorController->.*())'
+      matcher: 'method(AchimFritz\ChampionShip\Cup\Controller\.*MatchCreatorController->.*())'
     AchimFritz_ChampionShipAdminTipResource:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\AdminTipController->.*())'
+      matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\AdminTipController->.*()) || method(AchimFritz\ChampionShip\Tip\Controller\MatchTipController->.*()) || method(AchimFritz\ChampionShip\Tip\Controller\UserTipController->.*())'
     AchimFritz_ChampionShipRankingResource:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\.*RankingController->listAction()) || method(AchimFritz\ChampionShip\Controller\RankingController->showAction())'
+      matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\.*RankingController->listAction()) || method(AchimFritz\ChampionShip\Tip\Controller\.*RankingController->showAction())'
     AchimFritz_ChampionShipTipGroupResultsResource:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\TipGroup.*ResultsController->listAction()) || method(AchimFritz\ChampionShip\Controller\TipGroup.*ResultsController->showAction())'
+      matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\TipGroup.*ResultsController->listAction()) || method(AchimFritz\ChampionShip\Tip\Controller\TipGroup.*ResultsController->showAction())'
     AchimFritz_ChampionShipTipGroupResource:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\TipGroupController->listAction()) || method(AchimFritz\ChampionShip\Controller\TipGroupController->showAction())'
+      matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\TipGroupController->listAction()) || method(AchimFritz\ChampionShip\Tip\Controller\TipGroupController->showAction())'
     AchimFritz_ChampionShipUserResource:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\UserController->showAction()) || method(AchimFritz\ChampionShip\Controller\UserController->updateAction())'
+      matcher: 'method(AchimFritz\ChampionShip\User\Controller\UserController->showAction()) || method(AchimFritz\ChampionShip\User\Controller\UserController->updateAction())'
     AchimFritz_ChampionShipUserAdminResource:
-      matcher: method(AchimFritz\ChampionShip\Controller\UserController->listAction())
+      matcher: 'method(AchimFritz\ChampionShip\User\Controller\UserController->listAction())'
     AchimFritz_ChampionShipPasswordResource:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\PasswordController->.*())'
+      matcher: 'method(AchimFritz\ChampionShip\User\Controller\PasswordController->.*())'
     AchimFritz_ChampionShipChatEntryResource:
-      matcher: 'method(AchimFritz\ChampionShip\Controller\.*ChatEntryController->showAction())'
+      matcher: 'method(AchimFritz\ChampionShip\Chat\Controller\.*ChatEntryController->showAction())'
 roles:
   'AchimFritz.ChampionShip:User':
     privileges:
