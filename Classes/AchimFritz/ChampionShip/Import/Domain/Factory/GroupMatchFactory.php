@@ -20,30 +20,31 @@ use AchimFritz\ChampionShip\Import\Domain\Model\Match;
  */
 class GroupMatchFactory {
 
-   /**
-    * @Flow\Inject
-    * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository
-    */
-   protected $groupMatchRepository;
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository
+	 */
+	protected $groupMatchRepository;
 
-   /**
-    * createFromMatch
-    * 
-    * @param AchimFritz\ChampionShip\Import\Domain\Model\Match $match
-    * @param AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup
-    * @param array $teams
-    * @param AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound $groupRound
-    * @return GroupMatch $groupMatch
-    */
-   public function createFromMatch(Match $match, array $teams, Cup $cup, GroupRound $groupRound) {
+	/**
+	 * createFromMatch
+	 *
+	 * @param \AchimFritz\ChampionShip\Import\Domain\Model\Match $match
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup
+	 * @param array $teams
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound $groupRound
+	 * @return GroupMatch $groupMatch
+	 */
+	public function createFromMatch(Match $match, array $teams, Cup $cup, GroupRound $groupRound) {
 		$groupMatch = $this->groupMatchRepository->findByTwoTeamsAndCup(
 			$teams[$match->getHomeTeam()],
 			$teams[$match->getGuestTeam()],
 			$cup
 		)->getFirst();
+		$newMatch = FALSE;
 		if (!$groupMatch instanceof GroupMatch) {
 			$groupMatch = new GroupMatch();
-			$this->groupMatchRepository->add($groupMatch);
+			$newMatch = TRUE;
 		}
 		$groupMatch->setName($match->getName());
 		$groupMatch->setHostTeam($teams[$match->getHomeTeam()]);
@@ -54,15 +55,16 @@ class GroupMatchFactory {
 		$groupMatch->setStartDate($startDate);
 		$groupMatch->setRound($groupRound);
 		if ((int)$match->getHomeGoals() === $match->getHomeGoals() AND (int)$match->getGuestGoals() === $match->getGuestGoals()) {
-			$result = new Result();
-			$result->setHostTeamGoals((int)$match->getHomeGoals());
-			$result->setGuestTeamGoals((int)$match->getGuestGoals());
+			$result = new Result((int)$match->getHomeGoals(), (int)$match->getGuestGoals());
 			$groupMatch->setResult($result);
 		}
-		$this->groupMatchRepository->update($groupMatch);
+		if ($newMatch === TRUE) {
+			$this->groupMatchRepository->add($groupMatch);
+		} else {
+			$this->groupMatchRepository->update($groupMatch);
+		}
 		return $groupMatch;
-
-   }
+	}
 
 }
 

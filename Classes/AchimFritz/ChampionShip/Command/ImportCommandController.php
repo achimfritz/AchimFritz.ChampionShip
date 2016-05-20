@@ -1,5 +1,5 @@
 <?php
-namespace AchimFritz\ChampionShip\Import\Command;
+namespace AchimFritz\ChampionShip\Command;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "AchimFritz.ChampionShip".*
@@ -28,49 +28,49 @@ class ImportCommandController extends \TYPO3\Flow\Cli\CommandController {
 	protected $persistenceManager;
 
 	/**
-	 * @var AchimFritz\ChampionShip\Import\Domain\Factory\UserFactory
+	 * @var \AchimFritz\ChampionShip\Import\Domain\Factory\UserFactory
 	 * @Flow\Inject
 	 */
 	protected $userFactory;
 
 	/**
-	 * @var AchimFritz\ChampionShip\Import\Domain\Factory\TipFactory
+	 * @var \AchimFritz\ChampionShip\Import\Domain\Factory\TipFactory
 	 * @Flow\Inject
 	 */
 	protected $tipFactory;
 	
    /**
-    * @var AchimFritz\ChampionShip\Import\Domain\Factory\GroupRoundFactory
+    * @var \AchimFritz\ChampionShip\Import\Domain\Factory\GroupRoundFactory
     * @Flow\Inject
     */
    protected $groupRoundFactory;
 
    /**
-    * @var AchimFritz\ChampionShip\Import\Domain\Factory\KoRoundFactory
+    * @var \AchimFritz\ChampionShip\Import\Domain\Factory\KoRoundFactory
     * @Flow\Inject
     */
    protected $koRoundFactory;
 
    /**
-    * @var AchimFritz\ChampionShip\Import\Domain\Factory\GroupMatchFactory
+    * @var \AchimFritz\ChampionShip\Import\Domain\Factory\GroupMatchFactory
     * @Flow\Inject
     */
    protected $groupMatchFactory;
 
    /**
-    * @var AchimFritz\ChampionShip\Import\Domain\Factory\KoMatchFactory
+    * @var \AchimFritz\ChampionShip\Import\Domain\Factory\KoMatchFactory
     * @Flow\Inject
     */
    protected $koMatchFactory;
 
    /**
-    * @var AchimFritz\ChampionShip\Import\Domain\Factory\CupFactory
+    * @var \AchimFritz\ChampionShip\Import\Domain\Factory\CupFactory
     * @Flow\Inject
     */
    protected $cupFactory;
 
    /**
-    * @var AchimFritz\ChampionShip\Import\Domain\Factory\TeamFactory
+    * @var \AchimFritz\ChampionShip\Import\Domain\Factory\TeamFactory
     * @Flow\Inject
     */
    protected $teamFactory;
@@ -79,7 +79,7 @@ class ImportCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * teamCommand($name)
 	 * 
 	 * name is a resource name like
-	 * AchimFritz.ChampionShip.AchimFritz/Private/foo.json
+	 * AchimFritz.ChampionShip/Private/foo.json
 	 *
 	 * @param string $name
 	 * @return void
@@ -110,7 +110,7 @@ class ImportCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * komatchCommand($name)
 	 * 
 	 * name is a resource name like
-	 * AchimFritz.ChampionShip.AchimFritz/Private/foo.json
+	 * AchimFritz.ChampionShip/Private/foo.json
 	 * 
 	 * @param string $name
 	 * @return void
@@ -145,7 +145,7 @@ class ImportCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * matchCommand($name)
 	 * 
 	 * name is a resource name like
-	 * AchimFritz.ChampionShip.AchimFritz/Private/foo.json
+	 * AchimFritz.ChampionShip/Private/foo.json
 	 * 
 	 * @param string $name
 	 * @return void
@@ -186,7 +186,7 @@ class ImportCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * tipCommand($name)
 	 * 
 	 * name is a resource name like
-	 * AchimFritz.ChampionShip.AchimFritz/Private/foo.json
+	 * AchimFritz.ChampionShip/Private/foo.json
 	 * 
 	 * @param string $name
 	 * @return void
@@ -217,7 +217,7 @@ class ImportCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * userCommand($name)
 	 * 
 	 * name is a resource name like
-	 * AchimFritz.ChampionShip.AchimFritz/Private/foo.json
+	 * AchimFritz.ChampionShip/Private/foo.json
 	 * 
 	 * @param string $name
 	 * @return void

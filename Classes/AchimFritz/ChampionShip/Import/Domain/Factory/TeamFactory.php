@@ -17,20 +17,18 @@ use AchimFritz\ChampionShip\Import\Domain\Model\Match;
  */
 class TeamFactory {
 
-   /**
-    * @Flow\Inject
-    * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamRepository
-    */
-   protected $teamRepository;
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamRepository
+	 */
+	protected $teamRepository;
 
-   /**
-    * createFromMatch
-    * 
-    * @param AchimFritz\ChampionShip\Import\Domain\Model\Match $match 
-    * @return array<Team>
-    */
-   public function createFromMatch(Match $match) {
-      $teams = array();
+	/**
+	 * @param \AchimFritz\ChampionShip\Import\Domain\Model\Match $match
+	 * @return array<Team>
+	 */
+	public function createFromMatch(Match $match) {
+		$teams = array();
 		$name = $match->getHomeTeam();
 		$pTeam = $this->teamRepository->findOneByName($name);
 		if (!$pTeam instanceof Team) {
@@ -47,10 +45,8 @@ class TeamFactory {
    }
 
 	/**
-	 * createFromTeam 
-	 * 
-	 * @param AchimFritz\ChampionShip\Import\Domain\Model\Team $team 
-	 * @param AchimFritz\ChampionShip\Competition\Domain\Model\Team $team 
+	 * @param \AchimFritz\ChampionShip\Import\Domain\Model\Team $team
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Team $team
 	 */
 	public function createFromTeam(\AchimFritz\ChampionShip\Import\Domain\Model\Team $team) {
 		$pTeam = $this->teamRepository->findOneByName($team->getNameDe());
@@ -69,5 +65,3 @@ class TeamFactory {
 	}
 
 }
-
-?>

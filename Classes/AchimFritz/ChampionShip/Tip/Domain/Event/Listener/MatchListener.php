@@ -61,6 +61,7 @@ class MatchListener {
 					$this->tipRepository->update($tip);
 				}
 			}
+			// TODO ranking ?
 		}
 	}
 
