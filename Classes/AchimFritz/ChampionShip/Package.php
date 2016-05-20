@@ -18,32 +18,16 @@ class Package extends BasePackage {
 	public function boot(\TYPO3\Flow\Core\Bootstrap $bootstrap) {
 		$dispatcher = $bootstrap->getSignalSlotDispatcher();
 		$dispatcher->connect(
-			'AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository', 'matchAdded',
-			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onGroupMatchChanged'
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository', 'matchAdded',
+			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onMatchChanged'
 		);
 		$dispatcher->connect(
-			'AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository', 'matchUpdated',
-			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onGroupMatchChanged'
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository', 'matchUpdated',
+			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onMatchChanged'
 		);
 		$dispatcher->connect(
-			'AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupMatchRepository', 'matchAdded',
-			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onCrossGroupMatchChanged'
-		);
-		$dispatcher->connect(
-			'AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupMatchRepository', 'matchUpdated',
-			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onCrossGroupMatchChanged'
-		);
-		$dispatcher->connect(
-			'AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository', 'matchAdded',
-			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onKoMatchChanged'
-		);
-		$dispatcher->connect(
-			'AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository', 'matchUpdated',
-			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onKoMatchChanged'
-		);
-		$dispatcher->connect(
-			'AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository', 'matchRemoved',
-			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onKoMatchRemoved'
+			'AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository', 'matchRemoved',
+			'AchimFritz\ChampionShip\Competition\Domain\Event\Listener\MatchListener', 'onMatchRemoved'
 		);
 
 

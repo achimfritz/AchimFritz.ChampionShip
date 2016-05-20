@@ -2,6 +2,7 @@
 namespace AchimFritz\ChampionShip\Competition\Domain\Event\Listener;
 
 
+use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupMatch;
@@ -39,10 +40,35 @@ class MatchListener {
 	protected $crossGroupMatchRepository;
 
 	/**
+	 * @param Match $match
+	 * @return void
+	 */
+	public function onMatchChanged(Match $match) {
+		if ($match instanceof GroupMatch) {
+			$this->onGroupMatchChanged($match);
+		} elseif ($match instanceof KoMatch) {
+			$this->onKoMatchChanged($match);
+			if ($match instanceof CrossGroupMatch) {
+				$this->onCrossGroupMatchChanged($match);
+			}
+		}
+	}
+
+	/**
+	 * @param Match $match
+	 * @return void
+	 */
+	public function onMatchRemoved(Match $match) {
+		if ($match instanceof KoMatch) {
+			$this->onKoMatchRemoved($match);
+		}
+	}
+
+	/**
 	 * @param KoMatch $match
 	 * @return void
 	 */
-	public function onKoMatchRemoved(KoMatch $match) {
+	protected function onKoMatchRemoved(KoMatch $match) {
 		$hostMatch = $this->teamsOfTwoMatchesMatchRepository->findOneByHostMatch($match);
 		if ($hostMatch instanceof TeamsOfTwoMatchesMatch) {
 			$this->teamsOfTwoMatchesMatchRepository->remove($hostMatch);
@@ -57,7 +83,7 @@ class MatchListener {
 	 * @param GroupMatch $match
 	 * @return void
 	 */
-	public function onGroupMatchChanged(GroupMatch $match) {
+	protected function onGroupMatchChanged(GroupMatch $match) {
 		$round = $match->getRound();
 		$round->updateGroupTable();
 		$this->roundRepository->update($round);
@@ -90,7 +116,7 @@ class MatchListener {
 	 * @param CrossGroupMatch $match
 	 * @return void
 	 */
-	public function onCrossGroupMatchChanged(CrossGroupMatch $match) {
+	protected function onCrossGroupMatchChanged(CrossGroupMatch $match) {
 		$hostGroupRound = $match->getHostGroupRound();
 		$guestGroupRound = $match->getGuestGroupRound();
 		if ($hostGroupRound->getRoundIsFinished() === TRUE) {
@@ -113,7 +139,7 @@ class MatchListener {
 	 * @param KoMatch $match
 	 * @return void
 	 */
-	public function onKoMatchChanged(KoMatch $match) {
+	protected function onKoMatchChanged(KoMatch $match) {
 		$winnerTeam = $match->getWinnerTeam();
 		$looserTeam = $match->getLooserTeam();
 		if ($winnerTeam !== NULL) {
