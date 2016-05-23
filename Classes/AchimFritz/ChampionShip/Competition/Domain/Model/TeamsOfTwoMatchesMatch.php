@@ -17,111 +17,91 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
  */
 class TeamsOfTwoMatchesMatch extends KoMatch {
 
-   /**
-    * @var \AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch
-    * @ORM\ManyToOne(cascade={"detach"})
+	/**
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch
+	 * @ORM\ManyToOne(cascade={"detach"})
 	 * @Flow\Validate(type="NotEmpty")
-    */
-   protected $hostMatch;
-
-   /**
-    * @var boolean
-    */
-   protected $hostMatchIsWinner;
-
-   /**
-    * @var boolean
-    */
-   protected $guestMatchIsWinner;
-
-
-   /**
-    * @var \AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch
-    * @ORM\ManyToOne(cascade={"detach"})
-	 * @Flow\Validate(type="NotEmpty")
-    */
-   protected $guestMatch;
-
-   /**
-    * getHostMatch 
-    * 
-    * @return KoMatch hostMatch
-    */
-   public function getHostMatch() {
-      return $this->hostMatch;
-   }
-
-   /**
-    * setHostMatch
-    * 
-    * @param KoMatch $hostMatch
-    * @return void
-    */
-   public function setHostMatch(KoMatch $hostMatch) {
-      $this->hostMatch = $hostMatch;
-   } 
-
-   /**
-    * getGuestMatch 
-    * 
-    * @return KoMatch guestMatch
-    */
-   public function getGuestMatch() {
-      return $this->guestMatch;
-   }
-
-   /**
-    * setGuestMatch
-    * 
-    * @param KoMatch $guestMatch
-    * @return void
-    */
-   public function setGuestMatch(KoMatch $guestMatch) {
-      $this->guestMatch = $guestMatch;
-   } 
-
-   /**
-    * getGuestMatchIsWinner 
-    * 
-    * @return boolean
-    */
-   public function getGuestMatchIsWinner() {
-      return $this->guestMatchIsWinner;
-   }
-
-   /**
-    * setGuestMatchIsWinner 
-    * 
-    * @param boolean $guestMatchIsWinner 
-    * @return void
-    */
-   public function setGuestMatchIsWinner($guestMatchIsWinner) {
-      $this->guestMatchIsWinner = $guestMatchIsWinner;
-   }
-
-   /**
-    * getHostMatchIsWinner 
-    * 
-    * @return boolean
-    */
-   public function getHostMatchIsWinner() {
-      return $this->hostMatchIsWinner;
-   }
-
-   /**
-    * setHostMatchIsWinner 
-    * 
-    * @param boolean $hostMatchIsWinner 
-    * @return void
-    */
-   public function setHostMatchIsWinner($hostMatchIsWinner) {
-      $this->hostMatchIsWinner = $hostMatchIsWinner;
-   }
-
+	 */
+	protected $hostMatch;
 
 	/**
-	 * getCurrentHostTeam 
-	 * 
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch
+	 * @ORM\ManyToOne(cascade={"detach"})
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $guestMatch;
+
+	/**
+	 * @var boolean
+	 */
+	protected $hostMatchIsWinner;
+
+	/**
+	 * @var boolean
+	 */
+	protected $guestMatchIsWinner;
+
+	/**
+	 * @return KoMatch hostMatch
+	 */
+	public function getHostMatch() {
+		return $this->hostMatch;
+	}
+
+	/**
+	 * @param KoMatch $hostMatch
+	 * @return void
+	 */
+	public function setHostMatch(KoMatch $hostMatch) {
+		$this->hostMatch = $hostMatch;
+	}
+
+	/**
+	 * @return KoMatch guestMatch
+	 */
+	public function getGuestMatch() {
+		return $this->guestMatch;
+	}
+
+	/**
+	 * @param KoMatch $guestMatch
+	 * @return void
+	 */
+	public function setGuestMatch(KoMatch $guestMatch) {
+		$this->guestMatch = $guestMatch;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getGuestMatchIsWinner() {
+		return $this->guestMatchIsWinner;
+	}
+
+	/**
+	 * @param boolean $guestMatchIsWinner
+	 * @return void
+	 */
+	public function setGuestMatchIsWinner($guestMatchIsWinner) {
+		$this->guestMatchIsWinner = $guestMatchIsWinner;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getHostMatchIsWinner() {
+		return $this->hostMatchIsWinner;
+	}
+
+	/**
+	 * @param boolean $hostMatchIsWinner
+	 * @return void
+	 */
+	public function setHostMatchIsWinner($hostMatchIsWinner) {
+		$this->hostMatchIsWinner = $hostMatchIsWinner;
+	}
+
+	/**
 	 * @return Team|NULL
 	 */
 	public function getCurrentHostTeam() {
@@ -133,8 +113,6 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
 	}
 
 	/**
-	 * getCurrentGuestTeam 
-	 * 
 	 * @return Team|NULL
 	 */
 	public function getCurrentGuestTeam() {
@@ -145,4 +123,3 @@ class TeamsOfTwoMatchesMatch extends KoMatch {
 		}
 	}
 }
-?>

@@ -126,7 +126,7 @@ class MatchListener {
 				$match->setHostTeam($hostGroupRound->getSecondTeam());
 			}
 		}
-		if ($guestGroupRound->getRoundIsFinished() === TRUE) {
+		if ($guestGroupRound !== NULL && $guestGroupRound->getRoundIsFinished() === TRUE) {
 			if ($match->getGuestGroupRank() === 1) {
 				$match->setGuestTeam($guestGroupRound->getWinnerTeam());
 			} elseif ($match->getGuestGroupRank() === 2) {

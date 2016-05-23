@@ -23,16 +23,4 @@ class KoMatch extends Match {
 	 */
 	protected $round;
 
-   /**
-    * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch>
-	 * @ORM\OneToMany(mappedBy="hostMatch", cascade={"all"})
-    */
-	protected $childMatchHostMatches;
-
-   /**
-    * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch>
-	 * @ORM\OneToMany(mappedBy="guestMatch", cascade={"all"})
-    */
-	protected $childMatchGuestMatches;
 }
-?>

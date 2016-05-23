@@ -9,7 +9,6 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Model;
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * A Match
  *
@@ -17,111 +16,93 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CrossGroupMatch extends KoMatch {
 
-   /**
-    * @var \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound
-    * @ORM\ManyToOne
+	/**
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound
+	 * @ORM\ManyToOne
 	 * @Flow\Validate(type="NotEmpty")
-    */
-   protected $hostGroupRound;
-
-   /**
-    * @var integer
-	 * @Flow\Validate(type="NotEmpty")
-    */
-   protected $hostGroupRank;
-
-   /**
-    * @var \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound
-    * @ORM\ManyToOne
-	 * @Flow\Validate(type="NotEmpty")
-    */
-   protected $guestGroupRound;
-
-   /**
-    * @var integer
-	 * @Flow\Validate(type="NotEmpty")
-    */
-   protected $guestGroupRank;
-
-   /**
-    * getHostGroupRound 
-    * 
-    * @return GroupRound hostGroupRound
-    */
-   public function getHostGroupRound() {
-      return $this->hostGroupRound;
-   }
-
-   /**
-    * setHostGroupRound
-    * 
-    * @param GroupRound $hostGroupRound
-    * @return void
-    */
-   public function setHostGroupRound(GroupRound $hostGroupRound) {
-      $this->hostGroupRound = $hostGroupRound;
-   } 
-
-   /**
-    * getGuestGroupRound 
-    * 
-    * @return GroupRound guestGroupRound
-    */
-   public function getGuestGroupRound() {
-      return $this->guestGroupRound;
-   }
-
-   /**
-    * setGuestGroupRound
-    * 
-    * @param GroupRound $guestGroupRound
-    * @return void
-    */
-   public function setGuestGroupRound(GroupRound $guestGroupRound) {
-      $this->guestGroupRound = $guestGroupRound;
-   } 
-
-   /**
-    * setHostGroupRank 
-    * 
-    * @param integer $hostGroupRank 
-    * @return void
-    */
-   public function setHostGroupRank($hostGroupRank) {
-      $this->hostGroupRank = $hostGroupRank;
-   }
-
-   /**
-    * getHostGroupRank 
-    * 
-    * @return integer
-    */
-   public function getHostGroupRank() {
-      return $this->hostGroupRank;
-   }
-
-   /**
-    * setGuestGroupRank 
-    * 
-    * @param integer $guestGroupRank 
-    * @return void
-    */
-   public function setGuestGroupRank($guestGroupRank) {
-      $this->guestGroupRank = $guestGroupRank;
-   }
-
-   /**
-    * getGuestGroupRank 
-    * 
-    * @return integer
-    */
-   public function getGuestGroupRank() {
-      return $this->guestGroupRank;
-   }
+	 */
+	protected $hostGroupRound;
 
 	/**
-	 * getCurrentHostTeam 
-	 * 
+	 * @var integer
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $hostGroupRank;
+
+	/**
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound
+	 * @ORM\ManyToOne
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $guestGroupRound;
+
+	/**
+	 * @var integer
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $guestGroupRank;
+
+	/**
+	 * @return GroupRound hostGroupRound
+	 */
+	public function getHostGroupRound() {
+		return $this->hostGroupRound;
+	}
+
+	/**
+	 * @param GroupRound $hostGroupRound
+	 * @return void
+	 */
+	public function setHostGroupRound(GroupRound $hostGroupRound) {
+		$this->hostGroupRound = $hostGroupRound;
+	}
+
+	/**
+	 * @return GroupRound guestGroupRound
+	 */
+	public function getGuestGroupRound() {
+		return $this->guestGroupRound;
+	}
+
+	/**
+	 * @param GroupRound $guestGroupRound
+	 * @return void
+	 */
+	public function setGuestGroupRound(GroupRound $guestGroupRound) {
+		$this->guestGroupRound = $guestGroupRound;
+	}
+
+	/**
+	 * @param integer $hostGroupRank
+	 * @return void
+	 */
+	public function setHostGroupRank($hostGroupRank) {
+		$this->hostGroupRank = $hostGroupRank;
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getHostGroupRank() {
+		return $this->hostGroupRank;
+	}
+
+	/**
+	 * @param integer $guestGroupRank
+	 * @return void
+	 */
+	public function setGuestGroupRank($guestGroupRank) {
+		$this->guestGroupRank = $guestGroupRank;
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getGuestGroupRank() {
+		return $this->guestGroupRank;
+	}
+
+	/**
 	 * @return Team|NULL
 	 */
 	public function getCurrentHostTeam() {
@@ -132,8 +113,6 @@ class CrossGroupMatch extends KoMatch {
 	}
 
 	/**
-	 * getCurrentGuestTeam 
-	 * 
 	 * @return Team|NULL
 	 */
 	public function getCurrentGuestTeam() {
@@ -144,4 +123,3 @@ class CrossGroupMatch extends KoMatch {
 	}
 
 }
-?>
