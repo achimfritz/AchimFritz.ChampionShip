@@ -6,6 +6,8 @@ namespace AchimFritz\ChampionShip\Import\Domain\Factory;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupWithThirdsMatch;
+use Doctrine\Common\Collections\ArrayCollection;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupMatch;
@@ -24,6 +26,12 @@ use AchimFritz\ChampionShip\Import\Domain\Model\Match;
 class KoMatchFactory {
 
 	/**
+	 * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+	 * @Flow\Inject
+	 */
+	protected $persistenceManager;
+
+	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository
 	 */
@@ -36,8 +44,6 @@ class KoMatchFactory {
 	protected $groupRoundRepository;
 
 	/**
-	 * createFromMatch
-	 *
 	 * @param \AchimFritz\ChampionShip\Import\Domain\Model\Match $match
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound $koRound
@@ -50,6 +56,9 @@ class KoMatchFactory {
 		} elseif ($match->getRoundType() == 3 AND count($cup->getTeams()) == 16) {
 			// em viertelfinale
 			$koMatch = $this->createCrossGroupMatch($match, $cup);
+		} elseif ($match->getRoundType() == 7 AND count($cup->getTeams()) == 24) {
+			// em achtelfinale
+			$koMatch = $this->createCrossGroupWithThirdsMatch($match, $cup);
 		} else {
 			$koMatch = $this->createTeamsOfTwoMatchesMatch($match, $cup);
 		}
@@ -59,13 +68,16 @@ class KoMatchFactory {
 		$startDate->setTimestamp($match->getStartDate());
 		$koMatch->setStartDate($startDate);
 		$koMatch->setRound($koRound);
-		$this->koMatchRepository->update($koMatch);
+
+		if ($this->persistenceManager->isNewObject($koMatch) === TRUE) {
+			$this->koMatchRepository->add($koMatch);
+		} else {
+			$this->koMatchRepository->update($koMatch);
+		}
 		return $koMatch;
 	}
 
 	/**
-	 * createCrossGroupMatch
-	 *
 	 * @param Match $match
 	 * @param Cup $cup
 	 * @return CrossGroupMatch
@@ -74,12 +86,11 @@ class KoMatchFactory {
 		$koMatch = $this->koMatchRepository->findOneByNameAndCup($match->getName(), $cup);
 		if (!$koMatch instanceof KoMatch) {
 			$koMatch = new CrossGroupMatch();
-			$this->koMatchRepository->add($koMatch);
 		}
 		$home = $match->getHomeTeam();
 		$rank = substr($home, 0, 1);
 		$groupName = substr($home, 1, 1);
-		$group = $this->groupRoundRepository->findOneByName($groupName);
+		$group = $this->groupRoundRepository->findOneByNameAndCup($groupName, $cup);
 		if (!$group instanceof GroupRound) {
 			throw new \Exception('no such groupRound' . $groupName, 1389637579);
 		}
@@ -88,7 +99,7 @@ class KoMatchFactory {
 		$guest = $match->getGuestTeam();
 		$rank = substr($guest, 0, 1);
 		$groupName = substr($guest, 1, 1);
-		$group = $this->groupRoundRepository->findOneByName($groupName);
+		$group = $this->groupRoundRepository->findOneByNameAndCup($groupName, $cup);
 		if (!$group instanceof GroupRound) {
 			throw new \Exception('no such groupRound ' . $groupName, 1389637580);
 		}
@@ -98,8 +109,49 @@ class KoMatchFactory {
 	}
 
 	/**
-	 * createTeamsOfTwoMatchesMatch
-	 *
+	 * @param Match $match
+	 * @param Cup $cup
+	 * @return CrossGroupMatch
+	 */
+	protected function createCrossGroupWithThirdsMatch(Match $match, Cup $cup) {
+		$guest = $match->getGuestTeam();
+		if (strlen($guest) === 2) {
+			return $this->createCrossGroupMatch($match, $cup);
+		}
+		$rank = substr($guest, 0, 1);
+		$groupNames = array();
+		for ($i = 1; $i < strlen($guest); $i++) {
+			$groupNames[] = $guest[$i];
+		}
+		$koMatch = $this->koMatchRepository->findOneByNameAndCup($match->getName(), $cup);
+		if (!$koMatch instanceof KoMatch) {
+			$koMatch = new CrossGroupWithThirdsMatch();
+		}
+		$groups = new ArrayCollection();
+		foreach ($groupNames as $groupName) {
+			$group = $this->groupRoundRepository->findOneByNameAndCup($groupName, $cup);
+			if (!$group instanceof GroupRound) {
+				throw new \Exception('no such groupRound' . $groupName, 1389637579);
+			}
+			$groups->add($group);
+		}
+		$koMatch->setGuestGroupRounds($groups);
+		$koMatch->setGuestGroupRank($rank);
+
+		$home = $match->getHomeTeam();
+		$rank = substr($home, 0, 1);
+		$groupName = substr($home, 1, 1);
+		$group = $this->groupRoundRepository->findOneByNameAndCup($groupName, $cup);
+		if (!$group instanceof GroupRound) {
+			throw new \Exception('no such groupRound' . $groupName, 1389637579);
+		}
+		$koMatch->setHostGroupRound($group);
+		$koMatch->setHostGroupRank($rank);
+
+		return $koMatch;
+	}
+
+	/**
 	 * @param Match $match
 	 * @param Cup $cup
 	 * @return TeamsOfTwoMatchesMatch
@@ -108,7 +160,6 @@ class KoMatchFactory {
 		$koMatch = $this->koMatchRepository->findOneByNameAndCup($importMatch->getName(), $cup);
 		if (!$koMatch instanceof KoMatch) {
 			$koMatch = new TeamsOfTwoMatchesMatch();
-			$this->koMatchRepository->add($koMatch);
 		}
 		// home
 		$home = $importMatch->getHomeTeam();
@@ -117,7 +168,7 @@ class KoMatchFactory {
 			throw new \Exception('unknown home winnerOrLooser ' . $winnerOrLooser, 1389637583);
 		}
 		$matchName = substr($home, 1);
-		$match = $this->koMatchRepository->findOneByName($matchName);
+		$match = $this->koMatchRepository->findOneByNameAndCup($matchName, $cup);
 		if (!$match instanceof KoMatch) {
 			throw new \Exception('no such KoMatch ' . $matchName, 1389637581);
 		}
@@ -135,7 +186,7 @@ class KoMatchFactory {
 			throw new \Exception('unknown guest winnerOrLooser ' . $winnerOrLooser, 1389637583);
 		}
 		$matchName = substr($guest, 1);
-		$match = $this->koMatchRepository->findOneByName($matchName);
+		$match = $this->koMatchRepository->findOneByNameAndCup($matchName, $cup);
 		if (!$match instanceof KoMatch) {
 			throw new \Exception('no such KoMatch ' . $matchName, 1389637582);
 		}
@@ -149,8 +200,6 @@ class KoMatchFactory {
 	}
 
 	/**
-	 * createFromMatch
-	 *
 	 * @param \AchimFritz\ChampionShip\Import\Domain\Model\Match $match
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup
 	 * @param array $teams
@@ -163,10 +212,8 @@ class KoMatchFactory {
 			$teams[$match->getGuestTeam()],
 			$cup
 		)->getFirst();
-		$newMatch = FALSE;
 		if (!$koMatch instanceof KoMatch) {
 			$koMatch = new KoMatch();
-			$newMatch = TRUE;
 		}
 		$koMatch->setName($match->getName());
 		$koMatch->setHostTeam($teams[$match->getHomeTeam()]);
@@ -180,7 +227,7 @@ class KoMatchFactory {
 			$result = new Result((int)$match->getHomeGoals(), (int)$match->getGuestGoals());
 			$koMatch->setResult($result);
 		}
-		if ($newMatch === TRUE) {
+		if ($this->persistenceManager->isNewObject($koMatch) === TRUE) {
 			$this->koMatchRepository->add($koMatch);
 		} else {
 			$this->koMatchRepository->update($koMatch);
@@ -189,5 +236,3 @@ class KoMatchFactory {
 	}
 
 }
-
-?>

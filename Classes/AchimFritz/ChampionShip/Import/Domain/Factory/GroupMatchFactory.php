@@ -21,6 +21,12 @@ use AchimFritz\ChampionShip\Import\Domain\Model\Match;
 class GroupMatchFactory {
 
 	/**
+	 * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+	 * @Flow\Inject
+	 */
+	protected $persistenceManager;
+
+	/**
 	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository
 	 */
@@ -41,10 +47,8 @@ class GroupMatchFactory {
 			$teams[$match->getGuestTeam()],
 			$cup
 		)->getFirst();
-		$newMatch = FALSE;
 		if (!$groupMatch instanceof GroupMatch) {
 			$groupMatch = new GroupMatch();
-			$newMatch = TRUE;
 		}
 		$groupMatch->setName($match->getName());
 		$groupMatch->setHostTeam($teams[$match->getHomeTeam()]);
@@ -58,7 +62,7 @@ class GroupMatchFactory {
 			$result = new Result((int)$match->getHomeGoals(), (int)$match->getGuestGoals());
 			$groupMatch->setResult($result);
 		}
-		if ($newMatch === TRUE) {
+		if ($this->persistenceManager->isNewObject($groupMatch)) {
 			$this->groupMatchRepository->add($groupMatch);
 		} else {
 			$this->groupMatchRepository->update($groupMatch);

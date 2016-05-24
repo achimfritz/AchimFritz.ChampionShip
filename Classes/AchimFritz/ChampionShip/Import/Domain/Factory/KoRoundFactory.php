@@ -20,25 +20,26 @@ use AchimFritz\ChampionShip\Import\Domain\Model\Match;
  */
 class KoRoundFactory {
 
-   /**
-    * @Flow\Inject
-    * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
-    */
-   protected $koRoundRepository;
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
+	 */
+	protected $koRoundRepository;
 
-   /**
-    * createFromMatch
-    * 
-    * @param AchimFritz\ChampionShip\Import\Domain\Model\Match $match 
+	/**
+	 * @param \AchimFritz\ChampionShip\Import\Domain\Model\Match $match
 	 * @param array $teams
-    * @param AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup 
-    * @return KoRound $groupRound
-    */
-   public function createFromMatch(Match $match, array $teams, Cup $cup) {
+	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup
+	 * @return KoRound
+	 */
+	public function createFromMatch(Match $match, array $teams, Cup $cup) {
 		$roundType = $match->getRoundType();
 		$parent = '';
 		switch ($roundType) {
 			case 2:
+				$name = 'Achtelfinale';
+				break;
+			case 7:
 				$name = 'Achtelfinale';
 				break;
 			case 3:
@@ -61,13 +62,16 @@ class KoRoundFactory {
 				throw new \Exception('no such rountType ' . $roundType, 1389721252);
 				break;
 		}
-      $koRound = $this->koRoundRepository->findOneByNameAndCup($name, $cup);
-      if (!$koRound instanceof KoRound) {
+		$koRound = $this->koRoundRepository->findOneByNameAndCup($name, $cup);
+		if (!$koRound instanceof KoRound) {
 			if ($match->getRoundType() == 2 AND count($cup->getTeams()) == 32) {
 				// wm achtelfinale
 				$koRound = new KoRound();
 			} elseif ($match->getRoundType() == 3 AND count($cup->getTeams()) == 16) {
 				// em viertelfinale
+				$koRound = new KoRound();
+			} elseif ($match->getRoundType() == 7 AND count($cup->getTeams()) == 24) {
+				// em achtelfinale
 				$koRound = new KoRound();
 			} else {
 				$parentRound = $this->koRoundRepository->findOneByNameAndCup($parent, $cup);
@@ -77,19 +81,17 @@ class KoRoundFactory {
 				$koRound = new ChildKoRound();
 				$koRound->setParentRound($parentRound);
 			}
-         $this->koRoundRepository->add($koRound);
-      }
+			$this->koRoundRepository->add($koRound);
+		}
 		$koRound->setCup($cup);
 		$koRound->setName($name);
-      foreach ($teams AS $team) {
-         if (!$koRound->hasTeam($team)) {
-            $koRound->addTeam($team);
-         }
-      }
-      $this->koRoundRepository->update($koRound);
-      return $koRound;
-   }
+		foreach ($teams AS $team) {
+			if (!$koRound->hasTeam($team)) {
+				$koRound->addTeam($team);
+			}
+		}
+		$this->koRoundRepository->update($koRound);
+		return $koRound;
+	}
 
 }
-
-?>
