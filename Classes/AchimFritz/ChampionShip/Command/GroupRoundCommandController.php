@@ -6,6 +6,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 
@@ -28,6 +29,18 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 */
 	protected $matchRepository;
 
+	/**
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Service\GroupRoundService
+	 * @Flow\Inject
+	 */
+	protected $groupRoundService;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
+	 */
+	protected $cupRepository;
+
 	
 	/**
 	 * list
@@ -43,13 +56,13 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 				$matches = $groupRound->getGeneralMatches();
 				if (count($matches)) {
 					foreach ($matches as $match) {
-                  $line = ' ' . $match->getHostName() . ' - ' . $match->getGuestName();
-                  $result = $match->getResult();
-                  if (isset($result)) {
-                     $line .= ' ' . $result->getHostTeamGoals() . ':' . $result->getGuestTeamGoals();
-                  } else {
-                     $line .= ' -:-';
-                  }
+						$line = ' ' . $match->getHostName() . ' - ' . $match->getGuestName();
+						$result = $match->getResult();
+						if (isset($result)) {
+							$line .= ' ' . $result->getHostTeamGoals() . ':' . $result->getGuestTeamGoals();
+						} else {
+							$line .= ' -:-';
+						}
 						$this->outputLine($line);
 					}
 				} else {
@@ -59,6 +72,29 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 			}
 		} else {
 			$this->outputLine('no groupRounds found');
+		}
+	}
+
+	/**
+	 * @param string $cupName
+	 * @return void
+	 */
+	public function finishCommand($cupName = 'em 2016') {
+		$cup = $this->cupRepository->findOneByName($cupName);
+		if ($cup instanceof Cup === FALSE) {
+			$this->outputLine('no such cup ' . $cupName);
+			$this->quit();
+		}
+		try {
+			$groupTableRows = $this->groupRoundService->finish($cup);
+			foreach ($groupTableRows AS $row) {
+				$line = ' ' . $row->getRank() . '. ' . $row->getCountOfMatchesPlayed() . ' ' .  $row->getPoints();
+				$line .= ' ' . $row->getGoalsDiff() . ' ' . $row->getGoalsPlus() . ':' . $row->getGoalsMinus();
+				$line .= ' ' . $row->getTeam()->getName();
+				$this->outputLine($line);
+			}
+		} catch (\AchimFritz\ChampionShip\Competition\Domain\Service\Exception $e) {
+			$this->outputLine('ERROR ' . $e->getMessage() . ' - ' . $e->getCode());
 		}
 	}
 

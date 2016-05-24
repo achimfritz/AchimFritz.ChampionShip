@@ -26,8 +26,6 @@ class GroupRound extends Round {
 	protected $groupTableRows;
 
 	/**
-	 * __construct
-	 *
 	 * @return void
 	 */
 	public function __construct() {
@@ -36,8 +34,6 @@ class GroupRound extends Round {
 	}
 
 	/**
-	 * getRoundIsFinished 
-	 * 
 	 * @return boolean
 	 */
 	public function getRoundIsFinished() {
@@ -51,24 +47,31 @@ class GroupRound extends Round {
 	}
 	
 	/**
-	 * getTeamByRank
-	 * 
 	 * @param integer $rank
 	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Team|NULL
 	 */
 	public function getTeamByRank($rank) {
+		$row = $this->getGroupTableRowByRank($rank);
+		if ($row !== NULL) {
+			return $row->getTeam();
+		}
+		return NULL;
+	}
+
+	/**
+	 * @param integer $rank
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow|NULL
+	 */
+	public function getGroupTableRowByRank($rank) {
 		$groupTableRows = $this->getGroupTableRows();
 		if (isset($groupTableRows[$rank-1])) {
-			$row = $groupTableRows[$rank-1];
-			return $row->getTeam();
+			return $groupTableRows[$rank-1];
 		}
 		return NULL;
 	}
 	
 	
 	/**
-	 * getWinnerTeam
-	 * 
 	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Team
 	 */
 	public function getWinnerTeam() {
@@ -76,17 +79,20 @@ class GroupRound extends Round {
 	}
 	
 	/**
-	 * getSecondTeam
-	 * 
 	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Team
 	 */
 	public function getSecondTeam() {
 		return $this->getTeamByRank(2);
 	}
+
+	/**
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Team
+	 */
+	public function getThirdTeam() {
+		return $this->getTeamByRank(3);
+	}
 	
 	/**
-	 * Get the Group table's group table rows
-	 *
 	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow The Group table's group table rows
 	 */
 	public function getGroupTableRows() {
@@ -94,8 +100,6 @@ class GroupRound extends Round {
 	}
 
 	/**
-	 * Sets this Group table's group table rows
-	 *
 	 * @param \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow>
 	 * @return void
 	 */
@@ -104,8 +108,6 @@ class GroupRound extends Round {
 	}
 	
 	/**
-	 * clearGroupTableRows
-	 * 
 	 * @return void
 	 */
 	public function clearGroupTableRows() {
@@ -211,8 +213,6 @@ class GroupRound extends Round {
 	}
 
 	/**
-	 * getTeamPairs
-	 *
 	 * @param \Doctrine\Common\Collections\Collection $teams
 	 * @return array
 	 */

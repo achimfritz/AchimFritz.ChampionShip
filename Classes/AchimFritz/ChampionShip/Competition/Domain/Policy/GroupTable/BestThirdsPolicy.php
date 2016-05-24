@@ -10,9 +10,9 @@ use TYPO3\Flow\Annotations as Flow;
 
 
 /**
- * DefaultPolicy
+ * BestThirdsPolicy
  */
-class DefaultPolicy {
+class BestThirdsPolicy {
 
    /**
     * @param array <\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow>
