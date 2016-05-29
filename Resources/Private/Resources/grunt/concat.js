@@ -31,10 +31,15 @@ module.exports = {
     csslibs: {
         src: [
             'bower_components/jquery-ui/themes/base/jquery-ui.css',
-            'bower_components/bootstrap/dist/css/bootstrap.css',
             'bower_components/flag-icon-css/css/flag-icon.css',
             'bower_components/datetimepicker/jquery.datetimepicker.css'
         ],
         dest: '../../Public/Build/Libs.css'
+    },
+    cssapp: {
+        src: [
+            'Css/*.css'
+        ],
+        dest: '../../Public/Build/App.css'
     }
 };

@@ -1,8 +1,10 @@
 standard:
+  - less
   - concat
 default:
   - standard
 dev:
+  - less
   - concat
   - watch
 sniff:

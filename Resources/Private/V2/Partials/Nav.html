@@ -1,0 +1,156 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<f:link.action controller="Standard"  class="navbar-brand" subpackage="Generic" action="index" arguments="{cup: cup}">www.tipptrip.de<f:if condition="{cup}"> / {cup.name}</f:if></f:link.action>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><f:link.action controller="Standard" subpackage="Generic" action="index" arguments="{cup: cup}">Home</f:link.action></li>
+						<li><f:link.action action="index" subpackage="Generic" controller="Info" arguments="{cup: recentCup}"><f:translate id="info" /></f:link.action></li>
+						<li><f:link.action controller="RegistrationRequest" subpackage="User" action="index" arguments="{cup: recentCup}"><f:translate id="registrationRequest" /></f:link.action></li>
+						<li><f:link.action controller="ContactRequest" subpackage="User" action="index" arguments="{cup: recentCup}"><f:translate id="contactRequest" /></f:link.action></li>
+						<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+							<li>
+								<f:link.action controller="User" subpackage="User" action="index" arguments="{cup: recentCup, user:user}"><f:translate id="profile" /></f:link.action>
+							</li>
+						</f:security.ifHasRole>
+					</ul>
+				</li>
+				<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><f:translate id="tip" /> <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li>
+								<f:link.action action="index" subpackage="Tip" controller="GroupMatchTip" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
+							</li>
+							<li>
+								<f:link.action action="index" subpackage="Tip" controller="GroupRoundTip" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
+							</li>
+							<li>
+								<f:link.action action="index" subpackage="Tip" controller="KoRoundTip" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
+							</li>
+						</ul>
+					</li>
+				</f:security.ifHasRole>
+
+				<f:security.ifAuthenticated>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><f:translate id="tipGroupResults" /> <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li>
+								<f:link.action action="index" subpackage="Tip" controller="TipGroupGroupRoundResults" arguments="{cup: recentCup}">
+									<f:translate id="tipGroupGroupRoundResults" />
+								</f:link.action>
+							</li>
+							<li>
+								<f:link.action action="index" subpackage="Tip" controller="TipGroupKoRoundResults" arguments="{cup: recentCup}">
+									<f:translate id="tipGroupKoRoundResults" />
+								</f:link.action>
+							</li>
+							<li>
+								<f:link.action action="index" subpackage="Tip" controller="Ranking" arguments="{cup: recentCup}"><f:translate id="ranking" /></f:link.action>
+							</li>
+							<li>
+								<f:link.action action="index" subpackage="Tip"  controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
+							</li>
+							<li>
+								<f:link.action controller="OpenChatEntry" subpackage="Chat" action="index" arguments="{cup: recentCup}"><f:translate id="chatEntry" /></f:link.action>
+							</li>
+						</ul>
+					</li>
+				</f:security.ifAuthenticated>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><f:translate id="matches" /> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li>
+							<f:link.action action="index" subpackage="Competition" controller="Match" arguments="{cup: recentCup}"><f:translate id="matches" /></f:link.action>
+						</li>
+						<li>
+							<f:link.action action="index" subpackage="Competition" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
+						</li>
+						<li>
+							<f:link.action action="index" subpackage="Competition" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
+						</li>
+					</ul>
+				</li>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><f:translate id="history" /> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<f:for each="{cups}" as="loopCup">
+							<li>
+								<f:link.action subpackage="Competition" controller="Cup" action="index" arguments="{cup: loopCup}" >{loopCup.name}</f:link.action>
+							</li>
+						</f:for>
+					</ul>
+				</li>
+
+				<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li>
+								<f:link.action action="index" subpackage="Tip" controller="TipCup" arguments="{cup: recentCup}">TipCup</f:link.action>
+							</li>
+							<li>
+								<f:link.action subpackage="Competition" controller="Cup" action="index">Cups</f:link.action>
+							</li>
+							<li>
+								<f:link.action subpackage="Competition" controller="Team" action="index" arguments="{cup: cup}">Teams</f:link.action>
+							</li>
+							<li>
+								<f:link.action subpackage="User" controller="User" action="index" arguments="{cup: cup}">Users</f:link.action>
+							</li>
+							<li>
+								<f:link.action subpackage="User" controller="TipGroup" action="index" arguments="{cup: cup}">TipGroup</f:link.action>
+							</li>
+							<li>
+								<f:link.action subpackage="Tip" controller="MatchTip" action="index" arguments="{cup: cup}">MatchTip</f:link.action>
+							</li>
+							<li>
+								<f:link.action subpackage="Tip" controller="UserTip" action="index" arguments="{cup: cup}">UserTip</f:link.action>
+							</li>
+						</ul>
+					</li>
+				</f:security.ifHasRole>
+
+			</ul>
+			<f:security.ifAuthenticated>
+				<f:then>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><cs:userName /> <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><f:link.action action="logout" subpackage="User" controller="Login"><f:translate id="logout" /></f:link.action></li>
+							</ul>
+						</li>
+					</ul>
+				</f:then>
+				<f:else>
+					<f:form class="navbar-form navbar-right" action="authenticate" controller="Login" subpackage="User">
+						<div class="form-group">
+							<f:form.textfield placeholder="{f:translate(id: 'username')}" class="form-control" id="username" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" />
+						</div>
+						<div class="form-group">
+							<f:form.password placeholder="{f:translate(id: 'password')}" class="form-control" id="password" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
+						</div>
+						<f:form.submit value="{f:translate(id: 'login')}" class="btn btn-success"/>
+					</f:form>
+				</f:else>
+			</f:security.ifAuthenticated>
+		</div>
+	</div>
+</nav>

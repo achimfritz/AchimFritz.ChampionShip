@@ -5,10 +5,16 @@ module.exports = {
     scripts: {
         files: [
             'JavaScript/**/*.js',
-            'JavaScript/*.js',
-            'Css/**/*.css'
+            'JavaScript/*.js'
         ],
         tasks: ['concat' ],
+        options: {
+            nospawn: true
+        }
+    },
+    css: {
+        files: ['Css/**/*.less'],
+        tasks: ['less'],
         options: {
             nospawn: true
         }

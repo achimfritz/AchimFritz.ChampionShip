@@ -30,6 +30,12 @@ class UserController extends RestController {
 	protected $userFactory;
 
 	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
+
+	/**
 	 * @var string
 	 */
 	protected $resourceArgumentName = 'user';

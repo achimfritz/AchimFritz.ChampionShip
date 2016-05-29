@@ -28,53 +28,9 @@ class AbstractActionController extends RestController {
 	protected $translator;
 
 	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
-	 */
-	protected $cupRepository;
-
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
-	 */
-	protected $cupMatchRepository;
-
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
-
-	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
-
-	/**
 	 * @var array
 	 */
 	protected $viewFormatToObjectNameMap = array('json' => 'AchimFritz\\ChampionShip\\Mvc\\View\\JsonView');
-
-	/**
-	 * @var Cup
-	 */
-	protected $cup = NULL;
-
-	/**
-	 * @var \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	protected $cups = NULL;
-
-	/**
-	 * @var User
-	 */
-	protected $user = NULL;
-
-	/**
-	 * @var Account
-	 */
-	protected $account = NULL;
 
 
 	/**
