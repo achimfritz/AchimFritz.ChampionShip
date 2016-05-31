@@ -15,11 +15,10 @@
 				</thead>
 				<tbody>
 					<f:for each="{round.groupTableRows}" as="row" iteration="it">
-						<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+						<tr>
 							<td>{row.rank}</td>
 							<td>
-								<img src="{f:uri.resource(path: 'Images/clear.gif')}" class="flag flag-{row.team.iso2}" alt="{row.team.name}" />
-								{row.team.name}
+								<f:render partial="Team/Name" arguments="{team: row.team}" />
 							</td>
 							<td>{row.countOfMatchesPlayed}</td>
 							<td>{row.countOfMatchesWon}</td>

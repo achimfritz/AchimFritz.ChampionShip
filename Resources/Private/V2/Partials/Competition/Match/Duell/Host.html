@@ -1,16 +1,15 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:if condition="{match.hostTeam}">
-   <f:then>
-	   <span class="flag-icon flag-icon-{match.hostTeam.iso2}"></span>
-	   {match.hostTeam.name}
-   </f:then>
-   <f:else>
-      <cs:ifIsCrossGroupMatch match="{match}">
-         <f:then>
-            {match.hostGroupRank}. {match.hostGroupRound.name}
-         </f:then>
-         <f:else>
-            <cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
+	<f:then>
+		<f:render partial="Team/Name" arguments="{team: match.hostTeam}" />
+	</f:then>
+	<f:else>
+		<cs:ifIsCrossGroupMatch match="{match}">
+			<f:then>
+				{match.hostGroupRank}. {match.hostGroupRound.name}
+			</f:then>
+			<f:else>
+				<cs:ifIsTeamsOfTwoMatchesMatch match="{match}">
 					<f:if condition="{match.hostMatchIsWinner}">
 						<f:then>
 							1.
@@ -19,9 +18,9 @@
 							2.
 						</f:else>
 					</f:if>
-               {match.hostMatch.name}
-            </cs:ifIsTeamsOfTwoMatchesMatch>
-         </f:else>
-      </cs:ifIsCrossGroupMatch> 
-   </f:else>
+					{match.hostMatch.name}
+				</cs:ifIsTeamsOfTwoMatchesMatch>
+			</f:else>
+		</cs:ifIsCrossGroupMatch>
+	</f:else>
 </f:if>

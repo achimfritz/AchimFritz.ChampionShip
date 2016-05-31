@@ -59,6 +59,13 @@ class Team {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getIso3Upper() {
+		return strtoupper($this->getIso3());
+	}
+
+	/**
 	 * Sets this Team's name
 	 *
 	 * @param string $name The Team's name

@@ -1,8 +1,7 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:if condition="{match.guestTeam}">
 	<f:then>
-		<span class="flag-icon flag-icon-{match.guestTeam.iso2}"></span>
-		{match.guestTeam.name}
+		<f:render partial="Team/Name" arguments="{team: match.guestTeam}" />
 	</f:then>
 	<f:else>
 		<cs:ifIsCrossGroupMatch match="{match}">

@@ -10,10 +10,10 @@
 </f:security.ifHasRole>
 
 <div class="row">
-	<div class="col-md-6 text-center col-xs-12">
+	<div class="col-md-12 col-lg-5 text-center">
 		<img src="{f:uri.resource(path: 'Images/footballtip_start.jpg')}" alt="home" />
 	</div>
-	<div class="col-md-6 text-left col-xs-12">
+	<div class="col-md-12 col-lg-7 text-left">
 		<cs:currentMatches cup="{cup}" limit="3" past="1">
 			<f:if condition="{matches}">
 				<h2><f:translate id="lastMatches" /></h2>

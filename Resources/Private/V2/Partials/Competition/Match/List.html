@@ -1,6 +1,6 @@
 <f:if condition="{matches}">
 	<f:then>
-		<table class="table">
+		<table class="table hidden-xs">
 			<thead>
 				<tr>
 					<th>&nbsp;</th>
@@ -20,6 +20,25 @@
 			</f:for>
 			</tbody>
 		</table>
+		<div class="visible-xs">
+			<table class="table">
+				<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+				</thead>
+				<tbody>
+				<f:for each="{matches}" as="match" iteration="it">
+					<tr>
+						<f:render partial="Match/ShowXs" arguments="{match: match}" />
+					</tr>
+				</f:for>
+				</tbody>
+			</table>
+		</div>
 	</f:then>
 	<f:else>
 		<p>No matches created yet.</p>
