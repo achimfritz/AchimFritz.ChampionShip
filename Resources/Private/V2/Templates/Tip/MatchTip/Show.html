@@ -1,18 +1,29 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
+	<h1><f:translate id="tipGroupGroupRoundResults" /></h1>
+	<p><f:translate id="tipGroupResults.info" /></p>
+	<div class="row">
+		<ul class="nav nav-pills">
+			<f:for each="{tipGroups}" as="tipGroupLoop">
+				<li {f:if(condition:'{tipGroupLoop} == {tipGroup}', then: ' class="active"')}>
+				<f:link.action action="index" class="btn btn-default" arguments="{tipGroup: tipGroupLoop, cup: cup, match:match}">
+					{tipGroupLoop.name}
+				</f:link.action>
+				</li>
+			</f:for>
+			<li>
+				<f:link.action action="index" class="btn btn-default" arguments="{cup: match.cup}">back</f:link.action>
+			</li>
+		</ul>
+	</div>
+
+
 	<table class="table">
 		<tr>
 			<f:render partial="Competition/Match/Show" arguments="{match: match, hideActions: 1}" />
 		</tr>
 	</table>
-	<div class="row">
-		<ul class="nav nav-pills">
-			<li>
-				<f:link.action action="index" arguments="{cup: match.cup}">to list</f:link.action>
-			</li>
-		</ul>
-	</div>
 	<table class="table">
 		<f:for each="{tips}" as="tip">
 			<tr>

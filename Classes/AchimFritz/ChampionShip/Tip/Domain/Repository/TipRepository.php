@@ -93,6 +93,26 @@ class TipRepository extends Repository {
 	}
 
 	/**
+	 * @param \TYPO3\Flow\Persistence\QueryResultInterface $users
+	 * @param Match $match
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
+	 */
+	public function findByUsersAndMatch(\TYPO3\Flow\Persistence\QueryResultInterface $users, Match $match) {
+		$identifiers = array();
+		foreach ($users as $user) {
+			$identifiers[] = $this->persistenceManager->getIdentifierByObject($user);
+		}
+		$query = $this->createQuery();
+		return $query->matching(
+			$query->logicalAnd(
+				$query->equals('generalMatch', $match),
+				$query->in('user', $identifiers)
+			)
+		)
+			->execute();
+	}
+
+	/**
 	 * @param User $user 
 	 * @param Round $round
 	 * @return ArrayCollection

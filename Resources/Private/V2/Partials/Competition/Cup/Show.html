@@ -1,4 +1,32 @@
-<h1>{cup.name}</h1>
-	<f:render partial="Actions/Delete" arguments="{object: cup}" />
-	<f:link.action action="index" class="btn">list</f:link.action>
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<h1 class="text-center">{cup.name}</h1>
+<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+	<div class="row">
+		<div class="col-md-6 text-center col-xs-12">
+			<f:render partial="Actions/Delete" arguments="{object: cup}" />
+			<f:link.action action="index" class="btn">list</f:link.action>
+		</div>
+	</div>
+</f:security.ifHasRole>
+
+<div class="row">
+	<div class="col-md-6 text-center col-xs-12">
+		<img src="{f:uri.resource(path: 'Images/footballtip_start.jpg')}" alt="home" />
+	</div>
+	<div class="col-md-6 text-left col-xs-12">
+		<cs:currentMatches cup="{cup}" limit="3" past="1">
+			<f:if condition="{matches}">
+				<h2><f:translate id="lastMatches" /></h2>
+				<f:render partial="Competition/Match/List" arguments="{matches: matches}" />
+			</f:if>
+		</cs:currentMatches>
+		<cs:currentMatches cup="{cup}" limit="3" past="0">
+			<f:if condition="{matches}">
+				<h2><f:translate id="nextMatches" /></h2>
+				<f:render partial="Competition/Match/List" arguments="{matches: matches}" />
+			</f:if>
+		</cs:currentMatches>
+
+	</div>
+</div>
 

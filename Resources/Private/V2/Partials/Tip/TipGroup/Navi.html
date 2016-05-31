@@ -2,14 +2,14 @@
 			<ul class="nav nav-pills">
 				<f:if condition="{listAction}">
 					<li {f:if(condition:'{active}', else: ' class="active"')}>
-						<f:link.action action="index" arguments="{cup: cup}">
+						<f:link.action class="btn btn-default" action="index" arguments="{cup: cup}">
 							all
 						</f:link.action>
 					</li>
 				</f:if>
 				<f:for each="{tipGroups}" as="tipGroup">
 					<li {f:if(condition:'{tipGroup} == {active}', then: ' class="active"')}>
-						<f:link.action action="index" arguments="{tipGroup: tipGroup, cup: cup}">
+						<f:link.action action="index" class="btn btn-default" arguments="{tipGroup: tipGroup, cup: cup}">
 							{tipGroup.name}
 						</f:link.action>
 					</li>

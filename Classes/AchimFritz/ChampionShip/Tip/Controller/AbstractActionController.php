@@ -9,8 +9,6 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Message;
 use TYPO3\Flow\Security\Account;
-use TYPO3\Flow\Mvc\Controller\RestController;
-use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use \AchimFritz\ChampionShip\User\Domain\Model\User;
 
 

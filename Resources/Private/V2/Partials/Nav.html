@@ -18,12 +18,12 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><f:link.action controller="Standard" subpackage="Generic" action="index" arguments="{cup: cup}">Home</f:link.action></li>
-						<li><f:link.action action="index" subpackage="Generic" controller="Info" arguments="{cup: recentCup}"><f:translate id="info" /></f:link.action></li>
-						<li><f:link.action controller="RegistrationRequest" subpackage="User" action="index" arguments="{cup: recentCup}"><f:translate id="registrationRequest" /></f:link.action></li>
-						<li><f:link.action controller="ContactRequest" subpackage="User" action="index" arguments="{cup: recentCup}"><f:translate id="contactRequest" /></f:link.action></li>
+						<li><f:link.action action="index" subpackage="Generic" controller="Info" arguments="{cup: cup}"><f:translate id="info" /></f:link.action></li>
+						<li><f:link.action controller="RegistrationRequest" subpackage="User" action="index" arguments="{cup: cup}"><f:translate id="registrationRequest" /></f:link.action></li>
+						<li><f:link.action controller="ContactRequest" subpackage="User" action="index" arguments="{cup: cup}"><f:translate id="contactRequest" /></f:link.action></li>
 						<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 							<li>
-								<f:link.action controller="User" subpackage="User" action="index" arguments="{cup: recentCup, user:user}"><f:translate id="profile" /></f:link.action>
+								<f:link.action controller="User" subpackage="User" action="index" arguments="{cup: cup, user:user}"><f:translate id="profile" /></f:link.action>
 							</li>
 						</f:security.ifHasRole>
 					</ul>
@@ -33,13 +33,13 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><f:translate id="tip" /> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li>
-								<f:link.action action="index" subpackage="Tip" controller="GroupMatchTip" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
+								<f:link.action action="index" subpackage="Tip" controller="GroupMatchTip" arguments="{cup: cup}"><f:translate id="groupMatch" /></f:link.action>
 							</li>
 							<li>
-								<f:link.action action="index" subpackage="Tip" controller="GroupRoundTip" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
+								<f:link.action action="index" subpackage="Tip" controller="GroupRoundTip" arguments="{cup: cup}"><f:translate id="groupRound" /></f:link.action>
 							</li>
 							<li>
-								<f:link.action action="index" subpackage="Tip" controller="KoRoundTip" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
+								<f:link.action action="index" subpackage="Tip" controller="KoRoundTip" arguments="{cup: cup}"><f:translate id="koRound" /></f:link.action>
 							</li>
 						</ul>
 					</li>
@@ -50,23 +50,23 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><f:translate id="tipGroupResults" /> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li>
-								<f:link.action action="index" subpackage="Tip" controller="TipGroupGroupRoundResults" arguments="{cup: recentCup}">
+								<f:link.action action="index" subpackage="Tip" controller="TipGroupGroupRoundResults" arguments="{cup: cup}">
 									<f:translate id="tipGroupGroupRoundResults" />
 								</f:link.action>
 							</li>
 							<li>
-								<f:link.action action="index" subpackage="Tip" controller="TipGroupKoRoundResults" arguments="{cup: recentCup}">
+								<f:link.action action="index" subpackage="Tip" controller="TipGroupKoRoundResults" arguments="{cup: cup}">
 									<f:translate id="tipGroupKoRoundResults" />
 								</f:link.action>
 							</li>
 							<li>
-								<f:link.action action="index" subpackage="Tip" controller="Ranking" arguments="{cup: recentCup}"><f:translate id="ranking" /></f:link.action>
+								<f:link.action action="index" subpackage="Tip" controller="Ranking" arguments="{cup: cup}"><f:translate id="ranking" /></f:link.action>
 							</li>
 							<li>
-								<f:link.action action="index" subpackage="Tip"  controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
+								<f:link.action action="index" subpackage="Tip"  controller="GlobalRanking" arguments="{cup: cup}"><f:translate id="globalRanking" /></f:link.action>
 							</li>
 							<li>
-								<f:link.action controller="OpenChatEntry" subpackage="Chat" action="index" arguments="{cup: recentCup}"><f:translate id="chatEntry" /></f:link.action>
+								<f:link.action controller="OpenChatEntry" subpackage="Chat" action="index" arguments="{cup: cup}"><f:translate id="chatEntry" /></f:link.action>
 							</li>
 						</ul>
 					</li>
@@ -76,13 +76,13 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><f:translate id="matches" /> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li>
-							<f:link.action action="index" subpackage="Competition" controller="Match" arguments="{cup: recentCup}"><f:translate id="matches" /></f:link.action>
+							<f:link.action action="index" subpackage="Competition" controller="Match" arguments="{cup: cup}"><f:translate id="matches" /></f:link.action>
 						</li>
 						<li>
-							<f:link.action action="index" subpackage="Competition" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
+							<f:link.action action="index" subpackage="Competition" controller="GroupRound" arguments="{cup: cup}"><f:translate id="groupRound" /></f:link.action>
 						</li>
 						<li>
-							<f:link.action action="index" subpackage="Competition" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
+							<f:link.action action="index" subpackage="Competition" controller="KoRound" arguments="{cup: cup}"><f:translate id="koRound" /></f:link.action>
 						</li>
 					</ul>
 				</li>
@@ -103,7 +103,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li>
-								<f:link.action action="index" subpackage="Tip" controller="TipCup" arguments="{cup: recentCup}">TipCup</f:link.action>
+								<f:link.action action="index" subpackage="Tip" controller="TipCup" arguments="{cup: cup}">TipCup</f:link.action>
 							</li>
 							<li>
 								<f:link.action subpackage="Competition" controller="Cup" action="index">Cups</f:link.action>

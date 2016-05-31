@@ -15,7 +15,7 @@ use \AchimFritz\ChampionShip\Competition\Domain\Model\Round;
  *
  * @Flow\Scope("singleton")
  */
-class GroupRoundTipController extends UserTipController {
+class GroupRoundTipController extends AbstractActionController {
 	
 	/**
 	 * @Flow\Inject

@@ -50,8 +50,6 @@ class RankingController extends AbstractTipGroupController {
 	}
 
 	/**
-	 * Shows a list of rankings
-	 *
 	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 * @return void
 	 */
@@ -63,5 +61,3 @@ class RankingController extends AbstractTipGroupController {
 	}
 
 }
-
-?>

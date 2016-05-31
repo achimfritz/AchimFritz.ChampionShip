@@ -6,6 +6,7 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
@@ -16,7 +17,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
  *
  * @Flow\Scope("singleton")
  */
-class MatchTipController extends AbstractActionController {
+class MatchTipController extends AbstractTipGroupController {
 
 	/**
 	 * @Flow\Inject
@@ -44,15 +45,26 @@ class MatchTipController extends AbstractActionController {
 	}
 
 	/**
-	 * showAction
-	 *
 	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
+	 * @param 
 	 */
-	public function showAction(Match $match) {
-		$tips = $this->tipRepository->findByGeneralMatch($match);
+	public function showAction(Match $match, TipGroup $tipGroup = NULL) {
+		if ($tipGroup === NULL) {
+			if ($this->user instanceof User) {
+				$tipGroup = $this->user->getTipGroup();
+			} else {
+				// admin only
+				$tipGroup = $this->tipGroupRepository->findAll()->getFirst();
+			}
+		}
+		$users = $this->userRepository->findInTipGroup($tipGroup);
+		$tips = $this->tipRepository->findByUsersAndMatch($users, $match);
+		$this->view->assign('tipGroup', $tipGroup);
 		$this->view->assign('tips', $tips);
 		$this->view->assign('match', $match);
 	}
+	
 
 
 }

@@ -14,7 +14,7 @@ use \AchimFritz\ChampionShip\Competition\Domain\Model\Round;
  *
  * @Flow\Scope("singleton")
  */
-class KoRoundTipController extends UserTipController {
+class KoRoundTipController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject

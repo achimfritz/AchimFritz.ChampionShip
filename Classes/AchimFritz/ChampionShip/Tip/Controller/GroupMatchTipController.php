@@ -14,7 +14,7 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class GroupMatchTipController extends UserTipController {
+class GroupMatchTipController extends AbstractActionController {
 		
 	/**
 	 * @Flow\Inject

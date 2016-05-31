@@ -7,6 +7,7 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
  *                                                                        */
 
 use AchimFritz\ChampionShip\User\Domain\Model\User;
+use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 use TYPO3\Flow\Annotations as Flow;
 
 
@@ -15,7 +16,7 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class UserTipController extends AbstractActionController {
+class UserTipController extends AbstractTipGroupController {
 
 	/**
 	 * @Flow\Inject
@@ -35,12 +36,22 @@ class UserTipController extends AbstractActionController {
 	protected $resourceArgumentName = 'user';
 
 	/**
-	 * Shows a list of users
-	 *
 	 * @return void
+	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 */
-	public function listAction() {
-		$this->view->assign('users', $this->userRepository->findAll());
+	public function listAction(TipGroup $tipGroup = NULL) {
+		if ($tipGroup === NULL) {
+			if ($this->user instanceof User) {
+				$tipGroup = $this->user->getTipGroup();
+			} else {
+				// admin only
+				$tipGroup = $this->tipGroupRepository->findAll()->getFirst();
+			}
+		}
+		$users = $this->userRepository->findInTipGroup($tipGroup);
+		#$users = $this->userRepository->findAll();
+		$this->view->assign('users', $users);
+		$this->view->assign('tipGroup', $tipGroup);
 	}
 
 	/**
