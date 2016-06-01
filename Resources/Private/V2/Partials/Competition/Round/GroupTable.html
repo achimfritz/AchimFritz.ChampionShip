@@ -1,7 +1,7 @@
 	<f:if condition="{round.groupTableRows}">
 		<f:then>
-				<table class="table">
-					<thead>
+			<table class="table hidden-xs">
+				<thead>
 					<tr>
 						<th><f:translate id="groupTable.rank" /></th>
 						<th><f:translate id="groupTable.team" /></th>
@@ -11,7 +11,7 @@
 						<th>-</th>
 						<th><f:translate id="groupTable.goals" /></th>
 						<th><f:translate id="groupTable.points" /></th>
-				</tr>
+					</tr>
 				</thead>
 				<tbody>
 					<f:for each="{round.groupTableRows}" as="row" iteration="it">
@@ -29,7 +29,37 @@
 						</tr>
 					</f:for>
 				</tbody>
-			</table>				
+			</table>
+			<table class="table visible-xs">
+				<thead>
+				<tr>
+					<th>&nbsp</th>
+					<th>&nbsp</th>
+					<th><f:translate id="groupTable.countOfMatchesPlayed" /></th>
+					<th>+</th>
+					<th>0</th>
+					<th>-</th>
+					<th><f:translate id="groupTable.goals" /></th>
+					<th><f:translate id="groupTable.points" /></th>
+				</tr>
+				</thead>
+				<tbody>
+				<f:for each="{round.groupTableRows}" as="row" iteration="it">
+					<tr>
+						<td>{row.rank}</td>
+						<td>
+							<f:render partial="Team/Name" arguments="{team: row.team}" />
+						</td>
+						<td>{row.countOfMatchesPlayed}</td>
+						<td>{row.countOfMatchesWon}</td>
+						<td>{row.countOfMatchesRemis}</td>
+						<td>{row.countOfMatchesLoosed}</td>
+						<td>{row.goalsPlus}:{row.goalsMinus}</td>
+						<td>{row.points}</td>
+					</tr>
+				</f:for>
+				</tbody>
+			</table>
 		</f:then>
 		<f:else>
 			<p>no groupTableRows</p>

@@ -130,27 +130,14 @@
 
 			</ul>
 			<f:security.ifAuthenticated>
-				<f:then>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><cs:userName /> <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><f:link.action action="logout" subpackage="User" controller="Login"><f:translate id="logout" /></f:link.action></li>
-							</ul>
-						</li>
-					</ul>
-				</f:then>
-				<f:else>
-					<f:form class="navbar-form navbar-right" action="authenticate" controller="Login" subpackage="User">
-						<div class="form-group">
-							<f:form.textfield placeholder="{f:translate(id: 'username')}" class="form-control" id="username" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" />
-						</div>
-						<div class="form-group">
-							<f:form.password placeholder="{f:translate(id: 'password')}" class="form-control" id="password" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
-						</div>
-						<f:form.submit value="{f:translate(id: 'login')}" class="btn btn-success"/>
-					</f:form>
-				</f:else>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><cs:userName /> <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><f:link.action action="logout" subpackage="User" controller="Login"><f:translate id="logout" /></f:link.action></li>
+						</ul>
+					</li>
+				</ul>
 			</f:security.ifAuthenticated>
 		</div>
 	</div>

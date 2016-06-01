@@ -22,6 +22,12 @@ class GroupRoundTipController extends AbstractActionController {
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupRoundRepository
 	 */
 	protected $roundRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
+	 */
+	protected $tipRepository;
 	
 	/**
 	 * showAction

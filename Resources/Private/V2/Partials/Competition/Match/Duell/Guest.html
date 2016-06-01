@@ -1,7 +1,7 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:if condition="{match.guestTeam}">
 	<f:then>
-		<f:render partial="Team/Name" arguments="{team: match.guestTeam}" />
+		<f:render partial="Competition/Team/Name" arguments="{team: match.guestTeam}" />
 	</f:then>
 	<f:else>
 		<cs:ifIsCrossGroupMatch match="{match}">

@@ -21,6 +21,12 @@ class GroupMatchTipController extends AbstractActionController {
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository
 	 */
 	protected $matchRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
+	 */
+	protected $tipRepository;
 	
 	/**
 	 * listAction

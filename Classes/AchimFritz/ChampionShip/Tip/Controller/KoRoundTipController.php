@@ -21,7 +21,13 @@ class KoRoundTipController extends AbstractActionController {
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
 	 */
 	protected $roundRepository;
-	
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
+	 */
+	protected $tipRepository;
+
 	/**
 	 * showAction
 	 * 
