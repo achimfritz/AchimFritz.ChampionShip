@@ -22,6 +22,14 @@
 				<source>Please specify a valid email address.</source>
 				<target>Die E-Mail Adresse ist ungültig</target>
 			</trans-unit>
+			<trans-unit id="forgotPasswordRequest">
+				<source>Forgot Password</source>
+				<target>Passwort vergessen</target>
+			</trans-unit>
+			<trans-unit id="forgotPasswordRequest.email">
+				<source>E-Mail</source>
+				<target>E-Mail</target>
+			</trans-unit>
 			<trans-unit id="profile">
 				<source>Profile</source>
 				<target>Meine Daten</target>
@@ -49,6 +57,10 @@
 			<trans-unit id="flashMessage.tip.updated">
 				<source>Tip updated</source>
 				<target>Dein Tip wurde gespeichert</target> 
+			</trans-unit>
+			<trans-unit id="flashMessage.forgotPasswordRequest.created">
+				<source>An E-Mail has sent to your Address with Instructions</source>
+				<target>Es wurde eine E-Mail an Dein Postfach geschickt.</target>
 			</trans-unit>
 			<trans-unit id="flashMessage.password.updated">
 				<source>Password updated</source>

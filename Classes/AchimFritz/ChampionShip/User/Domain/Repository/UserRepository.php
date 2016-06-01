@@ -6,6 +6,7 @@ namespace AchimFritz\ChampionShip\User\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\ChampionShip\User\Domain\Model\User;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 
@@ -75,6 +76,14 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository {
 		return $query->matching(
 			$query->contains('tipGroups', $tipGroup)
 		)->execute();
+	}
+
+	/**
+	 * @param User $user
+	 * @return void
+	 */
+	public function updateSecurityChecked(User $user) {
+		$this->persistenceManager->update($user);
 	}
 
 

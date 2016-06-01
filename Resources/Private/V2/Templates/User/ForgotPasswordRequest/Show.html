@@ -1,0 +1,88 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Show forgot password request {forgotPasswordRequest.name}</f:section>
+<f:section name="Content">
+	<table class="table table-striped">
+		
+		<tr>
+			<th>Creation date</th>
+			
+					<td>{forgotPasswordRequest.creationDate -> f:format.date(format: 'd.m.Y')}</td>
+				
+		</tr>
+		
+		<tr>
+			<th>Email</th>
+			
+					<td>{forgotPasswordRequest.email}</td>
+				
+		</tr>
+		
+		<tr>
+			<th>Username</th>
+			
+					<td>{forgotPasswordRequest.username}</td>
+				
+		</tr>
+		
+		<tr>
+			<th>User</th>
+			
+					<td>{forgotPasswordRequest.user}</td>
+				
+		</tr>
+		
+		<tr>
+			<th>Hash</th>
+			
+					<td>{forgotPasswordRequest.hash}</td>
+				
+		</tr>
+		
+	</table>
+
+	<h3>edit forgotPasswordRequest</h3>
+	<f:form action="index" object="{forgotPasswordRequest}" objectName="forgotPasswordRequest">
+		<input type="hidden" name="__method" value="PUT" />
+		
+			<div class="form-group">
+				<label class="control-label" for="creationDate">Creation date</label>
+					
+							<f:form.textfield type="datetime" value="{forgotPasswordRequest.creationDate -> f:format.date(format: 'd.m.Y')}" property="creationDate" class="datepicker form-control" id="creationDate" />
+						
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label" for="email">Email</label>
+					
+							<f:form.textfield property="email" class="form-control" id="email" />
+						
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label" for="username">Username</label>
+					
+							<f:form.textfield property="username" class="form-control" id="username" />
+						
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label" for="user">User</label>
+					
+							<f:form.textfield property="user" class="form-control" id="user" />
+						
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label" for="hash">Hash</label>
+					
+							<f:form.textfield property="hash" class="form-control" id="hash" />
+						
+			</div>
+		
+			<div class="form-group">
+				<f:link.action action="index" class="btn btn-default">Back</f:link.action>
+				<f:form.submit class="btn btn-default" value="Update" />
+			</div>
+	</f:form>
+</f:section>

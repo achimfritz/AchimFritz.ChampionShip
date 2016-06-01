@@ -1,0 +1,11 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<f:render partial="ForgotPasswordRequest/List" arguments="{forgotPasswordRequests: forgotPasswordRequests}" />
+	</f:security.ifHasRole>
+	<f:render partial="ForgotPasswordRequest/New" />
+
+</f:section>
+

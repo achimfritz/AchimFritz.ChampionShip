@@ -1,0 +1,21 @@
+
+	<f:if condition="{forgotPasswordRequests}">
+		<f:then>
+			<table class="table table-striped">
+				<f:for each="{forgotPasswordRequests}" as="forgotPasswordRequest">
+					<tr>
+						<td><f:link.action action="index" arguments="{forgotPasswordRequest: forgotPasswordRequest}">{forgotPasswordRequest.email}</f:link.action></td>
+						<td><f:form action="index" arguments="{forgotPasswordRequest: forgotPasswordRequest}">
+							<f:form.hidden name="__method" value="DELETE" />
+							<f:form.submit value="Delete" class="btn btn-danger btn-xs" />
+						</f:form></td>
+					</tr>
+				</f:for>
+			</table>
+		</f:then>
+		<f:else>
+			<div class="alert alert-info" role="alert">No forgot password requests created yet.</div>
+		</f:else>
+	</f:if>
+
+

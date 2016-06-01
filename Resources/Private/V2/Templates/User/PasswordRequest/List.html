@@ -1,0 +1,29 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+
+	<h1 class="text-center"><f:translate id="password.edit" /></h1>
+
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<f:form action="index" class="form-horizontal" controller="PasswordRequest" name="password" method="post">
+				<f:form.hidden property="user" value="{forgotPasswordRequest.user}" />
+				<f:form.hidden property="hash" value="{forgotPasswordRequest.hash}" />
+				<div class="form-group">
+					<label class="col-sm-6 control-label" for="newPassword"><f:translate id="password.newPassword" /></label>
+					<div class="col-sm-6"><f:form.password class="form-control" property="newPassword" id="newPassword" /></div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-6" for="newPasswordRepeat"><f:translate id="password.newPasswordRepeat" /></label>
+					<div class="col-sm-6"><f:form.password class="form-control" property="newPasswordRepeat" id="newPasswordRepeat" /></div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-6 col-sm-6">
+						<f:form.submit class="btn btn-success" value="Update" />
+					</div>
+				</div>
+			</f:form>
+		</div>
+	</div>
+
+</f:section>

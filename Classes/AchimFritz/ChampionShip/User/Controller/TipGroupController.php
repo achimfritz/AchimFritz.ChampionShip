@@ -6,11 +6,11 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        *
  *                                                                        */
 
-use AchimFritz\Rest\Controller\RestController;
+use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 
-class TipGroupController extends RestController {
+class TipGroupController extends AbstractActionController {
 
 	/**
 	 * @Flow\Inject

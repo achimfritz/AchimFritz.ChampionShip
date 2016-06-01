@@ -31,7 +31,6 @@ class RegistrationRequest {
 	 */
 	protected $creationDate;
 
-
 	/**
 	 * @var string
 	 * @Flow\Validate(type="NotEmpty")
@@ -53,14 +52,11 @@ class RegistrationRequest {
 	protected $username = '';
 
 	/**
-	 * __construct 
-	 * 
 	 * @return void
 	 */
 	public function __construct() {
 		$this->creationDate = new \DateTime();
 	}
-
 
 	/**
 	 * @return string
@@ -93,8 +89,6 @@ class RegistrationRequest {
 	}
 
 	/**
-	 * getTipGroupName 
-	 * 
 	 * @return string tipGroupName
 	 */
 	public function getTipGroupName() {
@@ -102,8 +96,6 @@ class RegistrationRequest {
 	}
 
 	/**
-	 * setTipGroupName
-	 * 
 	 * @param string $tipGroupName
 	 * @return void
 	 */
@@ -142,8 +134,6 @@ class RegistrationRequest {
 	}
 
 	/**
-	 * setCreationDate 
-	 * 
 	 * @param \DateTime $creationDate 
 	 * @return void
 	 */
@@ -152,8 +142,6 @@ class RegistrationRequest {
 	}
 
 	/**
-	 * getCreationDate 
-	 * 
 	 * @return \DateTime
 	 */
 	public function getCreationDate() {
@@ -161,4 +149,3 @@ class RegistrationRequest {
 	}
 
 }
-?>

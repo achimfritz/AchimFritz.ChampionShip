@@ -21,6 +21,7 @@
 						<li><f:link.action action="index" subpackage="Generic" controller="Info" arguments="{cup: cup}"><f:translate id="info" /></f:link.action></li>
 						<li><f:link.action controller="RegistrationRequest" subpackage="User" action="index" arguments="{cup: cup}"><f:translate id="registrationRequest" /></f:link.action></li>
 						<li><f:link.action controller="ContactRequest" subpackage="User" action="index" arguments="{cup: cup}"><f:translate id="contactRequest" /></f:link.action></li>
+						<li><f:link.action controller="ForgotPasswordRequest" subpackage="User" action="index" arguments="{cup: cup}"><f:translate id="forgotPasswordRequest" /></f:link.action></li>
 						<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 							<li>
 								<f:link.action controller="User" subpackage="User" action="index" arguments="{cup: cup, user:user}"><f:translate id="profile" /></f:link.action>

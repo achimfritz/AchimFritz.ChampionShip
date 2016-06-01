@@ -6,10 +6,13 @@ namespace AchimFritz\ChampionShip\Service;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\ChampionShip\User\Domain\Model\ForgotPasswordRequest;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
 use AchimFritz\ChampionShip\User\Domain\Model\ContactRequest;
+use TYPO3\Flow\Mvc\ActionRequest;
+use TYPO3\Flow\Mvc\Routing\UriBuilder;
 
 /**
  * A NotificationService
@@ -95,6 +98,31 @@ class NotificationService {
 	}
 
 	/**
+	 * @param ForgotPasswordRequest $forgotPasswordRequest
+	 * @param ActionRequest $actionRequest
+	 * @return void
+	 */
+	public function forgotPasswordRequest(ForgotPasswordRequest $forgotPasswordRequest, ActionRequest $actionRequest) {
+		$uriBuilder = new UriBuilder();
+		$uriBuilder->reset()->setRequest($actionRequest);
+		$uriBuilder->setCreateAbsoluteUri(TRUE);
+		$url = $uriBuilder->uriFor('index', array('hash' => $forgotPasswordRequest->getHash()), 'passwordRequest', 'AchimFritz.ChampionShip', 'User');
+
+		$from = $this->settings['mailFrom'];
+		$to = $forgotPasswordRequest->getUser()->getEmail();
+
+		$subject = 'Passwort zurücksetzen / www.tipptrip.de';
+		$body = 'fooo bar' . chr(10) . chr(10);
+		$body .= $url;
+		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+		$mailMessage->setFrom($from)
+			->setTo($to)
+			->setSubject($subject)
+			->setBody($body)
+			->send();
+	}
+
+	/**
 	 * registrationStarted
 	 * 
 	 * @param User $user 
@@ -166,4 +194,4 @@ class NotificationService {
 			->send();
 	}
 }
-?>
+

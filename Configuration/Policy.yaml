@@ -3,6 +3,8 @@ privilegeTargets:
   TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
     AchimFritz_ChampionShipChatEntryCreateMethods:
       matcher: 'method(AchimFritz\ChampionShip\Chat\Controller\.*ChatEntryController->createAction()) || method(AchimFritz\ChampionShip\Chat\Controller\.*ChatEntryController->listAction())'
+    AchimFritz_ChampionShipForgotPasswordRequestCreateMethods:
+      matcher: 'method(AchimFritz\ChampionShip\User\Controller\ForgotPasswordRequestController->createAction()) || method(AchimFritz\ChampionShip\User\Controller\PasswordRequestController->createAction())'
     AchimFritz_ChampionShipContactRequestCreateMethods:
       matcher: 'method(AchimFritz\ChampionShip\User\Controller\ContactRequestController->createAction())'
     AchimFritz_ChampionShipRegistrationRequestCreateMethods:
@@ -72,6 +74,9 @@ roles:
         privilegeTarget: AchimFritz_ChampionShipContactRequestCreateMethods
         permission: GRANT
       -
+        privilegeTarget: AchimFritz_ChampionShipForgotPasswordRequestCreateMethods
+        permission: GRANT
+      -
         privilegeTarget: AchimFritz_ChampionShipRegistrationRequestCreateMethods
         permission: GRANT
   'AchimFritz.ChampionShip:Administrator':
@@ -125,6 +130,9 @@ roles:
         privilegeTarget: AchimFritz_ChampionShipContactRequestCreateMethods
         permission: GRANT
       -
+        privilegeTarget: AchimFritz_ChampionShipForgotPasswordRequestCreateMethods
+        permission: GRANT
+      -
         privilegeTarget: AchimFritz_ChampionShipRegistrationRequestCreateMethods
         permission: GRANT
   'TYPO3.Flow:Anonymous':
@@ -134,4 +142,7 @@ roles:
         permission: GRANT
       -
         privilegeTarget: AchimFritz_ChampionShipContactRequestCreateMethods
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipForgotPasswordRequestCreateMethods
         permission: GRANT

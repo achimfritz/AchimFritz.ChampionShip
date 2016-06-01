@@ -15,7 +15,7 @@ use AchimFritz\ChampionShip\User\Domain\Model\Password;
  *
  * @Flow\Scope("singleton")
  */
-class PasswordController extends AbstractActionController {
+class PasswordRequestController extends AbstractActionController {
 
 	/**
 	 * @var \TYPO3\Flow\Security\Cryptography\HashService
@@ -28,11 +28,26 @@ class PasswordController extends AbstractActionController {
 	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
 	 */
 	protected $userRepository;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\ForgotPasswordRequestRepository
+	 */
+	protected $forgotPasswordRequestRepository;
 	
 	/**
 	 * @var string
 	 */
 	protected $resourceArgumentName = 'password';
+
+	/**
+	 * @param string $hash
+	 * @return void
+	 */
+	public function listAction($hash = '') {
+		$forgotPasswordRequest = $this->forgotPasswordRequestRepository->findOneByHash($hash);
+		$this->view->assign('forgotPasswordRequest', $forgotPasswordRequest);
+	}
 
 	/**
 	 * Updates the given team object
@@ -42,16 +57,20 @@ class PasswordController extends AbstractActionController {
 	 */
 	public function createAction(Password $password) {
 		try {
-			$user = $password->getUser();
+			$forgotPasswordRequest = $this->forgotPasswordRequestRepository->findOneByHash($password->getHash());
+			$user = $forgotPasswordRequest->getUser();
 			$user->getAccount()->setCredentialsSource($this->hashService->hashPassword($password->getNewPassword(), 'default'));
-			$this->userRepository->update($user);
+			$this->userRepository->updateSecurityChecked($user);
+			$forgotPasswordRequest->setHash('');
+			$this->forgotPasswordRequestRepository->update($forgotPasswordRequest);
 			$this->persistenceManager->persistAll();
 			$this->addOkMessage('password updated');
 		} catch (\Exception $e) {
+			throw $e;
 			$this->addErrorMessage('cannot update password');
 			$this->handleException($e);
 		}
-		$this->redirect('index', 'User', NULL, array('user' => $password->getUser()));
+		$this->redirect('index', 'Cup', 'AchimFritz.Championship\\Competition');
 	}
 
 

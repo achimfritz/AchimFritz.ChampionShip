@@ -28,6 +28,11 @@ class Password {
 	protected $newPasswordRepeat;
 
 	/**
+	 * @var string
+	 */
+	protected $hash = '';
+
+	/**
 	 * @var \AchimFritz\ChampionShip\User\Domain\Model\User
 	 * @ORM\OneToOne
 	 * @Flow\Validate(type="NotEmpty")
@@ -65,8 +70,6 @@ class Password {
 	}
 
 	/**
-	 * getUser
-	 * 
 	 * @return User
 	 */
 	public function getUser() {
@@ -74,15 +77,24 @@ class Password {
 	}
 
 	/**
-	 * setUser
-	 * 
 	 * @param User $user
 	 * @return void
 	 */
 	public function setUser(User $user) {
 		$this->user = $user;
-	} 
+	}
 
+	/**
+	 * @return string
+	 */
+	public function getHash() {
+		return $this->hash;
+	}
 
+	/**
+	 * @param string $hash
+	 */
+	public function setHash($hash) {
+		$this->hash = $hash;
+	}
 }
-?>
