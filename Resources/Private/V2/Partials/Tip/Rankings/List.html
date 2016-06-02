@@ -1,27 +1,29 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:if condition="{rankings}">
 	<f:then>
-		<table class="table">
-			<thead>
-				<tr>
-					<th><f:translate id="ranking.rank" /></th>
-					<th><f:translate id="ranking.points" /></th>
-					<th><f:translate id="ranking.user" /></th>
-					<th><f:translate id="ranking.countOfTips" /></th>
-				</tr>
-			</thead>
-			<tbody>
-				<f:for each="{rankings}" as="ranking">
-					<tr class="{f:if(condition: cnt.isOdd, then: ' cs-odd', else: ' cs-even')}">
-						<td>{ranking.rank}</td>
-						<td>{ranking.points}</td>
-						<td>{ranking.user.displayName}
-						</td>
-						<td>{ranking.countOfTips}</td>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead class="hidden-xs">
+					<tr>
+						<th><f:translate id="ranking.rank" /></span></th>
+						<th><f:translate id="ranking.points" /></th>
+						<th><f:translate id="ranking.user" /></th>
+						<th><f:translate id="ranking.countOfTips" /></th>
 					</tr>
-				</f:for>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<f:for each="{rankings}" as="ranking">
+						<tr class="{f:if(condition: cnt.isOdd, then: ' cs-odd', else: ' cs-even')}">
+							<td>{ranking.rank}</td>
+							<td>{ranking.points}</td>
+							<td>{ranking.user.displayName}
+							</td>
+							<td>{ranking.countOfTips}</td>
+						</tr>
+					</f:for>
+				</tbody>
+			</table>
+		</div>
 	</f:then>
 	<f:else>
 		<p>no rankings</p>

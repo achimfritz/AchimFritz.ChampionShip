@@ -1,0 +1,20 @@
+<div class="col-xs-12">
+	<f:format.date format="d.m H:i">{tip.match.startDate}</f:format.date>
+</div>
+<div class="col-xs-3">
+	<f:render partial="Competition/Match/Duell/Host" arguments="{match: tip.match}" />
+</div>
+<div class="col-xs-3">
+	<f:render partial="Competition/Match/Duell/Guest" arguments="{match: tip.match}" />
+</div>
+<div class="col-xs-6 text-right">
+	<f:if condition="{tip.match.result}">
+		<f:then>
+			{tip.match.result.hostTeamGoals} : {tip.match.result.guestTeamGoals}
+		</f:then>
+		<f:else>
+			:
+		</f:else>
+	</f:if>
+	<f:render partial="Tip/Show" arguments="{tip: tip}"/>
+</div>

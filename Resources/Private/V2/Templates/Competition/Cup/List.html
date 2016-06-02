@@ -2,7 +2,6 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<f:render partial="Cup/Show" arguments="{cup: cup}" />
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 		<h5>Cups</h5>
 		<div class="row">
@@ -12,4 +11,5 @@
 			<f:render partial="Cup/New" arguments="{allTeams: allTeams}" />
 		</div>
 	</f:security.ifHasRole>
+	<f:render partial="Startpage/Index" arguments="{cup: cup}"/>
 </f:section>

@@ -18,7 +18,7 @@
 						<tr>
 							<td>{row.rank}</td>
 							<td>
-								<f:render partial="Team/Name" arguments="{team: row.team}" />
+								<f:render partial="Competition/Team/Name" arguments="{team: row.team}" />
 							</td>
 							<td>{row.countOfMatchesPlayed}</td>
 							<td>{row.countOfMatchesWon}</td>
@@ -30,15 +30,13 @@
 					</f:for>
 				</tbody>
 			</table>
-			<table class="table visible-xs">
+			<table class="table visible-xs small">
 				<thead>
 				<tr>
 					<th>&nbsp</th>
 					<th>&nbsp</th>
 					<th><f:translate id="groupTable.countOfMatchesPlayed" /></th>
-					<th>+</th>
-					<th>0</th>
-					<th>-</th>
+					<th>+0-</th>
 					<th><f:translate id="groupTable.goals" /></th>
 					<th><f:translate id="groupTable.points" /></th>
 				</tr>
@@ -48,12 +46,10 @@
 					<tr>
 						<td>{row.rank}</td>
 						<td>
-							<f:render partial="Team/Name" arguments="{team: row.team}" />
+							<f:render partial="Competition/Team/Name" arguments="{team: row.team}" />
 						</td>
 						<td>{row.countOfMatchesPlayed}</td>
-						<td>{row.countOfMatchesWon}</td>
-						<td>{row.countOfMatchesRemis}</td>
-						<td>{row.countOfMatchesLoosed}</td>
+						<td>{row.countOfMatchesWon}-{row.countOfMatchesRemis}-{row.countOfMatchesLoosed}</td>
 						<td>{row.goalsPlus}:{row.goalsMinus}</td>
 						<td>{row.points}</td>
 					</tr>

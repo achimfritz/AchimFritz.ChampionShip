@@ -3,20 +3,8 @@
 <f:section name="Content">
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 		<f:then>
-			<h5>{cup.name}</h5>
-			<div class="row">
-				<f:link.action action="index">
-					<botton type="button" class="btn btn-default">
-						list
-					</botton>
-				</f:link.action>
-			</div>
-			<div class="row">
-				<f:render partial="Cup/Edit" arguments="{cup: cup, allTeams: allTeams}" />
-			</div>
-		</f:then>
-		<f:else>
 			<f:render partial="Cup/Show" arguments="{cup: cup}"/>
-		</f:else>
+		</f:then>
 	</f:security.ifHasRole>
+	<f:render partial="Startpage/Index" arguments="{cup: cup}"/>
 </f:section>

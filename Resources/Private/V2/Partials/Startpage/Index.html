@@ -1,0 +1,34 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<div class="row">
+	<div class="col-md-12 col-lg-5 text-center">
+		<img src="{f:uri.resource(path: 'Images/footballtip_start.jpg')}" alt="home" />
+	</div>
+
+	<f:security.ifAuthenticated>
+		<f:else>
+			<div class="col-md-12 col-lg-7 text-left">
+				<f:render partial="Startpage/NavPills" arguments="{cup: cup}" />
+			</div>
+		</f:else>
+	</f:security.ifAuthenticated>
+
+	<div class="col-md-12 col-lg-7 text-left">
+		<cs:currentMatches cup="{cup}" limit="3" past="1">
+			<f:if condition="{matches}">
+				<h2><f:translate id="lastMatches" /></h2>
+				<f:render partial="Competition/Match/List" arguments="{matches: matches}" />
+			</f:if>
+		</cs:currentMatches>
+		<cs:currentMatches cup="{cup}" limit="3" past="0">
+			<f:if condition="{matches}">
+				<h2><f:translate id="nextMatches" /></h2>
+				<f:render partial="Competition/Match/List" arguments="{matches: matches}" />
+			</f:if>
+		</cs:currentMatches>
+
+	</div>
+
+	<div class="col-xs-12">
+		<f:render partial="Startpage/Info" arguments="{cup: cup}" />
+	</div>
+</div>

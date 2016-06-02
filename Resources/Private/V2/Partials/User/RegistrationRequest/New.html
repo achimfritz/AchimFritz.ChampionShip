@@ -1,28 +1,41 @@
-	<h5><f:translate id="registrationRequest" /></h5>
 	<f:form class="form-horizontal" action="index" controller="RegistrationRequest" name="registrationRequest" method="post">
-		<div class="control-group">
-			<label class="control-label" for="username">Username:</label>
-			<div class="controls"><f:form.textfield property="username" id="username" /></div>
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-xs-8">
+				<div class="form-group">
+					<f:form.textfield property="username" id="username" placeholder="Username"/>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-8">
+				<div class="form-group">
+					<f:form.password property="newPassword" id="newPassword" placeholder="{f:translate(id: 'password.newPassword')}"/>
+				</div>
+			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="email">Email:</label>
-			<div class="controls"><f:form.textfield property="email" id="email" /></div>
+
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-xs-8">
+				<div class="form-group">
+					<f:form.textfield property="email" id="email" placeholder="E-Mail"/>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-8">
+				<div class="form-group">
+					<f:form.password property="newPasswordRepeat" id="newPasswordRepeat" placeholder="{f:translate(id: 'password.newPasswordRepeat')}"/>
+				</div>
+			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="newPassword"><f:translate id="password.newPassword" /></label>
-			<div class="controls"><f:form.password property="newPassword" id="newPassword" /></div>
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-xs-8">
+				<div class="form-group">
+					<f:form.textfield property="tipGroupName" id="tipGroupName" placeholder="{f:translate(id: 'tipGroupName')}"/>
+				</div>
+			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="newPasswordRepeat"><f:translate id="password.newPasswordRepeat" /></label>
-			<div class="controls"><f:form.password property="newPasswordRepeat" id="newPasswordRepeat" /></div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="tipGroupName"><f:translate id="tipGroupName" /></label>
-			<div class="controls"><f:form.textfield property="tipGroupName" id="tipGroupName" /></div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<f:form.submit class="btn" value="Create" />
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-xs-8">
+				<div class="form-group">
+					<f:form.submit class="btn btn-success" value="{f:translate(id: 'registrationRequest')}" />
+				</div>
 			</div>
 		</div>
 	</f:form>

@@ -1,0 +1,20 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<!-- Nav tabs -->
+<ul class="nav nav-pills" role="tablist">
+	<li role="presentation" class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">{f:translate(id: 'login')}</a></li>
+	<li role="presentation"><a href="#registrationRequest" aria-controls="profile" role="tab" data-toggle="tab"><f:translate id="registrationRequest" /></a></li>
+	<li role="presentation"><a href="#forgotPasswordRequest" aria-controls="messages" role="tab" data-toggle="tab"><f:translate id="forgotPasswordRequest" /></a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+	<div role="tabpanel" class="tab-pane active" id="login">
+		<f:render partial="User/Login" />
+	</div>
+	<div role="tabpanel" class="tab-pane" id="registrationRequest">
+		<f:render partial="User/RegistrationRequest/New" />
+	</div>
+	<div role="tabpanel" class="tab-pane" id="forgotPasswordRequest">
+		<f:render partial="User/ForgotPasswordRequest/New" />
+	</div>
+</div>

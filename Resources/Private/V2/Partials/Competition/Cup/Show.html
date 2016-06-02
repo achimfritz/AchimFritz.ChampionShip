@@ -1,65 +1,25 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
-<h1 class="text-center">{cup.name}</h1>
+
 <f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+
+	<h1>{cup.name}</h1>
+	<div class="row">
+		<f:link.action action="index">
+			<botton type="button" class="btn btn-default">
+				list
+			</botton>
+		</f:link.action>
+	</div>
 	<div class="row">
 		<div class="col-md-6 text-center col-xs-12">
 			<f:render partial="Actions/Delete" arguments="{object: cup}" />
 			<f:link.action action="index" class="btn">list</f:link.action>
 		</div>
 	</div>
+
+	<div class="row">
+		<f:render partial="Cup/Edit" arguments="{cup: cup, allTeams: allTeams}" />
+	</div>
+
 </f:security.ifHasRole>
-
-<div class="row">
-	<div class="col-md-12 col-lg-5 text-center">
-		<img src="{f:uri.resource(path: 'Images/footballtip_start.jpg')}" alt="home" />
-	</div>
-
-	<f:security.ifAuthenticated>
-		<f:else>
-			<div class="col-md-12 col-lg-7 text-left">
-					<!-- Nav tabs -->
-					<ul class="nav nav-pills" role="tablist">
-						<li role="presentation" class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">{f:translate(id: 'login')}</a></li>
-						<li role="presentation"><a href="#registrationRequest" aria-controls="profile" role="tab" data-toggle="tab"><f:translate id="registrationRequest" /></a></li>
-						<li role="presentation"><a href="#forgotPasswordRequest" aria-controls="messages" role="tab" data-toggle="tab"><f:translate id="forgotPasswordRequest" /></a></li>
-					</ul>
-
-					<!-- Tab panes -->
-					<div class="tab-content">
-						<div role="tabpanel" class="tab-pane active" id="login">
-							<f:form action="authenticate" controller="Login" subpackage="User">
-								<div class="form-group col-md-6 col-md-offset-3 col-sm-12">
-									<f:form.textfield placeholder="{f:translate(id: 'username')}" class="form-control" id="username" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][username]" />
-								</div>
-								<div class="form-group col-md-6 col-md-offset-3 col-sm-12">
-									<f:form.password placeholder="{f:translate(id: 'password')}" class="form-control" id="password" name="__authentication[TYPO3][Flow][Security][Authentication][Token][UsernamePassword][password]" />
-								</div>
-								<div class="form-group col-md-6 col-md-offset-3 col-sm-12">
-									<f:form.submit value="{f:translate(id: 'login')}" class="btn btn-success"/>
-								</div>
-							</f:form>
-						</div>
-						<div role="tabpanel" class="tab-pane" id="registrationRequest">asfdsdasd...</div>
-						<div role="tabpanel" class="tab-pane" id="forgotPasswordRequest">...</div>
-					</div>
-			</div>
-		</f:else>
-	</f:security.ifAuthenticated>
-
-	<div class="col-md-12 col-lg-7 text-left">
-		<cs:currentMatches cup="{cup}" limit="3" past="1">
-			<f:if condition="{matches}">
-				<h2><f:translate id="lastMatches" /></h2>
-				<f:render partial="Competition/Match/List" arguments="{matches: matches}" />
-			</f:if>
-		</cs:currentMatches>
-		<cs:currentMatches cup="{cup}" limit="3" past="0">
-			<f:if condition="{matches}">
-				<h2><f:translate id="nextMatches" /></h2>
-				<f:render partial="Competition/Match/List" arguments="{matches: matches}" />
-			</f:if>
-		</cs:currentMatches>
-
-	</div>
-</div>
 
