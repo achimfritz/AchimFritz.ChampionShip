@@ -1,128 +1,87 @@
 (function ($) {
-	$(function () {
-		$('.tip').each(function() {
+    $(function () {
+        $('.tip').each(function () {
 
 
-			//create tip
-			var hostTip = $('.hostTip', this);
-			var guestTip = $('.guestTip', this);
-			var tipId = $('.tipId', this);
-			var tip = {
-				'hostTip' : hostTip,
-				'guestTip' : guestTip,
-				'tipId': tipId,
-				'container': $(this)
-			};
-			// bind tip
+            //create tip
+            var hostTip = $('.hostTip', this);
+            var guestTip = $('.guestTip', this);
+            var tipId = $('.tipId', this);
+            var submit = $('button', this);
+            var inputs = $('input', this);
+            var tip = {
+                hostTip: hostTip,
+                guestTip: guestTip,
+                tipId: tipId,
+                submit: submit,
+                inputs: inputs,
+                container: $(this)
+            };
 
-			// bind homeTip
-			tip.hostTip.bind('keyup', function(ev) {
-				// compile tip
-				var cTip = {
-					'tip': {
-						'result': {
-							'hostTeamGoals': tip.hostTip.val(),
-							'guestTeamGoals': tip.guestTip.val()
-						},
-						'__identity': tip.tipId.val()
-					}
-				};
+            var validate = function () {
+                if (Math.floor(tip.hostTip.val()) == tip.hostTip.val()
+                    && $.isNumeric(tip.hostTip.val())
+                    && Math.floor(tip.guestTip.val()) == tip.guestTip.val()
+                    && $.isNumeric(tip.guestTip.val()))
+                {
+                    tip.submit.removeAttr('disabled');
+                    return true;
+                } else {
+                    tip.submit.attr('disabled', 'disabled');
+                    return false;
+                }
 
-				// valide
-				if(
-					((ev.keyCode >= 48 && ev.keyCode <= 57) || ev.keyCode == 8 || ev.keyCode == 46 || ev.keyCode == 13)
-					&& Math.floor(cTip.tip.result.hostTeamGoals) == cTip.tip.result.hostTeamGoals 
-					&& $.isNumeric(cTip.tip.result.hostTeamGoals)
-					&& Math.floor(cTip.tip.result.guestTeamGoals) == cTip.tip.result.guestTeamGoals 
-					&& $.isNumeric(cTip.tip.result.guestTeamGoals)
-					) {
+            };
 
-					tip.container.addClass('loading');
+            var update = function () {
+                tip.container.addClass('loading');
 
-					$.ajax({
-							'type': 'PUT',
-							'url': '/achimfritz.championship/tip/tip/index',
-							'data': cTip,
-							'dataType': 'json',
-							'success': function (response) {
-									tip.container.removeClass('loading');
-									$('span', tip.container).remove();
-									var result = tip.hostTip.val() + ':' + tip.guestTip.val();
-									//tip.container.append($('<span />').text(result)).append($('<span />').addClass('icon-ok'))
-									tip.container.append($('<span />').addClass('icon-ok'))
-									if (response.flashMessages.length) {
-										var html = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>OK</strong>';
-										for (var i = 0; i < response.flashMessages.length; i++) {
-											html += ' ' + response.flashMessages[i].message;
-										}
-										html += '</div>';
-										$('#flashMessageContainer').empty().append(html);
-										//$('#flashMessageContainer').append(html);
-									}
-							},
-							'error': function() {
-									tip.container.removeClass('loading');
-									var html = '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><strong>Fatal Error</strong></div>';
-									tip.container.append(html);
-									//tip.container.append($('<span />').addClass('icon-exclamation-sign'));
-							}
-						});
-				}
-			});
-			// bind guestTip
-			tip.guestTip.bind('keyup', function(ev) {
-				// compile tip
-				var cTip = {
-					'tip': {
-						'result': {
-							'hostTeamGoals': tip.hostTip.val(),
-							'guestTeamGoals': tip.guestTip.val()
-						},
-						'__identity': tip.tipId.val()
-					}
-				};
+                var data = {
+                    tip: {
+                        result: {
+                            hostTeamGoals: tip.hostTip.val(),
+                            guestTeamGoals: tip.guestTip.val()
+                        },
+                        __identity: tip.tipId.val()
+                    }
+                };
 
-				// valide
-				if(
-					((ev.keyCode >= 48 && ev.keyCode <= 57) || ev.keyCode == 8 || ev.keyCode == 46 || ev.keyCode == 13)
-					&& Math.floor(cTip.tip.result.hostTeamGoals) == cTip.tip.result.hostTeamGoals 
-					&& $.isNumeric(cTip.tip.result.hostTeamGoals)
-					&& Math.floor(cTip.tip.result.guestTeamGoals) == cTip.tip.result.guestTeamGoals 
-					&& $.isNumeric(cTip.tip.result.guestTeamGoals)
-					) {
 
-					tip.container.addClass('loading');
+                $.ajax({
+                    type: 'PUT',
+                    url: '/achimfritz.championship/tip/tip/index',
+                    data: data,
+                    dataType: 'json',
+                    success: function (response) {
+                        tip.container.removeClass('loading');
+                        $('div.alert', tip.container).remove();
+                        if (response.flashMessages.length) {
+                            var html = '<span class="alert-inline alert alert-success"><strong>OK</strong></span>';
+                            tip.container.append(html);
+                        }
+                    },
+                    error: function () {
+                        tip.container.removeClass('loading');
+                        $('div.alert', tip.container).remove();
+                        var html = '<span class="alert-inline alert alert-danger"><strong>ERROR</strong></span>';
+                        tip.container.append(html);
+                    }
+                });
+            };
 
-					$.ajax({
-							'type': 'PUT',
-							'url': '/achimfritz.championship/tip/tip/index',
-							'data': cTip,
-							'dataType': 'json',
-							'success': function (response) {
-									tip.container.removeClass('loading');
-									$('span', tip.container).remove();
-									var result = tip.hostTip.val() + ':' + tip.guestTip.val();
-									tip.container.append($('<span />').addClass('icon-ok'))
-									if (response.flashMessages.length) {
-										var html = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>OK</strong>';
-										for (var i = 0; i < response.flashMessages.length; i++) {
-											html += ' ' + response.flashMessages[i].message;
-										}
-										html += '</div>';
-										$('#flashMessageContainer').empty().append(html);
-										//$('#flashMessageContainer').append(html);
-									}
-									//tip.container.append($('<span />').text(result)).append($('<span />').addClass('icon-ok'))
-							},
-							'error': function() {
-									tip.container.removeClass('loading');
-									var html = '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><strong>Fatal Error</strong></div>';
-									tip.container.append(html);
-							}
-						});
-				}
-			});
-		});
-	});
+            validate();
+
+            tip.submit.bind('click', function(ev) {
+                if (validate() === true) {
+                    update();
+                }
+            })
+
+            tip.inputs.bind('change', function (ev){
+                validate();
+            });
+
+        });
+    });
 }(jQuery));
 

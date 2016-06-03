@@ -15,13 +15,13 @@
 	<div class="col-md-12 col-lg-7 text-left">
 		<cs:currentMatches cup="{cup}" limit="3" past="1">
 			<f:if condition="{matches}">
-				<h2><f:translate id="lastMatches" /></h2>
+				<h4><f:translate id="lastMatches" /></h4>
 				<f:render partial="Competition/Match/List" arguments="{matches: matches}" />
 			</f:if>
 		</cs:currentMatches>
 		<cs:currentMatches cup="{cup}" limit="3" past="0">
 			<f:if condition="{matches}">
-				<h2><f:translate id="nextMatches" /></h2>
+				<h4><f:translate id="nextMatches" /></h4>
 				<f:render partial="Competition/Match/List" arguments="{matches: matches}" />
 			</f:if>
 		</cs:currentMatches>
