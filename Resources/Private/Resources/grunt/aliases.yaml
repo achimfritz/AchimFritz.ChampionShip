@@ -1,6 +1,7 @@
 standard:
   - less
   - concat
+  - uglify
 default:
   - standard
 dev:
