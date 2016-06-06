@@ -22,9 +22,25 @@
 				<source>Please specify a valid email address.</source>
 				<target>Die E-Mail Adresse ist ungültig</target>
 			</trans-unit>
+			<trans-unit id="forgotPasswordInfo">
+				<source>Please enter your E-Mail</source>
+				<target>Bitte gib Deine E-Mail Adresse ein.</target>
+			</trans-unit>
+			<trans-unit id="loginInfo">
+				<source>Please enter Access Data</source>
+				<target>Bitte gib Deine Zugangsdaten ein.</target>
+			</trans-unit>
+			<trans-unit id="registrationInfo">
+				<source>Please enter personal Data</source>
+				<target>Bitte gib Deine persönlichen Daten ein.</target>
+			</trans-unit>
 			<trans-unit id="forgotPasswordRequest">
 				<source>Forgot Password</source>
 				<target>Passwort vergessen</target>
+			</trans-unit>
+			<trans-unit id="forgotPasswordRequest.submit">
+				<source>Request new Password</source>
+				<target>Passwort anfordern</target>
 			</trans-unit>
 			<trans-unit id="forgotPasswordRequest.email">
 				<source>E-Mail</source>

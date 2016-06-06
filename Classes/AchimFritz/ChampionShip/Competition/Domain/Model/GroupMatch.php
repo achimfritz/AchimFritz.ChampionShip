@@ -36,6 +36,6 @@ class GroupMatch extends Match {
 	 * @Flow\Validate(type="NotEmpty")
 	 */
 	protected $guestTeam;
-
+	
 }
-?>
+

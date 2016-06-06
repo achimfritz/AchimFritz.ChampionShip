@@ -117,9 +117,12 @@ class CrossGroupMatch extends KoMatch {
 	 */
 	public function getCurrentGuestTeam() {
 		$groupRound = $this->getGuestGroupRound();
-		$rank = $this->getGuestGroupRank();
-		$team = $groupRound->getTeamByRank($rank);
-		return $team;
+		if ($groupRound !== NULL) {
+			$rank = $this->getGuestGroupRank();
+			$team = $groupRound->getTeamByRank($rank);
+			return $team;
+		}
+		return NULL;
 	}
 
 }

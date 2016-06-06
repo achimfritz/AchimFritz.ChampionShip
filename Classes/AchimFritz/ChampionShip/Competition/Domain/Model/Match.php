@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @Flow\Entity
  * @ORM\InheritanceType("JOINED")
  */
-class Match {
+class Match  {
 
 	/**
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Team
@@ -305,5 +305,5 @@ class Match {
 		$this->guestTeam = $guestTeam;
 	}
 	
+
 }
-?>

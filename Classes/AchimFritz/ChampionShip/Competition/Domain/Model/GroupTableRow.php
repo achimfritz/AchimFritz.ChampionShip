@@ -272,7 +272,6 @@ class GroupTableRow {
 	public function setCountOfMatchesRemis($countOfMatchesRemis) {
 		$this->countOfMatchesRemis = $countOfMatchesRemis;
 	}
-	
 
 }
 ?>

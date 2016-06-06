@@ -19,7 +19,9 @@ module.exports = {
     },
     app: {
         src: [
-            'JavaScript/*.js'
+            'JavaScript/*.js',
+            'JavaScript/Angular/Module.js',
+            'JavaScript/Angular/**/*.js',
         ],
         dest: '../../Public/Build/App.js'
     },

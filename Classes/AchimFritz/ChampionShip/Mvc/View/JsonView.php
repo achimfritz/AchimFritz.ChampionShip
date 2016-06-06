@@ -21,6 +21,12 @@ class JsonView extends \AchimFritz\Rest\Mvc\View\JsonView {
 				'_exclude' => array('team'),
 			)
 		),
+		'matches' => array(
+			'_descendAll' => array(
+				//'_only' => array('name', 'startDate', 'result', 'hostTeam', 'guestTeam'),
+				'_exclude' => array('teamHasWonThisMatch', 'twoTeamsPlayThisMatch', 'cup', 'round'),
+			)
+		),
 		'nextMatches' => array(
 			'_descendAll' => array(
 				'_exclude' => array('teamHasWonThisMatch', 'twoTeamsPlayThisMatch'),

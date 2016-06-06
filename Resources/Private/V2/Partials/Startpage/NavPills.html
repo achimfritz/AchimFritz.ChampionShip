@@ -9,12 +9,15 @@
 <!-- Tab panes -->
 <div class="tab-content">
 	<div role="tabpanel" class="tab-pane active" id="login">
+		<p class="alert alert-info"><f:translate  id="loginInfo" /></p>
 		<f:render partial="User/Login" />
 	</div>
 	<div role="tabpanel" class="tab-pane" id="registrationRequest">
+		<p class="alert alert-info"><f:translate  id="registrationInfo" /></p>
 		<f:render partial="User/RegistrationRequest/New" />
 	</div>
 	<div role="tabpanel" class="tab-pane" id="forgotPasswordRequest">
+		<p class="alert alert-info"><f:translate  id="forgotPasswordInfo" /></p>
 		<f:render partial="User/ForgotPasswordRequest/New" />
 	</div>
 </div>

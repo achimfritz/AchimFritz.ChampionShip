@@ -2,7 +2,6 @@
     $(function () {
         $('.tip').each(function () {
 
-
             //create tip
             var hostTip = $('.hostTip', this);
             var guestTip = $('.guestTip', this);
@@ -75,9 +74,9 @@
                 if (validate() === true) {
                     update();
                 }
-            })
+            });
 
-            tip.inputs.bind('change', function (ev){
+            tip.inputs.bind('input', function (ev){
                 validate();
             });
 

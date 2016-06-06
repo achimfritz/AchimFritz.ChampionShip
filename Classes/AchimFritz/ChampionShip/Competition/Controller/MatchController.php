@@ -46,6 +46,11 @@ class MatchController extends AbstractActionController {
 	 * @var string
 	 */
 	protected $resourceArgumentName = 'match';
+
+	/**
+	 * @var array
+	 */
+	protected $viewFormatToObjectNameMap = array('json' => 'AchimFritz\\ChampionShip\\Mvc\\View\\MatchesJsonView');
 	
 	/**
 	 * listAction
@@ -59,10 +64,10 @@ class MatchController extends AbstractActionController {
 			$this->redirect('index', 'GroupRound');
 		}
 		$this->view->assign('matches', $matches);
-		$this->view->assign('allTeams', $this->teamRepository->findAll());
-		$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
-		$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
-		$this->view->assign('recentCup', $cup);
+		#$this->view->assign('allTeams', $this->teamRepository->findAll());
+		#$this->view->assign('allGroupRounds', $this->groupRoundRepository->findByCup($cup));
+		#$this->view->assign('allKoRounds', $this->koRoundRepository->findByCup($cup));
+		#$this->view->assign('recentCup', $cup);
 	}
 
 	/**

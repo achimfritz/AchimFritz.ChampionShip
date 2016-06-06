@@ -1,0 +1,45 @@
+<h1>ssa</h1>
+<div class="row">
+	<ul class="nav nav-pills">
+		<li data-ng-repeat="tipGroup in tipGroups" data-ng-class="{'active': tipGroup.__identity === currentTipGroup.__identity}">
+			<a href="javascript:" data-ng-click="selectTipGroup(tipGroup)" class="btn btn-default">{{tipGroup.name}}</a>
+		</li>
+	</ul>
+</div>
+
+<div class="row">
+	<table class="table">
+		<thead>
+
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="loopMatch in allMatches">
+				<td>{{loopMatch.name}}</td>
+				<td>{{loopMatch.startDate}}</td>
+				<td data-ng-if="loopMatch.hostTeam">
+					<span class="visible-xs">
+						<span class="flag-icon flag-icon-{{loopMatch.hostTeam.iso2}}"></span>
+							{{loopMatch.hostTeam.iso3Upper}}
+					</span>
+					<span class="hidden-xs">
+						<span class="flag-icon flag-icon-{{loopMatch.hostTeam.iso2}}"></span>
+							{{loopMatch.hostTeam.name}}
+					</span>
+				</td>
+				<td data-ng-if="!loopMatch.hostTeam">{{loopMatch.hostTeamName}}</td>
+				<td data-ng-if="loopMatch.guestTeam">
+					<span class="visible-xs">
+						<span class="flag-icon flag-icon-{{loopMatch.guestTeam.iso2}}"></span>
+							{{loopMatch.guestTeam.iso3Upper}}
+					</span>
+					<span class="hidden-xs">
+						<span class="flag-icon flag-icon-{{loopMatch.guestTeam.iso2}}"></span>
+							{{loopMatch.guestTeam.name}}
+					</span>
+				</td>
+				<td data-ng-if="loopMatch.guestTeamName">{{loopMatch.guestTeamName}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
