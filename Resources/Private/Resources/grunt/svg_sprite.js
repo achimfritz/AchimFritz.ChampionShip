@@ -3,13 +3,11 @@
 (function () {
     'use strict';
     module.exports = {
-            files: {ax: ['bower_components/flag-icon-css/flags/**/*.svg']},
-            x: {
+            target: {
 
-                // Target basics
                 expand: true,
-                cwd: 'bower_components/flag-icon-css/flags',
-                src: ['bower_components/flag-icon-css/flags/**/*.svg'],
+                cwd: 'bower_components/flag-icon-css/flags/4x3',
+                src: ['de.svg'],
                 dest: '../../Public/Build/',
 
                 // Target options
@@ -26,3 +24,4 @@
     };
 }
 ());
+//src: ['de.svg', 'es.svg', 'fr.svg'],

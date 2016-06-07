@@ -290,6 +290,10 @@
 				<source>tipGroups</source>
 				<target>Tip Gruppen</target>
 			</trans-unit>
+			<trans-unit id="back">
+				<source>back</source>
+				<target>zurück</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

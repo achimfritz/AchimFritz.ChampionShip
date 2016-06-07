@@ -1,6 +1,8 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
+	<h4><f:translate id="tipGroupGroupRoundResults" /></h4>
+	<p><f:translate id="tipGroupResults.info" /></p>
 
 	<div class="row">
 		<f:if condition="{users}">
@@ -8,22 +10,14 @@
 				<table class="table">
 					<thead>
 					<tr>
-						<th>accountIdentifier</th>
-						<th>email</th>
-						<th>tipGroup</th>
+						<th>&nbsp;</th>
 					</tr>
 					</thead>
 					<tbody>
 					<f:for each="{users}" as="currentUser" iteration="it">
 						<tr class="clickable-row" data-href="{f:uri.action(action: 'index', arguments: {cup: cup, user: currentUser})}">
 							<td>
-								{currentUser.account.accountIdentifier}
-							</td>
-							<td>
-								{currentUser.email}
-							</td>
-							<td>
-								{currentUser.tipGroup.name}
+								{currentUser.displayName}
 							</td>
 						</tr>
 					</f:for>

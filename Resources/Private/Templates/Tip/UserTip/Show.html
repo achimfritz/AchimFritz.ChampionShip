@@ -1,15 +1,26 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<h3>{user.displayName}</h3>
-	<div class="row">
-		<ul class="nav nav-pills">
-			<li>
-				<f:link.action action="index" arguments="{cup: recentCup}">to list</f:link.action>
-			</li>
-		</ul>
-	</div>
-	<table class="table">
+	<h4><f:translate id="tipGroupGroupRoundResults" /></h4>
+	<p>{user.displayName}
+		<f:link.action action="index" class="btn btn-default" arguments="{cup: match.cup}">
+			<f:translate id="back" />
+		</f:link.action>
+	</p>
+
+	<table class="table hidden-xs">
+		<thead>
+			<tr>
+				<th>&nbsp;</th>
+				<th><f:translate id="match.date" /></th>
+				<th><f:translate id="match.group" /></th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th>Result</th>
+				<th>Tip</th>
+			</tr>
+		</thead>
+		<tbody>
 		<f:for each="{tips}" as="tip">
 			<tr>
 				<f:render partial="Competition/Match/Show" arguments="{match: tip.match, hideActions: 1}" />
@@ -18,7 +29,21 @@
 				</td>
 			</tr>
 		</f:for>
-
+		</tbody>
+	</table>
+	<table class="table visible-xs">
+		<thead>
+		</thead>
+		<tbody>
+		<f:for each="{tips}" as="tip">
+			<tr>
+				<f:render partial="Competition/Match/ShowXs" arguments="{match: tip.match, hideActions: 1, hideResult: 1}" />
+				<td>
+					<f:render partial="Tip/Show" arguments="{tip: tip}" />
+				</td>
+			</tr>
+		</f:for>
+		</tbody>
 	</table>
 
 </f:section>

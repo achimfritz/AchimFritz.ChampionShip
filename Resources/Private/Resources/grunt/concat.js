@@ -24,8 +24,8 @@ module.exports = {
     },
     csslibs: {
         src: [
-            'bower_components/flag-icon-css/css/flag-icon.css',
-            'bower_components/datetimepicker/jquery.datetimepicker.css'
+            'bower_components/datetimepicker/jquery.datetimepicker.css',
+            'Flags/flags.css'
         ],
         dest: '../../Public/Build/Libs.css'
     },

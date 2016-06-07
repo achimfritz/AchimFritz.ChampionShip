@@ -6,8 +6,8 @@ module.exports = {
         files: [{
             expand: true,
             cwd: '../../Public/Build',
-            src: ['Libs.css', '!*.min.css'],
-            dest: 'r../../Public/Build',
+            src: ['Libs.css', 'css/sprite.css'],
+            dest: '../../Public/Build',
             ext: '.min.css'
         }]
     }

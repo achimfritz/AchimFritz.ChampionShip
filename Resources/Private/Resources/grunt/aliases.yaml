@@ -2,6 +2,7 @@ standard:
   - less
   - concat
   - cssmin
+  - copy
   - uglify
 default:
   - standard
@@ -9,7 +10,3 @@ dev:
   - less
   - concat
   - watch
-sniff:
-  - jshint
-svg:
-  - svg_sprite

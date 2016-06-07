@@ -1,12 +1,12 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<h1><f:translate id="tipGroupGroupRoundResults" /></h1>
+	<h4><f:translate id="tipGroupGroupRoundResults" /></h4>
 	<p><f:translate id="tipGroupResults.info" /></p>
 
 		<f:if condition="{matches}">
 			<f:then>
-				<table class="table">
+				<table class="table hidden-xs">
 					<thead>
 					<tr>
 						<th>&nbsp;</th>
@@ -32,6 +32,17 @@
 									</f:else>
 								</f:if>
 							</td>
+						</tr>
+					</f:for>
+					</tbody>
+				</table>
+				<table class="table visible-xs">
+					<thead>
+					</thead>
+					<tbody>
+					<f:for each="{matches}" as="match" iteration="it">
+						<tr class="clickable-row" data-href="{f:uri.action(action: 'index', arguments: {cup: cup, match: match})}">
+							<f:render partial="Competition/Match/ShowXs" arguments="{match: match, hideActions: 1}" />
 						</tr>
 					</f:for>
 					</tbody>
