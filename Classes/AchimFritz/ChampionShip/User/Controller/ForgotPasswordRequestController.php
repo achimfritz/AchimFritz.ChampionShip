@@ -51,7 +51,7 @@ class ForgotPasswordRequestController extends AbstractActionController {
 	public function createAction(ForgotPasswordRequest $forgotPasswordRequest) {
 		$forgotPasswordRequest = $this->forgotPasswordService->finish($forgotPasswordRequest, $this->request);
 		$this->addOkMessage('forgotPasswordRequest created');
-		$this->redirect('list');
+		$this->redirectHome();
 	}
 
 	/**

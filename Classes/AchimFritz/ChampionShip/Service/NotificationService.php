@@ -53,12 +53,11 @@ class NotificationService {
 		$to = $user->getEmail();
 
 		$subject = 'Einladung: Tippen bis zum Anpfiff bei www.tipptrip.de';
-		$body = 'Am 12.06.2014 ist es wieder soweit: Es wird WM-Geschichte geschrieben!!! '. chr(10) . chr(10);
+		$body = 'Am 10.06.2016 ist es wieder soweit: Es wird EM-Geschichte geschrieben!!! '. chr(10) . chr(10);
 		$body .= 'Du bist natürlich automatisch wieder bei www.tipptrip.de dabei.' . chr(10) . chr(10);
 		$body .= 'Deine Zugangsdaten:' . chr(10);
 		$body .= 'URL: http://www.tipptrip.de/' . chr(10);
-		$body .= 'Username: ' . $user->getUsername() . chr(10);
-		$body .= 'Dein Passwort: ' . $user->getEmail() . chr(10) . chr(10);
+		$body .= 'Username: ' . $user->getUsername() . chr(10). chr(10);
 		$body .= 'Viel Spass wünscht Dir,' . chr(10);
 		$body .= 'das www.tipptrip.de-Team';
 
@@ -112,8 +111,11 @@ class NotificationService {
 		$to = $forgotPasswordRequest->getUser()->getEmail();
 
 		$subject = 'Passwort zurücksetzen / www.tipptrip.de';
-		$body = 'fooo bar' . chr(10) . chr(10);
-		$body .= $url;
+		$body = 'hier kannst du Dein Passwort zurücksetzen:' . chr(10) . chr(10);
+		$body .= $url . chr(10) . chr(10);
+		$body .= 'Username: ' . $forgotPasswordRequest->getUser()->getUsername() . chr(10). chr(10);
+		$body .= 'Viel Spass wünscht Dir,' . chr(10);
+		$body .= 'das www.tipptrip.de-Team';
 		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
 		$mailMessage->setFrom($from)
 			->setTo($to)

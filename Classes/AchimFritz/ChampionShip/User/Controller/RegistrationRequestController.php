@@ -50,6 +50,39 @@ class RegistrationRequestController extends AbstractActionController {
 	protected $notificationService;
 
 	/**
+	 * @var \TYPO3\Flow\Security\Context
+	 * @Flow\Inject
+	 */
+	protected $securityContext;
+
+	/**
+	 * @var User
+	 */
+	protected $user = NULL;
+
+	/**
+	 * @var Account
+	 */
+	protected $account = NULL;
+
+
+	/**
+	 * initializeAction
+	 *
+	 * @return void
+	 */
+	protected function initializeAction() {
+		parent::initializeAction();
+		$this->account = $this->securityContext->getAccount();
+		if ($this->account) {
+			$user = $this->userRepository->findOneByAccount($this->account);
+			if ($user instanceof User) {
+				$this->user = $user;
+			}
+		}
+	}
+
+	/**
 	 * @return void
 	 */
 	public function listAction() {
@@ -95,8 +128,8 @@ class RegistrationRequestController extends AbstractActionController {
 			$this->addErrorMessage('cannot create registrationRequest');
 			$this->handleException($e);
 			$this->redirect('index');
-		}		
-		$this->redirect('index', NULL, NULL, array('registrationRequest' => $registrationRequest));
+		}
+		$this->redirectHome();
 	}
 
 	/**

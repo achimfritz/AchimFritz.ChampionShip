@@ -7,6 +7,7 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        */
 
 use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
+use AchimFritz\ChampionShip\User\Domain\Model\ForgotPasswordRequest;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\Password;
 
@@ -46,6 +47,9 @@ class PasswordRequestController extends AbstractActionController {
 	 */
 	public function listAction($hash = '') {
 		$forgotPasswordRequest = $this->forgotPasswordRequestRepository->findOneByHash($hash);
+		if ($forgotPasswordRequest instanceof ForgotPasswordRequest === FALSE) {
+			$this->redirect('list', 'AccessDenied', 'AchimFritz.ChampionShip\\Generic');
+		}
 		$this->view->assign('forgotPasswordRequest', $forgotPasswordRequest);
 	}
 
@@ -70,7 +74,7 @@ class PasswordRequestController extends AbstractActionController {
 			$this->addErrorMessage('cannot update password');
 			$this->handleException($e);
 		}
-		$this->redirect('index', 'Cup', 'AchimFritz.Championship\\Competition');
+		$this->redirectHome();
 	}
 
 

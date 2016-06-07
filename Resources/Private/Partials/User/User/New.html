@@ -2,7 +2,7 @@
 	<h5>new user</h5>
 	<f:if condition="{allTipGroups}">
 		<f:then>
-			<f:form class="form-horizontal" action="index" controller="User" name="user" method="post">
+			<f:form class="form-horizontal" action="index" controller="User" subpackage="User" name="user" method="post">
 				<f:form.hidden property="account.authenticationProviderName" value="DefaultProvider" />
 				<div class="control-group">
 					<label class="control-label" for="accountIdentifier">accountIdentifier</label>

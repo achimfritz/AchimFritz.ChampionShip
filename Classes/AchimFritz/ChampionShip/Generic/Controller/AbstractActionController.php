@@ -29,6 +29,10 @@ class AbstractActionController extends RestController {
 	 */
 	protected $viewFormatToObjectNameMap = array('json' => 'AchimFritz\\ChampionShip\\Mvc\\View\\JsonView');
 
+	protected function redirectHome() {
+		$this->redirect('list', 'Standard', 'AchimFritz.ChampionShip\\Generic');
+	}
+
 
 	/**
 	 * initializeView

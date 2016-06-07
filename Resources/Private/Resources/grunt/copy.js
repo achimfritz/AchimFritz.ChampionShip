@@ -2,7 +2,7 @@
 /*global module*/
 'use strict';
 module.exports = {
-    myvoice: {
+    flags: {
         files: [
             { src:"Flags/flags.png", dest:"../../Public/Build/flags.png" }
         ]
