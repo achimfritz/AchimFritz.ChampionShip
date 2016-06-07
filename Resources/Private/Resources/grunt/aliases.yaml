@@ -1,6 +1,7 @@
 standard:
   - less
   - concat
+  - cssmin
   - uglify
 default:
   - standard

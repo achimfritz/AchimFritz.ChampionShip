@@ -1,0 +1,4 @@
+-
+  requestFilter: 'isPackage("AchimFritz.ChampionShip") && isFormat("html")'
+  options:
+    layoutRootPaths: ['resource://AchimFritz.ChampionShip/Private/Layouts/Production']

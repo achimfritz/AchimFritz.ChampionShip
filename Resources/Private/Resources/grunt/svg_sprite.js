@@ -3,7 +3,6 @@
 (function () {
     'use strict';
     module.exports = {
-        svg_sprite: {
             files: {ax: ['bower_components/flag-icon-css/flags/**/*.svg']},
             x: {
 
@@ -24,7 +23,6 @@
                     }
                 }
             }
-        }
     };
 }
 ());
