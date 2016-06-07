@@ -1,0 +1,42 @@
+<f:layout name="Default" />
+
+
+<f:section name="Content">
+	<h5>{cup.name}</h5>
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<f:then>
+			<div class="row">
+				<ul class="nav nav-pills">
+					<li><f:link.action action="index">to list</f:link.action></li>
+					<li class="active"><a href="#show" data-toggle="tab">show</a></li>
+					<li><a href="#edit" data-toggle="tab">edit</a></li>
+					<li><a href="#new" data-toggle="tab">new</a></li>
+					<li><f:render partial="Actions/Delete" arguments="{object: cup}" /></li>
+				</ul>
+			</div>
+			<div class="tab-content">
+				<div class="row tab-pane active" id="show">
+							<div class="span1"></div>
+							<div class="span5">
+								<img src="{f:uri.resource(path: 'Images/footballtip_start.jpg')}" alt="home" />
+							</div>
+				</div>
+				<div class="row tab-pane" id="edit">
+					<f:render partial="Cup/Edit" arguments="{cup: cup, allTeams: allTeams}" />
+				</div>
+				<div class="row tab-pane" id="new">
+					<f:render partial="Cup/New" arguments="{allTeams: allTeams}" />
+				</div>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="row">
+				<div class="span1"></div>
+				<div class="span5">
+					<img src="{f:uri.resource(path: 'Images/footballtip_start.jpg')}" alt="home" />
+				</div>
+			</div>
+		</f:else>
+	</f:security.ifHasRole>
+
+</f:section>

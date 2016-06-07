@@ -1,5 +1,7 @@
 {namespace cs=AchimFritz\ChampionShip\ViewHelpers}
-<cs:ifActionIsAllowed object="{object}">
-<a href="{cs:restUri(object: object, subpackage: subpackage)}"><span class="icon-pencil"></span></a>
-</cs:ifActionIsAllowed>
+<a href="{cs:restUri(object: object, subpackage: subpackage)}">
+<button class="btn btn-default" type="button">
+	Show
+</button>
+</a>
 

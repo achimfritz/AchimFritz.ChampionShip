@@ -1,0 +1,46 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<h5><f:translate id="match.group" /> {round.name}</h5>
+
+	<f:render partial="Round/List" arguments="{rounds: allGroupRounds, activeRound: round}" />
+	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+		<div class="row">
+			<ul class="nav nav-pills">
+				<li class="active"><a href="#show" data-toggle="tab">show</a></li>
+				<li><a href="#edit" data-toggle="tab">edit</a></li>
+				<li><a href="#new" data-toggle="tab">new round</a></li>
+				<li><a href="#auto" data-toggle="tab">auto create matches</a></li>
+				<li><a href="#new-match" data-toggle="tab">new match</a></li>
+				<li><f:render partial="Actions/Delete" arguments="{object: round}" /></li>
+			</ul>
+		</div>
+	</f:security.ifHasRole>
+
+	<div class="tab-content">
+		<div class="row tab-pane active" id="show">
+			<f:render partial="Round/Show" arguments="{round: round}" />
+			<f:render partial="Round/GroupTable" arguments="{round: round}" />
+		</div>
+
+			<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+				<div class="row tab-pane" id="new">
+					<f:render partial="Round/GroupRound/New" arguments="{recentCup: recentCup}" />
+				</div>
+				<div class="row tab-pane" id="edit">
+					<f:render partial="Round/GroupRound/Edit" arguments="{round: round}" />
+				</div>
+				<div class="row tab-pane" id="auto">
+					<h6>auto create matches</h6>
+					<f:form action="index" method="update" controller="GroupMatchCreator" arguments="{groupRound: round}">
+						<f:form.hidden name="__method" value="PUT" />
+						<f:form.submit name="submit" value="update" class="btn" />
+					</f:form>
+				</div>
+				<div class="row tab-pane" id="new-match">
+					<f:render partial="Match/GroupMatch/New" arguments="{recentCup: recentCup, round: round}" />
+				</div>
+			</f:security.ifHasRole>
+	</div>
+
+</f:section>

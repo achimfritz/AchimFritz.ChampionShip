@@ -2,121 +2,15 @@
 <div class="cs-container">
 	<h6>Home</h6>
 	<ul>
-		<li  {cs:ifIsCurrentController(controllerName:'Cup', cup: cup, then: 'class= "cs-active"')}>
+		<li>
 			<f:link.action controller="Standard" subpackage="Generic" action="index" arguments="{cup: recentCup}">Home</f:link.action>
 		</li>
-		<li {cs:ifIsCurrentController(controllerName:'Info', then: 'class= "cs-active"')}>
-			<f:link.action action="index" subpackage="Generic" controller="Info" arguments="{cup: recentCup}"><f:translate id="info" /></f:link.action>
-		</li>
-      <li {cs:ifIsCurrentController(controllerName:'RegistrationRequest', then: 'class= "cs-active"')}>
-         <f:link.action controller="RegistrationRequest" subpackage="User" action="index" arguments="{cup: recentCup}"><f:translate id="registrationRequest" /></f:link.action>
-      </li>
-      <li {cs:ifIsCurrentController(controllerName:'ContactRequest', then: 'class= "cs-active"')}>
-         <f:link.action controller="ContactRequest" subpackage="User" action="index" arguments="{cup: recentCup}"><f:translate id="contactRequest" /></f:link.action>
-      </li>
-		<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
-			<li {cs:ifIsCurrentController(controllerName:'User', then: 'class= "cs-active"')}>
-				<f:link.action controller="User" subpackage="User" action="index" arguments="{cup: recentCup, user:user}"><f:translate id="profile" /></f:link.action>
-			</li>
-		</f:security.ifHasRole>
 	</ul>
 </div>
 
-<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
-<div class="cs-container">
-	<h6><f:translate id="tip" /></h6>
-	<ul>
-		<li {cs:ifIsCurrentController(controllerName:'GroupMatchTip', then: 'class= "cs-active"')}>
-			<f:link.action action="index" subpackage="Tip" controller="GroupMatchTip" arguments="{cup: recentCup}"><f:translate id="groupMatch" /></f:link.action>
-		</li>
-		<li {cs:ifIsCurrentController(controllerName:'GroupRoundTip', then: 'class= "cs-active"')}>
-			<f:link.action action="index" subpackage="Tip" controller="GroupRoundTip" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
-		</li>
-		<li {cs:ifIsCurrentController(controllerName:'KoRoundTip', then: 'class= "cs-active"')}>
-		<f:link.action action="index" subpackage="Tip" controller="KoRoundTip" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
-		</li>
-	</ul>
-</div>
-</f:security.ifHasRole>
+<f:render partial="Competition/CompetitionServiceDescription" arguments="{recentCup: recentCup, cups: cups}" />
 
-<f:security.ifAuthenticated>
-<div class="cs-container">
-	<h6><f:translate id="tipGroupResults" /></h6>
-	<ul>
-		<li {cs:ifIsCurrentController(controllerName:'TipGroupGroupRoundResults', then: 'class= "cs-active"')}>
-			<f:link.action action="index" subpackage="Tip" controller="TipGroupGroupRoundResults" arguments="{cup: recentCup}">
-				<f:translate id="tipGroupGroupRoundResults" />
-			</f:link.action>
-		</li>
-		<li {cs:ifIsCurrentController(controllerName:'TipGroupKoRoundResults', then: 'class= "cs-active"')}>
-			<f:link.action action="index" subpackage="Tip" controller="TipGroupKoRoundResults" arguments="{cup: recentCup}">
-				<f:translate id="tipGroupKoRoundResults" />
-			</f:link.action>
-		</li>
-		<li {cs:ifIsCurrentController(controllerName:'Ranking', then: 'class= "cs-active"')}>
-			<f:link.action action="index" subpackage="Tip" controller="Ranking" arguments="{cup: recentCup}"><f:translate id="ranking" /></f:link.action>
-		</li>
-		<li {cs:ifIsCurrentController(controllerName:'GlobalRanking', then: 'class= "cs-active"')}>
-			<f:link.action action="index" subpackage="Tip"  controller="GlobalRanking" arguments="{cup: recentCup}"><f:translate id="globalRanking" /></f:link.action>
-		</li>
-      <li {cs:ifIsCurrentController(controllerName:'OpenChatEntry', then: 'class= "cs-active"')}>
-         <f:link.action controller="OpenChatEntry" subpackage="Chat" action="index" arguments="{cup: recentCup}"><f:translate id="chatEntry" /></f:link.action>
-      </li>
-	</ul>
-</div>
-</f:security.ifAuthenticated>
+<f:render partial="User/UserServiceDescription" arguments="{user: user}" />
 
-<div class="cs-container">
-	<h6><f:translate id="matches" /></h6>
-	<ul>
-		<li {cs:ifIsCurrentController(controllerName:'Match', then: 'class= "cs-active"')}>
-			<f:link.action action="index" subpackage="Competition" controller="Match" arguments="{cup: recentCup}"><f:translate id="matches" /></f:link.action>
-		</li>
-		<li {cs:ifIsCurrentController(controllerName:'GroupRound', then: 'class= "cs-active"')}>
-			<f:link.action action="index" subpackage="Competition" controller="GroupRound" arguments="{cup: recentCup}"><f:translate id="groupRound" /></f:link.action>
-		</li>
-		<li {cs:ifIsCurrentController(controllerName:'KoRound', then: 'class= "cs-active"')}>
-		<f:link.action action="index" subpackage="Competition" controller="KoRound" arguments="{cup: recentCup}"><f:translate id="koRound" /></f:link.action>
-		</li>
-	</ul>
-</div>
+<f:render partial="Tip/TipServiceDescription" arguments="{user: user, recentCup: recentCup, cups: cups}" />
 
-
-<div class="cs-container">
-	<h6><f:translate id="history" /></h6>
-	<f:if condition="{cups}">
-		<ul>
-			<f:for each="{cups}" as="cup">
-				<li  {cs:ifIsCurrentController(controllerName:'Cup', cup: cup, then: 'class= "cs-active"')}>
-					<f:link.action subpackage="Competition" controller="Cup" action="index" arguments="{cup: cup}" >{cup.name}</f:link.action>
-				</li>
-			</f:for>
-		</ul>
-	</f:if>
-</div>
-
-<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-<div class="cs-container">
-   <h6>admin</h6>
-   <ul>
-		<li {cs:ifIsCurrentController(controllerName:'Cup', then: 'class= "cs-active"')}>
-			<f:link.action subpackage="Competition" controller="Cup" action="index">Cups</f:link.action>
-		</li>
-	  <li {cs:ifIsCurrentController(controllerName:'Team', then: 'class= "cs-active"')}>
-		 <f:link.action subpackage="Competition" controller="Team" action="index" arguments="{cup: recentCup}">Teams</f:link.action>
-	  </li>
-	  <li {cs:ifIsCurrentController(controllerName:'User', then: 'class= "cs-active"')}>
-		 <f:link.action subpackage="User" controller="User" action="index" arguments="{cup: recentCup}">Users</f:link.action>
-	  </li>
-	  <li {cs:ifIsCurrentController(controllerName:'TipGroup', then: 'class= "cs-active"')}>
-		 <f:link.action subpackage="User" controller="TipGroup" action="index" arguments="{cup: recentCup}">TipGroup</f:link.action>
-	  </li>
-	   <li {cs:ifIsCurrentController(controllerName:'MatchTip', then: 'class= "cs-active"')}>
-	   <f:link.action subpackage="Tip" controller="MatchTip" action="index" arguments="{cup: recentCup}">MatchTip</f:link.action>
-	   </li>
-	   <li {cs:ifIsCurrentController(controllerName:'UserTip', then: 'class= "cs-active"')}>
-	   <f:link.action subpackage="Tip" controller="UserTip" action="index" arguments="{cup: recentCup}">UserTip</f:link.action>
-	   </li>
-   </ul>
-</div>
-</f:security.ifHasRole>

@@ -1,18 +1,11 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
-	<div class="row">
-		<ul class="nav nav-pills">
-			<li class="active"><a href="#new" data-toggle="tab">new</a></li>
-			<li><a href="#auto" data-toggle="tab">auto create rounds</a></li>
-		</ul>
-	</div>
-	<div class="tab-content">
-	   <div class="row tab-pane active" id="new">
+
+	   <div class="row">
 			<f:render partial="Round/KoRound/New" arguments="{recentCup: recentCup}" />
 		</div>
-		<div class="row tab-pane" id="auto">
+		<div class="row">
 			<h6>auto create koRounds</h6>
 			<f:form action="index" controller="KoRoundCreator" arguments="{cup: recentCup}">
 				<f:form.hidden name="__method" value="POST" />
@@ -20,6 +13,6 @@
 			</f:form>
 		</div>
 	</div>
-	</f:security.ifHasRole>
+
 </f:section>
 

@@ -1,0 +1,9 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<cs:ifActionIsAllowed object="{object}">
+<a href="javascript:;"><span class="icon-trash deleteAction"></span>
+<form action="{cs:restUri(object: object)}" method="post" class="inline adminPanel deleteAction" style="display: none">
+	<input type="hidden" name="__method" value="DELETE" />
+	<input type="submit" name="submit" value="delete" class="btn" />
+</form>
+</a>
+</cs:ifActionIsAllowed>

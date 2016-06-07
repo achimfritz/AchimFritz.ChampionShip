@@ -1,6 +1,5 @@
 <f:for each="{flashMessages}" as="flashMessage">
-	<div class="alert alert-error">
-		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<div class="alert alert-danger">
 		<strong>{flashMessage.severity} {flashMessage.title}</strong>
 		{flashMessage} {flashMessage.code}
 	</div>

@@ -1,21 +1,21 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
+
 	<div class="row">
 		<f:if condition="{users}">
 			<f:then>
-				<table class="table dataTable">
+				<table class="table">
 					<thead>
 					<tr>
 						<th>accountIdentifier</th>
 						<th>email</th>
 						<th>tipGroup</th>
-						<th>&nbsp;</th>
 					</tr>
 					</thead>
 					<tbody>
 					<f:for each="{users}" as="currentUser" iteration="it">
-						<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+						<tr class="clickable-row" data-href="{f:uri.action(action: 'index', arguments: {cup: cup, user: currentUser})}">
 							<td>
 								{currentUser.account.accountIdentifier}
 							</td>
@@ -24,13 +24,6 @@
 							</td>
 							<td>
 								{currentUser.tipGroup.name}
-							</td>
-							<td>
-								<f:link.action action="index" arguments="{user: currentUser, cup: cup}">
-									<button class="btn btn-default" type="button">
-										Show
-									</button>
-								</f:link.action>
 							</td>
 						</tr>
 					</f:for>

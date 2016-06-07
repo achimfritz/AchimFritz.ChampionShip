@@ -1,0 +1,45 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<div class="row">
+		<f:if condition="{users}">
+			<f:then>
+				<table class="table dataTable">
+					<thead>
+					<tr>
+						<th>accountIdentifier</th>
+						<th>email</th>
+						<th>tipGroup</th>
+						<th>&nbsp;</th>
+					</tr>
+					</thead>
+					<tbody>
+					<f:for each="{users}" as="currentUser" iteration="it">
+						<tr class="{f:if(condition: it.isOdd, then: ' cs-odd', else: ' cs-even')}">
+							<td>
+								{currentUser.account.accountIdentifier}
+							</td>
+							<td>
+								{currentUser.email}
+							</td>
+							<td>
+								{currentUser.tipGroup.name}
+							</td>
+							<td>
+								<f:link.action action="index" arguments="{user: currentUser, cup: cup}">
+									<button class="btn btn-default" type="button">
+										Show
+									</button>
+								</f:link.action>
+							</td>
+						</tr>
+					</f:for>
+					</tbody>
+				</table>
+			</f:then>
+			<f:else>
+				<p>No users created yet.</p>
+			</f:else>
+		</f:if>
+	</div>
+</f:section>

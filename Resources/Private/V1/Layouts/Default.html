@@ -1,0 +1,103 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ChampionShip</title>
+		<f:base />
+		
+		<script src="{f:uri.resource(path: 'Vendor/jquery/jquery-1.10.2.min.js')}" type="text/javascript" ></script>
+		<script src="{f:uri.resource(path: 'Vendor/bootstrap-2.3/js/bootstrap.min.js')}" type="text/javascript" ></script>
+		<script src="{f:uri.resource(path: 'Vendor/jquery-ui-1.10.3/jquery-ui.js')}" type="text/javascript" ></script>
+		<script src="{f:uri.resource(path: 'Vendor/jQuery-Timepicker-Addon/dist/jquery-ui-timepicker-addon.min.js')}" type="text/javascript" ></script>
+		<script src="{f:uri.resource(path: 'Vendor/Javascript-Grids/grids.js')}" type="text/javascript" ></script>
+		<script src="{f:uri.resource(path: 'Vendor/jquery.DataTables/js/jquery.dataTables.js')}" type="text/javascript" ></script>
+
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Vendor/Flags/flags.css')}" type="text/css" media="all" />
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Vendor/jquery-ui-1.10.3/jquery-ui.css')}" type="text/css" media="all" />
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Vendor/bootstrap-2.3/css/bootstrap.min.css')}" type="text/css" media="all" />
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Vendor/jQuery-Timepicker-Addon/dist/jquery-ui-timepicker-addon.min.css')}" type="text/css" media="all" />
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Vendor/bootstrap-2.3/css/bootstrap-responsive.min.css')}" type="text/css" media="all" />
+
+		<script src="{f:uri.resource(path: 'JavaScript/cs.js')}" type="text/javascript" ></script>
+		<script src="{f:uri.resource(path: 'JavaScript/tips.js')}" type="text/javascript" ></script>
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Css/tips.css')}" type="text/css" media="all" />
+		<f:if condition="{settings.csStyle}">
+			<link rel="stylesheet" href="{f:uri.resource(path: 'Css/cs.css')}" type="text/css" media="all" />
+		</f:if>
+   
+   </head>
+   <body>
+	   <div class="container">
+               <div class="row">
+                  <div class="span2 cs-col cs-menu">
+							<div class="cs-col-border">
+								<f:render partial="ServiceDescription" arguments="{recentCup: recentCup, cups: cups, user: user}" />
+							</div>
+                  </div>
+                  <div class="span8 cs-col cs-main">
+							<div class="row">
+								<div class="span5">
+									<h3><a href="/">www.tipptrip.de/{recentCup.name}</a>
+									</h3>
+								</div>
+								<div class="span2">
+										<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+											<f:then>
+												<h5>{title}</h5>
+											</f:then>
+											<f:else>
+												<h5>Tippen bis zum Anpfiff<h5>
+											</f:else>
+										</f:security.ifHasRole>
+								</div>
+							</div>
+							<div class="row cs-content">
+								<cs:ifIsRecentCup cup="{cup}">
+									<f:else>
+										<div class="alert alert-error">
+											<strong><f:translate id="history" /></strong> {cup.name}
+										</div>
+									</f:else>
+								</cs:ifIsRecentCup>
+								<f:render partial="ValidationErrors" />
+								<div id="flashMessageContainer">
+								<f:render partial="FlashMessages" />
+								</div>
+								<f:render section="Content" />
+							</div>
+                  </div>
+                  <div class="span2 cs-col cs-right">
+							<div class="cs-col-border">
+								<div class="row cs-container">
+										<f:render partial="LoginForm" arguments="{user: user}" />
+								</div>
+								<f:if condition="{nextMatches}">
+									<div class="row cs-container">
+											<h6><f:translate id="nextMatches" /></h6>
+											<f:render partial="Match/Teaser" arguments="{matches: nextMatches}" />
+									</div>
+								</f:if>
+								<f:if condition="{lastMatches}">
+									<div class="row cs-container">
+											<h6><f:translate id="lastMatches" /></h6>
+											<f:render partial="Match/Teaser" arguments="{matches: lastMatches}" />
+									</div>
+								</f:if>
+							</div>
+                  </div>
+               </div>
+      </div>
+
+		<div id="dialog-confirm" style="display: none">realy delete?</div>
+
+		<script>
+			$('.datetimepicker').datetimepicker({
+            timeformat: 'H:i',
+				dateFormat: 'dd.mm.yy',
+				stepMinute: 5
+			});
+		</script>
+
+   </body>
+</html>
