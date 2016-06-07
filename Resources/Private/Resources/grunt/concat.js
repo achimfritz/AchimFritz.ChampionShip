@@ -12,16 +12,13 @@ module.exports = {
             'bower_components/datetimepicker/jquery.datetimepicker.js',
             'bower_components/bootstrap/js/tab.js',
             'bower_components/bootstrap/js/dropdown.js',
-            'bower_components/bootstrap/js/collapse.js',
-            'bower_components/angular/angular.js'
+            'bower_components/bootstrap/js/collapse.js'
         ],
         dest: '../../Public/Build/Libs.js'
     },
     app: {
         src: [
-            'JavaScript/*.js',
-            'JavaScript/Angular/Module.js',
-            'JavaScript/Angular/**/*.js',
+            'JavaScript/*.js'
         ],
         dest: '../../Public/Build/App.js'
     },

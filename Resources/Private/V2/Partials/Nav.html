@@ -51,14 +51,10 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><f:translate id="tipGroupResults" /> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li>
-								<f:link.action action="index" subpackage="Tip" controller="TipGroupGroupRoundResults" arguments="{cup: cup}">
-									<f:translate id="tipGroupGroupRoundResults" />
-								</f:link.action>
+								<f:link.action subpackage="Tip" controller="UserTip" action="index" arguments="{cup: cup}"><f:translate id="tips.byUser" /></f:link.action>
 							</li>
 							<li>
-								<f:link.action action="index" subpackage="Tip" controller="TipGroupKoRoundResults" arguments="{cup: cup}">
-									<f:translate id="tipGroupKoRoundResults" />
-								</f:link.action>
+								<f:link.action subpackage="Tip" controller="MatchTip" action="index" arguments="{cup: cup}"><f:translate id="tips.byMatch" /></f:link.action>
 							</li>
 							<li>
 								<f:link.action action="index" subpackage="Tip" controller="Ranking" arguments="{cup: cup}"><f:translate id="ranking" /></f:link.action>
@@ -135,6 +131,9 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><cs:userName /> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><f:link.action action="logout" subpackage="User" controller="Login"><f:translate id="logout" /></f:link.action></li>
+							<li>
+								<f:link.action controller="User" subpackage="User" action="index" arguments="{cup: cup, user:user}"><f:translate id="profile" /></f:link.action>
+							</li>
 						</ul>
 					</li>
 				</ul>

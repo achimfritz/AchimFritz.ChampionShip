@@ -1,7 +1,7 @@
 <f:layout name="Default" />
 
 <f:section name="Content">
-	<h5>{user.displayName}</h5>
+	<h2>{user.displayName}</h2>
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 		<div class="row">
 			<ul class="nav nav-pills">
@@ -33,11 +33,10 @@
 
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:User">
 		<div class="row">
-			<div class="span3">
+			<div class="col-md-6 col-xs12">
 				<f:render partial="User/Edit" arguments="{user: user, allTipGroups: allTipGroups}" />
 			</div>
-			<div class="span1"></div>
-			<div class="span3">
+			<div class="col-md-6 col-xs12">
 				<f:render partial="Password/New" arguments="{user: user}" />
 			</div>
 		</div>

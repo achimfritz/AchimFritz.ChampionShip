@@ -37,21 +37,15 @@ class UserTipController extends AbstractTipGroupController {
 
 	/**
 	 * @return void
-	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 */
-	public function listAction(TipGroup $tipGroup = NULL) {
-		if ($tipGroup === NULL) {
-			if ($this->user instanceof User) {
-				$tipGroup = $this->user->getTipGroup();
-			} else {
-				// admin only
-				$tipGroup = $this->tipGroupRepository->findAll()->getFirst();
-			}
+	public function listAction() {
+		if ($this->user instanceof User) {
+			$users = $this->userRepository->findInTipGroups($this->user->getTipGroups());
+		} else {
+			// admin only
+			$users = $this->userRepository->findAll();
 		}
-		$users = $this->userRepository->findInTipGroup($tipGroup);
-		#$users = $this->userRepository->findAll();
 		$this->view->assign('users', $users);
-		$this->view->assign('tipGroup', $tipGroup);
 	}
 
 	/**

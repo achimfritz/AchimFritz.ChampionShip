@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
  *                                                                        *
  *                                                                        */
 
-use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
+use AchimFritz\ChampionShip\User\Domain\Model\User;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
@@ -49,18 +49,14 @@ class MatchTipController extends AbstractTipGroupController {
 	 * @param \AchimFritz\ChampionShip\User\Domain\Model\TipGroup $tipGroup
 	 * @param 
 	 */
-	public function showAction(Match $match, TipGroup $tipGroup = NULL) {
-		if ($tipGroup === NULL) {
-			if ($this->user instanceof User) {
-				$tipGroup = $this->user->getTipGroup();
-			} else {
-				// admin only
-				$tipGroup = $this->tipGroupRepository->findAll()->getFirst();
-			}
+	public function showAction(Match $match) {
+		if ($this->user instanceof User) {
+			$users = $this->userRepository->findInTipGroups($this->user->getTipGroups());
+		} else {
+			// admin only
+			$users = $this->userRepository->findAll();
 		}
-		$users = $this->userRepository->findInTipGroup($tipGroup);
 		$tips = $this->tipRepository->findByUsersAndMatch($users, $match);
-		$this->view->assign('tipGroup', $tipGroup);
 		$this->view->assign('tips', $tips);
 		$this->view->assign('match', $match);
 	}

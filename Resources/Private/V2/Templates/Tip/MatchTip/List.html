@@ -13,12 +13,11 @@
 						<th><f:translate id="match.date" /></th>
 						<th><f:translate id="match.group" /></th>
 						<th>&nbsp;</th>
-						<th>&nbsp;</th>
 					</tr>
 					</thead>
 					<tbody>
 					<f:for each="{matches}" as="match" iteration="it">
-						<tr>
+						<tr class="clickable-row" data-href="{f:uri.action(action: 'index', arguments: {cup: cup, match: match})}">
 							<td>{match.name}</td>
 							<td><f:format.date format="d.m.Y H:i">{match.startDate}</f:format.date></td>
 							<td>{match.round.name}</td>
@@ -32,13 +31,6 @@
 										:
 									</f:else>
 								</f:if>
-							</td>
-							<td>
-								<f:link.action action="index" arguments="{match: match, cup: match.cup}">
-									<button class="btn btn-default" type="button">
-										Show
-									</button>
-								</f:link.action>
 							</td>
 						</tr>
 					</f:for>

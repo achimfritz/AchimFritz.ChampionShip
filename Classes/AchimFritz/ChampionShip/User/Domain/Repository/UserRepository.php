@@ -34,6 +34,21 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository {
 	}
 
 	/**
+	 * @param \Doctrine\Common\Collections\Collection $tipGroups
+	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
+	 */
+	public function findInTipGroups(\Doctrine\Common\Collections\Collection $tipGroups) {
+		$identifiers = array();
+		foreach ($tipGroups as $tipGroup) {
+			$identifiers[] = $this->persistenceManager->getIdentifierByObject($tipGroup);
+		}
+		$query = $this->createQuery();
+		return $query->matching(
+			$query->in('tipGroup', $identifiers)
+		)->execute();
+	}
+
+	/**
 	 * findOneByAccountIdentifier
 	 * 
 	 * @param string $username 

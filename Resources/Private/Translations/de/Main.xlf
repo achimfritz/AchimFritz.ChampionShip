@@ -154,6 +154,14 @@
 				<source>Tip</source>
 				<target>Tippen</target>
 			</trans-unit>
+			<trans-unit id="tips.byMatch">
+				<source>Tips / Match</source>
+				<target>Tips / Match</target>
+			</trans-unit>
+			<trans-unit id="tips.byUser">
+				<source>Tips / User</source>
+				<target>Tips / User</target>
+			</trans-unit>
 			<trans-unit id="matches">
 				<source>Matches</source>
 				<target>Spiele</target>

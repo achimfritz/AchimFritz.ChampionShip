@@ -21,8 +21,10 @@ privilegeTargets:
       matcher: 'method(AchimFritz\ChampionShip\.*\Controller\.*Controller->createAction())'
     AchimFritz_ChampionShipMatchCreatorResource:
       matcher: 'method(AchimFritz\ChampionShip\Cup\Controller\.*MatchCreatorController->.*())'
+    AchimFritz_ChampionShipUserTipResource:
+        matcher: 'method(method(AchimFritz\ChampionShip\Tip\Controller\MatchTipController->.*())'
     AchimFritz_ChampionShipAdminTipResource:
-      matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\AdminTipController->.*()) || method(AchimFritz\ChampionShip\Tip\Controller\MatchTipController->.*())'
+      matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\AdminTipController->.*())'
     AchimFritz_ChampionShipRankingResource:
       matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\.*RankingController->listAction()) || method(AchimFritz\ChampionShip\Tip\Controller\.*RankingController->showAction())'
     AchimFritz_ChampionShipTipGroupResultsResource:
@@ -45,6 +47,9 @@ roles:
         permission: GRANT
       -
         privilegeTarget: AchimFritz_ChampionShipRankingResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipUserTipResource
         permission: GRANT
       -
         privilegeTarget: AchimFritz_ChampionShipTipGroupResultsResource
@@ -86,6 +91,9 @@ roles:
         permission: GRANT
       -
         privilegeTarget: AchimFritz_ChampionShipRankingResource
+        permission: GRANT
+      -
+        privilegeTarget: AchimFritz_ChampionShipUserTipResource
         permission: GRANT
       -
         privilegeTarget: AchimFritz_ChampionShipTipGroupResultsResource
