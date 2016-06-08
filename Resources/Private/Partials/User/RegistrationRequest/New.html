@@ -1,38 +1,38 @@
 	<f:form class="form-horizontal" action="index" controller="RegistrationRequest" subpackage="User" name="registrationRequest" method="post">
 		<div class="row">
-			<div class="col-md-4 col-sm-4 col-xs-8">
+			<div class="col-sm-4 col-xs-8">
 				<div class="form-group">
-					<f:form.textfield property="username" id="username" placeholder="Username"/>
+					<f:form.textfield property="username" id="username" class="form-control" placeholder="Username"/>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-8">
+			<div class="col-sm-4 col-sm-offset-1 col-xs-8">
 				<div class="form-group">
-					<f:form.password property="newPassword" id="newPassword" placeholder="{f:translate(id: 'password.newPassword')}"/>
+					<f:form.password property="newPassword" id="newPassword" class="form-control" placeholder="{f:translate(id: 'password.newPassword')}"/>
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-md-4 col-sm-4 col-xs-8">
+			<div class="col-sm-4 col-xs-8">
 				<div class="form-group">
-					<f:form.textfield property="email" id="email" placeholder="E-Mail"/>
+					<f:form.textfield property="email" id="email" class="form-control" placeholder="E-Mail"/>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-4 col-xs-8">
+			<div class="col-sm-4 col-sm-offset-1  col-xs-8">
 				<div class="form-group">
-					<f:form.password property="newPasswordRepeat" id="newPasswordRepeat" placeholder="{f:translate(id: 'password.newPasswordRepeat')}"/>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 col-sm-4 col-xs-8">
-				<div class="form-group">
-					<f:form.textfield property="tipGroupName" id="tipGroupName" placeholder="{f:translate(id: 'tipGroupName')}"/>
+					<f:form.password property="newPasswordRepeat" class="form-control" id="newPasswordRepeat" placeholder="{f:translate(id: 'password.newPasswordRepeat')}"/>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4 col-sm-4 col-xs-8">
+			<div class="col-sm-4 col-xs-8">
+				<div class="form-group">
+					<f:form.textfield property="tipGroupName" class="form-control" id="tipGroupName" placeholder="{f:translate(id: 'tipGroupName')}"/>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4 col-xs-8">
 				<div class="form-group">
 					<f:form.submit class="btn btn-success" value="{f:translate(id: 'registrationRequest')}" />
 				</div>

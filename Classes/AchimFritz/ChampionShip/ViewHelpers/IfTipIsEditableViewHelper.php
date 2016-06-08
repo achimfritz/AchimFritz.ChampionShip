@@ -35,6 +35,7 @@ class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractCon
 	 * @return string the rendered string
 	 */
 	public function render(Tip $tip = NULL) {
+		return $this->renderThenChild();
 		if ($tip === NULL) {
 			return $this->renderElseChild();
 		}

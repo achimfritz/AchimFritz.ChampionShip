@@ -41,6 +41,7 @@ class SecurityAspect {
 	public function tipIsEditable(JoinPointInterface $joinPoint) {
 		$tip = $joinPoint->getMethodArgument('object');
 		if ($this->tipSecurity->editAllowed($tip) === FALSE) {
+			die('Access denied');
 			throw new \Exception('tip is not editable', 1398952499);
 		}
 	}
@@ -56,6 +57,7 @@ class SecurityAspect {
 	public function userIsEditable(JoinPointInterface $joinPoint) {
 		$user = $joinPoint->getMethodArgument('object');
 		if ($this->userSecurity->editAllowed($user) === FALSE) {
+			die('Access denied');
 			throw new \Exception('user is not editable', 1398952500);
 		}
 	}
@@ -71,6 +73,7 @@ class SecurityAspect {
 	public function tipGroupChatEntriesMayBeFound(JoinPointInterface $joinPoint) {
 		$tipGroup = $joinPoint->getMethodArgument('tipGroup');
 		if ($this->chatEntrySecurity->accessAllowed($tipGroup) === FALSE) {
+			die('Access denied');
 			throw new \Exception('user has no access to tipGroup', 1401296980);
 		}
 	}
@@ -87,6 +90,7 @@ class SecurityAspect {
 		$tipGroupChatEntry = $joinPoint->getMethodArgument('object');
 		$tipGroup = $tipGroupChatEntry->getTipGroup();
 		if ($this->chatEntrySecurity->accessAllowed($tipGroup) === FALSE) {
+			die('Access denied');
 			throw new \Exception('user has no access to tipGroup', 1401296981);
 		}
 	}

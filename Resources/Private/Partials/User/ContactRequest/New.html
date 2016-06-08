@@ -1,22 +1,26 @@
-	<h5><f:translate id="contactRequest" /></h5>
+
 	<f:form class="form-horizontal" action="index" controller="ContactRequest" subpackage="User" name="contactRequest" method="post">
-		<div class="control-group">
-			<label class="control-label" for="email">Email:</label>
-			<div class="controls"><f:form.textfield property="email" id="email" /></div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="subject"><f:translate id="contactRequest.subject" />:</label>
-			<div class="controls"><f:form.textfield property="subject" id="subject" /></div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="message"><f:translate id="contactRequest.message" />:</label>
-			<div class="controls">
-				<f:form.textarea property="message" id="message" />
+		<div class="row">
+			<div class="col-sm-4 col-xs-8">
+				<input type="hidden" name="__method" value="POST" />
+				<div class="form-group">
+					<f:form.textfield property="email" id="email" class="form-control" placeholder="E-Mail"/>
+				</div>
+			</div>
+			<div class="col-sm-4 col-sm-offset-1 col-xs-8">
+				<div class="form-group">
+					<f:form.textfield property="subject" id="subject" class="form-control" placeholder="{f:translate(id: 'contactRequest.subject')}"/>
+				</div>
 			</div>
 		</div>
-		<div class="control-group">
-			<div class="controls">
-				<f:form.submit class="btn" value="Create" />
+		<div class="row">
+			<div class="col-sm-9 col-xs-8">
+				<div class="form-group">
+					<f:form.textarea property="message" id="message" class="form-control" placeholder="{f:translate(id: 'contactRequest.message')}"/>
+				</div>
+				<div class="form-group">
+					<f:form.submit value="{f:translate(id: 'submit')}" class="btn btn-success"/>
+				</div>
 			</div>
 		</div>
 	</f:form>

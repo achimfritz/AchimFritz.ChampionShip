@@ -64,9 +64,8 @@ class ContactRequestController extends AbstractActionController {
 		} catch (\Exception $e) {
 			$this->addErrorMessage('cannot create contactRequest');
 			$this->handleException($e);
-			$this->redirect('index');
-		}		
-		$this->redirect('index', NULL, NULL, array('contactRequest' => $contactRequest));
+		}
+		$this->redirectHome();
 	}
 
 	/**

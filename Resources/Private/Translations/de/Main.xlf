@@ -122,6 +122,14 @@
 				<source>Contact</source>
 				<target>Kontakt</target>
 			</trans-unit>
+			<trans-unit id="submit">
+				<source>Submit</source>
+				<target>Abschicken</target>
+			</trans-unit>
+			<trans-unit id="contactRequestInfo">
+				<source>Please enter your Request</source>
+				<target>Bitte gib Deine Anfrage ein</target>
+			</trans-unit>
 			<trans-unit id="chatEntry">
 				<source>Chat</source>
 				<target>Gelaber</target>

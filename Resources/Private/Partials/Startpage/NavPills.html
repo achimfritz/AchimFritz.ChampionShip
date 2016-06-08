@@ -2,8 +2,9 @@
 <!-- Nav tabs -->
 <ul class="nav nav-pills" role="tablist">
 	<li role="presentation" class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">{f:translate(id: 'login')}</a></li>
-	<li role="presentation"><a href="#registrationRequest" aria-controls="profile" role="tab" data-toggle="tab"><f:translate id="registrationRequest" /></a></li>
-	<li role="presentation"><a href="#forgotPasswordRequest" aria-controls="messages" role="tab" data-toggle="tab"><f:translate id="forgotPasswordRequest" /></a></li>
+	<li role="presentation"><a href="#registrationRequest" aria-controls="registrationRequest" role="tab" data-toggle="tab"><f:translate id="registrationRequest" /></a></li>
+	<li role="presentation"><a href="#forgotPasswordRequest" aria-controls="forgotPasswordRequest" role="tab" data-toggle="tab"><f:translate id="forgotPasswordRequest" /></a></li>
+	<li role="presentation"><a href="#contactRequest" aria-controls="contactRequest" role="tab" data-toggle="tab"><f:translate id="contactRequest" /></a></li>
 </ul>
 
 <!-- Tab panes -->
@@ -19,5 +20,9 @@
 	<div role="tabpanel" class="tab-pane" id="forgotPasswordRequest">
 		<p class="alert alert-info"><f:translate  id="forgotPasswordInfo" /></p>
 		<f:render partial="User/ForgotPasswordRequest/New" />
+	</div>
+	<div role="tabpanel" class="tab-pane" id="contactRequest">
+		<p class="alert alert-info"><f:translate  id="contactRequestInfo" /></p>
+		<f:render partial="User/ContactRequest/New" />
 	</div>
 </div>
