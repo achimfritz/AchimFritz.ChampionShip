@@ -5,7 +5,7 @@
 	<p><f:translate id="tipGroupResults.info" /></p>
 
 
-	<table class="table hidden-xs">
+	<table class="table hidden-xs table-striped">
 		<tr>
 			<f:render partial="Competition/Match/Show" arguments="{match: match, hideActions: 1}" />
 		</tr>
@@ -20,7 +20,7 @@
 			<f:translate id="back" />
 		</f:link.action>
 	</p>
-	<table class="table">
+	<table class="table table-striped">
 		<f:for each="{tips}" as="tip">
 			<tr>
 				<td>{tip.user.displayName}</td>

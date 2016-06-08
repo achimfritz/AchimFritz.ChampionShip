@@ -1,12 +1,11 @@
 <f:if condition="{matches}">
 	<f:then>
-		<table class="table hidden-xs">
+		<table class="table hidden-xs table-striped">
 			<thead>
 				<tr>
 					<th>&nbsp;</th>
 					<th><f:translate id="match.date" /></th>
 					<th><f:translate id="match.group" /></th>
-					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
@@ -21,16 +20,7 @@
 			</tbody>
 		</table>
 		<div class="visible-xs small">
-			<table class="table">
-				<thead>
-				<tr>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
-				</tr>
-				</thead>
+			<table class="table table-striped">
 				<tbody>
 				<f:for each="{matches}" as="match" iteration="it">
 					<tr>

@@ -53,7 +53,6 @@
                     dataType: 'json',
                     success: function (response) {
                         tip.container.removeClass('loading');
-                        $('div.alert', tip.container).remove();
                         if (response.flashMessages.length) {
                             var html = '<span class="alert-inline alert alert-success"><strong>OK</strong></span>';
                             tip.container.append(html);
@@ -61,7 +60,6 @@
                     },
                     error: function () {
                         tip.container.removeClass('loading');
-                        $('div.alert', tip.container).remove();
                         var html = '<span class="alert-inline alert alert-danger"><strong>ERROR</strong></span>';
                         tip.container.append(html);
                     }
@@ -72,6 +70,7 @@
 
             tip.submit.bind('click', function(ev) {
                 if (validate() === true) {
+                    $('span.alert', tip.container).remove();
                     update();
                 }
             });

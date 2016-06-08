@@ -19,10 +19,11 @@
 				</span>
 			</f:then>
 			<f:else>
-				<span class="cs-tip-{tip.points}">
+				<span class="cs-tip cs-tip-{tip.points}">
 				{tip.result.hostTeamGoals}
 				:
 				{tip.result.guestTeamGoals}
+					({tip.points})
 				</span>
 			</f:else>
 		</cs:ifTipIsEditable>
