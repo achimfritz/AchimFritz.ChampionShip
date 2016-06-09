@@ -6,6 +6,7 @@ namespace AchimFritz\ChampionShip\User\Domain\Model;
  *                                                                        *
  *                                                                        */
 
+use Doctrine\Common\Collections\Collection;
 use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Security\Account;
@@ -101,6 +102,19 @@ class User {
 	 */
 	public function hasTipGroup(TipGroup $tipGroup) {
 		return $this->tipGroups->contains($tipGroup);
+	}
+
+	/**
+	 * @param Collection $otherTipGroups
+	 * @return bool
+	 */
+	public function hasOneOfTipGroups(Collection $otherTipGroups) {
+		foreach ($otherTipGroups as $otherTipGroup) {
+			if ($this->hasTipGroup($otherTipGroup) === TRUE) {
+				return TRUE;
+			}
+		}
+		return FALSE;
 	}
 
 	/**

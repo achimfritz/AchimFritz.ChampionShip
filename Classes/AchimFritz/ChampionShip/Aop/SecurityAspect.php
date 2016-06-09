@@ -63,6 +63,21 @@ class SecurityAspect {
 	}
 
 	/**
+	 * userIsEditable
+	 *
+	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+	 * @throws Exception
+	 * @Flow\Before("method(AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository->findByUserInCup())")
+	 * @return void
+	 */
+	public function otherUserTipsAreVisible(JoinPointInterface $joinPoint) {
+		$user = $joinPoint->getMethodArgument('user');
+		if ($this->userSecurity->otherUserIsVisible($user) === FALSE) {
+			throw new \Exception('user tips not visible', 1465448440);
+		}
+	}
+
+	/**
 	 * tipGroupChatEntriesMayBeFound 
 	 * 
 	 * @param JoinPointInterface $joinPoint 

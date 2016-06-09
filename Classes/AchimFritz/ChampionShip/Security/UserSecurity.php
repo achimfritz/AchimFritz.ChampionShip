@@ -29,8 +29,12 @@ class UserSecurity {
 	protected $policyService;
 
 	/**
-	 * isEditable
-	 * 
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
+
+	/**
 	 * @param User $user
 	 * @return boolean
 	 */
@@ -48,5 +52,27 @@ class UserSecurity {
 		return FALSE;
 	}
 
+	/**
+	 * @param User $otherOser
+	 * @return bool
+	 */
+	public function otherUserIsVisible(User $otherUser) {
+		if (FLOW_SAPITYPE === 'CLI') {
+			return TRUE;
+		}
+		if ($this->securityContext->hasRole('AchimFritz.ChampionShip:Administrator') === TRUE) {
+			return TRUE;
+		}
+		$account = $this->securityContext->getAccount();
+		if ($account) {
+			$user = $this->userRepository->findOneByAccount($account);
+			if ($user->hasOneOfTipGroups($otherUser->getTipGroups()) === TRUE) {
+				return TRUE;
+			}
+		}
+		return FALSE;
+
+	}
+
 }
-?>
+
