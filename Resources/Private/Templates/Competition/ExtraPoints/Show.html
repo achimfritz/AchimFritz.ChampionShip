@@ -1,0 +1,43 @@
+<f:layout name="Default" />
+
+<f:section name="Content">
+	<table class="table table-striped">
+		<tr>
+			<th>Team</th>
+			<td>{extraPoints.team.name}</td>
+		</tr>
+		<tr>
+			<th>Cup</th>
+			<td>{extraPoints.cup.name}</td>
+		</tr>
+		<tr>
+			<th>Points</th>
+			<td>{extraPoints.points}</td>
+		</tr>
+	</table>
+
+	<h3>edit extraPoints</h3>
+	<f:form action="index" object="{extraPoints}" objectName="extraPoints">
+		<input type="hidden" name="__method" value="PUT" />
+		
+			<div class="form-group">
+				<label class="control-label" for="team">Team</label>
+				<f:form.select  options="{allTeams}" property="team" id="team" optionLabelField="name" />
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label" for="cup">Cup</label>
+				<f:form.select options="{cups}" property="cup" id="cup" optionLabelField="name" />
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label" for="points">Points</label>
+				<f:form.textfield property="points" class="form-control" id="points" />
+			</div>
+		
+			<div class="form-group">
+				<f:link.action action="index" class="btn btn-default">Back</f:link.action>
+				<f:form.submit class="btn btn-default" value="Update" />
+			</div>
+	</f:form>
+</f:section>

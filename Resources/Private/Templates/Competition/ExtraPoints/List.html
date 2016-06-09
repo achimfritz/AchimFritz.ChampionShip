@@ -1,0 +1,53 @@
+<f:layout name="Default" />
+
+
+<f:section name="Content">
+	<f:if condition="{extraPoints}">
+		<f:then>
+			<table class="table table-striped">
+				<f:for each="{extraPoints}" as="extraPointsLoop">
+					<tr>
+						<td><f:link.action action="index" arguments="{extraPoints: extraPointsLoop}">
+							{extraPointsLoop.team.name} {extraPointsLoop.cup.name} {extraPointsLoop.points}
+						</f:link.action></td>
+						<td><f:form action="index" arguments="{extraPoints: extraPointsLoop}">
+							<f:form.hidden name="__method" value="DELETE" />
+							<f:form.submit value="Delete" class="btn btn-danger btn-xs" />
+						</f:form></td>
+					</tr>
+				</f:for>
+			</table>
+		</f:then>
+		<f:else>
+			<div class="alert alert-info" role="alert">No extra points created yet.</div>
+		</f:else>
+	</f:if>
+	
+	<h3>create new extraPoints</h3>
+	<f:form action="index" objectName="extraPoints">
+		<input type="hidden" name="__method" value="POST" />
+		
+			<div class="form-group">
+				<label class="control-label" for="team">Team</label>
+				<div class="controls">
+					<f:form.select  options="{allTeams}" property="team" id="team" optionLabelField="name" />
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label" for="cup">Cup</label>
+				<f:form.select options="{cups}" property="cup" id="cup" optionLabelField="name" />
+			</div>
+		
+			<div class="form-group">
+				<label class="control-label" for="points">Points</label>
+				<f:form.textfield property="points" class="form-control" id="points" />
+			</div>
+		
+			<div class="form-group">
+				<f:form.submit value="Create" class="btn btn-default"/>
+			</div>
+	</f:form>
+
+</f:section>
+
