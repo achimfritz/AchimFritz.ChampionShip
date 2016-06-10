@@ -7,10 +7,10 @@
 			<table class="table table-striped">
 				<f:for each="{extraPoints}" as="extraPoint">
 					<tr>
-						<td><f:link.action action="index" arguments="{extraPoints: extraPoint}">
+						<td><f:link.action action="index" arguments="{extraPoint: extraPoint}">
 							{extraPoint.team.name} {extraPoint.cup.name} {extraPoint.points}
 						</f:link.action></td>
-						<td><f:form action="index" arguments="{extraPoints: extraPoint}">
+						<td><f:form action="index" arguments="{extraPoint: extraPoint}">
 							<f:form.hidden name="__method" value="DELETE" />
 							<f:form.submit value="Delete" class="btn btn-danger btn-xs" />
 						</f:form></td>

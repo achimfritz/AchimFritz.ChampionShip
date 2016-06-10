@@ -39,7 +39,8 @@ class GroupRoundService {
 		$policy = new BestThirdsPolicy();
 		$groupTableRows = $policy->updateTable($groupTableRows);
 		// 1-4
-		$groupTableRows = array_slice($groupTableRows, 0, 4);
+		//$groupTableRows = array_slice($groupTableRows, 0, 4);
+
 		// collect groups
 		// string by alpha sort -> A C D E
 		// A C D E         C       D       A       E

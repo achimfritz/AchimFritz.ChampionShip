@@ -15,7 +15,12 @@ use TYPO3\Flow\Annotations as Flow;
  */
 class TeamRepository extends \TYPO3\Flow\Persistence\Repository {
 
-	// add customized methods here
+	/**
+	 * @return void
+	 */
+	public function __construct() {
+		parent::__construct();
+		$this->setDefaultOrderings(array('name' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
+	}
 
 }
-?>
