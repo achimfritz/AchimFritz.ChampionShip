@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @Flow\Entity
  */
-class ExtraPoints {
+class ExtraPoint {
 
 	/**
 	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Team

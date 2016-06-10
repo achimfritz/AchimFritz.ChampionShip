@@ -1,3 +1,4 @@
+{namespace cs=AchimFritz\ChampionShip\ViewHelpers}
 <f:if condition="{matches}">
 	<f:then>
 		<table class="table hidden-xs table-striped">
@@ -23,9 +24,18 @@
 			<table class="table table-striped">
 				<tbody>
 				<f:for each="{matches}" as="match" iteration="it">
-					<tr>
-						<f:render partial="Match/ShowXs" arguments="{match: match}" />
-					</tr>
+					<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
+						<f:then>
+							<tr class="clickable-row" data-href="{cs:restUri(object: match, subpackage: 'Competition')}">
+								<f:render partial="Match/ShowXs" arguments="{match: match}" />
+							</tr>
+						</f:then>
+						<f:else>
+							<tr>
+								<f:render partial="Match/ShowXs" arguments="{match: match}" />
+							</tr>
+						</f:else>
+					</f:security.ifHasRole>
 				</f:for>
 				</tbody>
 			</table>

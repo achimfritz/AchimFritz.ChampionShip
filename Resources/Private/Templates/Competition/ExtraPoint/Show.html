@@ -4,20 +4,20 @@
 	<table class="table table-striped">
 		<tr>
 			<th>Team</th>
-			<td>{extraPoints.team.name}</td>
+			<td>{extraPoint.team.name}</td>
 		</tr>
 		<tr>
 			<th>Cup</th>
-			<td>{extraPoints.cup.name}</td>
+			<td>{extraPoint.cup.name}</td>
 		</tr>
 		<tr>
 			<th>Points</th>
-			<td>{extraPoints.points}</td>
+			<td>{extraPoint.points}</td>
 		</tr>
 	</table>
 
-	<h3>edit extraPoints</h3>
-	<f:form action="index" object="{extraPoints}" objectName="extraPoints">
+	<h3>edit extraPoint</h3>
+	<f:form action="index" object="{extraPoint}" objectName="extraPoint">
 		<input type="hidden" name="__method" value="PUT" />
 		
 			<div class="form-group">

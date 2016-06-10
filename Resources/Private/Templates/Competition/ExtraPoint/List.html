@@ -5,12 +5,12 @@
 	<f:if condition="{extraPoints}">
 		<f:then>
 			<table class="table table-striped">
-				<f:for each="{extraPoints}" as="extraPointsLoop">
+				<f:for each="{extraPoints}" as="extraPoint">
 					<tr>
-						<td><f:link.action action="index" arguments="{extraPoints: extraPointsLoop}">
-							{extraPointsLoop.team.name} {extraPointsLoop.cup.name} {extraPointsLoop.points}
+						<td><f:link.action action="index" arguments="{extraPoints: extraPoint}">
+							{extraPoint.team.name} {extraPoint.cup.name} {extraPoint.points}
 						</f:link.action></td>
-						<td><f:form action="index" arguments="{extraPoints: extraPointsLoop}">
+						<td><f:form action="index" arguments="{extraPoints: extraPoint}">
 							<f:form.hidden name="__method" value="DELETE" />
 							<f:form.submit value="Delete" class="btn btn-danger btn-xs" />
 						</f:form></td>
@@ -23,8 +23,8 @@
 		</f:else>
 	</f:if>
 	
-	<h3>create new extraPoints</h3>
-	<f:form action="index" objectName="extraPoints">
+	<h3>create new extraPoint</h3>
+	<f:form action="index" objectName="extraPoint">
 		<input type="hidden" name="__method" value="POST" />
 		
 			<div class="form-group">
