@@ -182,6 +182,10 @@
 				<source>Ranking</source>
 				<target>Rangliste</target>
 			</trans-unit>
+			<trans-unit id="noRankings">
+				<source>no ranking</source>
+				<target>keine Rangliste vorhanden</target>
+			</trans-unit>
 			<trans-unit id="globalRanking">
 				<source>pemanent</source>
 				<target>Ewigen Rangliste</target>
@@ -301,6 +305,18 @@
 			<trans-unit id="back">
 				<source>back</source>
 				<target>zurück</target>
+			</trans-unit>
+			<trans-unit id="loginFailed">
+				<source>Login Failed</source>
+				<target>Deine Anmeldung ist fehlgeschlagen</target>
+			</trans-unit>
+			<trans-unit id="loginSuccess">
+				<source>successfully logged in</source>
+				<target>Du hast Dich erfolgreich angemeldet</target>
+			</trans-unit>
+			<trans-unit id="logoutSuccess">
+				<source>successfully logged out</source>
+				<target>Du hast Dich erfolgreich abgemeldet</target>
 			</trans-unit>
 		</body>
 	</file>

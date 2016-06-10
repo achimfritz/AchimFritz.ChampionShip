@@ -26,6 +26,13 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	 */
 	protected $userRepository;
 
+
+	/**
+	 * @var \TYPO3\Flow\I18n\Translator
+	 * @Flow\Inject
+	 */
+	protected $translator;
+
 	/**
 	 * @return string
 	 */
@@ -45,7 +52,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	 * @return string
 	 */
 	public function onAuthenticationSuccess(\TYPO3\Flow\Mvc\ActionRequest $originalRequest = NULL) {
-		$message = 'logged in';
+		$message = $this->translator->translateById('loginSuccess', array(), NULL, NULL, 'Main', 'AchimFritz.ChampionShip');
 		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
 		if ($originalRequest !== NULL) {
 			$this->redirectToRequest($originalRequest);
@@ -63,7 +70,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	 */
 	public function logoutAction() {
 		parent::logoutAction();
-		$message = 'logged out';
+		$message = $this->translator->translateById('logoutSuccess', array(), NULL, NULL, 'Main', 'AchimFritz.ChampionShip');
 		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
 		$this->redirect('index', 'Standard', 'AchimFritz.ChampionShip\\Generic');
 	}
@@ -79,7 +86,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	 * @return void
 	 */
 	protected function onAuthenticationFailure(\TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception = NULL) {
-		$message = 'authentication failed';
+		$message = $this->translator->translateById('loginFailed', array(), NULL, NULL, 'Main', 'AchimFritz.ChampionShip');
 		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
 	}
 
