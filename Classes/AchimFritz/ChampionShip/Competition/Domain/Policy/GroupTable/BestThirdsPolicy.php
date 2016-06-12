@@ -51,4 +51,24 @@ class BestThirdsPolicy {
 		return $rows;
 	}
 
+	public function getRoundMatrix() {
+		return array(
+			'ABCD' => array('C','D','A','B'),
+			'ABCE' => array('C','A','B','E'),
+			'ABCF' => array('C','A','B','F'),
+			'ABDE' => array('D','A','B','E'),
+			'ABDF' => array('D','A','B','F'),
+			'ABEF' => array('E','A','B','F'),
+			'ACDE' => array('C','D','A','E'),
+			'ACDF' => array('C','D','A','F'),
+			'ACEF' => array('C','A','F','E'),
+			'ADEF' => array('D','A','F','E'),
+			'BCDE' => array('C','D','B','E'),
+			'BCDF' => array('C','D','B','F'),
+			'BCEF' => array('E','C','B','F'),
+			'BDEF' => array('E','D','B','F'),
+			'CDEF' => array('C','D','F','E')
+		);
+	}
+
 }
