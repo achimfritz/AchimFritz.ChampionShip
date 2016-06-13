@@ -6,7 +6,9 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Service;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupWithThirdsMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
+use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 use AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable\BestThirdsPolicy;
 use TYPO3\Flow\Annotations as Flow;
 
@@ -23,12 +25,18 @@ class GroupRoundService {
 	protected $groupRoundRepository;
 
 	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupWithThirdsMatchRepository
+	 */
+	protected $matchRepository;
+
+	/**
 	 * @param Cup $cup
 	 * @return void
 	 * @throws Exception
 	 */
 	public function finish(Cup $cup) {
-		// group table
+		// group table of best 4 thirds
 		$groupTableRows = $this->buildGroupTableRows($cup);
 		// string by alpha sort -> A C D E
 		$roundString = $this->buildRoundsString($groupTableRows);
@@ -38,17 +46,45 @@ class GroupRoundService {
 			throw new Exception('no matrix round found for ' . $roundString, 1464109832);
 		}
 		$combination = $roundMatrix[$roundString];
-
-
-		// collect groups
+		$roundsForMatches = $this->getPolicy()->getOrderRoundsForMatches();
 		// string by alpha sort -> A C D E
 		// A C D E         C       D       A       E
 		// Spiel mit 1. Gruppe A -> 3 C
 		// Spiel mit 1. Gruppe B -> 3 D
 		// Spiel mit 1. Gruppe C -> 3 A
 		// Spiel mit 1. Gruppe D -> 3 E
+		for ($i = 0; $i < count($roundsForMatches); $i++) {
+			$roundName = $roundsForMatches[$i];
+			$roundNameOfThird = $combination[$i];
+			$round = $this->groupRoundRepository->findOneByNameAndCup($roundNameOfThird, $cup);
+			if ($round instanceof GroupRound === FALSE) {
+				throw new Exception('no round found with name '. $roundNameOfThird, 1464109834);
+			}
+			$match = $this->matchRepository->findOneByCupAndRoundName($cup, $roundName);
+			if ($match instanceof CrossGroupWithThirdsMatch === FALSE) {
+				throw new Exception('no match found for group round ' . $roundName, 1464109833);
+			}
+			$team = $this->getTeamByRound($groupTableRows, $round);
+			$match->setGuestTeam($team);
+			$this->matchRepository->update($match);
+		}
 
 		return $groupTableRows;
+	}
+
+	/**
+	 * @param array $groupTableRows
+	 * @param GroupRound $groupRound
+	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\Team
+	 * @throws Exception
+	 */
+	protected function getTeamByRound(array $groupTableRows, GroupRound $groupRound) {
+		foreach ($groupTableRows as $groupTableRow) {
+			if ($groupTableRow->getGroupRound() === $groupRound) {
+				return $groupTableRow->getTeam();
+			}
+		}
+		throw new Exception('no team found for groupround ' . $groupRound->getName(), 1464109834);
 	}
 
 

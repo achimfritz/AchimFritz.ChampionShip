@@ -51,6 +51,9 @@ class BestThirdsPolicy {
 		return $rows;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getRoundMatrix() {
 		return array(
 			'ABCD' => array('C','D','A','B'),
@@ -69,6 +72,13 @@ class BestThirdsPolicy {
 			'BDEF' => array('E','D','B','F'),
 			'CDEF' => array('C','D','F','E')
 		);
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getOrderRoundsForMatches() {
+		return array('A', 'B', 'C', 'D');
 	}
 
 }

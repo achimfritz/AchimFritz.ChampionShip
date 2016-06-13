@@ -90,6 +90,7 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 			foreach ($groupTableRows AS $row) {
 				$line = ' ' . $row->getRank() . '. ' . $row->getCountOfMatchesPlayed() . ' ' .  $row->getPoints();
 				$line .= ' ' . $row->getGoalsDiff() . ' ' . $row->getGoalsPlus() . ':' . $row->getGoalsMinus();
+				$line .= ' ' . $row->getGroupRound()->getName();
 				$line .= ' ' . $row->getTeam()->getName();
 				$this->outputLine($line);
 			}
