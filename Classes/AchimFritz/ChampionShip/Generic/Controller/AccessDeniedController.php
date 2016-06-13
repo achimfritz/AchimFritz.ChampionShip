@@ -24,8 +24,7 @@ class AccessDeniedController extends AbstractActionController {
 	public function listAction() {
 		$this->addErrorMessage('access denied');
 		$this->response->setStatus(403);
+		$this->forwardHome();
 	}
 
 }
-
-?>

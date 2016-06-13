@@ -54,11 +54,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	public function onAuthenticationSuccess(\TYPO3\Flow\Mvc\ActionRequest $originalRequest = NULL) {
 		$message = $this->translator->translateById('loginSuccess', array(), NULL, NULL, 'Main', 'AchimFritz.ChampionShip');
 		$this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
-		if ($originalRequest !== NULL) {
-			$this->redirectToRequest($originalRequest);
-		} else {
-			$this->redirect('index', 'Standard', 'AchimFritz.ChampionShip\\Generic');
-		}
+		$this->redirect('index', 'Standard', 'AchimFritz.ChampionShip\\Generic');
 	}
 	
 	/**
@@ -100,5 +96,3 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 	}
 
 }
-
-?>
