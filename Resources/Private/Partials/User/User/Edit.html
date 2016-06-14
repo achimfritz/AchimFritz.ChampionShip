@@ -18,6 +18,10 @@
 		<label class="control-label" for="tipGroups"><f:translate id="user.tipGroups" /></label>
 		<div class="controls"><f:form.select options="{allTipGroups}" multiple="1" optionLabelField="name" property="tipGroups" id="tipGroups" /></div>
 	</div>
+	<div class="control-group">
+		<label class="control-label" for="disabled">disabled</label>
+		<div class="controls"><f:form.checkbox property="disabled" id="disabled" value="1" /></div>
+	</div>
 </f:security.ifHasRole>
 	
 	

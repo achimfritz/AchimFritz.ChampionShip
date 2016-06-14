@@ -37,9 +37,21 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 
 	/**
 	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
+	 */
+	protected $cupRepository;
+
+	/**
+	 * @Flow\Inject
 	 * @var \AchimFritz\ChampionShip\Service\NotificationService
 	 */
 	protected $notificationService;
+
+	/**
+	 * @Flow\Inject
+	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
+	 */
+	protected $tipRepository;
 
 	/**
 	 * inviteUserCommand 
@@ -102,6 +114,36 @@ class UserCommandController extends \TYPO3\Flow\Cli\CommandController {
 		}
 	}
 
-}
+	// Fr. 9.00 Uhr
 
-?>
+	/**
+	 * @return void
+	 */
+	public function enableAllUserCommand() {
+		$users = $this->userRepository->findAll();
+		foreach ($users as $user) {
+			$user->setDisabled(FALSE);
+			$this->userRepository->update($user);
+		}
+	}
+
+	/**
+	 * @return void
+	 */
+	public function disableInactiveUserInCurrentCupCommand() {
+		$cup = $this->cupRepository->findOneRecent();
+		$users = $this->userRepository->findAll();
+		foreach ($users as $user) {
+			$tips = $this->tipRepository->findByUserInCupWithResult($user, $cup);
+			if (count($tips) === 0) {
+				$user->setDisabled(TRUE);
+				$this->userRepository->update($user);
+			} else {
+				$user->setDisabled(FALSE);
+				$this->userRepository->update($user);
+			}
+			$this->outputLine(count($tips) . ' - ' . $user->getDisplayName());
+		}
+	}
+
+}

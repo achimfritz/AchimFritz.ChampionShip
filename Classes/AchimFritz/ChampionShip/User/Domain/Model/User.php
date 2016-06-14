@@ -30,6 +30,11 @@ class User {
 	 */
 	protected $chatEntries;
 
+	/**
+	 * @var bool
+	 */
+	protected $disabled = FALSE;
+
 
 	/**
 	 * @var string
@@ -181,6 +186,20 @@ class User {
 	 */
 	public function getAccount() {
 		return $this->account;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getDisabled() {
+		return $this->disabled;
+	}
+
+	/**
+	 * @param boolean $disabled
+	 */
+	public function setDisabled($disabled) {
+		$this->disabled = $disabled;
 	}
 
 }

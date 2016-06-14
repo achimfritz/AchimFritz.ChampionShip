@@ -51,7 +51,7 @@ class MatchTipController extends AbstractTipGroupController {
 	 */
 	public function showAction(Match $match) {
 		if ($this->user instanceof User) {
-			$users = $this->userRepository->findInTipGroups($this->user->getTipGroups());
+			$users = $this->userRepository->findInTipGroupsAndEnabled($this->user->getTipGroups());
 		} else {
 			// admin only
 			$users = $this->userRepository->findAll();
