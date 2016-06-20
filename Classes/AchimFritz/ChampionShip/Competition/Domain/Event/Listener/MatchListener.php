@@ -48,9 +48,6 @@ class MatchListener {
 			$this->onGroupMatchChanged($match);
 		} elseif ($match instanceof KoMatch) {
 			$this->onKoMatchChanged($match);
-			if ($match instanceof CrossGroupMatch) {
-				$this->onCrossGroupMatchChanged($match);
-			}
 		}
 	}
 
@@ -93,44 +90,21 @@ class MatchListener {
 			$secondTeam = $round->getSecondTeam();
 			$koMatch = $this->crossGroupMatchRepository->findOneInGroupRoundWithRank($round, 1);
 			if ($koMatch instanceof KoMatch) {
-				if ($koMatch->getHostGroupRank() === 1) {
+				if ($koMatch->getHostGroupRank() === 1 && $koMatch->getHostGroupRound() === $round) {
 					$koMatch->setHostTeam($winnerTeam);
-				} elseif ($koMatch->getGuestGroupRank() === 1) {
+				} elseif ($koMatch->getGuestGroupRank() === 1 && $koMatch->getGuestGroupRound() === $round) {
 					$koMatch->setGuestTeam($winnerTeam);
 				}
 				$this->crossGroupMatchRepository->update($koMatch);
 			}
 			$otherKoMatch = $this->crossGroupMatchRepository->findOneInGroupRoundWithRank($round, 2);
 			if ($otherKoMatch instanceof KoMatch) {
-				if ($otherKoMatch->getGuestGroupRank() === 2) {
+				if ($otherKoMatch->getGuestGroupRank() === 2 && $otherKoMatch->getGuestGroupRound() === $round) {
 					$otherKoMatch->setGuestTeam($secondTeam);
-				} elseif ($otherKoMatch->getHostGroupRank() === 2) {
+				} elseif ($otherKoMatch->getHostGroupRank() === 2 && $otherKoMatch->getHostGroupRound() === $round) {
 					$otherKoMatch->setHostTeam($secondTeam);
 				}
 				$this->crossGroupMatchRepository->update($otherKoMatch);
-			}
-		}
-	}
-
-	/**
-	 * @param CrossGroupMatch $match
-	 * @return void
-	 */
-	protected function onCrossGroupMatchChanged(CrossGroupMatch $match) {
-		$hostGroupRound = $match->getHostGroupRound();
-		$guestGroupRound = $match->getGuestGroupRound();
-		if ($hostGroupRound->getRoundIsFinished() === TRUE) {
-			if ($match->getHostGroupRank() === 1) {
-				$match->setHostTeam($hostGroupRound->getWinnerTeam());
-			} elseif ($match->getHostGroupRank() === 2) {
-				$match->setHostTeam($hostGroupRound->getSecondTeam());
-			}
-		}
-		if ($guestGroupRound !== NULL && $guestGroupRound->getRoundIsFinished() === TRUE) {
-			if ($match->getGuestGroupRank() === 1) {
-				$match->setGuestTeam($guestGroupRound->getWinnerTeam());
-			} elseif ($match->getGuestGroupRank() === 2) {
-				$match->setGuestTeam($guestGroupRound->getSecondTeam());
 			}
 		}
 	}
