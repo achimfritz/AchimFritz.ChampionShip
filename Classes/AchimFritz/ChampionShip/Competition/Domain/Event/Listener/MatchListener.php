@@ -105,6 +105,8 @@ class MatchListener {
 				$this->crossGroupMatchRepository->update($otherKoMatch);
 			}
 		}
+		$round->updateGroupTable();
+		$this->roundRepository->update($round);
 	}
 
 	/**
