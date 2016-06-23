@@ -82,8 +82,6 @@ class MatchListener {
 	 */
 	protected function onGroupMatchChanged(GroupMatch $match) {
 		$round = $match->getRound();
-		$round->updateGroupTable();
-		$this->roundRepository->update($round);
 
 		if ($round->getRoundIsFinished() === TRUE) {
 			$winnerTeam = $round->getWinnerTeam();

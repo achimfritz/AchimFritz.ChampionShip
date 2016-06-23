@@ -48,26 +48,12 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController {
 	 * @return void
 	 */
 	public function listCommand() {
-		$groupRounds = $this->groupRoundRepository->findAll();
-		#$groupRounds = array($this->groupRoundRepository->findOneByName('H'));
+		$cup = $this->cupRepository->findOneRecent();
+		#$groupRounds = $this->groupRoundRepository->findAll();
+		$groupRounds = array($this->groupRoundRepository->findOneByNameAndCup('E', $cup));
 		if (count($groupRounds)) {
 			foreach ($groupRounds AS $groupRound) {
-				$this->outputLine($groupRound->getName());
-				$matches = $groupRound->getGeneralMatches();
-				if (count($matches)) {
-					foreach ($matches as $match) {
-						$line = ' ' . $match->getHostName() . ' - ' . $match->getGuestName();
-						$result = $match->getResult();
-						if (isset($result)) {
-							$line .= ' ' . $result->getHostTeamGoals() . ':' . $result->getGuestTeamGoals();
-						} else {
-							$line .= ' -:-';
-						}
-						$this->outputLine($line);
-					}
-				} else {
-					$this->outputLine(' no matches found');
-				}
+				$this->outputLine($groupRound->getName() . ' - ' . $groupRound->getWinnerTeam()->getName());
 				$this->outputGroupRound($groupRound);
 			}
 		} else {
