@@ -3,7 +3,7 @@
 <f:section name="Content">
 	<f:security.ifHasRole role="AchimFritz.ChampionShip:Administrator">
 		<f:then>
-			<f:render partial="Cup/Show" arguments="{cup: cup}"/>
+			<f:render partial="Cup/Show" arguments="{cup: cup, allTeams: allTeams}"/>
 		</f:then>
 	</f:security.ifHasRole>
 	<f:render partial="Startpage/Index" arguments="{cup: cup}"/>

@@ -111,18 +111,25 @@ abstract class AbstractPointEqualityPolicy {
 		$this->addMessage('checking ' . count($rows) . ' teams');
 		$first = $rows[0];
 		$startRank = $first->getRank() - 1;
+		$cup = $first->getGroupRound()->getCup();
 		foreach ($rows AS $row) {
 			$this->addMessage($row->getTeam()->getName() . ' with rank ' . $row->getRank());
 		}
 		$relevant = $this->getRelevantMatches($rows, $matches);
+
 		$round = new GroupRound();
+		$round->setCup($cup);
 		$round->setGeneralMatches($relevant);
 		$round->updateGroupTable();
 		$groupTableRows = $round->getGroupTableRows();
-		$groupTableRows = $this->defaultPolicy->updateTable($groupTableRows);
+		$groupTableRows = $this->defaultPolicy->updateTable($groupTableRows->toArray());
+		$arr = array();
+		foreach ($groupTableRows as $groupTableRow) {
+			$arr[$groupTableRow->getTeam()->getName()] = $groupTableRow;
+		}
 		foreach($rows AS $row) {
 			$teamName = $row->getTeam()->getName();
-			$new = $groupTableRows[$teamName];
+			$new = $arr[$teamName];
 			$rank = $startRank + $new->getRank();
 			$this->addMessage('new rank of ' . $teamName . ' is ' . $rank);
 			$row->setRank($rank);
