@@ -53,14 +53,14 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository {
 	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
 	 */
 	public function findInTipGroupsAndEnabled(\Doctrine\Common\Collections\Collection $tipGroups) {
-		$identifiers = array();
-		foreach ($tipGroups as $tipGroup) {
-			$identifiers[] = $this->persistenceManager->getIdentifierByObject($tipGroup);
-		}
+		$constraints = array();
 		$query = $this->createQuery();
+		foreach ($tipGroups as $tipGroup) {
+			$constraints[] = $query->contains('tipGroups', $tipGroup);
+		}
 		return $query->matching(
 			$query->logicalAnd(
-				$query->in('tipGroup', $identifiers),
+				$query->logicalOr($constraints),
 				$query->equals('disabled', FALSE)
 			)
 		)->execute();
