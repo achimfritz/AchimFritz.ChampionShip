@@ -15,21 +15,21 @@ use \TYPO3\Flow\Persistence\QueryInterface;
  *
  * @Flow\Scope("singleton")
  */
-class TipGroupRepository extends \TYPO3\Flow\Persistence\Repository {
+class TipGroupRepository extends \TYPO3\Flow\Persistence\Repository
+{
 
-	/**
-	 * findByUser 
-	 * 
-	 * @param User $user 
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findByUser(User $user) {
-		$query = $this->createQuery();
-		return $query->matching(
-			$query->contains('users', $user)
-		)
-		->execute();
-	}
-
+    /**
+     * findByUser
+     *
+     * @param User $user
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findByUser(User $user)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
+            $query->contains('users', $user)
+        )
+        ->execute();
+    }
 }
-?>

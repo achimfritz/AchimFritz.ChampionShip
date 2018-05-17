@@ -14,51 +14,51 @@ use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
  *
  * @Flow\Scope("singleton")
  */
-class TipSecurity {
+class TipSecurity
+{
 
-	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
+    /**
+     * @var \TYPO3\Flow\Security\Context
+     * @Flow\Inject
+     */
+    protected $securityContext;
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
+     */
+    protected $userRepository;
 
-	/**
-	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Security\Policy\PolicyService
-	 */
-	protected $policyService;
+    /**
+     * @Flow\Inject
+     * @var \TYPO3\Flow\Security\Policy\PolicyService
+     */
+    protected $policyService;
 
-	/**
-	 * isEditable
-	 * 
-	 * @param Tip $tip 
-	 * @return boolean
-	 */
-	public function editAllowed(Tip $tip) {
-		if (FLOW_SAPITYPE === 'CLI') {
-			return TRUE;
-		}
-		if ($this->securityContext->hasRole('AchimFritz.ChampionShip:Administrator') === TRUE) {
-			return TRUE;
-		}
-		$account = $this->securityContext->getAccount();
-		if ($account) {
-			$user = $this->userRepository->findOneByAccount($account);
-			if ($user === $tip->getUser()) {
-				$now = new \DateTime();
-				if ($now < $tip->getMatch()->getStartDate()) {
-					return TRUE;
-				}
-			}
-		}
-		return FALSE;
-	}
-
+    /**
+     * isEditable
+     *
+     * @param Tip $tip
+     * @return boolean
+     */
+    public function editAllowed(Tip $tip)
+    {
+        if (FLOW_SAPITYPE === 'CLI') {
+            return true;
+        }
+        if ($this->securityContext->hasRole('AchimFritz.ChampionShip:Administrator') === true) {
+            return true;
+        }
+        $account = $this->securityContext->getAccount();
+        if ($account) {
+            $user = $this->userRepository->findOneByAccount($account);
+            if ($user === $tip->getUser()) {
+                $now = new \DateTime();
+                if ($now < $tip->getMatch()->getStartDate()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
-?>

@@ -14,30 +14,30 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class StrToUpperViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class StrToUpperViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
-	
-	/**
-	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
-	 * @see AbstractViewHelper::isOutputEscapingEnabled()
-	 * @var boolean
-	 */
-	protected $escapeOutput = FALSE;
+    
+    /**
+     * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
+     * @see AbstractViewHelper::isOutputEscapingEnabled()
+     * @var boolean
+     */
+    protected $escapeOutput = false;
 
-	/**
-	 * render
-	 *
-	 * @param string value
-	 * @return string
-	 */
-	public function render($value) {
-		return strtoupper($value);
-	}
+    /**
+     * render
+     *
+     * @param string value
+     * @return string
+     */
+    public function render($value)
+    {
+        return strtoupper($value);
+    }
 }
-
-?>

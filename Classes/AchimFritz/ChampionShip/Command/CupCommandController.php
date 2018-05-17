@@ -13,24 +13,25 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class CupCommandController extends \TYPO3\Flow\Cli\CommandController {
-	
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
-	 */
-	protected $cupRepository;
-	
-	/**
-	 * list
-	 *
-	 * @return void
-	 */
-	public function listCommand() {
-		$cups = $this->cupRepository->findAll();
-		foreach ($cups AS $cup) {
-			$this->outputLine($cup->getName());
-		}
-	}
-
+class CupCommandController extends \TYPO3\Flow\Cli\CommandController
+{
+    
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
+     */
+    protected $cupRepository;
+    
+    /**
+     * list
+     *
+     * @return void
+     */
+    public function listCommand()
+    {
+        $cups = $this->cupRepository->findAll();
+        foreach ($cups as $cup) {
+            $this->outputLine($cup->getName());
+        }
+    }
 }

@@ -14,26 +14,28 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @Flow\Entity
  */
-class CupRanking extends AbstractRanking {
+class CupRanking extends AbstractRanking
+{
 
-	/**
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Cup
-	 * @ORM\ManyToOne
-	 */
-	protected $cup;
+    /**
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Cup
+     * @ORM\ManyToOne
+     */
+    protected $cup;
 
-	/**
-	 * @return Cup
-	 */
-	public function getCup() {
-		return $this->cup;
-	}
+    /**
+     * @return Cup
+     */
+    public function getCup()
+    {
+        return $this->cup;
+    }
 
-	/**
-	 * @param Cup $cup
-	 */
-	public function setCup($cup) {
-		$this->cup = $cup;
-	}
+    /**
+     * @param Cup $cup
+     */
+    public function setCup($cup)
+    {
+        $this->cup = $cup;
+    }
 }
-

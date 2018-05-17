@@ -15,28 +15,27 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupWithThirdsMatch;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 
-
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class IfIsCrossGroupWithThirdsMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
-	
-	/**
-	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
-	 *
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
-	 * @return string the rendered string
-	 */
-	public function render(Match $match) {	
-		if ($match instanceof CrossGroupWithThirdsMatch) {
-			return $this->renderThenChild();
-		} else {
-			return $this->renderElseChild();
-		}
-	}
+class IfIsCrossGroupWithThirdsMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+{
+    
+    /**
+     * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
+     *
+     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
+     * @return string the rendered string
+     */
+    public function render(Match $match)
+    {
+        if ($match instanceof CrossGroupWithThirdsMatch) {
+            return $this->renderThenChild();
+        } else {
+            return $this->renderElseChild();
+        }
+    }
 }
-
-?>

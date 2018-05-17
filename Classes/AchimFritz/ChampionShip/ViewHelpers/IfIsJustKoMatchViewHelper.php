@@ -17,28 +17,27 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
 
-
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class IfIsJustKoMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
-	
-	/**
-	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
-	 *
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
-	 * @return string the rendered string
-	 */
-	public function render(Match $match) {
-		if ($match instanceof KoMatch === TRUE && $match instanceof CrossGroupMatch === FALSE && $match instanceof TeamsOfTwoMatchesMatch === FALSE) {
-			return $this->renderThenChild();
-		} else {
-			return $this->renderElseChild();
-		}
-	}
+class IfIsJustKoMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+{
+    
+    /**
+     * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
+     *
+     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
+     * @return string the rendered string
+     */
+    public function render(Match $match)
+    {
+        if ($match instanceof KoMatch === true && $match instanceof CrossGroupMatch === false && $match instanceof TeamsOfTwoMatchesMatch === false) {
+            return $this->renderThenChild();
+        } else {
+            return $this->renderElseChild();
+        }
+    }
 }
-
-?>

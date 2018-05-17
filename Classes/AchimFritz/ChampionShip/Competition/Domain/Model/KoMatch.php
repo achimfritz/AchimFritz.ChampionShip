@@ -14,13 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @Flow\Entity
  */
-class KoMatch extends Match {
-	
-	/**
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound
-	 * @ORM\ManyToOne
-	 * @Flow\Validate(type="NotEmpty")
-	 */
-	protected $round;
-
+class KoMatch extends Match
+{
+    
+    /**
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound
+     * @ORM\ManyToOne
+     * @Flow\Validate(type="NotEmpty")
+     */
+    protected $round;
 }

@@ -13,17 +13,16 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class ThreeOnePolicy extends DefaultPolicy {
+class ThreeOnePolicy extends DefaultPolicy
+{
 
-	/**
-	 * @var integer
-	 */
-	protected $exact = 3;
+    /**
+     * @var integer
+     */
+    protected $exact = 3;
 
-	/**
-	 * @var integer
-	 */
-	protected $trend = 1;
-
+    /**
+     * @var integer
+     */
+    protected $trend = 1;
 }
-?>

@@ -8,20 +8,20 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-
 /**
- * Standard controller for the AchimFritz.ChampionShip package 
+ * Standard controller for the AchimFritz.ChampionShip package
  *
  * @Flow\Scope("singleton")
  */
-class OtherTipController extends AbstractTipGroupController {
+class OtherTipController extends AbstractTipGroupController
+{
 
 
-	/**
-	 * @return void
-	 */
-	public function listAction() {
-		$this->view->assign('cupId', $this->persistenceManager->getIdentifierByObject($this->cup));
-	}
-
+    /**
+     * @return void
+     */
+    public function listAction()
+    {
+        $this->view->assign('cupId', $this->persistenceManager->getIdentifierByObject($this->cup));
+    }
 }

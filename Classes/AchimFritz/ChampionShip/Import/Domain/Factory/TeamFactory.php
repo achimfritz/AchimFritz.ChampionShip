@@ -15,53 +15,55 @@ use AchimFritz\ChampionShip\Import\Domain\Model\Match;
  *
  * @Flow\Scope("singleton")
  */
-class TeamFactory {
+class TeamFactory
+{
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamRepository
-	 */
-	protected $teamRepository;
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamRepository
+     */
+    protected $teamRepository;
 
-	/**
-	 * @param \AchimFritz\ChampionShip\Import\Domain\Model\Match $match
-	 * @return array<Team>
-	 */
-	public function createFromMatch(Match $match) {
-		$teams = array();
-		$name = $match->getHomeTeam();
-		$pTeam = $this->teamRepository->findOneByName($name);
-		if (!$pTeam instanceof Team) {
-			throw new \Exception('team not found ' . $name);
-		} 
-		$teams[$name] = $pTeam;
-		$name = $match->getGuestTeam();
-		$pTeam = $this->teamRepository->findOneByName($name);
-		if (!$pTeam instanceof Team) {
-			throw new \Exception('team not found ' . $name);
-		} 
-		$teams[$name] = $pTeam;
-      return $teams;
-   }
+    /**
+     * @param \AchimFritz\ChampionShip\Import\Domain\Model\Match $match
+     * @return array<Team>
+     */
+    public function createFromMatch(Match $match)
+    {
+        $teams = array();
+        $name = $match->getHomeTeam();
+        $pTeam = $this->teamRepository->findOneByName($name);
+        if (!$pTeam instanceof Team) {
+            throw new \Exception('team not found ' . $name);
+        }
+        $teams[$name] = $pTeam;
+        $name = $match->getGuestTeam();
+        $pTeam = $this->teamRepository->findOneByName($name);
+        if (!$pTeam instanceof Team) {
+            throw new \Exception('team not found ' . $name);
+        }
+        $teams[$name] = $pTeam;
+        return $teams;
+    }
 
-	/**
-	 * @param \AchimFritz\ChampionShip\Import\Domain\Model\Team $team
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Team $team
-	 */
-	public function createFromTeam(\AchimFritz\ChampionShip\Import\Domain\Model\Team $team) {
-		$pTeam = $this->teamRepository->findOneByName($team->getNameDe());
-		if (!$pTeam instanceof Team) {
-			$pTeam = new Team();
-			$pTeam->setName($team->getNameDe());
-			$this->teamRepository->add($pTeam);
-		}
-		$pTeam->setNameDe($team->getNameDe());
-		$pTeam->setNameLocal($team->getNameLocal());
-		$pTeam->setNameEn($team->getNameEn());
-		$pTeam->setIso2($team->getIso2());
-		$pTeam->setIso3($team->getIso3());
-		$this->teamRepository->update($pTeam);
-		return $pTeam;
-	}
-
+    /**
+     * @param \AchimFritz\ChampionShip\Import\Domain\Model\Team $team
+     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Team $team
+     */
+    public function createFromTeam(\AchimFritz\ChampionShip\Import\Domain\Model\Team $team)
+    {
+        $pTeam = $this->teamRepository->findOneByName($team->getNameDe());
+        if (!$pTeam instanceof Team) {
+            $pTeam = new Team();
+            $pTeam->setName($team->getNameDe());
+            $this->teamRepository->add($pTeam);
+        }
+        $pTeam->setNameDe($team->getNameDe());
+        $pTeam->setNameLocal($team->getNameLocal());
+        $pTeam->setNameEn($team->getNameEn());
+        $pTeam->setIso2($team->getIso2());
+        $pTeam->setIso3($team->getIso3());
+        $this->teamRepository->update($pTeam);
+        return $pTeam;
+    }
 }

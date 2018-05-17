@@ -15,43 +15,44 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
  *
  * @Flow\Scope("singleton")
  */
-class TeamsOfTwoMatchesMatchRepository extends KoMatchRepository {
+class TeamsOfTwoMatchesMatchRepository extends KoMatchRepository
+{
 
-	/**
-	 * findOneByHostMatchAndWinner 
-	 * 
-	 * @param KoMatch $match 
-	 * @param boolean $isWinner 
-	 * @return TeamsOfTwoMatchesMatch|NULL
-	 */
-	public function findOneByHostMatchAndWinner(KoMatch $match, $isWinner) {
-		$query = $this->createQuery();
-		return $query->matching(
-				$query->logicalAnd(
-					$query->equals('hostMatch', $match),
-					$query->equals('hostMatchIsWinner', $isWinner)
-					)
-				)
-			->execute()->getFirst();
-	}
+    /**
+     * findOneByHostMatchAndWinner
+     *
+     * @param KoMatch $match
+     * @param boolean $isWinner
+     * @return TeamsOfTwoMatchesMatch|NULL
+     */
+    public function findOneByHostMatchAndWinner(KoMatch $match, $isWinner)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
+                $query->logicalAnd(
+                    $query->equals('hostMatch', $match),
+                    $query->equals('hostMatchIsWinner', $isWinner)
+                    )
+                )
+            ->execute()->getFirst();
+    }
 
-	/**
-	 * findOneByGuestMatchAndWinner 
-	 * 
-	 * @param KoMatch $match 
-	 * @param boolean $isWinner 
-	 * @return TeamsOfTwoMatchesMatch|NULL
-	 */
-	public function findOneByGuestMatchAndWinner(KoMatch $match, $isWinner) {
-		$query = $this->createQuery();
-		return $query->matching(
-				$query->logicalAnd(
-					$query->equals('guestMatch', $match),
-					$query->equals('guestMatchIsWinner', $isWinner)
-					)
-				)
-			->execute()->getFirst();
-	}
-
+    /**
+     * findOneByGuestMatchAndWinner
+     *
+     * @param KoMatch $match
+     * @param boolean $isWinner
+     * @return TeamsOfTwoMatchesMatch|NULL
+     */
+    public function findOneByGuestMatchAndWinner(KoMatch $match, $isWinner)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
+                $query->logicalAnd(
+                    $query->equals('guestMatch', $match),
+                    $query->equals('guestMatchIsWinner', $isWinner)
+                    )
+                )
+            ->execute()->getFirst();
+    }
 }
-?>

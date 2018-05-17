@@ -15,46 +15,45 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class CurrentMatchesViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class CurrentMatchesViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
-	
-	/**
-	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
-	 * @see AbstractViewHelper::isOutputEscapingEnabled()
-	 * @var boolean
-	 */
-	protected $escapeOutput = FALSE;
+    
+    /**
+     * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
+     * @see AbstractViewHelper::isOutputEscapingEnabled()
+     * @var boolean
+     */
+    protected $escapeOutput = false;
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
-	 */
-	protected $matchRepository;
-
-
-	/**
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup
-	 * @param integer $limit
-	 * @param boolean $past
-	 * @return void
-	 */
-	public function render(Cup $cup, $limit = 2, $past = TRUE) {
-		if ($past === TRUE) {
-			$matches = $this->matchRepository->findLastByCup($cup, $limit);
-		} else {
-			$matches = $this->matchRepository->findNextByCup($cup, $limit);
-		}
-		$this->templateVariableContainer->add('matches', $matches);
-		$out = $this->renderChildren();
-		$this->templateVariableContainer->remove('matches');
-		return $out;
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository
+     */
+    protected $matchRepository;
 
 
-	}
+    /**
+     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Cup $cup
+     * @param integer $limit
+     * @param boolean $past
+     * @return void
+     */
+    public function render(Cup $cup, $limit = 2, $past = true)
+    {
+        if ($past === true) {
+            $matches = $this->matchRepository->findLastByCup($cup, $limit);
+        } else {
+            $matches = $this->matchRepository->findNextByCup($cup, $limit);
+        }
+        $this->templateVariableContainer->add('matches', $matches);
+        $out = $this->renderChildren();
+        $this->templateVariableContainer->remove('matches');
+        return $out;
+    }
 }
-

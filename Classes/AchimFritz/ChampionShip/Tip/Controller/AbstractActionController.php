@@ -11,64 +11,65 @@ use TYPO3\Flow\Error\Message;
 use TYPO3\Flow\Security\Account;
 use \AchimFritz\ChampionShip\User\Domain\Model\User;
 
-
 /**
- * Action controller for the AchimFritz.ChampionShip package 
+ * Action controller for the AchimFritz.ChampionShip package
  *
  * @Flow\Scope("singleton")
  */
-class AbstractActionController extends \AchimFritz\ChampionShip\Competition\Controller\AbstractActionController {
+class AbstractActionController extends \AchimFritz\ChampionShip\Competition\Controller\AbstractActionController
+{
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
+     */
+    protected $userRepository;
 
-	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
+    /**
+     * @var \TYPO3\Flow\Security\Context
+     * @Flow\Inject
+     */
+    protected $securityContext;
 
-	/**
-	 * @var User
-	 */
-	protected $user = NULL;
+    /**
+     * @var User
+     */
+    protected $user = null;
 
-	/**
-	 * @var Account
-	 */
-	protected $account = NULL;
+    /**
+     * @var Account
+     */
+    protected $account = null;
 
 
-	/**
-	 * initializeAction 
-	 * 
-	 * @return void
-	 */
-	protected function initializeAction() {
-		parent::initializeAction();
-		$this->account = $this->securityContext->getAccount();
-		if ($this->account) {
-			$user = $this->userRepository->findOneByAccount($this->account);
-			if ($user instanceof User) {
-				$this->user = $user;
-			}
-		}
-	}
+    /**
+     * initializeAction
+     *
+     * @return void
+     */
+    protected function initializeAction()
+    {
+        parent::initializeAction();
+        $this->account = $this->securityContext->getAccount();
+        if ($this->account) {
+            $user = $this->userRepository->findOneByAccount($this->account);
+            if ($user instanceof User) {
+                $this->user = $user;
+            }
+        }
+    }
 
-	/**
-	 * handleException
-	 * 
-	 * @param \Exception $e
-	 * @return void
-	 */
-	protected function handleException(\Exception $e) {
-		if ($this->user === NULL && $this->account !== NULL) {
-			// must be an admin
-			$this->addFlashMessage($e->getMessage(), get_class($e), Message::SEVERITY_ERROR, array(), $e->getCode());
-		}
-	}
-
+    /**
+     * handleException
+     *
+     * @param \Exception $e
+     * @return void
+     */
+    protected function handleException(\Exception $e)
+    {
+        if ($this->user === null && $this->account !== null) {
+            // must be an admin
+            $this->addFlashMessage($e->getMessage(), get_class($e), Message::SEVERITY_ERROR, array(), $e->getCode());
+        }
+    }
 }

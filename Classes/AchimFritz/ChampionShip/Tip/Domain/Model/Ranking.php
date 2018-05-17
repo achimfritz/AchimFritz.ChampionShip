@@ -14,6 +14,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @Flow\Entity
  */
-class Ranking extends AbstractRanking {
-
+class Ranking extends AbstractRanking
+{
 }

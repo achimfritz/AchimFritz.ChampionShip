@@ -12,9 +12,8 @@ use TYPO3\Flow\Persistence\Repository;
 /**
  * @Flow\Scope("singleton")
  */
-class ContactRequestRepository extends Repository {
+class ContactRequestRepository extends Repository
+{
 
-	// add customized methods here
-
+    // add customized methods here
 }
-?>

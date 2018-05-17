@@ -14,32 +14,34 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @Flow\Entity
  */
-class ChildKoRound extends KoRound {
+class ChildKoRound extends KoRound
+{
 
-	/**
-	 * The parent round
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound
-	 * @ORM\ManyToOne
-	 */
-	protected $parentRound;
+    /**
+     * The parent round
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound
+     * @ORM\ManyToOne
+     */
+    protected $parentRound;
 
-	/**
-	 * Get the Ko round's parent round
-	 *
-	 * @return \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound The Ko round's parent round
-	 */
-	public function getParentRound() {
-		return $this->parentRound;
-	}
+    /**
+     * Get the Ko round's parent round
+     *
+     * @return \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound The Ko round's parent round
+     */
+    public function getParentRound()
+    {
+        return $this->parentRound;
+    }
 
-	/**
-	 * Sets this Ko round's parent round
-	 *
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound $parentRound The Ko round's parent round
-	 * @return void
-	 */
-	public function setParentRound(KoRound $parentRound) {
-		$this->parentRound = $parentRound;
-	}
+    /**
+     * Sets this Ko round's parent round
+     *
+     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound $parentRound The Ko round's parent round
+     * @return void
+     */
+    public function setParentRound(KoRound $parentRound)
+    {
+        $this->parentRound = $parentRound;
+    }
 }
-?>

@@ -14,18 +14,17 @@ use \TYPO3\Flow\Persistence\QueryInterface;
  *
  * @Flow\Scope("singleton")
  */
-class GroupRoundRepository extends RoundRepository {
-	
-	/**
-	 * __construct 
-	 * 
-	 * @return void
-	 */
-	public function __construct() {
-		parent::__construct();
-		$this->setDefaultOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
-	}
-
-
+class GroupRoundRepository extends RoundRepository
+{
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setDefaultOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
+    }
 }
-?>

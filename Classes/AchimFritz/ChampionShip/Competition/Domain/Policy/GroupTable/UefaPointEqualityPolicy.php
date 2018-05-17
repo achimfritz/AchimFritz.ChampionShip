@@ -9,37 +9,38 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow;
 
-
 /**
  * UefaPointEqualityPolicy
  *
  *	@Flow\Scope("singleton")
  */
-class UefaPointEqualityPolicy extends AbstractPointEqualityPolicy {
+class UefaPointEqualityPolicy extends AbstractPointEqualityPolicy
+{
 
    /**
-    * rowsAreEquay 
-    * 
-    * @param GroupTableRow $rowOne 
-    * @param GroupTableRow $rowTwo 
+    * rowsAreEquay
+    *
+    * @param GroupTableRow $rowOne
+    * @param GroupTableRow $rowTwo
     * @return boolean
     */
-   protected function rowsAreEqual(GroupTableRow $rowOne, GroupTableRow $rowTwo) {
-		$this->addMessage('comparing ' . $rowOne->getTeam()->getName() . ' - ' . $rowTwo->getTeam()->getName());
-      if ($rowOne->getPoints() === $rowTwo->getPoints()) {
-         return TRUE;
-      } else {
-         return FALSE;
-      }
-   }
+    protected function rowsAreEqual(GroupTableRow $rowOne, GroupTableRow $rowTwo)
+    {
+        $this->addMessage('comparing ' . $rowOne->getTeam()->getName() . ' - ' . $rowTwo->getTeam()->getName());
+        if ($rowOne->getPoints() === $rowTwo->getPoints()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	/**
-	 * getPolicyName 
-	 * 
-	 * @return string
-	 */
-	protected function getPolicyName() {
-		return 'uefa policy';
-	}
+    /**
+     * getPolicyName
+     *
+     * @return string
+     */
+    protected function getPolicyName()
+    {
+        return 'uefa policy';
+    }
 }
-?>

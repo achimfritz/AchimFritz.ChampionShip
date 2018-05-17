@@ -13,7 +13,6 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class RankingRepository extends AbstractRankingRepository {
-
-
+class RankingRepository extends AbstractRankingRepository
+{
 }

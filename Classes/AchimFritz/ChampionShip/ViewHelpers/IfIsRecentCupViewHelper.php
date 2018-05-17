@@ -14,35 +14,34 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
-
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class IfIsRecentCupViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class IfIsRecentCupViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+{
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
-	 */
-	protected $cupRepository;
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
+     */
+    protected $cupRepository;
 
-	/**
-	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
-	 *
-	 * @param Cup $cup
-	 * @return string the rendered string
-	 */
-	public function render($cup) {
-		$recentCup = $this->cupRepository->findOneRecent();
-		if ($recentCup === $cup) {
-			return $this->renderThenChild();
-		} else {
-			return $this->renderElseChild();
-		}
-	}
+    /**
+     * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
+     *
+     * @param Cup $cup
+     * @return string the rendered string
+     */
+    public function render($cup)
+    {
+        $recentCup = $this->cupRepository->findOneRecent();
+        if ($recentCup === $cup) {
+            return $this->renderThenChild();
+        } else {
+            return $this->renderElseChild();
+        }
+    }
 }
-
-?>

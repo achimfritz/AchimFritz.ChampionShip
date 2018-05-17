@@ -14,50 +14,50 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use TYPO3\Flow\Annotations as Flow;
 
-
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class UserNameViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class UserNameViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
-	
-	/**
-	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
-	 * @see AbstractViewHelper::isOutputEscapingEnabled()
-	 * @var boolean
-	 */
-	protected $escapeOutput = FALSE;
+    
+    /**
+     * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
+     * @see AbstractViewHelper::isOutputEscapingEnabled()
+     * @var boolean
+     */
+    protected $escapeOutput = false;
 
-	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
+    /**
+     * @var \TYPO3\Flow\Security\Context
+     * @Flow\Inject
+     */
+    protected $securityContext;
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
-	 */
-	protected $userRepository;
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\User\Domain\Repository\UserRepository
+     */
+    protected $userRepository;
 
-	/**
-	 * @return string
-	 */
-	public function render() {
-		$account = $this->securityContext->getAccount();
-		if ($account) {
-			$user = $this->userRepository->findOneByAccount($account);
-			if ($user instanceof User)
-				return $user->getDisplayName();
-			else {
-				return 'ADMIN';
-			}
-		} else {
-			return '';
-		}
-	}
+    /**
+     * @return string
+     */
+    public function render()
+    {
+        $account = $this->securityContext->getAccount();
+        if ($account) {
+            $user = $this->userRepository->findOneByAccount($account);
+            if ($user instanceof User) {
+                return $user->getDisplayName();
+            } else {
+                return 'ADMIN';
+            }
+        } else {
+            return '';
+        }
+    }
 }
-

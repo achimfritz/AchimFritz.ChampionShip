@@ -8,14 +8,12 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
 
 use TYPO3\Flow\Annotations as Flow;
 
-class TipGroupKoRoundResultsController extends AbstractTipGroupResultsController {
+class TipGroupKoRoundResultsController extends AbstractTipGroupResultsController
+{
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository
-	 */
-	protected $matchRepository;
-
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoMatchRepository
+     */
+    protected $matchRepository;
 }
-
-?>

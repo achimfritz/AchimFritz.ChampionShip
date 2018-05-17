@@ -12,94 +12,103 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @Flow\Entity
  */
-class ForgotPasswordRequest {
+class ForgotPasswordRequest
+{
 
-	/**
-	 * @var \DateTime|NULL
-	 */
-	protected $creationDate = NULL;
+    /**
+     * @var \DateTime|NULL
+     */
+    protected $creationDate = null;
 
-	/**
-	 * @var string
-	 * @Flow\Validate(type="EmailAddress")
-	 * @Flow\Validate(type="NotEmpty")
-	 */
-	protected $email = '';
+    /**
+     * @var string
+     * @Flow\Validate(type="EmailAddress")
+     * @Flow\Validate(type="NotEmpty")
+     */
+    protected $email = '';
 
-	/**
-	 * @var \AchimFritz\ChampionShip\User\Domain\Model\User
-	 * @ORM\ManyToOne
-	 */
-	protected $user = NULL;
+    /**
+     * @var \AchimFritz\ChampionShip\User\Domain\Model\User
+     * @ORM\ManyToOne
+     */
+    protected $user = null;
 
-	/**
-	 * @var string
-	 */
-	protected $hash = '';
+    /**
+     * @var string
+     */
+    protected $hash = '';
 
-	/**
-	 * @return void
-	 */
-	public function __construct() {
-		$this->creationDate = new \DateTime();
-	}
+    /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
 
-	/**
-	 * @return User
-	 */
-	public function getUser() {
-		return $this->user;
-	}
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 
-	/**
-	 * @param User $user
-	 */
-	public function setUser($user) {
-		$this->user = $user;
-	}
+    /**
+     * @param User $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getHash() {
-		return $this->hash;
-	}
+    /**
+     * @return string
+     */
+    public function getHash()
+    {
+        return $this->hash;
+    }
 
-	/**
-	 * @param string $hash
-	 */
-	public function setHash($hash) {
-		$this->hash = $hash;
-	}
+    /**
+     * @param string $hash
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getEmail() {
-		return $this->email;
-	}
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
-	/**
-	 * @param string $email
-	 * @return void
-	 */
-	public function setEmail($email) {
-		$this->email = $email;
-	}
+    /**
+     * @param string $email
+     * @return void
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
 
-	/**
-	 * @param \DateTime $creationDate 
-	 * @return void
-	 */
-	public function setCreationDate(\DateTime $creationDate) {
-		$this->creationDate = $creationDate;
-	}
+    /**
+     * @param \DateTime $creationDate
+     * @return void
+     */
+    public function setCreationDate(\DateTime $creationDate)
+    {
+        $this->creationDate = $creationDate;
+    }
 
-	/**
-	 * @return \DateTime
-	 */
-	public function getCreationDate() {
-		return $this->creationDate;
-	}
-
+    /**
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
 }

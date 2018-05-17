@@ -15,25 +15,26 @@ use \AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
  *
  * @Flow\Scope("singleton")
  */
-class GroupMatchCommandController extends \TYPO3\Flow\Cli\CommandController {
+class GroupMatchCommandController extends \TYPO3\Flow\Cli\CommandController
+{
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository
-	 */
-	protected $groupMatchRepository;
-	
-	/**
-	 * list
-	 *
-	 * @return void
-	 */
-	public function listCommand() {
-		$groupMatches = $this->groupMatchRepository->findAll();
-		$this->outputLine('found ' . count($groupMatches) . ' matches');
-		foreach ($groupMatches AS $groupMatch) {
-			$this->outputLine($groupMatch->getName());
-		}
-	}
-
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupMatchRepository
+     */
+    protected $groupMatchRepository;
+    
+    /**
+     * list
+     *
+     * @return void
+     */
+    public function listCommand()
+    {
+        $groupMatches = $this->groupMatchRepository->findAll();
+        $this->outputLine('found ' . count($groupMatches) . ' matches');
+        foreach ($groupMatches as $groupMatch) {
+            $this->outputLine($groupMatch->getName());
+        }
+    }
 }

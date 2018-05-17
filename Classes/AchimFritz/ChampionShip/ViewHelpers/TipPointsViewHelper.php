@@ -14,38 +14,37 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 
-
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class TipPointsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class TipPointsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
-	
-	/**
-	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
-	 * @see AbstractViewHelper::isOutputEscapingEnabled()
-	 * @var boolean
-	 */
-	protected $escapeOutput = FALSE;
+    
+    /**
+     * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
+     * @see AbstractViewHelper::isOutputEscapingEnabled()
+     * @var boolean
+     */
+    protected $escapeOutput = false;
 
-	/**
-	 * render
-	 *
-	 * @param Tip $tip
-	 * @return string
-	 */
-	public function render(Tip $tip) {
-		if ($tip->getPoints() == 2) {
-			return '<span class="icon-circle-arrow-up"></span>';
-		} elseif ($tip->getPoints() == 1) {
-			return '<span class="icon-circle-arrow-right"></span>';
-		} else {
-			return '';
-		}
-	}
+    /**
+     * render
+     *
+     * @param Tip $tip
+     * @return string
+     */
+    public function render(Tip $tip)
+    {
+        if ($tip->getPoints() == 2) {
+            return '<span class="icon-circle-arrow-up"></span>';
+        } elseif ($tip->getPoints() == 1) {
+            return '<span class="icon-circle-arrow-right"></span>';
+        } else {
+            return '';
+        }
+    }
 }
-
-?>

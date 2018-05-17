@@ -15,28 +15,27 @@ use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Round;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 
-
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class IfIsGroupRoundViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
-	
-	/**
-	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
-	 *
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round
-	 * @return string the rendered string
-	 */
-	public function render(Round $round) {	
-		if ($round instanceof GroupRound) {
-			return $this->renderThenChild();
-		} else {
-			return $this->renderElseChild();
-		}
-	}
+class IfIsGroupRoundViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+{
+    
+    /**
+     * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
+     *
+     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round
+     * @return string the rendered string
+     */
+    public function render(Round $round)
+    {
+        if ($round instanceof GroupRound) {
+            return $this->renderThenChild();
+        } else {
+            return $this->renderElseChild();
+        }
+    }
 }
-
-?>

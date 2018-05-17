@@ -15,34 +15,34 @@ use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class IfTipIsEditableViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+{
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Security\TipSecurity
-	 */
-	protected $tipSecurity;
-	
-	/**
-	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
-	 *
-	 * @param \AchimFritz\ChampionShip\Tip\Domain\Model\Tip $tip
-	 * @return string the rendered string
-	 */
-	public function render(Tip $tip = NULL) {
-		if ($tip === NULL) {
-			return $this->renderElseChild();
-		}
-		if ($this->tipSecurity->editAllowed($tip) === TRUE) {
-			return $this->renderThenChild();
-		}
-		return $this->renderElseChild();
-	}
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Security\TipSecurity
+     */
+    protected $tipSecurity;
+    
+    /**
+     * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
+     *
+     * @param \AchimFritz\ChampionShip\Tip\Domain\Model\Tip $tip
+     * @return string the rendered string
+     */
+    public function render(Tip $tip = null)
+    {
+        if ($tip === null) {
+            return $this->renderElseChild();
+        }
+        if ($this->tipSecurity->editAllowed($tip) === true) {
+            return $this->renderThenChild();
+        }
+        return $this->renderElseChild();
+    }
 }
-
-?>

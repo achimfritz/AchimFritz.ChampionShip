@@ -15,44 +15,44 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\Result;
  *
  * @Flow\Scope("singleton")
  */
-class DefaultPolicy {
+class DefaultPolicy
+{
 
-	/**
-	 * @var integer
-	 */
-	protected $exact = 2;
+    /**
+     * @var integer
+     */
+    protected $exact = 2;
 
-	/**
-	 * @var integer
-	 */
-	protected $trend = 1;
+    /**
+     * @var integer
+     */
+    protected $trend = 1;
 
-	/**
-	 * isEditable
-	 * 
-	 * @param Tip $tip 
-	 * @return integer
-	 */
-	public function getPointsForTip(Tip $tip) {
-		$matchResult = $tip->getMatch()->getResult();
-		if (!$matchResult instanceof Result) {
-			return 0;
-		}
-		$result = $tip->getResult();
-		if (!$result instanceof Result) {
-			return 0;
-		}
-		$matchHostPoints = $matchResult->getHostPoints();
-		$hostPoints = $result->getHostPoints();
-		if ($matchHostPoints == $hostPoints) {
-			if ($result->getHostTeamGoals() == $matchResult->getHostTeamGoals() AND 
-				$result->getGuestTeamGoals() == $matchResult->getGuestTeamGoals()) {
-				return $this->exact;
-			}
-			return $this->trend;
-		}
-		return 0;
-	}
-
+    /**
+     * isEditable
+     *
+     * @param Tip $tip
+     * @return integer
+     */
+    public function getPointsForTip(Tip $tip)
+    {
+        $matchResult = $tip->getMatch()->getResult();
+        if (!$matchResult instanceof Result) {
+            return 0;
+        }
+        $result = $tip->getResult();
+        if (!$result instanceof Result) {
+            return 0;
+        }
+        $matchHostPoints = $matchResult->getHostPoints();
+        $hostPoints = $result->getHostPoints();
+        if ($matchHostPoints == $hostPoints) {
+            if ($result->getHostTeamGoals() == $matchResult->getHostTeamGoals() and
+                $result->getGuestTeamGoals() == $matchResult->getGuestTeamGoals()) {
+                return $this->exact;
+            }
+            return $this->trend;
+        }
+        return 0;
+    }
 }
-?>

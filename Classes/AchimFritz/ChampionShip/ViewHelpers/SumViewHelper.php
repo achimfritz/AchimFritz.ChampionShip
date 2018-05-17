@@ -14,30 +14,30 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class SumViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class SumViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
-	
-	/**
-	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
-	 * @see AbstractViewHelper::isOutputEscapingEnabled()
-	 * @var boolean
-	 */
-	protected $escapeOutput = FALSE;
+    
+    /**
+     * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
+     * @see AbstractViewHelper::isOutputEscapingEnabled()
+     * @var boolean
+     */
+    protected $escapeOutput = false;
 
-	/**
-	 * render
-	 * @param number $summandOne
-	 * @param number $summandTwo
-	 * @return number
-	 */
-	public function render($summandOne, $summandTwo) {	
-		return $summandOne + $summandTwo;
-	}
+    /**
+     * render
+     * @param number $summandOne
+     * @param number $summandTwo
+     * @return number
+     */
+    public function render($summandOne, $summandTwo)
+    {
+        return $summandOne + $summandTwo;
+    }
 }
-
-?>

@@ -14,42 +14,40 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 
-
-
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class IfActionIsAllowedViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
-	
-	/**
-	 * @var \TYPO3\Flow\Security\Context
-	 * @Flow\Inject
-	 */
-	protected $securityContext;
+class IfActionIsAllowedViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+{
+    
+    /**
+     * @var \TYPO3\Flow\Security\Context
+     * @Flow\Inject
+     */
+    protected $securityContext;
 
-	/**
-	 * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
-	 *
-	 * @param object $object
-	 * @return string the rendered string
-	 */
-	public function render($object) {
-		$role = 'AchimFritz.ChampionShip:Administrator';
-		if ($this->securityContext->hasRole($role)) {
-			return $this->renderThenChild();
-		} else {
-			if ($object instanceof Tip) {
-				$role = 'AchimFritz.ChampionShip:User';
-				if ($this->securityContext->hasRole($role)) {
-					return $this->renderThenChild();
-				}
-			}
-		}
-		return $this->renderElseChild();
-	}
+    /**
+     * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
+     *
+     * @param object $object
+     * @return string the rendered string
+     */
+    public function render($object)
+    {
+        $role = 'AchimFritz.ChampionShip:Administrator';
+        if ($this->securityContext->hasRole($role)) {
+            return $this->renderThenChild();
+        } else {
+            if ($object instanceof Tip) {
+                $role = 'AchimFritz.ChampionShip:User';
+                if ($this->securityContext->hasRole($role)) {
+                    return $this->renderThenChild();
+                }
+            }
+        }
+        return $this->renderElseChild();
+    }
 }
-
-?>

@@ -14,23 +14,25 @@ use \TYPO3\Flow\Persistence\Repository;
  *
  * @Flow\Scope("singleton")
  */
-class TipCupRepository extends Repository {
+class TipCupRepository extends Repository
+{
 
-	/**
-	 * @return void
-	 */
-	public function __construct() {
-		parent::__construct();
-		$this->setDefaultOrderings(array('cup.startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
-	}
+    /**
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setDefaultOrderings(array('cup.startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
+    }
 
-	/**
-	 * @return \AchimFritz\ChampionShip\Tip\Domain\Model\TipCup
-	 */
-	public function findOneRecent() {
-		$query = $this->createQuery();
-		$query->setOrderings(array('cup.startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
-		return $query->execute()->getFirst();
-	}
-
+    /**
+     * @return \AchimFritz\ChampionShip\Tip\Domain\Model\TipCup
+     */
+    public function findOneRecent()
+    {
+        $query = $this->createQuery();
+        $query->setOrderings(array('cup.startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
+        return $query->execute()->getFirst();
+    }
 }

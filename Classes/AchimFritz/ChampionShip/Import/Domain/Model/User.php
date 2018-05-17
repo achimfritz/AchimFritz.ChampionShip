@@ -12,68 +12,73 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  */
-class User {
+class User
+{
 
-	/**
-	 * @var string
-	 */
-	protected $name;
+    /**
+     * @var string
+     */
+    protected $name;
 
-	/**
-	 * @var string
-	 */
-	protected $email;
+    /**
+     * @var string
+     */
+    protected $email;
 
-	/**
-	 * @var string
-	 */
-	protected $groups;
+    /**
+     * @var string
+     */
+    protected $groups;
 
 
-	/**
-	 * @return string
-	 */
-	public function getName() {
-		return $this->name;
-	}
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-	/**
-	 * @param string $name
-	 * @return void
-	 */
-	public function setName($name) {
-		$this->name = $name;
-	}
+    /**
+     * @param string $name
+     * @return void
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getEmail() {
-		return $this->email;
-	}
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
-	/**
-	 * @param string $email
-	 * @return void
-	 */
-	public function setEmail($email) {
-		$this->email = $email;
-	}
+    /**
+     * @param string $email
+     * @return void
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getGroups() {
-		return $this->groups;
-	}
+    /**
+     * @return string
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
 
-	/**
-	 * @param string $groups
-	 * @return void
-	 */
-	public function setGroups($groups) {
-		$this->groups = $groups;
-	}
-
+    /**
+     * @param string $groups
+     * @return void
+     */
+    public function setGroups($groups)
+    {
+        $this->groups = $groups;
+    }
 }
-?>

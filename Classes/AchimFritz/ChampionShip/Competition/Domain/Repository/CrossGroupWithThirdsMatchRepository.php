@@ -15,32 +15,32 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class CrossGroupWithThirdsMatchRepository extends CrossGroupMatchRepository {
+class CrossGroupWithThirdsMatchRepository extends CrossGroupMatchRepository
+{
 
-	/**
-	 * @param Cup $cup
-	 * @param $roundName
-	 * @return CrossGroupWithThirdsMatch|NULL
-	 */
-	public function findOneByCupAndRoundName(Cup $cup, $roundName) {
-		$query = $this->createQuery();
-		/*
-		return $query->matching(
-			$query->logicalAnd(
-				$query->equals('cup', $cup),
-				$query->equals('hostGroupRank', '1')
-			)
-		)->execute()->getFirst();
-		*/
+    /**
+     * @param Cup $cup
+     * @param $roundName
+     * @return CrossGroupWithThirdsMatch|NULL
+     */
+    public function findOneByCupAndRoundName(Cup $cup, $roundName)
+    {
+        $query = $this->createQuery();
+        /*
+        return $query->matching(
+            $query->logicalAnd(
+                $query->equals('cup', $cup),
+                $query->equals('hostGroupRank', '1')
+            )
+        )->execute()->getFirst();
+        */
 
-		return $query->matching(
-			$query->logicalAnd(
-				$query->equals('cup', $cup),
-				$query->equals('hostGroupRank', 1),
-				$query->equals('hostGroupRound.name', $roundName)
-			)
-		)->execute()->getFirst();
-
-	}
-
+        return $query->matching(
+            $query->logicalAnd(
+                $query->equals('cup', $cup),
+                $query->equals('hostGroupRank', 1),
+                $query->equals('hostGroupRound.name', $roundName)
+            )
+        )->execute()->getFirst();
+    }
 }

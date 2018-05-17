@@ -19,181 +19,187 @@ use TYPO3\Flow\Mvc\Routing\UriBuilder;
  *
  * @Flow\Scope("singleton")
  */
-class NotificationService {
+class NotificationService
+{
 
-	/**
-	 * @var array
-	 */
-	protected $settings;
+    /**
+     * @var array
+     */
+    protected $settings;
 
-	/**
-	 * @var \TYPO3\Flow\Object\ObjectManagerInterface
-	 * @Flow\Inject
-	 */
-	protected $objectManager;
+    /**
+     * @var \TYPO3\Flow\Object\ObjectManagerInterface
+     * @Flow\Inject
+     */
+    protected $objectManager;
 
-	/**
-	 * injectSettings 
-	 * 
-	 * @param array $settings 
-	 * @return void
-	 */
-	public function injectSettings($settings) {
-		$this->settings = $settings;
-	}
-	
-	/**
-	 * inviteUser 
-	 * 
-	 * @param User $user 
-	 * @return void
-	 */
-	public function inviteUser(User $user) {
-		$from = $this->settings['mailFrom'];
-		$to = $user->getEmail();
+    /**
+     * injectSettings
+     *
+     * @param array $settings
+     * @return void
+     */
+    public function injectSettings($settings)
+    {
+        $this->settings = $settings;
+    }
+    
+    /**
+     * inviteUser
+     *
+     * @param User $user
+     * @return void
+     */
+    public function inviteUser(User $user)
+    {
+        $from = $this->settings['mailFrom'];
+        $to = $user->getEmail();
 
-		$subject = 'Einladung: Tippen bis zum Anpfiff bei www.tipptrip.de';
-		$body = 'Am 10.06.2016 ist es wieder soweit: Es wird EM-Geschichte geschrieben!!! '. chr(10) . chr(10);
-		$body .= 'Du bist natürlich automatisch wieder bei www.tipptrip.de dabei.' . chr(10) . chr(10);
-		$body .= 'Deine Zugangsdaten:' . chr(10);
-		$body .= 'URL: http://www.tipptrip.de/' . chr(10);
-		$body .= 'Username: ' . $user->getUsername() . chr(10). chr(10);
-		$body .= 'Viel Spass wünscht Dir,' . chr(10);
-		$body .= 'das www.tipptrip.de-Team';
+        $subject = 'Einladung: Tippen bis zum Anpfiff bei www.tipptrip.de';
+        $body = 'Am 10.06.2016 ist es wieder soweit: Es wird EM-Geschichte geschrieben!!! '. chr(10) . chr(10);
+        $body .= 'Du bist natürlich automatisch wieder bei www.tipptrip.de dabei.' . chr(10) . chr(10);
+        $body .= 'Deine Zugangsdaten:' . chr(10);
+        $body .= 'URL: http://www.tipptrip.de/' . chr(10);
+        $body .= 'Username: ' . $user->getUsername() . chr(10). chr(10);
+        $body .= 'Viel Spass wünscht Dir,' . chr(10);
+        $body .= 'das www.tipptrip.de-Team';
 
-		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
-		$mailMessage->setFrom($from)
-			->setTo($to)
-			->setSubject($subject)
-			->setBody($body)
-			->send();
-	}
-	
-	/**
-	 * registrationFinished 
-	 * 
-	 * @param User $user 
-	 * @return void
-	 */
-	public function registrationFinished(User $user) {
-		$from = $this->settings['mailFrom'];
-		$to = $user->getEmail();
+        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage->setFrom($from)
+            ->setTo($to)
+            ->setSubject($subject)
+            ->setBody($body)
+            ->send();
+    }
+    
+    /**
+     * registrationFinished
+     *
+     * @param User $user
+     * @return void
+     */
+    public function registrationFinished(User $user)
+    {
+        $from = $this->settings['mailFrom'];
+        $to = $user->getEmail();
 
-		$subject = 'Registrierung www.tipptrip.de';
-		$body = 'Deine Registrierung wurde erfolgreich abgeschlossen' . chr(10) . chr(10);
-		$body .= 'Deine Zugangsdaten:' . chr(10);
-		$body .= 'URL: http://www.tipptrip.de/' . chr(10);
-		$body .= 'Username: ' . $user->getUsername() . chr(10);
-		$body .= 'Dein Passwort: **********' . chr(10) . chr(10);
-		$body .= 'Viel Spass wünscht Dir,' . chr(10);
-		$body .= 'das www.tipptrip.de-Team';
+        $subject = 'Registrierung www.tipptrip.de';
+        $body = 'Deine Registrierung wurde erfolgreich abgeschlossen' . chr(10) . chr(10);
+        $body .= 'Deine Zugangsdaten:' . chr(10);
+        $body .= 'URL: http://www.tipptrip.de/' . chr(10);
+        $body .= 'Username: ' . $user->getUsername() . chr(10);
+        $body .= 'Dein Passwort: **********' . chr(10) . chr(10);
+        $body .= 'Viel Spass wünscht Dir,' . chr(10);
+        $body .= 'das www.tipptrip.de-Team';
 
-		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
-		$mailMessage->setFrom($from)
-			->setTo($to)
-			->setSubject($subject)
-			->setBody($body)
-			->send();
-	}
+        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage->setFrom($from)
+            ->setTo($to)
+            ->setSubject($subject)
+            ->setBody($body)
+            ->send();
+    }
 
-	/**
-	 * @param ForgotPasswordRequest $forgotPasswordRequest
-	 * @param ActionRequest $actionRequest
-	 * @return void
-	 */
-	public function forgotPasswordRequest(ForgotPasswordRequest $forgotPasswordRequest, ActionRequest $actionRequest) {
-		$uriBuilder = new UriBuilder();
-		$uriBuilder->reset()->setRequest($actionRequest);
-		$uriBuilder->setCreateAbsoluteUri(TRUE);
-		$url = $uriBuilder->uriFor('index', array('hash' => $forgotPasswordRequest->getHash()), 'passwordRequest', 'AchimFritz.ChampionShip', 'User');
+    /**
+     * @param ForgotPasswordRequest $forgotPasswordRequest
+     * @param ActionRequest $actionRequest
+     * @return void
+     */
+    public function forgotPasswordRequest(ForgotPasswordRequest $forgotPasswordRequest, ActionRequest $actionRequest)
+    {
+        $uriBuilder = new UriBuilder();
+        $uriBuilder->reset()->setRequest($actionRequest);
+        $uriBuilder->setCreateAbsoluteUri(true);
+        $url = $uriBuilder->uriFor('index', array('hash' => $forgotPasswordRequest->getHash()), 'passwordRequest', 'AchimFritz.ChampionShip', 'User');
 
-		$from = $this->settings['mailFrom'];
-		$to = $forgotPasswordRequest->getUser()->getEmail();
+        $from = $this->settings['mailFrom'];
+        $to = $forgotPasswordRequest->getUser()->getEmail();
 
-		$subject = 'Passwort zurücksetzen / www.tipptrip.de';
-		$body = 'hier kannst du Dein Passwort zurücksetzen:' . chr(10) . chr(10);
-		$body .= $url . chr(10) . chr(10);
-		$body .= 'Username: ' . $forgotPasswordRequest->getUser()->getUsername() . chr(10). chr(10);
-		$body .= 'Viel Spass wünscht Dir,' . chr(10);
-		$body .= 'das www.tipptrip.de-Team';
-		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
-		$mailMessage->setFrom($from)
-			->setTo($to)
-			->setSubject($subject)
-			->setBody($body)
-			->send();
-	}
+        $subject = 'Passwort zurücksetzen / www.tipptrip.de';
+        $body = 'hier kannst du Dein Passwort zurücksetzen:' . chr(10) . chr(10);
+        $body .= $url . chr(10) . chr(10);
+        $body .= 'Username: ' . $forgotPasswordRequest->getUser()->getUsername() . chr(10). chr(10);
+        $body .= 'Viel Spass wünscht Dir,' . chr(10);
+        $body .= 'das www.tipptrip.de-Team';
+        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage->setFrom($from)
+            ->setTo($to)
+            ->setSubject($subject)
+            ->setBody($body)
+            ->send();
+    }
 
-	/**
-	 * registrationStarted
-	 * 
-	 * @param User $user 
-	 * @return void
-	 */
-	public function registrationStarted(RegistrationRequest $registrationRequest) {
-		$from = $this->settings['mailFrom'];
-		$to = $registrationRequest->getEmail();
+    /**
+     * registrationStarted
+     *
+     * @param User $user
+     * @return void
+     */
+    public function registrationStarted(RegistrationRequest $registrationRequest)
+    {
+        $from = $this->settings['mailFrom'];
+        $to = $registrationRequest->getEmail();
 
-		$subject = 'Registrierung www.tipptrip.de';
-		$body = 'Deine Registrierung wurde erfolgreich angelegt' . chr(10);
-		$body .= 'Der Administrator wird Deine Daten prüfen und sich dann bei Dir melden' . chr(10) . chr(10);
-		$body .= 'URL: http://www.tipptrip.de/' . chr(10) . chr(10);
-		$body .= 'Viel Spass wünscht Dir,' . chr(10);
-		$body .= 'das www.tipptrip.de-Team';
+        $subject = 'Registrierung www.tipptrip.de';
+        $body = 'Deine Registrierung wurde erfolgreich angelegt' . chr(10);
+        $body .= 'Der Administrator wird Deine Daten prüfen und sich dann bei Dir melden' . chr(10) . chr(10);
+        $body .= 'URL: http://www.tipptrip.de/' . chr(10) . chr(10);
+        $body .= 'Viel Spass wünscht Dir,' . chr(10);
+        $body .= 'das www.tipptrip.de-Team';
 
-		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
-		$mailMessage->setFrom($from)
-			->setTo($to)
-			->setSubject($subject)
-			->setBody($body)
-			->send();
+        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage->setFrom($from)
+            ->setTo($to)
+            ->setSubject($subject)
+            ->setBody($body)
+            ->send();
 
-		$to = $this->settings['mailTo'];
-		$subject = 'registration start';
-		$body = 'the user ' . $registrationRequest->getUsername() . ' / ' . $registrationRequest->getEmail() . ' has start a registration request';
+        $to = $this->settings['mailTo'];
+        $subject = 'registration start';
+        $body = 'the user ' . $registrationRequest->getUsername() . ' / ' . $registrationRequest->getEmail() . ' has start a registration request';
 
-		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
-		$mailMessage->setFrom($from)
-			->setTo($to)
-			->setSubject($subject)
-			->setBody($body)
-			->send();
-	}
+        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage->setFrom($from)
+            ->setTo($to)
+            ->setSubject($subject)
+            ->setBody($body)
+            ->send();
+    }
 
-	/**
-	 * contactStarted 
-	 * 
-	 * @param User $user 
-	 * @return void
-	 */
-	public function contactStarted(ContactRequest $contactRequest) {
-		$from = $this->settings['mailFrom'];
-		$to = $contactRequest->getEmail();
+    /**
+     * contactStarted
+     *
+     * @param User $user
+     * @return void
+     */
+    public function contactStarted(ContactRequest $contactRequest)
+    {
+        $from = $this->settings['mailFrom'];
+        $to = $contactRequest->getEmail();
 
-		$subject = 'Kontakt Anfrage www.tipptrip.de';
-		$body = 'Deine Kontakt Anfrage ist bei uns eingegangen' . chr(10);
-		$body = 'Der Administrator wird Deine Daten prüfen und sich dann bei Dir melden' . chr(10) . chr(10);
-		$body .= 'URL: http://www.tipptrip.de/' . chr(10) . chr(10);
-		$body .= 'Viel Spass wünscht Dir,' . chr(10);
-		$body .= 'das www.tipptrip.de-Team';
+        $subject = 'Kontakt Anfrage www.tipptrip.de';
+        $body = 'Deine Kontakt Anfrage ist bei uns eingegangen' . chr(10);
+        $body = 'Der Administrator wird Deine Daten prüfen und sich dann bei Dir melden' . chr(10) . chr(10);
+        $body .= 'URL: http://www.tipptrip.de/' . chr(10) . chr(10);
+        $body .= 'Viel Spass wünscht Dir,' . chr(10);
+        $body .= 'das www.tipptrip.de-Team';
 
-		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
-		$mailMessage->setFrom($from)
-			->setTo($to)
-			->setSubject($subject)
-			->setBody($body)
-			->send();
+        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage->setFrom($from)
+            ->setTo($to)
+            ->setSubject($subject)
+            ->setBody($body)
+            ->send();
 
-		$to = $this->settings['mailTo'];
-		$subject = 'contact request';
-		$body = 'the user ' . $contactRequest->getEmail() . ' has start a contact request';
+        $to = $this->settings['mailTo'];
+        $subject = 'contact request';
+        $body = 'the user ' . $contactRequest->getEmail() . ' has start a contact request';
 
-		$mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
-		$mailMessage->setFrom($from)
-			->setTo($to)
-			->setSubject($subject)
-			->setBody($body)
-			->send();
-	}
+        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage->setFrom($from)
+            ->setTo($to)
+            ->setSubject($subject)
+            ->setBody($body)
+            ->send();
+    }
 }
-

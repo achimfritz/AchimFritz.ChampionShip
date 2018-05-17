@@ -15,110 +15,115 @@ use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
  *
  * @Flow\Scope("singleton")
  */
-class UserRepository extends \TYPO3\Flow\Persistence\Repository {
+class UserRepository extends \TYPO3\Flow\Persistence\Repository
+{
 
-	/**
-	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Security\AccountRepository
-	 */
-	protected $accountRepository;
+    /**
+     * @Flow\Inject
+     * @var \TYPO3\Flow\Security\AccountRepository
+     */
+    protected $accountRepository;
 
-	/**
-	 * findOneByUsername 
-	 * 
-	 * @param string $username 
-	 * @return User|NULL
-	 */
-	public function findOneByUsername($username) {
-		return $this->findOneByAccountIdentifier($username);
-	}
+    /**
+     * findOneByUsername
+     *
+     * @param string $username
+     * @return User|NULL
+     */
+    public function findOneByUsername($username)
+    {
+        return $this->findOneByAccountIdentifier($username);
+    }
 
-	/**
-	 * @param \Doctrine\Common\Collections\Collection $tipGroups
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findInTipGroups(\Doctrine\Common\Collections\Collection $tipGroups) {
-		$identifiers = array();
-		foreach ($tipGroups as $tipGroup) {
-			$identifiers[] = $this->persistenceManager->getIdentifierByObject($tipGroup);
-		}
-		$query = $this->createQuery();
-		return $query->matching(
-			$query->in('tipGroup', $identifiers)
-		)->execute();
-	}
+    /**
+     * @param \Doctrine\Common\Collections\Collection $tipGroups
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findInTipGroups(\Doctrine\Common\Collections\Collection $tipGroups)
+    {
+        $identifiers = array();
+        foreach ($tipGroups as $tipGroup) {
+            $identifiers[] = $this->persistenceManager->getIdentifierByObject($tipGroup);
+        }
+        $query = $this->createQuery();
+        return $query->matching(
+            $query->in('tipGroup', $identifiers)
+        )->execute();
+    }
 
-	/**
-	 * @param \Doctrine\Common\Collections\Collection $tipGroups
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findInTipGroupsAndEnabled(\Doctrine\Common\Collections\Collection $tipGroups) {
-		$constraints = array();
-		$query = $this->createQuery();
-		foreach ($tipGroups as $tipGroup) {
-			$constraints[] = $query->contains('tipGroups', $tipGroup);
-		}
-		return $query->matching(
-			$query->logicalAnd(
-				$query->logicalOr($constraints),
-				$query->equals('disabled', FALSE)
-			)
-		)->execute();
-	}
+    /**
+     * @param \Doctrine\Common\Collections\Collection $tipGroups
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findInTipGroupsAndEnabled(\Doctrine\Common\Collections\Collection $tipGroups)
+    {
+        $constraints = array();
+        $query = $this->createQuery();
+        foreach ($tipGroups as $tipGroup) {
+            $constraints[] = $query->contains('tipGroups', $tipGroup);
+        }
+        return $query->matching(
+            $query->logicalAnd(
+                $query->logicalOr($constraints),
+                $query->equals('disabled', false)
+            )
+        )->execute();
+    }
 
-	/**
-	 * findOneByAccountIdentifier
-	 * 
-	 * @param string $username 
-	 * @return User|NULL
-	 */
-	public function findOneByAccountIdentifier($accountIdentifier) {
-		$query = $this->createQuery();
-		return $query->matching(
-					$query->equals('account.accountIdentifier', $accountIdentifier)
-				)
-			->execute()->getFirst();
-	}
+    /**
+     * findOneByAccountIdentifier
+     *
+     * @param string $username
+     * @return User|NULL
+     */
+    public function findOneByAccountIdentifier($accountIdentifier)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
+                    $query->equals('account.accountIdentifier', $accountIdentifier)
+                )
+            ->execute()->getFirst();
+    }
 
-	/**
-	 * findOneByIdentifierAndEmail 
-	 * 
-	 * @param string $identifier 
-	 * @param string $email 
-	 * @return Uesr|NULL
-	 */
-	public function findOneByIdentifierAndEmail($identifier, $email) {
-		$query = $this->createQuery();
-		return $query->matching(
-				$query->logicalAnd(
-					$query->equals('account.accountIdentifier', $identifier),
-					$query->equals('email', $email)
-					)
-				)
-			->execute()->getFirst();
-	}
+    /**
+     * findOneByIdentifierAndEmail
+     *
+     * @param string $identifier
+     * @param string $email
+     * @return Uesr|NULL
+     */
+    public function findOneByIdentifierAndEmail($identifier, $email)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
+                $query->logicalAnd(
+                    $query->equals('account.accountIdentifier', $identifier),
+                    $query->equals('email', $email)
+                    )
+                )
+            ->execute()->getFirst();
+    }
 
-	/**
-	 * findInTipGroup 
-	 * 
-	 * @param TipGroup $tipGroup 
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findInTipGroup(TipGroup $tipGroup) {
-		$query = $this->createQuery();
-		return $query->matching(
-			$query->contains('tipGroups', $tipGroup)
-		)->execute();
-	}
+    /**
+     * findInTipGroup
+     *
+     * @param TipGroup $tipGroup
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findInTipGroup(TipGroup $tipGroup)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
+            $query->contains('tipGroups', $tipGroup)
+        )->execute();
+    }
 
-	/**
-	 * @param User $user
-	 * @return void
-	 */
-	public function updateSecurityChecked(User $user) {
-		$this->persistenceManager->update($user);
-	}
-
-
+    /**
+     * @param User $user
+     * @return void
+     */
+    public function updateSecurityChecked(User $user)
+    {
+        $this->persistenceManager->update($user);
+    }
 }
-?>

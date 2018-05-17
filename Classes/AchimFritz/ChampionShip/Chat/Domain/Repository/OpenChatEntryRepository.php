@@ -11,8 +11,6 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Scope("singleton")
  */
-class OpenChatEntryRepository extends ChatEntryRepository {
-
-
+class OpenChatEntryRepository extends ChatEntryRepository
+{
 }
-?>

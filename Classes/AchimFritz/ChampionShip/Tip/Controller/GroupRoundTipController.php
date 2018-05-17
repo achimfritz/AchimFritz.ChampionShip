@@ -11,44 +11,42 @@ use TYPO3\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\Round;
 
 /**
- * GroupRound controller for the AchimFritz.ChampionShip package 
+ * GroupRound controller for the AchimFritz.ChampionShip package
  *
  * @Flow\Scope("singleton")
  */
-class GroupRoundTipController extends AbstractActionController {
-	
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupRoundRepository
-	 */
-	protected $roundRepository;
+class GroupRoundTipController extends AbstractActionController
+{
+    
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\GroupRoundRepository
+     */
+    protected $roundRepository;
 
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
-	 */
-	protected $tipRepository;
-	
-	/**
-	 * showAction
-	 * 
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round
-	 */
-	public function listAction(Round $round = NULL) {
-		if ($round === NULL) {
-			$round = $this->roundRepository->findOneByCup($this->cup);
-		}
-		if ($round instanceof Round) {
-			$tips = $this->tipRepository->findByUserInRound($this->user, $round);
-			$this->view->assign('tips', $tips);
-			$this->view->assign('round', $round);
-			$this->view->assign('allRounds', $this->roundRepository->findByCup($round->getCup()));
-		} else {
-			$this->addErrorMessage('no rounds found');
-		}
-	}
-
-
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
+     */
+    protected $tipRepository;
+    
+    /**
+     * showAction
+     *
+     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round
+     */
+    public function listAction(Round $round = null)
+    {
+        if ($round === null) {
+            $round = $this->roundRepository->findOneByCup($this->cup);
+        }
+        if ($round instanceof Round) {
+            $tips = $this->tipRepository->findByUserInRound($this->user, $round);
+            $this->view->assign('tips', $tips);
+            $this->view->assign('round', $round);
+            $this->view->assign('allRounds', $this->roundRepository->findByCup($round->getCup()));
+        } else {
+            $this->addErrorMessage('no rounds found');
+        }
+    }
 }
-
-?>

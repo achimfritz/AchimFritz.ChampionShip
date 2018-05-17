@@ -14,33 +14,35 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow;
  *
  *	@Flow\Scope("singleton")
  */
-class FifaPointEqualityPolicy extends AbstractPointEqualityPolicy {
+class FifaPointEqualityPolicy extends AbstractPointEqualityPolicy
+{
 
    /**
-    * rowsAreEquay 
-    * 
-    * @param GroupTableRow $rowOne 
-    * @param GroupTableRow $rowTwo 
+    * rowsAreEquay
+    *
+    * @param GroupTableRow $rowOne
+    * @param GroupTableRow $rowTwo
     * @return boolean
     */
-   protected function rowsAreEqual(GroupTableRow $rowOne, GroupTableRow $rowTwo) {
-		$this->addMessage('comparing ' . $rowOne->getTeam()->getName() . ' - ' . $rowTwo->getTeam()->getName());
-      if ($rowOne->getPoints() === $rowTwo->getPoints()
-         AND $rowOne->getGoalsDiff() === $rowTwo->getGoalsDiff()
-         AND $rowOne->getGoalsPlus() === $rowTwo->getGoalsPlus()) {
-         return TRUE;
-      } else {
-         return FALSE;
-      }
-   }
+    protected function rowsAreEqual(GroupTableRow $rowOne, GroupTableRow $rowTwo)
+    {
+        $this->addMessage('comparing ' . $rowOne->getTeam()->getName() . ' - ' . $rowTwo->getTeam()->getName());
+        if ($rowOne->getPoints() === $rowTwo->getPoints()
+         and $rowOne->getGoalsDiff() === $rowTwo->getGoalsDiff()
+         and $rowOne->getGoalsPlus() === $rowTwo->getGoalsPlus()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	/**
-	 * getPolicyName 
-	 * 
-	 * @return string
-	 */
-	protected function getPolicyName() {
-		return 'fifa policy';
-	}
+    /**
+     * getPolicyName
+     *
+     * @return string
+     */
+    protected function getPolicyName()
+    {
+        return 'fifa policy';
+    }
 }
-?>

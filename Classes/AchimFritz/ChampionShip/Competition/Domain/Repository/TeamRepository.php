@@ -13,14 +13,15 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class TeamRepository extends \TYPO3\Flow\Persistence\Repository {
+class TeamRepository extends \TYPO3\Flow\Persistence\Repository
+{
 
-	/**
-	 * @return void
-	 */
-	public function __construct() {
-		parent::__construct();
-		$this->setDefaultOrderings(array('name' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
-	}
-
+    /**
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setDefaultOrderings(array('name' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
+    }
 }

@@ -13,18 +13,17 @@ use TYPO3\Flow\Persistence\QueryInterface;
 /**
  * @Flow\Scope("singleton")
  */
-class ChatEntryRepository extends Repository {
+class ChatEntryRepository extends Repository
+{
 
-	/**
-	 * __construct 
-	 * 
-	 * @return void
-	 */
-	public function __construct() {
-		parent::__construct();
-		$this->setDefaultOrderings(array('creationDate' => QueryInterface::ORDER_ASCENDING));
-	}
-
-
+    /**
+     * __construct
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setDefaultOrderings(array('creationDate' => QueryInterface::ORDER_ASCENDING));
+    }
 }
-?>

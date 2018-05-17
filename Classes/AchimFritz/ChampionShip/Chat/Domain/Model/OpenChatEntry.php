@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @Flow\Entity
  */
-class OpenChatEntry extends ChatEntry {
-
+class OpenChatEntry extends ChatEntry
+{
 }
-?>

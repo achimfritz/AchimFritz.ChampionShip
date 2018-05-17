@@ -12,6 +12,6 @@ use TYPO3\Flow\Persistence\Repository;
 /**
  * @Flow\Scope("singleton")
  */
-class ForgotPasswordRequestRepository extends Repository {
-
+class ForgotPasswordRequestRepository extends Repository
+{
 }

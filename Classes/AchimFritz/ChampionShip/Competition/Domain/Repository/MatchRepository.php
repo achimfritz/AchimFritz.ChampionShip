@@ -17,143 +17,150 @@ use TYPO3\Flow\Persistence\QueryInterface;
  *
  * @Flow\Scope("singleton")
  */
-class MatchRepository extends \TYPO3\Flow\Persistence\Repository {
+class MatchRepository extends \TYPO3\Flow\Persistence\Repository
+{
 
-	/**
-	 * __construct 
-	 * 
-	 * @return void
-	 */
-	public function __construct() {
-		parent::__construct();
-		$this->setDefaultOrderings(array('startDate' => QueryInterface::ORDER_ASCENDING));
-	}
+    /**
+     * __construct
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setDefaultOrderings(array('startDate' => QueryInterface::ORDER_ASCENDING));
+    }
 
-	/**
-	 * findByTeam
-	 * 
-	 * @param Team $team
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findByTeam(Team $team) {
-		$query = $this->createQuery();
-		return $query->matching(
+    /**
+     * findByTeam
+     *
+     * @param Team $team
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findByTeam(Team $team)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
             $query->logicalOr(
-				$query->equals('hostTeam', $team),
-				$query->equals('guestTeam', $team)
-			)
-		)
-		->execute();
-	}
+                $query->equals('hostTeam', $team),
+                $query->equals('guestTeam', $team)
+            )
+        )
+        ->execute();
+    }
 
-	/**
-	 * findOneByTowTeamsAndCup
-	 * 
-	 * @param Team $team
-	 * @param Team $otherTeam
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findOneByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup) {
-		return $this->findByTwoTeamsAndCup($team, $otherTeam, $cup)->getFirst();
-	}
+    /**
+     * findOneByTowTeamsAndCup
+     *
+     * @param Team $team
+     * @param Team $otherTeam
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findOneByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup)
+    {
+        return $this->findByTwoTeamsAndCup($team, $otherTeam, $cup)->getFirst();
+    }
 
-	/**
-	 * findByTowTeamsAndCup
-	 * 
-	 * @param Team $team
-	 * @param Team $otherTeam
-	 * @param Cup $cup
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup) {
-		$query = $this->createQuery();
-		return $query->matching(
+    /**
+     * findByTowTeamsAndCup
+     *
+     * @param Team $team
+     * @param Team $otherTeam
+     * @param Cup $cup
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
             $query->logicalAnd(
-					$query->logicalOr(
-						$query->logicalAnd(
-							$query->equals('hostTeam', $team),
-							$query->equals('guestTeam', $otherTeam)
-						),
-						$query->logicalAnd(
-							$query->equals('guestTeam', $team),
-							$query->equals('hostTeam', $otherTeam)
-						)
-					),
-					$query->equals('cup', $cup)
-				)
-		)
-		->execute();
-	}
+                    $query->logicalOr(
+                        $query->logicalAnd(
+                            $query->equals('hostTeam', $team),
+                            $query->equals('guestTeam', $otherTeam)
+                        ),
+                        $query->logicalAnd(
+                            $query->equals('guestTeam', $team),
+                            $query->equals('hostTeam', $otherTeam)
+                        )
+                    ),
+                    $query->equals('cup', $cup)
+                )
+        )
+        ->execute();
+    }
 
-	/**
-	 * findOneByNameAndCup 
-	 * 
-	 * @param string $name 
-	 * @param Cup $cup 
-	 * @return Match|NULL
-	 */
-	public function findOneByNameAndCup($name, Cup $cup) {
-		$query = $this->createQuery();
-		return $query->matching(
+    /**
+     * findOneByNameAndCup
+     *
+     * @param string $name
+     * @param Cup $cup
+     * @return Match|NULL
+     */
+    public function findOneByNameAndCup($name, Cup $cup)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
             $query->logicalAnd(
-					$query->equals('cup', $cup),
-					$query->equals('name', $name)
-				)
-		)
-		->execute()->getFirst();
-	}
+                    $query->equals('cup', $cup),
+                    $query->equals('name', $name)
+                )
+        )
+        ->execute()->getFirst();
+    }
 
-	/**
-	 * findLastByCup 
-	 * 
-	 * @param Cup $cup 
-	 * @param integer $limit
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findLastByCup(Cup $cup, $limit = 2) {
-		$query = $this->createQuery();
-		$query->setOrderings(array('startDate' => QueryInterface::ORDER_DESCENDING));
-		$now = new \DateTime();
-		$result = $query->setLimit($limit)->matching(
-			$query->logicalAnd(
-				$query->equals('cup', $cup),
-				$query->lessThan('startDate', $now)
-			)
-		)
-		->execute();
-		return $result;
-	}
+    /**
+     * findLastByCup
+     *
+     * @param Cup $cup
+     * @param integer $limit
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findLastByCup(Cup $cup, $limit = 2)
+    {
+        $query = $this->createQuery();
+        $query->setOrderings(array('startDate' => QueryInterface::ORDER_DESCENDING));
+        $now = new \DateTime();
+        $result = $query->setLimit($limit)->matching(
+            $query->logicalAnd(
+                $query->equals('cup', $cup),
+                $query->lessThan('startDate', $now)
+            )
+        )
+        ->execute();
+        return $result;
+    }
 
-	/**
-	 * findNextByCup 
-	 * 
-	 * @param Cup $cup 
-	 * @param integer $limit
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findNextByCup(Cup $cup, $limit = 2) {
-		$query = $this->createQuery();
-		$now = new \DateTime();
-		$result = $query->setLimit($limit)->matching(
-			$query->logicalAnd(
-				$query->equals('cup', $cup),
-				$query->greaterThan('startDate', $now)
-			)
-		)
-		->execute();
-		return $result;
-	}
+    /**
+     * findNextByCup
+     *
+     * @param Cup $cup
+     * @param integer $limit
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findNextByCup(Cup $cup, $limit = 2)
+    {
+        $query = $this->createQuery();
+        $now = new \DateTime();
+        $result = $query->setLimit($limit)->matching(
+            $query->logicalAnd(
+                $query->equals('cup', $cup),
+                $query->greaterThan('startDate', $now)
+            )
+        )
+        ->execute();
+        return $result;
+    }
 
-	/**
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findInFuture() {
-		$query = $this->createQuery();
-		$now = new \DateTime();
-		return $query->matching(
-			$query->greaterThan('startDate', $now)
-		)->execute();
-	}
-
-
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findInFuture()
+    {
+        $query = $this->createQuery();
+        $now = new \DateTime();
+        return $query->matching(
+            $query->greaterThan('startDate', $now)
+        )->execute();
+    }
 }

@@ -16,62 +16,63 @@ use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroupResultMatrixRow;
 /**
  * @Flow\Scope("singleton")
  */
-class TipGroupResultMatrixFactory {
+class TipGroupResultMatrixFactory
+{
 
-	/**
-	 * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
-	 * @Flow\Inject
-	 */
-	protected $tipRepository;
+    /**
+     * @var \AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository
+     * @Flow\Inject
+     */
+    protected $tipRepository;
 
-	/**
-	 * create 
-	 * 
-	 * @param QueryResult<\AchimFritz\ChampionShip\User\Domain\Model\User>
-	 * @param QueryResult<\AchimFritz\ChampionShip\Competition\Domain\Model\Match>
-	 * @return TipGroupResultMatrix
-	 */
-	public function create(QueryResult $users, QueryResult $matches) {
-		$matrix = new TipGroupResultMatrix();
-		$usersWithTips = new ArrayCollection();
-		// filter users
-		foreach ($users AS $user) {
-			foreach ($matches AS $match) {
-				$tips = $this->tipRepository->findByUser($user);
-				foreach ($tips AS $tip) {
-					if ($tip->getMatch() === $match) {
-						$usersWithTips->add($user);
-						continue 3;
-					}
-				}
-			}
-		}
+    /**
+     * create
+     *
+     * @param QueryResult<\AchimFritz\ChampionShip\User\Domain\Model\User>
+     * @param QueryResult<\AchimFritz\ChampionShip\Competition\Domain\Model\Match>
+     * @return TipGroupResultMatrix
+     */
+    public function create(QueryResult $users, QueryResult $matches)
+    {
+        $matrix = new TipGroupResultMatrix();
+        $usersWithTips = new ArrayCollection();
+        // filter users
+        foreach ($users as $user) {
+            foreach ($matches as $match) {
+                $tips = $this->tipRepository->findByUser($user);
+                foreach ($tips as $tip) {
+                    if ($tip->getMatch() === $match) {
+                        $usersWithTips->add($user);
+                        continue 3;
+                    }
+                }
+            }
+        }
 
-		$rows = new ArrayCollection();
-		foreach ($matches AS $match) {
-			$row = new TipGroupResultMatrixRow();
-			$row->setMatch($match);
-			$tips = new ArrayCollection();
-			foreach ($usersWithTips AS $user) {
-				$tipFound = FALSE;
-				$userTips = $this->tipRepository->findByUser($user);
-				foreach ($userTips AS $tip) {
-					if ($tip->getMatch() === $match) {
-						$tipFound = TRUE;
-						$tips->add($tip);
-						continue;
-					}
-				}
-				if ($tipFound === FALSE) {
-					$tips->add(new Tip());
-				}
-			}
-			$row->setTips($tips);
-			$rows->add($row);
-		}
-		$matrix->setUsers($usersWithTips);
-		$matrix->setRows($rows);
-		return $matrix;
-	}
+        $rows = new ArrayCollection();
+        foreach ($matches as $match) {
+            $row = new TipGroupResultMatrixRow();
+            $row->setMatch($match);
+            $tips = new ArrayCollection();
+            foreach ($usersWithTips as $user) {
+                $tipFound = false;
+                $userTips = $this->tipRepository->findByUser($user);
+                foreach ($userTips as $tip) {
+                    if ($tip->getMatch() === $match) {
+                        $tipFound = true;
+                        $tips->add($tip);
+                        continue;
+                    }
+                }
+                if ($tipFound === false) {
+                    $tips->add(new Tip());
+                }
+            }
+            $row->setTips($tips);
+            $rows->add($row);
+        }
+        $matrix->setUsers($usersWithTips);
+        $matrix->setRows($rows);
+        return $matrix;
+    }
 }
-?>

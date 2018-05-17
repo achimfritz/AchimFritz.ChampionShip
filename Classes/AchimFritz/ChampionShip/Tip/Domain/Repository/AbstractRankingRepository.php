@@ -15,31 +15,32 @@ use TYPO3\Flow\Persistence\QueryInterface;
  *
  * @Flow\Scope("singleton")
  */
-abstract class AbstractRankingRepository extends Repository {
+abstract class AbstractRankingRepository extends Repository
+{
 
-	/**
-	 * @return void
-	 */
-	public function __construct() {
-		parent::__construct();
-		$this->setDefaultOrderings(array('rank' => QueryInterface::ORDER_ASCENDING));
-	}
+    /**
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setDefaultOrderings(array('rank' => QueryInterface::ORDER_ASCENDING));
+    }
 
-	/**
-	 * @param \TYPO3\Flow\Persistence\QueryResultInterface|array $users
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findByUsers($users) {
-		$identifiers = array();
-		foreach ($users as $user) {
-			$identifiers[] = $this->persistenceManager->getIdentifierByObject($user);
-		}
-		$query = $this->createQuery();
-		return $query->matching(
-				$query->in('user', $identifiers)
-			)
-		->execute();
-	}
-
-
+    /**
+     * @param \TYPO3\Flow\Persistence\QueryResultInterface|array $users
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findByUsers($users)
+    {
+        $identifiers = array();
+        foreach ($users as $user) {
+            $identifiers[] = $this->persistenceManager->getIdentifierByObject($user);
+        }
+        $query = $this->createQuery();
+        return $query->matching(
+                $query->in('user', $identifiers)
+            )
+        ->execute();
+    }
 }

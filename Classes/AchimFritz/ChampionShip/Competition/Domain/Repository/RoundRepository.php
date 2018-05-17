@@ -15,36 +15,37 @@ use \TYPO3\Flow\Persistence\QueryInterface;
  *
  * @Flow\Scope("singleton")
  */
-class RoundRepository extends \TYPO3\Flow\Persistence\Repository {
+class RoundRepository extends \TYPO3\Flow\Persistence\Repository
+{
 
-	/**
-	 * __construct 
-	 * 
-	 * @return void
-	 */
-	public function __construct() {
-		parent::__construct();
-		$this->setDefaultOrderings(array('generalMatches.startDate' => QueryInterface::ORDER_ASCENDING));
-	}
+    /**
+     * __construct
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setDefaultOrderings(array('generalMatches.startDate' => QueryInterface::ORDER_ASCENDING));
+    }
 
-	
-	/**
-	 * findOneByNameAndCup
-	 * 
-	 * @param string $name
-	 * @param Cup $cup
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
-	public function findOneByNameAndCup($name, Cup $cup) {
-		$query = $this->createQuery();
-		return $query->matching(
+    
+    /**
+     * findOneByNameAndCup
+     *
+     * @param string $name
+     * @param Cup $cup
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findOneByNameAndCup($name, Cup $cup)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
             $query->logicalAnd(
-				$query->equals('name', $name),
-				$query->equals('cup', $cup)
-			)
-		)
-		->execute()->getFirst();
-	}
-
+                $query->equals('name', $name),
+                $query->equals('cup', $cup)
+            )
+        )
+        ->execute()->getFirst();
+    }
 }
-?>

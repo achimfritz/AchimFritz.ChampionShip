@@ -13,6 +13,6 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class KoMatchRepository extends MatchRepository {
-
+class KoMatchRepository extends MatchRepository
+{
 }

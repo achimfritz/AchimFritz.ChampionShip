@@ -14,33 +14,35 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @Flow\Entity
  */
-class TipGroup {
-	
-	/**
-	 * The name
-	 * @var string
-	 * @Flow\Identity
-	 * @Flow\Validate(type="NotEmpty")
-	 */
-	protected $name;
+class TipGroup
+{
+    
+    /**
+     * The name
+     * @var string
+     * @Flow\Identity
+     * @Flow\Validate(type="NotEmpty")
+     */
+    protected $name;
 
-	/**
-	 * getName
-	 *
-	 * @return string 
-	 */
-	public function getName() {
-		return $this->name;
-	}
+    /**
+     * getName
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-	/**
-	 * setName
-	 *
-	 * @param string $name
-	 * @return void
-	 */
-	public function setName($name) {
-		$this->name = $name;
-	}
+    /**
+     * setName
+     *
+     * @param string $name
+     * @return void
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 }
-?>

@@ -13,8 +13,6 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class KoRoundRepository extends RoundRepository {
-
-	
+class KoRoundRepository extends RoundRepository
+{
 }
-?>

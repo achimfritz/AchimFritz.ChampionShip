@@ -15,40 +15,39 @@ use AchimFritz\ChampionShip\Import\Domain\Model\Match;
  *
  * @Flow\Scope("singleton")
  */
-class CupFactory {
+class CupFactory
+{
 
    /**
     * @Flow\Inject
     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository
     */
-   protected $cupRepository;
+    protected $cupRepository;
 
-   /**
-    * createFromMatch
-    * 
-    * @param AchimFritz\ChampionShip\Import\Domain\Model\Match $match 
-    * @param array $teams
-    * @return Cup $cup
-    */
-   public function createFromMatch(Match $match, array $teams) {
-      $cup = $this->cupRepository->findOneByName($match->getCupName());
-      if (!$cup instanceof Cup) {
-         $cup = new Cup();
-			$startDate = new \DateTime();
-			$startDate->setTimestamp($match->getStartDate());
-         $cup->setStartDate($startDate);
-         $cup->setName($match->getCupName());
-         $this->cupRepository->add($cup);
-      }
-      foreach ($teams AS $team) {
-         if (!$cup->hasTeam($team)) {
-            $cup->addTeam($team);
-         }
-      }
-      $this->cupRepository->update($cup);
-      return $cup;
-   }
-
+    /**
+     * createFromMatch
+     *
+     * @param AchimFritz\ChampionShip\Import\Domain\Model\Match $match
+     * @param array $teams
+     * @return Cup $cup
+     */
+    public function createFromMatch(Match $match, array $teams)
+    {
+        $cup = $this->cupRepository->findOneByName($match->getCupName());
+        if (!$cup instanceof Cup) {
+            $cup = new Cup();
+            $startDate = new \DateTime();
+            $startDate->setTimestamp($match->getStartDate());
+            $cup->setStartDate($startDate);
+            $cup->setName($match->getCupName());
+            $this->cupRepository->add($cup);
+        }
+        foreach ($teams as $team) {
+            if (!$cup->hasTeam($team)) {
+                $cup->addTeam($team);
+            }
+        }
+        $this->cupRepository->update($cup);
+        return $cup;
+    }
 }
-
-?>

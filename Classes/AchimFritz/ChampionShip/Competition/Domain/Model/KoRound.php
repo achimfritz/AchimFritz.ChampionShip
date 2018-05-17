@@ -14,13 +14,12 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @Flow\Entity
  */
-class KoRound extends Round {
+class KoRound extends Round
+{
 
-	/**
-	 * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound>
-	 * @ORM\OneToMany(mappedBy="parentRound", cascade={"remove"})
-	 */
-	protected $childKoRounds;
-
+    /**
+     * @var \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound>
+     * @ORM\OneToMany(mappedBy="parentRound", cascade={"remove"})
+     */
+    protected $childKoRounds;
 }
-?>

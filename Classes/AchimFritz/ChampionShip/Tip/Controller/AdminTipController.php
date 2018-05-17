@@ -9,13 +9,10 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
- * Standard controller for the AchimFritz.ChampionShip package 
+ * Standard controller for the AchimFritz.ChampionShip package
  *
  * @Flow\Scope("singleton")
  */
-class AdminTipController extends TipController {
-
-
+class AdminTipController extends TipController
+{
 }
-
-?>

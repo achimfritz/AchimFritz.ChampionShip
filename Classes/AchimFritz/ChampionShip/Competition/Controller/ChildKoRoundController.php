@@ -11,50 +11,52 @@ use TYPO3\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound;
 
 /**
- * ChildKoRound controller for the AchimFritz.ChampionShip package 
+ * ChildKoRound controller for the AchimFritz.ChampionShip package
  *
  * @Flow\Scope("singleton")
  */
-class ChildKoRoundController extends RoundController {
-	
-	/**
-	 * @Flow\Inject
-	 * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
-	 */
-	protected $roundRepository;
-	
-	/**
-	 * createAction
-	 *
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound $round
-	 * @return void
-	 */
-	public function createAction(ChildKoRound $round) {
-		$this->createRound($round);
-		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup(), 'round' => $round));
-	}
+class ChildKoRoundController extends RoundController
+{
+    
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\KoRoundRepository
+     */
+    protected $roundRepository;
+    
+    /**
+     * createAction
+     *
+     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound $round
+     * @return void
+     */
+    public function createAction(ChildKoRound $round)
+    {
+        $this->createRound($round);
+        $this->redirect('index', 'KoRound', null, array('cup' => $round->getCup(), 'round' => $round));
+    }
 
-	/**
-	 * updateAction
-	 *
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound $round
-	 * @return void
-	 */
-	public function updateAction(ChildKoRound $round) {
-		$this->updateRound($round);
-		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup(), 'round' => $round));
-	}
+    /**
+     * updateAction
+     *
+     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound $round
+     * @return void
+     */
+    public function updateAction(ChildKoRound $round)
+    {
+        $this->updateRound($round);
+        $this->redirect('index', 'KoRound', null, array('cup' => $round->getCup(), 'round' => $round));
+    }
 
-	/**
-	 * deleteAction
-	 *
-	 * @param \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound $round
-	 * @return void
-	 */
-	public function deleteAction(ChildKoRound $round) {
-		$this->deleteRound($round);
-		$this->redirect('index', 'KoRound', NULL, array('cup' => $round->getCup()));
-	}
+    /**
+     * deleteAction
+     *
+     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound $round
+     * @return void
+     */
+    public function deleteAction(ChildKoRound $round)
+    {
+        $this->deleteRound($round);
+        $this->redirect('index', 'KoRound', null, array('cup' => $round->getCup()));
+    }
 }
-
-?>

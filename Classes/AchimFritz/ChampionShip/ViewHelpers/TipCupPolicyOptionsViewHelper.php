@@ -15,40 +15,40 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Reflection\ClassReflection;
 
 /**
- * 
+ *
  * Enter description here ...
  * @author af
  *
  */
-class TipCupPolicyOptionsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class TipCupPolicyOptionsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
-	
-	/**
-	 * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
-	 * @see AbstractViewHelper::isOutputEscapingEnabled()
-	 * @var boolean
-	 */
-	protected $escapeOutput = FALSE;
+    
+    /**
+     * NOTE: This property has been introduced via code migration to ensure backwards-compatibility.
+     * @see AbstractViewHelper::isOutputEscapingEnabled()
+     * @var boolean
+     */
+    protected $escapeOutput = false;
 
-	/**
-	 * render
-	 *
-	 * workaround for http://lists.typo3.org/pipermail/typo3-project-typo3v4mvc/2011-May/009509.html
-	 * @param string $prefix
-	 * @return array
-	 */
-	public function render($prefix) {
-		$classReflection = new ClassReflection('AchimFritz\ChampionShip\Tip\Domain\Model\TipCup');
-		$constants = $classReflection->getConstants();
-		$options = array();
-		foreach ($constants AS $name => $val) {
-			if (strpos($name, $prefix) !== FALSE) {
-				$name = str_replace($prefix . '_', '', $name);
-				$options[$val] = $name;
-			}
-		}
-		return $options;
-	}
+    /**
+     * render
+     *
+     * workaround for http://lists.typo3.org/pipermail/typo3-project-typo3v4mvc/2011-May/009509.html
+     * @param string $prefix
+     * @return array
+     */
+    public function render($prefix)
+    {
+        $classReflection = new ClassReflection('AchimFritz\ChampionShip\Tip\Domain\Model\TipCup');
+        $constants = $classReflection->getConstants();
+        $options = array();
+        foreach ($constants as $name => $val) {
+            if (strpos($name, $prefix) !== false) {
+                $name = str_replace($prefix . '_', '', $name);
+                $options[$val] = $name;
+            }
+        }
+        return $options;
+    }
 }
-
-?>
