@@ -95,7 +95,8 @@ class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController
      */
     public function updateCommand()
     {
-        $groupRounds = $this->groupRoundRepository->findAll();
+        $cup = $this->cupRepository->findOneByName('wm 2018');
+        $groupRounds = $this->groupRoundRepository->findByCup($cup);
         #$groupRounds = array($this->groupRoundRepository->findOneByName('Gruppe A'));
         foreach ($groupRounds as $groupRound) {
             if ($groupRound->getName() != 'G' or $groupRound->getCup()->getName() != 'wm 2002') {
