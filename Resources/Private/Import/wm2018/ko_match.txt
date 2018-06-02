@@ -1,0 +1,16 @@
+AF1:30.06.2018 16:00 Uhr, Kasan: Sieger Gruppe C - Zweiter Gruppe D:1C:2D:49:2
+AF2:30.06.2018 20:00 Uhr, Sotschi: Sieger Gruppe A - Zweiter Gruppe B:1A:2B:50:2
+AF3:01.07.2018 16:00 Uhr, Moskau: Sieger Gruppe B - Zweiter Gruppe A:1B:2A:51:2
+AF4:01.07.2018 20:00 Uhr, Nischni Nowgorod: Sieger Gruppe D - Zweiter Gruppe C:1D:2C:52:2
+AF5:02.07.2018 16:00 Uhr, Samara: Sieger Gruppe E - Zweiter Gruppe F:1E:2F:53:2
+AF6:02.07.2018 20:00 Uhr, Rostow am Don: Sieger Gruppe G - Zweiter Gruppe H:1G:2H:54:2
+AF7:03.07.2018 16:00 Uhr, Sankt Petersburg: Sieger Gruppe F - Zweiter Gruppe E:1F:2E:55:2
+AF8:03.07.2018 20:00 Uhr, Moskau: Sieger Gruppe H - Zweiter Gruppe G:1H:2G:56:2
+VF1:06.07.2018 16:00 Uhr, Nischni Nowgorod: Sieger AF1 - Sieger AF2:W49:W50:57:3
+VF2:06.07.2018 20:00 Uhr, Kasan: Sieger AF6 - Sieger AF5:W54:W53:58:3
+VF3:07.07.2018 16:00 Uhr, Samara: Sieger AF8 - Sieger AF7:W56:W55:59:3
+VF4:06.07.2018 20:00 Uhr, Sotschi: Sieger AF3 - Sieger AF4:W51:W52:60:3
+HF1:10.07.2018 20:00 Uhr, Sankt Petersburg: Sieger VF2 - Sieger VF1:W58:W57:61:4
+HF2:11.07.2018 20:00 Uhr, Moskau: Sieger VF4 - Sieger VF3:W60:W59:62:4
+D:14.07.2018 16:00 Uhr, Sankt Petersburg: Verlierer HF1 - Verlierer HF2:L61:L62:63:6
+F:15.07.2018 17:00 Uhr, Moskau: Sieger HF1 - Sieger HF2:W61:W62:64:5

@@ -1,0 +1,48 @@
+A;Russland;Saudi-Arabien;Do, 14.06. 17:00, Moskau
+A;Ägypten;Uruguay;Fr, 15.06. 14:00, Jekaterinburg
+A;Russland;Ägypten;Di, 19.06. 20:00, St. Petersbrug 
+A;Uruguay;Saudi-Arabien;Mi. 20.06. 17:00, Rostow am Don
+A;Uruguay;Russland;Mo, 25.06. 16:00, Samara
+A;Saudi-Arabien;Ägypten;Mo, 25.06. 16:00, Wolgograd
+B;Marokko;Iran;Fr, 15.06. 17:00, St. Petersburg
+B;Portugal;Spanien;Fr, 15.06. 20:00, Sotschi
+B;Portugal;Marokko;Mi, 20.06. 14:00, Moskau
+B;Iran ;Spanien;Mi, 20.06. 20:00 Kasan
+B;Spanien;Marokko;Mo, 25.06. 20:00, Kaliningrad
+B;Iran ;Portugal;Mo, 25.06. 20:00, Saransk
+C;Frankreich;Australien;Sa, 16.06. 12:00, Kasan
+C;Peru;Dänemark;Sa, 16.06. 18:00, Saransk
+C;Dänemark;Australien;Do, 21.06. 14:00, Samara
+C;Frankreich;Peru;Do, 21.06. 17:00, Jekaterinburg
+C;Dänemark;Frankreich;Di, 26.06. 16:00, Moskau
+C;Australien;Peru;Di, 26.06. 16:00, Sotschi
+D;Argentinien;Island;Sa, 16.06. 15:00, Moskau
+D;Kroatien;Nigeria;Sa, 16.06. 21:00, Kaliningrad
+D;Argentinien;Kroatien;Do, 21.06. 20:00, Nischni Nowograd
+D;Nigeria;Island;Fr, 22.06. 17:00, Wolgograd
+D;Island;Kroatien;Di, 26.06. 20:00, Rostow am Don
+D;Nigeria;Argentinien;Di, 26.06. 20:00, St. Petersbrug
+E;Costa Rica;Serbien;So, 17.06. 14:00, Samara
+E;Brasilien;Schweiz;So, 17.06. 20:00, Rostow am Dom
+E;Brasilien;Costa Rica;Fr, 22.06. 14:00, St. Petersburg
+E;Serbien;Schweiz;Fr, 22.06. 20:00, Kaliningrad
+E;Serbien;Brasilien;Mi, 27.06. 20:00, Moskau
+E;Schweiz;Costa Rica;Mi, 27.06. 20:00, Nidschi Nowograd
+F;Deutschland;Mexiko;So, 17.06. 17:00, Moskau
+F;Schweden;Südkorea;Mo, 18.06. 14:00, Nischni Nowograd
+F;Südkorea;Mexiko;Sa, 23.06. 17:00, Rostow Nowograd
+F;Deutschland;Schweden;Sa, 23.06. 20:00, Sotschi
+F;Mexiko;Schweden;Mi, 27.06. 16:00, Jekaterinburg
+F;Südkorea;Deutschland;Mi, 27.06. 16:00, Kasan
+G;Belgien;Panama;Mo, 18.06. 17:00, Sotschi
+G;Tunesien;England;Mo, 18.06. 20:00, Wolgograd
+G;Belgien;Tunesien;Sa, 23.06. 14:00, Moskau
+G;England;Panama;So, 24.06. 14:00, Nischni Nowograd
+G;England;Belgien;Do, 28.06. 20:00, Kaliningrad
+G;Panama ;Tunesien;Do, 28.06. 20:00, Saransk
+H;Kolumbien;Japan;Di, 19.06. 14:00, Saransk
+H;Polen;Senegal;Di, 19.06. 17:00, Moskau
+H;Japan;Senegal;So, 24.06. 17:00, Jekaterinburg
+H;Polen;Kolumbien;So, 24.06. 20:00, Kasan
+H;Senegal;Kolumbien;Do, 28.06. 16:00, Samara
+H;Japan;Polen;Do, 28.06. 16:00, Wolgograd
