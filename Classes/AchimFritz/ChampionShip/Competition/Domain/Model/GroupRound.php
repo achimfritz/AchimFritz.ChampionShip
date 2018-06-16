@@ -188,9 +188,7 @@ class GroupRound extends Round
             $cup = $this->getCup();
             $name = $cup->getGroupTablePolicy();
             $rankingPolicy = new $name;
-            if ($this->getRoundIsFinished() === true) {
-                $rows = $rankingPolicy->updateTable($rows, $matches);
-            }
+            $rows = $rankingPolicy->updateTable($rows, $matches);
             foreach ($rows as $row) {
                 $groupTableRows->add($row);
             }

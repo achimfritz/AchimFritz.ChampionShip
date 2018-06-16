@@ -50,7 +50,7 @@ class Match
      * @var \AchimFritz\ChampionShip\Competition\Domain\Model\Result
      * @ORM\OneToOne
      */
-    protected $result;
+    protected $result = null;
 
     /**
      * The start date
@@ -322,5 +322,13 @@ class Match
     public function setGuestTeam(Team $guestTeam)
     {
         $this->guestTeam = $guestTeam;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPlayedAndNotRemis()
+    {
+        return $this->getResult() !== null && $this->getResult()->getIsRemis() === false;
     }
 }

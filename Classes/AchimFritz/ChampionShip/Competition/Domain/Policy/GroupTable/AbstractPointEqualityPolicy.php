@@ -91,14 +91,16 @@ abstract class AbstractPointEqualityPolicy
         $relevant = new ArrayCollection();
         if (count($rows) == 2) {
             $match = $this->getMatchOfTwoRows($matches, $rows[0], $rows[1]);
-            $relevant->add($match);
+            if ($match->isPlayedAndNotRemis()) {
+                $relevant->add($match);
+            }
         } elseif (count($rows) === 3) {
-            $match = $this->getMatchOfTwoRows($matches, $rows[0], $rows[1]);
-            $relevant->add($match);
-            $match = $this->getMatchOfTwoRows($matches, $rows[0], $rows[2]);
-            $relevant->add($match);
-            $match = $this->getMatchOfTwoRows($matches, $rows[1], $rows[2]);
-            $relevant->add($match);
+            $matchOne = $this->getMatchOfTwoRows($matches, $rows[0], $rows[1]);
+            $relevant->add($matchOne);
+            $matchTwo = $this->getMatchOfTwoRows($matches, $rows[0], $rows[2]);
+            $relevant->add($matchTwo);
+            $matchThree = $this->getMatchOfTwoRows($matches, $rows[1], $rows[2]);
+            $relevant->add($matchThree);
         }
         return $relevant;
     }
@@ -120,23 +122,24 @@ abstract class AbstractPointEqualityPolicy
             $this->addMessage($row->getTeam()->getName() . ' with rank ' . $row->getRank());
         }
         $relevant = $this->getRelevantMatches($rows, $matches);
-
-        $round = new GroupRound();
-        $round->setCup($cup);
-        $round->setGeneralMatches($relevant);
-        $round->updateGroupTable();
-        $groupTableRows = $round->getGroupTableRows();
-        $groupTableRows = $this->defaultPolicy->updateTable($groupTableRows->toArray());
-        $arr = array();
-        foreach ($groupTableRows as $groupTableRow) {
-            $arr[$groupTableRow->getTeam()->getName()] = $groupTableRow;
-        }
-        foreach ($rows as $row) {
-            $teamName = $row->getTeam()->getName();
-            $new = $arr[$teamName];
-            $rank = $startRank + $new->getRank();
-            $this->addMessage('new rank of ' . $teamName . ' is ' . $rank);
-            $row->setRank($rank);
+        if (count($relevant) > 0) {
+            $round = new GroupRound();
+            $round->setCup($cup);
+            $round->setGeneralMatches($relevant);
+            $round->updateGroupTable();
+            $groupTableRows = $round->getGroupTableRows();
+            $groupTableRows = $this->defaultPolicy->updateTable($groupTableRows->toArray());
+            $arr = array();
+            foreach ($groupTableRows as $groupTableRow) {
+                $arr[$groupTableRow->getTeam()->getName()] = $groupTableRow;
+            }
+            foreach ($rows as $row) {
+                $teamName = $row->getTeam()->getName();
+                $new = $arr[$teamName];
+                $rank = $startRank + $new->getRank();
+                $this->addMessage('new rank of ' . $teamName . ' is ' . $rank);
+                $row->setRank($rank);
+            }
         }
     }
 
