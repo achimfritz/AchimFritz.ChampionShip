@@ -101,6 +101,9 @@ abstract class AbstractPointEqualityPolicy
             $relevant->add($matchTwo);
             $matchThree = $this->getMatchOfTwoRows($matches, $rows[1], $rows[2]);
             $relevant->add($matchThree);
+            if ($matchOne->isPlayedAndNotRemis() === false && $matchTwo->isPlayedAndNotRemis() === false && $matchThree->isPlayedAndNotRemis() === false) {
+                $relevant = new ArrayCollection();
+            }
         }
         return $relevant;
     }
