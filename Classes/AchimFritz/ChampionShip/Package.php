@@ -1,8 +1,8 @@
 <?php
 namespace AchimFritz\ChampionShip;
 
-use TYPO3\Flow\Package\Package as BasePackage;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Package\Package as BasePackage;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * @Flow\Scope("singleton")
@@ -13,10 +13,10 @@ class Package extends BasePackage
     /**
      * Boot the package. We wire some signals to slots here.
      *
-     * @param \TYPO3\Flow\Core\Bootstrap $bootstrap The current bootstrap
+     * @param \Neos\Flow\Core\Bootstrap $bootstrap The current bootstrap
      * @return void
      */
-    public function boot(\TYPO3\Flow\Core\Bootstrap $bootstrap)
+    public function boot(\Neos\Flow\Core\Bootstrap $bootstrap)
     {
         $dispatcher = $bootstrap->getSignalSlotDispatcher();
         $dispatcher->connect(

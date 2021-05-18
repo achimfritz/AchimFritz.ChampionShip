@@ -12,7 +12,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  *                                                                        */
 
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  *

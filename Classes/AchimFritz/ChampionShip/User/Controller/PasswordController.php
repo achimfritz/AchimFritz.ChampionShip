@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        */
 
 use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\Password;
 
 /**
@@ -19,7 +19,7 @@ class PasswordController extends AbstractActionController
 {
 
     /**
-     * @var \TYPO3\Flow\Security\Cryptography\HashService
+     * @var \Neos\Flow\Security\Cryptography\HashService
      * @Flow\Inject
      */
     protected $hashService;

@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
@@ -14,12 +14,12 @@ use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
  *
  * @Flow\Scope("singleton")
  */
-class KoRoundCommandController extends \TYPO3\Flow\Cli\CommandController
+class KoRoundCommandController extends \Neos\Flow\Cli\CommandController
 {
 
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+     * @var \Neos\Flow\Persistence\PersistenceManagerInterface
      */
     protected $persistenceManager;
 

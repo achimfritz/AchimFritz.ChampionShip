@@ -9,8 +9,8 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Competition\Domain\Model\ExtraPoints;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Repository;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Persistence\Repository;
 
 /**
  * @Flow\Scope("singleton")

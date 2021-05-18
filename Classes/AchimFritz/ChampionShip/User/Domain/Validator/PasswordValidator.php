@@ -12,7 +12,7 @@ use AchimFritz\ChampionShip\User\Domain\Model\Password;
  * @author Achim Fritz <lw@lightwerk.com>
  * @license
  */
-class PasswordValidator extends \TYPO3\Flow\Validation\Validator\GenericObjectValidator
+class PasswordValidator extends \Neos\Flow\Validation\Validator\GenericObjectValidator
 {
 
     /**

@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\ForgotPasswordRequest;
 use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
 

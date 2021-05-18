@@ -9,7 +9,7 @@ namespace AchimFritz\ChampionShip\Tests\Unit\Domain\Model;
 /**
  * Testcase for Tip group chat entry
  */
-class TipGroupChatEntryTest extends \TYPO3\Flow\Tests\UnitTestCase {
+class TipGroupChatEntryTest extends \Neos\Flow\Tests\UnitTestCase {
 
 	/**
 	 * @test

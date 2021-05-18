@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Competition\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 use \AchimFritz\ChampionShip\Competition\Domain\Model\Round;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;

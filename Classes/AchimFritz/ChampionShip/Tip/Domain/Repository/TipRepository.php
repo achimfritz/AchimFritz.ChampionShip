@@ -6,13 +6,13 @@ namespace AchimFritz\ChampionShip\Tip\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Round;
-use \TYPO3\Flow\Persistence\Repository;
-use \TYPO3\Flow\Persistence\QueryInterface;
+use \Neos\Flow\Persistence\Repository;
+use \Neos\Flow\Persistence\QueryInterface;
 
 /**
  * A repository for TipGroups
@@ -34,7 +34,7 @@ class TipRepository extends Repository
     /**
      * @param Cup $cup
      * @param User $user
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findByUserInCupWithResult(User $user, Cup $cup)
     {
@@ -52,7 +52,7 @@ class TipRepository extends Repository
     /**
      * @param Cup $cup
      * @param User $user
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findByUserInCup(User $user, Cup $cup)
     {
@@ -68,7 +68,7 @@ class TipRepository extends Repository
 
     /**
      * @param Cup $cup
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findByCup(Cup $cup)
     {
@@ -82,7 +82,7 @@ class TipRepository extends Repository
     /**
      * @param User $user
      * @param mixed $matches
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findByUserInMatches(User $user, $matches)
     {
@@ -117,11 +117,11 @@ class TipRepository extends Repository
     }
 
     /**
-     * @param \TYPO3\Flow\Persistence\QueryResultInterface $users
+     * @param \Neos\Flow\Persistence\QueryResultInterface $users
      * @param Match $match
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
-    public function findByUsersAndMatch(\TYPO3\Flow\Persistence\QueryResultInterface $users, Match $match)
+    public function findByUsersAndMatch(\Neos\Flow\Persistence\QueryResultInterface $users, Match $match)
     {
         $identifiers = array();
         foreach ($users as $user) {

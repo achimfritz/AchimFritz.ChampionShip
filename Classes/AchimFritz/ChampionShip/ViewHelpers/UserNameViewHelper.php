@@ -12,7 +12,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  *                                                                        */
 
 use AchimFritz\ChampionShip\User\Domain\Model\User;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  *
@@ -32,7 +32,7 @@ class UserNameViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
     protected $escapeOutput = false;
 
     /**
-     * @var \TYPO3\Flow\Security\Context
+     * @var \Neos\Flow\Security\Context
      * @Flow\Inject
      */
     protected $securityContext;

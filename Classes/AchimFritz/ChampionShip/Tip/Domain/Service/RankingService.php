@@ -9,7 +9,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Tip\Domain\Model\CupRanking;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Ranking;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * @Flow\Scope("singleton")
@@ -55,14 +55,14 @@ class RankingService
 
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+     * @var \Neos\Flow\Persistence\PersistenceManagerInterface
      */
     protected $persistenceManager;
 
     /**
      * @param Cup $cup
      * @return void
-     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+     * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
      */
     public function updateCupRanking(Cup $cup)
     {
@@ -108,7 +108,7 @@ class RankingService
 
     /**
      * @return void
-     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+     * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
      */
     public function updateRanking()
     {

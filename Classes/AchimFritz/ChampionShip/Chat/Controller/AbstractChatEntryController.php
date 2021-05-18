@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Chat\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Chat\Domain\Model\ChatEntry;
 use AchimFritz\ChampionShip\Tip\Controller\AbstractTipGroupController;
 
@@ -23,7 +23,7 @@ class AbstractChatEntryController extends AbstractTipGroupController
      *
      * @return void
      */
-    protected function initializeView(\TYPO3\Flow\Mvc\View\ViewInterface $view)
+    protected function initializeView(\Neos\Flow\Mvc\View\ViewInterface $view)
     {
         parent::initializeView($view);
         if ($this->user instanceof User) {

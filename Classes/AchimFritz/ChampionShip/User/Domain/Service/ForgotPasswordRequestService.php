@@ -6,10 +6,10 @@ namespace AchimFritz\ChampionShip\User\Domain\Service;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\ForgotPasswordRequest;
-use TYPO3\Flow\Mvc\ActionRequest;
-use TYPO3\Flow\Utility\Algorithms as UtilityAlgorithms;
+use Neos\Flow\Mvc\ActionRequest;
+use Neos\Flow\Utility\Algorithms as UtilityAlgorithms;
 
 /**
  * @Flow\Scope("singleton")

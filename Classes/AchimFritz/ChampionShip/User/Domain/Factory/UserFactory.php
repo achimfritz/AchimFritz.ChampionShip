@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\User\Domain\Factory;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
@@ -20,7 +20,7 @@ class UserFactory
 {
 
     /**
-     * @var \TYPO3\Flow\Security\AccountFactory
+     * @var \Neos\Flow\Security\AccountFactory
      * @Flow\Inject
      */
     protected $accountFactory;

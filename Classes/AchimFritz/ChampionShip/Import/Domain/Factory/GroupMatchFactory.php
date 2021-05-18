@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Import\Domain\Factory;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Result;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
@@ -22,7 +22,7 @@ class GroupMatchFactory
 {
 
     /**
-     * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+     * @var \Neos\Flow\Persistence\PersistenceManagerInterface
      * @Flow\Inject
      */
     protected $persistenceManager;

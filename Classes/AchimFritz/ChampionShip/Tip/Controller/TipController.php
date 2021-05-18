@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 
 /**
@@ -40,7 +40,7 @@ class TipController extends AbstractActionController
         $propertyMappingConfiguration = $this->arguments[$this->resourceArgumentName]->getPropertyMappingConfiguration();
         $propertyMappingConfiguration->forProperty('result');
         $sub = $propertyMappingConfiguration->getConfigurationFor('result');
-        $sub->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, true);
+        $sub->setTypeConverterOption('Neos\Flow\Property\TypeConverter\PersistentObjectConverter', \Neos\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, true);
         $sub->allowAllProperties();
     }
 

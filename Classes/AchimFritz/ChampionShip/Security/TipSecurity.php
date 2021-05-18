@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Security;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 
 /**
@@ -18,7 +18,7 @@ class TipSecurity
 {
 
     /**
-     * @var \TYPO3\Flow\Security\Context
+     * @var \Neos\Flow\Security\Context
      * @Flow\Inject
      */
     protected $securityContext;
@@ -31,7 +31,7 @@ class TipSecurity
 
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\Security\Policy\PolicyService
+     * @var \Neos\Flow\Security\Policy\PolicyService
      */
     protected $policyService;
 

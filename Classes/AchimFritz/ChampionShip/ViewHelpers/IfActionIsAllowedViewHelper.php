@@ -11,7 +11,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 
 /**
@@ -24,7 +24,7 @@ class IfActionIsAllowedViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractC
 {
     
     /**
-     * @var \TYPO3\Flow\Security\Context
+     * @var \Neos\Flow\Security\Context
      * @Flow\Inject
      */
     protected $securityContext;

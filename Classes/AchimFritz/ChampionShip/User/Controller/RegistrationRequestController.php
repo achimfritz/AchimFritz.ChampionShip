@@ -7,8 +7,8 @@ namespace AchimFritz\ChampionShip\User\Controller;
  *                                                                        */
 
 use AchimFritz\ChampionShip\Generic\Controller\AbstractActionController;
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Security\Account;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Security\Account;
 use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
@@ -51,7 +51,7 @@ class RegistrationRequestController extends AbstractActionController
     protected $notificationService;
 
     /**
-     * @var \TYPO3\Flow\Security\Context
+     * @var \Neos\Flow\Security\Context
      * @Flow\Inject
      */
     protected $securityContext;

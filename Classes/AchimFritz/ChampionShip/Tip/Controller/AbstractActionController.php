@@ -6,9 +6,9 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Error\Message;
-use TYPO3\Flow\Security\Account;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Error\Message;
+use Neos\Flow\Security\Account;
 use \AchimFritz\ChampionShip\User\Domain\Model\User;
 
 /**
@@ -26,7 +26,7 @@ class AbstractActionController extends \AchimFritz\ChampionShip\Competition\Cont
     protected $userRepository;
 
     /**
-     * @var \TYPO3\Flow\Security\Context
+     * @var \Neos\Flow\Security\Context
      * @Flow\Inject
      */
     protected $securityContext;

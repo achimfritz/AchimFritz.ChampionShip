@@ -3,7 +3,7 @@ namespace AchimFritz\ChampionShip\Tip\Domain\Event\Listener;
 
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Tip\Domain\Model\TipCup;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Tip\Domain\Model\CupRanking;
 
 /**
@@ -33,7 +33,7 @@ class CupListener
     /**
      * @param Cup $cup
      * @return void
-     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+     * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
      */
     public function onCupRemoved(Cup $cup)
     {

@@ -12,7 +12,7 @@ use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
  * @author Achim Fritz <lw@lightwerk.com>
  * @license
  */
-class RegistrationRequestValidator extends \TYPO3\Flow\Validation\Validator\GenericObjectValidator
+class RegistrationRequestValidator extends \Neos\Flow\Validation\Validator\GenericObjectValidator
 {
 
     /**

@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Tip\Domain\Policy\TipPoints;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Result;
 

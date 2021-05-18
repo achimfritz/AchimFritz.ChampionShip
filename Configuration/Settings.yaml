@@ -1,25 +1,22 @@
+
 AchimFritz:
   ChampionShip:
     csStyle: 1
     mailTo: mailTo@domain.tld
     mailFrom: noreply@domain.tld
-TYPO3:
+Neos:
   Flow:
     security:
       authentication:
-        #authenticationStrategy: atLeastOneToken
         providers:
           ApiProvider:
             provider: PersistedUsernamePasswordProvider
-            token: TYPO3\Flow\Security\Authentication\Token\UsernamePasswordHttpBasic
+            token: Neos\Flow\Security\Authentication\Token\UsernamePasswordHttpBasic
           DefaultProvider:
             provider: PersistedUsernamePasswordProvider
-            token: TYPO3\Flow\Security\Authentication\Token\UsernamePassword
-            entryPoint: 'WebRedirect'
+            token: Neos\Flow\Security\Authentication\Token\UsernamePassword
+            entryPoint: WebRedirect
             entryPointOptions:
               uri: /achimfritz.championship/generic/accessdenied/index
     i18n:
       defaultLocale: de
-    #persistence:
-    #  doctrine:
-    #    sqlLogger: TYPO3\Flow\Persistence\Doctrine\Logging\SqlLogger

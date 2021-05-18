@@ -6,8 +6,8 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
-use \TYPO3\Flow\Persistence\QueryInterface;
+use Neos\Flow\Annotations as Flow;
+use \Neos\Flow\Persistence\QueryInterface;
 
 /**
  * A repository for GroupRounds

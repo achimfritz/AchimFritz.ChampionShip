@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 
@@ -15,7 +15,7 @@ use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
  *
  * @Flow\Scope("singleton")
  */
-class UserCommandController extends \TYPO3\Flow\Cli\CommandController
+class UserCommandController extends \Neos\Flow\Cli\CommandController
 {
 
     /**

@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Tip\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
@@ -17,9 +17,9 @@ class CupRankingRepository extends AbstractRankingRepository
 
 
     /**
-     * @param \TYPO3\Flow\Persistence\QueryResultInterface|array $users
+     * @param \Neos\Flow\Persistence\QueryResultInterface|array $users
      * @param Cup $cup
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findByUsersAndCup($users, Cup $cup)
     {

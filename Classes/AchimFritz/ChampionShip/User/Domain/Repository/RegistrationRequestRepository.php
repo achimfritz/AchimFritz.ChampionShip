@@ -6,16 +6,16 @@ namespace AchimFritz\ChampionShip\User\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * @Flow\Scope("singleton")
  */
-class RegistrationRequestRepository extends \TYPO3\Flow\Persistence\Repository
+class RegistrationRequestRepository extends \Neos\Flow\Persistence\Repository
 {
 
     /**
-     * @var \TYPO3\Flow\Security\Cryptography\HashService
+     * @var \Neos\Flow\Security\Cryptography\HashService
      * @Flow\Inject
      */
     protected $hashService;

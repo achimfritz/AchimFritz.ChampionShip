@@ -6,8 +6,8 @@ namespace AchimFritz\ChampionShip\Generic\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Error\Message;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Error\Message;
 use AchimFritz\Rest\Controller\RestController;
 
 /**
@@ -19,7 +19,7 @@ class AbstractActionController extends RestController
 {
 
     /**
-     * @var \TYPO3\Flow\I18n\Translator
+     * @var \Neos\Flow\I18n\Translator
      * @Flow\Inject
      */
     protected $translator;
@@ -51,7 +51,7 @@ class AbstractActionController extends RestController
      *
      * @return void
      */
-    protected function initializeView(\TYPO3\Flow\Mvc\View\ViewInterface $view)
+    protected function initializeView(\Neos\Flow\Mvc\View\ViewInterface $view)
     {
         $view->assign('controllers', array('Team', 'User', 'Cup', 'Standard'));
         $view->assign('title', $this->request->getControllerName() . '.' . $this->request->getControllerActionName());
@@ -117,12 +117,12 @@ class AbstractActionController extends RestController
      *
      * @param string $messageBody text of the FlashMessage
      * @param string $messageTitle optional header of the FlashMessage
-     * @param string $severity severity of the FlashMessage (one of the \TYPO3\Flow\Error\Message::SEVERITY_* constants)
+     * @param string $severity severity of the FlashMessage (one of the \Neos\Flow\Error\Message::SEVERITY_* constants)
      * @param array $messageArguments arguments to be passed to the FlashMessage
      * @param integer $messageCode
      * @return void
      * @throws \InvalidArgumentException if the message body is no string
-     * @see \TYPO3\Flow\Error\Message
+     * @see \Neos\Flow\Error\Message
      */
     public function addFlashMessage($messageBody, $messageTitle = '', $severity = Message::SEVERITY_OK, array $messageArguments = array(), $messageCode = null)
     {
@@ -141,7 +141,7 @@ class AbstractActionController extends RestController
      * display no flash message at all on errors. Override this to customize
      * the flash message in your action controller.
      *
-     * @return \TYPO3\Flow\Error\Message The flash message or FALSE if no flash message should be set
+     * @return \Neos\Flow\Error\Message The flash message or FALSE if no flash message should be set
      * @api
      */
     protected function getErrorFlashMessage()

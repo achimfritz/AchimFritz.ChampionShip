@@ -7,12 +7,12 @@ namespace AchimFritz\ChampionShip\Service;
  *                                                                        */
 
 use AchimFritz\ChampionShip\User\Domain\Model\ForgotPasswordRequest;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
 use AchimFritz\ChampionShip\User\Domain\Model\ContactRequest;
-use TYPO3\Flow\Mvc\ActionRequest;
-use TYPO3\Flow\Mvc\Routing\UriBuilder;
+use Neos\Flow\Mvc\ActionRequest;
+use Neos\Flow\Mvc\Routing\UriBuilder;
 
 /**
  * A NotificationService
@@ -28,7 +28,7 @@ class NotificationService
     protected $settings;
 
     /**
-     * @var \TYPO3\Flow\ObjectManagement\ObjectManagerInterface
+     * @var \Neos\Flow\ObjectManagement\ObjectManagerInterface
      * @Flow\Inject
      */
     protected $objectManager;

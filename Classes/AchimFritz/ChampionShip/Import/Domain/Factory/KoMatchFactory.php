@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Import\Domain\Factory;
 
 use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupWithThirdsMatch;
 use Doctrine\Common\Collections\ArrayCollection;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
@@ -27,7 +27,7 @@ class KoMatchFactory
 {
 
     /**
-     * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+     * @var \Neos\Flow\Persistence\PersistenceManagerInterface
      * @Flow\Inject
      */
     protected $persistenceManager;

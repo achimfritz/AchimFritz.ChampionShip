@@ -11,7 +11,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Round;
 use AchimFritz\ChampionShip\Competition\Domain\Model\KoRound;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
@@ -26,7 +26,7 @@ class IfIsCurrentControllerViewHelper extends \TYPO3\Fluid\Core\ViewHelper\Abstr
 {
 
     /**
-     * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+     * @var \Neos\Flow\Persistence\PersistenceManagerInterface
      * @Flow\Inject
      */
     protected $persistenceManager;

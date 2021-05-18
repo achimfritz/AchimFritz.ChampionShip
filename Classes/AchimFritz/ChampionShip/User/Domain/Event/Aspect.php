@@ -1,8 +1,8 @@
 <?php
 namespace AchimFritz\ChampionShip\User\Domain\Event;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Aop\JoinPointInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Aop\JoinPointInterface;
 
 /**
  * @Flow\Scope("singleton")
@@ -13,12 +13,12 @@ class Aspect
 
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\SignalSlot\Dispatcher
+     * @var \Neos\Flow\SignalSlot\Dispatcher
      */
     protected $dispatcher;
 
     /**
-     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @return void
      * @Flow\Before("method(AchimFritz\ChampionShip\User\Domain\Repository\UserRepository->add())")
      */

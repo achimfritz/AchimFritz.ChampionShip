@@ -6,16 +6,16 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
-use \TYPO3\Flow\Persistence\QueryInterface;
+use \Neos\Flow\Persistence\QueryInterface;
 
 /**
  * A repository for KoRounds
  *
  * @Flow\Scope("singleton")
  */
-class RoundRepository extends \TYPO3\Flow\Persistence\Repository
+class RoundRepository extends \Neos\Flow\Persistence\Repository
 {
 
     /**
@@ -35,7 +35,7 @@ class RoundRepository extends \TYPO3\Flow\Persistence\Repository
      *
      * @param string $name
      * @param Cup $cup
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findOneByNameAndCup($name, Cup $cup)
     {

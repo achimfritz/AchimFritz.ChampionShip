@@ -1,8 +1,8 @@
 <?php
 namespace AchimFritz\ChampionShip\Aop;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Aop\JoinPointInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Aop\JoinPointInterface;
 
 /**
  * SecurityAspect
@@ -34,7 +34,7 @@ class SecurityAspect
     /**
      * tipIsEditable
      *
-     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @throws Exception
      * @return void
      * @Flow\Before("method(AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository->update()) || method(AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository->add())")
@@ -51,7 +51,7 @@ class SecurityAspect
     /**
      * userIsEditable
      *
-     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @throws Exception
      * @Flow\Before("method(AchimFritz\ChampionShip\User\Domain\Repository\UserRepository->update())")
      * @return void
@@ -68,7 +68,7 @@ class SecurityAspect
     /**
      * userIsEditable
      *
-     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @throws Exception
      * @Flow\Before("method(AchimFritz\ChampionShip\Tip\Domain\Repository\TipRepository->findByUserInCup())")
      * @return void

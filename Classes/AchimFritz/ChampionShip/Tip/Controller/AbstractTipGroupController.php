@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 
 class AbstractTipGroupController extends AbstractActionController
@@ -23,7 +23,7 @@ class AbstractTipGroupController extends AbstractActionController
      *
      * @return void
      */
-    protected function initializeView(\TYPO3\Flow\Mvc\View\ViewInterface $view)
+    protected function initializeView(\Neos\Flow\Mvc\View\ViewInterface $view)
     {
         parent::initializeView($view);
         if ($this->user instanceof User) {

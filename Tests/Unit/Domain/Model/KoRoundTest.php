@@ -9,7 +9,7 @@ namespace AchimFritz\ChampionShip\Tests\Unit\Domain\Model;
 /**
  * Testcase for Ko round
  */
-class KoRoundTest extends \TYPO3\Flow\Tests\UnitTestCase {
+class KoRoundTest extends \Neos\Flow\Tests\UnitTestCase {
 
 	/**
 	 * @test

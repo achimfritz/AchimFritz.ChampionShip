@@ -9,7 +9,7 @@ namespace AchimFritz\ChampionShip\Tests\Unit\Domain\Model;
 /**
  * Testcase for Points
  */
-class PointsTest extends \TYPO3\Flow\Tests\UnitTestCase {
+class PointsTest extends \Neos\Flow\Tests\UnitTestCase {
 
 	/**
 	 * @test

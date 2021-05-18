@@ -6,8 +6,8 @@ namespace AchimFritz\ChampionShip\Tip\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
-use \TYPO3\Flow\Persistence\Repository;
+use Neos\Flow\Annotations as Flow;
+use \Neos\Flow\Persistence\Repository;
 
 /**
  * A repository for TipGroups
@@ -23,7 +23,7 @@ class TipCupRepository extends Repository
     public function __construct()
     {
         parent::__construct();
-        $this->setDefaultOrderings(array('cup.startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
+        $this->setDefaultOrderings(array('cup.startDate' => \Neos\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
     }
 
     /**
@@ -32,7 +32,7 @@ class TipCupRepository extends Repository
     public function findOneRecent()
     {
         $query = $this->createQuery();
-        $query->setOrderings(array('cup.startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
+        $query->setOrderings(array('cup.startDate' => \Neos\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
         return $query->execute()->getFirst();
     }
 }

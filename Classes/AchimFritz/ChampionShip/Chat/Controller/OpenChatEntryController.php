@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Chat\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Chat\Domain\Model\OpenChatEntry;
 
 class OpenChatEntryController extends AbstractChatEntryController

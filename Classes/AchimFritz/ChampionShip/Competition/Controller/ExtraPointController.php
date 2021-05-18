@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Competition\Controller;
  *                                                                        */
 
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\ExtraPoint;
 
 class ExtraPointController extends AbstractActionController

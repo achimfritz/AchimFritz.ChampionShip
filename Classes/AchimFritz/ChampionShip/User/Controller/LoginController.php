@@ -11,14 +11,14 @@ namespace AchimFritz\ChampionShip\User\Controller;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * A controller which allows for loggin into a application
  *
  * @Flow\Scope("singleton")
  */
-class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\AbstractAuthenticationController
+class LoginController extends \Neos\Flow\Security\Authentication\Controller\AbstractAuthenticationController
 {
 
     /**
@@ -29,7 +29,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
 
 
     /**
-     * @var \TYPO3\Flow\I18n\Translator
+     * @var \Neos\Flow\I18n\Translator
      * @Flow\Inject
      */
     protected $translator;
@@ -50,13 +50,13 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
     /**
      * Is called if authentication was successful.
      *
-     * @param \TYPO3\Flow\Mvc\ActionRequest $originalRequest The request that was intercepted by the security framework, NULL if there was none
+     * @param \Neos\Flow\Mvc\ActionRequest $originalRequest The request that was intercepted by the security framework, NULL if there was none
      * @return string
      */
-    public function onAuthenticationSuccess(\TYPO3\Flow\Mvc\ActionRequest $originalRequest = null)
+    public function onAuthenticationSuccess(\Neos\Flow\Mvc\ActionRequest $originalRequest = null)
     {
         $message = $this->translator->translateById('loginSuccess', array(), null, null, 'Main', 'AchimFritz.ChampionShip');
-        $this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
+        $this->addFlashMessage($message, '', \Neos\Flow\Error\Message::SEVERITY_OK);
         $this->redirect('index', 'Standard', 'AchimFritz.ChampionShip\\Generic');
     }
     
@@ -71,7 +71,7 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
     {
         parent::logoutAction();
         $message = $this->translator->translateById('logoutSuccess', array(), null, null, 'Main', 'AchimFritz.ChampionShip');
-        $this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_OK);
+        $this->addFlashMessage($message, '', \Neos\Flow\Error\Message::SEVERITY_OK);
         $this->redirect('index', 'Standard', 'AchimFritz.ChampionShip\\Generic');
     }
     
@@ -82,13 +82,13 @@ class LoginController extends \TYPO3\Flow\Security\Authentication\Controller\Abs
      * custom action for this event. Most likely you would want
      * to redirect to some action showing the login form again.
      *
-     * @param \TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception The exception thrown while the authentication process
+     * @param \Neos\Flow\Security\Exception\AuthenticationRequiredException $exception The exception thrown while the authentication process
      * @return void
      */
-    protected function onAuthenticationFailure(\TYPO3\Flow\Security\Exception\AuthenticationRequiredException $exception = null)
+    protected function onAuthenticationFailure(\Neos\Flow\Security\Exception\AuthenticationRequiredException $exception = null)
     {
         $message = $this->translator->translateById('loginFailed', array(), null, null, 'Main', 'AchimFritz.ChampionShip');
-        $this->addFlashMessage($message, '', \TYPO3\Flow\Error\Message::SEVERITY_ERROR);
+        $this->addFlashMessage($message, '', \Neos\Flow\Error\Message::SEVERITY_ERROR);
     }
 
     /**

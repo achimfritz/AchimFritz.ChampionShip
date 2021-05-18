@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\User\Domain\Repository;
  *                                                                        */
 
 use AchimFritz\ChampionShip\User\Domain\Model\User;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
 
 /**
@@ -15,12 +15,12 @@ use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
  *
  * @Flow\Scope("singleton")
  */
-class UserRepository extends \TYPO3\Flow\Persistence\Repository
+class UserRepository extends \Neos\Flow\Persistence\Repository
 {
 
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\Security\AccountRepository
+     * @var \Neos\Flow\Security\AccountRepository
      */
     protected $accountRepository;
 
@@ -37,7 +37,7 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository
 
     /**
      * @param \Doctrine\Common\Collections\Collection $tipGroups
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findInTipGroups(\Doctrine\Common\Collections\Collection $tipGroups)
     {
@@ -53,7 +53,7 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository
 
     /**
      * @param \Doctrine\Common\Collections\Collection $tipGroups
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findInTipGroupsAndEnabled(\Doctrine\Common\Collections\Collection $tipGroups)
     {
@@ -108,7 +108,7 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository
      * findInTipGroup
      *
      * @param TipGroup $tipGroup
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findInTipGroup(TipGroup $tipGroup)
     {

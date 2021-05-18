@@ -1,6 +1,6 @@
 
 privilegeTargets:
-  TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+  Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
     AchimFritz_ChampionShipChatEntryCreateMethods:
       matcher: 'method(AchimFritz\ChampionShip\Chat\Controller\.*ChatEntryController->createAction()) || method(AchimFritz\ChampionShip\Chat\Controller\.*ChatEntryController->listAction())'
     AchimFritz_ChampionShipForgotPasswordRequestCreateMethods:
@@ -143,7 +143,7 @@ roles:
       -
         privilegeTarget: AchimFritz_ChampionShipRegistrationRequestCreateMethods
         permission: GRANT
-  'TYPO3.Flow:Anonymous':
+  'Neos.Flow:Anonymous':
     privileges:
       -
         privilegeTarget: AchimFritz_ChampionShipRegistrationRequestCreateMethods

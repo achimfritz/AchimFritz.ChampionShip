@@ -1,8 +1,8 @@
 <?php
 namespace AchimFritz\ChampionShip\Competition\Domain\Event;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Aop\JoinPointInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Aop\JoinPointInterface;
 
 /**
  * @Flow\Scope("singleton")
@@ -13,12 +13,12 @@ class Aspect
 
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\SignalSlot\Dispatcher
+     * @var \Neos\Flow\SignalSlot\Dispatcher
      */
     protected $dispatcher;
 
     /**
-     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @return void
      * @Flow\Before("method(AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository->update())")
      */
@@ -28,7 +28,7 @@ class Aspect
     }
 
     /**
-     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @return void
      * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository->add())")
      */
@@ -38,7 +38,7 @@ class Aspect
     }
 
     /**
-     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @return void
      * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\MatchRepository->remove())")
      */
@@ -48,7 +48,7 @@ class Aspect
     }
 
     /**
-     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @return void
      * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Model\KoRound->addGeneralMatch())")
      */
@@ -58,7 +58,7 @@ class Aspect
     }
 
     /**
-     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @return void
      * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\CupRepository->remove())")
      */
@@ -68,7 +68,7 @@ class Aspect
     }
 
     /**
-     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+     * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
      * @return void
      * @Flow\AfterReturning("method(AchimFritz\ChampionShip\Competition\Domain\Repository\RoundRepository->remove())")
      */

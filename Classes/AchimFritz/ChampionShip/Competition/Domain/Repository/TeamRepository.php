@@ -6,14 +6,14 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * A repository for Teams
  *
  * @Flow\Scope("singleton")
  */
-class TeamRepository extends \TYPO3\Flow\Persistence\Repository
+class TeamRepository extends \Neos\Flow\Persistence\Repository
 {
 
     /**
@@ -22,6 +22,6 @@ class TeamRepository extends \TYPO3\Flow\Persistence\Repository
     public function __construct()
     {
         parent::__construct();
-        $this->setDefaultOrderings(array('name' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
+        $this->setDefaultOrderings(array('name' => \Neos\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
     }
 }

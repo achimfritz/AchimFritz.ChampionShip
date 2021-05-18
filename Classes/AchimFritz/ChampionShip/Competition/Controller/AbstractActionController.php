@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Competition\Controller;
  *                                                                        */
 
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
@@ -36,7 +36,7 @@ class AbstractActionController extends \AchimFritz\ChampionShip\Generic\Controll
     protected $cup = null;
 
     /**
-     * @var \TYPO3\Flow\Persistence\QueryResultInterface
+     * @var \Neos\Flow\Persistence\QueryResultInterface
      */
     protected $cups = null;
 
@@ -68,13 +68,13 @@ class AbstractActionController extends \AchimFritz\ChampionShip\Generic\Controll
     public function initializeCreateAction()
     {
         $propertyMappingConfiguration = $this->arguments[$this->resourceArgumentName]->getPropertyMappingConfiguration();
-        $propertyMappingConfiguration->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, true);
+        $propertyMappingConfiguration->setTypeConverterOption('Neos\Flow\Property\TypeConverter\PersistentObjectConverter', \Neos\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, true);
         $propertyMappingConfiguration->allowAllProperties();
         $propertyMappingConfiguration
             ->forProperty('startDate')
             ->setTypeConverterOption(
-                    'TYPO3\Flow\Property\TypeConverter\DateTimeConverter',
-                    \TYPO3\Flow\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                    'Neos\Flow\Property\TypeConverter\DateTimeConverter',
+                    \Neos\Flow\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
                     'd.m.Y H:i'
                     );
     }
@@ -87,13 +87,13 @@ class AbstractActionController extends \AchimFritz\ChampionShip\Generic\Controll
     public function initializeUpdateAction()
     {
         $propertyMappingConfiguration = $this->arguments[$this->resourceArgumentName]->getPropertyMappingConfiguration();
-        $propertyMappingConfiguration->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_MODIFICATION_ALLOWED, true);
+        $propertyMappingConfiguration->setTypeConverterOption('Neos\Flow\Property\TypeConverter\PersistentObjectConverter', \Neos\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_MODIFICATION_ALLOWED, true);
         $propertyMappingConfiguration->allowAllProperties();
         $propertyMappingConfiguration
             ->forProperty('startDate')
             ->setTypeConverterOption(
-                    'TYPO3\Flow\Property\TypeConverter\DateTimeConverter',
-                    \TYPO3\Flow\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                    'Neos\Flow\Property\TypeConverter\DateTimeConverter',
+                    \Neos\Flow\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
                     'd.m.Y H:i'
                     );
     }
@@ -103,7 +103,7 @@ class AbstractActionController extends \AchimFritz\ChampionShip\Generic\Controll
      *
      * @return void
      */
-    protected function initializeView(\TYPO3\Flow\Mvc\View\ViewInterface $view)
+    protected function initializeView(\Neos\Flow\Mvc\View\ViewInterface $view)
     {
         $view->assign('controllers', array('Team', 'User', 'Cup', 'Standard'));
         $view->assign('title', $this->request->getControllerName() . '.' . $this->request->getControllerActionName());

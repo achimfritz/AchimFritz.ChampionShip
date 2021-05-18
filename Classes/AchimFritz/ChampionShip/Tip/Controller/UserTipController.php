@@ -8,7 +8,7 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
 
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * Standard controller for the AchimFritz.ChampionShip package

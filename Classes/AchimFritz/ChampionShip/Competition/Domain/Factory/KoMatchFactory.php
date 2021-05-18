@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Factory;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;

@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Factory;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\KoRound;
 use AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound;
 
@@ -53,10 +53,10 @@ class KoRoundFactory
     /**
      * createFromGroupRounds
      *
-     * @param \TYPO3\Flow\Persistence\Doctrine\QueryResult<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound>
+     * @param \Neos\Flow\Persistence\Doctrine\QueryResult<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound>
      * @return \AchimFritz\ChampionShip\Competition\Domain\Model\KoRound
      */
-    public function createFromGroupRounds(\TYPO3\Flow\Persistence\Doctrine\QueryResult $groupRounds)
+    public function createFromGroupRounds(\Neos\Flow\Persistence\Doctrine\QueryResult $groupRounds)
     {
         $koRound = new KoRound();
         $koRound->setName('1/' . count($groupRounds));

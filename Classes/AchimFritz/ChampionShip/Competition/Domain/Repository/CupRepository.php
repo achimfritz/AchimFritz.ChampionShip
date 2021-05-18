@@ -6,14 +6,14 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * A repository for Cups
  *
  * @Flow\Scope("singleton")
  */
-class CupRepository extends \TYPO3\Flow\Persistence\Repository
+class CupRepository extends \Neos\Flow\Persistence\Repository
 {
 
     /**
@@ -22,7 +22,7 @@ class CupRepository extends \TYPO3\Flow\Persistence\Repository
     public function __construct()
     {
         parent::__construct();
-        $this->setDefaultOrderings(array('startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
+        $this->setDefaultOrderings(array('startDate' => \Neos\Flow\Persistence\QueryInterface::ORDER_ASCENDING));
     }
 
     /**
@@ -31,7 +31,7 @@ class CupRepository extends \TYPO3\Flow\Persistence\Repository
     public function findOneRecent()
     {
         $query = $this->createQuery();
-        $query->setOrderings(array('startDate' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
+        $query->setOrderings(array('startDate' => \Neos\Flow\Persistence\QueryInterface::ORDER_DESCENDING));
         return $query->execute()->getFirst();
     }
 }

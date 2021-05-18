@@ -6,14 +6,14 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * Cup Command Controller for the AchimFritz.ChampionShip package
  *
  * @Flow\Scope("singleton")
  */
-class CupCommandController extends \TYPO3\Flow\Cli\CommandController
+class CupCommandController extends \Neos\Flow\Cli\CommandController
 {
     
     /**

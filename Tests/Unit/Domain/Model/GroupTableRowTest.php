@@ -9,7 +9,7 @@ namespace AchimFritz\ChampionShip\Tests\Unit\Domain\Model;
 /**
  * Testcase for Group table row
  */
-class GroupTableRowTest extends \TYPO3\Flow\Tests\UnitTestCase {
+class GroupTableRowTest extends \Neos\Flow\Tests\UnitTestCase {
 
 	/**
 	 * @test

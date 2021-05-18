@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable;
  *                                                                        */
 
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -29,7 +29,7 @@ abstract class AbstractPointEqualityPolicy
 
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\Log\SystemLoggerInterface
+     * @var \Neos\Flow\Log\SystemLoggerInterface
      */
     protected $systemLogger;
 

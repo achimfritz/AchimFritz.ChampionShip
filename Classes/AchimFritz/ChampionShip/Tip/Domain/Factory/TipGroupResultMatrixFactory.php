@@ -6,8 +6,8 @@ namespace AchimFritz\ChampionShip\Tip\Domain\Factory;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Doctrine\QueryResult;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Persistence\Doctrine\QueryResult;
 use Doctrine\Common\Collections\ArrayCollection;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
 use AchimFritz\ChampionShip\Tip\Domain\Model\TipGroupResultMatrix;

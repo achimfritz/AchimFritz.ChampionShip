@@ -9,7 +9,7 @@ namespace AchimFritz\ChampionShip\Tests\Unit\Domain\Model;
 /**
  * Testcase for Password request
  */
-class PasswordRequestTest extends \TYPO3\Flow\Tests\UnitTestCase {
+class PasswordRequestTest extends \Neos\Flow\Tests\UnitTestCase {
 
 	/**
 	 * @test

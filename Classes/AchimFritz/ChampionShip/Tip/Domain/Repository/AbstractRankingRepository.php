@@ -6,9 +6,9 @@ namespace AchimFritz\ChampionShip\Tip\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Repository;
-use TYPO3\Flow\Persistence\QueryInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Persistence\Repository;
+use Neos\Flow\Persistence\QueryInterface;
 
 /**
  * A repository for TipGroups
@@ -28,8 +28,8 @@ abstract class AbstractRankingRepository extends Repository
     }
 
     /**
-     * @param \TYPO3\Flow\Persistence\QueryResultInterface|array $users
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @param \Neos\Flow\Persistence\QueryResultInterface|array $users
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findByUsers($users)
     {

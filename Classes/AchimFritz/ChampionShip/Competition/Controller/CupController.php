@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Competition\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 
 /**
@@ -121,6 +121,6 @@ class CupController extends AbstractActionController
             $this->addErrorMessage('cannot delete cup');
             $this->handleException($e);
         }
-        \TYPO3\Flow\Mvc\Controller\RestController::redirect('index');
+        \Neos\Flow\Mvc\Controller\RestController::redirect('index');
     }
 }

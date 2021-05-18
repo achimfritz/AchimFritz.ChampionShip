@@ -9,7 +9,7 @@ namespace AchimFritz\ChampionShip\Tests\Unit\Domain\Model;
 /**
  * Testcase for Round
  */
-class RoundTest extends \TYPO3\Flow\Tests\UnitTestCase {
+class RoundTest extends \Neos\Flow\Tests\UnitTestCase {
 
 	/**
 	 * @test

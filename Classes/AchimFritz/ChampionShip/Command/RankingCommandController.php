@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Ranking;
 use AchimFritz\ChampionShip\Tip\Domain\Model\CupRanking;
 
@@ -16,7 +16,7 @@ use AchimFritz\ChampionShip\Tip\Domain\Model\CupRanking;
  *
  * @Flow\Scope("singleton")
  */
-class RankingCommandController extends \TYPO3\Flow\Cli\CommandController
+class RankingCommandController extends \Neos\Flow\Cli\CommandController
 {
     
     /**
@@ -57,7 +57,7 @@ class RankingCommandController extends \TYPO3\Flow\Cli\CommandController
 
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+     * @var \Neos\Flow\Persistence\PersistenceManagerInterface
      */
     protected $persistenceManager;
 

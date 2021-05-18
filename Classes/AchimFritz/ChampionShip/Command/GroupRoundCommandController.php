@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        */
 
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
 
 /**
@@ -15,7 +15,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
  *
  * @Flow\Scope("singleton")
  */
-class GroupRoundCommandController extends \TYPO3\Flow\Cli\CommandController
+class GroupRoundCommandController extends \Neos\Flow\Cli\CommandController
 {
     
     /**

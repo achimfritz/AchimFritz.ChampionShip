@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Service;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * A KoRoundService
@@ -27,7 +27,7 @@ class KoRoundService
      *
      * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\KoRound>
      */
-    public function createKoRounds(\TYPO3\Flow\Persistence\Doctrine\QueryResult $groupRounds)
+    public function createKoRounds(\Neos\Flow\Persistence\Doctrine\QueryResult $groupRounds)
     {
         $koRounds = new \Doctrine\Common\Collections\ArrayCollection();
         $cnt = count($groupRounds);

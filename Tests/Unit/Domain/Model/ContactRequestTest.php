@@ -9,7 +9,7 @@ namespace AchimFritz\ChampionShip\Tests\Unit\Domain\Model;
 /**
  * Testcase for Contact request
  */
-class ContactRequestTest extends \TYPO3\Flow\Tests\UnitTestCase {
+class ContactRequestTest extends \Neos\Flow\Tests\UnitTestCase {
 
 	/**
 	 * @test

@@ -11,7 +11,7 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupMatch;
@@ -41,7 +41,7 @@ class UserTipViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
     protected $tipRepository;
 
     /**
-     * @var \TYPO3\Flow\Security\Context
+     * @var \Neos\Flow\Security\Context
      * @Flow\Inject
      */
     protected $securityContext;
@@ -54,7 +54,7 @@ class UserTipViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
 
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\Security\Policy\PolicyService
+     * @var \Neos\Flow\Security\Policy\PolicyService
      */
     protected $policyService;
 

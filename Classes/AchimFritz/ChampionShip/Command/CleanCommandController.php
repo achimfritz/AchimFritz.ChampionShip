@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use \AchimFritz\ChampionShip\Tip\Domain\Model\Ranking;
 
@@ -15,7 +15,7 @@ use \AchimFritz\ChampionShip\Tip\Domain\Model\Ranking;
  *
  * @Flow\Scope("singleton")
  */
-class CleanCommandController extends \TYPO3\Flow\Cli\CommandController
+class CleanCommandController extends \Neos\Flow\Cli\CommandController
 {
     
     /**

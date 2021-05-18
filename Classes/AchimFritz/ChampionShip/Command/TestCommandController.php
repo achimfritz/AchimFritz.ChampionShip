@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\Result;
 use \AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
@@ -16,12 +16,12 @@ use \AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
  *
  * @Flow\Scope("singleton")
  */
-class TestCommandController extends \TYPO3\Flow\Cli\CommandController
+class TestCommandController extends \Neos\Flow\Cli\CommandController
 {
 
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+     * @var \Neos\Flow\Persistence\PersistenceManagerInterface
      */
     protected $persistenceManager;
 

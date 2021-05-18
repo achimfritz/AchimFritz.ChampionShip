@@ -6,24 +6,24 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * Point Command
  *
  * @Flow\Scope("singleton")
  */
-class ImportCommandController extends \TYPO3\Flow\Cli\CommandController
+class ImportCommandController extends \Neos\Flow\Cli\CommandController
 {
     
     /**
      * @Flow\Inject
-     * @var \TYPO3\Flow\Property\PropertyMapper
+     * @var \Neos\Flow\Property\PropertyMapper
      */
     protected $propertyMapper;
 
     /**
-     * @var \TYPO3\Flow\Persistence\PersistenceManagerInterface
+     * @var \Neos\Flow\Persistence\PersistenceManagerInterface
      * @Flow\Inject
      */
     protected $persistenceManager;

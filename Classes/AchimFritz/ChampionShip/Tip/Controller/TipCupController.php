@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use \AchimFritz\ChampionShip\Tip\Domain\Model\TipCup;
 
 /**
@@ -41,13 +41,13 @@ class TipCupController extends AbstractActionController
     {
         if ($this->request->hasArgument($this->resourceArgumentName) === true) {
             $propertyMappingConfiguration = $this->arguments[$this->resourceArgumentName]->getPropertyMappingConfiguration();
-            $propertyMappingConfiguration->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_MODIFICATION_ALLOWED, true);
+            $propertyMappingConfiguration->setTypeConverterOption('Neos\Flow\Property\TypeConverter\PersistentObjectConverter', \Neos\Flow\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_MODIFICATION_ALLOWED, true);
             $propertyMappingConfiguration->allowAllProperties();
             $propertyMappingConfiguration
                 ->forProperty('cup.startDate')
                 ->setTypeConverterOption(
-                    'TYPO3\Flow\Property\TypeConverter\DateTimeConverter',
-                    \TYPO3\Flow\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                    'Neos\Flow\Property\TypeConverter\DateTimeConverter',
+                    \Neos\Flow\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT,
                     'd.m.Y H:i'
                 );
         }
@@ -55,10 +55,10 @@ class TipCupController extends AbstractActionController
     }
 
     /**
-     * @param \TYPO3\Flow\Mvc\View\ViewInterface $view
+     * @param \Neos\Flow\Mvc\View\ViewInterface $view
      * @return void
      */
-    protected function initializeView(\TYPO3\Flow\Mvc\View\ViewInterface $view)
+    protected function initializeView(\Neos\Flow\Mvc\View\ViewInterface $view)
     {
         parent::initializeView($view);
         $tipCups = $this->tipCupRepository->findAll();

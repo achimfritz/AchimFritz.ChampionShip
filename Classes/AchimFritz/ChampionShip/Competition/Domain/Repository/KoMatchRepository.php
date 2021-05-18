@@ -6,7 +6,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
 /**
  * A repository for Matches

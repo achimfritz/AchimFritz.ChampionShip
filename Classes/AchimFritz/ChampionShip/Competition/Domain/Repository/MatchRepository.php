@@ -6,18 +6,18 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Result;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Team;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
-use TYPO3\Flow\Persistence\QueryInterface;
+use Neos\Flow\Persistence\QueryInterface;
 
 /**
  * A repository for Matches
  *
  * @Flow\Scope("singleton")
  */
-class MatchRepository extends \TYPO3\Flow\Persistence\Repository
+class MatchRepository extends \Neos\Flow\Persistence\Repository
 {
 
     /**
@@ -35,7 +35,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository
      * findByTeam
      *
      * @param Team $team
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findByTeam(Team $team)
     {
@@ -54,7 +54,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository
      *
      * @param Team $team
      * @param Team $otherTeam
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findOneByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup)
     {
@@ -67,7 +67,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository
      * @param Team $team
      * @param Team $otherTeam
      * @param Cup $cup
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findByTwoTeamsAndCup(Team $team, Team $otherTeam, Cup $cup)
     {
@@ -114,7 +114,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository
      *
      * @param Cup $cup
      * @param integer $limit
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findLastByCup(Cup $cup, $limit = 2)
     {
@@ -136,7 +136,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository
      *
      * @param Cup $cup
      * @param integer $limit
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findNextByCup(Cup $cup, $limit = 2)
     {
@@ -153,7 +153,7 @@ class MatchRepository extends \TYPO3\Flow\Persistence\Repository
     }
 
     /**
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @return \Neos\Flow\Persistence\QueryResultInterface
      */
     public function findInFuture()
     {
