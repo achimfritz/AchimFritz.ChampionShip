@@ -20,7 +20,7 @@ use Neos\Flow\Annotations as Flow;
  * @author af
  *
  */
-class UserNameViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+class UserNameViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper
 {
 
     

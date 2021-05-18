@@ -21,7 +21,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound;
  * @author af
  *
  */
-class IfIsChildKoRoundViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+class IfIsChildKoRoundViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
     
     /**

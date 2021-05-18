@@ -21,7 +21,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupMatch;
  * @author af
  *
  */
-class IfIsCrossGroupMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+class IfIsCrossGroupMatchViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
     
     /**

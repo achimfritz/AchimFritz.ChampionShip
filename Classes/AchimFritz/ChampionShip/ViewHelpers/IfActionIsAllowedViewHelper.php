@@ -20,7 +20,7 @@ use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
  * @author af
  *
  */
-class IfActionIsAllowedViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+class IfActionIsAllowedViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
     
     /**

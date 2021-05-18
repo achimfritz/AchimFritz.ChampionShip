@@ -19,7 +19,7 @@ use Neos\Flow\Annotations as Flow;
  * @author af
  *
  */
-class SumViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+class SumViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper
 {
 
     

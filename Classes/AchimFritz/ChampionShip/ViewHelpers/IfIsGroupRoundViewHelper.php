@@ -21,7 +21,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
  * @author af
  *
  */
-class IfIsGroupRoundViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+class IfIsGroupRoundViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
     
     /**

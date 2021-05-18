@@ -22,7 +22,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
  * @author af
  *
  */
-class IfIsCurrentControllerViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+class IfIsCurrentControllerViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
 
     /**

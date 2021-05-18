@@ -21,7 +21,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
  * @author af
  *
  */
-class IfIsKoMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+class IfIsKoMatchViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
     
     /**

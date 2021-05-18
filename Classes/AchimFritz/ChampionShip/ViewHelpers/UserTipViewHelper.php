@@ -23,7 +23,7 @@ use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
  * @author af
  *
  */
-class UserTipViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+class UserTipViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper
 {
 
     

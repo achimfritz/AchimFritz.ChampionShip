@@ -20,7 +20,7 @@ use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
  * @author af
  *
  */
-class TipPointsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+class TipPointsViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper
 {
 
     

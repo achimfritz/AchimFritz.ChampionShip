@@ -23,7 +23,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
  * @author af
  *
  */
-class IfIsJustKoMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+class IfIsJustKoMatchViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
     
     /**

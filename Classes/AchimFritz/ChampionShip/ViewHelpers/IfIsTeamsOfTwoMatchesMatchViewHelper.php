@@ -21,7 +21,7 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\TeamsOfTwoMatchesMatch;
  * @author af
  *
  */
-class IfIsTeamsOfTwoMatchesMatchViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+class IfIsTeamsOfTwoMatchesMatchViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
     
     /**

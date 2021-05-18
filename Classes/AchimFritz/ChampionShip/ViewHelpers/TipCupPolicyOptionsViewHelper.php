@@ -20,7 +20,7 @@ use Neos\Flow\Reflection\ClassReflection;
  * @author af
  *
  */
-class TipCupPolicyOptionsViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+class TipCupPolicyOptionsViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper
 {
 
     

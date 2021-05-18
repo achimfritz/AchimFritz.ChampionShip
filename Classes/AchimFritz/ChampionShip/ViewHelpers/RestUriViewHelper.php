@@ -22,7 +22,7 @@ use AchimFritz\ChampionShip\Chat\Domain\Model\ChatEntry;
  * @author af
  *
  */
-class RestUriViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+class RestUriViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper
 {
 
     

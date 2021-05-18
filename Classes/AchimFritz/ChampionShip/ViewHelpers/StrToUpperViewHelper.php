@@ -19,7 +19,7 @@ use Neos\Flow\Annotations as Flow;
  * @author af
  *
  */
-class StrToUpperViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+class StrToUpperViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper
 {
 
     

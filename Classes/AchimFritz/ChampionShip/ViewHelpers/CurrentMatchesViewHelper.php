@@ -20,7 +20,7 @@ use Neos\Flow\Annotations as Flow;
  * @author af
  *
  */
-class CurrentMatchesViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+class CurrentMatchesViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper
 {
 
     
