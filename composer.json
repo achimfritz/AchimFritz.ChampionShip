@@ -1,9 +1,9 @@
 {
-    "name": "achimFritz/championship",
+    "name": "achimfritz/championship",
     "type": "typo3-flow-package",
     "description": "",
     "require": {
-        "typo3/flow": "*"
+        "neos/flow": "^5.3"
     },
     "autoload": {
         "psr-0": {
