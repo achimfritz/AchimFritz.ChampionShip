@@ -21,7 +21,7 @@ privilegeTargets:
       matcher: 'method(AchimFritz\ChampionShip\.*\Controller\.*Controller->createAction())'
     AchimFritz_ChampionShipMatchCreatorResource:
       matcher: 'method(AchimFritz\ChampionShip\Cup\Controller\.*MatchCreatorController->.*())'
-    AchimFritz_ChampionShipUserTipResource:
+    AchimFritz_ChampionShipUserMatchTipResource:
         matcher: 'method(method(AchimFritz\ChampionShip\Tip\Controller\MatchTipController->.*())'
     AchimFritz_ChampionShipAdminTipResource:
       matcher: 'method(AchimFritz\ChampionShip\Tip\Controller\AdminTipController->.*())'
