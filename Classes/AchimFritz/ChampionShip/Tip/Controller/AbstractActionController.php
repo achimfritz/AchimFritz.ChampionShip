@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Tip\Controller;
  *                                                                        */
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Error\Message;
+use Neos\Error\Messages\Message;
 use Neos\Flow\Security\Account;
 use \AchimFritz\ChampionShip\User\Domain\Model\User;
 

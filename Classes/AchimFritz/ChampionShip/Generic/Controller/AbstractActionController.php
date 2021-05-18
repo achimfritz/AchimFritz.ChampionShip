@@ -7,7 +7,7 @@ namespace AchimFritz\ChampionShip\Generic\Controller;
  *                                                                        */
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Error\Message;
+use Neos\Error\Messages\Message;
 use AchimFritz\Rest\Controller\RestController;
 
 /**
@@ -117,12 +117,12 @@ class AbstractActionController extends RestController
      *
      * @param string $messageBody text of the FlashMessage
      * @param string $messageTitle optional header of the FlashMessage
-     * @param string $severity severity of the FlashMessage (one of the \Neos\Flow\Error\Message::SEVERITY_* constants)
+     * @param string $severity severity of the FlashMessage (one of the \Neos\Error\Messages\Message::SEVERITY_* constants)
      * @param array $messageArguments arguments to be passed to the FlashMessage
      * @param integer $messageCode
      * @return void
      * @throws \InvalidArgumentException if the message body is no string
-     * @see \Neos\Flow\Error\Message
+     * @see \Neos\Error\Messages\Message
      */
     public function addFlashMessage($messageBody, $messageTitle = '', $severity = Message::SEVERITY_OK, array $messageArguments = array(), $messageCode = null)
     {
@@ -141,7 +141,7 @@ class AbstractActionController extends RestController
      * display no flash message at all on errors. Override this to customize
      * the flash message in your action controller.
      *
-     * @return \Neos\Flow\Error\Message The flash message or FALSE if no flash message should be set
+     * @return \Neos\Error\Messages\Message The flash message or FALSE if no flash message should be set
      * @api
      */
     protected function getErrorFlashMessage()

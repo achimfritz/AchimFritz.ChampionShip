@@ -56,7 +56,7 @@ class LoginController extends \Neos\Flow\Security\Authentication\Controller\Abst
     public function onAuthenticationSuccess(\Neos\Flow\Mvc\ActionRequest $originalRequest = null)
     {
         $message = $this->translator->translateById('loginSuccess', array(), null, null, 'Main', 'AchimFritz.ChampionShip');
-        $this->addFlashMessage($message, '', \Neos\Flow\Error\Message::SEVERITY_OK);
+        $this->addFlashMessage($message, '', \Neos\Error\Messages\Message::SEVERITY_OK);
         $this->redirect('index', 'Standard', 'AchimFritz.ChampionShip\\Generic');
     }
     
@@ -71,7 +71,7 @@ class LoginController extends \Neos\Flow\Security\Authentication\Controller\Abst
     {
         parent::logoutAction();
         $message = $this->translator->translateById('logoutSuccess', array(), null, null, 'Main', 'AchimFritz.ChampionShip');
-        $this->addFlashMessage($message, '', \Neos\Flow\Error\Message::SEVERITY_OK);
+        $this->addFlashMessage($message, '', \Neos\Error\Messages\Message::SEVERITY_OK);
         $this->redirect('index', 'Standard', 'AchimFritz.ChampionShip\\Generic');
     }
     
@@ -88,7 +88,7 @@ class LoginController extends \Neos\Flow\Security\Authentication\Controller\Abst
     protected function onAuthenticationFailure(\Neos\Flow\Security\Exception\AuthenticationRequiredException $exception = null)
     {
         $message = $this->translator->translateById('loginFailed', array(), null, null, 'Main', 'AchimFritz.ChampionShip');
-        $this->addFlashMessage($message, '', \Neos\Flow\Error\Message::SEVERITY_ERROR);
+        $this->addFlashMessage($message, '', \Neos\Error\Messages\Message::SEVERITY_ERROR);
     }
 
     /**
