@@ -13,6 +13,7 @@ use AchimFritz\ChampionShip\User\Domain\Model\RegistrationRequest;
 use AchimFritz\ChampionShip\User\Domain\Model\ContactRequest;
 use Neos\Flow\Mvc\ActionRequest;
 use Neos\Flow\Mvc\Routing\UriBuilder;
+use Neos\SwiftMailer\Message;
 
 /**
  * A NotificationService
@@ -64,7 +65,7 @@ class NotificationService
         $body .= 'Viel Spass wünscht Dir,' . chr(10);
         $body .= 'das www.tipptrip.de-Team';
 
-        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage = $this->objectManager->get('Neos\SwiftMailer\Message');
         $mailMessage->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)
@@ -92,7 +93,7 @@ class NotificationService
         $body .= 'Viel Spass wünscht Dir,' . chr(10);
         $body .= 'das www.tipptrip.de-Team';
 
-        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage = $this->objectManager->get('Neos\SwiftMailer\Message');
         $mailMessage->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)
@@ -121,7 +122,7 @@ class NotificationService
         $body .= 'Username: ' . $forgotPasswordRequest->getUser()->getUsername() . chr(10). chr(10);
         $body .= 'Viel Spass wünscht Dir,' . chr(10);
         $body .= 'das www.tipptrip.de-Team';
-        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage = new Message();
         $mailMessage->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)
@@ -147,7 +148,7 @@ class NotificationService
         $body .= 'Viel Spass wünscht Dir,' . chr(10);
         $body .= 'das www.tipptrip.de-Team';
 
-        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage = $this->objectManager->get('Neos\SwiftMailer\Message');
         $mailMessage->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)
@@ -158,7 +159,7 @@ class NotificationService
         $subject = 'registration start';
         $body = 'the user ' . $registrationRequest->getUsername() . ' / ' . $registrationRequest->getEmail() . ' has start a registration request';
 
-        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage = $this->objectManager->get('Neos\SwiftMailer\Message');
         $mailMessage->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)
@@ -184,7 +185,7 @@ class NotificationService
         $body .= 'Viel Spass wünscht Dir,' . chr(10);
         $body .= 'das www.tipptrip.de-Team';
 
-        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage = $this->objectManager->get('Neos\SwiftMailer\Message');
         $mailMessage->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)
@@ -195,7 +196,7 @@ class NotificationService
         $subject = 'contact request';
         $body = 'the user ' . $contactRequest->getEmail() . ' has start a contact request';
 
-        $mailMessage = $this->objectManager->get('TYPO3\SwiftMailer\Message');
+        $mailMessage = $this->objectManager->get('Neos\SwiftMailer\Message');
         $mailMessage->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)
