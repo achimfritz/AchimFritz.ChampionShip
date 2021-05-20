@@ -129,7 +129,7 @@ class AbstractActionController extends RestController
         // try to translate message
         $id = 'flashMessage.' . str_replace(' ', '.', $messageBody);
         $msg = $this->translator->translateById($id, array(), null, null, 'Main', 'AchimFritz.ChampionShip');
-        if ($msg === $id) {
+        if ($msg === null) {
             return parent::addFlashMessage($messageBody, $messageTitle, $severity, $messageArguments, $messageCode);
         } else {
             return parent::addFlashMessage($msg, $messageTitle, $severity, $messageArguments, $messageCode);

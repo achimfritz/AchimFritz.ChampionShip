@@ -56,7 +56,8 @@ class GroupMatchFactory
         $groupMatch->setHostTeam($teams[$match->getHomeTeam()]);
         $groupMatch->setGuestTeam($teams[$match->getGuestTeam()]);
         $groupMatch->setCup($cup);
-        $startDate = new \DateTime();
+        $datetimeZone = new \DateTimeZone('Europe/Berlin');
+        $startDate = new \DateTime('now', $datetimeZone);
         $startDate->setTimestamp($match->getStartDate());
         $groupMatch->setStartDate($startDate);
         $groupMatch->setRound($groupRound);

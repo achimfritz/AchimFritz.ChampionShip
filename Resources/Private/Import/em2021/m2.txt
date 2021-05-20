@@ -1,0 +1,36 @@
+11.06 21:00 Uhr, Gruppe A in Rom: Türkei - Italien
+12.06 15:00 Uhr, Gruppe A in Baku: Wales - Schweiz
+12.06 18:00 Uhr, Gruppe B in Kopenhagen: Dänemark - Finnland
+12.06 21:00 Uhr, Gruppe B in St. Petersburg: Belgien - Russland
+13.06 15:00 Uhr, Gruppe D in London: England - Kroatien
+13.06 18:00 Uhr, Gruppe C in Bukarest: Österreich - Nordmazedonien
+13.06 21:00 Uhr, Gruppe C in Amsterdam: Niederlande - Ukraine
+14.06 15:00 Uhr, Gruppe D in Glasgow: Schottland - Tschechien
+14.06 18:00 Uhr, Gruppe E in St. Petersburg: Polen - Slowakei
+14.06 21:00 Uhr, Gruppe E in Sevilla: Spanien - Schweden
+15.06 18:00 Uhr, Gruppe F in Budapest: Ungarn - Portugal
+15.06 21:00 Uhr, Gruppe F in München: Frankreich - Deutschland
+16.06 15:00 Uhr, Gruppe B in St. Petersburg: Finnland - Russland
+16.06 18:00 Uhr, Gruppe A in Baku: Türkei - Wales
+16.06 21:00 Uhr, Gruppe A in Rom: Italien - Schweiz
+17.06 15:00 Uhr, Gruppe C in Bukarest: Ukraine - Nordmazedonien
+17.06 18:00 Uhr, Gruppe B in Kopenhagen: Dänemark - Belgien
+17.06 21:00 Uhr, Gruppe C in Amsterdam: Niederlande - Österreich
+18.06 15:00 Uhr, Gruppe E in St. Petersburg: Schweden - Slowakei
+18.06 18:00 Uhr, Gruppe D in Glasgow: Kroatien - Tschechien
+18.06 21:00 Uhr, Gruppe D in London: England - Schottland
+19.06 15:00 Uhr, Gruppe F in Budapest: Ungarn - Frankreich
+19.06 18:00 Uhr, Gruppe F in München: Portugal - Deutschland
+19.06 21:00 Uhr, Gruppe E in Sevilla: Spanien - Polen
+20.06 18:00 Uhr, Gruppe A in Rom: Italien - Wales
+20.06 18:00 Uhr, Gruppe A in Baku: Schweiz - Türkei
+21.06 18:00 Uhr, Gruppe C in Amsterdam: Nordmazedonien - Niederlande
+21.06 18:00 Uhr, Gruppe C in Bukarest: Ukraine - Österreich
+21.06 21:00 Uhr, Gruppe B in Kopenhagen: Russland - Dänemark
+21.06 21:00 Uhr, Gruppe B in St. Petersburg: Finnland - Belgien
+22.06 21:00 Uhr, Gruppe D in London: Tschechien - England
+22.06 21:00 Uhr, Gruppe D in Glasgow: Kroatien - Schottland
+22.06 18:00 Uhr, Gruppe E in Sevilla: Slowakei - Spanien
+22.06 18:00 Uhr, Gruppe E in St. Petersburg: Schweden - Polen
+22.06 21:00 Uhr, Gruppe F in München: Deutschland - Ungarn
+22.06 21:00 Uhr, Gruppe F in Budapest: Portugal - Frankreich
