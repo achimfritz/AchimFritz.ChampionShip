@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace AchimFritz\ChampionShip\ViewHelpers;
 
 /*                                                                        *
@@ -11,31 +14,30 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Round;
 use AchimFritz\ChampionShip\Competition\Domain\Model\ChildKoRound;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
-/**
- *
- * Enter description here ...
- * @author af
- *
- */
 class IfIsChildKoRoundViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
-    
-    /**
-     * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
-     *
-     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Round $round
-     * @return string the rendered string
-     */
-    public function render(Round $round)
+
+    public function initializeArguments()
     {
-        if ($round instanceof ChildKoRound) {
-            return $this->renderThenChild();
-        } else {
-            return $this->renderElseChild();
-        }
+        parent::initializeArguments();
+        $this->registerArgument('round', Round::class, 'round', true);
     }
+
+    public function render(): string
+    {
+        if (static::evaluateCondition($this->arguments, $this->renderingContext)) {
+            return (string)$this->renderThenChild();
+        }
+        return (string)$this->renderElseChild();
+    }
+
+    protected static function evaluateCondition($arguments = null, RenderingContextInterface $renderingContext): bool
+    {
+        return $arguments['round'] instanceof ChildKoRound;
+    }
+
 }

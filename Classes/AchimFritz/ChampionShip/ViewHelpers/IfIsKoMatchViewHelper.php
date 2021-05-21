@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace AchimFritz\ChampionShip\ViewHelpers;
 
 /*                                                                        *
@@ -11,9 +14,9 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Match;
 use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
 /**
  *
@@ -23,19 +26,24 @@ use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
  */
 class IfIsKoMatchViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
-    
-    /**
-     * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
-     *
-     * @param \AchimFritz\ChampionShip\Competition\Domain\Model\Match $match
-     * @return string the rendered string
-     */
-    public function render(Match $match)
+
+    public function initializeArguments()
     {
-        if ($match instanceof KoMatch) {
-            return $this->renderThenChild();
-        } else {
-            return $this->renderElseChild();
-        }
+        parent::initializeArguments();
+        $this->registerArgument('match', Match::class, 'match', true);
     }
+
+    public function render(): string
+    {
+        if (static::evaluateCondition($this->arguments, $this->renderingContext)) {
+            return (string)$this->renderThenChild();
+        }
+        return (string)$this->renderElseChild();
+    }
+
+    protected static function evaluateCondition($arguments = null, RenderingContextInterface $renderingContext): bool
+    {
+        return $arguments['match'] instanceof KoMatch;
+    }
+
 }

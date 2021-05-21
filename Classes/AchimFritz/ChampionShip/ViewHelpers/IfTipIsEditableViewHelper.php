@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace AchimFritz\ChampionShip\ViewHelpers;
 
 /*                                                                        *
@@ -11,38 +14,31 @@ namespace AchimFritz\ChampionShip\ViewHelpers;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use Neos\Flow\Annotations as Flow;
+use AchimFritz\ChampionShip\Security\TipSecurity;
 use AchimFritz\ChampionShip\Tip\Domain\Model\Tip;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 
-/**
- *
- * Enter description here ...
- * @author af
- *
- */
 class IfTipIsEditableViewHelper extends \Neos\FluidAdaptor\Core\ViewHelper\AbstractConditionViewHelper
 {
 
-    /**
-     * @Flow\Inject
-     * @var \AchimFritz\ChampionShip\Security\TipSecurity
-     */
-    protected $tipSecurity;
-    
-    /**
-     * Renders <f:then> child if match is groupMatch is true, otherwise renders <f:else> child.
-     *
-     * @param \AchimFritz\ChampionShip\Tip\Domain\Model\Tip $tip
-     * @return string the rendered string
-     */
-    public function render(Tip $tip = null)
+    public function initializeArguments()
     {
-        if ($tip === null) {
-            return $this->renderElseChild();
+        parent::initializeArguments();
+        $this->registerArgument('tip', Tip::class, 'tip', true);
+    }
+
+    public function render(): string
+    {
+        if (static::evaluateCondition($this->arguments, $this->renderingContext)) {
+            return (string)$this->renderThenChild();
         }
-        if ($this->tipSecurity->editAllowed($tip) === true) {
-            return $this->renderThenChild();
-        }
-        return $this->renderElseChild();
+        return (string)$this->renderElseChild();
+    }
+
+    protected static function evaluateCondition($arguments = null, RenderingContextInterface $renderingContext): bool
+    {
+        $objectManager = $renderingContext->getObjectManager();
+        $tipSecurity = $objectManager->get(TipSecurity::class);
+        return $tipSecurity->editAllowed($arguments['tip']) === true;
     }
 }
