@@ -67,7 +67,7 @@ class GroupRoundCommandController extends \Neos\Flow\Cli\CommandController
      * @param string $cupName
      * @return void
      */
-    public function finishCommand($cupName = 'em 2016')
+    public function finishCommand($cupName = 'em 2021')
     {
         $cup = $this->cupRepository->findOneByName($cupName);
         if ($cup instanceof Cup === false) {

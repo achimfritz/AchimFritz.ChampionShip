@@ -46,6 +46,7 @@ class GroupTableRow
 
     /**
      * @var integer
+     * @ORM\Column(name="ranking")
      */
     protected $rank = 1;
 

@@ -1,0 +1,15 @@
+7xx37xx26.06 18:00 Uhr in Amsterdam: 2A - 2B
+7xx38xx26.06 21:00 Uhr in London: 1A - 2C
+7xx39xx27.06 18:00 Uhr in Budapest: 1C - 3DEF
+7xx40xx27.06 21:00 Uhr in Sevilla: 1B - 3ADEF
+7xx41xx28.06 18:00 Uhr in Kopenhagen: 2D - 2E
+7xx42xx28.06 21:00 Uhr in Bukarest: 1F - 3ABC
+7xx43xx29.06 18:00 Uhr in London: 1D - 2F
+7xx44xx29.06 21:00 Uhr in Glasgow: 1E - 3ABCD
+3xx45xx02.07 18:00 Uhr in St. Petersburg: W42 - W41
+3xx46xx02.07 21:00 Uhr in München: W40 - W38
+3xx47xx03.07 18:00 Uhr in Baku: W39 - W37
+3xx48xx03.07 21:00 Uhr in Rom: W44 - W43
+4xx49xx06.07 21:00 Uhr in London: W46 - W45
+4xx50xx07.07 21:00 Uhr in London: W48 - W47
+5xx51xx11.07 21:00 Uhr in London: W49 - W50

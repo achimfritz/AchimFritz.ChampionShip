@@ -42,18 +42,24 @@ class GroupRoundService
         // string by alpha sort -> A C D E
         $roundString = $this->buildRoundsString($groupTableRows);
         $policy = $this->getPolicy();
-        $roundMatrix = $policy->getRoundMatrix();
+        $roundMatrix = $policy->getRoundMatrix($cup);
         if (empty($roundMatrix[$roundString]) === true) {
             throw new Exception('no matrix round found for ' . $roundString, 1464109832);
         }
         $combination = $roundMatrix[$roundString];
-        $roundsForMatches = $this->getPolicy()->getOrderRoundsForMatches();
+        $roundsForMatches = $this->getPolicy()->getOrderRoundsForMatches($cup);
         // string by alpha sort -> A C D E
         // A C D E         C       D       A       E
         // Spiel mit 1. Gruppe A -> 3 C
         // Spiel mit 1. Gruppe B -> 3 D
         // Spiel mit 1. Gruppe C -> 3 A
         // Spiel mit 1. Gruppe D -> 3 E
+
+        // Spiel mit 1. Gruppe B -> 3 C
+        // Spiel mit 1. Gruppe C -> 3 D
+        // Spiel mit 1. Gruppe E -> 3 A
+        // Spiel mit 1. Gruppe F -> 3 E
+
         for ($i = 0; $i < count($roundsForMatches); $i++) {
             $roundName = $roundsForMatches[$i];
             $roundNameOfThird = $combination[$i];

@@ -6,6 +6,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Competition\Domain\Model\ExtraPoint;
 use Neos\Flow\Annotations as Flow;
 
@@ -56,32 +57,62 @@ class BestThirdsPolicy
     /**
      * @return array
      */
-    public function getRoundMatrix()
+    public function getRoundMatrix(Cup $cup): array
     {
-        return array(
-            'ABCD' => array('C','D','A','B'),
-            'ABCE' => array('C','A','B','E'),
-            'ABCF' => array('C','A','B','F'),
-            'ABDE' => array('D','A','B','E'),
-            'ABDF' => array('D','A','B','F'),
-            'ABEF' => array('E','A','B','F'),
-            'ACDE' => array('C','D','A','E'),
-            'ACDF' => array('C','D','A','F'),
-            'ACEF' => array('C','A','F','E'),
-            'ADEF' => array('D','A','F','E'),
-            'BCDE' => array('C','D','B','E'),
-            'BCDF' => array('C','D','B','F'),
-            'BCEF' => array('E','C','B','F'),
-            'BDEF' => array('E','D','B','F'),
-            'CDEF' => array('C','D','F','E')
-        );
+        // https://de.wikipedia.org/wiki/Fu%C3%9Fball-Europameisterschaft_2016#Einordnung_der_qualifizierten_Gruppendritten_in_das_Achtelfinale
+        // https://de.wikipedia.org/wiki/Fu%C3%9Fball-Europameisterschaft_2021#Einordnung_der_qualifizierten_Gruppendritten_in_das_Achtelfinale
+        if ($cup->getName() === 'em 2016') {
+            return [
+                'ABCD' => ['C', 'D', 'A', 'B'],
+                'ABCE' => ['C', 'A', 'B', 'E'],
+                'ABCF' => ['C', 'A', 'B', 'F'],
+                'ABDE' => ['D', 'A', 'B', 'E'],
+                'ABDF' => ['D', 'A', 'B', 'F'],
+                'ABEF' => ['E', 'A', 'B', 'F'],
+                'ACDE' => ['C', 'D', 'A', 'E'],
+                'ACDF' => ['C', 'D', 'A', 'F'],
+                'ACEF' => ['C', 'A', 'F', 'E'],
+                'ADEF' => ['D', 'A', 'F', 'E'],
+                'BCDE' => ['C', 'D', 'B', 'E'],
+                'BCDF' => ['C', 'D', 'B', 'F'],
+                'BCEF' => ['E', 'C', 'B', 'F'],
+                'BDEF' => ['E', 'D', 'B', 'F'],
+                'CDEF' => ['C', 'D', 'F', 'E']
+            ];
+        } elseif ($cup->getName() === 'em 2021') {
+            return [
+                'ABCD' => ['A', 'D', 'B', 'C'],
+                'ABCE' => ['A', 'E', 'B', 'C'],
+                'ABCF' => ['A', 'F', 'B', 'C'],
+                'ABDE' => ['D', 'E', 'A', 'B'],
+                'ABDF' => ['D', 'F', 'A', 'B'],
+                'ABEF' => ['E', 'F', 'B', 'A'],
+                'ACDE' => ['E', 'D', 'C', 'A'],
+                'ACDF' => ['F', 'D', 'C', 'A'],
+                'ACEF' => ['E', 'F', 'E', 'A'],
+                'ADEF' => ['E', 'F', 'D', 'A'],
+                'BCDE' => ['E', 'D', 'B', 'C'],
+                'BCDF' => ['F', 'D', 'C', 'B'],
+                'BCEF' => ['F', 'E', 'C', 'B'],
+                'BDEF' => ['F', 'E', 'D', 'B'],
+                'CDEF' => ['F', 'E', 'D', 'C']
+            ];
+        } else {
+            return [];
+        }
     }
 
     /**
      * @return array
      */
-    public function getOrderRoundsForMatches()
+    public function getOrderRoundsForMatches(Cup $cup)
     {
-        return array('A', 'B', 'C', 'D');
+        if ($cup->getName() === 'em 2016') {
+            return ['A', 'B', 'C', 'D'];
+        } elseif ($cup->getName() === 'em 2021') {
+            return ['B', 'C', 'E', 'F'];
+        } else {
+            return [];
+        }
     }
 }
