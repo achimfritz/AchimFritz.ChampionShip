@@ -88,25 +88,21 @@ class GroupRoundCommandController extends \Neos\Flow\Cli\CommandController
         }
     }
 
-    /**
-     * update
-     *
-     * @return void
-     */
-    public function updateCommand()
+    public function updateCommand(string $cupName = 'em 2021'): int
     {
-        $cup = $this->cupRepository->findOneByName('wm 2018');
+        $cup = $this->cupRepository->findOneByName($cupName);
+        if ($cup === null) {
+            $this->outputLine('no suche cup ' . $cupName);
+            return 1;
+        }
         $groupRounds = $this->groupRoundRepository->findByCup($cup);
-        #$groupRounds = array($this->groupRoundRepository->findOneByName('Gruppe A'));
         foreach ($groupRounds as $groupRound) {
-            if ($groupRound->getName() != 'G' or $groupRound->getCup()->getName() != 'wm 2002') {
-                #continue;
-            }
             $this->outputLine('update groupRoundTable ' . $groupRound->getCup()->getName() . ' ' . $groupRound->getName());
             $groupRound->updateGroupTable();
             $this->outputGroupRound($groupRound);
             $this->groupRoundRepository->update($groupRound);
         }
+        return 0;
     }
 
     /**

@@ -29,6 +29,7 @@ abstract class AbstractRanking
 
     /**
      * @var integer
+     * @ORM\Column(name="ranking")
      */
     protected $rank = 0;
 
