@@ -1,6 +1,0 @@
--
-  requestFilter: 'isPackage("AchimFritz.ChampionShip") && isFormat("html")'
-  options:
-    templateRootPaths: ['resource://AchimFritz.ChampionShip/Private/V1/Templates']
-    layoutRootPaths: ['resource://AchimFritz.ChampionShip/Private/V1/Layouts']
-    partialRootPaths: ['resource://AchimFritz.ChampionShip/Private/V1/Partials']
