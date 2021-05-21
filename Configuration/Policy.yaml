@@ -55,7 +55,7 @@ roles:
         privilegeTarget: AchimFritz_ChampionShipTipGroupResultsResource
         permission: GRANT
       -
-        privilegeTarget: AchimFritz_ChampionShipUserTipResource
+        privilegeTarget: AchimFritz_ChampionShipUserMatchTipResource
         permission: GRANT
       -
         privilegeTarget: AchimFritz_ChampionShipUserResource
@@ -99,7 +99,7 @@ roles:
         privilegeTarget: AchimFritz_ChampionShipTipGroupResultsResource
         permission: GRANT
       -
-        privilegeTarget: AchimFritz_ChampionShipUserTipResource
+        privilegeTarget: AchimFritz_ChampionShipUserMatchTipResource
         permission: GRANT
       -
         privilegeTarget: AchimFritz_ChampionShipUserResource
