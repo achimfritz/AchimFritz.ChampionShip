@@ -57,10 +57,10 @@ class NotificationService
         $to = $user->getEmail();
 
         $subject = 'Einladung: Tippen bis zum Anpfiff bei www.tipptrip.de';
-        $body = 'Am 14.06.2018 ist es wieder soweit: Es wird WM-Geschichte geschrieben!!! '. chr(10) . chr(10);
+        $body = 'Am 11.06.2021 ist es wieder soweit: Es wird WM-Geschichte geschrieben!!! '. chr(10) . chr(10);
         $body .= 'Du bist natürlich automatisch wieder bei www.tipptrip.de dabei.' . chr(10) . chr(10);
         $body .= 'Deine Zugangsdaten:' . chr(10);
-        $body .= 'URL: http://www.tipptrip.de/' . chr(10);
+        $body .= 'URL: https://www.tipptrip.de/' . chr(10);
         $body .= 'Username: ' . $user->getUsername() . chr(10). chr(10);
         $body .= 'Viel Spass wünscht Dir,' . chr(10);
         $body .= 'das www.tipptrip.de-Team';
@@ -87,7 +87,7 @@ class NotificationService
         $subject = 'Registrierung www.tipptrip.de';
         $body = 'Deine Registrierung wurde erfolgreich abgeschlossen' . chr(10) . chr(10);
         $body .= 'Deine Zugangsdaten:' . chr(10);
-        $body .= 'URL: http://www.tipptrip.de/' . chr(10);
+        $body .= 'URL: https://www.tipptrip.de/' . chr(10);
         $body .= 'Username: ' . $user->getUsername() . chr(10);
         $body .= 'Dein Passwort: **********' . chr(10) . chr(10);
         $body .= 'Viel Spass wünscht Dir,' . chr(10);
@@ -144,7 +144,7 @@ class NotificationService
         $subject = 'Registrierung www.tipptrip.de';
         $body = 'Deine Registrierung wurde erfolgreich angelegt' . chr(10);
         $body .= 'Der Administrator wird Deine Daten prüfen und sich dann bei Dir melden' . chr(10) . chr(10);
-        $body .= 'URL: http://www.tipptrip.de/' . chr(10) . chr(10);
+        $body .= 'URL: https://www.tipptrip.de/' . chr(10) . chr(10);
         $body .= 'Viel Spass wünscht Dir,' . chr(10);
         $body .= 'das www.tipptrip.de-Team';
 
@@ -181,7 +181,7 @@ class NotificationService
         $subject = 'Kontakt Anfrage www.tipptrip.de';
         $body = 'Deine Kontakt Anfrage ist bei uns eingegangen' . chr(10);
         $body = 'Der Administrator wird Deine Daten prüfen und sich dann bei Dir melden' . chr(10) . chr(10);
-        $body .= 'URL: http://www.tipptrip.de/' . chr(10) . chr(10);
+        $body .= 'URL: https://www.tipptrip.de/' . chr(10) . chr(10);
         $body .= 'Viel Spass wünscht Dir,' . chr(10);
         $body .= 'das www.tipptrip.de-Team';
 
