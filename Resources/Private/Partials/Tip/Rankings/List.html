@@ -14,11 +14,11 @@
 				<tbody>
 					<f:for each="{rankings}" as="ranking">
 						<tr class="{f:if(condition: cnt.isOdd, then: ' cs-odd', else: ' cs-even')}">
-							<td>{ranking.rank}</td>
+							<td>{ranking.rank}.</td>
 							<td>{ranking.points}</td>
 							<td>{ranking.user.displayName}
 							</td>
-							<td>{ranking.countOfTips}</td>
+							<td class="hidden-xs">{ranking.countOfTips}</td>
 						</tr>
 					</f:for>
 				</tbody>
