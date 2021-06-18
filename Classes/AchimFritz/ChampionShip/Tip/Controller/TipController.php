@@ -82,7 +82,7 @@ class TipController extends AbstractActionController
         try {
             $this->tipRepository->update($tip);
             $this->persistenceManager->persistAll();
-            $this->addOkMessage('tip updated');
+            $this->addOkMessage($tip->getResult()->getHostTeamGoals() . ':' . $tip->getResult()->getGuestTeamGoals());
         } catch (\Exception $e) {
             $this->addErrorMessage('cannot update tip');
             $this->handleException($e);
