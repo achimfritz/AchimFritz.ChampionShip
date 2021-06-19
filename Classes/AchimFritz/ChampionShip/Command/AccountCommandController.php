@@ -6,6 +6,7 @@ namespace AchimFritz\ChampionShip\Command;
  *                                                                        *
  *                                                                        */
 
+use AchimFritz\ChampionShip\User\Domain\Repository\UserRepository;
 use Neos\Flow\Annotations as Flow;
 use AchimFritz\ChampionShip\User\Domain\Model\User;
 use AchimFritz\ChampionShip\User\Domain\Model\TipGroup;
@@ -26,6 +27,12 @@ class AccountCommandController extends \Neos\Flow\Cli\CommandController
     protected $accountRepository;
 
     /**
+     * @var UserRepository
+     * @Flow\Inject
+     */
+    protected $userRepository;
+
+    /**
      * @var \Neos\Flow\Security\Cryptography\HashService
      * @Flow\Inject
      */
@@ -36,9 +43,12 @@ class AccountCommandController extends \Neos\Flow\Cli\CommandController
      */
     public function listCommand()
     {
-        $users = $this->accountRepository->findAll();
-        foreach ($users as $user) {
-            $this->outputLine($user->getAccountIdentifier());
+        $accounts = $this->accountRepository->findAll();
+        foreach ($accounts as $account) {
+            $user = $this->userRepository->findOneByAccountIdentifier($account->getAccountIdentifier());
+            if ($user !== null) {
+                $this->outputLine($account->getAccountIdentifier() . ' - ' . $user->getEmail());
+            }
         }
     }
 
