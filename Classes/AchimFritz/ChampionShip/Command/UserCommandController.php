@@ -68,7 +68,7 @@ class UserCommandController extends \Neos\Flow\Cli\CommandController
             $this->outputLine('user not found ' . $username);
         }
         $this->outputLine('will sent invitation mail to ' . $user->getEmail());
-        if ($sendMail === true) {
+        if ((bool)$sendMail === true) {
             $this->notificationService->inviteUser($user);
             $this->outputLine('sending ' . $user->getEmail());
         }
@@ -84,7 +84,7 @@ class UserCommandController extends \Neos\Flow\Cli\CommandController
     {
         $users = $this->userRepository->findAll();
         $this->outputLine('will sent invitation mail to ' . count($users) . ' users');
-        if ($sendMail === true) {
+        if ((bool)$sendMail === true) {
             foreach ($users as $user) {
                 $this->notificationService->inviteUser($user);
                 $this->outputLine('sending ' . $user->getEmail());
@@ -142,13 +142,18 @@ class UserCommandController extends \Neos\Flow\Cli\CommandController
         foreach ($users as $user) {
             $tips = $this->tipRepository->findByUserInCupWithResult($user, $cup);
             if (count($tips) === 0) {
-                $user->setDisabled(true);
-                $this->userRepository->update($user);
+                if ($user->getDisabled() === false) {
+                    $user->setDisabled(true);
+                    $this->userRepository->update($user);
+                    $this->outputLine('disable user ' . $user->getEmail());
+                }
             } else {
-                $user->setDisabled(false);
-                $this->userRepository->update($user);
+                if ($user->getDisabled() === true) {
+                    $user->setDisabled(false);
+                    $this->userRepository->update($user);
+                    $this->outputLine('enable user ' . $user->getEmail());
+                }
             }
-            $this->outputLine(count($tips) . ' - ' . $user->getDisplayName());
         }
     }
 }

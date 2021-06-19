@@ -96,6 +96,8 @@ class RankingCommandController extends \Neos\Flow\Cli\CommandController
      */
     public function updateCommand()
     {
+        $this->outputLine('what is this?');
+        return;
         $this->rankingRepository->removeAll();
         $this->cupRankingRepository->removeAll();
         $cups = $this->cupRepository->findAll();

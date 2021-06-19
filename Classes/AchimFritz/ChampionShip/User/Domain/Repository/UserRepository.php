@@ -41,13 +41,13 @@ class UserRepository extends \Neos\Flow\Persistence\Repository
      */
     public function findInTipGroups(\Doctrine\Common\Collections\Collection $tipGroups)
     {
-        $identifiers = array();
-        foreach ($tipGroups as $tipGroup) {
-            $identifiers[] = $this->persistenceManager->getIdentifierByObject($tipGroup);
-        }
+        $constraints = array();
         $query = $this->createQuery();
+        foreach ($tipGroups as $tipGroup) {
+            $constraints[] = $query->contains('tipGroups', $tipGroup);
+        }
         return $query->matching(
-            $query->in('tipGroup', $identifiers)
+            $query->logicalOr($constraints),
         )->execute();
     }
 

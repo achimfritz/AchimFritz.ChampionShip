@@ -53,7 +53,14 @@ class MatchTipController extends AbstractTipGroupController
     public function showAction(Match $match)
     {
         if ($this->user instanceof User) {
-            $users = $this->userRepository->findInTipGroupsAndEnabled($this->user->getTipGroups());
+            $recentCup = $this->cupRepository->findOneRecent();
+            if ($this->cup === $recentCup) {
+                // only enabled users in recentCup
+                $users = $this->userRepository->findInTipGroupsAndEnabled($this->user->getTipGroups());
+            } else {
+                // all users for history
+                $users = $this->userRepository->findInTipGroups($this->user->getTipGroups());
+            }
         } else {
             // admin only
             $users = $this->userRepository->findAll();
