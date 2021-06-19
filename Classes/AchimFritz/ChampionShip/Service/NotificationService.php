@@ -180,12 +180,12 @@ class NotificationService
 
         $subject = 'Kontakt Anfrage www.tipptrip.de';
         $body = 'Deine Kontakt Anfrage ist bei uns eingegangen' . chr(10);
-        $body = 'Der Administrator wird Deine Daten prüfen und sich dann bei Dir melden' . chr(10) . chr(10);
+        $body .= 'Der Administrator wird Deine Daten prüfen und sich dann bei Dir melden' . chr(10) . chr(10);
         $body .= 'URL: https://www.tipptrip.de/' . chr(10) . chr(10);
         $body .= 'Viel Spass wünscht Dir,' . chr(10);
         $body .= 'das www.tipptrip.de-Team';
 
-        $mailMessage = $this->objectManager->get('Neos\SwiftMailer\Message');
+        $mailMessage = new Message();
         $mailMessage->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)
@@ -196,7 +196,7 @@ class NotificationService
         $subject = 'contact request';
         $body = 'the user ' . $contactRequest->getEmail() . ' has start a contact request';
 
-        $mailMessage = $this->objectManager->get('Neos\SwiftMailer\Message');
+        $mailMessage = new Message();
         $mailMessage->setFrom($from)
             ->setTo($to)
             ->setSubject($subject)

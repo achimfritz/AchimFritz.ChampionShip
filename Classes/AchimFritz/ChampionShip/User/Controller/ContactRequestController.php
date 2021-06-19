@@ -61,8 +61,7 @@ class ContactRequestController extends AbstractActionController
         try {
             $this->contactRequestRepository->add($contactRequest);
             $this->persistenceManager->persistAll();
-            $msg = $this->translator->translateById('contactRequest.created', array(), null, null, 'Main', 'AchimFritz.ChampionShip');
-            $this->addOkMessage($msg);
+            $this->addOkMessage('contactRequest.created');
             $this->notificationService->contactStarted($contactRequest);
         } catch (\Exception $e) {
             $this->addErrorMessage('cannot create contactRequest');
