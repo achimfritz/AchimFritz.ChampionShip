@@ -54,7 +54,7 @@
                     success: function (response) {
                         tip.container.removeClass('loading');
                         if (response.flashMessages.length) {
-                            var html = '<span class="alert-inline alert alert-success"><strong>OK</strong></span>';
+                            var html = '<span class="alert-inline alert alert-success"><strong>OK: ' + response.flashMessages[0].message + '</strong></span>';
                             tip.container.append(html);
                         }
                     },
