@@ -53,6 +53,12 @@ class RegistrationRequest
     protected $username = '';
 
     /**
+     * @var int
+     * @Flow\Validate(type="NumberRange", options={"minimum": 0, "maximum": 0})
+     */
+    protected $agb = 0;
+
+    /**
      * @return void
      */
     public function __construct()
@@ -160,5 +166,21 @@ class RegistrationRequest
     public function getCreationDate()
     {
         return $this->creationDate;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAgb()
+    {
+        return $this->agb;
+    }
+
+    /**
+     * @param int $agb
+     */
+    public function setAgb(?int $agb): void
+    {
+        $this->agb = (int)$agb;
     }
 }

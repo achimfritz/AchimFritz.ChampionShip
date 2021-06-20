@@ -1,4 +1,5 @@
 	<f:form class="form-horizontal" action="index" controller="RegistrationRequest" subpackage="User" name="registrationRequest" method="post">
+		<div id="agb"><f:form.checkbox property="agb"  value="1"/></div>
 		<div class="row">
 			<div class="col-sm-4 col-xs-8">
 				<div class="form-group">
@@ -39,3 +40,4 @@
 			</div>
 		</div>
 	</f:form>
+	<script>document.getElementById("agb").style.visibility="hidden";</script>

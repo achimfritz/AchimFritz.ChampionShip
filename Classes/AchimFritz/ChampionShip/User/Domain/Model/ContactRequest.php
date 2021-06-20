@@ -35,6 +35,12 @@ class ContactRequest
     protected $message;
 
     /**
+     * @var int
+     * @Flow\Validate(type="NumberRange", options={"minimum": 0, "maximum": 0})
+     */
+    protected $agb = 0;
+
+    /**
      * @var \DateTime
      */
     protected $creationDate;
@@ -116,5 +122,21 @@ class ContactRequest
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAgb()
+    {
+        return $this->agb;
+    }
+
+    /**
+     * @param int $agb
+     */
+    public function setAgb(?int $agb): void
+    {
+        $this->agb = (int)$agb;
     }
 }
