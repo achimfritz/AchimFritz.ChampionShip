@@ -11,7 +11,9 @@
 		<cs:ifTipIsEditable tip="{tip}">
 			<f:then>
 				<span class="tip">
-					coming soon
+					<input class="hostTip cs-tipInput" type="text" size="1" value="{tip.result.hostTeamGoals}" />
+					:
+					<input class="guestTip cs-tipInput" type="text" size="1" value="{tip.result.guestTeamGoals}" />
 					<input class="tipId" type="hidden" value="{f:format.identifier(value: tip)}" />
 					<button type="submit" class="btn btn-success btn-xs" disabled="disabled">Ok</button>
 				</span>
