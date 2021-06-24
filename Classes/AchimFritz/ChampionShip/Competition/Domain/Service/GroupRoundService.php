@@ -9,6 +9,7 @@ namespace AchimFritz\ChampionShip\Competition\Domain\Service;
 use AchimFritz\ChampionShip\Competition\Domain\Model\CrossGroupWithThirdsMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Model\Cup;
 use AchimFritz\ChampionShip\Competition\Domain\Model\GroupRound;
+use AchimFritz\ChampionShip\Competition\Domain\Model\KoMatch;
 use AchimFritz\ChampionShip\Competition\Domain\Policy\GroupTable\BestThirdsPolicy;
 use Neos\Flow\Annotations as Flow;
 
@@ -29,6 +30,18 @@ class GroupRoundService
      * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupWithThirdsMatchRepository
      */
     protected $matchRepository;
+
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupMatchRepository
+     */
+    protected $crossGroupMatchRepository;
+
+    /**
+     * @Flow\Inject
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\TeamsOfTwoMatchesMatchRepository
+     */
+    protected $teamsOfTwoMatchesMatchRepository;
 
     /**
      * @param Cup $cup
@@ -77,6 +90,31 @@ class GroupRoundService
         }
 
         return $groupTableRows;
+    }
+
+    public function finishOne(GroupRound $round)
+    {
+        $winnerTeam = $round->getWinnerTeam();
+        $secondTeam = $round->getSecondTeam();
+
+        $koMatch = $this->crossGroupMatchRepository->findOneInGroupRoundWithRank($round, 1);
+        if ($koMatch instanceof KoMatch) {
+            if ($koMatch->getHostGroupRank() === 1 && $koMatch->getHostGroupRound() === $round) {
+                $koMatch->setHostTeam($winnerTeam);
+            } elseif ($koMatch->getGuestGroupRank() === 1 && $koMatch->getGuestGroupRound() === $round) {
+                $koMatch->setGuestTeam($winnerTeam);
+            }
+            $this->crossGroupMatchRepository->update($koMatch);
+        }
+        $otherKoMatch = $this->crossGroupMatchRepository->findOneInGroupRoundWithRank($round, 2);
+        if ($otherKoMatch instanceof KoMatch) {
+            if ($otherKoMatch->getGuestGroupRank() === 2 && $otherKoMatch->getGuestGroupRound() === $round) {
+                $otherKoMatch->setGuestTeam($secondTeam);
+            } elseif ($otherKoMatch->getHostGroupRank() === 2 && $otherKoMatch->getHostGroupRound() === $round) {
+                $otherKoMatch->setHostTeam($secondTeam);
+            }
+            $this->crossGroupMatchRepository->update($otherKoMatch);
+        }
     }
 
     /**

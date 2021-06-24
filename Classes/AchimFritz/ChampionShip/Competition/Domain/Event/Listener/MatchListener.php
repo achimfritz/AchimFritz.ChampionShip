@@ -32,12 +32,11 @@ class MatchListener
      */
     protected $roundRepository;
 
-
     /**
      * @Flow\Inject
-     * @var \AchimFritz\ChampionShip\Competition\Domain\Repository\CrossGroupMatchRepository
+     * @var \AchimFritz\ChampionShip\Competition\Domain\Service\GroupRoundService
      */
-    protected $crossGroupMatchRepository;
+    protected $groupRoundService;
 
     /**
      * @param Match $match
@@ -86,30 +85,11 @@ class MatchListener
     protected function onGroupMatchChanged(GroupMatch $match)
     {
         $round = $match->getRound();
+        $round->updateGroupTable();
 
         if ($round->getRoundIsFinished() === true) {
-            $winnerTeam = $round->getWinnerTeam();
-            $secondTeam = $round->getSecondTeam();
-            $koMatch = $this->crossGroupMatchRepository->findOneInGroupRoundWithRank($round, 1);
-            if ($koMatch instanceof KoMatch) {
-                if ($koMatch->getHostGroupRank() === 1 && $koMatch->getHostGroupRound() === $round) {
-                    $koMatch->setHostTeam($winnerTeam);
-                } elseif ($koMatch->getGuestGroupRank() === 1 && $koMatch->getGuestGroupRound() === $round) {
-                    $koMatch->setGuestTeam($winnerTeam);
-                }
-                $this->crossGroupMatchRepository->update($koMatch);
-            }
-            $otherKoMatch = $this->crossGroupMatchRepository->findOneInGroupRoundWithRank($round, 2);
-            if ($otherKoMatch instanceof KoMatch) {
-                if ($otherKoMatch->getGuestGroupRank() === 2 && $otherKoMatch->getGuestGroupRound() === $round) {
-                    $otherKoMatch->setGuestTeam($secondTeam);
-                } elseif ($otherKoMatch->getHostGroupRank() === 2 && $otherKoMatch->getHostGroupRound() === $round) {
-                    $otherKoMatch->setHostTeam($secondTeam);
-                }
-                $this->crossGroupMatchRepository->update($otherKoMatch);
-            }
+            $this->groupRoundService->finishOne($round);
         }
-        $round->updateGroupTable();
         $this->roundRepository->update($round);
     }
 

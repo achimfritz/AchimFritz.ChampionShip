@@ -26,7 +26,7 @@ class UefaPointEqualityPolicy extends AbstractPointEqualityPolicy
     */
     protected function rowsAreEqual(GroupTableRow $rowOne, GroupTableRow $rowTwo)
     {
-        $this->addMessage('comparing ' . $rowOne->getTeam()->getName() . ' - ' . $rowTwo->getTeam()->getName());
+        $this->addMessage('comparing ' . $rowOne->getTeam()->getName() . ' - ' . $rowTwo->getTeam()->getName() . ' ' . $rowOne->getPoints() . ':' . $rowTwo->getPoints());
         if ($rowOne->getPoints() === $rowTwo->getPoints()) {
             return true;
         } else {

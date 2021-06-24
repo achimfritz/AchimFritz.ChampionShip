@@ -101,11 +101,19 @@ class GroupRound extends Round
     }
     
     /**
-     * @return \AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow The Group table's group table rows
+     * @return \Doctrine\Common\Collections\Collection<\AchimFritz\ChampionShip\Competition\Domain\Model\GroupTableRow>
      */
     public function getGroupTableRows()
     {
-        return $this->groupTableRows;
+        $rows = [];
+        $ranks = [];
+        foreach ($this->groupTableRows as $row) {
+            $ranks[] = $row->getRank();
+            $rows[] = $row;
+        }
+        array_multisort($ranks, $rows);
+        $collection = new \Doctrine\Common\Collections\ArrayCollection($rows);
+        return $collection;
     }
 
     /**

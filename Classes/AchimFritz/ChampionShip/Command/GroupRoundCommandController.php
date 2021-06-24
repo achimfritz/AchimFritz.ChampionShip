@@ -96,11 +96,15 @@ class GroupRoundCommandController extends \Neos\Flow\Cli\CommandController
             return 1;
         }
         $groupRounds = $this->groupRoundRepository->findByCup($cup);
+        #$groupRounds = array($this->groupRoundRepository->findOneByNameAndCup('F', $cup));
         foreach ($groupRounds as $groupRound) {
             $this->outputLine('update groupRoundTable ' . $groupRound->getCup()->getName() . ' ' . $groupRound->getName());
             $groupRound->updateGroupTable();
             $this->outputGroupRound($groupRound);
             $this->groupRoundRepository->update($groupRound);
+            if ($groupRound->getRoundIsFinished() === true) {
+                $this->groupRoundService->finishOne($groupRound);
+            }
         }
         return 0;
     }
