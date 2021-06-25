@@ -118,20 +118,17 @@ abstract class AbstractPointEqualityPolicy
     protected function pointEquality(array $rows, Collection $matches)
     {
         $this->addMessage('checking ' . count($rows) . ' teams');
+
         $first = $rows[0];
         $startRank = $first->getRank() - 1;
-        $cup = $first->getGroupRound()->getCup();
         foreach ($rows as $row) {
             $this->addMessage($row->getTeam()->getName() . ' with rank ' . $row->getRank());
         }
         $relevant = $this->getRelevantMatches($rows, $matches);
         if (count($relevant) > 0) {
             $round = new GroupRound();
-            $round->setCup($cup);
-            $round->setGeneralMatches($relevant);
-            $round->updateGroupTable();
-            $groupTableRows = $round->getGroupTableRows();
-            $groupTableRows = $this->defaultPolicy->updateTable($groupTableRows->toArray());
+            $groupTableRows = $round->getGroupTableRowsByResults($relevant);
+            $groupTableRows = $this->defaultPolicy->updateTable($groupTableRows);
             $arr = array();
             foreach ($groupTableRows as $groupTableRow) {
                 $arr[$groupTableRow->getTeam()->getName()] = $groupTableRow;
@@ -156,28 +153,31 @@ abstract class AbstractPointEqualityPolicy
     public function updateTable(array $rows, Collection $matches)
     {
         $first = $matches->first();
-        $this->addMessage('updateTable ' . $first->getRound()->getName() . ' ' . $first->getCup()->getName());
+        $this->addMessage('updateTable ' . $first->getRound()->getName() . ' ' . $first->getCup()->getName() . ' with ' . count($rows) . ' rows');
         $rows = $this->defaultPolicy->updateTable($rows, $matches);
         // numeric array
-        $res = array();
-        $new = array();
+        $res = [];
         foreach ($rows as $row) {
             $res[] = $row;
         }
-        for ($i = 0; $i < sizeof($res) - 1; $i++) {
+        for ($i = 0; $i < count($res) - 1; $i++) {
             $row = $res[$i];
             $next = $res[$i+1];
             if ($this->rowsAreEqual($row, $next)) {
-                if ($i + 2 < sizeof($res)) {
+                if ($i + 2 < count($res)) {
                     $overNext = $res[$i+2];
                     if ($this->rowsAreEqual($next, $overNext)) {
+                        $this->addMessage('case 1 point equality with 3 teams, i=' . $i);
+                        $this->addMessage($row->getTeam()->getName() . ' - ' . $next->getTeam()->getName() . ' - ' . $overNext->getTeam()->getName());
                         $this->pointEquality(array($row, $next, $overNext), $matches);
                         //finish
                         $i++;
                     } else {
+                        $this->addMessage('case 2 point equality with 2 teams, i=' . $i);
                         $this->pointEquality(array($row, $next), $matches);
                     }
                 } else {
+                    $this->addMessage('case 3 point equality with 2 teams, i=' . $i);
                     $this->pointEquality(array($row, $next), $matches);
                 }
             }

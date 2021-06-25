@@ -133,6 +133,62 @@ class GroupRound extends Round
         $this->groupTableRows->clear();
     }
 
+    public function getGroupTableRowsByResults($matches)
+    {
+        // required ?
+        $this->groupTableRows->clear();
+        foreach ($matches as $match) {
+            $team = $match->getHostTeam();
+            $teams[$team->getName()] = $team;
+            $result = $match->getResult();
+            if (!isset($rows[$team->getName()])) {
+                $groupTableRow = new GroupTableRow();
+                $groupTableRow->setTeam($team);
+                $groupTableRow->setGroupRound($match->getRound());
+            } else {
+                $groupTableRow = $rows[$team->getName()];
+            }
+            if (isset($result)) {
+                $groupTableRow->setPoints($groupTableRow->getPoints() + $result->getHostPoints());
+                $groupTableRow->setGoalsPlus($groupTableRow->getGoalsPlus() + $result->getHostTeamGoals());
+                $groupTableRow->setGoalsMinus($groupTableRow->getGoalsMinus() + $result->getGuestTeamGoals());
+                $groupTableRow->setCountOfMatchesPlayed($groupTableRow->getCountOfMatchesPlayed() + 1);
+                if ($result->getHostWins() === true) {
+                    $groupTableRow->setCountOfMatchesWon($groupTableRow->getCountOfMatchesWon() + 1);
+                } elseif ($result->getGuestWins() === true) {
+                    $groupTableRow->setCountOfMatchesLoosed($groupTableRow->getCountOfMatchesLoosed() + 1);
+                } else {
+                    $groupTableRow->setCountOfMatchesRemis($groupTableRow->getCountOfMatchesRemis() + 1);
+                }
+            }
+            $rows[$team->getName()] = $groupTableRow;
+            $team = $match->getGuestTeam();
+            $teams[$team->getName()] = $team;
+            if (!isset($rows[$team->getName()])) {
+                $groupTableRow = new GroupTableRow();
+                $groupTableRow->setTeam($team);
+                $groupTableRow->setGroupRound($match->getRound());
+            } else {
+                $groupTableRow = $rows[$team->getName()];
+            }
+            if (isset($result)) {
+                $groupTableRow->setPoints($groupTableRow->getPoints() + $result->getGuestPoints());
+                $groupTableRow->setGoalsPlus($groupTableRow->getGoalsPlus() + $result->getGuestTeamGoals());
+                $groupTableRow->setGoalsMinus($groupTableRow->getGoalsMinus() + $result->getHostTeamGoals());
+                $groupTableRow->setCountOfMatchesPlayed($groupTableRow->getCountOfMatchesPlayed() + 1);
+                if ($result->getGuestWins() === true) {
+                    $groupTableRow->setCountOfMatchesWon($groupTableRow->getCountOfMatchesWon() + 1);
+                } elseif ($result->getHostWins() === true) {
+                    $groupTableRow->setCountOfMatchesLoosed($groupTableRow->getCountOfMatchesLoosed() + 1);
+                } else {
+                    $groupTableRow->setCountOfMatchesRemis($groupTableRow->getCountOfMatchesRemis() + 1);
+                }
+            }
+            $rows[$team->getName()] = $groupTableRow;
+        }
+        return $rows;
+    }
+
     /**
      * @return void
      */
@@ -140,59 +196,8 @@ class GroupRound extends Round
     {
         $matches = $this->getGeneralMatches();
         if (count($matches) > 0) {
-            // required ?
-            $this->groupTableRows->clear();
+            $rows = $this->getGroupTableRowsByResults($matches);
             $groupTableRows = new ArrayCollection();
-            foreach ($matches as $match) {
-                $team = $match->getHostTeam();
-                $teams[$team->getName()] = $team;
-                $result = $match->getResult();
-                if (!isset($rows[$team->getName()])) {
-                    $groupTableRow = new GroupTableRow();
-                    $groupTableRow->setTeam($team);
-                    $groupTableRow->setGroupRound($match->getRound());
-                } else {
-                    $groupTableRow = $rows[$team->getName()];
-                }
-                if (isset($result)) {
-                    $groupTableRow->setPoints($groupTableRow->getPoints() + $result->getHostPoints());
-                    $groupTableRow->setGoalsPlus($groupTableRow->getGoalsPlus() + $result->getHostTeamGoals());
-                    $groupTableRow->setGoalsMinus($groupTableRow->getGoalsMinus() + $result->getGuestTeamGoals());
-                    $groupTableRow->setCountOfMatchesPlayed($groupTableRow->getCountOfMatchesPlayed() + 1);
-                    if ($result->getHostWins() === true) {
-                        $groupTableRow->setCountOfMatchesWon($groupTableRow->getCountOfMatchesWon() + 1);
-                    } elseif ($result->getGuestWins() === true) {
-                        $groupTableRow->setCountOfMatchesLoosed($groupTableRow->getCountOfMatchesLoosed() + 1);
-                    } else {
-                        $groupTableRow->setCountOfMatchesRemis($groupTableRow->getCountOfMatchesRemis() + 1);
-                    }
-                }
-                $rows[$team->getName()] = $groupTableRow;
-                $team = $match->getGuestTeam();
-                $teams[$team->getName()] = $team;
-                if (!isset($rows[$team->getName()])) {
-                    $groupTableRow = new GroupTableRow();
-                    $groupTableRow->setTeam($team);
-                    $groupTableRow->setGroupRound($match->getRound());
-                } else {
-                    $groupTableRow = $rows[$team->getName()];
-                }
-                if (isset($result)) {
-                    $groupTableRow->setPoints($groupTableRow->getPoints() + $result->getGuestPoints());
-                    $groupTableRow->setGoalsPlus($groupTableRow->getGoalsPlus() + $result->getGuestTeamGoals());
-                    $groupTableRow->setGoalsMinus($groupTableRow->getGoalsMinus() + $result->getHostTeamGoals());
-                    $groupTableRow->setCountOfMatchesPlayed($groupTableRow->getCountOfMatchesPlayed() + 1);
-                    if ($result->getGuestWins() === true) {
-                        $groupTableRow->setCountOfMatchesWon($groupTableRow->getCountOfMatchesWon() + 1);
-                    } elseif ($result->getHostWins() === true) {
-                        $groupTableRow->setCountOfMatchesLoosed($groupTableRow->getCountOfMatchesLoosed() + 1);
-                    } else {
-                        $groupTableRow->setCountOfMatchesRemis($groupTableRow->getCountOfMatchesRemis() + 1);
-                    }
-                }
-                $rows[$team->getName()] = $groupTableRow;
-            }
-
             $cup = $this->getCup();
             $name = $cup->getGroupTablePolicy();
             $rankingPolicy = new $name;

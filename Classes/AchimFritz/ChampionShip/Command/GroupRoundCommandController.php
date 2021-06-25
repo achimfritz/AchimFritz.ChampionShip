@@ -63,6 +63,23 @@ class GroupRoundCommandController extends \Neos\Flow\Cli\CommandController
         }
     }
 
+    public function listAllCommand()
+    {
+        $cups = $this->cupRepository->findAll();
+        foreach ($cups as $cup) {
+            $groupRounds = $this->groupRoundRepository->findByCup($cup);
+            if (count($groupRounds)) {
+                foreach ($groupRounds as $groupRound) {
+                    $this->outputLine('--- ' . $cup->getName() . ' ' . $groupRound->getName() . ' ---');
+                    $this->outputGroupRound($groupRound);
+                }
+            } else {
+                $this->outputLine('no groupRounds found');
+            }
+        }
+
+    }
+
     /**
      * @param string $cupName
      * @return void
@@ -86,6 +103,29 @@ class GroupRoundCommandController extends \Neos\Flow\Cli\CommandController
         } catch (\AchimFritz\ChampionShip\Competition\Domain\Service\Exception $e) {
             $this->outputLine('ERROR ' . $e->getMessage() . ' - ' . $e->getCode());
         }
+    }
+
+    public function updateAllCommand(): int
+    {
+        $cups = $this->cupRepository->findAll();
+        foreach ($cups as $cup) {
+            $policy = $cup->getGroupTablePolicy();
+            if (!class_exists($policy)) {
+                continue;
+            }
+            $groupRounds = $this->groupRoundRepository->findByCup($cup);
+            foreach ($groupRounds as $groupRound) {
+                $this->outputLine('update groupRoundTable ' . $groupRound->getCup()->getName() . ' ' . $groupRound->getName());
+                $groupRound->updateGroupTable();
+                $this->outputGroupRound($groupRound);
+                $this->groupRoundRepository->update($groupRound);
+                if ($groupRound->getRoundIsFinished() === true) {
+                    $this->groupRoundService->finishOne($groupRound);
+                }
+            }
+        }
+
+        return 0;
     }
 
     public function updateCommand(string $cupName = 'em 2021'): int
