@@ -1,0 +1,16 @@
+AF1;03.12.2022;16:00;Sieger Gruppe A;- ;Zweiter Gruppe B;-:-  ;1A;2B;49;2
+AF2;03.12.2022;20:00;Sieger Gruppe C;- ;Zweiter Gruppe D;-:-  ;1C;2D;50;2
+AF3;04.12.2022;16:00;Sieger Gruppe D;- ;Zweiter Gruppe C;-:-  ;1D;2C;51;2
+AF4;04.12.2022;20:00;Sieger Gruppe B;- ;Zweiter Gruppe A;-:-  ;1B;2A;52;2
+AF5;05.12.2022;16:00;Sieger Gruppe E;- ;Zweiter Gruppe F;-:-  ;1E;2F;53;2
+AF6;05.12.2022;20:00;Sieger Gruppe G;- ;Zweiter Gruppe H;-:-  ;1G;2H;54;2
+AF7;06.12.2022;16:00;Sieger Gruppe F;- ;Zweiter Gruppe E;-:-  ;1F;2E;55;2
+AF8;06.12.2022;20:00;Sieger Gruppe H;- ;Zweiter Gruppe G;-:-  ;1H;2G;56;2
+VF1;09.12.2022;16:00;Sieger AF 5;- ;Sieger AF 6;-:-  ;W53;W54;57;3
+VF2;09.12.2022;20:00;Sieger AF 1;- ;Sieger AF 2;-:-  ;W49;W50;58;3
+VF3;10.12.2022;16:00;Sieger AF 7;- ;Sieger AF 8;-:-  ;W55;W56;59;3
+VF4;10.12.2022;20:00;Sieger AF 3;- ;Sieger AF 4;-:-  ;W51;W52;60;3
+HF1;13.12.2022;20:00;Sieger VF 2;- ;Sieger VF 1;-:-  ;W58;W57;61;4
+HF2;14.12.2022;20:00;Sieger VF 4;- ;Sieger VF 3;-:-  ;W60;W59;62;4
+D;17.12.2022;16:00;Verlierer HF 1;- ;Verlierer HF 2;-:-  ;L61;L62;63;6
+F;18.12.2022;16:00;Sieger HF 1;- ;Sieger HF 2;-:-  ;W61;W62;64;5
