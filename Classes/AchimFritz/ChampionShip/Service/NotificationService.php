@@ -57,7 +57,7 @@ class NotificationService
         $to = $user->getEmail();
 
         $subject = 'Einladung: Tippen bis zum Anpfiff bei www.tipptrip.de';
-        $body = 'Am 11.06.2021 ist es wieder soweit: Es wird WM-Geschichte geschrieben!!! '. chr(10) . chr(10);
+        $body = 'Am 20.11.2022 ist es wieder soweit: Es wird WM-Geschichte geschrieben!!! '. chr(10) . chr(10);
         $body .= 'Du bist natürlich automatisch wieder bei www.tipptrip.de dabei.' . chr(10) . chr(10);
         $body .= 'Deine Zugangsdaten:' . chr(10);
         $body .= 'URL: https://www.tipptrip.de/' . chr(10);
